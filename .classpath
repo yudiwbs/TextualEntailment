@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="D:/javalib/mysql-connector-java-5.1.26-bin.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-parser-full-2014-01-04/stanford-parser-3.3.1-models.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-parser-full-2014-01-04/stanford-parser.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-corenlp-full-2014-01-04/stanford-corenlp-3.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-corenlp-full-2014-01-04/stanford-corenlp-3.3.1-models.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-corenlp-full-2014-01-04/xom.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-corenlp-full-2014-01-04/joda-time.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-corenlp-full-2014-01-04/jollyday.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/stanford-corenlp-full-2014-01-04/ejml-0.23.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/tml/tml-3.2-core.jar"/>
+	<classpathentry kind="lib" path="D:/javalib/tml/tml-cmm-3.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
