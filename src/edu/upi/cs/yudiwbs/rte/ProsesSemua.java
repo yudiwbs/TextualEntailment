@@ -212,10 +212,15 @@ public class ProsesSemua {
 		
 		//hasilnya save as sebagai delimited, lalu bisa dijadikan arff
 	}
+
+	public void debugProses() {
+
+	}
 	
 	public static void main(String[] args) {
 		ProsesSemua ps = new ProsesSemua();
-		ps.proses();
+		//ps.proses();
+		ps.debugProses();
 		System.out.println("----> serius, semua proses selesai ...  :-) ");	
 	}
 	

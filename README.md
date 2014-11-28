@@ -9,6 +9,9 @@ Eksperimen terkait textual entailment
 Download lib di:
 Ekstrak di direktori /lib
 
+Ekstrak db:
+
+
 
 ### Kontak ###
 
