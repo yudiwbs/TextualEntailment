@@ -6,11 +6,20 @@ Eksperimen terkait textual entailment
 2. Mysql
 
 ### Build ###
-Download lib di:
+1.
+Download tambahan lib di: [tbd]
 Ekstrak di direktori /lib
+Isinya:
+stanford-corenlp-3.3.1-models.jar
+stanford-parser-3.3.1-models.jar
 
-Ekstrak db:
+(lib lain yg lebih kecil sudah ada di repo)
 
+
+2. Ekstrak db di direktori db/:
+
+
+3. Jalankan ProsesSemua
 
 
 ### Kontak ###
