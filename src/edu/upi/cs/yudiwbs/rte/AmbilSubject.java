@@ -90,7 +90,7 @@ public class AmbilSubject {
         Scanner sc = new Scanner(t2);
         
         StringBuilder sbFirstNP=null;
-        boolean stop = false;  //tidak digunakan
+			boolean stop = false;  //tidak digunakan
         boolean isPP = false;
     	int    curMinLevel  = 9999;  //ambil NP yang paling tinggi levelnya (paling kecil)
 	    while (sc.hasNext() && (!stop)) {
