@@ -14,7 +14,7 @@ import java.util.Properties;
  *
  *  memusatkan koneksi ke DB
  *
- * 
+ *
  */
 public class KoneksiDB {
     String koneksiDB = "";

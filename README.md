@@ -12,6 +12,7 @@ Ekstrak di direktori /lib
 Isinya:
 stanford-corenlp-3.3.1-models.jar
 stanford-parser-3.3.1-models.jar
+MySqlConnector .... jar
 
 (lib lain yg lebih kecil sudah ada di repo)
 
@@ -19,13 +20,15 @@ Tambahakan semua lib ini di add, untuk model harus dimasukkan sebagai kelas, buk
 
 2. Ekstrak db di direktori db/
 
+3. Cek /resources/conf/db.properties, sesuakan username password yg sesuai
+
 3. Build --> jar
 
 
 
 ### Menjalankan ##
 3. Copy jar
-4. Copy /resources
+4. Copy /resources  di tempat yang sama dengan jar
 5. Jalankan ... [tbd]
 
 ### Deskripsi DB ###
