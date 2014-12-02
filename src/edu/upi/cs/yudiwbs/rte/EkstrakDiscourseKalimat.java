@@ -12,6 +12,12 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
+
+/*
+
+
+ */
+
 public class EkstrakDiscourseKalimat {
 	//urutan EkstrakDiscourse:
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif

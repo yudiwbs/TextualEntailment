@@ -18,6 +18,13 @@ import edu.stanford.nlp.trees.TreebankLanguagePack;
 import edu.stanford.nlp.trees.TypedDependency;
 
 
+/**
+ *  Parser kalimat menjadi parse tree dan dependency tree
+ *
+ *  Terdapat tiga method: proses() untuk tabel utama dan
+ *  prosesDiscourseH() dan prosesDiscourseT() masing2 untuk tabel discH dan discT
+ *
+ */
 public class ParsingHypoText {
 	//WARNING: cek SQL untuk select dan update (terutama nama tabel) lalu lihat proses 
 	//updatenya karena sering diutakatik
@@ -34,7 +41,11 @@ public class ParsingHypoText {
 	
 	Connection conn=null;
 	LexicalizedParser lp;
-	
+
+	/**
+	 *    loading model
+	 *
+	 */
 	public void init() {
 		//panggil sebelum lakukan parsing
 		lp = LexicalizedParser.loadModel(
@@ -43,7 +54,7 @@ public class ParsingHypoText {
 	}
 	
 	
-	public String[] parse2(String sen) {
+	public String[] parse(String sen) {
 		//hasilnya sama dengan yg di online (lebih bagus)
 		//lebih simpel
 		
@@ -68,13 +79,15 @@ public class ParsingHypoText {
 			System.out.println("Proses H");
 			PreparedStatement pSelH=null;
 			PreparedStatement pUpdH=null;
-			
+			KoneksiDB db = new KoneksiDB();
+
 			ResultSet rs = null;
 			try {
 	    		Class.forName("com.mysql.jdbc.Driver");
-	    		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-	    			   					+ "user=textentailment&password=textentailment");
-	    		
+
+	    		//conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"+ "user=textentailment&password=textentailment");
+	    		conn = db.getConn();
+
 	    		init();
 	    		pSelH = conn.prepareStatement("select h,id from "+namaTabel+ " where h_gram_structure is null");
 	    		
@@ -87,7 +100,7 @@ public class ParsingHypoText {
 				while (rs.next()) {
 				        String text = rs.getString(1);
 				        int id      = rs.getInt(2);
-				        String[] outH = parse2(text);
+				        String[] outH = parse(text);
 				        //System.out.println(text+"-->"+out[0]+","+out[1]);
 				        pUpdH.setString(1, outH[0]);
 				        pUpdH.setString(2, outH[1]);
@@ -131,10 +144,12 @@ public class ParsingHypoText {
     		rs = pSelT.executeQuery();
     		int cc=0;
 			while (rs.next()) {
-			    	    
+					System.out.println(".");
+
+
 					String text = rs.getString(1);
 			        int id      = rs.getInt(2);
-			        String[] outT = parse2(text);
+			        String[] outT = parse(text);
 			        //System.out.println(text+"-->"+out[0]+","+out[1]);
 			        pUpdT.setString(1, outT[0]);
 			        pUpdT.setString(2, outT[1]);
@@ -161,43 +176,45 @@ public class ParsingHypoText {
 		}
 	}
 	
-	
-	
+	/**
+	 *   ambil data dari tabel utama, RTE.t dan RTE.h, parsing POS tag dan dependency parser
+	 *   hasil disimpan di RTE.t_gram_structure, RTE.h_gram_structure
+	 *   dan RTE.type_dependency dan RTE.type_dependency
+	 *
+	 *   @param  namaTabel  nama tabel utama yang akan diproses, field t,h,id sudah terisi
+	 *
+	 */
 	public void proses(String namaTabel) {
-		//t,h,id sudah ada di tabel RTE
-		//output: field t_gram structure, t_dependency dan h_gram_stru h_gram_depend
+
 		PreparedStatement pSel=null;
 		PreparedStatement pUpd=null;
 		
 		ResultSet rs = null;
-	
+		KoneksiDB db = new KoneksiDB();
 		try {
-    		Class.forName("com.mysql.jdbc.Driver");
-    		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-    			   					+ "user=textentailment&password=textentailment");
-    		
-    		init();
-    		pSel = conn.prepareStatement("select t,h,id from "+namaTabel+" where ");
-    		
-    		pUpd = conn.prepareStatement("update "+ namaTabel  +" set "
+
+			conn = db.getConn();
+			init();
+
+			pSel = conn.prepareStatement("select t,h,id from "+namaTabel);
+
+			pUpd = conn.prepareStatement("update "+ namaTabel  +" set "
     				+ "	t_gram_structure=?, t_type_dependency=?, h_gram_structure=?, h_type_dependency=? "
     				+ " where id=?");
     		
     		rs = pSel.executeQuery();
 			while (rs.next()) {
 			        String text = rs.getString(1);
-			        String hypo = rs.getString(2);
+					String hypo = rs.getString(2);
 			        int id      = rs.getInt(3);
-			        String[] outT = parse2(text);
-			        String[] outH = parse2(hypo);
-			        //System.out.println(text+"-->"+out[0]+","+out[1]);
+			        String[] outT = parse(text);
+			        String[] outH = parse(hypo);
 			        pUpd.setString(1, outT[0]);
 			        pUpd.setString(2, outT[1]);
 			        pUpd.setString(3, outH[0]);
 			        pUpd.setString(4, outH[1]);
 			        pUpd.setInt(5, id);
 			        pUpd.executeUpdate();
-			        System.out.print("-");
 			}
     		rs.close();
 			pSel.close();
@@ -215,9 +232,10 @@ public class ParsingHypoText {
     	 
 
     	 //pht.prosesDiscourseT("disc_t_rte3_ver1");
-    	 pht.prosesDiscourseT("rte3_ver1_coba2");
-    	 System.out.println();
+    	 //pht.prosesDiscourseT("rte3_ver1_coba2");
+    	  pht.proses("rte3");
+		  System.out.println();
     	 //pht.prosesDiscourseH("disc_h_rte3_ver1");
-    	 pht.prosesDiscourseT("rte3_ver1_coba2");
+    	 //pht.prosesDiscourseT("rte3_ver1_coba2");
     }
 }

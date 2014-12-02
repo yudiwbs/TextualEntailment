@@ -48,7 +48,7 @@ public class SVOoverlap {
 	 HashSet<String> hsStopWords = new HashSet<String>();
 	 
 	 public void loadStopWords() {
-		   URL url = getClass().getResource("en_stopwords.txt");
+		   URL url = getClass().getResource("resources/en_stopwords.txt");
 		   File f = new File(url.getPath());
 		   try {
 				Scanner sc = new Scanner(f);

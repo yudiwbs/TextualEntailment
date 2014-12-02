@@ -1,6 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
-public class ProsesSemua {
+public class TextualEntailment {
 	
 	public void proses() {
 		/*
@@ -218,9 +218,9 @@ public class ProsesSemua {
 	}
 	
 	public static void main(String[] args) {
-		ProsesSemua ps = new ProsesSemua();
+		TextualEntailment ps = new TextualEntailment();
 		//ps.proses();
-		ps.debugProses();
+		//ps.debugProses();
 		System.out.println("----> serius, semua proses selesai ...  :-) ");	
 	}
 	
