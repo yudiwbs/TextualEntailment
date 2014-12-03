@@ -1,0 +1,58 @@
+-- jangan lupa sesuaikan nama tabel
+
+CREATE TABLE IF NOT EXISTS `disc_t` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kalimat` int(11) DEFAULT NULL,
+  `t` text,
+  `t_gram_structure` text,
+  `t_type_dependency` text,
+  `t_subject` text,
+  `t_verb` text,
+  `t_obj` text,
+  PRIMARY KEY (`id`),
+  KEY `id_kalimat` (`id_kalimat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS `disc_h` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kalimat` int(11) DEFAULT NULL,
+  `h` text,
+  `h_gram_structure` text,
+  `h_type_dependency` text,
+  `h_subject` text,
+  `h_verb` text,
+  `h_obj` text,
+  `t_disc_terdekat` text,
+  `id_t_disc_terdekat` text,
+  `avg_kedekatan` double DEFAULT NULL,
+  `skor_subj_kedekatan` double DEFAULT NULL,
+  `skor_verb_kedekatan` double DEFAULT NULL,
+  `skor_obj_kedekatan` double DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_kalimat` (`id_kalimat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE IF NOT EXISTS `rte3` (
+  `id_internal` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
+  `isEntail` tinyint(1) DEFAULT NULL,
+  `task` varchar(60) DEFAULT NULL,
+  `t` text NOT NULL,
+  `h` text NOT NULL,
+  `t_gram_structure` text,
+  `t_type_dependency` text,
+  `h_gram_structure` text,
+  `h_type_dependency` text,
+  `max_rasio_subj_kata` double DEFAULT NULL,
+  `max_rasio_verb_kata` double DEFAULT NULL,
+  `max_rasio_obj_kata` double DEFAULT NULL,
+  `id_disc_h` int(11) DEFAULT NULL,
+  `id_disc_t` int(11) DEFAULT NULL,
+  `jeniscocok` char(3) DEFAULT NULL,
+  PRIMARY KEY (`id_internal`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+

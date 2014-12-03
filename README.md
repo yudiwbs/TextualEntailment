@@ -17,10 +17,12 @@ MySqlConnector .... jar
 (lib lain yg lebih kecil sudah ada di repo)
 
 Tambahakan semua lib ini di add, untuk model harus dimasukkan sebagai kelas, bukan anotasi (kalau diinerllji)
+PENTING: Tambah lib-nya, jangan sampai ketinggalan, walaupun file jar sudah ada di /lib, tapi kalau belum ditambah, berarti belum bisa digunakan. 
 
 2. Ekstrak db di direktori db/
 
-3. Cek /resources/conf/db.properties, sesuakan username password yg sesuai
+3. Cek /resources/conf/db.properties, pindahkan ke direktori output classpath (/out atu /dist)
+sesuakan username password yg sesuai
 
 3. Build --> jar
 
