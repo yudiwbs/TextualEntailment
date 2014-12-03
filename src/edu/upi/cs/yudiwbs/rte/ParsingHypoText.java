@@ -11,13 +11,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
-
-
 /**
- *  Parser kalimat menjadi parse tree dan dependency tree
+ *  Parser kalimat menjadi POS tag tree dan dependency tree
  *
- *  Terdapat tiga method: proses() untuk tabel utama dan
- *  prosesDiscourseH() dan prosesDiscourseT() masing2 untuk tabel discH dan discT
+ *  Terdapat tiga method: proses() untuk tabel utama
+ *  prosesDiscourseH() dan prosesDiscourseT() masing2 untuk tabel
+ *  discH dan discT
+ *
+ *  Selanjutnya adalah proses, pemisahan kata
+ *
+ *  todo: prosesDiscourseH dan T  digabung
+ *
  *
  */
 public class ParsingHypoText {
@@ -71,7 +75,7 @@ public class ParsingHypoText {
 	
 	
 	
-	//todo duplikasi banget, biarkan dulu 
+	    //todo duplikasi banget, biarkan dulu
 		public void prosesDiscourseH(String namaTabel) {
 			System.out.println("Proses H");
 			PreparedStatement pSelH=null;
