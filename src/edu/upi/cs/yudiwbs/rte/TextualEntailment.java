@@ -18,15 +18,19 @@ public class TextualEntailment {
 		ALTER TABLE disc_t_rte3_ver1_test_gold AUTO_INCREMENT=1;
 		
 		
-		update rte3_ver1_coba2
-		set 
+		update rte3
+		set
 		max_rasio_subj_kata=null,max_rasio_verb_kata=null,max_rasio_obj_kata=null,
 		id_disc_h=null,id_disc_t=null,jeniscocok = null, id_disc_h_tfidf=null,
 		id_disc_t_tfidf=null,similar_tfidf=null,t_tfidf=null,h_tfidf=null,
 		similar_tfidf_langsung=null,
 		id_disc_h_svo_tfidf=null,id_disc_t_svo_tfidf=null,
 		similar_svo_tfidf=null,similar_avg_svo_tfidf=null,bobot_jenis_cocok=null,
-		id_skor_avg_svo_diskrit = null;
+		id_skor_avg_svo_diskrit = null,
+		t_gram_structure=null,
+		t_type_dependency=null,
+		h_gram_structure=null,
+		h_type_dependency=null;
 		=======
 		
 		
