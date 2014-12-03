@@ -1,6 +1,6 @@
 -- jangan lupa sesuaikan nama tabel
 
-CREATE TABLE IF NOT EXISTS `disc_t_rte3_ver1` (
+CREATE TABLE IF NOT EXISTS `disc_t_rte3` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_kalimat` int(11) DEFAULT NULL,
   `t` text,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `disc_t_rte3_ver1` (
 
 
 
-CREATE TABLE IF NOT EXISTS `disc_h_rte3_ver1` (
+CREATE TABLE IF NOT EXISTS `disc_h_rte3` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_kalimat` int(11) DEFAULT NULL,
   `h` text,

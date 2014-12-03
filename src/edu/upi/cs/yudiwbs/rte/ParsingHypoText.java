@@ -1,5 +1,8 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.trees.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,14 +11,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 
-import edu.stanford.nlp.ling.Sentence;
-import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
-import edu.stanford.nlp.trees.GrammaticalStructure;
-import edu.stanford.nlp.trees.GrammaticalStructureFactory;
-import edu.stanford.nlp.trees.PennTreebankLanguagePack;
-import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.trees.TreebankLanguagePack;
-import edu.stanford.nlp.trees.TypedDependency;
 
 
 /**
@@ -40,6 +35,8 @@ public class ParsingHypoText {
 	//setelah melakukan ini, lakukan pemrosesan Subject dan VerbObj
 	
 	Connection conn=null;
+
+	//harus pake yg punya stanford bukan tmm
 	LexicalizedParser lp;
 
 	/**
