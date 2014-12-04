@@ -21,10 +21,11 @@ PENTING: Tambah lib-nya, jangan sampai ketinggalan, walaupun file jar sudah ada 
 
 2. Ekstrak db di direktori db/
 
-3. Cek /resources/conf/db.properties, pindahkan ke direktori output classpath (/out atu /dist)
+3. Cek /resources/conf/db.properties, pindahkan ke direktori output classpath (/out/textualentailment atau /dist)
 sesuakan username password yg sesuai
 
-3. Build --> jar
+3.
+Build --> jar
 
 
 

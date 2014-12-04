@@ -172,36 +172,8 @@ public class EkstrakFitur {
 //		System.out.println("Rasio kata+pos cocok:"+(double)jumKataPosCocok/alWordH.size());
 		return out;
 	}
-	
-	
-	
-	  private HashMap<String,Double> tfidfStringToVector(String s) {
-	  //input adalah string seperti: endangers=5.585999438999818;seal=6.684611727667927;Hunting=6.684611727667927;species.=5.585999438999818;
-	  //output dalam hashmap<string,double>
-		  
-		  HashMap<String,Double> vector = new HashMap<String,Double>();
-		  String[] str;
-          Scanner sc = new Scanner(s);
-          sc.useDelimiter(";");
-          try {
-              while (sc.hasNext()) {
-                      String item = sc.next(); //pasangan term=val
-                      str=item.split("=");
-                      if (str.length==2) {
-                    	  vector.put(str[0], Double.parseDouble(str[1]));
-                      } else {
-                      	System.out.println("ERROR------------->"+item);
-                      	
-                      }
-              }
-              
-          } catch (Exception e) {
-          	  e.printStackTrace();
-          }   
-          sc.close();
-          return vector;
-	  }
-	  
+
+
 	  private double HitungsqrtSumSqrWeight(HashMap<String,Double> vector) {
 	  //total bobot dikuadratkan
 		  double ret;
@@ -349,7 +321,7 @@ public class EkstrakFitur {
           return simVal;
 	  }
 			  
-	  //TBD nanti dibenerin... 
+	  /* TBD nanti dibenerin... */
 	  private double similar(String s1, String s2) {
           //kesamaan antara dua string
 		  //s1 dan s2 dalam bentuk pasangan spt ini:

@@ -84,7 +84,7 @@ public class ParsingHypoText {
 
 			ResultSet rs = null;
 			try {
-	    		Class.forName("com.mysql.jdbc.Driver");
+	    		//Class.forName("com.mysql.jdbc.Driver");
 
 	    		//conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"+ "user=textentailment&password=textentailment");
 	    		conn = db.getConn();
