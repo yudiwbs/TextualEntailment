@@ -174,21 +174,7 @@ public class EkstrakFitur {
 	}
 
 
-	  private double HitungsqrtSumSqrWeight(HashMap<String,Double> vector) {
-	  //total bobot dikuadratkan
-		  double ret;
-		  double sumSqrWeight=0;
-		  double weight;
-		  for (Map.Entry<String,Double> thisEntry : vector.entrySet())  {
-			  weight = thisEntry.getValue();
-			  sumSqrWeight += (weight * weight);
-		  }
-		  
-		  ret = Math.sqrt(sumSqrWeight);
-		  
-		  return ret;
-	  }
-	  
+
 	  private HashMap<String,Double> normalisasiVector(HashMap<String,Double> v, double panjangVec) {
 	  // menormalkan vektor, tapi sptnya kurang signifikan hasilnya
 		  HashMap<String,Double> out = new HashMap<String,Double>();
@@ -203,138 +189,7 @@ public class EkstrakFitur {
           }
 		  return out;
 	  }
-	  
-	 
-	  
-	  private HashMap<String,Double> sortDanPotongHM(HashMap<String,Double> inp, int jumPotong) {
-	  //sort descending 
-	  //langsung potong
-		  class Term {
-			  String term;
-			  Double val;
-			  public Term(String t, Double v) {
-				  term = t;
-				  val = v;
-			  }
-		  }
-		  
-		  List<Term> listT  = new ArrayList <Term> ();
-		  
-		  for (Map.Entry<String,Double> thisEntry : inp.entrySet())  {   //loop untuk semua term di this
-              String term = thisEntry.getKey();
-              Double val  = thisEntry.getValue();
-              Term t = new Term(term,val);
-              listT.add(t);
-          }
-		  
-		  
-		  HashMap<String,Double> out = new HashMap<String,Double>();
-		  
-		 
-		  Collections.sort(listT, new Comparator<Term>() {
-		        public int compare(Term o1, Term o2) {
-		            if (o1.val > o2.val) 
-		            	{return -1;} 
-		            else
-		            if (o1.val < o2.val) 
-		            	{return 1;} 
-		            else return 0;
-		        }
-		    });
 
-		    //isi lagi ke hashmap, ribet memang
-		    int cc  = 0;
-		    for (Term t : listT) {		    	
-		        //System.out.println( t.term + "\t" + t.val);
-		    	out.put(t.term,t.val);
-		    	cc++;
-		    	if (cc==jumPotong) {
-		    		break;
-		    	}
-		    }
-		    //System.out.println( "-----");
-		  
-		  return out;
-	  }
-	  
-	  private double similarBestTerm(String s1, String s2) {
-		  //setelah dicoba hasilnya tidak lebih baik, malah tambah jelek
-		  
-		  //disort dulu berdasarkan nilainya
-		  //cari yang paling pendek
-		  //yang panjang dipotong 
-		  
-		  HashMap<String,Double> vector1orig = tfidfStringToVector(s1); 
-		  HashMap<String,Double> vector2orig = tfidfStringToVector(s2); 
-		  
-		  //perlu disort dan potong 
-		  HashMap<String,Double> vector1SortPotong  = sortDanPotongHM(vector1orig,20);
-		  HashMap<String,Double> vector2SortPotong  = sortDanPotongHM(vector2orig,100);
-		  
-		  return similiar(vector1SortPotong,vector2SortPotong);
-	  }
-	  
-	  private double similiar(HashMap<String,Double> v1, HashMap<String,Double> v2) {
-		  //rumus kedekatan dua tweets   (sum (x[i] x y[i]) / (  sqr(sum(x[i]^2)) x sqr(sum(y[i]^2))  )  --> cosine similiarity
-          //1 paling dekat, 0 paling jauh
-     	 
-		  //sept 2014: tambahkan normaliasai	
-		  //tapi malah memburuk, dibuang
-		  
-		  HashMap<String,Double> vector1orig =v1; 
-		  HashMap<String,Double> vector2orig =v2;  
-		  
-		  
-		  double simVal =0;
-          double pembagi =0;
-          
-          double ss1 = HitungsqrtSumSqrWeight(vector1orig);
-          double ss2 = HitungsqrtSumSqrWeight(vector2orig);
-          
-          //dinormalkan malah tambah jelek (62 persen turun ke 58)
-          HashMap<String,Double> vector1Norm;
-          HashMap<String,Double> vector2Norm;
-          
-          //normaliasi di disable dulu...
-          //if (usingNormalisasi) {
-        	//  vector1Norm =  normalisasiVector(vector1orig,ss1);
-        	//  vector2Norm =  normalisasiVector(vector2orig,ss2);
-          //} else {
-        	  vector1Norm = vector1orig;
-        	  vector2Norm = vector2orig;
-          //}
-          double sumXY=0;
-          for (Map.Entry<String,Double> thisEntry : vector1Norm.entrySet())  {   //loop untuk semua term di this
-              Double val =  vector2Norm.get(thisEntry.getKey());  //cari term yg sama di D
-              if (val!=null) {  //ada, dikali
-                  sumXY += (val * thisEntry.getValue());
-              }
-          }
-
-          pembagi = (ss1 * ss2);  //mencegah NaN
-          if (pembagi!=0) {
-              simVal = sumXY / pembagi;
-          } else {
-             simVal = 0; //error salah satu doc semua bobotnya nol, dianggap berjauhan, perlu smoothing?
-          }
-
-          return simVal;
-	  }
-			  
-	  /* TBD nanti dibenerin... */
-	  private double similar(String s1, String s2) {
-          //kesamaan antara dua string
-		  //s1 dan s2 dalam bentuk pasangan spt ini:
-		  //di=2.1972245773362196;ayo=5.123963979403259;cinta=5.198497031265826;
-		  
-          
-     	  
-		  HashMap<String,Double> vector1orig = tfidfStringToVector(s1); 
-		  HashMap<String,Double> vector2orig = tfidfStringToVector(s2);  
-		 
-          return similiar(vector1orig,vector2orig);
-      }
-	
 	  
 	public void prosesKedekatanBigramTfIdfLangsung(String namaTabelUtama) {
 		//gagal, tidak menambah kinerja
@@ -364,11 +219,12 @@ public class EkstrakFitur {
 	   		String sqlKal = "select id_internal,t_bigram_tfidf,h_bigram_tfidf from "+ namaTabelUtama ;
 	   		pKal = conn.prepareStatement(sqlKal);
 	   		rsKal = pKal.executeQuery();
+			ProsesTfidf pt = new ProsesTfidf();
 			while (rsKal.next()) {
 				int idInternal = rsKal.getInt(1);
 				String tTfIdf  = rsKal.getString(2);
 				String hTfIdf  = rsKal.getString(3);
-				double kedekatan = similar(tTfIdf,hTfIdf);
+				double kedekatan = pt.similarTfIdf(tTfIdf, hTfIdf);
 				pUpdateKal.setDouble(1,kedekatan);
 				pUpdateKal.setInt(2,idInternal);
 				pUpdateKal.executeUpdate(); 
@@ -420,12 +276,13 @@ public class EkstrakFitur {
 	   		String sqlKal = "select id_internal,t_tfidf,h_tfidf from "+ namaTabelUtama ;
 	   		pKal = conn.prepareStatement(sqlKal);
 	   		rsKal = pKal.executeQuery();
+			ProsesTfidf p = new ProsesTfidf();
 			while (rsKal.next()) {
 				int idInternal = rsKal.getInt(1);
 				System.out.println("id"+idInternal);
 				String tTfIdf  = rsKal.getString(2);
 				String hTfIdf  = rsKal.getString(3);
-				double kedekatan = similarBestTerm(tTfIdf,hTfIdf);
+				double kedekatan = p.similarBestTermTfIdf(tTfIdf,hTfIdf);
 				pUpdateKal.setDouble(1,kedekatan);
 				pUpdateKal.setInt(2,idInternal);
 				pUpdateKal.executeUpdate(); 
@@ -472,11 +329,13 @@ public class EkstrakFitur {
 	   		String sqlKal = "select id_internal,t_tfidf,h_tfidf from "+ namaTabelUtama ;
 	   		pKal = conn.prepareStatement(sqlKal);
 	   		rsKal = pKal.executeQuery();
+
+			ProsesTfidf p = new ProsesTfidf();
 			while (rsKal.next()) {
 				int idInternal = rsKal.getInt(1);
 				String tTfIdf  = rsKal.getString(2);
 				String hTfIdf  = rsKal.getString(3);
-				double kedekatan = similar(tTfIdf,hTfIdf);
+				double kedekatan = p.similarTfIdf(tTfIdf,hTfIdf);
 				pUpdateKal.setDouble(1,kedekatan);
 				pUpdateKal.setInt(2,idInternal);
 				pUpdateKal.executeUpdate(); 
@@ -599,6 +458,9 @@ public class EkstrakFitur {
 						rsKal = pKal.executeQuery();
 						int idKal;
 						int cc=0;
+
+
+						ProsesTfidf p = new ProsesTfidf();
 						
 						//loop untuk setiap pair
 						while (rsKal.next()) {
@@ -677,10 +539,12 @@ public class EkstrakFitur {
 										hSubjTfidf = tSubjTfidf;     
 									}
 									*/
-									
-									double kedekatanSub  = similar(hSubjTfidf,tSubjTfidf);
-									double kedekatanVerb = similar(hVerbTfidf,tVerbTfidf);
-									double kedekatanObj  = similar(hObjTfidf ,tObjTfidf);
+
+
+
+									double kedekatanSub  = p.similarTfIdf(hSubjTfidf, tSubjTfidf);
+									double kedekatanVerb = p.similarTfIdf(hVerbTfidf,tVerbTfidf);
+									double kedekatanObj  = p.similarTfIdf(hObjTfidf ,tObjTfidf);
 									double avgKedekatan  = (kedekatanSub+kedekatanVerb+kedekatanObj) / 3;
 									totAvg = totAvg + avgKedekatan;
 									//cek max dilevel H
@@ -735,670 +599,12 @@ public class EkstrakFitur {
 					   }
 		
 	}
-	
-	public void prosesKedekatanTfIdf(String namaTabelUtama, String namaTabelDiscT, String namaTabelDiscH) {
-		//kedekatan antar disc_t dan disc_h, tapi tidak menggunakan SVO
-		
-		//is: tfidf_t dan tfidf_h sudah terisi di disc_t dan disc_h
-		//fs: tabel_utama.id_disc_h_tfidf dan tabel_utama.id_disc_t_tfidid terisi, yaitu 
-		//    record disct dan disch yang terdekat untuk kalimat tersebut
-		//    selain itu tabel_utama.similar_tfidf terisi 
-		
-		
-		
-		/*
-		 //kosongkan dulu
-		
-		update rte3_ver1 
-		set 
-		id_disc_h_tfidf = null,
-		id_disc_t_tfidf = null,
-		similar_tfidf = null,
-		 
-		 
-	    setelah selesai, atribut yang dapat digunakan dalah similar_tfidf 
-		 
-		 
-		 
-		 */
-		//loop untuk semua t-h di rte
-			//loop untuk semua h disc_h
-				//cari t dengan tfidf terdekat h tersebut
-				//cari h dengan tfidf terdekat
-		
-		
-		Connection conn=null;
-		PreparedStatement pH=null;
-		PreparedStatement pKal=null;
-		PreparedStatement pT=null;
-		PreparedStatement pUpdateDiscH=null;
-		PreparedStatement pUpdateKal=null;
-		
-		ResultSet rsKal = null;
-		ResultSet rsH = null;
-		ResultSet rsT = null;
-		
-		//ambil data 
-		try {
-		   		Class.forName("com.mysql.jdbc.Driver");
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
-			    
-		   		/*
-		   		String sqlUpdateKal = "update "+ namaTabelUtama   
-		   				+ " set max_rasio_subj_kata=?, "
-		   				+ "    max_rasio_verb_kata=?, "
-		   				+ "    max_rasio_obj_kata=?,   "
-		   				+ "    id_disc_t=?,   "
-		   				+ "    id_disc_h=?,   "
-		   				+ "    jeniscocok=?   "
-		   				+ " where id_internal=? ";
-		   		*/
-		   		
-		   		String sqlUpdateKal = "update "+ namaTabelUtama   
-		   				+ " set  "
-		   				+ "    id_disc_h_tfidf=?,   "
-		   				+ "    id_disc_t_tfidf=?,   "
-		   				+ "    similar_tfidf=?   "
-		   				+ "  where id_internal=? ";
-		   		
-		   		pUpdateKal = conn.prepareStatement(sqlUpdateKal);
-		   	  
-		   		
-		   		String sqlUpdateDiscH = "update  "+namaTabelDiscH
-		   				+ " set  id_t_disc_terdekat_tfidf=?, "
-		   				+ "      t_disc_terdekat_tfidf=?, "
-		   				+ "      skor_t_terdekat_tfidf=?   "
-		   				+ " where id=? ";
-		   		
-		   		pUpdateDiscH = conn.prepareStatement(sqlUpdateDiscH);
-		   		
-		   		//untuk dapat id setiap kalimat
-		   		String sqlKal = "select id_internal from "+ namaTabelUtama ; 
-		   		
-		   		
-		   		String sql_h = "select "
-		   				+ " id,h,h_tfidf "
-		   				+ " from  "+ namaTabelDiscH  + " where id_kalimat = ?";
-		   		
-		   		String sql_t = "select "
-		   				+ " id,t,t_tfidf "
-		   				+ " from "+namaTabelDiscT +" where id_kalimat = ?";
-		   		
-		   		pKal = conn.prepareStatement(sqlKal);
-		   		pH = conn.prepareStatement(sql_h);
-				pT = conn.prepareStatement(sql_t);
-				
-				
-				rsKal = pKal.executeQuery();
-				int idKal;
-				int cc=0;
-				while (rsKal.next()) {
-					
-					cc++;
-				    if (cc%5==0) {
-				        	System.out.print(".");
-				    }
-				    if (cc%500==0) {
-				        	System.out.println("");
-				    }
-				        
-					idKal = rsKal.getInt(1);
-					//ArrayList<Disc> alH = new ArrayList<Disc>();
-					//ArrayList<Disc> alT = new ArrayList<Disc>();
-					//pindahkan data ke memori biar cepat
-					pH.setInt(1,idKal);
-					pT.setInt(1,idKal);
-					
-					rsH = pH.executeQuery();
-					
-					double maxSkorH=-1;
-					int maxIdH = -1;
-					int maxIdTh = -1; //pasangan t
-					String strMaxH ="";
-					//loop untuk semua H kalimat tsb
-					while (rsH.next()) {
-						//id,h,h_gram_structure,h_subject,h_verb,h_obj
-						//Disc dH = new Disc();
-						int hId               = rsH.getInt(1);
-					    String h              = rsH.getString(2);
-						String hTfidf         = rsH.getString(3);  
-					    
-						//loop untuk semua T
-					    //tidak efisien karena execute berulang2
-					    rsT = pT.executeQuery();
-					    double maxSkorT=-1;
-					    int maxIdT = -1;
-					    String strMaxT ="";
-					    //loop untuk semua T, cari yang paling dekat
-						while (rsT.next()) {
-							//id,h,h_gram_structure,h_subject,h_verb,h_obj
-							int tId        		= rsT.getInt(1);
-							String t            = rsT.getString(2);
-							String tTfidf       = rsT.getString(3);  
-							
-							double kedekatan = similar(hTfidf,tTfidf);
-							//cek max dilevel H
-							if (kedekatan>maxSkorT) {
-								maxSkorT = kedekatan;
-								maxIdT = tId;
-								strMaxT = t;
-							}
-						}
-						rsT.close();
-						//max untuk T sudah terisi
-						//update H
-						pUpdateDiscH.setInt(1,maxIdT);
-						pUpdateDiscH.setString(2,strMaxT);
-						pUpdateDiscH.setDouble(3,maxSkorT);
-						pUpdateDiscH.setInt(4,hId);
-						pUpdateDiscH.executeUpdate(); 
-						
-						//cek max di level kalimat
-						if (maxSkorT>maxSkorH) {
-							maxSkorH = maxSkorT;
-							maxIdH  = hId ;
-							maxIdTh = maxIdT; 
-							strMaxH = h;
-						}	
-					} //rsH
-					
-					//update kalimat
-					pUpdateKal.setDouble(1,maxIdH);
-					pUpdateKal.setDouble(2,maxIdTh);
-					pUpdateKal.setDouble(3,maxSkorH);
-					pUpdateKal.setInt(4,idKal);
-					pUpdateKal.executeUpdate(); 
-				} //while rsKal (loop setiap kalimat)
-				
-				pUpdateDiscH.close();
-				pUpdateKal.close();
-		   		rsKal.close();
-				rsH.close();
-		   		pKal.close();
-		   		pH.close();
-		   		pT.close();
-		   		conn.close();
-		   		System.out.println();
-		   		System.out.println("selesai");
-		   	   } catch (Exception ex) {
-				   ex.printStackTrace();
-			   }
-		
-	}
-	
+
 
 	
-	public void prosesDiscSVOTFIDF(Character tAtauH,String fieldSource , String fieldTarget, String namaTabel) {
-	//source bisa: h_subject_notag, h_verb_notag, h_obj_notag,t_subject_notag, t_verb_notag, t_obj_notag
-	//target: h_subj_tfidf, h_verb_tfidf dst, sesuai degnan source
-	//hitung tf-idf
-		
-		
-		/*
-		 
-		 alter table  disc_h_rte3_ver1
-		 add h_subj_tfidf text,
-		 add h_verb_tfidf text,
-		 add h_obj_tfidf text
-		 
-		 alter table disc_t_rte3_ver1
-		 add t_subj_tfidf text,
-		 add t_verb_tfidf text,
-		 add t_obj_tfidf text;
-		 
-		 
-		 */
-		
-		
-		//subject verb obj
-		//th = bisa berisi t atau h
-		
-				// kosongkan 
-				
-				//update rte3_ver1 set h_tfidf = null, t_tfidf = null
-				
-				
-				Connection conn=null;       
-		        PreparedStatement pTw = null;
-		        PreparedStatement pUpdateTfIdf = null;
-		        String kata;
-		        try {
-		        	String strCon = "jdbc:mysql://localhost/textualentailment?user=textentailment&password=textentailment";
-		            conn = DriverManager.getConnection(strCon);
-		            //conn.setAutoCommit(false);
-		            int cc=0;
-		            
-		            //jumlah tweet yg mengandung sebuah term
-		            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<String,Integer>();               
-		            
-		            //freq kata untuk setiap tweet
-		            ArrayList<HashMap<String,Integer>> arrTermCount = new ArrayList<HashMap<String,Integer>>(); 
-		            
-		            //untuk menyimpan id record
-		            ArrayList<Long>  arrIdInternalTw = new ArrayList<Long>(); 
-		            
-		            Integer freq;
-		            
-		            String SQLambilTw="error"; 
-		            String strUpdate ="error";
-		            if (tAtauH=='h') {
-		            	SQLambilTw   = "select id, "+fieldSource+" from "+namaTabel;
-		            	strUpdate    = "update "+namaTabel+"  set "+ fieldTarget +"=? where id=? ";
-		            } else if (tAtauH=='t') {
-		            	SQLambilTw   = "select id, "+fieldSource+" from "+namaTabel;
-		            	strUpdate    = "update "+namaTabel+" set "+ fieldTarget +"=? where id=? ";
-		            }
-		            
-		            pTw  =  conn.prepareStatement (SQLambilTw);
-		            pUpdateTfIdf = conn.prepareStatement(strUpdate);
-		            
-		            //loop untuk semua dokumen
-		            ResultSet rsTw = pTw.executeQuery();
-		            while (rsTw.next())   {                            
-		            	long id = rsTw.getLong(1);
-		            	arrIdInternalTw.add(id);
-		            	String tw = rsTw.getString(2);
-		            	
-		            	tw = prepro(tw);
-		            	
-		            	//freq term dalam satu teks
-		            	HashMap<String,Integer> termCount  = new HashMap<String,Integer>(); 
-		                cc++;
-		                System.out.println(id+"-->"+tw);
-		                Scanner sc = new Scanner(tw);
-		                //loop untuk menghitung freq term dalam satu dok
-		                while (sc.hasNext()) {
-		                    kata = sc.next();
-		                    if (kata.equals("kalimatpasif_subject_undefined")) {
-		                    	continue;
-		                    }
-		                    freq = termCount.get(kata);  //ambil kata
-		                    //jika kata itu tidak ada, isi dengan 1, jika ada increment
-		                    termCount.put(kata, (freq == null) ? 1 : freq + 1);
-		                }
-		                sc.close();  //satu baris selesai diproses (satu tweet)
-		                arrTermCount.add(termCount);  //tambahkan
 
-		                //termCount sudah berisi kata dan freq di sebuah tweet
-		               
-		                
-		                //increment frek tweet yang mengandung term 
-		                // misal jika tweet ini mengandung "halo", 
-		                // maka total jumlah tweet yang mengandung "halo" ditambah 1
-		                
-		                //loop berdasarkan kata
-		                for (String term : termCount.keySet()) {
-		                    //jika kata itu tidak ada, isi dengan 1, jika ada increment
-		                    freq = tweetsHaveTermCount.get(term);  //ambil kata
-		                    tweetsHaveTermCount.put(term, (freq == null) ? 1 : freq + 1);
-		                }
-		            }  //while
-		            // termCount dan tweetsHaveTermCount sudah terisi
-		            
-		            //jumlah totoal tweet (sudah keluar dari loop)
-		            double numOfTweets = cc;
-		            
-		            // hitung idf(i) = log (NumofTw / countTwHasTerm(i))
-		            HashMap<String,Double> idf = new HashMap<String,Double>();
-		            double jumTweet=0;
-		            
-		            //loop per kata dari list jumlah tweet yg mengandung kata tsb
-		            for (Map.Entry<String,Integer> entry : tweetsHaveTermCount.entrySet()) {
-		                jumTweet = entry.getValue();
-		                String key = entry.getKey();
-		                idf.put(key, Math.log(numOfTweets/jumTweet));
-		            }
 
-		            //hitung tfidf, tf yg digunakan tidak dibagi dengan jumlah kata di dalam tweet karena diasumsikan relatif sama
-		            double tfidf;cc=0;
-		            
-		            //loop untuk semua dokumen
-		            for (int i=0;i<arrTermCount.size();i++) {
-		            	//semua term dalam dokumen
-		            	HashMap<String,Integer> hm = arrTermCount.get(i);
-		            	Long id = arrIdInternalTw.get(i);
-		            	cc++;
-		                //System.out.println(cc+":");
-		                double idfVal;
-		                String key;
-		                StringBuilder sb = new StringBuilder();
-		                //loop untuk semua term dalam dokumen ini
-		                for (Map.Entry<String,Integer> entry : hm.entrySet()) {  
-		                    key = entry.getKey();
-		                    idfVal = idf.get(key);
-		                    if (idfVal>=0) {   //kalau < 0 artinya diskip karena jumlah tweet yg mengandung term tersbut terlalu sedikit
-		                        tfidf  = entry.getValue() * idfVal ;     //rawtf * idf
-		                        sb.append(entry.getKey()+"="+tfidf+";");
-		                    } 
-		                }
-		                pUpdateTfIdf.setString(1, sb.toString());  
-		                pUpdateTfIdf.setLong(2, id);            
-		                pUpdateTfIdf.executeUpdate();
-		            }
-		            pUpdateTfIdf.close();
-		            pTw.close();
-		            conn.close();
-		            System.out.println("selesai");
-		        } catch (Exception e) {
-		        	e.printStackTrace();
-		         }
-		        System.out.println("selesai ...");
-	}
-	
-	
-	private  String prepro(String strInput ) {
-		String out = new String(strInput);
-		
-		//case folding jadi jelek
-		out = out.replace(',', ' ').replace(".", " ");
-		
-		
-		return out; 
-	}
-	
-	
-	public void prosesTFIDFBigramLangsung(Character tAtauH, String namaTabel) {
-		/* 
-		  //tambah field untuk bigram dan kedekatan
-		  
-		  alter table rte3_ver1_coba4
-		  add t_bigram_tfidf text,
-		  add h_bigram_tfidf text,
-		  add similar_bigram_tfidf_langsung double;
-		 
-		 
-		 */
-		
-		
-		System.out.println("TFIDF tabel utama (langsung) dengan  bigram");
-		
-		
-		Connection conn=null;       
-        PreparedStatement pTw = null;
-        PreparedStatement pUpdateTfIdf = null;
-        String kata1,kata2;
-        try {
-        	String strCon = "jdbc:mysql://localhost/textualentailment?user=textentailment&password=textentailment";
-            conn = DriverManager.getConnection(strCon);
-            //conn.setAutoCommit(false);
-            int cc=0;
-            
-            //jumlah rec yg mengandung sebuah term
-            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<String,Integer>();               
-            
-            //freq kata untuk setiap tweet
-            ArrayList<HashMap<String,Integer>> arrTermCount = new ArrayList<HashMap<String,Integer>>(); 
-            
-            //untuk menyimpan id record
-            ArrayList<Long>  arrIdInternalTw = new ArrayList<Long>(); 
-            
-            Integer freq;
-            
-            String SQLambilTw="error"; 
-            String strUpdate ="error";
-            
-            if (tAtauH=='h') {
-            	SQLambilTw   = "select id_internal,h from "+ namaTabel;
-            	strUpdate    = "update "+namaTabel+" set h_bigram_tfidf=? where id_internal=? ";
-            } else if (tAtauH=='t') {
-            	SQLambilTw   = "select id_internal,t from "+namaTabel;
-            	strUpdate    = "update "+namaTabel+" set t_bigram_tfidf=? where id_internal=? ";
-            }
-            
-            pTw  =  conn.prepareStatement (SQLambilTw);
-            pUpdateTfIdf = conn.prepareStatement(strUpdate);
-            
-            //loop untuk semua dokumen
-            ResultSet rsTw = pTw.executeQuery();
-            while (rsTw.next())   {                            
-            	long id = rsTw.getLong(1);
-            	arrIdInternalTw.add(id);
-            	String tw = rsTw.getString(2);
-            	
-            	tw = prepro(tw);
-            	
-            	//freq term dalam satu tweet
-            	HashMap<String,Integer> termCount  = new HashMap<String,Integer>(); 
-                cc++;
-                System.out.println(id+"-->"+tw);
-                Scanner sc = new Scanner(tw);
-                //loop untuk menghitung freq term dalam satu dok
-                kata2 = "[begin]";
-                while (sc.hasNext()) {
-                    kata1 = kata2;
-                	kata2 = sc.next(); 
-                    
-                	freq = termCount.get(kata1+" "+kata2);  //ambil kata
-                    //jika kata itu tidak ada, isi dengan 1, jika ada increment
-                    termCount.put(kata1+" "+kata2, (freq == null) ? 1 : freq + 1);
-                }
-                
-                //proses kata terakhir
-                kata1 = kata2;
-                kata2 = "[end]";
-                freq = termCount.get(kata1+" "+kata2);  //ambil kata
-                //jika kata itu tidak ada, isi dengan 1, jika ada increment
-                termCount.put(kata1+" "+kata2, (freq == null) ? 1 : freq + 1);
-                
-                //proses yang terakhir
-                
-                
-                sc.close();  //satu baris selesai diproses (satu tweet)
-                arrTermCount.add(termCount);  //tambahkan
-
-                //termCount sudah berisi kata dan freq di sebuah tweet
-               
-                
-                //increment frek tweet yang mengandung term 
-                // misal jika tweet ini mengandung "halo", 
-                // maka total jumlah tweet yang mengandung "halo" ditambah 1
-                
-                //loop berdasarkan kata
-                for (String term : termCount.keySet()) {
-                    //jika kata itu tidak ada, isi dengan 1, jika ada increment
-                    freq = tweetsHaveTermCount.get(term);  //ambil kata
-                    tweetsHaveTermCount.put(term, (freq == null) ? 1 : freq + 1);
-                }
-            }  //while
-            // termCount dan tweetsHaveTermCount sudah terisi
-            
-            //jumlah totoal tweet (sudah keluar dari loop)
-            double numOfTweets = cc;
-            
-            // hitung idf(i) = log (NumofTw / countTwHasTerm(i))
-            HashMap<String,Double> idf = new HashMap<String,Double>();
-            double jumTweet=0;
-            
-            //loop per kata dari list jumlah tweet yg mengandung kata tsb
-            for (Map.Entry<String,Integer> entry : tweetsHaveTermCount.entrySet()) {
-                jumTweet = entry.getValue();
-                String key = entry.getKey();
-                idf.put(key, Math.log(numOfTweets/jumTweet));
-            }
-
-            //hitung tfidf, tf yg digunakan tidak dibagi dengan jumlah kata di dalam tweet karena diasumsikan relatif sama
-            double tfidf;cc=0;
-            
-            //loop untuk semua dokumen
-            for (int i=0;i<arrTermCount.size();i++) {
-            	//semua term dalam dokumen
-            	HashMap<String,Integer> hm = arrTermCount.get(i);
-            	Long id = arrIdInternalTw.get(i);
-            	cc++;
-                //System.out.println(cc+":");
-                double idfVal;
-                String key;
-                StringBuilder sb = new StringBuilder();
-                //loop untuk semua term dalam dokumen ini
-                for (Map.Entry<String,Integer> entry : hm.entrySet()) {  
-                    key = entry.getKey();
-                    idfVal = idf.get(key);
-                    if (idfVal>=0) {   //kalau < 0 artinya diskip karena jumlah tweet yg mengandung term tersbut terlalu sedikit
-                        tfidf  = entry.getValue() * idfVal ;     //rawtf * idf
-                        sb.append(entry.getKey()+"="+tfidf+";");
-                    } 
-                }
-                
-                String gabTfidf =  sb.toString();
-                System.out.print(".");
-                
-                pUpdateTfIdf.setString(1, gabTfidf);  
-                pUpdateTfIdf.setLong(2, id);            
-                pUpdateTfIdf.executeUpdate();
-                
-            }
-            pUpdateTfIdf.close();
-            pTw.close();
-            conn.close();
-        } catch (Exception e) {
-        	e.printStackTrace();
-        }
-        System.out.println("selesai ...");
-		
-		
-	}
-	
-	public void prosesTFIDFLangsung(Character tAtauH, String namaTabel) {
-		
-		//menggunakan prepro
-		
-		//langsung di tabel utama rte3_ver1 BUKAN di disc_t dan disc_h
-		//dipanggil dua kali untuk memproses rte3_ver1.h dan t  dengan paramter t dan h
-		//menggisi rte3_ver1.h_tfidf (tAtauH = h) dan rte3_ver1.t_tfidf (tAtauH = t)
-		//setelah ini panggil proses kedekatanTfIdfLangsung
-		
-		
-		System.out.println("TFIDF tabel utama (langsung)");
-		
-		Connection conn=null;       
-        PreparedStatement pTw = null;
-        PreparedStatement pUpdateTfIdf = null;
-        String kata;
-        try {
-        	String strCon = "jdbc:mysql://localhost/textualentailment?user=textentailment&password=textentailment";
-            conn = DriverManager.getConnection(strCon);
-            //conn.setAutoCommit(false);
-            int cc=0;
-            
-            //jumlah tweet yg mengandung sebuah term
-            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<String,Integer>();               
-            
-            //freq kata untuk setiap tweet
-            ArrayList<HashMap<String,Integer>> arrTermCount = new ArrayList<HashMap<String,Integer>>(); 
-            
-            //untuk menyimpan id record
-            ArrayList<Long>  arrIdInternalTw = new ArrayList<Long>(); 
-            
-            Integer freq;
-            
-            String SQLambilTw="error"; 
-            String strUpdate ="error";
-            
-            if (tAtauH=='h') {
-            	SQLambilTw   = "select id_internal,h from "+ namaTabel;
-            	strUpdate    = "update "+namaTabel+" set h_tfidf=? where id_internal=? ";
-            } else if (tAtauH=='t') {
-            	SQLambilTw   = "select id_internal,t from "+namaTabel;
-            	strUpdate    = "update "+namaTabel+" set t_tfidf=? where id_internal=? ";
-            }
-            
-            pTw  =  conn.prepareStatement (SQLambilTw);
-            pUpdateTfIdf = conn.prepareStatement(strUpdate);
-            
-            //loop untuk semua dokumen
-            ResultSet rsTw = pTw.executeQuery();
-            while (rsTw.next())   {                            
-            	long id = rsTw.getLong(1);
-            	arrIdInternalTw.add(id);
-            	String tw = rsTw.getString(2);
-            	
-            	tw = prepro(tw);
-            	
-            	//freq term dalam satu tweet
-            	HashMap<String,Integer> termCount  = new HashMap<String,Integer>(); 
-                cc++;
-                System.out.println(id+"-->"+tw);
-                Scanner sc = new Scanner(tw);
-                //loop untuk menghitung freq term dalam satu dok
-                while (sc.hasNext()) {
-                    kata = sc.next();
-                    if (kata.equals("kalimatpasif_subject_undefined")) {
-                    	continue;
-                    }
-                    freq = termCount.get(kata);  //ambil kata
-                    //jika kata itu tidak ada, isi dengan 1, jika ada increment
-                    termCount.put(kata, (freq == null) ? 1 : freq + 1);
-                }
-                sc.close();  //satu baris selesai diproses (satu tweet)
-                arrTermCount.add(termCount);  //tambahkan
-
-                //termCount sudah berisi kata dan freq di sebuah tweet
-               
-                
-                //increment frek tweet yang mengandung term 
-                // misal jika tweet ini mengandung "halo", 
-                // maka total jumlah tweet yang mengandung "halo" ditambah 1
-                
-                //loop berdasarkan kata
-                for (String term : termCount.keySet()) {
-                    //jika kata itu tidak ada, isi dengan 1, jika ada increment
-                    freq = tweetsHaveTermCount.get(term);  //ambil kata
-                    tweetsHaveTermCount.put(term, (freq == null) ? 1 : freq + 1);
-                }
-            }  //while
-            // termCount dan tweetsHaveTermCount sudah terisi
-            
-            //jumlah totoal tweet (sudah keluar dari loop)
-            double numOfTweets = cc;
-            
-            // hitung idf(i) = log (NumofTw / countTwHasTerm(i))
-            HashMap<String,Double> idf = new HashMap<String,Double>();
-            double jumTweet=0;
-            
-            //loop per kata dari list jumlah tweet yg mengandung kata tsb
-            for (Map.Entry<String,Integer> entry : tweetsHaveTermCount.entrySet()) {
-                jumTweet = entry.getValue();
-                String key = entry.getKey();
-                idf.put(key, Math.log(numOfTweets/jumTweet));
-            }
-
-            //hitung tfidf, tf yg digunakan tidak dibagi dengan jumlah kata di dalam tweet karena diasumsikan relatif sama
-            double tfidf;cc=0;
-            
-            //loop untuk semua dokumen
-            for (int i=0;i<arrTermCount.size();i++) {
-            	//semua term dalam dokumen
-            	HashMap<String,Integer> hm = arrTermCount.get(i);
-            	Long id = arrIdInternalTw.get(i);
-            	cc++;
-                //System.out.println(cc+":");
-                double idfVal;
-                String key;
-                StringBuilder sb = new StringBuilder();
-                //loop untuk semua term dalam dokumen ini
-                for (Map.Entry<String,Integer> entry : hm.entrySet()) {  
-                    key = entry.getKey();
-                    idfVal = idf.get(key);
-                    if (idfVal>=0) {   //kalau < 0 artinya diskip karena jumlah tweet yg mengandung term tersbut terlalu sedikit
-                        tfidf  = entry.getValue() * idfVal ;     //rawtf * idf
-                        sb.append(entry.getKey()+"="+tfidf+";");
-                    } 
-                }
-                pUpdateTfIdf.setString(1, sb.toString());  
-                pUpdateTfIdf.setLong(2, id);            
-                pUpdateTfIdf.executeUpdate();
-            }
-            pUpdateTfIdf.close();
-            pTw.close();
-            conn.close();
-            System.out.println("selesai");
-        } catch (Exception e) {
-        	e.printStackTrace();
-         }
-        System.out.println("selesai ...");
-	}
-	
+	/*
 	public void prosesDiscTFIDF(Character tAtauH, String namaTabel) {
 		
 		//th = bisa berisi t atau h
@@ -1540,7 +746,7 @@ public class EkstrakFitur {
         System.out.println("selesai ...");
         
 	}
-	
+	*/
 	
 	
 	
