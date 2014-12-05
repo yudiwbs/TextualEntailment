@@ -74,7 +74,10 @@ public class ProsesTfidf {
     }
 
     /**
-     *  
+     *  menghitung tfidf namaTabel.namafield  dan menyimpannya ke
+     *  namaTabel.namaFieldOut
+     *
+     *  Setalah dihitung bisa lakukan mengukuran kedekatan, klasifikasi dst.
      *
      *
      * @param namaTabel      nama tabel yang akan diproses
@@ -219,7 +222,7 @@ public class ProsesTfidf {
     public static void main(String[] args) {
         //testing
         ProsesTfidf et = new ProsesTfidf();
-        et.isiTfIdf("RTE","id","t","t_tfidf");
+        et.isiTfIdf("RTE3","id","t","t_tfidf");
     }
 
     public double similarBestTermTfIdf(String s1, String s2) {
