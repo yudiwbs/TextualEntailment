@@ -74,7 +74,7 @@ public class ProsesTfidf {
     }
 
     /**
-     *  
+     *
      *
      *
      * @param namaTabel      nama tabel yang akan diproses
