@@ -21,32 +21,31 @@ import tml.vectorspace.TermWeightingException;
 import tml.vectorspace.operations.PassagesSimilarity;
 
 public class EkstrakLSA {
-	
-	//latent semantik analisis
-	
-	
-	/* 
-	 * 
-	
-	jalankan dulu ToolsTableToFile
-	
-	proses bisa memakan waktu lama!!
-	
-	output ke layar, perlu diambil secara manual sedikit sedikit 
-	
-	setelah selesai..
-	
-	select 
-	id_internal,similar_tfidf_langsung,skorLSA,isentail
-	from
-	rte3_ver1_coba4
 
+	/**
+	 *
+	 * latent semantik analisis
+	 *
+	 * jalankan dulu ToolsTableToFile
+	 *
+	 * proses bisa memakan waktu lama!!
 
+	 output ke layar, perlu diambil secara manual sedikit sedikit
 
-*/
+	 setelah selesai..
+
+	 select
+	 id_internal,similar_tfidf_langsung,skorLSA,isentail
+	 from
+	 rte3_ver1_coba4
+	 *
+	 * @param namaFile
+	 * @param namaTabelUtama
+	 */
+
 	
 	public void outToDB(String namaFile,String namaTabelUtama) {
-		/*sudah melewati prosesOUt
+	/*sudah melewati prosesOUt
 			jadi inputnya spt ini (sudah sama id-nya):
 		    1-h|1-t|0.9843446846914972
 			10-h|10-t|0.7601879678921027
@@ -236,10 +235,6 @@ public class EkstrakLSA {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
-	      
-	        
-	        
 	}
 	
 	public static void main(String[] args) {

@@ -3,7 +3,7 @@ package edu.upi.cs.yudiwbs.rte;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class cobaRegex {
+public class CobaRegex {
 	public static void main(String[] args) {
 		String[] arrMention =  {"hoi"}; 
 		

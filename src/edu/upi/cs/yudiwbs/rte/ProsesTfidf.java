@@ -14,10 +14,18 @@ import java.util.logging.Logger;
 /**
  * Created by Yudi Wibisono (yudi@upi.edu) on 12/3/2014.
  *
- *  Esktrak TF-IDF dari tabel.field
+ *  Generate tf-idf dari kalimat (langsung ataupun yang disimpan di field)
+ *  Hitung kedekatan antara dua kalimat yang sudah diberi bobot tf-idf
+ *
+ *  q untuk mengambil data di db  setelah tfidf diproses (berguna untuk membuat arff)
+ *
+ *  select  id_internal,similar_tfidf_langsung,isentail from rte3
+ *
  *
  *
  */
+
+
 public class ProsesTfidf {
 
     private static final Logger log =
@@ -416,13 +424,13 @@ public class ProsesTfidf {
                 double maxSkorH=-1;
                 int maxIdH = -1;
                 int maxIdTh = -1; //pasangan t
-                String strMaxH;
+                //String strMaxH;
                 //loop untuk semua H kalimat tsb
                 while (rsH.next()) {
                     //id,h,h_gram_structure,h_subject,h_verb,h_obj
                     //Disc dH = new Disc();
                     int hId               = rsH.getInt(1);
-                    String h              = rsH.getString(2);
+                    //String h              = rsH.getString(2);
                     String hTfidf         = rsH.getString(3);
 
                     //loop untuk semua T
@@ -460,7 +468,7 @@ public class ProsesTfidf {
                         maxSkorH = maxSkorT;
                         maxIdH  = hId ;
                         maxIdTh = maxIdT;
-                        strMaxH = h;
+                        //strMaxH = h;
                     }
                 } //rsH
 
@@ -475,7 +483,9 @@ public class ProsesTfidf {
             pUpdateDiscH.close();
             pUpdateKal.close();
             rsKal.close();
-            rsH.close();
+            if (rsH != null) {
+                rsH.close();
+            }
             pKal.close();
             pH.close();
             pT.close();
@@ -521,8 +531,8 @@ public class ProsesTfidf {
      * di=2.1972245773362196;ayo=5.123963979403259;cinta=5.198497031265826;
      *
      *
-     *  @param s1
-     *  @param s2
+     *  @param s1  kalimat pertama
+     *  @param s2  kalimat kedua
      *  @return niilai kesamaan
      */
     public double similarTfIdf(String s1, String s2) {
@@ -566,9 +576,9 @@ public class ProsesTfidf {
         //update rte3_ver1 set h_tfidf = null, t_tfidf = null
 
 
-        Connection conn=null;
-        PreparedStatement pTw = null;
-        PreparedStatement pUpdateTfIdf = null;
+        Connection conn;
+        PreparedStatement pTw;
+        PreparedStatement pUpdateTfIdf;
         String kata;
         try {
             String strCon = "jdbc:mysql://localhost/textualentailment?user=textentailment&password=textentailment";
@@ -577,13 +587,13 @@ public class ProsesTfidf {
             int cc=0;
 
             //jumlah tweet yg mengandung sebuah term
-            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<String,Integer>();
+            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<>();
 
             //freq kata untuk setiap tweet
             ArrayList<HashMap<String,Integer>> arrTermCount = new ArrayList<>();
 
             //untuk menyimpan id record
-            ArrayList<Long>  arrIdInternalTw = new ArrayList<Long>();
+            ArrayList<Long>  arrIdInternalTw = new ArrayList<>();
 
             Integer freq;
 
@@ -610,7 +620,7 @@ public class ProsesTfidf {
                 tw = prepro(tw);
 
                 //freq term dalam satu teks
-                HashMap<String,Integer> termCount  = new HashMap<String,Integer>();
+                HashMap<String,Integer> termCount  = new HashMap<>();
                 cc++;
                 System.out.println(id+"-->"+tw);
                 Scanner sc = new Scanner(tw);
@@ -647,8 +657,8 @@ public class ProsesTfidf {
             double numOfTweets = cc;
 
             // hitung idf(i) = log (NumofTw / countTwHasTerm(i))
-            HashMap<String,Double> idf = new HashMap<String,Double>();
-            double jumTweet=0;
+            HashMap<String,Double> idf = new HashMap<>();
+            double jumTweet;
 
             //loop per kata dari list jumlah tweet yg mengandung kata tsb
             for (Map.Entry<String,Integer> entry : tweetsHaveTermCount.entrySet()) {
@@ -676,7 +686,7 @@ public class ProsesTfidf {
                     idfVal = idf.get(key);
                     if (idfVal>=0) {   //kalau < 0 artinya diskip karena jumlah tweet yg mengandung term tersbut terlalu sedikit
                         tfidf  = entry.getValue() * idfVal ;     //rawtf * idf
-                        sb.append(entry.getKey()+"="+tfidf+";");
+                        sb.append(entry.getKey()).append("=").append(tfidf).append(";");
                     }
                 }
                 pUpdateTfIdf.setString(1, sb.toString());
@@ -697,15 +707,14 @@ public class ProsesTfidf {
 
 
 
-    public void prosesTFIDFBigramLangsung(Character tAtauH, String namaTabel) {
+    private void prosesTFIDFBigramLangsung(Character tAtauH, String namaTabel) {
 		/*
-		  //tambah field untuk bigram dan kedekatan
+		  tambah field untuk bigram dan kedekatan
 
 		  alter table rte3_ver1_coba4
 		  add t_bigram_tfidf text,
 		  add h_bigram_tfidf text,
 		  add similar_bigram_tfidf_langsung double;
-
 
 		 */
 
@@ -713,9 +722,9 @@ public class ProsesTfidf {
         System.out.println("TFIDF tabel utama (langsung) dengan  bigram");
 
 
-        Connection conn=null;
-        PreparedStatement pTw = null;
-        PreparedStatement pUpdateTfIdf = null;
+        Connection conn;
+        PreparedStatement pTw;
+        PreparedStatement pUpdateTfIdf;
         String kata1,kata2;
         try {
             String strCon = "jdbc:mysql://localhost/textualentailment?user=textentailment&password=textentailment";
@@ -724,13 +733,13 @@ public class ProsesTfidf {
             int cc=0;
 
             //jumlah rec yg mengandung sebuah term
-            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<String,Integer>();
+            HashMap<String,Integer> tweetsHaveTermCount  = new HashMap<>();
 
             //freq kata untuk setiap tweet
-            ArrayList<HashMap<String,Integer>> arrTermCount = new ArrayList<HashMap<String,Integer>>();
+            ArrayList<HashMap<String,Integer>> arrTermCount = new ArrayList<>();
 
             //untuk menyimpan id record
-            ArrayList<Long>  arrIdInternalTw = new ArrayList<Long>();
+            ArrayList<Long>  arrIdInternalTw = new ArrayList<>();
 
             Integer freq;
 
@@ -758,7 +767,7 @@ public class ProsesTfidf {
                 tw = prepro(tw);
 
                 //freq term dalam satu tweet
-                HashMap<String,Integer> termCount  = new HashMap<String,Integer>();
+                HashMap<String,Integer> termCount  = new HashMap<>();
                 cc++;
                 System.out.println(id+"-->"+tw);
                 Scanner sc = new Scanner(tw);
@@ -806,8 +815,8 @@ public class ProsesTfidf {
             double numOfTweets = cc;
 
             // hitung idf(i) = log (NumofTw / countTwHasTerm(i))
-            HashMap<String,Double> idf = new HashMap<String,Double>();
-            double jumTweet=0;
+            HashMap<String,Double> idf = new HashMap<>();
+            double jumTweet;
 
             //loop per kata dari list jumlah tweet yg mengandung kata tsb
             for (Map.Entry<String,Integer> entry : tweetsHaveTermCount.entrySet()) {
@@ -835,7 +844,7 @@ public class ProsesTfidf {
                     idfVal = idf.get(key);
                     if (idfVal>=0) {   //kalau < 0 artinya diskip karena jumlah tweet yg mengandung term tersbut terlalu sedikit
                         tfidf  = entry.getValue() * idfVal ;     //rawtf * idf
-                        sb.append(entry.getKey()+"="+tfidf+";");
+                        sb.append(entry.getKey()).append("=").append(tfidf).append(";");
                     }
                 }
 

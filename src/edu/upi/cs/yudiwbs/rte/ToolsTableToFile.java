@@ -9,11 +9,11 @@ import java.sql.ResultSet;
 public class ToolsTableToFile {
   //untuk LSA
   //memindahkan dari table ke 
+
+
   //file teks
   // nama filenya 1-h.txt dan 1-t.txt  untuk id 1 teks dan id 1 hypo
-	
-	
-	public void proses(String namaTabelUtama, String path) {
+   public void tableToFile(String namaTabelUtama, String path) {
 		Connection conn=null;
 		PreparedStatement pStat=null;
 		PreparedStatement pUpdate=null;
@@ -69,7 +69,7 @@ public class ToolsTableToFile {
 	
 	public static void main(String[] args ) {
 		ToolsTableToFile tt = new ToolsTableToFile();
-		tt.proses("testset_rte3_ver1_coba4", "G:\\eksperimen\\textualentailment\\rtedocs_testset\\");
+		tt.tableToFile("testset_rte3_ver1_coba4", "G:\\eksperimen\\textualentailment\\rtedocs_testset\\");
 	}
 	
 }

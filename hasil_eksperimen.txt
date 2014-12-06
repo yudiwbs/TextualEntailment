@@ -1,0 +1,18 @@
+Hasil Ekperimen
+===============
+
+Dataset: RTE3  (data training/develop)
+
+Ekps1:
+Nama file: similar-langsung.arff
+Skenario: RTE.t dan RTE.h dibobot tf-idf, diukur kedekatan dengan cosine similarity
+Fitur: kedekatan
+Hasil:64.35%
+
+Eksp2:
+Skenario: menggunakan LSA
+
+
+
+
+
