@@ -302,55 +302,7 @@ public class EkstrakFitur {
 	}
 	
 	
-	public void prosesKedekatanTfIdfLangsung(String namaTabelUtama) {
-		//menghitung kedekatan t dan h langsung rte3_ver1.t dan rte3_ver1.h
-		//IS: rte3_ver1.t_tfidf  rte3_ver1.h_tfidf sudah diisi
-		
-		
-		Connection conn=null;
-		PreparedStatement pKal=null;
-		PreparedStatement pUpdateKal=null;
-		ResultSet rsKal = null;
-		//ambil data 
-		try {
-	   		Class.forName("com.mysql.jdbc.Driver");
-	   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-	   			   					+ "user=textentailment&password=textentailment");
-		    
 
-	   		
-	   		String sqlUpdateKal = "update "+ namaTabelUtama   
-	   				+ " set  "
-	   				+ " similar_tfidf_langsung=?   "
-	   				+ " where id_internal=? ";
-	   		
-	   		pUpdateKal = conn.prepareStatement(sqlUpdateKal);
-
-	   		String sqlKal = "select id_internal,t_tfidf,h_tfidf from "+ namaTabelUtama ;
-	   		pKal = conn.prepareStatement(sqlKal);
-	   		rsKal = pKal.executeQuery();
-
-			ProsesTfidf p = new ProsesTfidf();
-			while (rsKal.next()) {
-				int idInternal = rsKal.getInt(1);
-				String tTfIdf  = rsKal.getString(2);
-				String hTfIdf  = rsKal.getString(3);
-				double kedekatan = p.similarTfIdf(tTfIdf,hTfIdf);
-				pUpdateKal.setDouble(1,kedekatan);
-				pUpdateKal.setInt(2,idInternal);
-				pUpdateKal.executeUpdate(); 
-			}
-	   		pUpdateKal.close();
-	   		rsKal.close();
-			pKal.close();
-	   		conn.close();
-	   		System.out.println();
-	   		System.out.println("selesai...");
-			} catch (Exception ex) {
-						   ex.printStackTrace();
-			}
-				   		
-	}
 	
 	public void prosesKedekatanSVOTfIdf(String namaTabelUtama, String namaTabelDiscT, String namaTabelDiscH) {
 		//perlu penanganan "kalimatpasif_subject_undefined" 
@@ -1363,7 +1315,7 @@ where bobot_jenis_cocok is null;
 		/*
 		ef.prosesDiscTFIDF('t',namaTabelDiscT);
 		ef.prosesDiscTFIDF('h',namaTabelDiscH);
-		ef.prosesKedekatanTfIdf(namaTabelUtama,namaTabelDiscT,namaTabelDiscH);
+		ef.old_isiKedekatanTfIdf(namaTabelUtama,namaTabelDiscT,namaTabelDiscH);
 		System.out.println("Selesai beneran ....");
 		*/
 		//---------------
