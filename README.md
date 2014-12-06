@@ -6,8 +6,7 @@ Eksperimen terkait textual entailment
 2. Mysql
 
 ### Build ###
-1.
-Download tambahan lib di: [tbd]
+1. Download tambahan lib di: [tbd]
 Ekstrak di direktori /lib
 Isinya:
 stanford-corenlp-3.3.1-models.jar
@@ -16,7 +15,7 @@ MySqlConnector .... jar
 
 (lib lain yg lebih kecil sudah ada di repo)
 
-Tambahakan semua lib ini di add, untuk model harus dimasukkan sebagai kelas, bukan anotasi (kalau diinerllji)
+Tambahkan semua lib ini di add, untuk model harus dimasukkan sebagai kelas, bukan anotasi (kalau diinerllji)
 PENTING: Tambah lib-nya, jangan sampai ketinggalan, walaupun file jar sudah ada di /lib, tapi kalau belum ditambah, berarti belum bisa digunakan. 
 
 2. Ekstrak db di direktori db/
@@ -33,6 +32,9 @@ Build --> jar
 3. Copy jar
 4. Copy /resources  di tempat yang sama dengan jar
 5. Jalankan ... [tbd]
+
+Untuk memproses tfidf dan similarity: ProsesTfIDF
+
 
 ### Deskripsi DB ###
 Terdapat 3 tabel:

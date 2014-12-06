@@ -32,7 +32,7 @@ public class KoneksiDB {
     }
 
     private void getRes() throws IOException {
-        System.out.println("test koneksi");
+
         Properties prop = new Properties();
         InputStream input = null;
         String propFileName = "resources/conf/db.properties";
@@ -55,7 +55,7 @@ public class KoneksiDB {
         koneksiDB = "jdbc:mysql://"+host+'/'+db+'?';
         userPwd = "user="+user+'&'+"password="+passwd;
 
-        System.out.println(koneksiDB+" "+userPwd);
+
     }
 
     public  Connection getConn() throws SQLException, IOException, ClassNotFoundException {
