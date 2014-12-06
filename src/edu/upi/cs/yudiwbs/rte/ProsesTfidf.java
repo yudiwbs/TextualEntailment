@@ -223,7 +223,10 @@ public class ProsesTfidf {
     public static void main(String[] args) {
         //testing
         ProsesTfidf et = new ProsesTfidf();
-        et.isiTfIdf("RTE3","id","t","t_tfidf");
+
+
+        //et.isiTfIdf("RTE3","id","t","t_tfidf");
+        et.isiTfIdf("RTE3","id","h","h_tfidf");
     }
 
     public double similarBestTermTfIdf(String s1, String s2) {
