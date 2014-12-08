@@ -3,11 +3,11 @@ package edu.upi.cs.yudiwbs.rte;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.PrintWriter;
+import java.sql.*;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import tml.corpus.CorpusParameters.DimensionalityReduction;
 import tml.corpus.CorpusParameters.TermSelection;
@@ -20,11 +20,35 @@ import tml.vectorspace.TermWeighting.LocalWeight;
 import tml.vectorspace.TermWeightingException;
 import tml.vectorspace.operations.PassagesSimilarity;
 
+/**
+ *   Latent semantik analisis
+ *   Library yang digunakan Text Mining Analysis for LSA (TML)
+ *
+ *   Sebelum menjalankan, cek tml.properties
+ *     - cek path ke lib tml
+ *     - cek database, user, password untuk lib tml
+ *     - jalankan sql ddl di [dirlibtml]/db
+ *
+ *	 masih belum bisa langsung dari db, lib LSA yang digunakan memproses file
+ *	 dalam satu direktori dan memetakan hubungan semua file tersebut.
+ *
+ *	 Diakali dengan memindahkan t dan h ke dalam file
+ *	 lalu diambil data hanya t-h yang meruapakan pasangan dalam satu record --> yup tidak efisien
+ *
+ *	 tahapan:
+ *	 1. memindahkan dari db ke file teks (method dbToFile)
+ *	 2. memindah file tsb ke repo (method addDocs)
+ *	 3. memproses repo (method prosesRepo)
+ *
+ *
+ */
+
+
 public class EkstrakLSA {
 
 	/**
 	 *
-	 * latent semantik analisis
+	 *
 	 *
 	 * jalankan dulu ToolsTableToFile
 	 *
@@ -43,7 +67,10 @@ public class EkstrakLSA {
 	 * @param namaTabelUtama
 	 */
 
-	
+	private static final Logger log =
+			Logger.getLogger(ProsesTfidf.class.getName());
+
+
 	public void outToDB(String namaFile,String namaTabelUtama) {
 	/*sudah melewati prosesOUt
 			jadi inputnya spt ini (sudah sama id-nya):
@@ -118,6 +145,70 @@ public class EkstrakLSA {
 		
 		
 	}
+
+
+	/**
+	 * merubah t dan h menjadi file
+	 * nama filenya: 1-h.txt dan 1-t.txt  untuk id=1  dst
+	 *
+	 * @param namaTabel nama tabel yang akan diproses
+	 * @param namaFieldId  field id
+	 * @param namaFieldT   field text
+	 * @param namaFieldH   fieldh hyptoesis
+	 * @param path direktori target, harus diakhiri dengan //
+	 *
+	 */
+
+	public void dbToFile(String namaTabel, String namaFieldId, String namaFieldT, String namaFieldH,  String path) {
+		Connection conn=null;
+		PreparedStatement pStat=null;
+		PreparedStatement pUpdate=null;
+
+		ResultSet rs = null;
+
+		//ambil data
+		//PreparedStatement pUpdate=null;
+		try {
+			log.log(Level.INFO,"mulai memindahkan isi tabel ke file");
+			KoneksiDB db = new KoneksiDB();
+			conn = db.getConn();
+			String sql = String.format("select %s,%s,%s ", namaFieldId, namaFieldT, namaFieldH)
+					+ " from "+ namaTabel;
+
+			pStat = conn.prepareStatement(sql);
+			rs = pStat.executeQuery();
+
+			//loop semua rec
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String t       = rs.getString(2);  //parsetree text
+				String h       = rs.getString(3);  //parsetree hypo
+
+				System.out.println("----");
+				System.out.println("Proses id:"+id);
+				System.out.println(t);
+				System.out.println(h);
+
+				String namaFileOutT = path+id + "-" + "t.txt";
+				String namaFileOutH = path+id + "-" + "h.txt";
+
+				PrintWriter pwT = new PrintWriter(namaFileOutT);
+				pwT.println(t);
+				pwT.close();
+
+				PrintWriter pwH = new PrintWriter(namaFileOutH);
+				pwH.println(h);
+				pwH.close();
+			}
+			rs.close();
+			pStat.close();
+			conn.close();
+			log.log(Level.INFO,"selesai memindahkan isi tabel ke file");
+		} catch (Exception ex) {
+			log.log(Level.SEVERE,ex.getMessage(),ex);
+			//ex.printStackTrace();
+		}
+	}
 	
 	public void prosesOut(String namaFile) {
 		//ouptut ke layar dan copy paste ke file ya manual
@@ -171,7 +262,14 @@ public class EkstrakLSA {
 		
 		
 	}
-	
+
+	/**
+	 *  Pindahkan dari isi dokumen yg ada di pathdocs ke pathRepo
+	 *  Ssebelum menjalankan, cek tmlproperties
+	 *
+	 * @param pathDocs path ke kumpulan doc
+	 * @param pathRepo path ke target repo
+	 */
 	public void addDocs(String pathDocs,String pathRepo) {
 		Repository repository = null;
 		try {
@@ -184,17 +282,23 @@ public class EkstrakLSA {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        System.out.println("Documents added to repository successfully!");
+        log.log(Level.INFO,"Documents added to repository successfully!");
 	}
-	
-	
-	
+
+
+	/**
+	 *  dijalankan setelah addDocs dan direktori repo sudah jadi
+	 *
+	 *
+	 *  @param pathRepo  path ke direktori repo yang dihasilkan proses adddocs
+	 */
 	
 	
 	public void prosesRepo(String pathRepo) {
 	        Repository repository = null;
 			try {
-				System.out.println("start proses repo");
+				log.log(Level.INFO,"start proses repo");
+
 				repository = new Repository(pathRepo);
 				SearchResultsCorpus corpus = new SearchResultsCorpus("type:document");
 			    corpus.getParameters().setTermSelectionCriterion(TermSelection.DF);
@@ -207,16 +311,17 @@ public class EkstrakLSA {
 					corpus.load(repository);
 				} catch (NotEnoughTermsInCorpusException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.log(Level.SEVERE, e.getMessage(), e);
 				} catch (NoDocumentsInCorpusException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.log(Level.SEVERE, e.getMessage(),e);
 				} catch (TermWeightingException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.log(Level.SEVERE, e.getMessage(),e);
 				}
-		        System.out.println("Corpus loaded and Semantic space calculated");
-		        System.out.println("Total documents:" + corpus.getPassages().length);
+
+				log.log(Level.INFO,"Corpus loaded and Semantic space calculated");
+				log.log(Level.INFO, "Total documents:" + corpus.getPassages().length);
 
 		        PassagesSimilarity distances = new PassagesSimilarity();
 		        distances.setCorpus(corpus);
@@ -224,24 +329,26 @@ public class EkstrakLSA {
 					distances.start();
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.log(Level.SEVERE, e.getMessage(), e);
 				}
 
 		        distances.printResults();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 	}
 	
 	public static void main(String[] args) {
-		EkstrakLSA  cl = new EkstrakLSA();
-		//cl.addDocs("G:\\eksperimen\\textualentailment\\rtedocs_testset","G:\\eksperimen\\textualentailment\\repoLSA_testset");
+		EkstrakLSA  el = new EkstrakLSA();
+		//el.dbToFile("RTE3","id","t","h","G:\\eksperimen\\textualentailment\\lsa\\");
+		//el.addDocs("G:\\eksperimen\\textualentailment\\lsa\\","G:\\eksperimen\\textualentailment\\lsa_repo\\");
+		el.prosesRepo("G:\\eksperimen\\textualentailment\\lsa_repo\\");
 		//cl.prosesRepo("G:\\eksperimen\\textualentailment\\repoLSA_testset");
 		//cl.prosesOut("G:\\eksperimen\\textualentailment\\testset_hasil_lsa.txt");
-		cl.outToDB("G:\\eksperimen\\textualentailment\\testset_hasil_lsa_th.txt","testset_rte3_ver1_coba4");
+		//cl.outToDB("G:\\eksperimen\\textualentailment\\testset_hasil_lsa_th.txt","testset_rte3_ver1_coba4");
 	}
 }
