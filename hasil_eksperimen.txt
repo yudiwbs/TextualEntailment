@@ -11,6 +11,8 @@ Hasil:64.35%
 
 Eksp2:
 Skenario: menggunakan LSA
+Library yang digunakan: TML (?)
+
 
 
 
