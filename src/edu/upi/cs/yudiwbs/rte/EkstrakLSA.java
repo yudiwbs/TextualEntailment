@@ -357,10 +357,18 @@ public class EkstrakLSA {
 	
 	public static void main(String[] args) {
 		EkstrakLSA  el = new EkstrakLSA();
+
+		//test di laptop lia
 		//el.dbToFile("RTE3","id","t","h","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa\\");
 		//el.addDocs("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa\\","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_repo\\");
 		//el.prosesRepo("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_repo\\","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa.txt");
 		//el.filterOut("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa.txt","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt");
-		el.outToDB("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt","rte3","id","skorLSA");
+		//el.outToDB("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt","rte3","id","skorLSA");
+
+
+		//el.prosesRepo("G:\\eksperimen\\textualentailment\\lsa_repo\\","G:\\eksperimen\\textualentailment\\lsa_repo_out.txt");
+		//el.filterOut("G:\\eksperimen\\textualentailment\\lsa_repo_out.txt","G:\\eksperimen\\textualentailment\\lsa_repo_out_filter.txt");
+
+		 el.outToDB("G:\\eksperimen\\textualentailment\\lsa_repo_out_filter.txt","rte3","id","skorLSA");
 	}
 }

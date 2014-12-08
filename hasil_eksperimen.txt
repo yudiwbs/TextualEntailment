@@ -6,12 +6,27 @@ Dataset: RTE3  (data training/develop)
 Ekps1:
 Nama file: similar-langsung.arff
 Skenario: RTE.t dan RTE.h dibobot tf-idf, diukur kedekatan dengan cosine similarity
-Fitur: kedekatan
-Hasil:64.35%
+Fitur: kedekatan (cosine) tfidf t dan h
+Teknik: naive bayes
+Hasil:  64.35
 
 Eksp2:
 Skenario: menggunakan LSA
-Library yang digunakan: TML (?)
+Library yang digunakan: TML
+Fitur: kedekatan+skor LSA
+teknik: naive bayes
+Hasil:  66.66
+
+Eksp3:
+
+
+
+====
+query:
+
+select
+id,similar_tfidf_langsung,skorLSA,isEntail
+from rte3
 
 
 
