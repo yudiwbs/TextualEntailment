@@ -39,74 +39,66 @@ import tml.vectorspace.operations.PassagesSimilarity;
  *	 1. memindahkan dari db ke file teks (method dbToFile)
  *	 2. memindah file tsb ke repo (method addDocs)
  *	 3. memproses repo (method prosesRepo)
- *
- *
+ *   4. filter, sehingga yg digunakan hanya pasangan yang terkait 1t-1h, 2t-2h (filterOut)
+ *   5. pindahkan hasil filter ke dalam db outToDB
  */
 
 
 public class EkstrakLSA {
 
 	/**
-	 *
-	 *
-	 *
-	 * jalankan dulu ToolsTableToFile
-	 *
-	 * proses bisa memakan waktu lama!!
-
-	 output ke layar, perlu diambil secara manual sedikit sedikit
-
 	 setelah selesai..
 
 	 select
 	 id_internal,similar_tfidf_langsung,skorLSA,isentail
 	 from
 	 rte3_ver1_coba4
-	 *
-	 * @param namaFile
-	 * @param namaTabelUtama
+
 	 */
 
 	private static final Logger log =
 			Logger.getLogger(ProsesTfidf.class.getName());
 
-
-	public void outToDB(String namaFile,String namaTabelUtama) {
+	/**
+	 *   memproses file filter (output dari method filterOut)
+	 *
+	 *
+	 * @param namaFile
+	 * @param namaTabel
+	 */
+	public void outToDB(String namaFile,String namaTabel, String namaFieldId, String namaFieldSkorLsa) {
 	/*sudah melewati prosesOUt
-			jadi inputnya spt ini (sudah sama id-nya):
-		    1-h|1-t|0.9843446846914972
-			10-h|10-t|0.7601879678921027
-			100-h|100-t|0.8612680598033222
+		1-h,1-t,0.3299741126067288
+		10-h,10-t,0.30929900400396326
+		2-h,2-t,0.2675525759489614
+		3-h,3-t,0.26647014470065716
+
 		
 			output: pindahkan file tsb ke database
 			
 			alter table rte3_ver1_coba4
 			add skorLSA double;
 		
-		*/
+	*/
 		
 		try {
 			Connection conn=null;
 			PreparedStatement pUpdate=null;
-			
-			Class.forName("com.mysql.jdbc.Driver");
-	   		// Setup the connection with the DB
-	   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-	   			   					+ "user=textentailment&password=textentailment");
-	   		
-	   		
-	   		String sqlUpdate = " update "+ namaTabelUtama +" set "
-					+ " skorLSA =?  "
-					+ " where id=?";
-	   		
+
+			KoneksiDB db = new KoneksiDB();
+			conn = db.getConn();
+
+	   		String sqlUpdate =
+					String.format("update %s set %s = ? where %s = ?",namaTabel,namaFieldSkorLsa,namaFieldId);
+
 			pUpdate = conn.prepareStatement(sqlUpdate);
 			
 			File f = new File(namaFile);
 			Scanner sc = new Scanner(f);
 			while (sc.hasNextLine()) {
-				String baris = sc.next();
+				String baris = sc.nextLine();
 				Scanner scBaris = new Scanner(baris);
-				scBaris.useDelimiter("\\|");
+				scBaris.useDelimiter(",");
 				while (scBaris.hasNext()) {
 					String kata1 = scBaris.next();
 					scBaris.next();   //tidak dibuuthkan lagi
@@ -123,10 +115,8 @@ public class EkstrakLSA {
 					pUpdate.setDouble(1, skor);
 	                pUpdate.setInt(2,id);
 	                pUpdate.executeUpdate(); 
-	                
 				}
 				scBaris.close();
-				
 				//break;
 			} //end while
 			sc.close();
@@ -141,9 +131,9 @@ public class EkstrakLSA {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		
 	}
 
 
@@ -209,17 +199,25 @@ public class EkstrakLSA {
 			//ex.printStackTrace();
 		}
 	}
-	
-	public void prosesOut(String namaFile) {
-		//ouptut ke layar dan copy paste ke file ya manual
+
+	/**
+	 *  memproses file keluaran dari prosesRepo
+	 *  memfilter, jadi keluarannya adalah
+	 *  1-h,1-t, 2-h,2-t dst
+	 *
+	 * @param namaFile namafile hasil keluaran prosesRepo
+	 *
+	 */
+
+	public void filterOut(String namaFile, String namaFileOut) {
 		//contoh input:
 		/*
-			1-h|1-h|0.9999999999999997
-			1-h|1-t|0.9843446846914972
-			1-h|10-h|-0.10023996649477307
-			1-h|10-t|-0.10086797244230528
-			1-h|100-h|-0.0802806654997358
-	        
+
+			documentA,documentB,similarity
+			1-h,1-h,1.0
+			1-h,1-t,0.3299741126067288
+			1-h,10-h,-6.325235474280433E-16
+			1-h,10-t,-1.4916309493454537E-15
 	        
 	        yang digunakan hanya 1-h -> 1-t dan 1-t -> 1-h
 
@@ -230,10 +228,16 @@ public class EkstrakLSA {
 			File f = new File(namaFile);
 			Scanner sc = new Scanner(f);
 			int cc = 0;
+			File fout = new File(namaFileOut);
+			PrintWriter pw = new PrintWriter(fout);
+
+			//skip baris pertama yang berisi judul
+			if (sc.hasNextLine()) sc.nextLine();
+
 			while (sc.hasNextLine()) {
-				String baris = sc.next();
+				String baris = sc.nextLine();
 				Scanner scBaris = new Scanner(baris);
-				scBaris.useDelimiter("\\|");
+				scBaris.useDelimiter(",");
 				while (scBaris.hasNext()) {
 					String kata1 = scBaris.next();
 					String kata2 = scBaris.next();
@@ -248,6 +252,7 @@ public class EkstrakLSA {
 					
 					if (id1.equals(id2) && !tOrH1.equals(tOrH2)) {
 						System.out.println(baris);
+						pw.println(baris);
 					}
 					break;
 				}
@@ -255,12 +260,11 @@ public class EkstrakLSA {
 				//break;
 			} //end while
 			sc.close();
+			pw.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 	/**
@@ -291,10 +295,11 @@ public class EkstrakLSA {
 	 *
 	 *
 	 *  @param pathRepo  path ke direktori repo yang dihasilkan proses adddocs
+	 *  @param fileOut  file tempat menyimpan output file
 	 */
 	
 	
-	public void prosesRepo(String pathRepo) {
+	public void prosesRepo(String pathRepo, String fileOut) {
 	        Repository repository = null;
 			try {
 				log.log(Level.INFO,"start proses repo");
@@ -332,7 +337,15 @@ public class EkstrakLSA {
 					log.log(Level.SEVERE, e.getMessage(), e);
 				}
 
-		        distances.printResults();
+		        //distances.printResults();
+				String s = distances.getResultsCSVString();
+				File fout = new File(fileOut);
+				PrintWriter pw;
+				pw = new PrintWriter(fout);
+				//System.out.println(s);
+				pw.print(s);
+				pw.close();
+				log.log(Level.INFO,"selesai proses repo");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				log.log(Level.SEVERE, e.getMessage(), e);
@@ -344,11 +357,10 @@ public class EkstrakLSA {
 	
 	public static void main(String[] args) {
 		EkstrakLSA  el = new EkstrakLSA();
-		//el.dbToFile("RTE3","id","t","h","G:\\eksperimen\\textualentailment\\lsa\\");
-		//el.addDocs("G:\\eksperimen\\textualentailment\\lsa\\","G:\\eksperimen\\textualentailment\\lsa_repo\\");
-		el.prosesRepo("G:\\eksperimen\\textualentailment\\lsa_repo\\");
-		//cl.prosesRepo("G:\\eksperimen\\textualentailment\\repoLSA_testset");
-		//cl.prosesOut("G:\\eksperimen\\textualentailment\\testset_hasil_lsa.txt");
-		//cl.outToDB("G:\\eksperimen\\textualentailment\\testset_hasil_lsa_th.txt","testset_rte3_ver1_coba4");
+		//el.dbToFile("RTE3","id","t","h","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa\\");
+		//el.addDocs("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa\\","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_repo\\");
+		//el.prosesRepo("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_repo\\","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa.txt");
+		//el.filterOut("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa.txt","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt");
+		el.outToDB("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt","rte3","id","skorLSA");
 	}
 }
