@@ -41,6 +41,8 @@ import tml.vectorspace.operations.PassagesSimilarity;
  *	 3. memproses repo (method prosesRepo)
  *   4. filter, sehingga yg digunakan hanya pasangan yang terkait 1t-1h, 2t-2h (filterOut)
  *   5. pindahkan hasil filter ke dalam db outToDB
+ *
+ *   todo: ganti semua system.out.println dengan logger
  */
 
 
@@ -63,9 +65,13 @@ public class EkstrakLSA {
 	 *   memproses file filter (output dari method filterOut)
 	 *
 	 *
-	 * @param namaFile
-	 * @param namaTabel
+	 * @param namaFile   nama file yg isinya sudah difilter (filterOut)
+	 * @param namaTabel  nama tabel tujuan pengisian skor
+	 * @param namaFieldId nama field ID
+	 * @param namaFieldSkorLsa nama field skor LSA
+	 *
 	 */
+
 	public void outToDB(String namaFile,String namaTabel, String namaFieldId, String namaFieldSkorLsa) {
 	/*sudah melewati prosesOUt
 		1-h,1-t,0.3299741126067288
@@ -80,19 +86,19 @@ public class EkstrakLSA {
 			add skorLSA double;
 		
 	*/
-		
+
 		try {
-			Connection conn=null;
-			PreparedStatement pUpdate=null;
+			Connection conn;
+			PreparedStatement pUpdate;
 
 			KoneksiDB db = new KoneksiDB();
 			conn = db.getConn();
 
-	   		String sqlUpdate =
-					String.format("update %s set %s = ? where %s = ?",namaTabel,namaFieldSkorLsa,namaFieldId);
+			String sqlUpdate =
+					String.format("update %s set %s = ? where %s = ?", namaTabel, namaFieldSkorLsa, namaFieldId);
 
 			pUpdate = conn.prepareStatement(sqlUpdate);
-			
+
 			File f = new File(namaFile);
 			Scanner sc = new Scanner(f);
 			while (sc.hasNextLine()) {
@@ -102,37 +108,28 @@ public class EkstrakLSA {
 				while (scBaris.hasNext()) {
 					String kata1 = scBaris.next();
 					scBaris.next();   //tidak dibuuthkan lagi
-					String strSkor  = scBaris.next();
+					String strSkor = scBaris.next();
 					double skor = Double.parseDouble(strSkor);
-					
+
 					String[] parts = kata1.split("-");
-					String strId       = parts[0]; 
-					int id = Integer.parseInt(strId);		
-					
-					System.out.print("id="+id);
-					System.out.println(";skor="+skor);
-					
+					String strId = parts[0];
+					int id = Integer.parseInt(strId);
+
+					System.out.print("id=" + id);
+					System.out.println(";skor=" + skor);
+
 					pUpdate.setDouble(1, skor);
-	                pUpdate.setInt(2,id);
-	                pUpdate.executeUpdate(); 
+					pUpdate.setInt(2, id);
+					pUpdate.executeUpdate();
 				}
 				scBaris.close();
 				//break;
 			} //end while
 			sc.close();
 			pUpdate.close();
-	   		conn.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			conn.close();
+		} catch (ClassNotFoundException | SQLException | IOException e2) {
+			e2.printStackTrace();
 		}
 	}
 
@@ -150,11 +147,11 @@ public class EkstrakLSA {
 	 */
 
 	public void dbToFile(String namaTabel, String namaFieldId, String namaFieldT, String namaFieldH,  String path) {
-		Connection conn=null;
-		PreparedStatement pStat=null;
-		PreparedStatement pUpdate=null;
+		Connection conn;
+		PreparedStatement pStat;
+		//PreparedStatement pUpdate;
 
-		ResultSet rs = null;
+		ResultSet rs;
 
 		//ambil data
 		//PreparedStatement pUpdate=null;
@@ -227,7 +224,7 @@ public class EkstrakLSA {
 		try {
 			File f = new File(namaFile);
 			Scanner sc = new Scanner(f);
-			int cc = 0;
+			//int cc = 0;
 			File fout = new File(namaFileOut);
 			PrintWriter pw = new PrintWriter(fout);
 
@@ -262,7 +259,6 @@ public class EkstrakLSA {
 			sc.close();
 			pw.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -275,18 +271,14 @@ public class EkstrakLSA {
 	 * @param pathRepo path ke target repo
 	 */
 	public void addDocs(String pathDocs,String pathRepo) {
-		Repository repository = null;
+		Repository repository;
 		try {
 			repository = new Repository(pathRepo);
 			repository.addDocumentsInFolder(pathDocs);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
-        log.log(Level.INFO,"Documents added to repository successfully!");
+		log.log(Level.INFO,"Documents added to repository successfully!");
 	}
 
 
@@ -300,7 +292,7 @@ public class EkstrakLSA {
 	
 	
 	public void prosesRepo(String pathRepo, String fileOut) {
-	        Repository repository = null;
+	        Repository repository;
 			try {
 				log.log(Level.INFO,"start proses repo");
 
@@ -314,15 +306,8 @@ public class EkstrakLSA {
 		        corpus.getParameters().setTermWeightLocal(LocalWeight.LOGTF);
 		        try {
 					corpus.load(repository);
-				} catch (NotEnoughTermsInCorpusException e) {
-					// TODO Auto-generated catch block
+				} catch (NotEnoughTermsInCorpusException | NoDocumentsInCorpusException | TermWeightingException e) {
 					log.log(Level.SEVERE, e.getMessage(), e);
-				} catch (NoDocumentsInCorpusException e) {
-					// TODO Auto-generated catch block
-					log.log(Level.SEVERE, e.getMessage(),e);
-				} catch (TermWeightingException e) {
-					// TODO Auto-generated catch block
-					log.log(Level.SEVERE, e.getMessage(),e);
 				}
 
 				log.log(Level.INFO,"Corpus loaded and Semantic space calculated");
@@ -333,7 +318,6 @@ public class EkstrakLSA {
 		        try {
 					distances.start();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					log.log(Level.SEVERE, e.getMessage(), e);
 				}
 
@@ -346,10 +330,7 @@ public class EkstrakLSA {
 				pw.print(s);
 				pw.close();
 				log.log(Level.INFO,"selesai proses repo");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				log.log(Level.SEVERE, e.getMessage(), e);
-			} catch (SQLException e) {
+			} catch (IOException | SQLException e) {
 				// TODO Auto-generated catch block
 				log.log(Level.SEVERE, e.getMessage(), e);
 			}

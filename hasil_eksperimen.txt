@@ -12,12 +12,27 @@ Hasil:  64.35
 
 Eksp2:
 Skenario: menggunakan LSA
-Library yang digunakan: TML
+Library yang digunakan: TML-LSA
 Fitur: kedekatan+skor LSA
 teknik: naive bayes
 Hasil:  66.66
 
-Eksp3:
+Eksp3a:
+Skenario: menggunakan Wordnet
+Library yang digunakan:
+-https://code.google.com/p/ws4j/
+Fitur:
+kedekatan,skorLSA,kedekatan berdasarkan wordnet (WuPalmer)
+
+Kedekatan wordnet dihitung dari total skor kedekatan dibagai dengan jumlah kata t x jumlah kata h
+Akurasi: 66%  --> gagal, malah turun
+
+Eks 3b
+Sama dengan 3a, tapi dengan membuang stopwords, ada efek?
+
+
+
+
 
 
 
