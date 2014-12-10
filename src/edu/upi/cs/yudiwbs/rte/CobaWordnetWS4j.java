@@ -22,15 +22,16 @@ public class CobaWordnetWS4j {
 
     private static ILexicalDatabase db = new NictWordNet();
 
-    /*
+
     private static RelatednessCalculator[] rcs = {
             new HirstStOnge(db), new LeacockChodorow(db), new Lesk(db),  new WuPalmer(db),
             new Resnik(db), new JiangConrath(db), new Lin(db), new Path(db)
-    };  */
+    };
 
+    /*
     private static RelatednessCalculator[] rcs = {
             new WuPalmer(db)
-    };
+    };*/
 
     private static void run( String word1, String word2 ) {
         WS4JConfiguration.getInstance().setMFS(true);
@@ -41,7 +42,7 @@ public class CobaWordnetWS4j {
     }
     public static void main(String[] args) {
         long t0 = System.currentTimeMillis();
-        run( "boy","man" );
+        run("cut","slash");
         long t1 = System.currentTimeMillis();
         System.out.println( "Done in "+(t1-t0)+" msec." );
     }

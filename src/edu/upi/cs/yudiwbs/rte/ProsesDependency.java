@@ -114,7 +114,7 @@ public class ProsesDependency {
 	
 	
 	public void proses3() {
-	//proses yang terkait dengan root	
+	//prosesDBSimWordnetYW yang terkait dengan root
 		try {
 			int jumCocok=0;
     		// This will load the MySQL driver, each DB has its own driver
@@ -196,9 +196,9 @@ public class ProsesDependency {
 			    String hTypeDep = rs.getString(5);
 			    boolean isEntail = rs.getBoolean(6);
 			    
-			    System.out.println("proses id: "+id);
+			    System.out.println("prosesDBSimWordnetYW id: "+id);
 			    
-			    //proses t
+			    //prosesDBSimWordnetYW t
 			    ArrayList<String[]> alAllEl = new ArrayList<String[]>();
 			    alAllEl = getAllElemen(tTypeDep);
 			    HashMap<String,ArrayList<String[]>> hmElT  = new HashMap<String,ArrayList<String[]>>();
@@ -239,7 +239,7 @@ public class ProsesDependency {
 //			    	}
 //			    }
 			    
-//			    //proses hypo
+//			    //prosesDBSimWordnetYW hypo
 			    alAllEl = getAllElemen(hTypeDep);
 			    HashMap<String,ArrayList<String[]>> hmElH  = new HashMap<String,ArrayList<String[]>>();
 				 
@@ -267,7 +267,7 @@ public class ProsesDependency {
 			    ArrayList<String[]> alElT;
 			    ArrayList<String[]> alElH;
 			    for (String key : hmElH.keySet()) {
-			    	//System.out.println("proses:"+key);
+			    	//System.out.println("prosesDBSimWordnetYW:"+key);
 			    	//cari di t
 			    	if (hmElT.containsKey(key)) {
 			    		//System.out.println("ketemu kesamaan:"+key);

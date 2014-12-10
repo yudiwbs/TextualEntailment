@@ -1,0 +1,38 @@
+id,t,h,skorLSA,similar_tfidf_langsung,isentail
+228,Busby countered, telling The Iconoclast, the point is that material from Chernobyl
+which is 1,800 miles to the east of Great Britain traveled to Great Britain and
+contaminated Wales, Scotland, and various parts of the United Kingdom.
+And they might as well have said that it was equally unfeasible for it to travel
+that distance in the opposite direction to the general flow of the wind, but
+we have examined computer Models of wind directions over the period of the Gulf
+War and its quite clear the material from Iraq could have come through
+the United Kingdom because of the particular types of depressions and anticyclone systems
+that were there.,
+
+The Chernobyl disaster had repercussions outside the ex-USSR.,0.6602130217851047,0.0462539174667897,1
+
+
+ex-USSR: negara apa saja
+repercussions
+
+
+683,The relocation has enabled the company to eliminate the use of cyanide and
+chrome in its plating work replacing it with a soaplike solution.,
+
+Soap-like alternatives exist.,
+
+-0.10850346740065032,0,1
+
+soap-like = soaplike
+alternative = replacing
+
+id,t,h,skorLSA,similar_tfidf_langsung,isentail
+721,Contrary to what is happening in some other parts of the Amazon,
+where the forest is being slashed and burned at an alarming rate,
+those who want to save Acre's forest seem to be winning.,
+
+Slash and burn cycle of clearing causes many problems in the rainforest.,
+0.8216684830351741,0.006742457878315236,1
+
+slashed burned = slash and burn
+

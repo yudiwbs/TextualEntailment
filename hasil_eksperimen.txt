@@ -24,16 +24,30 @@ Library yang digunakan:
 Fitur:
 kedekatan,skorLSA,kedekatan berdasarkan wordnet (WuPalmer)
 
-Kedekatan wordnet dihitung dari total skor kedekatan dibagai dengan jumlah kata t x jumlah kata h
-Akurasi: 66%  --> gagal, malah turun
+Kedekatan wordnet dihitung dari total skor kedekatan dibagi dengan jumlah kata t x jumlah kata h
+Akurasi: 66.00  --> gagal, malah turun
+
 
 Eks 3b
 Sama dengan 3a, tapi dengan membuang stopwords, ada efek?
+Hasil: 65.85 (gagal)
 
+Eks 3c. Menggunakan isi paper (ekspansi vektor berd wordnet) Yuhua Li
+Hasil: 65.75 (gagal)
 
+Eks 4a: menggunakan Lemmatization
+Tools stanford (prosesLemma)
+cosine_tfidf_lemma + LSA_lemma (spt skenario 2, tapi menggunakan text lemma)
+Hasil:65.6  (gagal)
 
+Eks4b:
+Spt 4a, tapi ditambahkan juga cosinetfidf+lSA yg non lemma
+Hasil: 66.00 (gagal)
 
-
+Eks4c:
+menggunakan simwordnet (versi yw), tapi hanya diterapkan pada t-h lemma
+cosinetfidf+LSA tetap menggunakan t dan h standard.
+Hasil:
 
 
 ====

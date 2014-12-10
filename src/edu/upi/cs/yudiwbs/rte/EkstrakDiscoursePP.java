@@ -12,9 +12,9 @@ public class EkstrakDiscoursePP {
 	//urutan EkstrakDiscourse:
 	// kalimat --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
-	// proses HypoText harus dipanggil setelah selesai tiap tahap
-	// nantinya ini jadi satu proses
-	// setelah semua proses ekstrak disc selesai, panggil ekstrakfitur	
+	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
+	// nantinya ini jadi satu prosesDBSimWordnetYW
+	// setelah semua prosesDBSimWordnetYW ekstrak disc selesai, panggil ekstrakfitur
   
   	
 	
@@ -138,7 +138,7 @@ public class EkstrakDiscoursePP {
   }
   
   public void prosesKalimatdalamPP(String namaTabelDiscT, String namaTabelDiscH) {
-	   //proses PP yang didalamnya mengandung S, S ini kemudian dipisahkan
+	   //prosesDBSimWordnetYW PP yang didalamnya mengandung S, S ini kemudian dipisahkan
 	   //jadi kalimat, dengna tambahan subject
 	   
 	   //IS: tabel disc sudah terisi dengan parsetree
@@ -318,7 +318,7 @@ public class EkstrakDiscoursePP {
 	
    private  void prosesDisc(String namaTabelDiscT, String namaTabelDiscH) {
 	   //tdk digunakan
-	   //proses PP yang didalamnya mengandung S, S ini kemudian dipisahkan
+	   //prosesDBSimWordnetYW PP yang didalamnya mengandung S, S ini kemudian dipisahkan
 	   //jadi kalimat, dengna tambahan subject
 	   
 	   //IS: tabel disc sudah terisi dengan parsetree

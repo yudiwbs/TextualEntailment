@@ -14,7 +14,7 @@ import java.util.Scanner;
  * 
  * 
  * WARNING:
-	sebelum jalankan periksa sql select, update dan proses updatenya 
+	sebelum jalankan periksa sql select, update dan prosesDBSimWordnetYW updatenya
 	(sering diedit untuk testing, termasuk nama tabel)
 	IS: Gunakan ParsingHypoText untuk membangkitan struktur grammar (t_gram_structure, h_gram dst)
 */
@@ -448,7 +448,7 @@ public class AmbilVerbObj {
         	if (jum[1]>0) {
         		bb = bb - jum[1];        	
         		
-        		//bedanya isV dan proses: proses adalah VP keseluruhan 
+        		//bedanya isV dan prosesDBSimWordnetYW: prosesDBSimWordnetYW adalah VP keseluruhan
         		//sedangkan isV adalah bagian di VP yang akan diambil
         		if (isV) {                       
                 	if (ccV>bb) {
@@ -489,7 +489,7 @@ public class AmbilVerbObj {
         		//System.out.println("posk="+posKata);
         	}  
           	
-        	//proses semua NP, cari yg level treenya terkecil 
+        	//prosesDBSimWordnetYW semua NP, cari yg level treenya terkecil
             //(!isPP && 
         	if ( kata.equals( "(VP" )  && !proses && bb<curMinLevel) {
             	proses = true;  //start ambil data
@@ -509,7 +509,7 @@ public class AmbilVerbObj {
             }		   
         	
         	//memproses objek (NP pertama setelah verb)
-        	//setiap ada NP maka proses pengambilan NP akan direset
+        	//setiap ada NP maka prosesDBSimWordnetYW pengambilan NP akan direset
         	if (proses  && kata.equals( "(NP" ) && bb<curMinLevelNP) {
                 prosesObj  = true;  //start ambil data NP
                 sbFirstObj = new StringBuilder(); //reset string builder
@@ -532,7 +532,7 @@ public class AmbilVerbObj {
             }	
         		 
         	
-        } //end proses string
+        } //end prosesDBSimWordnetYW string
 	    
 	    //System.out.println("");
 	    //System.out.println(textual);
@@ -666,7 +666,7 @@ public class AmbilVerbObj {
         	if (jum[1]>0) {
         		bb = bb - jum[1];        	
         		
-        		//bedanya isV dan proses: proses adalah VP keseluruhan 
+        		//bedanya isV dan prosesDBSimWordnetYW: prosesDBSimWordnetYW adalah VP keseluruhan
         		//sedangkan isV adalah bagian di VP yang akan diambil
         		if (isV) {                       
                 	if (ccV>bb) {
@@ -674,12 +674,12 @@ public class AmbilVerbObj {
                 	}
                 }
                 
-        		//selesai proses VP?
+        		//selesai prosesDBSimWordnetYW VP?
         		if ((proses) && (cc>bb)) {         //sudah keluar dari VP, stop, lanjutkan dengan mengambil objek (NP pertama)
         			proses = false;
             	}
         		
-        		//selesai proses NP?
+        		//selesai prosesDBSimWordnetYW NP?
         		if ((prosesObj) && (ccNP>bb)) {
         			prosesObj = false;   
         			isCariPPsetelahNP = true;
@@ -725,7 +725,7 @@ public class AmbilVerbObj {
         		//System.out.println("posk="+posKata);
         	}  
           	
-        	//proses semua NP, cari yg level treenya terkecil 
+        	//prosesDBSimWordnetYW semua NP, cari yg level treenya terkecil
             //(!isPP && 
         	if ( kata.equals( "(VP" )  && !proses && bb<curMinLevel) {
             	proses = true;  //start ambil data
@@ -745,8 +745,8 @@ public class AmbilVerbObj {
             }	
         	
         	
-        	//memproses objek (NP pertama setelah verb, makannya proses=truue)
-        	//setiap ada NP maka proses pengambilan NP akan direset
+        	//memproses objek (NP pertama setelah verb, makannya prosesDBSimWordnetYW=truue)
+        	//setiap ada NP maka prosesDBSimWordnetYW pengambilan NP akan direset
         	if (proses  && kata.equals( "(NP" ))  {                
         		if (bb<curMinLevelNP) {         		
 	        		prosesObj  = true;                //start ambil data NP
@@ -804,7 +804,7 @@ public class AmbilVerbObj {
         		sbPP.append(" ");
         	}
         	
-        } //end proses string
+        } //end prosesDBSimWordnetYW string
 	    
 	    //System.out.println("");
 	    //System.out.println(textual);
@@ -842,7 +842,7 @@ public class AmbilVerbObj {
 		//av.debugVerbObj('t',8,"disc_t_rte3_ver1");
 		
 		//String s = "On May 17, 2005, the National Assembly of Kuwait passed,by a majority of 35 to 23 (with 1 abstention), an amendment to its electoral law that would allow women to vote and to stand as parliamentary candidates.";
-		//String s = "As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chávez, Venezuela's populist president, is using an energy windfall to win friends and promote his vision of 21st-century socialism.";
+		//String s = "As leaders gather in Argentina ahead of this weekends regional talks, Hugo Chï¿½vez, Venezuela's populist president, is using an energy windfall to win friends and promote his vision of 21st-century socialism.";
 		//String s = "the number of the confirmed Ebola cases has risen slightly to 26 in Gabon and to 16 in Congo Brazzaville";
 		String s = "A unique feature of previous Ebola outbreaks has been the relative sparing of children.";
 		String[] ret = av.debugCariVerbObjNonTree(s);

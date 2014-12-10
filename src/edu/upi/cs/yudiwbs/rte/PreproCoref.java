@@ -39,7 +39,7 @@ public class PreproCoref {
 	
 
 	WARNING:
-	sebelum jalankan periksa sql select, update dan proses updatenya 
+	sebelum jalankan periksa sql select, update dan prosesDBSimWordnetYW updatenya
 	(sering diedit untuk testing, termasuk nama tabel)
 	
 	IS: t dan h
@@ -68,7 +68,7 @@ h_original = h;
 
 //ini yg penting!!
  
-	setelah proses selesai query untuk pindahkan ke t dan h
+	setelah prosesDBSimWordnetYW selesai query untuk pindahkan ke t dan h
 
 	update testset_rte3_ver1_coba4
 	set t = t_preprocoref
@@ -196,7 +196,7 @@ h_original = h;
 		
 		if (isDiganti) {
 			StringBuilder sb = new StringBuilder();
-			//proses penggantian 
+			//prosesDBSimWordnetYW penggantian
 			Pattern pat = Pattern.compile("\\[\\[([0-9]+)\\]\\]");
 			Matcher matcher;
 			for (int i=0;i<=arrStr.length-1;i++) {

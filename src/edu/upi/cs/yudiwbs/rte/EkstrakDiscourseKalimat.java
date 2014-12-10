@@ -22,9 +22,9 @@ public class EkstrakDiscourseKalimat {
 	//urutan EkstrakDiscourse:
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
-	// proses HypoText harus dipanggil setelah selesai tiap tahap
-	// nantinya ini jadi satu proses
-	// setelah semua proses ekstrak disc selesai, panggil ekstrakfitur
+	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
+	// nantinya ini jadi satu prosesDBSimWordnetYW
+	// setelah semua prosesDBSimWordnetYW ekstrak disc selesai, panggil ekstrakfitur
 	
 	
 	//kosongkan tabel disc:
@@ -82,7 +82,7 @@ public class EkstrakDiscourseKalimat {
 				        	System.out.println("");
 				        }
 				        
-				        //proses T
+				        //prosesDBSimWordnetYW T
 				        Annotation docT = new Annotation(t);
 					    pipeline.annotate(docT);
 					    List<CoreMap> sentencesT = docT.get(SentencesAnnotation.class);
@@ -94,7 +94,7 @@ public class EkstrakDiscourseKalimat {
 			                pInsT.executeUpdate(); 	
 					    }	
 					    
-					    //proses H
+					    //prosesDBSimWordnetYW H
 					    Annotation docH = new Annotation(h);
 					    pipeline.annotate(docH);
 					    List<CoreMap> sentencesH = docH.get(SentencesAnnotation.class);

@@ -17,13 +17,13 @@ public class EkstrakDiscoursePasif {
 	//AmbilSubject as = new AmbilSubject();
 	//String subj = as.cariSubj(sInput);
 	
-	//proses kalimat pasif menjadi aktif
+	//prosesDBSimWordnetYW kalimat pasif menjadi aktif
 	// the house is painted red
 	// [*] painted the house red  = kalimatpasif_subject_undefined painted the house red
 	
 	
 	//todo: cek apakah ini bug:
-	//(id: 127) (ROOT (S (PP (IN As) (NP (RB late) (QP (RB as) (CD 1799)))) (, ,) (NP (NNS priests)) (VP (VBD were) (ADVP (RB still)) (VP (VBG being) (VP (VP (VBN imprisoned)) (CC or) (VP (VBD deported) (S (VP (TO to) (VP (VB penal) (NP (NP (NNS colonies) (CC and) (NN persecution)) (VP (ADVP (RB only)) (VBN worsened) (PP (IN after) (NP (NP (DT the) (JJ French) (NN army)) (VP (VBN led) (PP (IN by) (NP (NNP General) (NNP Louis) (NNP Alexandre) (NNP Berthier) (NNP captured) (NNP Rome)))))))))))) (CC and) (VP (VBN imprisoned) (NP (NP (NNP Pope) (NNPS Pius) (NNP VI)) (, ,) (SBAR (WHNP (WP who)) (S (VP (MD would) (VP (VB die) (PP (IN in) (NP (NN captivity))) (PP (IN in) (NP (NP (NNP Valence) (, ,) (NNP Drôme) (, ,) (NNP France) (IN in) (NNP August)) (PP (IN of) (NP (CD 1799)))))))))))))) (. .)))
+	//(id: 127) (ROOT (S (PP (IN As) (NP (RB late) (QP (RB as) (CD 1799)))) (, ,) (NP (NNS priests)) (VP (VBD were) (ADVP (RB still)) (VP (VBG being) (VP (VP (VBN imprisoned)) (CC or) (VP (VBD deported) (S (VP (TO to) (VP (VB penal) (NP (NP (NNS colonies) (CC and) (NN persecution)) (VP (ADVP (RB only)) (VBN worsened) (PP (IN after) (NP (NP (DT the) (JJ French) (NN army)) (VP (VBN led) (PP (IN by) (NP (NNP General) (NNP Louis) (NNP Alexandre) (NNP Berthier) (NNP captured) (NNP Rome)))))))))))) (CC and) (VP (VBN imprisoned) (NP (NP (NNP Pope) (NNPS Pius) (NNP VI)) (, ,) (SBAR (WHNP (WP who)) (S (VP (MD would) (VP (VB die) (PP (IN in) (NP (NN captivity))) (PP (IN in) (NP (NP (NNP Valence) (, ,) (NNP Drï¿½me) (, ,) (NNP France) (IN in) (NNP August)) (PP (IN of) (NP (CD 1799)))))))))))))) (. .)))
 	//sepertinya bukan pasif: "were still being imprinsoned"
 	
 	//bug: He said that "there is evidence that Cristiani was involved in the murder of the six Jesuit priests" which occurred on 16 November in San Salvador.
@@ -38,7 +38,7 @@ public class EkstrakDiscoursePasif {
 		String t = sInput.replace(")", " ) ");  //biar kurung tutup tidak bergabung dgn token
 		//kurung buka tetap karena untuk mencatat tag
 	    
-		//=================================== proses SBAR
+		//=================================== prosesDBSimWordnetYW SBAR
 		Scanner sc = new Scanner(t);				 
 		StringBuilder sbKalimat= new StringBuilder();
 		
@@ -119,7 +119,7 @@ public class EkstrakDiscoursePasif {
 		        			while (sc.hasNext() && !stopNP) {
 		        				kata = sc.next();
 		        				
-		        				//proses PP
+		        				//prosesDBSimWordnetYW PP
 		        				if (kata.equals("(PP")) {
 		        					bbPP = 1;
 		        					boolean stopPP = false;

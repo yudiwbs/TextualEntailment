@@ -105,14 +105,14 @@ class Word {
 }
 
 public class EkstrakFitur {
-	//menghasilkan fitur2 untuk proses klasifikasi
+	//menghasilkan fitur2 untuk prosesDBSimWordnetYW klasifikasi
 	//
 	
 	//ambil pasangan pos dan katanya 
 	//karena yg tersimpan di subj-verb-obj adalah
 	//sesuai dengan stanford parser
 	private ArrayList<Word> ekstrak(String input) {
-		//System.out.println("proses:"+input);
+		//System.out.println("prosesDBSimWordnetYW:"+input);
 		ArrayList<Word> alWord = new ArrayList<Word>();
 		
 		
@@ -350,7 +350,7 @@ public class EkstrakFitur {
 						//cari h dengan tfidf terdekat
 				
 				
-				System.out.println("proses kedekatan SVO tfidf");
+				System.out.println("prosesDBSimWordnetYW kedekatan SVO tfidf");
 		
 				Connection conn=null;
 				PreparedStatement pH=null;
@@ -871,7 +871,7 @@ jeniscocok = null
 						    //System.out.println("rasio subj kata:"+rasioSubj[0]);
 						    //System.out.println("");
 						    
-						    //proses verb
+						    //prosesDBSimWordnetYW verb
 							//System.out.println("Verb H:"+dH.verb);
 							//System.out.println("Verb T:"+dT.verb);
 							ArrayList<Word> alWordTVerb;
@@ -880,7 +880,7 @@ jeniscocok = null
 						    rasioVerb = hitungRasioKesamaan(alWordTVerb,alWordHVerb);
 						    
 						    
-						    //proses subject
+						    //prosesDBSimWordnetYW subject
 							//System.out.println("subject H:"+dH.subject);
 							//System.out.println("subject T:"+dT.subject);
 							
@@ -912,7 +912,7 @@ jeniscocok = null
 						    //System.out.println("rasio verb kata:"+rasioVerb[0]);
 						    //System.out.println("");
 						    
-						    //proses obj
+						    //prosesDBSimWordnetYW obj
 							//System.out.println("Obj H:"+dH.obj);
 							//System.out.println("Obj T:"+dT.obj);
 							
@@ -1306,11 +1306,11 @@ where bobot_jenis_cocok is null;
 		
 		//(String namaTabelUtama,String namaTabelDiscH, String namaTabelDiscT
 		
-		//dipanggil oleh proses semua!!
+		//dipanggil oleh prosesDBSimWordnetYW semua!!
 		//ef.prosesDiscourses("rte3_ver1","disc_t_rte3_ver1","disc_h_rte3_ver1");
 		//-------------
 		
-		//proses tfidf di level disc (tapi utuh, bukan dibagi menjadi SVO
+		//prosesDBSimWordnetYW tfidf di level disc (tapi utuh, bukan dibagi menjadi SVO
 		//-------------
 		/*
 		ef.prosesDiscTFIDF('t',namaTabelDiscT);
@@ -1322,7 +1322,7 @@ where bobot_jenis_cocok is null;
 		
 		
 		//-------------------------------
-		//proses disct dan disch per SVO
+		//prosesDBSimWordnetYW disct dan disch per SVO
 		/*
 		ef.prosesDiscSVOTFIDF('h', "h_subject_notag", "h_subj_tfidf",namaTabelDiscH);
 		ef.prosesDiscSVOTFIDF('h', "h_verb_notag", "h_verb_tfidf",namaTabelDiscH);

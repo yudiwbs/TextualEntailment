@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 /*
  *  WARNING:
-	sebelum jalankan periksa sql select, update dan proses updatenya 
+	sebelum jalankan periksa sql select, update dan prosesDBSimWordnetYW updatenya
 	(sering diedit untuk testing, termasuk nama tabel)
  * 
  * 
@@ -152,7 +152,7 @@ public class AmbilSubject {
         	} 
         	*/
         	
-        	//proses semua NP, cari yg level treenya terkecil 
+        	//prosesDBSimWordnetYW semua NP, cari yg level treenya terkecil
             if (!isPP && kata.equals("(NP") && !proses && bb<curMinLevel) {
             	proses = true;  //start ambil data
             	curMinLevel = bb;
@@ -164,7 +164,7 @@ public class AmbilSubject {
             	sbFirstNP.append(kata);
             	sbFirstNP.append(" ");
             }		                   
-        } //end proses string
+        } //end prosesDBSimWordnetYW string
 	    
 	    if (sbFirstNP!=null) {
 	    	ret = sbFirstNP.toString().trim();
@@ -342,7 +342,7 @@ public class AmbilSubject {
 	
 	private void proses_jangan_digunakan(String namaTabel) {
 		//JANGAN DIGUNAKAN... 
-		//proses S-V-O sudah dilakukan dilevel discourse 
+		//prosesDBSimWordnetYW S-V-O sudah dilakukan dilevel discourse
 		
 		Connection conn=null;
 		

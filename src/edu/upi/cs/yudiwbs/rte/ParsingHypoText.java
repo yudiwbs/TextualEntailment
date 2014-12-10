@@ -14,20 +14,20 @@ import java.util.Scanner;
 /**
  *  Parser kalimat menjadi POS tag tree dan dependency tree
  *
- *  Terdapat tiga method: proses() untuk tabel utama
+ *  Terdapat tiga method: prosesDBSimWordnetYW() untuk tabel utama
  *  prosesDiscourseH() dan prosesDiscourseT() masing2 untuk tabel
  *  discH dan discT
  *
- *  Selanjutnya adalah proses, pemisahan kata
+ *  Selanjutnya adalah prosesDBSimWordnetYW, pemisahan kata
  *
  *  todo: prosesDiscourseH dan T  digabung
  *
  *
  */
 public class ParsingHypoText {
-	//WARNING: cek SQL untuk select dan update (terutama nama tabel) lalu lihat proses 
+	//WARNING: cek SQL untuk select dan update (terutama nama tabel) lalu lihat prosesDBSimWordnetYW
 	//updatenya karena sering diutakatik
-	//atau bikin proses baru
+	//atau bikin prosesDBSimWordnetYW baru
 	
 	//output: 
 	// isi t_gram_structure

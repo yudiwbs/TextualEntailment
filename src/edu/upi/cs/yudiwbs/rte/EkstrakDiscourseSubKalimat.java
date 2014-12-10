@@ -14,9 +14,9 @@ public class EkstrakDiscourseSubKalimat {
 	//urutan EkstrakDiscourse:
 	// kalimat --> SubKalimat (class ini)  --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
-	// proses HypoText harus dipanggil setelah selesai tiap tahap
-	// nantinya ini jadi satu proses
-	// setelah semua proses ekstrak disc selesai, panggil ekstrakfitur
+	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
+	// nantinya ini jadi satu prosesDBSimWordnetYW
+	// setelah semua prosesDBSimWordnetYW ekstrak disc selesai, panggil ekstrakfitur
     
      
     *   IS: ParsingHypo untuk disc sudah dipanggil -> sdh ada synt tree
@@ -50,7 +50,7 @@ public class EkstrakDiscourseSubKalimat {
 		//kalau kurung buka diperlukan untuk menentukan tag
 		String t = tree.replace(")", " ) ");  //biar kurung tutup tidak bergabung dgn token
 	    
-		//=================================== proses SBAR
+		//=================================== prosesDBSimWordnetYW SBAR
 		Scanner sc = new Scanner(t);				 
 		//pertama sebelum SBAR
 		//StringBuilder sbKalimat= new StringBuilder();
@@ -203,7 +203,7 @@ public class EkstrakDiscourseSubKalimat {
 	public void prosesDiscourse(String namaTabelDiscT,String namaTabelDiscH) {
 		// lihat kelas ProsesSemua!
 		// 
-		// proses subkkalimat
+		// prosesDBSimWordnetYW subkkalimat
 		// 
 		//IS: ekstrak kalimat lalu parsinghypoe sudah dijalanakan
 		//FS: disc_t_rte1_ver6 dan disc_h_rte1_ver6 terisi 
@@ -279,7 +279,7 @@ public class EkstrakDiscourseSubKalimat {
 		   		pStatT.close();
 		   		pInsT.close();
 		   		
-		   		System.out.println("--------------- proses H");
+		   		System.out.println("--------------- prosesDBSimWordnetYW H");
 		   		
 		   		pStatH = conn.prepareStatement(sqlH);
 				rsH = pStatH.executeQuery();

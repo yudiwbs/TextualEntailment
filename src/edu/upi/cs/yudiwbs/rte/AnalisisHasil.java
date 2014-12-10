@@ -31,7 +31,7 @@ from rte3_ver1
     
     public static void main(String[] args) {
     	AnalisisHasil ah = new AnalisisHasil();
-    	//ah.proses();
+    	//ah.prosesDBSimWordnetYW();
     }
     
 }

@@ -286,7 +286,7 @@ public class EkstrakLSA {
 	 *  dijalankan setelah addDocs dan direktori repo sudah jadi
 	 *
 	 *
-	 *  @param pathRepo  path ke direktori repo yang dihasilkan proses adddocs
+	 *  @param pathRepo  path ke direktori repo yang dihasilkan prosesDBSimWordnetYW adddocs
 	 *  @param fileOut  file tempat menyimpan output file
 	 */
 	
@@ -294,7 +294,7 @@ public class EkstrakLSA {
 	public void prosesRepo(String pathRepo, String fileOut) {
 	        Repository repository;
 			try {
-				log.log(Level.INFO,"start proses repo");
+				log.log(Level.INFO,"start prosesDBSimWordnetYW repo");
 
 				repository = new Repository(pathRepo);
 				SearchResultsCorpus corpus = new SearchResultsCorpus("type:document");
@@ -329,7 +329,7 @@ public class EkstrakLSA {
 				//System.out.println(s);
 				pw.print(s);
 				pw.close();
-				log.log(Level.INFO,"selesai proses repo");
+				log.log(Level.INFO,"selesai prosesDBSimWordnetYW repo");
 			} catch (IOException | SQLException e) {
 				// TODO Auto-generated catch block
 				log.log(Level.SEVERE, e.getMessage(), e);
@@ -347,9 +347,10 @@ public class EkstrakLSA {
 		//el.outToDB("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt","rte3","id","skorLSA");
 
 
-		//el.prosesRepo("G:\\eksperimen\\textualentailment\\lsa_repo\\","G:\\eksperimen\\textualentailment\\lsa_repo_out.txt");
-		//el.filterOut("G:\\eksperimen\\textualentailment\\lsa_repo_out.txt","G:\\eksperimen\\textualentailment\\lsa_repo_out_filter.txt");
-
-		 el.outToDB("G:\\eksperimen\\textualentailment\\lsa_repo_out_filter.txt","rte3","id","skorLSA");
+		//el.dbToFile("RTE3","id","t_lemma","h_lemma","G:\\eksperimen\\textualentailment\\lsa_lemma\\");
+		//el.addDocs("G:\\eksperimen\\textualentailment\\lsa_lemma\\","G:\\eksperimen\\textualentailment\\lsa_lemma_repo\\");
+		//el.prosesRepo("G:\\eksperimen\\textualentailment\\lsa_lemma_repo\\","G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out.txt");
+		 //el.filterOut("G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out.txt","G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out_filter.txt");
+		 el.outToDB("G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out_filter.txt","rte3","id","skorLSA_lemma");
 	}
 }

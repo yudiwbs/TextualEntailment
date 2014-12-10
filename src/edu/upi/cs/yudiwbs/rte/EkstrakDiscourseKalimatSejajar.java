@@ -60,7 +60,7 @@ public class EkstrakDiscourseKalimatSejajar {
 				//loop ambil data
 				
 		   		
-		   		System.out.println("--------------- proses T");
+		   		System.out.println("--------------- prosesDBSimWordnetYW T");
 		   		
 				int cc=0; 
 				while (rsT.next()) {
@@ -101,7 +101,7 @@ public class EkstrakDiscourseKalimatSejajar {
 		   		pStatT.close();
 		   		pInsT.close();
 		   		
-		   		System.out.println("--------------- proses H");
+		   		System.out.println("--------------- prosesDBSimWordnetYW H");
 		   		
 		   		pStatH = conn.prepareStatement(sqlH);
 				rsH = pStatH.executeQuery();
@@ -215,7 +215,7 @@ public class EkstrakDiscourseKalimatSejajar {
 		   		//pInsT.close();
 		   		
 		   		/*
-		   		System.out.println("--------------- proses H");
+		   		System.out.println("--------------- prosesDBSimWordnetYW H");
 		   		
 		   		pStatH = conn.prepareStatement(sqlH);
 				rsH = pStatH.executeQuery();
@@ -371,7 +371,7 @@ public class EkstrakDiscourseKalimatSejajar {
 	    		  
 	    		  //nanti perlu batas jumlah jangan terlalu jauh antara S dan CC?
 	    		  if (ketemuCC) {
-	    			  //proses kalimat kedua
+	    			  //prosesDBSimWordnetYW kalimat kedua
 	    			  boolean ketemuS2 = false;	
 	    			  while (sc.hasNext() && !ketemuS2) {
 		    			  kata = sc.next();	

@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -9,17 +10,66 @@ import java.util.regex.Pattern;
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefChain.CorefMention;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TextAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.util.CoreMap;
 
 public class CobaStanfordCoreAnnotator {
-	
-	
-	public static void main(String[] args) {
+
+    private StanfordCoreNLP pipeline;
+
+    private void initLemma() {
+        Properties props = new Properties();
+        props.put("annotators", "tokenize, ssplit, pos, lemma");
+        pipeline = new StanfordCoreNLP(props);
+    }
+
+    public List<String> lemmatize(String documentText)
+    {
+        List<String> lemmas = new LinkedList<String>();
+
+        // create an empty Annotation just with the given text
+        Annotation document = new Annotation(documentText);
+
+        // run all Annotators on this text
+        this.pipeline.annotate(document);
+
+        // Iterate over all of the sentences found
+        List<CoreMap> sentences = document.get(SentencesAnnotation.class);
+        for(CoreMap sentence: sentences) {
+            // Iterate over all tokens in a sentence
+            for (CoreLabel token: sentence.get(TokensAnnotation.class)) {
+                // Retrieve and add the lemma for each word into the list of lemmas
+                lemmas.add(token.get(CoreAnnotations.LemmaAnnotation.class));
+            }
+        }
+
+        return lemmas;
+    }
+
+
+    public static void main(String[] args) {
+        CobaStanfordCoreAnnotator cs = new CobaStanfordCoreAnnotator();
+
+        cs.initLemma();
+        List<String> l;
+        l = cs.lemmatize("Contrary to what is happening in some other parts of the Amazon,\n" +
+                "where the forest is being slashed and burned at an alarming rate,\n" +
+                "those who want to save Acre's forest seem to be winning");
+        for (String s:l) {
+            System.out.println(s);
+        }
+    }
+
+
+
+
+	public void coref() {
 		// creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution 
 	    Properties props = new Properties();
 	    props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");

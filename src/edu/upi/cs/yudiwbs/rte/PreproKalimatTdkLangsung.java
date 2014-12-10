@@ -171,7 +171,7 @@ public class PreproKalimatTdkLangsung {
 			        			 } //while	
 			        		} //if ketemus
 		        		 //} //endif ketemusbar
-	        		} //endif proses said, tell	
+	        		} //endif prosesDBSimWordnetYW said, tell
 	        		
 	        	}
 	        	
@@ -220,7 +220,7 @@ public class PreproKalimatTdkLangsung {
 		// bukkan dibuang tapi masuk ke dalam field t_keterangan atau h_keterangan
 		
 		// hasilprepro masuk ke field
-		// proses ulang postagger  (via flag?)
+		// prosesDBSimWordnetYW ulang postagger  (via flag?)
 		
 		Connection conn=null;
 		PreparedStatement pStat=null;

@@ -4,7 +4,7 @@ public class TextualEntailment {
 	
 	public void proses() {
 		/*
-		proses dari awal (data hanya mengandung T dan H)
+		prosesDBSimWordnetYW dari awal (data hanya mengandung T dan H)
 		sampai dengan siap diproses weka 
 		
 		//terlebih dulu kosongkan tabel disc:
@@ -64,10 +64,10 @@ public class TextualEntailment {
 		//urutan EkstrakDiscourse:
 		//   pisah kalimat (stanford sentence split) --> SubKalimat (Sbar) 
 		//                   --> kalimat sejajar (cc and) --> PP --> Pasif
-		// proses ekstrak fitur
+		// prosesDBSimWordnetYW ekstrak fitur
 		// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
-		// proses HypoText harus dipanggil setelah selesai tiap tahap
-		// nantinya ini jadi satu proses
+		// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
+		// nantinya ini jadi satu prosesDBSimWordnetYW
 		 * 
 		 * 
 		 * 
@@ -119,7 +119,7 @@ public class TextualEntailment {
 		pht.prosesDiscourseT(namaTabelDiscT);
     	pht.prosesDiscourseH(namaTabelDiscH);
     	
-    	//proses kalimat sejajar
+    	//prosesDBSimWordnetYW kalimat sejajar
     	System.out.println();
     	System.out.println("Proses kalimat sejajar");
 		EkstrakDiscourseKalimatSejajar eds = new EkstrakDiscourseKalimatSejajar();
@@ -132,7 +132,7 @@ public class TextualEntailment {
     	pht.prosesDiscourseH(namaTabelDiscH);
     	
     	
-        //proses PP (kalimat dalam PP dipisah)
+        //prosesDBSimWordnetYW PP (kalimat dalam PP dipisah)
     	System.out.println();
     	System.out.println("Proses PP");
         EkstrakDiscoursePP pp = new EkstrakDiscoursePP();
@@ -182,7 +182,7 @@ public class TextualEntailment {
 		av.prosesDiscT(namaTabelDiscT);
         av.prosesDiscH(namaTabelDiscH);
         
-        //selanjutnya proses fitur
+        //selanjutnya prosesDBSimWordnetYW fitur
         System.out.println();
  	    System.out.println("Proses ekstrak fitur");
 		EkstrakFitur ef = new EkstrakFitur();
@@ -223,9 +223,9 @@ public class TextualEntailment {
 	
 	public static void main(String[] args) {
 		TextualEntailment ps = new TextualEntailment();
-		//ps.proses();
+		//ps.prosesDBSimWordnetYW();
 		//ps.debugProses();
-		System.out.println("----> serius, semua proses selesai ...  :-) ");	
+		System.out.println("----> serius, semua prosesDBSimWordnetYW selesai ...  :-) ");
 	}
 	
 }

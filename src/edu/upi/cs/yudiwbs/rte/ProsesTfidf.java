@@ -89,7 +89,11 @@ public class ProsesTfidf {
         //et.isiTfIdf("RTE3","id","h","h_tfidf");
 
         //bandingkan kesamaan dua field
-        et.isiKedekatanTfIdf("RTE3","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
+        //et.isiKedekatanTfIdf("RTE3","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
+
+        et.isiTfIdf("RTE3","id","t_lemma","t_lemma_tfidf");
+        et.isiTfIdf("RTE3","id","h_lemma","h_lemma_tfidf");
+        et.isiKedekatanTfIdf("RTE3","id","t_lemma_tfidf","h_lemma_tfidf","similar_tfidf_lemma");
     }
 
     /**
@@ -113,7 +117,7 @@ public class ProsesTfidf {
         PreparedStatement pUpdateTfIdf;
         KoneksiDB db = new KoneksiDB();
         String kata;
-        log.log(Level.INFO,"Mulai proses tf-idf");
+        log.log(Level.INFO,"Mulai prosesDBSimWordnetYW tf-idf");
         try {
             //String strCon = "jdbc:mysql://localhost/textualentailment?user=textentailment&password=textentailment";
             //conn = DriverManager.getConnection(strCon);
@@ -235,6 +239,7 @@ public class ProsesTfidf {
 
 
     /**
+     *  sebelum ini dipanggil, panggil dulu isiTfIDF
      *  menghitung kedekatan (cosine) dua field pada tabel (sdh dalam format tfidf),
      *  yang diproses oleh isiTfIdf, hasilnya disimpan di namaFieldSkorKedekatan
      *
@@ -782,14 +787,14 @@ public class ProsesTfidf {
                     termCount.put(kata1+" "+kata2, (freq == null) ? 1 : freq + 1);
                 }
 
-                //proses kata terakhir
+                //prosesDBSimWordnetYW kata terakhir
                 kata1 = kata2;
                 kata2 = "[end]";
                 freq = termCount.get(kata1+" "+kata2);  //ambil kata
                 //jika kata itu tidak ada, isi dengan 1, jika ada increment
                 termCount.put(kata1+" "+kata2, (freq == null) ? 1 : freq + 1);
 
-                //proses yang terakhir
+                //prosesDBSimWordnetYW yang terakhir
 
 
                 sc.close();  //satu baris selesai diproses (satu tweet)
