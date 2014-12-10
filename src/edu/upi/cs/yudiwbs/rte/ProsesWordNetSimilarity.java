@@ -58,6 +58,81 @@ public class ProsesWordNetSimilarity {
 
     private HashSet<String> hsStopWords = new HashSet<String>();
 
+
+
+
+    /**
+     *  Berdasarkan paper: "Sentence Similarity Based on Semantic Nets ..", Yuhua Li
+     *
+     *  1), buat vektor yang isinya gabungan S1 dan S2 yang berisi kata unik gabungan S1 dan S2
+     *  2), buat vektor kalimat S1 dan S2, caranya: untuk setiap item vektor gab,
+     *  bandingkan dengan setiap kata dalam kalimat, jika ada, bobot=1, jika tidak ada, gunakan wordnet,
+     *  jika nilai wordnet melewati threshold tertentu masukan item vektor gab itu ke vektor kalimat
+     *  3) kali nilai vektor itu dengan probabilitas
+     *  4) hitung cosine similiarity antar vektor S1 dan s2
+     *
+     *
+     *
+     * @param s1
+     * @param s2
+     */
+    public void hitungSimWordnet(String s1, String s2) {
+
+
+
+        s1 = prepro(s1);
+        s2 = prepro(s2);
+
+        //tahap satu, buat vektor gabungan
+        System.out.println("proses hitungsimwordnet");
+
+        HashSet<String> hsGab = new HashSet<>();
+        HashSet<String> hsS1  = new HashSet<>();
+        HashSet<String> hsS2  = new HashSet<>();
+
+        HashMap<String,Double> hsVectS1  = new HashMap<>();
+        HashMap<String,Double> hsVectS2  = new HashMap<>();
+
+        Scanner sc = new Scanner(s1);
+        String kata;
+        while (sc.hasNext()) {
+            kata = sc.next();
+            hsS1.add(kata);
+            if (!hsGab.contains(kata)) {
+                hsGab.add(kata);
+            }
+        }
+
+        sc = new Scanner(s2);
+        while (sc.hasNext()) {
+            kata = sc.next();
+            hsS2.add(kata);
+            if (!hsGab.contains(kata)) {
+                hsGab.add(kata);
+            }
+        }
+
+        //tampilkan semua kata
+        for (String s: hsGab) {
+            System.out.print(s+",");
+        }
+
+        //tahap 2
+        //bentuk vektor s1
+        for (String kGab: hsGab) {
+            //s1 mengandung kata di sGab, beri skor maks
+            if (hsS1.contains(kGab)) {
+                 hsVectS1.put(kGab,1.0);
+            } else {
+                //tidak ada, cari di wordnet
+                hitungSimilarity(kGab,);
+            }
+
+        }
+
+
+    }
+
     public void loadStopWords() {
         //URL url = getClass().getResource("resources/eng-stopwords.txt");
         String propFileName = "resources/eng-stopwords.txt";
@@ -225,7 +300,10 @@ public class ProsesWordNetSimilarity {
 
     public static void main(String[] args) {
         ProsesWordNetSimilarity pw = new ProsesWordNetSimilarity();
-        pw.proses("","","","","");
+        //pw.proses("","","","","");
+
+        pw.hitungSimWordnet("A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.","30 die in a bus collision in Uganda.");
+
     }
 
 }

@@ -41,7 +41,7 @@ public class CobaWordnetWS4j {
     }
     public static void main(String[] args) {
         long t0 = System.currentTimeMillis();
-        run( "boy","teacher" );
+        run( "boy","man" );
         long t1 = System.currentTimeMillis();
         System.out.println( "Done in "+(t1-t0)+" msec." );
     }
