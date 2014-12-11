@@ -31,7 +31,7 @@ IS: Gunakan ParsingHypoText untuk membangkitan struktur grammar (t_gram_structur
   set t_subject=null, t_subject_notag=null;
   
   update disc_h_rte3_ver1
-  set h_subject=null, j_subject_notag=null
+  set h_subject=null, h_subject_notag=null
   
   
 */
@@ -58,16 +58,16 @@ public class AmbilSubject {
 	    return jum;
 	}
 	
-	
+	/**
+	 *
+	 *   input: pos tag yg dihasilkan stanford
+	 */
 	public String cariSubj(String tree) {
 		
 		//handling kalau subject tidak ketemu
-		
-		
 		//update: kalau ketemu SBAR, stop
 		
 		String ret="";
-		
 		String kata;
         //untuk tracing urutan kurung buka dan tutup setelah NP
         int cc =0;  

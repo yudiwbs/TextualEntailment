@@ -10,11 +10,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *  Parser kalimat menjadi POS tag tree dan dependency tree
  *
- *  Terdapat tiga method: prosesDBSimWordnetYW() untuk tabel utama
+ *  Terdapat tiga method: proses() untuk tabel utama
  *  prosesDiscourseH() dan prosesDiscourseT() masing2 untuk tabel
  *  discH dan discT
  *
@@ -43,6 +45,10 @@ public class ParsingHypoText {
 	//harus pake yg punya stanford bukan tmm
 	LexicalizedParser lp;
 
+
+	private static final Logger log =
+			Logger.getLogger(ParsingHypoText.class.getName());
+
 	/**
 	 *    loading model
 	 *
@@ -55,7 +61,7 @@ public class ParsingHypoText {
 	}
 	
 	
-	public String[] parse(String sen) {
+	private String[] parse(String sen) {
 		//hasilnya sama dengan yg di online (lebih bagus)
 		//lebih simpel
 		
@@ -176,8 +182,76 @@ public class ParsingHypoText {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	/**
+	 *  memproses postag dan dependency tree menggunakan stanford parser
+	 *  dari input, outPostTag dan outDependency terisi
+	 *
+	 *
+	 * @param namaTabel
+	 * @param namaFieldId
+	 * @param namaFieldInput
+	 *
+	 */
+	public void proses(String namaTabel, String namaFieldId, String namaFieldInput,
+					   String namaFieldOutPosTag,String namaFieldOutDependency) {
+
+		PreparedStatement pSel=null;
+		PreparedStatement pUpd=null;
+
+		ResultSet rs = null;
+		KoneksiDB db = new KoneksiDB();
+		try {
+			log.log(Level.INFO,"Mulai parsing postag + dependency tree");
+			conn = db.getConn();
+			init();
+
+			pSel = conn.prepareStatement(String.format("select %s,%s from %s",namaFieldInput,namaFieldId,namaTabel)); //"select t,h,id from "+namaTabel);
+
+			/*pUpd = conn.prepareStatement("update "+ namaTabel  +" set "
+					+ "	t_gram_structure=?, t_type_dependency=?, h_gram_structure=?, h_type_dependency=? "
+					+ " where id=?");*/
+			pUpd = conn.prepareStatement(String.format("update %s set %s=?,%s=? where %s=?",namaTabel,namaFieldOutPosTag,namaFieldOutDependency,namaFieldId));
+
+			rs = pSel.executeQuery();
+			while (rs.next()) {
+				String text = rs.getString(1);
+				int id = rs.getInt(2);
+				System.out.println(id);
+				String[] outT = parse(text);
+
+				System.out.println(outT[0]);
+				System.out.println(outT[1]);
+
+				pUpd.setString(1, outT[0]);
+				pUpd.setString(2, outT[1]);
+				pUpd.setInt(3, id);
+				try {
+					//todo aneh.. kena error terus karena kegedaan, coba dicatch dulu
+					pUpd.executeUpdate();
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					System.out.println("error");
+					pUpd.setString(1, "error");
+					pUpd.setString(2, "error");
+					pUpd.setInt(3, id);
+					pUpd.executeUpdate();
+				}
+			}
+			rs.close();
+			pSel.close();
+			conn.close();
+			log.log(Level.INFO,"selesai");
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+
+	/**
+	 *
+	 *   !!!!! jangan digunakan.. mau dihapus !!!!
+	 *
 	 *   ambil data dari tabel utama, RTE.t dan RTE.h, parsing POS tag dan dependency parser
 	 *   hasil disimpan di RTE.t_gram_structure, RTE.h_gram_structure
 	 *   dan RTE.type_dependency dan RTE.type_dependency
@@ -185,7 +259,7 @@ public class ParsingHypoText {
 	 *   @param  namaTabel  nama tabel utama yang akan diproses, field t,h,id sudah terisi
 	 *
 	 */
-	public void proses(String namaTabel) {
+	public void old_proses(String namaTabel) {
 
 		PreparedStatement pSel=null;
 		PreparedStatement pUpd=null;
@@ -234,7 +308,8 @@ public class ParsingHypoText {
 
     	 //pht.prosesDiscourseT("disc_t_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
-    	  pht.proses("rte3");
+    	  //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
+		  pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
 		  System.out.println();
     	 //pht.prosesDiscourseH("disc_h_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");

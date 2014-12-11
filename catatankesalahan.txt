@@ -28,6 +28,11 @@ the Chernobyl disaster have repercussion outside the ex-ussr .
 
 Analisis
 ========
+yg penting:
+that material from Chernobyl which be 1,800 mile to the east of great Britain travel
+to Great Britain and contaminate Wales , Scotland ,and various part of the United Kingdom
+
+----
 Chernobyl
 repercussion   = contaminate
 outside the ex-ussr  = Wales, Scotland, United Kindom
@@ -47,8 +52,10 @@ Lemma:
 the relocation have enable the company to eliminate the use of
 cyanide and chrome in its plating work replace it with a soaplike solution .
 
-soap-like=soaplika
-alternative exist=replace.
+yg penting: replace it with a soaplike solution
+
+soap-like=soaplike
+alternative exist=replace it.
 
 id,t,h,skorLSA,similar_tfidf_langsung,isentail
 721,Contrary to what is happening in some other parts of the Amazon,

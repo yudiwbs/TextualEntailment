@@ -1,0 +1,46 @@
+id: 1
+entail
+
+Baikalfinansgroup was sold to Rosneft.
+
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .
+
+yg paling dekat:
+
+Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .
+
+proses yang harus dilakukan:
+
+Baikalfinansgroup
+was sold
+Rosneft.
+=
+Rosneft
+bought
+Baikalfinansgroup
+
+X was sold to Y
+Y bought X
+
+=======================
+id:2
+isentail: false
+Yuganskneftegaz cost US$ 27.5 billion.
+
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft . ==>
+
+Yuganskneftegaz was originally sold for US$9.4 billion
+
+Rule:
+X cost Y
+X sold for Y
+=========================
+id:3
+isentail: false
+"Does A Tiger Have A Necktie" was produced in London.
+
+Loraine besides participating in Broadway's Dreamgirls, also participated in the Off-Broadway production of "Does A Tiger Have A Necktie". In 1999, Loraine went to London, United Kingdom. There she participated in the production of "RENT" where she was cast as "Mimi" the understudy.
+
+tanda petik, cari sebagai satu kesatuan
+Loraine  participating in the Off-Broadway production of "Does A Tiger Have A Necktie"
+Loraine went to London
