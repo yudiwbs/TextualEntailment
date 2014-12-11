@@ -15,6 +15,23 @@ The Chernobyl disaster had repercussions outside the ex-USSR.,0.6602130217851047
 ex-USSR: negara apa saja
 repercussions
 
+Lemma:
+Busby counter , tell the iconoclast , the point be that material from Chernobyl which be 1,800
+mile to the east of great Britain travel to Great Britain and contaminate Wales , Scotland ,
+and various part of the United Kingdom . and they might as well have say that it be equally
+unfeasible for it to travel that distance in the opposite direction to the general flow of the wind ,
+but we have examine computer model of wind direction over the period of the Gulf War and its quite
+clear the material from Iraq could have come through the United Kingdom because of the particular
+type of depression and anticyclone system that be there .
+
+the Chernobyl disaster have repercussion outside the ex-ussr .
+
+Analisis
+========
+Chernobyl
+repercussion   = contaminate
+outside the ex-ussr  = Wales, Scotland, United Kindom
+
 
 683,The relocation has enabled the company to eliminate the use of cyanide and
 chrome in its plating work replacing it with a soaplike solution.,
@@ -25,6 +42,13 @@ Soap-like alternatives exist.,
 
 soap-like = soaplike
 alternative = replacing
+
+Lemma:
+the relocation have enable the company to eliminate the use of
+cyanide and chrome in its plating work replace it with a soaplike solution .
+
+soap-like=soaplika
+alternative exist=replace.
 
 id,t,h,skorLSA,similar_tfidf_langsung,isentail
 721,Contrary to what is happening in some other parts of the Amazon,

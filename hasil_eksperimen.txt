@@ -47,7 +47,12 @@ Hasil: 66.00 (gagal)
 Eks4c:
 menggunakan simwordnet (versi yw), tapi hanya diterapkan pada t-h lemma
 cosinetfidf+LSA tetap menggunakan t dan h standard.
-Hasil:
+Hasil:65.62 (gagal
+
+Eks5
+
+
+
 
 
 ====
