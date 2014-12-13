@@ -2,6 +2,9 @@ Penanganan there is, there was.. <-- bukan subject
 Penanganan not: id 788
 Penanganan coref, termasuk coref jebakan (id786)
 Wordnet
+Penanganan singkatan dan (koma == is) (id781)
+Penanganan from xxx  (id=776)
+
 
 ========================================
 id: 1
@@ -363,12 +366,7 @@ Catatan: penanganan not
 had == do not have 
 
 ====================
-id:
-isentail:
 
-Democrats win the election three year ago . 
-
-====================
 id:787
 isentail: false
 Democrats won the elections three years ago.
@@ -472,26 +470,172 @@ raping the Iraqi girl and killing her family
 accused
 
 
-Cat:
+Cat: cocok
 
 ==================
+id: 782
+isentail: true
+
+A U.S. soldier was sentenced to 90 years in jail.
+
+A U.S. soldier
+90 years in jail
+sentenced
+
+A U.S. soldier accused of participating in the rape of an Iraqi girl and then killing her and her family was sentenced to 90 years in jail on Thursday, media reports said.
+
+A U.S. soldier 
+accused
+of participating in the rape of an Iraqi girl and then killing her and her family
+was sentenced
+to 90 years in jail
+
+Catatan: 
+- predikat+obj sebagian tidak cocok, tapi yg lain cocok
+
+
+==================
+id: 781
+isentail:
+
+NCEA 
+is 
+the main qualification 
+for high school students.
+
+Critics said 
+
+the National Certificate of Educational Achievement or NCEA, 
+the main qualification for high school students, 
+
+would be 
+degraded 
+by the authority allowing text speak use in exams.
+
+Cat:
+Penanganan singkatan 
+koma bisa pengganti is
+sebagian cocok 
+
+==================
+id: 780
+isentail: true
+
+Full English 
+is 
+recommended 
+by New Zealand's Qualifications Authority.
+
+New Zealand's Qualifications Authority        <-
+said 
+Friday 
+that it still strongly discourages students 
+from using anything other than full English,  <- 
+but that credit will be given if the answer "clearly shows the required understanding," even if it contains text-speak.
+
+Cat:
+- kalimat negatif
+- posisi terbalik
+- rule:
+	- xxx said  ====    by xxx
+	- discourages +  anything other than full English  ==  full English
+- penanganan hari: Friday
+- strongly discourages == recommended
+
+
+
+==================
+id: 779
+isentail: false
+
+Begum 
+was not able 
+to feed herself.
+
+Begum, who had to borrow to buy bamboo to make stools, 
+received 25 cents a day from moneylenders. 
+
+After giving them stools to pay off her debt, 
+she was left with 2 cents a day, 
+
+barely enough      <-
+to feed herself.   <- 
+
+Cat:
+enough <> was not able
+coref: begum == herself
+==================
+id:  778
+isentail:true
+
+Servicemen and women 
+are 
+fighting 
+a war 
+in southern Afghanistan.
+
+The trip was about doing what he hasn't done for what many troops feel has been too long - 
+visiting the thousands of 
+
+servicemen and women    <-
+fighting 
+a war 
+in southern Afghanistan.
+
+catatan:
+cocok
+
+====================
 id:
 isentail:
-Cat:
 
-==================
+The Hercules transporter plane 
+made 
+a flight to Pakistan.
+
+
+The Hercules transporter plane   <-
+which 
+flew straight here from the first round of the trip in Pakistan,   <-
+touched down and it was just a brisk 100m stroll to the handshakes.
+
+catatan:
+a flight to Pakistan. == flew straight here from the first round of the trip in Pakistan
+
+a flight = flew 
+
+====================
+id:  776
+isentail: false
+
+Yunus 
+is 
+the first person 
+to win a Nobel Prize.
+
+
+Yunus, who was nominated for the peace prize at least twice before, is the first person from Bangladesh, a country of 147 million, to win a Nobel Prize. His Nobel Prize is a rare bright light in a country struggling to defeat Islamic terrorists, and which is chronically inundated by floods and battered by storms that blow in from the Bay of Bengal. The country, formerly known as East Pakistan, is bordered by the Bay of Bengal, India and Burma.
+
+Yunus 
+is 
+the first person from Bangladesh   <---  
+to win a Nobel Prize
+
+
+catatan:
+tidak cocok: from XXX  
+
+====================
 id:
 isentail:
-Cat:
 
-==================
+catatan:
+
+====================
 id:
 isentail:
-Cat:
 
-==================
-id:
-isentail:
-Cat:
+catatan:
 
-==================
+====================
+
