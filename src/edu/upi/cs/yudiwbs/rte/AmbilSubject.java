@@ -33,7 +33,8 @@ IS: Gunakan ParsingHypoText untuk membangkitan struktur grammar (t_gram_structur
   update disc_h_rte3_ver1
   set h_subject=null, h_subject_notag=null
   
-  
+  todo: perlu dipisahkan antar core ambil subject, dengan pengisan database yg spesifik untuk aplikasi ini
+
 */
 
 public class AmbilSubject {
@@ -61,12 +62,16 @@ public class AmbilSubject {
 	/**
 	 *
 	 *   input: pos tag yg dihasilkan stanford
+	 *
+	 *
 	 */
 	public String cariSubj(String tree) {
 		
 		//handling kalau subject tidak ketemu
 		//update: kalau ketemu SBAR, stop
-		
+		//update13des: penanganan there was a dog attack => dog attack  (EX: there
+
+
 		String ret="";
 		String kata;
         //untuk tracing urutan kurung buka dan tutup setelah NP
@@ -507,13 +512,20 @@ public class AmbilSubject {
 	public static void main(String[] args) {
         //pastikan sudah diproses HypoText untuk mendapat syntax tree
 		AmbilSubject af = new AmbilSubject();
+		String kal;
 		//af.prosesDiscT("disc_t_rte3_ver1");
 		//System.out.println("");
         //af.prosesDiscH("disc_h_rte3_ver1");
 		//af.debugSubj('h',830,"disc_h_rte3_ver1");
 		
 		//String kal =  "John and I played a game.";
-		String kal =   "A unique feature of previous Ebola outbreaks has been the relative sparing of children.";
+		//String kal =   "A unique feature of previous Ebola outbreaks has been the relative sparing of children.";
+		//kal =  "There was a dog attack.";
+		//kal = "There is evidence that Cristiani was involved in the murder of the six Jesuit priests";
+		//kal = "";
+		//kal = "Democrat members had strong small business voting records";
+		kal = "Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.";
+
 		String subj = af.debugCariSubjNonTree(kal);
 		System.out.println("Subj="+subj);
 		
