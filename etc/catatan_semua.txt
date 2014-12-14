@@ -626,14 +626,36 @@ catatan:
 tidak cocok: from XXX  
 
 ====================
-id:
-isentail:
+id: 775
+isentail:true
+
+Republicans 
+control 
+both Houses and the White House.
+
+As a late September report by the Democrats points out, 
+Republicans have done a poor job at getting their own small business bills through Congress even though 
+
+they control both Houses and the White House.  <--
 
 catatan:
-
+coref, they
 ====================
-id:
-isentail:
+id: 774
+isentail:false
+
+Gates' foundation 
+extends 
+its microfinance programs 
+to 5 million more of the world's poorest families.
+
+In August, 
+Gates' foundation gave Yunus' Grameen Foundation 1.5 million 
+for a program 
+to extend its microfinance programs 
+to 5 million more of the world's poorest families. 
+
+Three years ago, tech entrepreneur Craig McCaw provided 2 million to start up the Grameen Technology Center, which is using microcredit to finance cheap mobile service for people in Uganda and Rwanda.
 
 catatan:
 
