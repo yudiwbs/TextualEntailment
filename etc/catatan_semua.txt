@@ -4,11 +4,11 @@ Penanganan coref, termasuk coref jebakan (id786)
 Wordnet
 Penanganan singkatan dan (koma == is) (id781)
 Penanganan from xxx  (id=776)
-
+Common knowldge (id=790)
 
 ========================================
 id: 1
-entail
+entail:true
 
 Baikalfinansgroup was sold to Rosneft.
 
@@ -100,7 +100,7 @@ A bus collision with a truck in Uganda has resulted in at least 30 fatalities
 fatalities = die
 =============================
 id:6
-entail: no
+entail:false
 500 small companies are partners of Procter and Gamble.
 
 obj penting:
@@ -114,7 +114,7 @@ Even with a $1.8 billion Research and Development budget, it still manages 500 a
 coref:it
 ==============================
 id:7
-entail:yes
+entail:true
 52 people and four bombers were killed on July 7.
 
 52 people
@@ -141,6 +141,8 @@ Mrs. Bush's approval ratings have remained very high, above 80%, even as her hus
 Mrs. Bush's approval ratings have remained very high, above 80%
 her husband's have recently dropped below 50%.
 
+Catatan:
+Coref
 her husband => Mr. Bush
 ======================
 id:9
@@ -159,7 +161,7 @@ Recent Dakosaurus research comes from a complete skull found in Argentina in 199
 verb tidak cocok
 ========================
 id:800
-entail:yes
+entail:true
 
 US Steel may invest in strip casting.
 
@@ -184,7 +186,7 @@ sentenced
 
 Two other marines, Tyler Jackson and John Jodka III, have already pleaded guilty to aggravated assault and conspiracy to obstruct justice and were sentenced to 21 months and 18 months, respectively.
 
-Tyler Jackson and John Jodka III   were sentenced to 21 months and 18 months
+Tyler Jackson and John Jodka III  were sentenced to 21 months and 18 months
 
 rule:
 x and y  vb  x1 and y1
@@ -221,7 +223,7 @@ Iscor, the South African iron and steel manufacturer, has announced plans to dev
 Cocok
 ===============================
 796
-entail: false
+entail:false
 
 Haque wants to include English in some exams.
 Haque
@@ -235,6 +237,7 @@ Confident that those grading papers would understand answers written in text-spe
 Haque stressed that in some exams, including English, text abbreviations would be penalized.
 
 include <> including
+English punya dua arti
 ======================
 795
 isentail:true
@@ -250,7 +253,7 @@ The steel division of Broken Hill Proprietary, the Australian resources group, a
 cocok:
 =============
 id:794
-isentail: yes
+isentail: true
 
 Steven Jenkins was shot by a friend.
 
@@ -265,7 +268,7 @@ shooting of Steven Charles Jenkins, a terminally ill AIDS patient, by his friend
 Cocok
 ==============
 id:793
-isentail: no
+isentail:false
 
 Martin Page was sent on a mission to Afghanistan.
 
@@ -280,7 +283,7 @@ hanya subject yang cocok
 
 ===================
 id:792
-isentail: true
+isentail:true
 
 There is a Supreme Court decision about the removal of life-support.
 
@@ -297,7 +300,7 @@ bar<>decision, tapi dapat dianggap bar itu bagian hasil decision
 
 ==========================
 id:791
-entail: false
+entail:false
 There was a Chinook attack.
 
 Chinook
@@ -310,6 +313,8 @@ fire engine <> attack
 
 cat: Chinooks encircled the group => Chinooks encircled vs Chinook attack
 penangan there was
+attack yang punya maksud berbeda
+
 ==============================
 id: 790
 entail:false
@@ -457,8 +462,10 @@ isentail: true
 James Barker is accused of raping an Iraqi girl and killing her family.
 
 James Barker 
-raping an Iraqi girl and killing her family.
 accussed
+raping 
+an Iraqi girl and killing her family.
+
 
 
 The soldier, James Barker, one of four American soldiers accused of raping the Iraqi girl and killing her family in the March 2006 incident, pleaded guilty on Wednesday to rape and murder in Fort Campbell, Kentucky.
@@ -661,26 +668,75 @@ which is using microcredit to finance cheap mobile service for people in Uganda 
 catatan:
 jebakan coref, its disini adalah Grameen Fundation
 ====================
-id:
-isentail:
+id:773
+isentail:true
+
+80% approve of Mr. Bush.
+
+While the House has been extremely active in passing bills addressing the key priorities of entrepreneurs, most of the legislation has hit a brick wall over in the Senate.
 
 Catatan:
+aneh, salah soal sepertinya
 
 =========
-id:
-isentail:
+id: 772
+isentail:false
+The Nobel committee 
+plans 
+to help people break out of poverty.
+
+The Nobel committee                                    <-
+said 
+in a statement that 
+"lasting peace cannot be achieved 
+unless large population groups 
+find ways in which to break out of poverty."           <-
+
 
 Catatan:
+plan <> said
 
 =========
-id:
-isentail:
+id: 771
+isentail:true
+
+Yunus                              
+supported 
+more than 
+50,000 Struggling Members.
+
+In 2003, 
+Yunus                                <-
+brought 
+the microcredit revolution            
+to the streets of Bangladesh 
+to support                           <-
+more than                            <-
+50,000 beggars,                      <-
+whom the Grameen Bank respectfully 
+calls 
+Struggling Members.
 
 Catatan:
-
+coref: beggar = Struggling member
 =========
-id:
+id: 770
 isentail:
+
+Grameen Bank's                          
+loans 
+are 
+used 
+to buy a cow.
+
+Most of Grameen Bank's borrowers                <-
+use 
+the small loans                                 <-
+to start businesses by, 
+for instance, buying 
+a cow to produce milk,                          <-
+or a rickshaw, 
+or materials to make cloth or pottery.
 
 Catatan:
 
