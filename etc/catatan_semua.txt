@@ -650,14 +650,50 @@ its microfinance programs
 to 5 million more of the world's poorest families.
 
 In August, 
-Gates' foundation gave Yunus' Grameen Foundation 1.5 million 
+Gates' foundation gave Yunus' Grameen Foundation 1.5 million <-- 
 for a program 
-to extend its microfinance programs 
-to 5 million more of the world's poorest families. 
+to extend its microfinance programs     <--
+to 5 million more of the world's poorest families. <---
 
-Three years ago, tech entrepreneur Craig McCaw provided 2 million to start up the Grameen Technology Center, which is using microcredit to finance cheap mobile service for people in Uganda and Rwanda.
+Three years ago, tech entrepreneur Craig McCaw provided 2 million to start up the Grameen Technology Center, 
+which is using microcredit to finance cheap mobile service for people in Uganda and Rwanda.
 
 catatan:
-
+jebakan coref, its disini adalah Grameen Fundation
 ====================
+id:
+isentail:
 
+Catatan:
+
+=========
+id:
+isentail:
+
+Catatan:
+
+=========
+id:
+isentail:
+
+Catatan:
+
+=========
+id:
+isentail:
+
+Catatan:
+
+=========
+id:
+isentail:
+
+Catatan:
+
+=========
+id:
+isentail:
+
+Catatan:
+
+=========
