@@ -733,18 +733,63 @@ Most of Grameen Bank's borrowers                <-
 use 
 the small loans                                 <-
 to start businesses by, 
-for instance, buying 
-a cow to produce milk,                          <-
+for instance, 
+buying a cow to produce milk,                   <-
 or a rickshaw, 
 or materials to make cloth or pottery.
 
 Catatan:
+buy == buying
 
 =========
-id:
-isentail:
+id:769
+isentail:true
+
+Yunus 
+started 
+his own bank 
+to loan money 
+to the villagers.
+
+He 
+tried 
+to persuade 
+a local banker 
+to loan more money 
+to the villagers, 
+but the banker refused, 
+insisting they didn't qualify for credit. 
+So, 
+Yunus                            <-
+started                          <-
+his own bank                     <-
+to help the poorest 
+of the poor lift themselves up.
 
 Catatan:
+common knowledege, help == loan
+to help the poorest == to loan money
+
+
+=========
+id: 768
+isentail:false
+
+The FDA 
+provided 
+a list of states 
+in which 
+the pills have been sold.
+
+The FDA                                         <-
+would not say                                   <-
+in which states the pills had been sold,        <-
+but instead recommended that customers determine whether products they bought are being recalled by checking the store list on the FDA Web site, and the batch list. The batch numbers appear on the container's label.
+
+
+Catatan:
+- kalimat negatif
+- say == provided
 
 =========
 id:
