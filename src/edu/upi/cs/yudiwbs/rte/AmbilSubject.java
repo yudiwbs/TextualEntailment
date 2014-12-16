@@ -524,7 +524,9 @@ public class AmbilSubject {
 		//kal = "There is evidence that Cristiani was involved in the murder of the six Jesuit priests";
 		//kal = "";
 		//kal = "Democrat members had strong small business voting records";
-		kal = "Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.";
+		//kal = "Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.";
+
+		kal = "A typhoon batters the Philippines.";
 
 		String subj = af.debugCariSubjNonTree(kal);
 		System.out.println("Subj="+subj);

@@ -1,0 +1,88 @@
+(ROOT 
+(S 
+	(NP 
+		(NP (NNP Ebola)) 
+		(SBAR 
+			(S 
+				(NP (JJ hemorrhagic) (NN fever)) 
+				(VP (VBZ is) 
+					(NP 
+						(NP (DT a) (JJ fatal) (NN disease)) 
+						(VP 
+							(VBN caused) 
+							(PP 
+								(IN by) 
+								(NP 
+								(NP (DT a) (JJ new) (NN virus)) 
+								(SBAR 
+									(WHNP (WDT which)) 
+									(S 
+										(VP 
+											(VBZ has) 
+											(NP 
+												(DT no) 
+													(VP 
+														(JJ known) 
+														(NP 
+															(NP (NNP cure) (. .)) 
+															(SBAR 
+																(S 
+																	(SBAR 
+																		(WHADVP (WRB When)) 
+																		(S 
+																			(NP (DT a) (JJ new) (NN epidemic)) 
+																			(VP 
+																				(VBD was) 
+																				(VP 
+																					(VBN detected) 
+																					(PP (IN in) (NP (NNP Zaire))) 
+																					(PP (IN in) 
+																						(NP 
+																							(NP (DT the) (NN spring)) 
+																							(PP (IN of) (NP (CD 1995)))
+																						)
+																					)
+																				)
+																			)
+																		)
+																	) 
+																	(, ,) 
+																	(NP (PRP it)) 
+																	(VP (VBD was) 
+																		(ADVP (RB widely)) 
+																		(VP 
+																			(VBN perceived) 
+																			(PP (IN as) (NP (DT a) (NN threat))) 
+																			(PP (TO to) 
+																				(NP 
+																					(DT the) (NNP West) 
+																					(. .) 
+																					(NNP Public)
+																				)
+																			)
+																		)
+																	)
+																)
+															)
+														)
+													) 
+													(NN attention)
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				)
+			)
+		)
+	) 
+	(VP 
+		(VBD was) 
+		(ADJP (JJ intense))
+	) 
+	(. .)
+)
+)
+)
