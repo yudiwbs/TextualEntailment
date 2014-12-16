@@ -1,5 +1,8 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.trees.Tree;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,7 +32,7 @@ public class EkstrakDiscoursePasif {
 	//bug: He said that "there is evidence that Cristiani was involved in the murder of the six Jesuit priests" which occurred on 16 November in San Salvador.
     //  hasil: Cristiani malah hilang
 	
-	private String cariDiscPasif(String sInput, String subj) {
+	public String cariDiscPasif(String sInput, String subj) {
 		String strOut="";
 		
 		ArrayList<String> alOut = new ArrayList<String>();
@@ -84,7 +87,7 @@ public class EkstrakDiscoursePasif {
 			        		if ( prevKata.equals("is")   || prevKata.equals("was") || prevKata.equals("are") || 
 				        		 prevKata.equals("were") || (prevKata.equals("be") && !prevPrevKata.equals("should") && !prevPrevKata.equals("could")   ) 
 				        		 || prevKata.equals("being")  ) {
-				        		v = sc.next();
+				        		v = sc.next();  //untuk apa ya?? next setelah vbn
 					        	isPassive = true;
 				        	}
 			        	}
@@ -337,9 +340,31 @@ public class EkstrakDiscoursePasif {
 			   }
 	}
 
-	
+
+	public String cariDebugDiscPasif(String inp, String akt) {
+		LexicalizedParser lp;
+
+		//panggil sebelum lakukan parsing
+		lp = LexicalizedParser.loadModel(
+				"edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
+				"-maxLength", "80", "-retainTmpSubcategories");
+
+
+		String out = "";
+		Tree parseTree = lp.parse(inp);
+
+		System.out.println(inp);
+		System.out.println(parseTree.toString());
+
+		out = cariDiscPasif(parseTree.toString(), akt);
+		return out;
+	}
+
 	public static void main(String[] args) {
 		EkstrakDiscoursePasif ed= new EkstrakDiscoursePasif();
-		ed.prosesDisc("disc_t_rte3_ver1", "disc_h_rte3_ver1");
+		//ed.prosesDisc("disc_t_rte3_ver1", "disc_h_rte3_ver1");
+		//String out = ed.cariDiscPasif("(ROOT (S (NP (NP (NNP Ebola)) (SBAR (S (NP (JJ haemorrhagic) (NN fever)) (VP (VBZ is) (NP (NP (DT a) (JJ fatal) (NN disease)) (VP (VBN caused) (PP (IN by) (NP (NP (DT a) (JJ new) (NN virus)) (SBAR (WHNP (WDT which)) (S (VP (VBZ has) (NP (DT no) (VP (JJ known) (NP (NP (NNP cure) (. .)) (SBAR (S (SBAR (WHADVP (WRB When)) (S (NP (DT a) (JJ new) (NN epidemic)) (VP (VBD was) (VP (VBN detected) (PP (IN in) (NP (NNP Zaire))) (PP (IN in) (NP (NP (DT the) (NN spring)) (PP (IN of) (NP (CD 1995))))))))) (, ,) (NP (PRP it)) (VP (VBD was) (ADVP (RB widely)) (VP (VBN perceived) (PP (IN as) (NP (DT a) (NN threat))) (PP (TO to) (NP (DT the) (NNP West) (. .) (NNP Public))))))))) (NN attention))))))))))))) (VP (VBD was) (ADJP (JJ intense))) (. .)))","");
+		String out = ed.cariDebugDiscPasif("The house is painted red by Budi ","the house");
+		System.out.println(out);
 	}
 }
