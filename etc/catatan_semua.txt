@@ -1,3 +1,5 @@
+update lagi!
+
 Penanganan there is, there was.. <-- bukan subject
 Penanganan not: id 788
 Penanganan coref, termasuk coref jebakan (id786)
@@ -671,12 +673,9 @@ jebakan coref, its disini adalah Grameen Fundation
 id:773
 isentail:true
 
-80% approve of Mr. Bush.
-
-While the House has been extremely active in passing bills addressing the key priorities of entrepreneurs, most of the legislation has hit a brick wall over in the Senate.
 
 Catatan:
-aneh, salah soal sepertinya
+-
 
 =========
 id: 772
