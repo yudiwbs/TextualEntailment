@@ -1,12 +1,19 @@
-update lagi!
+allignment eksak ==> langsung entail
 
-Penanganan there is, there was.. <-- bukan subject
+Penanganan tfahere is, there was.. <-- bukan subject
 Penanganan not: id 788
 Penanganan coref, termasuk coref jebakan (id786)
 Wordnet
 Penanganan singkatan dan (koma == is) (id781)
 Penanganan from xxx  (id=776)
 Common knowldge (id=790)
+
+
+query untuk dapat data:
+
+select id,isEntail,t,h
+from  rte3 where  id=745
+
 
 ========================================
 id: 1
@@ -673,9 +680,12 @@ jebakan coref, its disini adalah Grameen Fundation
 id:773
 isentail:true
 
+80% approve of Mr. Bush.
+
+While the House has been extremely active in passing bills addressing the key priorities of entrepreneurs, most of the legislation has hit a brick wall over in the Senate.
 
 Catatan:
--
+aneh, salah soal sepertinya
 
 =========
 id: 772
@@ -791,9 +801,336 @@ Catatan:
 - say == provided
 
 =========
-id:
-isentail:
+id: 767
+isentail: true
+t: "I've always said he's the closest I will ever come to meeting Gandhi, he's simply unmoved by any obstacle or any argument," said Bill Clapp, an heir to the Weyerhaeuser fortune and founder of Global Partnerships, a Seattle microfinance group that has partnered with Grameen in Central America.
+h: Bill Clapp is the founder of the Global Partnerships.
+
+Alignment
+Bill Clapp, an heir to the Weyerhaeuser fortune and founder of Global Partnerships,
+=>
+Bill Clapp is the founder of the Global Partnerships.
 
 Catatan:
+buang "an heir to the Weyerhaeuser fortune and"
 
 =========
+id: 766
+isentail: false
+t: Molly Walsh, 21, a George Washington University student shopping at a CVS pharmacy in Washington, D.C., said she didn't plan to toss any of the store-brand drugs at home that she'd bought to save money. Nor did she plan to stop buying the generic products.
+h: Molly Walsh plans to stop buying the generic products.
+
+Alignment
+Nor did she plan to stop buying the generic products
+Molly Walsh plans to stop buying the generic products.
+
+Catatan:
+kalimat negatif: Nor
+Coref: Molly Walsh = she
+
+==========
+id: 765
+isentail: true
+
+t:The Nobel shines a spotlight on a form of "social capitalism" that has gained currency in recent years, propelled by high-profile supporters like former President Bill Clinton, rock star Bono and Microsoft founder Bill Gates. 
+
+h: President Bill Clinton is a supporter of "social capitalism".
+
+Alignment:
+
+"social capitalism"   ....  [propelled by high-profile] supporters like former President Bill Clinton
+
+Catatan:
+supporters like former President Bill Clinton =>
+President Bill Clinton is a supporter 
+
+transformasi
+X like Y
+Y is X
+==============
+id: 764
+isentail: false
+t: Kevin Vincent, 44, of Arlington, Va., said his wife buys store brand acetaminophen and he wanted to find out more about the problem.
+h: Kevin Vincent buys store brand acetaminophen.
+
+alignment:
+Kevin Vincent [, 44, of Arlington, Va.,] {said} {his wife} buys store brand acetaminophen
+
+catatan:
+Said
+his wife
+
+=============
+id: 763
+isentail: true
+
+t: PST Chittagong, Bangladesh-- Muhammad Yunus, Bangladesh's "Banker to the Poor" who provides loans to help millions of people fight poverty by starting businesses, has won the Nobel Peace Prize.
+
+h: Muhammad Yunus won the Nobel Prize for Peace.
+
+alignment:
+Muhammad Yunus, [Bangladesh's "Banker to the Poor" who provides loans to help millions of people fight poverty by starting businesses,] has won the Nobel Peace Prize.
+
+catatan: buang 
+
+===========
+id: 762
+isentail: false
+t: Acetaminophen is best known as the drug in products sold under the Tylenol brand, but is widely available in typically less expensive generic versions.
+h: Acetaminophen is produced by Tylenol.
+
+alignment:
+Acetaminophen [is best known as the drug in products] sold under the Tylenol brand,
+
+catatan:
+produced <> sold under
+================
+id:761
+isentail:true
+t:The voluntary recall is considered a Class II recall since it covers products that might cause a temporary health problem or pose only a slight threat of a serious nature, the FDA said.
+h:A Class II recall covers products that might cause a temporary health problem.
+
+allignment:
+a Class II recall since it covers products that might cause a temporary health
+
+cat: bisa langsung
+==========
+id:760
+isentail:false
+t:A company investigation turned up metal in roughly 200 pills of the 70 million it passed through a metal detector, according to the FDA.
+h:The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.
+
+??
+
+===========
+id:759
+isentail:1
+t:CVS will stop selling its own brand of 500-milligram acetaminophen caplets and pull bottles from store shelves nation wide, spokesman Mike DeAngelis said.
+h:CVS will not sell its own brand of 500-milligram acetaminophen caplets any longer.
+
+allignment:
+CVS will stop selling its own brand of 500-milligram acetaminophen caplets
+
+cat:
+will stop selling = will not sell
+===========
+758
+1
+t:The drug, along with aspirin and ibuprofen, is one of the most widely used pain relievers available without a doctor's note.
+h:Aspirin is one of the most widely used pain relievers available without a doctor's note.
+
+allignment:
+aspirin [and ibuprofen], is one of the most widely used pain relievers available without a doctor's note.
+
+catatan:
+subset
+x and y doing z  entail
+x doing z
+
+==============
+757
+1
+t:Consumers who take any of the contaminated pills could suffer minor stomach discomfort or possible cuts to the mouth and throat, the FDA said, adding that the risk of serious injury was remote.
+h:Contaminated pills could cause minor stomach discomfort or possible cuts to the mouth and throat.
+
+allignment:
+Contaminated pills could suffer minor stomach discomfort or possible cuts to the mouth and throat
+
+catatan:
+langsung
+===============
+756
+1
+t: The contaminated pills included metal fragments ranging in size from "microdots" to portions of wire one-third of an inch long, the FDA said.
+h: The contaminated pills contained metal fragments.
+
+allignment:
+The contaminated pills included metal fragments
+
+catatan:
+langsung
+================
+755
+1
+t:The pills were sold under store brands by Wal-Mart, CVS, Safeway and more than 120 other major retailers, the Food and Drug Administration said.
+h:The pills were commercialized by major retailers.
+
+allignment:
+The pills were /sold/commercialized/ under store brands by /Wal-Mart, CVS, Safeway/major retailers
+
+catatan:
+sinonim,
+
+major retailers? => enclopedic knowledge
+===================
+754
+1
+t:A team from the U.S. Centers for Disease Control boarded the ship when it docked in St. Maarten to oversee the cleaning operation and try to determine what caused the outbreak, Carnival said.
+h:The causes of the outbreak were searched for by a team from the U.S. CDC.
+
+allignment:
+tdk bisa langsung
+
+/try to determine what caused the outbreak/The causes of the outbreak were searched
+A team from the U.S. /Centers for Disease Control/CDC
+
+catatan:
+singkatan 
+posisi 
+=======================
+753
+1
+t:"They brought us 7-Up, bottled water, ice and a diet of rice, though you didn't feel like eating," said Jim Lankes, 48, of Phoenix.
+h: Jim Lankes was given bottles of waters, ice and rice.
+
+allignment
+[They brought] us/Jim Lankes %was given%brought 7-Up, bottled water, ice and a diet of rice
+
+catatan:
+kalimat tidak langsung
+Jim Lankes bagian dari us
+=========================
+752
+0
+t:Hadley said Jordan was chosen as the site of the meeting between Bush and al-Maliki because of its support for the unity government in Iraq and the fact that Bush would be in the region.
+h:Bush will meet al-Maliki in Hadley.
+
+allignment:
+tidak bisa langsung
+
+/*Jordan*/Hadley was chosen as the site of the /meeting between Bush and al-Maliki/Bush will meet al-Maliki
+
+catatan:
+ /meeting between Bush and al-Maliki/Bush will meet al-Maliki
+
+ kemudian match lokasi:
+ 
+ in Hadley  <>
+ Jordan was chosen as the site of the meeting 
+=================
+751
+0
+t:A Pentagon committee and the congressionally chartered Iraq Study Group have been preparing reports for Bush, and Iran has asked the presidents of Iraq and Syria to meet in Tehran.
+h:Bush will meet the presidents of Iraq and Syria in Tehran.
+
+allignment
+ Iran has asked the presidents of Iraq and Syria to meet in Tehran.
+ 
+catatan:
+subyek tidak cocok
+=============
+750
+1
+t:Preliminary tests identified the source of the outbreak as the highly contagious norovirus, which had struck several guests just before they boarded the cruise Nov. 3 in Rome, Carnival officials said.
+h:Norovirus is the source of the outbreak on the ship.
+
+allignment:       
+tidak bisa langsung
+
+source of the outbreak as the highly contagious norovirus  [cruise, Carnival == the ship]
+
+dibalik
+xxx is the source
+the source .... as xxx
+
+=======
+749
+1
+t:Fourteen guests and five crew remained ill and in isolation when the ship arrived at Port Everglades, Fla., according to a statement from Carnival Cruise Lines, a brand of Carnival Corp.
+h:The Carnival Cruise Lines is a brand of Carnival Corp.
+
+allignment:
+Carnival Cruise Lines, a brand of Carnival Corp
+
+catatan:
+[is]
+==========
+748
+1
+t:Aboard Air Force One, Nov. 22, 2006 President Bush and Iraqi Prime Minister Nouri al-Maliki will meet next week in Jordan to discuss the deteriorating security situation in Iraq.
+h:Jordan will host the meeting between President Bush and Iraqi Prime Minister Nouri al-Maliki.
+
+alignment:
+President Bush and Iraqi Prime Minister Nouri al-Maliki will meet next week in Jordan
+
+catatan:
+will meet next week in Jordan = host the meeting
+
+===========
+747
+0
+t:San Francisco (Reuters) -- Wal-Mart Stores Inc. said Tuesday that a Massachusetts judge had granted its motion to decertify a class action lawsuit accusing the world's largest retailer of denying employees breaks.
+h:Employee breaks had been denied by a motion granted by a Massachusetts judge.
+
+alignment:
+granted by a Massachusetts judge =  a Massachusetts judge had granted 
+
+its motion to decertify a class action lawsuit <> Employee breaks had been denied
+
+cat:
+yang berbeda adalah keluaran dari hakim
+===============
+746
+1
+t:The Democrats' success in the 2006 elections means changes at the top in the House and Senate.
+h:Democrats won the 2006 elections.
+
+allignment
+The Democrats' = Democrats
+success in the 2006 elections = won the 2006 elections
+
+======================
+745
+1
+San Francisco (Reuters) -- Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday, after last week delaying their release due to accounting complexities related to a regulatory probe.
+
+Tuesday, preliminary quarterly results will be announced.
+
+Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday
+
+
+preliminary quarterly results = preliminary quarterly results
+to announce  = will be announced
+
+cat: subyek tidak ada
+
+=======================
+744
+1
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed in a suicide bombing in February last year, which led to rising anti-Syrian waves and the withdrawal of Syrian troops from Lebanon.
+
+Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.
+
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed  = the murder of Rafik Hariri
+which led [...] and the withdrawal of Syrian troops from Lebanon = Syrian troops have been withdrawn from Lebanon after
+
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure = Rafik Hariri
+
+
+===========================
+743
+1
+"The crisis took a sharp turn for the worse after the cabinet, without the Syrian-backed ministers, approved the UN draft document for creation of an international tribunal in the case of ex-Premier Rafik Hariri's killing."
+"The crisis worsened after the UN draft document for the creation of an international tribunal was approved."
+
+The crisis took a sharp turn for the worse = The crisis worsened
+after [the cabinet, without the Syrian-backed ministers,] approved the UN draft document for creation of an international tribunal = after the UN draft document for the creation of an international tribunal was approved
+
+=============================
+"742"
+"1"
+"Gemayel's assassination is almost certain to deepen the political crisis in Lebanon, which started after the resignation of six pro-Syrian ministers, two from Hezbollah, hours after all-party round table talks collapsed."
+"After the resignation of six pro-Syrian ministers a deep political crises started in Lebanon."
+
+after the resignation of six pro-Syrian ministers ==
+deepen the political crisis in Lebanon ==
+===============================
+"741"
+"1"
+"BEIRUT, Nov. 21 (Xinhua) -- Lebanese Industry Minister and Christian leader Pierre Gemayel was shot dead on a street in the suburb of Beirut on Tuesday, al-Jazeera TV channel quoted the Lebanese Interior Ministry as saying."
+"Pierre Gemayel was murdered on a street in the suburb of Beirut."
+
+Pierre Gemayel was shot dead on a street in the suburb of Beirut  = Pierre Gemayel was murdered on a street in the suburb of Beirut
+===========================================
+
+
