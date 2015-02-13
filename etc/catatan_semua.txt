@@ -1063,6 +1063,8 @@ t:San Francisco (Reuters) -- Wal-Mart Stores Inc. said Tuesday that a Massachuse
 h:Employee breaks had been denied by a motion granted by a Massachusetts judge.
 
 alignment:
+<<<<<<< HEAD
+=======
 granted by a Massachusetts judge =  a Massachusetts judge had granted 
 
 its motion to decertify a class action lawsuit <> Employee breaks had been denied
@@ -1231,6 +1233,10 @@ Mr Lopez Obrador has alleged electoral fraud cost him the presidency, despite a 
 
 Felipe Calderon won the presidential election of Mexico.
 
+<<<<<<< HEAD
 despite a recount confirming Felipe Calderon as Mexico's president-elect = Felipe Calderon won the presidential election of Mexico
+=======
+>>>>>>> 237803e2a110dafc66c4912042fc1844db0df817
+>>>>>>> 42667b0041c59c6f8fc3b3331d8ab48b96872385
 
 confirming xxx as yyy president-elect = xxx won the presidential election of yyy
