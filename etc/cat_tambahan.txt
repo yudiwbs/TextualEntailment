@@ -1,0 +1,41 @@
+cat_tambahan
+
+730
+1
+The IAEA board in February referred Iran to the Security Council, suggesting it had breached the Nuclear Nonproliferation Treaty and might be trying to make nuclear weapons.
+Iran might be trying to make nuclear weapons according to the IAEA board.
+
+The IAEA board suggesting = according to the IAEA board
+it [had breached the Nuclear Nonproliferation Treaty] and might be trying to make nuclear weapons = Iran might be trying to make nuclear weapons 
+
+=======================================================
+
+729
+0
+Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.
+Mice fed with red wine lived longer despite a fatty diet.
+
+red wine <> substance found in red wine
+
+
+=========
+728
+1
+The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+
+Iran's program is under suspicion because of the findings by IAEA inspectors.
+
+findings by IAEA inspectors ==
+have increased suspicions about Iran s program = Iran's program is under suspicion 
+
+=========
+727
+1
+Iranian nuclear officials say 54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor, such as the one being built by Russia that is near completion at the southern city of Bushehr.
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.
+
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor == 
+==============
+
+
+
