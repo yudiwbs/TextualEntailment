@@ -844,7 +844,8 @@ public class AmbilVerbObj {
 		//String s = "On May 17, 2005, the National Assembly of Kuwait passed,by a majority of 35 to 23 (with 1 abstention), an amendment to its electoral law that would allow women to vote and to stand as parliamentary candidates.";
 		//String s = "As leaders gather in Argentina ahead of this weekends regional talks, Hugo Ch�vez, Venezuela's populist president, is using an energy windfall to win friends and promote his vision of 21st-century socialism.";
 		//String s = "the number of the confirmed Ebola cases has risen slightly to 26 in Gabon and to 16 in Congo Brazzaville";
-		String s = "A unique feature of previous Ebola outbreaks has been the relative sparing of children.";
+		//String s = "Ebola hemorrhagic fever is a fatal disease caused by a new virus which has no known cure";
+		String s = "A new epidemic was detected in Zaire in the spring of 1995";
 		String[] ret = av.debugCariVerbObjNonTree(s);
 		System.out.println("verb:"+ret[0]);
 		System.out.println("obj:"+ret[1]);

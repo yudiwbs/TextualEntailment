@@ -8,6 +8,13 @@ Penanganan singkatan dan (koma == is) (id781)
 Penanganan from xxx  (id=776)
 Common knowldge (id=790)
 
+
+query untuk dapat data:
+
+select id,isEntail,t,h
+from  rte3 where  id=745
+
+
 ========================================
 id: 1
 entail:true
@@ -1056,4 +1063,77 @@ t:San Francisco (Reuters) -- Wal-Mart Stores Inc. said Tuesday that a Massachuse
 h:Employee breaks had been denied by a motion granted by a Massachusetts judge.
 
 alignment:
+<<<<<<< HEAD
+=======
+granted by a Massachusetts judge =  a Massachusetts judge had granted 
+
+its motion to decertify a class action lawsuit <> Employee breaks had been denied
+
+cat:
+yang berbeda adalah keluaran dari hakim
+===============
+746
+1
+t:The Democrats' success in the 2006 elections means changes at the top in the House and Senate.
+h:Democrats won the 2006 elections.
+
+allignment
+The Democrats' = Democrats
+success in the 2006 elections = won the 2006 elections
+
+======================
+745
+1
+San Francisco (Reuters) -- Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday, after last week delaying their release due to accounting complexities related to a regulatory probe.
+
+Tuesday, preliminary quarterly results will be announced.
+
+Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday
+
+
+preliminary quarterly results = preliminary quarterly results
+to announce  = will be announced
+
+cat: subyek tidak ada
+
+=======================
+744
+1
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed in a suicide bombing in February last year, which led to rising anti-Syrian waves and the withdrawal of Syrian troops from Lebanon.
+
+Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.
+
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed  = the murder of Rafik Hariri
+which led [...] and the withdrawal of Syrian troops from Lebanon = Syrian troops have been withdrawn from Lebanon after
+
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure = Rafik Hariri
+
+
+===========================
+743
+1
+"The crisis took a sharp turn for the worse after the cabinet, without the Syrian-backed ministers, approved the UN draft document for creation of an international tribunal in the case of ex-Premier Rafik Hariri's killing."
+"The crisis worsened after the UN draft document for the creation of an international tribunal was approved."
+
+The crisis took a sharp turn for the worse = The crisis worsened
+after [the cabinet, without the Syrian-backed ministers,] approved the UN draft document for creation of an international tribunal = after the UN draft document for the creation of an international tribunal was approved
+
+=============================
+"742"
+"1"
+"Gemayel's assassination is almost certain to deepen the political crisis in Lebanon, which started after the resignation of six pro-Syrian ministers, two from Hezbollah, hours after all-party round table talks collapsed."
+"After the resignation of six pro-Syrian ministers a deep political crises started in Lebanon."
+
+after the resignation of six pro-Syrian ministers ==
+deepen the political crisis in Lebanon ==
+===============================
+"741"
+"1"
+"BEIRUT, Nov. 21 (Xinhua) -- Lebanese Industry Minister and Christian leader Pierre Gemayel was shot dead on a street in the suburb of Beirut on Tuesday, al-Jazeera TV channel quoted the Lebanese Interior Ministry as saying."
+"Pierre Gemayel was murdered on a street in the suburb of Beirut."
+
+Pierre Gemayel was shot dead on a street in the suburb of Beirut  = Pierre Gemayel was murdered on a street in the suburb of Beirut
+===========================================
+
+>>>>>>> 237803e2a110dafc66c4912042fc1844db0df817
 
