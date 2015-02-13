@@ -1130,7 +1130,107 @@ deepen the political crisis in Lebanon ==
 "BEIRUT, Nov. 21 (Xinhua) -- Lebanese Industry Minister and Christian leader Pierre Gemayel was shot dead on a street in the suburb of Beirut on Tuesday, al-Jazeera TV channel quoted the Lebanese Interior Ministry as saying."
 "Pierre Gemayel was murdered on a street in the suburb of Beirut."
 
-Pierre Gemayel was shot dead on a street in the suburb of Beirut  = Pierre Gemayel was murdered on a street in the suburb of Beirut
+Pierre Gemayel was shot dead = Pierre Gemayel was murdered 
 ===========================================
+740
+1
+Al-Qaida-linked militants have carried out a series of suicide bombings targeting Western interests in Indonesia since 2002.
+Since 2002 Al-Qaida militants have tried to hit Western interests in Indonesia.
+
+Al-Qaida-linked militants = Al-Qaida militants
+have carried out a series of suicide bombings targeting Western = have tried to hit Western interests
+Since 2002 ==
+in Indonesia ==
+
+==================================================
+739
+0
+In an interview this week, the president said that Vice President Dick Cheney and Defense Secretary Donald Rumsfeld will be a valued part of his administration until his presidency comes to an end.
+
+Dick Cheney is Vice President of the Defense Secretary Donald Rumsfeld.
 
 
+Defense Secretary Donald Rumsfeld ==
+
+Dick Cheney is Vice President = Vice President Dick Cheney
+
+cat: kuncinya adalah  Vice President of the Defense Secretary  (memiliki)
+relasi
+================================
+738
+1
+Thousands of troops are being deployed to secure the city of Bogor, where Bush is to hold talks with his Indonesian counterpart, Susilo Bambang Yudhoyono.
+Bush is scheduled to visit the city of Bogor.
+
+
+the city of Bogor where Bush is to hold talks = Bush is scheduled to visit the city of Bogor
+Bush is to hold talks = Bush is scheduled to visit 
+
+cat: pemrosesan where
+===========
+737
+0
+But Huawei says that expansion has not been easy - obtaining visas for its Chinese engineers to work on long-term projects in India being a particular challenge.
+
+Chinese engineers working on long-term projects in India can easily obtain visas.
+
+Obtaining visas for its Chinese engineers to work on long-term projects in India being a particular challenge  <> Chinese engineers working on long-term projects in India can easily obtain visas
+
+Chinese engineers ==
+to work on long-term projects in India = working on long-term projects in India
+can easily obtain visas <>   being a particular challenge
+============
+736
+1
+Management at Huawei also feels that issues over security are hampering its progress - largely stemming from allegations, in 2001, that it was accused of working for Pakistan and the then Taleban government in Afghanistan.
+Management at Huawei was accused of working for Pakistan and the then Taleban government in Afghanistan.
+
+Management at Huawei [also feels that issues over security are hampering its progress - largely stemming from allegations, in 2001,] that it was accused of working for Pakistan and the then Taleban government in Afghanistan.
+
+cat: remove
+=================
+735
+1
+Trade between China and India is expected to touch $20 bn this year and Chinese investors are now rushing into India - lured by the country's growing wealth.
+There is a profitable trade between China and India.
+
+Trade between China and India == 
+There is a profitable trade = expected to touch $20 bn this year and Chinese investors are now rushing into India
+
+======================
+734
+0
+Mr Carstens left his job as IMF's deputy managing director last month to work with Mr Calderon, and will now lead efforts to push through market reforms and create more jobs.
+Mr Carstens lost his job as IMF's deputy managing director last month.
+
+left <> lost
+
+cat: apakah memang tidak entail?
+=====================
+733
+1
+Mr Lopez Obrador was "sworn in" by Senator Rosario Ibarra, a human rights activist and member of his party, who placed a red, green and white presidential sash across his shoulders.
+Senator Rosario Ibarra is a human rights militant.
+
+Senator Rosario Ibarra, a human rights activist = Senator Rosario Ibarra is a human rights militant.
+activist = militant
+
+cat: coref, ada dua orang
+=====================
+732
+0
+Mr Lopez Obrador, who lost July's presidential election by less than one percentage point, declared himself Mexico's "legitimate" president.
+Mr Lopez Obrador didn't loose the presidential election in July.
+
+Mr Lopez Obrador, who lost July's presidential election <> Mr Lopez Obrador didn't loose the presidential election in July
+who lost <> didn't loose
+=========================
+731
+1
+Mr Lopez Obrador has alleged electoral fraud cost him the presidency, despite a recount confirming Felipe Calderon as Mexico's president-elect.
+
+Felipe Calderon won the presidential election of Mexico.
+
+despite a recount confirming Felipe Calderon as Mexico's president-elect = Felipe Calderon won the presidential election of Mexico
+
+confirming xxx as yyy president-elect = xxx won the presidential election of yyy
