@@ -1233,10 +1233,144 @@ Mr Lopez Obrador has alleged electoral fraud cost him the presidency, despite a 
 
 Felipe Calderon won the presidential election of Mexico.
 
-<<<<<<< HEAD
 despite a recount confirming Felipe Calderon as Mexico's president-elect = Felipe Calderon won the presidential election of Mexico
-=======
->>>>>>> 237803e2a110dafc66c4912042fc1844db0df817
->>>>>>> 42667b0041c59c6f8fc3b3331d8ab48b96872385
 
 confirming xxx as yyy president-elect = xxx won the presidential election of yyy
+==========
+730
+1
+The IAEA board in February referred Iran to the Security Council, suggesting it had breached the Nuclear Nonproliferation Treaty and might be trying to make nuclear weapons.
+Iran might be trying to make nuclear weapons according to the IAEA board.
+
+The IAEA board suggesting = according to the IAEA board
+it [had breached the Nuclear Nonproliferation Treaty] and might be trying to make nuclear weapons = Iran might be trying to make nuclear weapons 
+
+=======================================================
+
+729
+0
+Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.
+Mice fed with red wine lived longer despite a fatty diet.
+
+red wine <> substance found in red wine
+
+
+=========
+728
+1
+The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+
+Iran's program is under suspicion because of the findings by IAEA inspectors.
+
+findings by IAEA inspectors ==
+have increased suspicions about Iran s program = Iran's program is under suspicion 
+
+=========
+727
+1
+Iranian nuclear officials say 54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor, such as the one being built by Russia that is near completion at the southern city of Bushehr.
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.
+
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor == 
+==============
+730
+1
+The IAEA board in February referred Iran to the Security Council, suggesting it had breached the Nuclear Nonproliferation Treaty and might be trying to make nuclear weapons.
+Iran might be trying to make nuclear weapons according to the IAEA board.
+
+The IAEA board suggesting = according to the IAEA board
+it [had breached the Nuclear Nonproliferation Treaty] and might be trying to make nuclear weapons = Iran might be trying to make nuclear weapons 
+
+=======================================================
+
+729
+0
+Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.
+Mice fed with red wine lived longer despite a fatty diet.
+
+red wine <> substance found in red wine
+
+
+=========
+728
+1
+The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+
+Iran's program is under suspicion because of the findings by IAEA inspectors.
+
+findings by IAEA inspectors ==
+have increased suspicions about Iran s program = Iran's program is under suspicion 
+
+=========
+727
+1
+Iranian nuclear officials say 54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor, such as the one being built by Russia that is near completion at the southern city of Bushehr.
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.
+
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor == 
+==============
+726
+1
+The International Atomic Energy Agency report detailing the discovery also faulted Tehran for not cooperating with the U.N. watchdog's attempts to investigate other suspicious aspects of Iran s nuclear program.
+Tehran did not cooperate with the U.N. watchdog's attempts to investigate suspicious aspects of Iran's nuclear program.
+
+xx faulted Tehran for not cooperating with the U.N. watchdog's attempts to investigate other suspicious aspects of Iran s nuclear program = Tehran did not cooperate with the U.N. watchdog's attempts to investigate suspicious aspects of Iran's nuclear program
+
+xx faulted Tehran for not cooperating =  Tehran did not cooperate
+================
+725
+1
+Bush withheld judgment Monday on rival calls to beef up or scale down U.S. troops in Iraq, and said angry protests in Indonesia against his Mideast policy were a healthy sign of democracy in the heavily Muslim nation.
+Bush said that protests in Indonesia against his Mideast policy were a sign of democracy in the heavily Muslim nation.
+
+{Bush} [and] said {that} [angry] protests in Indonesia against his Mideast policy were a healthy sign of democracy in the heavily Muslim nation. = Bush said that protests in Indonesia against his Mideast policy were a sign of democracy in the heavily Muslim nation.
+
+==================
+724
+1
+Now GMFanuc Robotics has perfected a robotic solution that is three times faster than manual spraying, can reproduce a spray pattern to an accuracy of 0.03 inch, and can be programmed easily to handle a wide range of garments.
+
+Robots are used to spray dye on garments.
+
+a robotic solution
+spraying
+reproduce a spray pattern
+===================
+723
+1
+The motor industry accounts for as much as 40 per cent of the 450,000 installed industrial robots worldwide but their use is changing and applications are expanding.
+
+The most common use for robots is the manufacture of automobiles.
+
+The motor industry accounts for as much as 40 per cent of the 450,000 installed industrial robots =
+The most common use for robots is the manufacture of automobiles
+
+The motor industry  = the manufacture of automobiles
+The most common use for robots = accounts for as much as 40 per cent [of the 450,000] installed industrial robots 
+
+=============================
+722
+1
+As Fiat shows off its robot-controlled inventory stacks in glossy advertisements and IBM switches off the lights in its automated warehouse in Greenock, it is clear that this Cinderella operation has a new set of high-tech glad rags.
+
+Fiat, in particular, uses robots for inventory management.
+
+As Fiat shows off its robot-controlled inventory = Fiat, in particular, uses robots for inventory management
+uses robots for inventory management ==
+shows off its robot-controlled inventory  = uses robots
+=============================
+721
+1
+Contrary to what is happening in some other parts of the Amazon, where the forest is being slashed and burned at an alarming rate, those who want to save Acre's forest seem to be winning.
+
+Slash and burn cycle of clearing causes many problems in the rainforest.
+
+an alarming rate = causes many problems
+
+cat: implisit 
+
+==============================
+
+
+
+
