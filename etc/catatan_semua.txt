@@ -1370,7 +1370,23 @@ an alarming rate = causes many problems
 cat: implisit 
 
 ==============================
+720
+0
+Picture a Janis Joplin robot sitting on a park bench talking about the Summer of Love, singing "Me and Bobby McGee" and introducing a David Bowie robot.
+Robots serve as wax singers in the Rock Hall of Fame.
 
 
+Picture a Janis Joplin robot <> Robots
+Rock Hall of Fame <> a park bench
 
+===============================
+719
+0
+
+Strong competition in industries such as shipping has resulted in waves of investment in labour saving technology such as steel and aluminium cutting tools, processing machine and welding robots.
+
+The automotive industry has seen advances in robotic metal cutting.
+
+
+kata kunci:
 

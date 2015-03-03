@@ -526,8 +526,8 @@ public class AmbilSubject {
 		//kal = "Democrat members had strong small business voting records";
 		//kal = "Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.";
 
-		kal = "Ebola hemorrhagic fever is a fatal disease caused by a new virus which has no known cure";
-
+		//kal = "Ebola hemorrhagic fever is a fatal disease caused by a new virus which has no known cure";
+         kal = "The automotive industry has seen advances in robotic metal cutting";
 		String subj = af.debugCariSubjNonTree(kal);
 		System.out.println("Subj="+subj);
 		
