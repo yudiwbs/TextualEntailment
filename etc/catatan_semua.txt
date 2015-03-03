@@ -12,7 +12,7 @@ Common knowldge (id=790)
 query untuk dapat data:
 
 select id,isEntail,t,h
-from  rte3 where  id=720
+from  rte3 where  id=745
 
 
 ========================================
@@ -1385,3 +1385,5 @@ cat: lokasi?
 ===============
 test test
 
+halo halo bandung
+=====
