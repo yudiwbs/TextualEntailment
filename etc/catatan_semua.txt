@@ -1371,13 +1371,13 @@ cat: implisit
 
 ==============================
 720
+720
 0
 Picture a Janis Joplin robot sitting on a park bench talking about the Summer of Love, singing "Me and Bobby McGee" and introducing a David Bowie robot.
 Robots serve as wax singers in the Rock Hall of Fame.
 
 
-Picture a Janis Joplin robot <> Robots
-Rock Hall of Fame <> a park bench
+cat: lokasi?
 
 ===============================
 719
