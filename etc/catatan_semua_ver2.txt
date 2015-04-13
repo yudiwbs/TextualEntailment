@@ -1,0 +1,1404 @@
+========================================================
+operator:
+>>     :  passage retrieval
+=>     :  sentence compression, dipandu oleh hipotesis
+^^	   :  perubahan posisi	
+A =? B :  A entail B?
+=========================================================
+id: 1
+entail:true
+
+Hypotesis: 
+Baikalfinansgroup was sold to Rosneft.
+
+Text: 
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft 
+>> {passage retrieval}
+Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft. 
+=> {sentence compression}
+Baikalfinansgroup bought by Rosneft
+
+{periksa entailment}
+Baikalfinansgroup was sold to Rosneft =? Baikalfinansgroup bought by Rosneft
+
+Catatan:
+bought by  =  sold to
+
+=======================
+id:2
+isentail: false
+
+Yuganskneftegaz cost US$ 27.5 billion.
+
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4
+billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil
+company Rosneft 
+>> 
+Yuganskneftegaz was originally sold for US$ 9.4 billion  {{prepro: US$9.4 = US$ 9.4}}
+=> 
+Yuganskneftegaz sold for US$ 9.4 billion
+
+Yuganskneftegaz cost US$ 27.5 billion =? Yuganskneftegaz sold for US$ 9.4 billion
+
+Catatan:
+cost = sold for
+Objek tidak cocok
+=========================
+
+id:3
+isentail: false
+"Does A Tiger Have A Necktie" was produced in London.
+
+Loraine besides participating in Broadway's Dreamgirls, also participated in the
+Off-Broadway production of "Does A Tiger Have A Necktie". In 1999, Loraine went to London, United Kingdom.
+There she participated in the production of "RENT" where she was cast as "Mimi" the understudy. 
+>> 
+Loraine besides participating in Broadway's Dreamgirls, also participated in the Off-Broadway production of "Does A Tiger Have A Necktie" 
+=> 
+Loraine  participated in "Does A Tiger Have A Necktie"
+
+"Does A Tiger Have A Necktie" was produced in London =? Loraine  participated in "Does A Tiger Have A Necktie"
+
+Catatan: 
+Semua tidak cocok
+tanda petik dianggap satu kesatuan
+
+===========================
+id:4
+isentail: true
+
+"The Extra Girl" was produced by Sennett.
+
+"The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's "Show People" (1928). 
+>> 
+"The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the picture 
+=> "The Extra Girl" (1923) is a story of girl
+
+{ekstrak passage ke dua}
+
+"The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's "Show People" (1928) 
+>> 
+This Mabel Normand vehicle, produced by Mack Sennett 
+=> 
+Mabel Normand vehicle, produced by Sennett
+
+{ada dua yang diperiksa, entail true jika salah satu true}
+
+"The Extra Girl" was produced by Sennett. =? "The Extra Girl" (1923) is a story of girl
+"The Extra Girl" was produced by Sennett. =? Mabel Normand vehicle, produced by Sennett
+
+cat:
+Subyek tidak cocok
+============================
+id:5
+isentail: true
+
+30 die in a bus collision in Uganda
+A bus collision with a truck in Uganda has resulted in at least 30 fatalities 
+=> 
+bus collision resulted 30 fatalities
+
+30 die in a bus collision in Uganda =? bus collision resulted 30 fatalities
+
+Cat: 
+ada perbedaan posisi
+=============================
+id:6
+entail:false
+
+500 small companies are partners of Procter and Gamble
+
+Take consumer products giant Procter and Gamble. Even with a $1.8 billion Research and Development budget, it still manages 500 active partnerships each year, many of them with small companies 
+=> 
+Procter and Gamble still manages 500 partnerships
+
+500 small companies are partners of Procter and Gamble =? Procter and Gamble still manages 500 partnerships
+
+Cat:
+coref 
+it still ..  =  Procter and Gamble still ..
+Objek berbeda, partnerships <> small companies
+
+==============================
+id:7
+entail:true
+
+52 people and four bombers were killed on July 7.
+
+After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers. 
+>> 
+the July 7 transit attacks, which killed 52 people and the four bombers 
+=> 
+July 7, which killed 52 people and the four bombers
+
+Cat: 
+subyek (transit attack), hilang di T
+===============
+id:8
+entail:false
+
+
+80% approve of Mr. Bush.
+:: {perubahan posisi}
+Mr. Bush approval 80%
+
+Mrs. Bush's approval ratings have remained very high, above 80%, even as her husband's have recently dropped below 50%. 
+>> 
+Mrs. Bush's approval ratings have remained very high, above 80% 
+=> 
+Mrs. Bush's approval above 80%
+
+Cat: 
+subjek berbeda  Mrs. Bush's <> Mr. Bush  
+penanganan aproval, approve =
+======================
+id:9
+entail:false
+
+A complete Dakosaurus was discovered by Diego Pol.
+
+Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National University of La Plata, and their colleagues. 
+>> 
+Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University 
+=> 
+a complete skull studied by Diego Pol
+
+A complete Dakosaurus was discovered by Diego Pol. =? a complete skull studied by Diego Pol
+
+Cat:
+verb berbeda, discovered<>studied
+
+========================
+id:800
+entail:true
+
+US Steel may invest in strip casting.
+
+US Steel could even have a technical advantage over Nucor since one new method of steel making it is considering, thin strip casting, may produce higher quality steel than the Nucor thin slab technique.
+>> 
+US Steel could even have a technical advantage over Nucor since one new method of steel making it is considering, thin strip casting
+=>
+US Steel is considering, thin strip casting
+
+cat:
+coref it = US Steel
+considering = invest
+=====================
+id:799
+entail:false
+
+Tyler Jackson has been sentenced to 18 months.
+
+Two other marines, Tyler Jackson and John Jodka III, have already pleaded guilty to aggravated assault and conspiracy to obstruct justice and were sentenced to 21 months and 18 months, respectively. 
+>>
+Tyler Jackson and John Jodka III, have already pleaded guilty to aggravated assault and conspiracy to obstruct justice and were sentenced to 21 months and 18 months
+=>
+Tyler Jackson and John Jodka III were sentenced to 21 months and 18 months
+
+Tyler Jackson has been sentenced to 18 months =?  Tyler Jackson and John Jodka III were sentenced to 21 months and 18 months
+
+Catatan:
+x & y verb a & b
+==========================
+798
+entail:false
+
+The NCEA has been degraded by the authority.
+
+Critics said the National Certificate of Educational Achievement or NCEA, the main qualification for high school students, would be degraded by the authority allowing text-speak use in exams. 
+>> 
+National Certificate of Educational Achievement or NCEA, the main qualification for high school students, would be degraded by the authority
+=>
+NCEA would be degraded by the authority
+
+cat:
+has been <> would be
+===========================
+797
+entail:true
+
+The South African steel manufacturer Iscor plans to develop a mini-mill.
+
+Iscor, the South African iron and steel manufacturer, has announced plans to develop a steel mini-mill at Saldanha Bay on the country's west coast in partnership with the state-run industrial development Corporation. 
+>>
+Iscor, the South African iron and steel manufacturer, has announced plans to develop a steel mini-mill
+=>
+the South African steel manufacturer, plans to develop a mini-mill
+
+Cat: Iscor hilang
+===============================
+796
+entail:false
+
+Haque wants to include English in some exams.
+
+Confident that those grading papers would understand answers written in text-speak, Haque stressed that in some exams, including English, text abbreviations would be penalized.
+>>
+Haque stressed that in some exams, including English, text abbreviations would be penalized
+
+Cat:
+include <> including
+English punya dua arti (bahasa dan ujian)
+Summary tidak boleh memotong arti ( text abbreviations would be penalized)
+
+======================
+795
+isentail:true
+
+Australia's Broken Hill Proprietary and the US's North Star Steel will build and operate one in the US Midwest.
+
+The steel division of Broken Hill Proprietary, the Australian resources group, and North Star steel, part of the privately-owned Cargill group in the US, are joining forces to build and operate a new steel mini-mill in the US Midwest.
+>>
+Broken Hill Proprietary, the Australian resources group, and North Star steel, part of the privately-owned Cargill group in the US, are joining forces to build and operate a new steel mini-mill in the US Midwest.
+=>
+Broken Hill Proprietary, the Australian and North Star steel in the US are joining forces to build and operate a new steel mini-mill in the US.
+
+Australia's Broken Hill Proprietary and the US's North Star Steel will build and operate one in the US Midwest. =? Broken Hill Proprietary, the Australian and North Star steel in the US are joining forces to build and operate a new steel mini-mill in the US.
+
+cat:
+are joining forces to build  = will build
+operate one in = operate a new steel mini-mill in
+
+=============
+id:794
+isentail: true
+
+Steven Jenkins was shot by a friend.
+
+The fatal shooting of Steven Charles Jenkins, a terminally ill AIDS patient, by his friend Philip Lee Saylor at Cedars-Sinai Medical Center has again focused attention on the problems of death and dying in our society. 
+>> 
+shooting of Steven Charles Jenkins, a terminally ill AIDS patient, by his friend Philip Lee Saylor
+=>
+shooting of Steven Charles Jenkins by his friend 
+
+Steven Jenkins was shot by a friend. =? shooting of Steven Charles Jenkins by his friend
+
+Cat:
+
+Steven Jenkins was shot == shooting of Steven Charles
+
+
+==============
+id:793
+isentail:false
+
+Martin Page was sent on a mission to Afghanistan.
+
+sent(Martin Page, on a mission, to Afganistan)
+
+"The word in the galley food queues is that we could do with more men, and the kit does keep wearing out, but that's due to the conditions here," said Corporal Martin Page.
+
+said (Martin Page, "....")
+
+===================
+id:792
+isentail:true
+
+There is a Supreme Court decision about the removal of life-support.
+
+decision(Supreme Court,about the removal of life-support)
+
+
+The Supreme Court said today states may bar the removal of life-sustaining treatment from comatose patients who have not made or cannot make their desires known.
+>>
+The Supreme Court said today states may bar the removal of life-sustaining
+=>
+The Supreme Court said the states may bar removal of life-sustaining
+
+There is a Supreme Court decision about the removal of life-support. 
+=?
+The Supreme Court said the states may bar removal of life-sustaining
+
+Said(The Supreme Court, states may bar the removal of life-sustaining)
+
+
+============
+said = decision
+bar<>decision, tapi dapat dianggap bar itu bagian hasil decision
+
+
+==========================
+id:791
+entail:false
+
+There was a Chinook attack.
+
+attack(Chinook)
+
+Attack helicopters, Chinooks, armoured vehicles, cranes and a fire engine encircled the group.
+
+encircled(the group, [Attack helicopters,Chinooks, armoured vehicles, cranes, a fire engine]
+
+
+==============================
+id: 790
+entail:false
+
+The Senate is the least productive.
+The Senate
+least productive
+
+Forty-five percent of the bills examined were bipartisan, and 85 percent of the reviewed bills had Republican lead sponsors. 8221; Small business owners are disappointed by the Republican track record, particularly the lack of productivity in the Senate.
+
+disappointed by the Republican track record
+lack of productivity in the Senate
+
+Cat: senat terdiri atas republic+democrat.
+
+Solusi: ? 
+
+=========================================
+id: 789
+entail: false
+
+A cocaine-imbibing Miami man had life support removed.
+
+A cocaine-imbibing Miami man
+life support 
+removed
+
+Maximo Rene Mendez in an apparent smuggling scheme died after doctors disconnected life-support equipment.
+
+disconnected life-support equipment
+
+Cat:  beda subject. 
+
+life-support dan life support
+removed = disconnected
+
+=================
+id:788
+
+Democrat members had strong small business voting records.
+
+Democrat members
+small business voting records
+had
+
+Democrat members of the Ways and Means Committee, where tax bills are written and advanced, do not have strong small business voting records.
+
+Democrat members 
+small business voting records.
+do not have
+
+Catatan: penanganan not 
+
+had == do not have 
+
+====================
+
+id:787
+isentail: false
+Democrats won the elections three years ago.
+
+Democrats
+the elections
+win
+time: three years ago
+
+
+Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.
+
+if 
+Democrats
+win
+
+(SBAR (IN if) (S (NP (NNPS Democrats)) (VP (VBP win))))
+
+Cat: pengunaan kata if
+=======================
+id: 786
+isentail: false
+
+Mr Calderon is able to create a mass civil disobedience movement.
+
+Mr Calderon 
+mass civil disobedience movement.
+able
+to create
+
+
+Although he has enough of a support base to be able to create a mass civil disobedience movement, some analysts think that his campaign will be, at best, a thorn in Mr Calderon's side.
+
+
+he has enough of a support base to be able to create a mass civil disobedience movement
+his campaign will be, at best, a thorn in Mr Calderon's side.
+ 
+
+Cat:
+coref jebakan (he --> his campaign will be, at best, a thorn in Mr Calderon's side-> bukan Mr Calderon)
+coref yang muncul bersamaan dengan nama
+
+
+==================
+id: 785
+isentail:false
+
+Will Grant is researching a conflict with Mexicans.
+
+Will Grant
+a conflict with Mexicans
+researching
+
+
+The BBC's Americas editor Will Grant says many Mexicans are tired of conflict and long for a return to normality.
+
+Will Grant
+Mexicans are tired of conflict
+say
+
+Cat: beda predikat
+==================
+id:784
+isentail:true
+
+Three Vienna nurses are under suspicion for killing patients.
+
+Three Vienna nurses
+killing patients
+under suspicion
+
+Three nurses in one of Vienna's oldest hospitals have been arrested on suspicion of killing 35 patients.
+
+Three nurses in one of Vienna's oldest hospitals
+suspicion of killing 35 patients.
+have been arrested
+
+Cat:
+
+Wordnet:  suspicion  ==  arrested
+
+killing 35 patients  ==  killing  patients
+
+==================
+id: 783
+isentail: true
+
+James Barker is accused of raping an Iraqi girl and killing her family.
+
+James Barker 
+accussed
+raping 
+an Iraqi girl and killing her family.
+
+
+
+The soldier, James Barker, one of four American soldiers accused of raping the Iraqi girl and killing her family in the March 2006 incident, pleaded guilty on Wednesday to rape and murder in Fort Campbell, Kentucky.
+
+The soldier, James Barker, one of four American soldiers accused of raping the Iraqi girl and killing her family
+
+The soldier, James Barker, one of four American soldiers 
+raping the Iraqi girl and killing her family
+accused
+
+
+Cat: cocok
+
+==================
+id: 782
+isentail: true
+
+A U.S. soldier was sentenced to 90 years in jail.
+
+A U.S. soldier
+90 years in jail
+sentenced
+
+A U.S. soldier accused of participating in the rape of an Iraqi girl and then killing her and her family was sentenced to 90 years in jail on Thursday, media reports said.
+
+A U.S. soldier 
+accused
+of participating in the rape of an Iraqi girl and then killing her and her family
+was sentenced
+to 90 years in jail
+
+Catatan: 
+- predikat+obj sebagian tidak cocok, tapi yg lain cocok
+
+
+==================
+id: 781
+isentail:
+
+NCEA 
+is 
+the main qualification 
+for high school students.
+
+Critics said 
+
+the National Certificate of Educational Achievement or NCEA, 
+the main qualification for high school students, 
+
+would be 
+degraded 
+by the authority allowing text speak use in exams.
+
+Cat:
+Penanganan singkatan 
+koma bisa pengganti is
+sebagian cocok 
+
+==================
+id: 780
+isentail: true
+
+Full English 
+is 
+recommended 
+by New Zealand's Qualifications Authority.
+
+New Zealand's Qualifications Authority        <-
+said 
+Friday 
+that it still strongly discourages students 
+from using anything other than full English,  <- 
+but that credit will be given if the answer "clearly shows the required understanding," even if it contains text-speak.
+
+Cat:
+- kalimat negatif
+- posisi terbalik
+- rule:
+	- xxx said  ====    by xxx
+	- discourages +  anything other than full English  ==  full English
+- penanganan hari: Friday
+- strongly discourages == recommended
+
+
+
+==================
+id: 779
+isentail: false
+
+Begum 
+was not able 
+to feed herself.
+
+Begum, who had to borrow to buy bamboo to make stools, 
+received 25 cents a day from moneylenders. 
+
+After giving them stools to pay off her debt, 
+she was left with 2 cents a day, 
+
+barely enough      <-
+to feed herself.   <- 
+
+Cat:
+enough <> was not able
+coref: begum == herself
+==================
+id:  778
+isentail:true
+
+Servicemen and women 
+are 
+fighting 
+a war 
+in southern Afghanistan.
+
+The trip was about doing what he hasn't done for what many troops feel has been too long - 
+visiting the thousands of 
+
+servicemen and women    <-
+fighting 
+a war 
+in southern Afghanistan.
+
+catatan:
+cocok
+
+====================
+id:
+isentail:
+
+The Hercules transporter plane 
+made 
+a flight to Pakistan.
+
+
+The Hercules transporter plane   <-
+which 
+flew straight here from the first round of the trip in Pakistan,   <-
+touched down and it was just a brisk 100m stroll to the handshakes.
+
+catatan:
+a flight to Pakistan. == flew straight here from the first round of the trip in Pakistan
+
+a flight = flew 
+
+====================
+id:  776
+isentail: false
+
+Yunus 
+is 
+the first person 
+to win a Nobel Prize.
+
+
+Yunus, who was nominated for the peace prize at least twice before, is the first person from Bangladesh, a country of 147 million, to win a Nobel Prize. His Nobel Prize is a rare bright light in a country struggling to defeat Islamic terrorists, and which is chronically inundated by floods and battered by storms that blow in from the Bay of Bengal. The country, formerly known as East Pakistan, is bordered by the Bay of Bengal, India and Burma.
+
+Yunus 
+is 
+the first person from Bangladesh   <---  
+to win a Nobel Prize
+
+
+catatan:
+tidak cocok: from XXX  
+
+====================
+id: 775
+isentail:true
+
+Republicans 
+control 
+both Houses and the White House.
+
+As a late September report by the Democrats points out, 
+Republicans have done a poor job at getting their own small business bills through Congress even though 
+
+they control both Houses and the White House.  <--
+
+catatan:
+coref, they
+====================
+id: 774
+isentail:false
+
+Gates' foundation 
+extends 
+its microfinance programs 
+to 5 million more of the world's poorest families.
+
+In August, 
+Gates' foundation gave Yunus' Grameen Foundation 1.5 million <-- 
+for a program 
+to extend its microfinance programs     <--
+to 5 million more of the world's poorest families. <---
+
+Three years ago, tech entrepreneur Craig McCaw provided 2 million to start up the Grameen Technology Center, 
+which is using microcredit to finance cheap mobile service for people in Uganda and Rwanda.
+
+catatan:
+jebakan coref, its disini adalah Grameen Fundation
+====================
+id:773
+isentail:true
+
+80% approve of Mr. Bush.
+
+While the House has been extremely active in passing bills addressing the key priorities of entrepreneurs, most of the legislation has hit a brick wall over in the Senate.
+
+Catatan:
+aneh, salah soal sepertinya
+
+=========
+id: 772
+isentail:false
+The Nobel committee 
+plans 
+to help people break out of poverty.
+
+The Nobel committee                                    <-
+said 
+in a statement that 
+"lasting peace cannot be achieved 
+unless large population groups 
+find ways in which to break out of poverty."           <-
+
+
+Catatan:
+plan <> said
+
+=========
+id: 771
+isentail:true
+
+Yunus                              
+supported 
+more than 
+50,000 Struggling Members.
+
+In 2003, 
+Yunus                                <-
+brought 
+the microcredit revolution            
+to the streets of Bangladesh 
+to support                           <-
+more than                            <-
+50,000 beggars,                      <-
+whom the Grameen Bank respectfully 
+calls 
+Struggling Members.
+
+Catatan:
+coref: beggar = Struggling member
+=========
+id: 770
+isentail:
+
+Grameen Bank's                          
+loans 
+are 
+used 
+to buy a cow.
+
+Most of Grameen Bank's borrowers                <-
+use 
+the small loans                                 <-
+to start businesses by, 
+for instance, 
+buying a cow to produce milk,                   <-
+or a rickshaw, 
+or materials to make cloth or pottery.
+
+Catatan:
+buy == buying
+
+=========
+id:769
+isentail:true
+
+Yunus 
+started 
+his own bank 
+to loan money 
+to the villagers.
+
+He 
+tried 
+to persuade 
+a local banker 
+to loan more money 
+to the villagers, 
+but the banker refused, 
+insisting they didn't qualify for credit. 
+So, 
+Yunus                            <-
+started                          <-
+his own bank                     <-
+to help the poorest 
+of the poor lift themselves up.
+
+Catatan:
+common knowledege, help == loan
+to help the poorest == to loan money
+
+
+=========
+id: 768
+isentail:false
+
+The FDA 
+provided 
+a list of states 
+in which 
+the pills have been sold.
+
+The FDA                                         <-
+would not say                                   <-
+in which states the pills had been sold,        <-
+but instead recommended that customers determine whether products they bought are being recalled by checking the store list on the FDA Web site, and the batch list. The batch numbers appear on the container's label.
+
+
+Catatan:
+- kalimat negatif
+- say == provided
+
+=========
+id: 767
+isentail: true
+t: "I've always said he's the closest I will ever come to meeting Gandhi, he's simply unmoved by any obstacle or any argument," said Bill Clapp, an heir to the Weyerhaeuser fortune and founder of Global Partnerships, a Seattle microfinance group that has partnered with Grameen in Central America.
+h: Bill Clapp is the founder of the Global Partnerships.
+
+Alignment
+Bill Clapp, an heir to the Weyerhaeuser fortune and founder of Global Partnerships,
+=>
+Bill Clapp is the founder of the Global Partnerships.
+
+Catatan:
+buang "an heir to the Weyerhaeuser fortune and"
+
+=========
+id: 766
+isentail: false
+t: Molly Walsh, 21, a George Washington University student shopping at a CVS pharmacy in Washington, D.C., said she didn't plan to toss any of the store-brand drugs at home that she'd bought to save money. Nor did she plan to stop buying the generic products.
+h: Molly Walsh plans to stop buying the generic products.
+
+Alignment
+Nor did she plan to stop buying the generic products
+Molly Walsh plans to stop buying the generic products.
+
+Catatan:
+kalimat negatif: Nor
+Coref: Molly Walsh = she
+
+==========
+id: 765
+isentail: true
+
+t:The Nobel shines a spotlight on a form of "social capitalism" that has gained currency in recent years, propelled by high-profile supporters like former President Bill Clinton, rock star Bono and Microsoft founder Bill Gates. 
+
+h: President Bill Clinton is a supporter of "social capitalism".
+
+Alignment:
+
+"social capitalism"   ....  [propelled by high-profile] supporters like former President Bill Clinton
+
+Catatan:
+supporters like former President Bill Clinton =>
+President Bill Clinton is a supporter 
+
+transformasi
+X like Y
+Y is X
+==============
+id: 764
+isentail: false
+t: Kevin Vincent, 44, of Arlington, Va., said his wife buys store brand acetaminophen and he wanted to find out more about the problem.
+h: Kevin Vincent buys store brand acetaminophen.
+
+alignment:
+Kevin Vincent [, 44, of Arlington, Va.,] {said} {his wife} buys store brand acetaminophen
+
+catatan:
+Said
+his wife
+
+=============
+id: 763
+isentail: true
+
+t: PST Chittagong, Bangladesh-- Muhammad Yunus, Bangladesh's "Banker to the Poor" who provides loans to help millions of people fight poverty by starting businesses, has won the Nobel Peace Prize.
+
+h: Muhammad Yunus won the Nobel Prize for Peace.
+
+alignment:
+Muhammad Yunus, [Bangladesh's "Banker to the Poor" who provides loans to help millions of people fight poverty by starting businesses,] has won the Nobel Peace Prize.
+
+catatan: buang 
+
+===========
+id: 762
+isentail: false
+t: Acetaminophen is best known as the drug in products sold under the Tylenol brand, but is widely available in typically less expensive generic versions.
+h: Acetaminophen is produced by Tylenol.
+
+alignment:
+Acetaminophen [is best known as the drug in products] sold under the Tylenol brand,
+
+catatan:
+produced <> sold under
+================
+id:761
+isentail:true
+t:The voluntary recall is considered a Class II recall since it covers products that might cause a temporary health problem or pose only a slight threat of a serious nature, the FDA said.
+h:A Class II recall covers products that might cause a temporary health problem.
+
+allignment:
+a Class II recall since it covers products that might cause a temporary health
+
+cat: bisa langsung
+==========
+id:760
+isentail:false
+t:A company investigation turned up metal in roughly 200 pills of the 70 million it passed through a metal detector, according to the FDA.
+h:The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.
+
+??
+
+===========
+id:759
+isentail:1
+t:CVS will stop selling its own brand of 500-milligram acetaminophen caplets and pull bottles from store shelves nation wide, spokesman Mike DeAngelis said.
+h:CVS will not sell its own brand of 500-milligram acetaminophen caplets any longer.
+
+allignment:
+CVS will stop selling its own brand of 500-milligram acetaminophen caplets
+
+cat:
+will stop selling = will not sell
+===========
+758
+1
+t:The drug, along with aspirin and ibuprofen, is one of the most widely used pain relievers available without a doctor's note.
+h:Aspirin is one of the most widely used pain relievers available without a doctor's note.
+
+allignment:
+aspirin [and ibuprofen], is one of the most widely used pain relievers available without a doctor's note.
+
+catatan:
+subset
+x and y doing z  entail
+x doing z
+
+==============
+757
+1
+t:Consumers who take any of the contaminated pills could suffer minor stomach discomfort or possible cuts to the mouth and throat, the FDA said, adding that the risk of serious injury was remote.
+h:Contaminated pills could cause minor stomach discomfort or possible cuts to the mouth and throat.
+
+allignment:
+Contaminated pills could suffer minor stomach discomfort or possible cuts to the mouth and throat
+
+catatan:
+langsung
+===============
+756
+1
+t: The contaminated pills included metal fragments ranging in size from "microdots" to portions of wire one-third of an inch long, the FDA said.
+h: The contaminated pills contained metal fragments.
+
+allignment:
+The contaminated pills included metal fragments
+
+catatan:
+langsung
+================
+755
+1
+t:The pills were sold under store brands by Wal-Mart, CVS, Safeway and more than 120 other major retailers, the Food and Drug Administration said.
+h:The pills were commercialized by major retailers.
+
+allignment:
+The pills were /sold/commercialized/ under store brands by /Wal-Mart, CVS, Safeway/major retailers
+
+catatan:
+sinonim,
+
+major retailers? => enclopedic knowledge
+===================
+754
+1
+t:A team from the U.S. Centers for Disease Control boarded the ship when it docked in St. Maarten to oversee the cleaning operation and try to determine what caused the outbreak, Carnival said.
+h:The causes of the outbreak were searched for by a team from the U.S. CDC.
+
+allignment:
+tdk bisa langsung
+
+/try to determine what caused the outbreak/The causes of the outbreak were searched
+A team from the U.S. /Centers for Disease Control/CDC
+
+catatan:
+singkatan 
+posisi 
+=======================
+753
+1
+t:"They brought us 7-Up, bottled water, ice and a diet of rice, though you didn't feel like eating," said Jim Lankes, 48, of Phoenix.
+h: Jim Lankes was given bottles of waters, ice and rice.
+
+allignment
+[They brought] us/Jim Lankes %was given%brought 7-Up, bottled water, ice and a diet of rice
+
+catatan:
+kalimat tidak langsung
+Jim Lankes bagian dari us
+=========================
+752
+0
+t:Hadley said Jordan was chosen as the site of the meeting between Bush and al-Maliki because of its support for the unity government in Iraq and the fact that Bush would be in the region.
+h:Bush will meet al-Maliki in Hadley.
+
+allignment:
+tidak bisa langsung
+
+/*Jordan*/Hadley was chosen as the site of the /meeting between Bush and al-Maliki/Bush will meet al-Maliki
+
+catatan:
+ /meeting between Bush and al-Maliki/Bush will meet al-Maliki
+
+ kemudian match lokasi:
+ 
+ in Hadley  <>
+ Jordan was chosen as the site of the meeting 
+=================
+751
+0
+t:A Pentagon committee and the congressionally chartered Iraq Study Group have been preparing reports for Bush, and Iran has asked the presidents of Iraq and Syria to meet in Tehran.
+h:Bush will meet the presidents of Iraq and Syria in Tehran.
+
+allignment
+ Iran has asked the presidents of Iraq and Syria to meet in Tehran.
+ 
+catatan:
+subyek tidak cocok
+=============
+750
+1
+t:Preliminary tests identified the source of the outbreak as the highly contagious norovirus, which had struck several guests just before they boarded the cruise Nov. 3 in Rome, Carnival officials said.
+h:Norovirus is the source of the outbreak on the ship.
+
+allignment:       
+tidak bisa langsung
+
+source of the outbreak as the highly contagious norovirus  [cruise, Carnival == the ship]
+
+dibalik
+xxx is the source
+the source .... as xxx
+
+=======
+749
+1
+t:Fourteen guests and five crew remained ill and in isolation when the ship arrived at Port Everglades, Fla., according to a statement from Carnival Cruise Lines, a brand of Carnival Corp.
+h:The Carnival Cruise Lines is a brand of Carnival Corp.
+
+allignment:
+Carnival Cruise Lines, a brand of Carnival Corp
+
+catatan:
+[is]
+==========
+748
+1
+t:Aboard Air Force One, Nov. 22, 2006 President Bush and Iraqi Prime Minister Nouri al-Maliki will meet next week in Jordan to discuss the deteriorating security situation in Iraq.
+h:Jordan will host the meeting between President Bush and Iraqi Prime Minister Nouri al-Maliki.
+
+alignment:
+President Bush and Iraqi Prime Minister Nouri al-Maliki will meet next week in Jordan
+
+catatan:
+will meet next week in Jordan = host the meeting
+
+===========
+747
+0
+t:San Francisco (Reuters) -- Wal-Mart Stores Inc. said Tuesday that a Massachusetts judge had granted its motion to decertify a class action lawsuit accusing the world's largest retailer of denying employees breaks.
+h:Employee breaks had been denied by a motion granted by a Massachusetts judge.
+
+alignment:
+<<<<<<< HEAD
+=======
+granted by a Massachusetts judge =  a Massachusetts judge had granted 
+
+its motion to decertify a class action lawsuit <> Employee breaks had been denied
+
+cat:
+yang berbeda adalah keluaran dari hakim
+===============
+746
+1
+t:The Democrats' success in the 2006 elections means changes at the top in the House and Senate.
+h:Democrats won the 2006 elections.
+
+allignment
+The Democrats' = Democrats
+success in the 2006 elections = won the 2006 elections
+
+======================
+745
+1
+San Francisco (Reuters) -- Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday, after last week delaying their release due to accounting complexities related to a regulatory probe.
+
+Tuesday, preliminary quarterly results will be announced.
+
+Dell Inc. plans to announce preliminary quarterly results after the market closes Tuesday
+
+
+preliminary quarterly results = preliminary quarterly results
+to announce  = will be announced
+
+cat: subyek tidak ada
+
+=======================
+744
+1
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed in a suicide bombing in February last year, which led to rising anti-Syrian waves and the withdrawal of Syrian troops from Lebanon.
+
+Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.
+
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed  = the murder of Rafik Hariri
+which led [...] and the withdrawal of Syrian troops from Lebanon = Syrian troops have been withdrawn from Lebanon after
+
+Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure = Rafik Hariri
+
+
+===========================
+743
+1
+"The crisis took a sharp turn for the worse after the cabinet, without the Syrian-backed ministers, approved the UN draft document for creation of an international tribunal in the case of ex-Premier Rafik Hariri's killing."
+"The crisis worsened after the UN draft document for the creation of an international tribunal was approved."
+
+The crisis took a sharp turn for the worse = The crisis worsened
+after [the cabinet, without the Syrian-backed ministers,] approved the UN draft document for creation of an international tribunal = after the UN draft document for the creation of an international tribunal was approved
+
+=============================
+"742"
+"1"
+"Gemayel's assassination is almost certain to deepen the political crisis in Lebanon, which started after the resignation of six pro-Syrian ministers, two from Hezbollah, hours after all-party round table talks collapsed."
+"After the resignation of six pro-Syrian ministers a deep political crises started in Lebanon."
+
+after the resignation of six pro-Syrian ministers ==
+deepen the political crisis in Lebanon ==
+===============================
+"741"
+"1"
+"BEIRUT, Nov. 21 (Xinhua) -- Lebanese Industry Minister and Christian leader Pierre Gemayel was shot dead on a street in the suburb of Beirut on Tuesday, al-Jazeera TV channel quoted the Lebanese Interior Ministry as saying."
+"Pierre Gemayel was murdered on a street in the suburb of Beirut."
+
+Pierre Gemayel was shot dead = Pierre Gemayel was murdered 
+===========================================
+740
+1
+Al-Qaida-linked militants have carried out a series of suicide bombings targeting Western interests in Indonesia since 2002.
+Since 2002 Al-Qaida militants have tried to hit Western interests in Indonesia.
+
+Al-Qaida-linked militants = Al-Qaida militants
+have carried out a series of suicide bombings targeting Western = have tried to hit Western interests
+Since 2002 ==
+in Indonesia ==
+
+==================================================
+739
+0
+In an interview this week, the president said that Vice President Dick Cheney and Defense Secretary Donald Rumsfeld will be a valued part of his administration until his presidency comes to an end.
+
+Dick Cheney is Vice President of the Defense Secretary Donald Rumsfeld.
+
+
+Defense Secretary Donald Rumsfeld ==
+
+Dick Cheney is Vice President = Vice President Dick Cheney
+
+cat: kuncinya adalah  Vice President of the Defense Secretary  (memiliki)
+relasi
+================================
+738
+1
+Thousands of troops are being deployed to secure the city of Bogor, where Bush is to hold talks with his Indonesian counterpart, Susilo Bambang Yudhoyono.
+Bush is scheduled to visit the city of Bogor.
+
+
+the city of Bogor where Bush is to hold talks = Bush is scheduled to visit the city of Bogor
+Bush is to hold talks = Bush is scheduled to visit 
+
+cat: pemrosesan where
+===========
+737
+0
+But Huawei says that expansion has not been easy - obtaining visas for its Chinese engineers to work on long-term projects in India being a particular challenge.
+
+Chinese engineers working on long-term projects in India can easily obtain visas.
+
+Obtaining visas for its Chinese engineers to work on long-term projects in India being a particular challenge  <> Chinese engineers working on long-term projects in India can easily obtain visas
+
+Chinese engineers ==
+to work on long-term projects in India = working on long-term projects in India
+can easily obtain visas <>   being a particular challenge
+============
+736
+1
+Management at Huawei also feels that issues over security are hampering its progress - largely stemming from allegations, in 2001, that it was accused of working for Pakistan and the then Taleban government in Afghanistan.
+Management at Huawei was accused of working for Pakistan and the then Taleban government in Afghanistan.
+
+Management at Huawei [also feels that issues over security are hampering its progress - largely stemming from allegations, in 2001,] that it was accused of working for Pakistan and the then Taleban government in Afghanistan.
+
+cat: remove
+=================
+735
+1
+Trade between China and India is expected to touch $20 bn this year and Chinese investors are now rushing into India - lured by the country's growing wealth.
+There is a profitable trade between China and India.
+
+Trade between China and India == 
+There is a profitable trade = expected to touch $20 bn this year and Chinese investors are now rushing into India
+
+======================
+734
+0
+Mr Carstens left his job as IMF's deputy managing director last month to work with Mr Calderon, and will now lead efforts to push through market reforms and create more jobs.
+Mr Carstens lost his job as IMF's deputy managing director last month.
+
+left <> lost
+
+cat: apakah memang tidak entail?
+=====================
+733
+1
+Mr Lopez Obrador was "sworn in" by Senator Rosario Ibarra, a human rights activist and member of his party, who placed a red, green and white presidential sash across his shoulders.
+Senator Rosario Ibarra is a human rights militant.
+
+Senator Rosario Ibarra, a human rights activist = Senator Rosario Ibarra is a human rights militant.
+activist = militant
+
+cat: coref, ada dua orang
+=====================
+732
+0
+Mr Lopez Obrador, who lost July's presidential election by less than one percentage point, declared himself Mexico's "legitimate" president.
+Mr Lopez Obrador didn't loose the presidential election in July.
+
+Mr Lopez Obrador, who lost July's presidential election <> Mr Lopez Obrador didn't loose the presidential election in July
+who lost <> didn't loose
+=========================
+731
+1
+Mr Lopez Obrador has alleged electoral fraud cost him the presidency, despite a recount confirming Felipe Calderon as Mexico's president-elect.
+
+Felipe Calderon won the presidential election of Mexico.
+
+despite a recount confirming Felipe Calderon as Mexico's president-elect = Felipe Calderon won the presidential election of Mexico
+
+confirming xxx as yyy president-elect = xxx won the presidential election of yyy
+==========
+730
+1
+The IAEA board in February referred Iran to the Security Council, suggesting it had breached the Nuclear Nonproliferation Treaty and might be trying to make nuclear weapons.
+Iran might be trying to make nuclear weapons according to the IAEA board.
+
+The IAEA board suggesting = according to the IAEA board
+it [had breached the Nuclear Nonproliferation Treaty] and might be trying to make nuclear weapons = Iran might be trying to make nuclear weapons 
+
+=======================================================
+
+729
+0
+Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.
+Mice fed with red wine lived longer despite a fatty diet.
+
+red wine <> substance found in red wine
+
+
+=========
+728
+1
+The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+
+Iran's program is under suspicion because of the findings by IAEA inspectors.
+
+findings by IAEA inspectors ==
+have increased suspicions about Iran s program = Iran's program is under suspicion 
+
+=========
+727
+1
+Iranian nuclear officials say 54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor, such as the one being built by Russia that is near completion at the southern city of Bushehr.
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.
+
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor == 
+==============
+730
+1
+The IAEA board in February referred Iran to the Security Council, suggesting it had breached the Nuclear Nonproliferation Treaty and might be trying to make nuclear weapons.
+Iran might be trying to make nuclear weapons according to the IAEA board.
+
+The IAEA board suggesting = according to the IAEA board
+it [had breached the Nuclear Nonproliferation Treaty] and might be trying to make nuclear weapons = Iran might be trying to make nuclear weapons 
+
+=======================================================
+
+729
+0
+Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.
+Mice fed with red wine lived longer despite a fatty diet.
+
+red wine <> substance found in red wine
+
+
+=========
+728
+1
+The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+
+Iran's program is under suspicion because of the findings by IAEA inspectors.
+
+findings by IAEA inspectors ==
+have increased suspicions about Iran s program = Iran's program is under suspicion 
+
+=========
+727
+1
+Iranian nuclear officials say 54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor, such as the one being built by Russia that is near completion at the southern city of Bushehr.
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.
+
+54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor == 
+==============
+726
+1
+The International Atomic Energy Agency report detailing the discovery also faulted Tehran for not cooperating with the U.N. watchdog's attempts to investigate other suspicious aspects of Iran s nuclear program.
+Tehran did not cooperate with the U.N. watchdog's attempts to investigate suspicious aspects of Iran's nuclear program.
+
+xx faulted Tehran for not cooperating with the U.N. watchdog's attempts to investigate other suspicious aspects of Iran s nuclear program = Tehran did not cooperate with the U.N. watchdog's attempts to investigate suspicious aspects of Iran's nuclear program
+
+xx faulted Tehran for not cooperating =  Tehran did not cooperate
+================
+725
+1
+Bush withheld judgment Monday on rival calls to beef up or scale down U.S. troops in Iraq, and said angry protests in Indonesia against his Mideast policy were a healthy sign of democracy in the heavily Muslim nation.
+Bush said that protests in Indonesia against his Mideast policy were a sign of democracy in the heavily Muslim nation.
+
+{Bush} [and] said {that} [angry] protests in Indonesia against his Mideast policy were a healthy sign of democracy in the heavily Muslim nation. = Bush said that protests in Indonesia against his Mideast policy were a sign of democracy in the heavily Muslim nation.
+
+==================
+724
+1
+Now GMFanuc Robotics has perfected a robotic solution that is three times faster than manual spraying, can reproduce a spray pattern to an accuracy of 0.03 inch, and can be programmed easily to handle a wide range of garments.
+
+Robots are used to spray dye on garments.
+
+a robotic solution
+spraying
+reproduce a spray pattern
+===================
+723
+1
+The motor industry accounts for as much as 40 per cent of the 450,000 installed industrial robots worldwide but their use is changing and applications are expanding.
+
+The most common use for robots is the manufacture of automobiles.
+
+The motor industry accounts for as much as 40 per cent of the 450,000 installed industrial robots =
+The most common use for robots is the manufacture of automobiles
+
+The motor industry  = the manufacture of automobiles
+The most common use for robots = accounts for as much as 40 per cent [of the 450,000] installed industrial robots 
+
+=============================
+722
+1
+As Fiat shows off its robot-controlled inventory stacks in glossy advertisements and IBM switches off the lights in its automated warehouse in Greenock, it is clear that this Cinderella operation has a new set of high-tech glad rags.
+
+Fiat, in particular, uses robots for inventory management.
+
+As Fiat shows off its robot-controlled inventory = Fiat, in particular, uses robots for inventory management
+uses robots for inventory management ==
+shows off its robot-controlled inventory  = uses robots
+=============================
+721
+1
+Contrary to what is happening in some other parts of the Amazon, where the forest is being slashed and burned at an alarming rate, those who want to save Acre's forest seem to be winning.
+
+Slash and burn cycle of clearing causes many problems in the rainforest.
+
+an alarming rate = causes many problems
+
+cat: implisit 
+
+==============================
+720
+720
+0
+Picture a Janis Joplin robot sitting on a park bench talking about the Summer of Love, singing "Me and Bobby McGee" and introducing a David Bowie robot.
+Robots serve as wax singers in the Rock Hall of Fame.
+
+
+cat: lokasi?
+
+===============================
+719
+0
+
+Strong competition in industries such as shipping has resulted in waves of investment in labour saving technology such as steel and aluminium cutting tools, processing machine and welding robots.
+
+The automotive industry has seen advances in robotic metal cutting.
+
+
+kata kunci:
+================================
+718
+
+
+
+
+

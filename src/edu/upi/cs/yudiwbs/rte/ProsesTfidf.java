@@ -80,21 +80,7 @@ public class ProsesTfidf {
     }
 
 
-    public static void main(String[] args) {
-        //testing
-        ProsesTfidf et = new ProsesTfidf();
 
-        //isi field tfidf untuk t dan h
-        //et.isiTfIdf("RTE3","id","t","t_tfidf");
-        //et.isiTfIdf("RTE3","id","h","h_tfidf");
-
-        //bandingkan kesamaan dua field
-        //et.isiKedekatanTfIdf("RTE3","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
-
-        et.isiTfIdf("RTE3","id","t_lemma","t_lemma_tfidf");
-        et.isiTfIdf("RTE3","id","h_lemma","h_lemma_tfidf");
-        et.isiKedekatanTfIdf("RTE3","id","t_lemma_tfidf","h_lemma_tfidf","similar_tfidf_lemma");
-    }
 
     /**
      *  menghitung tfidf namaTabel.namafield  dan menyimpannya ke
@@ -868,6 +854,27 @@ public class ProsesTfidf {
             e.printStackTrace();
         }
         System.out.println("selesai ...");
+    }
+
+
+
+    public static void main(String[] args) {
+        //testing
+        ProsesTfidf et = new ProsesTfidf();
+
+        //isi field tfidf untuk t dan h
+        //field yang diisi adalah t_tfidf dan h_tfidf dan similar_tfidf_langsung
+
+        et.isiTfIdf("rte3_copy","id","t","t_tfidf");
+        et.isiTfIdf("rte3_copy","id","h","h_tfidf");
+        et.isiKedekatanTfIdf("rte3_copy","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
+        System.out.println("selesai");
+        //bandingkan kesamaan dua field
+        //et.isiKedekatanTfIdf("RTE3","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
+
+        //et.isiTfIdf("RTE3","id","t_lemma","t_lemma_tfidf");
+        //et.isiTfIdf("RTE3","id","h_lemma","h_lemma_tfidf");
+        //et.isiKedekatanTfIdf("RTE3","id","t_lemma_tfidf","h_lemma_tfidf","similar_tfidf_lemma");
     }
 
 

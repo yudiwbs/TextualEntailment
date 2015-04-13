@@ -101,21 +101,43 @@ public class EkstrakLSA {
 
 			File f = new File(namaFile);
 			Scanner sc = new Scanner(f);
+            int cc = 1;
 			while (sc.hasNextLine()) {
+                System.out.println("nobaris: "+cc);
+                cc++;
 				String baris = sc.nextLine();
 				Scanner scBaris = new Scanner(baris);
+                System.out.println("baris: "+baris);
 				scBaris.useDelimiter(",");
 				while (scBaris.hasNext()) {
-					String kata1 = scBaris.next();
+
+                    String kata1 = scBaris.next();
+                    System.out.println("kata: "+kata1);
 					scBaris.next();   //tidak dibuuthkan lagi
 					String strSkor = scBaris.next();
 					double skor = Double.parseDouble(strSkor);
 
 					String[] parts = kata1.split("-");
-					String strId = parts[0];
+
+                    //System.out.println("0="+parts[0]);
+                    //System.out.println("1="+parts[1]);
+
+
+                    String tempStrId = parts[0];
+
+                    //kenapa tidak coccok programnya
+                    //harusnya sudah dapat id tapi
+                    //ternyata isinya lsa1, lsa100, lsa
+
+                    //solusi: ambil digit ke kempat dst
+
+                    System.out.println("tempStrid="+tempStrId);
+                    String strId = tempStrId.substring(3);
+                    System.out.println("strId="+strId);
+
 					int id = Integer.parseInt(strId);
 
-					System.out.print("id=" + id);
+                    System.out.print("id=" + id);
 					System.out.println(";skor=" + skor);
 
 					pUpdate.setDouble(1, skor);
@@ -338,19 +360,23 @@ public class EkstrakLSA {
 	
 	public static void main(String[] args) {
 		EkstrakLSA  el = new EkstrakLSA();
+        //todo: direktori dibuat otomatis biar enak?
 
-		//test di laptop lia
-		//el.dbToFile("RTE3","id","t","h","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa\\");
-		//el.addDocs("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa\\","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_repo\\");
-		//el.prosesRepo("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_repo\\","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa.txt");
-		//el.filterOut("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa.txt","C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt");
-		//el.outToDB("C:\\yudiwbs\\eksperimen\\textualentailment\\lsa_filter.txt","rte3","id","skorLSA");
+		//el.dbToFile("rte3_copy","id","t","h","G:\\eksperimen\\textualentailment\\april_2015\\lsa");
+		//el.addDocs("G:\\eksperimen\\textualentailment\\april_2015\\lsa","G:\\eksperimen\\textualentailment\\april_2015\\lsa_repo");
 
+        //tahap ini (prosesRepo) lama!!
+        //el.prosesRepo("G:\\eksperimen\\textualentailment\\april_2015\\lsa_repo","G:\\eksperimen\\textualentailment\\april_2015\\lsa.txt");
+
+        //el.filterOut("G:\\eksperimen\\textualentailment\\april_2015\\lsa.txt","G:\\eksperimen\\textualentailment\\april_2015\\lsa_filter.txt");
+		el.outToDB("G:\\eksperimen\\textualentailment\\april_2015\\lsa_filter.txt","rte3_copy","id","skorLSA");
+
+        //-----------------------------------------------------
 
 		//el.dbToFile("RTE3","id","t_lemma","h_lemma","G:\\eksperimen\\textualentailment\\lsa_lemma\\");
 		//el.addDocs("G:\\eksperimen\\textualentailment\\lsa_lemma\\","G:\\eksperimen\\textualentailment\\lsa_lemma_repo\\");
 		//el.prosesRepo("G:\\eksperimen\\textualentailment\\lsa_lemma_repo\\","G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out.txt");
 		 //el.filterOut("G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out.txt","G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out_filter.txt");
-		 el.outToDB("G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out_filter.txt","rte3","id","skorLSA_lemma");
+		 //el.outToDB("G:\\eksperimen\\textualentailment\\lsa_lemma_repo_out_filter.txt","rte3","id","skorLSA_lemma");
 	}
 }

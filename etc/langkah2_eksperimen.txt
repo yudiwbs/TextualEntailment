@@ -1,0 +1,49 @@
+Awal:
+
+- siapkan database (rte3)
+- kosongkan semua field
+
+"update *rte3_copy* set
+ t_gram_structure = null,
+ t_type_dependency = null,
+ h_gram_structure = null,
+ h_type_dependency = null,
+ t_tfidf = null,
+ h_tfidf  = null,
+ similar_tfidf_langsung = null,
+ skorLSA = null,
+ skorSimWN = null,
+ t_lemma = null,
+ h_lemma = null,
+ t_lemma_gram_structure = null,
+ t_lemma_dependency = null,
+ h_lemma_gram_structure = null,
+ h_lemma_dependency = null"
+
+Eksperimen April 2015:
+- LSA:
+  - tidak membutuhkan prepro apapun (tfidf dst)
+  - buka file EkstrakLSA, baca petunjuk di awal file.
+  - output rte3.skorLSA
+
+- Memindahkan file supaya bisa dibaca weka:
+  buat header, simpan sebagai arff
+  @RELATION lsa_langsung_t_f
+
+  @ATTRIBUTE id NUMERIC
+  @ATTRIBUTE skorLSA NUMERIC
+  @ATTRIBUTE isEntail   {0,1}
+
+  @DATA
+  1,0.9863907660401962,1
+
+  - Untuk mengisinya jalankan query sbb:
+   select id,skorLSA,isEntail from rte3_copy
+   -select all, klik kanak, ekspor dst
+
+
+- tf-idf untuk text dan hyptoesis (rte3.text, rte3.h)
+- buka ProsesTfidif, baca petunjuk,
+  field output yg terisi:t_tfidf,h_tfidf,similar_tfidf_langsung
+  yang digunakan untuk fitur: similar_tfidf_langsung
+

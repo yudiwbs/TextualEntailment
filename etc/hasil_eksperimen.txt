@@ -3,6 +3,18 @@ Hasil Ekperimen
 
 Dataset: RTE3  (data training/develop)
 
+=======================================
+Eksprimen April 2015
+Akurasi model, 10 cross validation
+
+- mulai lagi dari awal, buat file langkah2_eksperimen
+- mulai dari hasil terbaik LSA => lama eksperimennya!
+- satu fitur, skor LSA, terbaik Naive Bayes: 62.375
+- tambah fitur tf_idf langsung: 66.5
+  - kalau hanya tf_idf_langsung  (tanpa skor LSA) 64.375
+-
+
+=======================================
 Ekps1:
 Nama file: similar-langsung.arff
 Skenario: RTE.t dan RTE.h dibobot tf-idf, diukur kedekatan dengan cosine similarity
