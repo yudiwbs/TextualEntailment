@@ -20,11 +20,16 @@ Awal:
  h_lemma_gram_structure = null,
  h_lemma_dependency = null"
 
-Eksperimen April 2015:
-- LSA:
+- tambah fitur LSA:
   - tidak membutuhkan prepro apapun (tfidf dst)
   - buka file EkstrakLSA, baca petunjuk di awal file.
   - output rte3.skorLSA
+
+- TAMBAH FITUR TF-IDF, similarity T-H
+ - buka ProsesTfidif, baca petunjuk,
+   field output yg terisi:t_tfidf,h_tfidf,similar_tfidf_langsung
+   yang digunakan untuk fitur: similar_tfidf_langsung
+
 
 - Memindahkan file supaya bisa dibaca weka:
   buat header, simpan sebagai arff
@@ -41,9 +46,4 @@ Eksperimen April 2015:
    select id,skorLSA,isEntail from rte3_copy
    -select all, klik kanak, ekspor dst
 
-
-- tf-idf untuk text dan hyptoesis (rte3.text, rte3.h)
-- buka ProsesTfidif, baca petunjuk,
-  field output yg terisi:t_tfidf,h_tfidf,similar_tfidf_langsung
-  yang digunakan untuk fitur: similar_tfidf_langsung
 
