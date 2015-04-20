@@ -27,7 +27,8 @@ import java.util.logging.Logger;
  *
  */
 public class ParsingHypoText {
-	//WARNING: cek SQL untuk select dan update (terutama nama tabel) lalu lihat prosesDBSimWordnetYW
+	//WARNING: cek SQL untuk select dan update (terutama nama tabel) lalu lihat
+	// prosesDBSimWordnetYW
 	//updatenya karena sering diutakatik
 	//atau bikin prosesDBSimWordnetYW baru
 	
@@ -248,59 +249,7 @@ public class ParsingHypoText {
 
 	}
 
-	/**
-	 *
-	 *   !!!!! jangan digunakan.. mau dihapus !!!!
-	 *
-	 *   ambil data dari tabel utama, RTE.t dan RTE.h, parsing POS tag dan dependency parser
-	 *   hasil disimpan di RTE.t_gram_structure, RTE.h_gram_structure
-	 *   dan RTE.type_dependency dan RTE.type_dependency
-	 *
-	 *   @param  namaTabel  nama tabel utama yang akan diproses, field t,h,id sudah terisi
-	 *
-	 */
-	public void old_proses(String namaTabel) {
 
-		PreparedStatement pSel=null;
-		PreparedStatement pUpd=null;
-		
-		ResultSet rs = null;
-		KoneksiDB db = new KoneksiDB();
-		try {
-
-			conn = db.getConn();
-			init();
-
-			pSel = conn.prepareStatement("select t,h,id from "+namaTabel);
-
-			pUpd = conn.prepareStatement("update "+ namaTabel  +" set "
-    				+ "	t_gram_structure=?, t_type_dependency=?, h_gram_structure=?, h_type_dependency=? "
-    				+ " where id=?");
-    		
-    		rs = pSel.executeQuery();
-			while (rs.next()) {
-			        String text = rs.getString(1);
-					String hypo = rs.getString(2);
-			        int id      = rs.getInt(3);
-			        String[] outT = parse(text);
-			        String[] outH = parse(hypo);
-			        pUpd.setString(1, outT[0]);
-			        pUpd.setString(2, outT[1]);
-			        pUpd.setString(3, outH[0]);
-			        pUpd.setString(4, outH[1]);
-			        pUpd.setInt(5, id);
-			        pUpd.executeUpdate();
-			}
-    		rs.close();
-			pSel.close();
-			conn.close();
-			System.out.println("");
-			System.out.println("selesai");
-		} catch(Exception ex) {
-			ex.printStackTrace();
-		}
-    		    	
-	}
 	
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
@@ -308,9 +257,12 @@ public class ParsingHypoText {
 
     	 //pht.prosesDiscourseT("disc_t_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
-    	  //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
-		  pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
-		  System.out.println();
+
+        //pht.proses("rte3","id", "t","t_gram_structure","t_type_dependency");
+        pht.proses("rte3","id", "h","h_gram_structure","h_type_dependency");
+    	    //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
+		  //pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
+		  //System.out.println();
     	 //pht.prosesDiscourseH("disc_h_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
     }

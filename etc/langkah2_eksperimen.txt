@@ -20,6 +20,10 @@ Awal:
  h_lemma_gram_structure = null,
  h_lemma_dependency = null"
 
+- tambah fitur parsing syntatic (POS-Tag) dan dependency parser
+  - lihat method ParsingHypoText.proses(..)
+
+
 - tambah fitur LSA:
   - tidak membutuhkan prepro apapun (tfidf dst)
   - buka file EkstrakLSA, baca petunjuk di awal file.

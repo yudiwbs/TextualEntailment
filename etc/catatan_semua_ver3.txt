@@ -1090,7 +1090,7 @@ t:San Francisco (Reuters) -- Wal-Mart Stores Inc. said Tuesday that a Massachuse
 h:Employee breaks had been denied by a motion granted by a Massachusetts judge.
 
 alignment:
-<<<<<<< HEAD
+
 =======
 granted by a Massachusetts judge =  a Massachusetts judge had granted 
 
