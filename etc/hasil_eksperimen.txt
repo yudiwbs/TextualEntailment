@@ -2,6 +2,19 @@ Hasil Ekperimen
 ===============
 
 Dataset: RTE3  (data training/develop)
+======================================
+Eksperimen
+
+- menggunakan dependency, mengambil informasi yang penting dari h
+  lihat ProsesDependeny.ekstrak()
+- selanjutnya? --> coba dari info tersebut cari T yang paling sesuai
+
+
+
+
+
+
+
 
 =======================================
 Eksprimen April 2015

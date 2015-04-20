@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,9 +37,12 @@ public class KoneksiDB {
         Properties prop = new Properties();
         InputStream input = null;
         String propFileName = "resources/conf/db.properties";
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
-        if (inputStream != null) {
-            prop.load(inputStream);
+        //diletakkan di tempat .class
+        //String propFileName = "db.properties";
+        //InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+        input = new FileInputStream(propFileName);
+        if (input != null) {
+            prop.load(input);
         } else {
             throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
         }

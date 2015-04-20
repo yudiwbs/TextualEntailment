@@ -395,7 +395,7 @@ public class ProsesDependency {
 			    	System.out.println("Entail = true; text root:"+tRoot+" hypo root:"+hRoot);
 			    	System.out.println();
 			    }
-			    
+
 			    
 			    //System.out.println(isEntail+","+tRoot+","+hRoot+","+tRoot.equals(hRoot));
 			}
@@ -532,9 +532,10 @@ public class ProsesDependency {
             conn = db.getConn();
             //testing id = 23 dulu
             pSel = conn.prepareStatement(String.format("select id,t,h,h_gram_structure, " +
-                    "h_type_dependency,t_type_dependency,isEntail from %s " +
-                    "limit 300",namaTabel));
-            rs = pSel.executeQuery();
+					"h_type_dependency,t_type_dependency,isEntail from %s " +
+					//"limit 10",namaTabel));
+					"where id=2", namaTabel));
+			rs = pSel.executeQuery();
             while (rs.next()) {
                 int id      = rs.getInt(1);
                 String t = rs.getString(2);
@@ -544,23 +545,14 @@ public class ProsesDependency {
                 String tTypeDep  = rs.getString(6);
                 boolean isEntail = rs.getBoolean(7);
 
-
-
-
                 System.out.println();
                 System.out.println(id+":");
                 System.out.println("h:"+h);
-                //System.out.println("t:"+t);
-                //System.out.println();
-                //System.out.println("Entail:"+isEntail);
+				System.out.println("t:"+t);
+				System.out.println("hdep:"+ hTypeDep);
                 System.out.println();
-                //System.out.println(hTypeDep);
-                //System.out.println("H=");
+
                 ekstrak(hTypeDep);
-
-                //System.out.println("T=");
-                //ekstrak(tTypeDep);
-
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
