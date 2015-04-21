@@ -10,6 +10,10 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+    lihat proses4
+
+ */
 
 
 public class ProsesDependency {
@@ -533,8 +537,8 @@ public class ProsesDependency {
             //testing id = 23 dulu
             pSel = conn.prepareStatement(String.format("select id,t,h,h_gram_structure, " +
 					"h_type_dependency,t_type_dependency,isEntail from %s " +
-					//"limit 10",namaTabel));
-					"where id=2", namaTabel));
+					"limit 200",namaTabel));
+					//"where id=2", namaTabel));
 			rs = pSel.executeQuery();
             while (rs.next()) {
                 int id      = rs.getInt(1);
@@ -549,7 +553,7 @@ public class ProsesDependency {
                 System.out.println(id+":");
                 System.out.println("h:"+h);
 				System.out.println("t:"+t);
-				System.out.println("hdep:"+ hTypeDep);
+				//System.out.println("hdep:"+ hTypeDep);
                 System.out.println();
 
                 ekstrak(hTypeDep);

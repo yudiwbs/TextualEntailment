@@ -12,9 +12,52 @@ CREATE TABLE IF NOT EXISTS `disc_t_rte3` (
   PRIMARY KEY (`id`),
   KEY `id_kalimat` (`id_kalimat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+================= versi baru
+-- --------------------------------------------------------
+-- Host:                         localhost
+-- Server version:               5.5.40 - MySQL Community Server (GPL)
+-- Server OS:                    Win32
+-- HeidiSQL Version:             9.1.0.4867
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Dumping database structure for rte3
+CREATE DATABASE IF NOT EXISTS `rte3` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `rte3`;
+
+
+CREATE TABLE IF NOT EXISTS `disc_h_rte3` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kalimat` int(11) DEFAULT NULL,
+  `h` text,
+  `h_gram_structure` text,
+  `h_type_dependency` text,
+  `jenis` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_kalimat` (`id_kalimat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Dumping structure for table rte3.disc_t_rte3
+CREATE TABLE IF NOT EXISTS `disc_t_rte3` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kalimat` int(11) DEFAULT NULL,
+  `t` text,
+  `jenis` varchar(50) DEFAULT NULL,
+  `t_gram_structure` text,
+  `t_type_dependency` text,
+  PRIMARY KEY (`id`),
+  KEY `id_kalimat` (`id_kalimat`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 
+
+================= versi lama
 CREATE TABLE IF NOT EXISTS `disc_h_rte3` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_kalimat` int(11) DEFAULT NULL,

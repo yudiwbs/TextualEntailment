@@ -9,3 +9,29 @@ t:The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was
 p:Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft
 
 
+2:
+h:Yuganskneftegaz cost US$ 27.5 billion.
+t:The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion
+to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .
+p: Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft
+
+The sale was made to pay Yukos' US$ 27.5 billion tax bill
+
+
+3:
+h:"Does A Tiger Have A Necktie" was produced in London.
+t:Loraine besides participating in Broadway's Dreamgirls, also participated in the
+Off-Broadway production of "Does A Tiger Have A Necktie".
+In 1999, Loraine went to London, United Kingdom.
+There she participated in the production of "RENT" where she was cast as "Mimi" the understudy.
+
+p1: Loraine besides participating in Broadway's Dreamgirls, also participated in the
+   Off-Broadway production of "Does A Tiger Have A Necktie"
+p2: Loraine went to London, United Kingdom
+
+long_nsubjpass= Does  A  Tiger  Have  A Necktie
+root=produced
+nsubjpass=Necktie
+prep_in=London
+
+

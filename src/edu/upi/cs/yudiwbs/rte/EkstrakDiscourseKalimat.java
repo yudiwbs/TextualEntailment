@@ -14,12 +14,13 @@ import edu.stanford.nlp.util.CoreMap;
 
 
 /*
-
+     22 april: update koneksi ke database
 
  */
 
 public class EkstrakDiscourseKalimat {
 	//urutan EkstrakDiscourse:
+
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
 	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
@@ -48,11 +49,14 @@ public class EkstrakDiscourseKalimat {
 		
 		//ambil data 
 		try {
-		   		Class.forName("com.mysql.jdbc.Driver");
+		   		//Class.forName("com.mysql.jdbc.Driver");
 		   		//db, username, passwd
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
-		   		
+
+                KoneksiDB db = new KoneksiDB();
+                //conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
+		   		//	   					+ "user=textentailment&password=textentailment");
+
+                conn = db.getConn();
 		   		
 		   		String sql = "select id_internal,t,h"
 		   				+ " from "+namaTabelUtama;
@@ -122,7 +126,7 @@ public class EkstrakDiscourseKalimat {
 	
 	public static void main(String[] args) {
 		EkstrakDiscourseKalimat edk = new EkstrakDiscourseKalimat();
-		edk.proses("rte3_ver1", "disc_t_rte3_ver1", "disc_h_rte3_ver1");
+		edk.proses("rte3", "disc_t_rte3", "disc_h_rte3");
 	}
 	
 }
