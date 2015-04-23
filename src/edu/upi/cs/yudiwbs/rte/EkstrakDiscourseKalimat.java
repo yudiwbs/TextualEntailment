@@ -49,14 +49,9 @@ public class EkstrakDiscourseKalimat {
 		
 		//ambil data 
 		try {
-		   		//Class.forName("com.mysql.jdbc.Driver");
-		   		//db, username, passwd
+	            KoneksiDB db = new KoneksiDB();
 
-                KoneksiDB db = new KoneksiDB();
-                //conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   		//	   					+ "user=textentailment&password=textentailment");
-
-                conn = db.getConn();
+				conn = db.getConn();
 		   		
 		   		String sql = "select id_internal,t,h"
 		   				+ " from "+namaTabelUtama;

@@ -7,12 +7,15 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefChain.CorefMention;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
+import edu.stanford.nlp.dcoref.Mention;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TextAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
@@ -22,15 +25,22 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 
 public class PreproCoref {
+
+	private static final Logger log =
+			Logger.getLogger(ParsingHypoText.class.getName());
+
 	//untuk tf_idf langsung, menambah kinerja
 	
 	
 	/* 
 	 * 
-	 * 
+	 *
+	 *
+	    -awas: membutuhkan waktu lama denga heap memori besar -Xms2G
+
 	    --tambah dulu penampung hasil coref
 	    
-		alter table rte3_ver1_coba3
+		alter table rte3
 		add t_preprocoref text, 
 		add h_preprocoref text;
 		
@@ -123,8 +133,19 @@ h_original = h;
 		
 		Map<Integer, CorefChain> graph = 
 			      document.get(CorefChainAnnotation.class);
-			    
-			    
+
+		System.out.println(graph);
+		// test
+
+
+		//end test
+
+
+
+
+
+
+
 		
 		//siapkan string kata yang direplace
 		List<CoreLabel> listLabel;
@@ -134,7 +155,7 @@ h_original = h;
 		     sbLabel.append(cl.originalText()+" ");
 		}
 		String kalimat = sbLabel.toString();
-		//System.out.println(kalimat);
+		System.out.println("kalimat = "+kalimat);
 		String[] arrStr =  kalimat.split(" ");   
 		        
 		String[] arrMention = new String[graph.size()];
@@ -155,9 +176,9 @@ h_original = h;
 		         clust = clust.trim();
 		         arrMention[cc] = clust;
 		         cc++;
-		         //System.out.println("representative mention: \"" + clust + "\" is mentioned by:");
+		         System.out.println("representative mention: \"" + clust + "\" is mentioned by:");
 		         
-		         //ambil corefnya (misal it, the company dst)
+		         //ambil corefnya (misal it, she the the company dst)
 		         boolean isProses =false;
 		         for(CorefMention m : c.getMentionsInTextualOrder()) {
 		                String clust2 = "";
@@ -187,9 +208,9 @@ h_original = h;
 			                }
 		                }
 		                isProses = false;
-		                //System.out.println(m.startIndex);
-		                //System.out.println(m.endIndex);
-		                //System.out.println("\t" + clust2);
+		                System.out.println(m.startIndex);
+		                System.out.println(m.endIndex);
+		                System.out.println("\t" + clust2);
 		            }
 		         
 		} //end for map entry
@@ -256,24 +277,21 @@ h_original = h;
 		PreparedStatement pUpdate=null;
 		
 		ResultSet rs = null;
+		KoneksiDB db = new KoneksiDB();
 		
 		//ambil data 
 		//PreparedStatement pUpdate=null;
 		try {
-		   		Class.forName("com.mysql.jdbc.Driver");
-		   		// Setup the connection with the DB
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
+				log.log(Level.INFO, "Mulai coref ");
+				conn = db.getConn();
 			    
 		   		String sql = "select id_internal,t_gram_structure,h_gram_structure,t,h "
-		   				+ " from "+ namaTabelUtama;   				
+		   				+ " from "+ namaTabelUtama +
+						"  where id=90  ";
 	
 		   		
 		   		pStat = conn.prepareStatement(sql);
 				rs = pStat.executeQuery();
-				
-				
-				
 				
 				String sqlUpdate = " update "+ namaTabelUtama +" set "
 						+ " t_preprocoref=? , "
@@ -304,19 +322,25 @@ h_original = h;
 					    	System.out.println(textual);
 					    	System.out.println("-->"+outT);
 					    }
-					    
+
+					   /* h tidak diproses dulu
 					    outH = gantiCoref(hypo);
 					    
 					    if (!outH.equals("")) {
 					    	System.out.println(hypo);
 					    	System.out.println("-->"+outH);
 					    }
-					    
+					    pUpdate.setString(2, outH);
+					    */
+
+					    //dummy
+						outH = "";
+
 				        pUpdate.setString(1, outT);
-		                pUpdate.setString(2, outH);
+						pUpdate.setString(2, outH);
 		                pUpdate.setInt(3,idInternal);
-		                pUpdate.executeUpdate(); 
-		               
+		                pUpdate.executeUpdate();
+
 				}
 		   		pUpdate.close();
 		   		rs.close();
@@ -330,7 +354,7 @@ h_original = h;
 	
 	public static void main(String[] args) {
 		PreproCoref pc= new PreproCoref();
-		pc.proses("testset_rte3_ver1_coba4");
+		pc.proses("rte3");
 		System.out.println("benar-benar selesai :)");
 	}
 	
