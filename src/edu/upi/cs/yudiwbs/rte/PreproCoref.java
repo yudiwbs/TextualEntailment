@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -43,6 +44,11 @@ public class PreproCoref {
 		alter table rte3
 		add t_preprocoref text, 
 		add h_preprocoref text;
+
+		atau kosongkan
+		update rte3
+		set t_prepocoref = "",
+		set h_prepocoref = ""
 		
 		lalu jlankan.... 
 		lalu update preprocoref ke t dan h (query ada dibawah)
@@ -76,6 +82,19 @@ set
 t_original = t,
 h_original = h;
 
+
+// pindahkan  rte3.t ->  rte3.tpreprocoref jika tprepocoref kosong
+// untuk selanjutnya, yang digunakan adalah tprepocoref atau sebaiknya
+// dari prepocoref dipindahkan ke t saja?
+
+   update rte3
+   set t_preprocoref = t
+   where
+   t_preprocoref = ""
+
+
+
+
 //ini yg penting!!
  
 	setelah prosesDBSimWordnetYW selesai query untuk pindahkan ke t dan h
@@ -89,7 +108,8 @@ h_original = h;
 	set h = h_preprocoref
 	where 
 	h_preprocoref <> ""
-	
+
+
 	
 	KOSONGKAN syn tree
 		update rte3_ver1_coba2 
@@ -125,6 +145,28 @@ h_original = h;
 	}
 	
 	public String gantiCoref(String teks) {
+        //update
+        //yang diproses hanya
+        //he, she, they, her, his, them, it
+        //jika pengganti lebih dari 2 kata
+        //misal id=90, he = "an active member of the National Guard" nah ini dibuang
+         //mungkin nantinya diproses dengan "he" yang lain
+        //jika pengganti sama-sama kata ganti juga dibuang,
+        //misalnya: he=his, she=her dst. (percuma juga)
+
+        ArrayList<String> alDaftarCoref = new ArrayList<>();
+        alDaftarCoref.add("he");
+        alDaftarCoref.add("his");
+        alDaftarCoref.add("she");
+        alDaftarCoref.add("her");
+        alDaftarCoref.add("they");
+        alDaftarCoref.add("them");
+        alDaftarCoref.add("their");
+        alDaftarCoref.add("it");
+        alDaftarCoref.add("this");
+        alDaftarCoref.add("that");
+        alDaftarCoref.add("its");
+
 		boolean isDiganti=false;
 		String out="";
 		Annotation document = new Annotation(teks);
@@ -134,20 +176,9 @@ h_original = h;
 		Map<Integer, CorefChain> graph = 
 			      document.get(CorefChainAnnotation.class);
 
-		System.out.println(graph);
-		// test
+		//System.out.println(graph);
 
-
-		//end test
-
-
-
-
-
-
-
-		
-		//siapkan string kata yang direplace
+		//siapkan string kata yang direplace, ambil token
 		List<CoreLabel> listLabel;
 		listLabel = document.get(TokensAnnotation.class);
 		StringBuilder sbLabel = new StringBuilder();
@@ -155,10 +186,35 @@ h_original = h;
 		     sbLabel.append(cl.originalText()+" ");
 		}
 		String kalimat = sbLabel.toString();
-		System.out.println("kalimat = "+kalimat);
-		String[] arrStr =  kalimat.split(" ");   
-		        
-		String[] arrMention = new String[graph.size()];
+		//System.out.println("kalimat = "+kalimat);
+
+		String[] arrStr =  kalimat.split(" ");
+
+        //cari posisi titik
+        //untuk penyesuakan posisi
+        //karena posisi relatif terhadap sentNum
+        ArrayList<Integer> alPosTitik = new ArrayList<>();
+        alPosTitik.add(0); //kalimat pertama
+        for (int i=0;i<=arrStr.length-1;i++) {
+            String kata = arrStr [i];
+            //System.out.println("kata="+kata);
+            if (kata.trim().equals(".")) {
+                alPosTitik.add(i+1);   //kalimat kedua dst, tambah 1 karena idx mulai dari 1
+                //System.out.println("i="+i);
+            }
+        }
+
+
+
+        //penting!!: crm.sentNum = sentence num
+
+        //jadi kalau ada dua kalimat   saya mau makan. dia makan nasi
+        // sentNum = 1 saya mau...
+        // sentNum = 2 dia makan..
+        // startindex dan endindexnya juga relatif
+        // sentNum=1, startindex =1 "saya"
+        // sentNum=2, startIndex =2 "dia"
+        String[] arrMention = new String[graph.size()];
 		int cc = 0;
 		for(Map.Entry<Integer, CorefChain> entry : graph.entrySet()) {
 			    CorefChain c = entry.getValue();
@@ -176,12 +232,13 @@ h_original = h;
 		         clust = clust.trim();
 		         arrMention[cc] = clust;
 		         cc++;
-		         System.out.println("representative mention: \"" + clust + "\" is mentioned by:");
+		         //System.out.println("representative mention: \"" + clust + "\" is mentioned by:");
 		         
 		         //ambil corefnya (misal it, she the the company dst)
 		         boolean isProses =false;
 		         for(CorefMention m : c.getMentionsInTextualOrder()) {
-		                String clust2 = "";
+                        String clust2 = "";
+
 		                //ambil token dalam sentence yang mengandung m
 		                tks = document.get(SentencesAnnotation.class).get(m.sentNum-1).get(TokensAnnotation.class);
 		                for(int i = m.startIndex-1; i < m.endIndex-1; i++) {
@@ -192,25 +249,55 @@ h_original = h;
 		                //don't need the self mention
 		                if(clust.equals(clust2))
 		                    continue;
-		                
+
+                        //skip jika tidak ada di daftar coref yg diinginkan
+                        if (!alDaftarCoref.contains(clust2.toLowerCase())) {
+                            continue;
+                        }
+
+                        //skip jika clust juga isinya ref (misal his=he)
+                        //mungkin nanti diproses khusus
+                        if(alDaftarCoref.contains(clust.toLowerCase())) {
+                            continue;
+                        }
+
+                        //skip jika clust terlalu panjang misal she="Loraine besides participating in Broadway's Dreamgirls"
+                        //mungkin nanti diproses khusus
+                        if (clust.split("\\s+").length>3) {
+                            continue;
+                        }
+
+
 		                //duplikasi, memberi flag, ditandai agar nanti direplace
 		                // contoh: tanda bahwa it akan diganti:
 		                // lasjldfjalsdf [[1]]it lkjasfla  alsfkjj
 		                //diberi flag, tidak bis diproses satu demi satu karena
 				        //indeksnya nanti bergeser
-				    
-		                
+
+                        int sentNum = m.sentNum;
+
+                        //hati2 beda kalimat beda posisi
 		                //kodenya acak2an.. yg penting jalan dulu
 		                if (isProses) {
 		                	isDiganti = true;
-		                	for(int i = m.startIndex-1; i < m.endIndex-1; i++) {
+                            int offset = alPosTitik.get(sentNum-1);
+                            for(int i = m.startIndex-1+offset; i < m.endIndex-1+offset; i++) {
 			                    arrStr[i] = "[["+cc+"]]"+arrStr[i];
 			                }
 		                }
-		                isProses = false;
-		                System.out.println(m.startIndex);
+
+                        /*
+                        for (int i = 0; i<=arrStr.length-1;i++) {
+                            System.out.println(arrStr[i]+ " ");
+                        }
+                        */
+
+                        isProses = false;
+		                /*
+                        System.out.println(m.startIndex);
 		                System.out.println(m.endIndex);
 		                System.out.println("\t" + clust2);
+		                */
 		            }
 		         
 		} //end for map entry
@@ -287,7 +374,9 @@ h_original = h;
 			    
 		   		String sql = "select id_internal,t_gram_structure,h_gram_structure,t,h "
 		   				+ " from "+ namaTabelUtama +
-						"  where id=90  ";
+						" ";
+						//" limit 50 ";
+						//"  where id=90  ";
 	
 		   		
 		   		pStat = conn.prepareStatement(sql);
@@ -340,6 +429,7 @@ h_original = h;
 						pUpdate.setString(2, outH);
 		                pUpdate.setInt(3,idInternal);
 		                pUpdate.executeUpdate();
+
 
 				}
 		   		pUpdate.close();

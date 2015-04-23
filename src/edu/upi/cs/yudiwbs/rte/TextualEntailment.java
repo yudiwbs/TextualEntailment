@@ -92,7 +92,8 @@ public class TextualEntailment {
 		System.out.println();
 		System.out.println("Proses Ekstrak Kalimat");
 		EkstrakDiscourseKalimat edk = new EkstrakDiscourseKalimat();
-		edk.proses(namaTabelUtama, namaTabelDiscT, namaTabelDiscH);
+
+        //edk.proses(namaTabelUtama, namaTabelDiscT, namaTabelDiscH);
 		
 		
 		//buat syntax tree 

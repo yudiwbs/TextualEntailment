@@ -223,16 +223,16 @@ public class EkstrakDiscourseSubKalimat {
 		
 		//ambil data 
 		try {
-		   		Class.forName("com.mysql.jdbc.Driver");
-		   		//db, username, passwd
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
-		   		
+                KoneksiDB db = new KoneksiDB();
+
+                conn = db.getConn();
+
+
 		   		
 		   		String sqlT = "select id,id_kalimat,t_gram_structure,t"
 		   				+ " from "+namaTabelDiscT;
-		   		String sqlH = "select id,id_kalimat,h_gram_structure,h"
-		   				+ " from "+namaTabelDiscH;
+		   		//String sqlH = "select id,id_kalimat,h_gram_structure,h"
+		   		//		+ " from "+namaTabelDiscH;
 		   		
 		   		// where id_internal  = 7
 		   		
@@ -242,9 +242,9 @@ public class EkstrakDiscourseSubKalimat {
 				String sqlInsT = "insert into "+namaTabelDiscT+ " (id_kalimat,t,id_source,jenis) values (?,?,?,?) ";
 		   		pInsT = conn.prepareStatement(sqlInsT);
 		   		
-		   		String sqlInsH = "insert into "+namaTabelDiscH+"  (id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
+		   		//String sqlInsH = "insert into "+namaTabelDiscH+"  (id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
 		   		
-		   		pInsH = conn.prepareStatement(sqlInsH);
+		   		//pInsH = conn.prepareStatement(sqlInsH);
 		   		
 				int cc=0;
 				while (rsT.next()) {
@@ -252,7 +252,7 @@ public class EkstrakDiscourseSubKalimat {
 						int idKalimat = rsT.getInt(2);
 					    String t      = rsT.getString(3);  //parsetree text
 				      
-					    //System.out.print(idKalimat+",");
+					    System.out.print(idKalimat+",");
 					    
 					    cc++;
 				        if (cc%5==0) {
@@ -280,7 +280,8 @@ public class EkstrakDiscourseSubKalimat {
 		   		pInsT.close();
 		   		
 		   		System.out.println("--------------- prosesDBSimWordnetYW H");
-		   		
+
+            /*
 		   		pStatH = conn.prepareStatement(sqlH);
 				rsH = pStatH.executeQuery();
 				cc=0;
@@ -312,6 +313,7 @@ public class EkstrakDiscourseSubKalimat {
 				rsH.close();
 				pStatH.close();
 		   		pInsH.close();
+		   		*/
 		   		conn.close();
 		   		System.out.println("");
 		   		System.out.println("selesai");
@@ -323,16 +325,18 @@ public class EkstrakDiscourseSubKalimat {
 	public static void main(String [] args) {
 		//pastikan subj-verb-obj sudah terisi
 		EkstrakDiscourseSubKalimat ED = new EkstrakDiscourseSubKalimat();
-		//ED.prosesDiscourse("disc_t_rte3_ver1","disc_h_rte3_ver1");
+		ED.prosesDiscourse("disc_t_rte3","disc_h_rte3");
 		//ED.prosesKalimatPasif("disc_t_rte3_ver1","disc_h_rte3_ver1");
 		
 		//debug
+        /*
 		System.out.println("debug split sbar");
 		//ArrayList<String> alDisc = ED.cariDiscSBAR("(ROOT (S (PP (IN in) (NP (CD 1996))) (, ,) (NP (PRP he)) (VP (VBD re-founded) (NP (NP (NP (DT the) (NNP Orchestra) (NNP da) (NNP Camera) (NNP Italiana)) (PRN (-LRB- -LRB-) (NP (NNP O.C.I.)) (-RRB- -RRB-))) (, ,) (SBAR (WHNP (WP$ whose) (NNS members)) (S (VP (VBP are) (NP (NP (DT the) (JJS best) (NNS pupils)) (PP (IN of) (NP (DT the) (NNP Walter) (NNP Stauffer) (NNP Academy)))))))))) )");
 		ArrayList<String> alDisc = ED.cariDiscSBAR("(ROOT (S (PP (IN On) (NP (NNP May) (CD 17) (, ,) (CD 2005))) (, ,) (NP (NP (DT the) (NNP National) (NNP Assembly)) (PP (IN of) (NP (NNP Kuwait)))) (VP (VBD passed) (, ,) (PP (IN by) (NP (NP (DT a) (NN majority)) (PP (IN of) (NP (NP (QP (CD 35) (TO to) (CD 23))) (PRN (-LRB- -LRB-) (PP (IN with) (NP (CD 1) (NN abstention))) (-RRB- -RRB-)))))) (, ,) (S (NP (NP (DT an) (NN amendment)) (PP (TO to) (NP (NP (PRP$ its) (JJ electoral) (NN law)) (SBAR (WHNP (WDT that)) (S (VP (MD would) (VP (VB allow) (NP (NNS women))))))))) (VP (VP (TO to) (VP (VB vote))) (CC and) (VP (TO to) (VP (VB stand) (PP (IN as) (NP (JJ parliamentary) (NNS candidates)))))))) (. .)))");
 		for (String s:alDisc) {
 			System.out.println(s);
 		}
+		*/
 	}
 }
 

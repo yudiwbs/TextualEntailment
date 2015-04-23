@@ -139,10 +139,10 @@ public class ParsingHypoText {
 		
 		ResultSet rs = null;
 		try {
-    		Class.forName("com.mysql.jdbc.Driver");
-    		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-    			   					+ "user=textentailment&password=textentailment");
-    		
+            KoneksiDB db = new KoneksiDB();
+
+            conn = db.getConn();
+
     		init();
     		pSelT = conn.prepareStatement("select t,id from "+namaTabel+" where t_gram_structure is null");
     		pUpdT = conn.prepareStatement("update "+namaTabel+" set "
@@ -259,11 +259,13 @@ public class ParsingHypoText {
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
 
         //pht.proses("rte3","id", "t","t_gram_structure","t_type_dependency");
-        pht.proses("rte3","id", "h","h_gram_structure","h_type_dependency");
+        //pht.proses("rte3","id", "h","h_gram_structure","h_type_dependency");
     	    //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
 		  //pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
 		  //System.out.println();
     	 //pht.prosesDiscourseH("disc_h_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
+
+        pht.prosesDiscourseT("disc_t_rte3");
     }
 }

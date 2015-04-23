@@ -23,19 +23,20 @@ public class EkstrakDiscourseKalimat {
 
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
+	// setelah itu parsingHypoText dipanggil untuk tabel agar dibangkitkan
 	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
 	// nantinya ini jadi satu prosesDBSimWordnetYW
 	// setelah semua prosesDBSimWordnetYW ekstrak disc selesai, panggil ekstrakfitur
 	
 	
 	//kosongkan tabel disc:
-	//delete from disc_h_rte3_ver1;
-	//delete from disc_t_rte3_ver1;
+	//delete from disc_h_rte3;
+	//delete from disc_t_rte3;
 	
 	
 	//memotong2 kalimat (sentence detection)
 	//memanfaatkan stanford
-	public void proses(String namaTabelUtama, String namaTabelDiscT, String namaTabelDiscH) {
+	public void proses(String namaTabelUtama, String namaFieldT, String namaFieldH, String namaTabelDiscT, String namaTabelDiscH) {
 		Properties props = new Properties();
 	    props.put("annotators", "tokenize, ssplit");
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
@@ -52,11 +53,12 @@ public class EkstrakDiscourseKalimat {
 	            KoneksiDB db = new KoneksiDB();
 
 				conn = db.getConn();
-		   		
-		   		String sql = "select id_internal,t,h"
+
+
+		   		String sql = "select id_internal,"+namaFieldT+", "+ namaFieldH
 		   				+ " from "+namaTabelUtama;
 		   		
-		   		
+		   		System.out.println("sql="+sql);
 		   		pStat = conn.prepareStatement(sql);
 				rs = pStat.executeQuery();
 				
@@ -121,7 +123,7 @@ public class EkstrakDiscourseKalimat {
 	
 	public static void main(String[] args) {
 		EkstrakDiscourseKalimat edk = new EkstrakDiscourseKalimat();
-		edk.proses("rte3", "disc_t_rte3", "disc_h_rte3");
+		edk.proses("rte3", "t_preprocoref","h","disc_t_rte3", "disc_h_rte3");
 	}
 	
 }

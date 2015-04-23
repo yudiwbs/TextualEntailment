@@ -15,6 +15,9 @@ import java.util.Scanner;
 
 //untuk penggunaan lihat class ProsesSemua
 public class EkstrakDiscourseKalimatSejajar {
+    //alter table disc_h_rte3 add id_source long;
+    //alter table disc_t_rte3 add id_source long;
+
     //lihat class ProsesSemua
 	//memecah kalimat yang didalamnya ada dua kalimat yang dipisahkan dengan kata sambung
 	// (S ....)  (CC and/OR )  (S... )
@@ -33,14 +36,12 @@ public class EkstrakDiscourseKalimatSejajar {
 		
 		//ambil data 
 		try {
-		   		//db, username, passwd
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
-		   		
-		   		//String namaTabelDiscT = "disc_t_rte3_ver1";
-		   		//String namaTabelDiscH = "disc_h_rte3_ver1";
-		   		
-		   		String sqlT = "select id,id_kalimat,t_gram_structure,t"
+
+                KoneksiDB db = new KoneksiDB();
+
+                conn = db.getConn();
+
+                String sqlT = "select id,id_kalimat,t_gram_structure,t"
 		   				+ " from "+namaTabelDiscT;
 	
 		   		String sqlH = "select id,id_kalimat,h_gram_structure,h"
@@ -68,7 +69,9 @@ public class EkstrakDiscourseKalimatSejajar {
 						int idKalimat  = rsT.getInt(2);
 					    String tTree   = rsT.getString(3);  
 					    String t       = rsT.getString(4);  
-					    
+
+                        System.out.println(idDisc);
+
 					    cc++;
 				        if (cc%5==0) {
 				        	System.out.print(".");
@@ -160,13 +163,13 @@ public class EkstrakDiscourseKalimatSejajar {
 		   			   					+ "user=textentailment&password=textentailment");
 		   		
 		   		String namaTabelDiscT = "disc_t_rte3_ver1";
-		   		String namaTabelDiscH = "disc_h_rte3_ver1";
+		   		//String namaTabelDiscH = "disc_h_rte3_ver1";
 		   		
 		   		String sqlT = "select id,id_kalimat,t_gram_structure,t"
 		   				+ " from "+namaTabelDiscT;
 		   		// "limit 100";
-		   		String sqlH = "select id,id_kalimat,h_gram_structure,h"
-		   				+ " from "+namaTabelDiscH;
+		   		//String sqlH = "select id,id_kalimat,h_gram_structure,h"
+		   		//		+ " from "+namaTabelDiscH;
 		   		
 		   		// where id_internal  = 7
 		   		
@@ -258,27 +261,15 @@ public class EkstrakDiscourseKalimatSejajar {
 	}
 	
 	
-	public static void main(String[] args) {
-		EkstrakDiscourseKalimatSejajar ed = new EkstrakDiscourseKalimatSejajar();
-		ed.testDB();
-		
-		/*
-		String tree = "(ROOT (S (S (NP (NNP Allen)) (VP (VBD was) (VP (VBN renowned) (PP (IN for) (NP (PRP$ his) (NN skill))) (PP (IN at) (S (VP (VBG scratch-building) (CC and) (VBG creating) (NP (NN scenery)))))))) (, ,) (CC and) (S (NP (PRP he)) (VP (VBD pioneered) (NP (NP (DT the) (NN technique)) (PP (IN of) (S (VP (VBG weathering) (NP (PRP$ his) (NNS models)) (S (VP (TO to) (VP (VB make) (S (NP (PRP them)) (VP (VB look) (ADJP (ADJP (JJ old)) (CC and) (ADJP (RBR more) (JJ realistic)))))))))))))) (. .)))";
-		System.out.println(tree);
-		ArrayList<String> al = ed.cariDiscKalimatSejajar(tree); 
-		for (String s:al) {
-			System.out.println("-->"+s);
-		}
-		*/
-		System.out.println("selesai");
-	}
-	
+
 	
 	public ArrayList<String> cariDiscKalimatSejajarV2(String tree) {
 		//cari yang ada
 		//(, ,) (CC and) (S
-		
-		ArrayList<String> alOut = new ArrayList<String>();
+
+        //System.out.println(tree);
+
+        ArrayList<String> alOut = new ArrayList<String>();
 		String t = tree.replace(")", " ) ");
 		Scanner sc = new Scanner(t);
 	    
@@ -454,6 +445,24 @@ public class EkstrakDiscourseKalimatSejajar {
 	  sc.close();
 	  return alOut;
 	}
-	
-	
+
+
+    public static void main(String[] args) {
+        EkstrakDiscourseKalimatSejajar ed = new EkstrakDiscourseKalimatSejajar();
+        //ed.testDB();
+        ed.prosesDiscourseSejajar("disc_t_rte3","disc_h_rte3");
+
+		/*
+		String tree = "(ROOT (S (S (NP (NNP Allen)) (VP (VBD was) (VP (VBN renowned) (PP (IN for) (NP (PRP$ his) (NN skill))) (PP (IN at) (S (VP (VBG scratch-building) (CC and) (VBG creating) (NP (NN scenery)))))))) (, ,) (CC and) (S (NP (PRP he)) (VP (VBD pioneered) (NP (NP (DT the) (NN technique)) (PP (IN of) (S (VP (VBG weathering) (NP (PRP$ his) (NNS models)) (S (VP (TO to) (VP (VB make) (S (NP (PRP them)) (VP (VB look) (ADJP (ADJP (JJ old)) (CC and) (ADJP (RBR more) (JJ realistic)))))))))))))) (. .)))";
+		System.out.println(tree);
+		ArrayList<String> al = ed.cariDiscKalimatSejajar(tree);
+		for (String s:al) {
+			System.out.println("-->"+s);
+		}
+		*/
+        System.out.println("selesai");
+    }
+
+
+
 }
