@@ -46,9 +46,11 @@ public class PreproCoref {
 		add h_preprocoref text;
 
 		atau kosongkan
+
 		update rte3
-		set t_prepocoref = "",
-		set h_prepocoref = ""
+		set
+		t_preprocoref = "",
+		h_preprocoref = "";
 		
 		lalu jlankan.... 
 		lalu update preprocoref ke t dan h (query ada dibawah)
@@ -95,9 +97,9 @@ h_original = h;
 
 
 
-//ini yg penting!!
+//atau alternatif lain yg hasil corefnya dipindahkan ke t dan h
+//cuma aslinya bakal hilang
  
-	setelah prosesDBSimWordnetYW selesai query untuk pindahkan ke t dan h
 
 	update testset_rte3_ver1_coba4
 	set t = t_preprocoref
@@ -111,13 +113,13 @@ h_original = h;
 
 
 	
-	KOSONGKAN syn tree
+//KOSONGKAN syn tree, karena akan diproses ulang
 		update rte3_ver1_coba2 
 		set 
 		t_gram_structure=null, t_type_dependency=null,
 		h_gram_structure=null, h_type_dependency=null;
 	
-	JALANKAN ParsingHypo setelah t diupdate atau ulang semua prosesnya
+//JALANKAN ParsingHypo setelah t diupdate atau ulang semua prosesnya
 	
 	
 	

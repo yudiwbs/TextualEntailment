@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-//akurasi weka: 54.875  (standard fitur), naive bays 56
+//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
+//JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
 
 
 
@@ -142,6 +143,7 @@ public class EkstrakDiscourseKalimatSejajar {
 		   	   } catch (Exception ex) {
 				   ex.printStackTrace();
 			   }
+		System.out.println("Selesai. Hati2 jika mengguna HEIDISQL, tidak semua recod ditampilkan jadi berkesan tidak ada data baru");
 	}
 	
 	

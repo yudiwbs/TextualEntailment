@@ -20,6 +20,9 @@ import edu.stanford.nlp.util.CoreMap;
 
 public class EkstrakDiscourseKalimat {
 	//urutan EkstrakDiscourse:
+	//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
+    //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
+
 
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
@@ -124,6 +127,7 @@ public class EkstrakDiscourseKalimat {
 	public static void main(String[] args) {
 		EkstrakDiscourseKalimat edk = new EkstrakDiscourseKalimat();
 		edk.proses("rte3", "t_preprocoref","h","disc_t_rte3", "disc_h_rte3");
+        System.out.println("Selesai. Hati2 jika mengguna HEIDISQL, tidak semua recod ditampilkan jadi berkesan tidak ada data baru");
 	}
 	
 }
