@@ -7,12 +7,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
+//JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
+
 public class EkstrakDiscourseSubKalimat {
    /* lihat class ProsesSemua!
     * 
     
 	//urutan EkstrakDiscourse:
-	// kalimat --> SubKalimat (class ini)  --> PP --> Pasif
+	// kalimat --> kalimat sejajar -> SubKalimat (class ini)  --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
 	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
 	// nantinya ini jadi satu prosesDBSimWordnetYW
@@ -200,7 +204,7 @@ public class EkstrakDiscourseSubKalimat {
 	
 
 	
-	public void prosesDiscourse(String namaTabelDiscT,String namaTabelDiscH) {
+	public void prosesDiscourse(String namaTabelDiscT) {
 		// lihat kelas ProsesSemua!
 		// 
 		// prosesDBSimWordnetYW subkkalimat
@@ -325,7 +329,9 @@ public class EkstrakDiscourseSubKalimat {
 	public static void main(String [] args) {
 		//pastikan subj-verb-obj sudah terisi
 		EkstrakDiscourseSubKalimat ED = new EkstrakDiscourseSubKalimat();
-		ED.prosesDiscourse("disc_t_rte3","disc_h_rte3");
+		ED.prosesDiscourse("disc_t_rte3");
+        System.out.println("Selesai. Lanjutkan dengan parsinghypotext. Hati2 jika mengguna HEIDISQL, tidak semua recod " +
+                "ditampilkan jadi berkesan tidak ada data baru");
 		//ED.prosesKalimatPasif("disc_t_rte3_ver1","disc_h_rte3_ver1");
 		
 		//debug

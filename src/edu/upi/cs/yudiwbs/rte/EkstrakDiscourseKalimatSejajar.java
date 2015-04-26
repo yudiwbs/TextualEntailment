@@ -16,16 +16,21 @@ import java.util.Scanner;
 
 //untuk penggunaan lihat class ProsesSemua
 public class EkstrakDiscourseKalimatSejajar {
-    //alter table disc_h_rte3 add id_source long;
-    //alter table disc_t_rte3 add id_source long;
+    /*
+       alter table disc_h_rte3 add id_source int;
+       alter table disc_t_rte3 add id_source int;
 
+       kosongkan (kalau tadinya ada):
+       delete from disc_t_rte3 where jenis="KAL_SEJAJAR"
+     */
     //lihat class ProsesSemua
 	//memecah kalimat yang didalamnya ada dua kalimat yang dipisahkan dengan kata sambung
 	// (S ....)  (CC and/OR )  (S... )
 	//
-	
-	
-	public void prosesDiscourseSejajar(String namaTabelDiscT,String namaTabelDiscH) {
+	// H tidak diproses
+    //,String namaTabelDiscH
+
+	public void prosesDiscourseSejajar(String namaTabelDiscT) {
 		Connection conn=null;
 		PreparedStatement pStatT=null;
 		PreparedStatement pStatH=null;
@@ -35,7 +40,7 @@ public class EkstrakDiscourseKalimatSejajar {
 		ResultSet rsT = null;
 		ResultSet rsH = null;
 		
-		//ambil data 
+		//ambil data
 		try {
 
                 KoneksiDB db = new KoneksiDB();
@@ -45,8 +50,8 @@ public class EkstrakDiscourseKalimatSejajar {
                 String sqlT = "select id,id_kalimat,t_gram_structure,t"
 		   				+ " from "+namaTabelDiscT;
 	
-		   		String sqlH = "select id,id_kalimat,h_gram_structure,h"
-		   				+ " from "+namaTabelDiscH;
+		   		//String sqlH = "select id,id_kalimat,h_gram_structure,h"
+		   		//		+ " from "+namaTabelDiscH;
 		   		
 		   		
 		   		pStatT = conn.prepareStatement(sqlT);
@@ -55,8 +60,8 @@ public class EkstrakDiscourseKalimatSejajar {
 				String sqlInsT = "insert into "+namaTabelDiscT+ " (id_kalimat,t,id_source,jenis) values (?,?,?,?) ";
 		   		pInsT = conn.prepareStatement(sqlInsT);
 		   		
-		   		String sqlInsH = "insert into "+namaTabelDiscH+"  (id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
-		   		pInsH = conn.prepareStatement(sqlInsH);
+		   		//String sqlInsH = "insert into "+namaTabelDiscH+"  (id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
+		   		//pInsH = conn.prepareStatement(sqlInsH);
 		   		
 				
 				//loop ambil data
@@ -104,9 +109,11 @@ public class EkstrakDiscourseKalimatSejajar {
 		   		rsT.close();
 		   		pStatT.close();
 		   		pInsT.close();
-		   		
+                conn.close();
+
+		   		/*
 		   		System.out.println("--------------- prosesDBSimWordnetYW H");
-		   		
+
 		   		pStatH = conn.prepareStatement(sqlH);
 				rsH = pStatH.executeQuery();
 				cc=0;
@@ -122,7 +129,8 @@ public class EkstrakDiscourseKalimatSejajar {
 				        if (cc%500==0) {
 				        	System.out.println("");
 				        }
-				        
+
+
 				   		ArrayList<String> alDiscH = cariDiscKalimatSejajarV2(hTree);
 				   		
 					    for (String sH:alDiscH) {
@@ -133,17 +141,17 @@ public class EkstrakDiscourseKalimatSejajar {
 			                pInsH.setString(4, "KAL_SEJAJAR");
 			                pInsH.executeUpdate(); 	
 					    }
-				
 				}
+
 				rsH.close();
 				pStatH.close();
 		   		pInsH.close();
-		   		conn.close();
+		   		*/
 
 		   	   } catch (Exception ex) {
 				   ex.printStackTrace();
 			   }
-		System.out.println("Selesai. Hati2 jika mengguna HEIDISQL, tidak semua recod ditampilkan jadi berkesan tidak ada data baru");
+               System.out.println("Selesai. Hati2 jika mengguna HEIDISQL, tidak semua recod ditampilkan jadi berkesan tidak ada data baru");
 	}
 	
 	
@@ -452,7 +460,11 @@ public class EkstrakDiscourseKalimatSejajar {
     public static void main(String[] args) {
         EkstrakDiscourseKalimatSejajar ed = new EkstrakDiscourseKalimatSejajar();
         //ed.testDB();
-        ed.prosesDiscourseSejajar("disc_t_rte3","disc_h_rte3");
+        //h tidak diproses
+        ed.prosesDiscourseSejajar("disc_t_rte3");
+        System.out.println("Jalankan parsing hypotext pada disct setelah selesai");
+        System.out.println("Selesai. Lanjutkan dengan parsinghypotext, Hati2 jika mengguna HEIDISQL, tidak semua recod " +
+                "ditampilkan jadi berkesan tidak ada data baru");
 
 		/*
 		String tree = "(ROOT (S (S (NP (NNP Allen)) (VP (VBD was) (VP (VBN renowned) (PP (IN for) (NP (PRP$ his) (NN skill))) (PP (IN at) (S (VP (VBG scratch-building) (CC and) (VBG creating) (NP (NN scenery)))))))) (, ,) (CC and) (S (NP (PRP he)) (VP (VBD pioneered) (NP (NP (DT the) (NN technique)) (PP (IN of) (S (VP (VBG weathering) (NP (PRP$ his) (NNS models)) (S (VP (TO to) (VP (VB make) (S (NP (PRP them)) (VP (VB look) (ADJP (ADJP (JJ old)) (CC and) (ADJP (RBR more) (JJ realistic)))))))))))))) (. .)))";
@@ -462,7 +474,7 @@ public class EkstrakDiscourseKalimatSejajar {
 			System.out.println("-->"+s);
 		}
 		*/
-        System.out.println("selesai");
+
     }
 
 

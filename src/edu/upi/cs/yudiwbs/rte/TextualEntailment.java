@@ -108,7 +108,7 @@ public class TextualEntailment {
     	System.out.println();
 		System.out.println("Proses subkalimat");
 		EkstrakDiscourseSubKalimat ED = new EkstrakDiscourseSubKalimat();
-		ED.prosesDiscourse(namaTabelDiscT,namaTabelDiscH);
+		ED.prosesDiscourse(namaTabelDiscT);
 		
 		
 		//isi lagi syntax tree-nya
@@ -124,7 +124,8 @@ public class TextualEntailment {
     	System.out.println();
     	System.out.println("Proses kalimat sejajar");
 		EkstrakDiscourseKalimatSejajar eds = new EkstrakDiscourseKalimatSejajar();
-		eds.prosesDiscourseSejajar(namaTabelDiscT,namaTabelDiscH);
+		//,namaTabelDiscH
+		eds.prosesDiscourseSejajar(namaTabelDiscT);
     	
 		//isi lagi syntax tree-nya
 		System.out.println();
@@ -137,7 +138,7 @@ public class TextualEntailment {
     	System.out.println();
     	System.out.println("Proses PP");
         EkstrakDiscoursePP pp = new EkstrakDiscoursePP();
- 	   	pp.prosesKalimatdalamPP(namaTabelDiscT,namaTabelDiscH);
+ 	   	pp.prosesKalimatdalamPP(namaTabelDiscT);
  	   	
  	   	//buat syntax tree 
  	   	System.out.println();

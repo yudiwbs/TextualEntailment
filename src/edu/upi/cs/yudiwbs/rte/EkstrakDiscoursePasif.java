@@ -10,8 +10,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
+
 public class EkstrakDiscoursePasif {
 	//subject verb objek harus terisi
+
+    //JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
+    //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
 	
 	//output jika subject tdak diketahui subjectakan disissi: kalimatpasif_subject_undefined
 	//nanti jika dibandingkan untuk fitur extraction, selama verb cocok maka subj akan selalu cocok (diabaikan)
@@ -224,7 +229,7 @@ public class EkstrakDiscoursePasif {
 	}
 	
 	
-	public void prosesDisc(String namaTabelDiscT,String namaTabelDiscH) {
+	public void prosesDisc(String namaTabelDiscT) {
 		//sudah terisi:
 		//disc_h
 		//disc_t 
@@ -248,16 +253,14 @@ public class EkstrakDiscoursePasif {
 		
 		//ambil data 
 		try {
-		   		Class.forName("com.mysql.jdbc.Driver");
-		   		//db, username, passwd
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
+                KoneksiDB db = new KoneksiDB();
+                conn = db.getConn();
 		   		
 		   		String sqlT = "select id,id_kalimat,t_gram_structure,t_subject "
 		   				+ " from  "+namaTabelDiscT;
 		   		
-		   		String sqlH = "select id,id_kalimat,h_gram_structure,h_subject "
-		   				+ " from "+ namaTabelDiscH;
+		   		//String sqlH = "select id,id_kalimat,h_gram_structure,h_subject "
+		   	    //			+ " from "+ namaTabelDiscH;
 		   		
 		   		// where id_internal  = 7
 		   		
@@ -267,8 +270,8 @@ public class EkstrakDiscoursePasif {
 				String sqlInsT = "insert into "+namaTabelDiscT+"(id_kalimat,t,id_source,jenis) values (?,?,?,?) ";
 		   		pInsT = conn.prepareStatement(sqlInsT);
 		   		
-		   		String sqlInsH = "insert into "+namaTabelDiscH+"(id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
-		   		pInsH = conn.prepareStatement(sqlInsH);
+		   		//String sqlInsH = "insert into "+namaTabelDiscH+"(id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
+		   		//pInsH = conn.prepareStatement(sqlInsH);
 		   		
 				int cc = 0;
 				while (rsT.next()) {
@@ -292,15 +295,19 @@ public class EkstrakDiscoursePasif {
 					    	pInsT.setInt(1, idKalimat);
 				            pInsT.setString(2,strPasif);
 				            pInsT.setInt(3, id);
-				            pInsT.setString(4, "pasif");
+				            pInsT.setString(4, "PASIF");
 				            pInsT.executeUpdate(); 	
 					    }
 				}
 				rsT.close();
 			   	pDiscT.close();
 			   	pInsT.close();
+                conn.close();
+                System.out.println("");
+                System.out.println("selesai");
 
-				pDiscH = conn.prepareStatement(sqlH);
+				/*
+                pDiscH = conn.prepareStatement(sqlH);
 				rsH = pDiscH.executeQuery();
 				cc  = 0;
 				while (rsH.next()) {
@@ -332,9 +339,8 @@ public class EkstrakDiscoursePasif {
 			   	rsH.close();
 			   	pDiscH.close();
 			   	pInsH.close();
-			   	conn.close();
-			   	System.out.println("");
-			   	System.out.println("selesai");
+			   	*/
+
 		   	   } catch (Exception ex) {
 				   ex.printStackTrace();
 			   }
@@ -362,9 +368,12 @@ public class EkstrakDiscoursePasif {
 
 	public static void main(String[] args) {
 		EkstrakDiscoursePasif ed= new EkstrakDiscoursePasif();
-		//ed.prosesDisc("disc_t_rte3_ver1", "disc_h_rte3_ver1");
+		ed.prosesDisc("disc_t_rte3");
 		//String out = ed.cariDiscPasif("(ROOT (S (NP (NP (NNP Ebola)) (SBAR (S (NP (JJ haemorrhagic) (NN fever)) (VP (VBZ is) (NP (NP (DT a) (JJ fatal) (NN disease)) (VP (VBN caused) (PP (IN by) (NP (NP (DT a) (JJ new) (NN virus)) (SBAR (WHNP (WDT which)) (S (VP (VBZ has) (NP (DT no) (VP (JJ known) (NP (NP (NNP cure) (. .)) (SBAR (S (SBAR (WHADVP (WRB When)) (S (NP (DT a) (JJ new) (NN epidemic)) (VP (VBD was) (VP (VBN detected) (PP (IN in) (NP (NNP Zaire))) (PP (IN in) (NP (NP (DT the) (NN spring)) (PP (IN of) (NP (CD 1995))))))))) (, ,) (NP (PRP it)) (VP (VBD was) (ADVP (RB widely)) (VP (VBN perceived) (PP (IN as) (NP (DT a) (NN threat))) (PP (TO to) (NP (DT the) (NNP West) (. .) (NNP Public))))))))) (NN attention))))))))))))) (VP (VBD was) (ADJP (JJ intense))) (. .)))","");
-		String out = ed.cariDebugDiscPasif("The house is painted red by Budi ","the house");
-		System.out.println(out);
+		//String out = ed.cariDebugDiscPasif("The house is painted red by Budi ","the house");
+		//System.out.println(out);
+		System.out.println("Jalankan parsing hypotext pada disct setelah selesai");
+		System.out.println("Selesai. Hati2 jika mengguna HEIDISQL, tidak semua recod " +
+				"ditampilkan jadi berkesan tidak ada data baru");
 	}
 }

@@ -1,0 +1,16 @@
+251:
+Estimates vary widely, but it is believed there are up to 100 million children
+toiling in homes, factories, shops, fields, brothels and on the streets of rural and urban India.
+
+
+(ROOT (S (S (NP (NNS Estimates)) (VP (VBP vary) (ADVP (RB widely)))) (, ,)
+(CC but) (S (NP (PRP it)) (VP (VBZ is) (VP (VBN believed) (SBAR (S (NP (EX there))
+(VP (VBP are) (ADVP (RB up) (PP (TO to) (NP (QP (CD 100) (CD million))
+(NNS children)))) (VP (VBG toiling) (PP (IN in) (NP (NP (NP (NNS homes))
+(, ,) (NP (NNS factories)) (, ,) (NP (NNS shops)) (, ,) (NP (NNS fields)) (, ,)
+(NP (NNS brothels)) (CC and) (PP (IN on) (NP (DT the) (NNS streets)))) (PP (IN of)
+(NP (ADJP (JJ rural) (CC and) (JJ urban)) (NNS India)))))))))))) (. .)))
+
+kalimat sejajar:
+Estimates vary widely ==> masuk akal juga
+

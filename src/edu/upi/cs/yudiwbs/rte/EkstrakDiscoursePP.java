@@ -8,20 +8,25 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EkstrakDiscoursePP {
-  
+
+
+	//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
+	//JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
+
 	//urutan EkstrakDiscourse:
-	// kalimat --> SubKalimat --> PP --> Pasif
+	// kalimat --> Kalimatsejajar --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
-	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
-	// nantinya ini jadi satu prosesDBSimWordnetYW
-	// setelah semua prosesDBSimWordnetYW ekstrak disc selesai, panggil ekstrakfitur
+
+    //kosongkan:
+    // delete from disc_t_rte3 where jenis="KAL_DALAM_PP"
   
   	
 	
 	
   public ArrayList<String> cariKalimatdalamPP(String inp) {
 	  //cari kalimat lengkap dalam PP
-	  //PP yg didalamnya ada NP dan VP 
+	  //PP yg didalamnya ada NP dan VP
+      //update mei 15: jumlah kata >=4 , kalau terlalu sedikit, tidak mengandung info apapun
 	  ArrayList<String> alOut = new ArrayList<String>();
 	  
 	  String t = inp.replace(")", " ) ");
@@ -48,8 +53,8 @@ public class EkstrakDiscoursePP {
     		  //belum menangaii kalau di dalam PP ada PP lagi
     		  
     		  bb = 1;
-    		  
-    		  sbKal = new StringBuilder();
+              String kalimat ="";
+              sbKal = new StringBuilder();
     		  //sbKal.append(kata+" "); 
     		  stop2 = false;
     		  isVP= false;
@@ -114,7 +119,10 @@ public class EkstrakDiscoursePP {
 	                				//SBAR sudah ditangani di bagian lain
 	                				//if (isVP && !isSBAR && !isS) {
 	                				if (isVP && !isSBAR ) {
-	                					alOut.add(sbKal.toString());
+                                        kalimat = sbKal.toString();
+                                        if (kalimat.split("\\s+").length > 3) {
+                                            alOut.add(kalimat);
+                                        }
 	                				}
 	                			}
 	                		}
@@ -122,11 +130,10 @@ public class EkstrakDiscoursePP {
 	                			bbS = bbS - jum[1];
 	                			if (bbS <=0) {
 	                				stop2 = true;
-	                				//SBAR dan S sudah ditangani di bagian lain
-	                				//if (isVP && !isSBAR && !isS) {
-	                				//if (isVP && !isSBAR ) {
-	                					alOut.add(sbKal.toString());
-	                				//}
+	                				kalimat = sbKal.toString();
+                                    if (kalimat.split("\\s+").length > 3) {
+                                        alOut.add(kalimat);
+                                    }
 	                			}
 	                		}
 	               }
@@ -137,7 +144,7 @@ public class EkstrakDiscoursePP {
 	  return alOut;
   }
   
-  public void prosesKalimatdalamPP(String namaTabelDiscT, String namaTabelDiscH) {
+  public void prosesKalimatdalamPP(String namaTabelDiscT) {
 	   //prosesDBSimWordnetYW PP yang didalamnya mengandung S, S ini kemudian dipisahkan
 	   //jadi kalimat, dengna tambahan subject
 	   
@@ -158,9 +165,9 @@ public class EkstrakDiscoursePP {
 	   ResultSet rsH = null;
 		//ambil data 
 		try {
-		   		Class.forName("com.mysql.jdbc.Driver");
-		   		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-		   			   					+ "user=textentailment&password=textentailment");
+                KoneksiDB db = new KoneksiDB();
+
+                conn = db.getConn();
 			    
 		   		String sqlT = " select id,id_kalimat,t_gram_structure,t "
 		   				+ " from "+namaTabelDiscT+" order by id_kalimat " ;
@@ -174,8 +181,8 @@ public class EkstrakDiscoursePP {
 				String sqlInsT = "insert into "+namaTabelDiscT+" (id_kalimat,t,id_source,jenis) values (?,?,?,?) ";
 		   		pInsT = conn.prepareStatement(sqlInsT);
 		   		
-		   		String sqlInsH = "insert into "+namaTabelDiscH+" (id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
-		   		pInsH = conn.prepareStatement(sqlInsH);
+		   		//String sqlInsH = "insert into "+namaTabelDiscH+" (id_kalimat,h,id_source,jenis) values (?,?,?,?) ";
+		   		//pInsH = conn.prepareStatement(sqlInsH);
 				
 				
 				System.out.println("Proses T");
@@ -209,9 +216,11 @@ public class EkstrakDiscoursePP {
 		   		rsT.close();
 		   		pStatT.close();
 		   		pInsT.close();
+                conn.close();
+                System.out.println("selesai");
 		   		
-		   		
-		   		String sqlH = " select id,id_kalimat,h_gram_structure,h "
+		   		/*
+                String sqlH = " select id,id_kalimat,h_gram_structure,h "
 		   				+ " from "+namaTabelDiscH ;
 		   		pStatH = conn.prepareStatement(sqlH);
 				rsH = pStatH.executeQuery();
@@ -247,8 +256,7 @@ public class EkstrakDiscoursePP {
 		   		rsH.close();
 		   		pStatH.close();
 		   		pInsH.close();
-		   		conn.close();
-		   		System.out.println("selesai");
+		   		*/
 		   	   } catch (Exception ex) {
 				   ex.printStackTrace();
 			   }
@@ -405,7 +413,10 @@ public class EkstrakDiscoursePP {
 	
    public static void main(String[] args) {
 	   EkstrakDiscoursePP pp = new EkstrakDiscoursePP();
-	   pp.prosesKalimatdalamPP("disc_t_rte3_ver1","disc_h_rte3_ver1");
+	   pp.prosesKalimatdalamPP("disc_t_rte3");
+       System.out.println("Jalankan parsing hypotext pada disct setelah selesai");
+       System.out.println("Selesai. Lanjutkan dengan parsinghypotext, Hati2 jika mengguna HEIDISQL, tidak semua recod " +
+               "ditampilkan jadi berkesan tidak ada data baru");
 	   //pp.prosesDisc("disc_t_rte3_ver1","disc_h_rte3_ver1");
 	   //String s =  pp.cariKalimatPP("(ROOT (S (NP (NP (NNP Christopher) (NNP Reeve)) (, ,) (NP (DT an) (NN actor)) (CC and) (NP (NN director))) (VP (VBD became) (NP (DT an) (NN inspiration)) (ADVP (RB worldwide)) (PP (IN after) (S (VP (VBG being) (VP (VBN paralyzed) (PP (IN in) (NP (DT a) (NN horse) (NN riding) (NN accident))))))))))");
 	   //System.out.println(s);

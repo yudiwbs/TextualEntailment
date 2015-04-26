@@ -267,5 +267,6 @@ public class ParsingHypoText {
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
 
         pht.prosesDiscourseT("disc_t_rte3");
+
     }
 }

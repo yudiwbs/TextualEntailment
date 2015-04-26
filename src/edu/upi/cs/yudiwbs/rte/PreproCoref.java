@@ -37,6 +37,15 @@ public class PreproCoref {
 	 * 
 	 *
 	 *
+
+	mengganti kemunculan it, he,she dst:
+	contoh:
+	Google said it planned to complete the IPO " as soon as practicable . "
+	menjadi:
+	Google said Google planned to complete the IPO " as soon as practicable . "
+
+	ouput: tprepro_coref, untuk sementara hanya T saja yang diproses
+
 	    -awas: membutuhkan waktu lama denga heap memori besar -Xms2G
 
 	    --tambah dulu penampung hasil coref
@@ -56,38 +65,23 @@ public class PreproCoref {
 		lalu update preprocoref ke t dan h (query ada dibawah)
 	
 
-	WARNING:
-	sebelum jalankan periksa sql select, update dan prosesDBSimWordnetYW updatenya
-	(sering diedit untuk testing, termasuk nama tabel)
-	
-	IS: t dan h
-	 
-	
-	mengganti kemunculan it, he,she dst:
-	contoh:
-	Google said it planned to complete the IPO " as soon as practicable . " 
-	menjadi:
-	Google said Google planned to complete the IPO " as soon as practicable . " 
-	
-	tapi bisa juga ada informasi yang hilang contoh:
-	
-	Once called the "Queen of the Danube," Budapest has long been the focal point of the nation and a lively cultural centre.
-    Once called the " Queen of the Danube , " Budapest has long been Budapest           . 
 
 	
-	*hanya untuk yang punya subkalimat, kalau full malah jelek akurasinya
+
+	
+
 	
 	
-//copy yg original dulu	kalau perlu... tapi bisa diskp
-update rte1_ver4
-set 
-t_original = t,
-h_original = h;
+	//copy yg original dulu	kalau perlu... tapi bisa diskp
+	update rte1_ver4
+	set
+	t_original = t,
+	h_original = h;
 
 
-// pindahkan  rte3.t ->  rte3.tpreprocoref jika tprepocoref kosong
-// untuk selanjutnya, yang digunakan adalah tprepocoref atau sebaiknya
-// dari prepocoref dipindahkan ke t saja?
+	// pindahkan  rte3.t ->  rte3.tpreprocoref jika tprepocoref kosong
+	// untuk selanjutnya, yang digunakan adalah tprepocoref atau sebaiknya
+	// dari prepocoref dipindahkan ke t saja?
 
    update rte3
    set t_preprocoref = t
