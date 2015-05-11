@@ -177,7 +177,7 @@ public class ProsesDependency {
 			    }
 			    //cari semua child yang parentnya root
 			}
-			System.out.println("jumlah yg sama (child root hypo sama dengan root text)"+jumCocok);
+			System.out.println("jumlah yg sama (child root hypo sama dengan root text)" + jumCocok);
     		rs.close();
 			pSel.close();
 			conn.close();
@@ -414,8 +414,18 @@ public class ProsesDependency {
 		}
 	}
 
+	/*
+		input typedep
+		output: array list, setiap elemen [0]: role, [1]: stringnya
+		contoh
+		    [0]:  root
+		    [1]:  caused
+		atau
+		    [0]:  dobj
+		    [1]:  blackout
+	 */
 
-    private void ekstrak(String strTypeDep) {
+    public ArrayList<String[]> ekstrak(String strTypeDep) {
     //ambil type yg penting, termasuk menggabungkan
     //input dalam bentuk stanford dependency
 
@@ -443,7 +453,7 @@ public class ProsesDependency {
       */
 
         //obj dan subj dikeluarkan krn sudah diganti dengan subnya
-
+        ArrayList<String[]> alOut = new ArrayList<>();
         //penggabungan amod dan nn
         ArrayList<String[]> alEl = new ArrayList<>();
         String[] arType = {"root","arg","agent","acomp","ccomp","xcomp","dobj",
@@ -501,7 +511,11 @@ public class ProsesDependency {
                 sb.append(getCore(a1)); //tambah depan
                 gab = sb.toString();
                 isNN = true;
-                System.out.println("long_"+sp[0].trim()+"="+gab);
+                //System.out.println("long_"+sp[0].trim()+"="+gab);
+                String[] aS =new String[2];
+                aS[0] =  "long_"+sp[0].trim();
+                aS[1] = gab;
+                alOut.add(aS);
             }
 
         }
@@ -514,13 +528,16 @@ public class ProsesDependency {
                 for (String[] el:alEl) {
                     //el = alEl.get(0);
                     String isi = getCore(el[1]); //ambil isinya
-                    System.out.println(type + "=" + isi);
+                    //System.out.println(type + "=" + isi);
+                    String[] aS =new String[2];
+                    aS[0] = type;
+                    aS[1] = isi;
+                    alOut.add(aS);
                 }
             }
-
         }
 
-
+        return alOut;
     }
 
     public void proses4(String namaTabel) {

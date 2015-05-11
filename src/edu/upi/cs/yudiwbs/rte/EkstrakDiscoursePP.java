@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EkstrakDiscoursePP {
+	//sepertinya lebih banyak bug (karena subyek hilang), lebih baik dihilangkan
+
+
+    //diperbaiki
+    // 10 mei 2015
+    //
 
 
 	//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
@@ -19,14 +25,22 @@ public class EkstrakDiscoursePP {
 
     //kosongkan:
     // delete from disc_t_rte3 where jenis="KAL_DALAM_PP"
+
+    //todo: bug kenapa ada duplikasi?
+    //todo: seringkali kata sebelum which dst hilang
   
   	
-	
-	
+     /*
+
+  	  cari kalimat lengkap dalam PP
+	  PP yg didalamnya ada NP dan VP
+      update mei 15: jumlah kata >=4 , kalau terlalu sedikit, tidak mengandung info apapun
+
+	  inp dalam format pos tag
+
+  	 */
   public ArrayList<String> cariKalimatdalamPP(String inp) {
-	  //cari kalimat lengkap dalam PP
-	  //PP yg didalamnya ada NP dan VP
-      //update mei 15: jumlah kata >=4 , kalau terlalu sedikit, tidak mengandung info apapun
+
 	  ArrayList<String> alOut = new ArrayList<String>();
 	  
 	  String t = inp.replace(")", " ) ");
@@ -146,11 +160,10 @@ public class EkstrakDiscoursePP {
   
   public void prosesKalimatdalamPP(String namaTabelDiscT) {
 	   //prosesDBSimWordnetYW PP yang didalamnya mengandung S, S ini kemudian dipisahkan
-	   //jadi kalimat, dengna tambahan subject
+	   //jadi kalimat, dengan  tambahan subject
 	   
 	   //IS: tabel disc sudah terisi dengan parsetree
-	   
-	   
+
 	   System.out.println("Proses Kalimat dalam PP");
 	   Connection conn=null;
 	   
@@ -166,7 +179,6 @@ public class EkstrakDiscoursePP {
 		//ambil data 
 		try {
                 KoneksiDB db = new KoneksiDB();
-
                 conn = db.getConn();
 			    
 		   		String sqlT = " select id,id_kalimat,t_gram_structure,t "
@@ -413,12 +425,19 @@ public class EkstrakDiscoursePP {
 	
    public static void main(String[] args) {
 	   EkstrakDiscoursePP pp = new EkstrakDiscoursePP();
+
+	   //debug dulu
+	   /*
 	   pp.prosesKalimatdalamPP("disc_t_rte3");
        System.out.println("Jalankan parsing hypotext pada disct setelah selesai");
        System.out.println("Selesai. Lanjutkan dengan parsinghypotext, Hati2 jika mengguna HEIDISQL, tidak semua recod " +
                "ditampilkan jadi berkesan tidak ada data baru");
+	   */
 	   //pp.prosesDisc("disc_t_rte3_ver1","disc_h_rte3_ver1");
-	   //String s =  pp.cariKalimatPP("(ROOT (S (NP (NP (NNP Christopher) (NNP Reeve)) (, ,) (NP (DT an) (NN actor)) (CC and) (NP (NN director))) (VP (VBD became) (NP (DT an) (NN inspiration)) (ADVP (RB worldwide)) (PP (IN after) (S (VP (VBG being) (VP (VBN paralyzed) (PP (IN in) (NP (DT a) (NN horse) (NN riding) (NN accident))))))))))");
-	   //System.out.println(s);
+
+	   ArrayList<String> alS =  pp.cariKalimatdalamPP("(ROOT (S (NP (PRP I)) (ADVP (RB recently)) (VP (VBD took) (NP (DT a) (NN round) (NN trip)) (PP (IN from) (NP (NP (NNP Abuja)) (PP (PP (TO to) (NP (NP (NNP Yola)) (, ,) (NP (NP (DT the) (NN capital)) (PP (IN of) (NP (NNP Adamawa) (NNP State)))))) (CC and) (ADVP (RB back)) (PP (TO to) (NP (NNP Abuja))) (, ,)))) (PP (IN with) (NP (DT a) (JJ fourteen-seater) (NN bus)))) (. .)))");
+	   for (String s: alS) {
+		   System.out.println(s);
+	   }
    }
 }

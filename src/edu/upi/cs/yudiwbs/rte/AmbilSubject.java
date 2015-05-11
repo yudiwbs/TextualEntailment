@@ -72,6 +72,8 @@ public class AmbilSubject {
 		//update13des: penanganan there was a dog attack => dog attack  (EX: there
 
 
+
+
 		String ret="";
 		String kata;
         //untuk tracing urutan kurung buka dan tutup setelah NP
@@ -95,7 +97,7 @@ public class AmbilSubject {
         Scanner sc = new Scanner(t2);
         
         StringBuilder sbFirstNP=null;
-			boolean stop = false;  //tidak digunakan
+		boolean stop = false;  //tidak digunakan
         boolean isPP = false;
     	int    curMinLevel  = 9999;  //ambil NP yang paling tinggi levelnya (paling kecil)
 	    while (sc.hasNext() && (!stop)) {

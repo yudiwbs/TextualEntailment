@@ -19,16 +19,22 @@ import edu.stanford.nlp.util.CoreMap;
  */
 
 public class EkstrakDiscourseKalimat {
-	//urutan EkstrakDiscourse:
+
 	//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
     //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
 
+    //split kalimat yang menggunakan titik
 
+    //hanya memproses T
+
+	//urutan EkstrakDiscourse:
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
 	// setelah itu parsingHypoText dipanggil untuk tabel agar dibangkitkan
-	// prosesDBSimWordnetYW HypoText harus dipanggil setelah selesai tiap tahap
-	// nantinya ini jadi satu prosesDBSimWordnetYW
+	// HypoText harus dipanggil setelah selesai tiap tahap
+
+
+
 	// setelah semua prosesDBSimWordnetYW ekstrak disc selesai, panggil ekstrakfitur
 	
 	
@@ -47,7 +53,7 @@ public class EkstrakDiscourseKalimat {
 	    Connection conn=null;
 		PreparedStatement pStat=null;
 		PreparedStatement pInsT=null;
-		PreparedStatement pInsH=null;
+		//PreparedStatement pInsH=null;
 		
 		ResultSet rs = null;
 		
@@ -64,9 +70,10 @@ public class EkstrakDiscourseKalimat {
 				
 				String sqlInsT = "insert into "+namaTabelDiscT+" (id_kalimat,t,jenis) values (?,?,?) ";
 		   		pInsT = conn.prepareStatement(sqlInsT);
-		   		
-		   		String sqlInsH = "insert into "+namaTabelDiscH+" (id_kalimat,h,jenis) values (?,?,?) ";
-		   		pInsH = conn.prepareStatement(sqlInsH);
+
+
+		   		//String sqlInsH = "insert into "+namaTabelDiscH+" (id_kalimat,h,jenis) values (?,?,?) ";
+		   		//pInsH = conn.prepareStatement(sqlInsH);
 		   		
 				int cc=0;
 				while (rs.next()) {
@@ -96,7 +103,7 @@ public class EkstrakDiscourseKalimat {
 					    }	
 					    
 
-
+						/*
 					    Annotation docH = new Annotation(h);
 					    pipeline.annotate(docH);
 					    List<CoreMap> sentencesH = docH.get(SentencesAnnotation.class);
@@ -105,13 +112,14 @@ public class EkstrakDiscourseKalimat {
 			                pInsH.setString(2,kalimat.toString());
 			                pInsH.setString(3,"SPLITKALIMAT");
 			                pInsH.executeUpdate(); 	
-					    }	
+					    }
+					    	*/
 		                
 				}
 		   		rs.close();
 		   		pStat.close();
 		   		pInsT.close();
-		   		pInsH.close();
+		   		//pInsH.close();
 		   		conn.close();
 		   		System.out.println("");
 		   		System.out.println("selesai");

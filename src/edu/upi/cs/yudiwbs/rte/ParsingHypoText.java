@@ -62,14 +62,16 @@ public class ParsingHypoText {
 	}
 	
 	
-	private String[] parse(String sen) {
+	public String[] parse(String sen) {
+		//IS: init harus dipanggil lebih dulu
+        //output: string[0] adalah syntatic
+        //        string[1] adalah dependency tree
 		//hasilnya sama dengan yg di online (lebih bagus)
 		//lebih simpel
 		
 		String[] out = new String[2];
 		String kata = sen;
 		Tree parseTree = lp.parse(kata);
-		
 		TreebankLanguagePack tlp = new PennTreebankLanguagePack();
 		GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
 		GrammaticalStructure gs = gsf.newGrammaticalStructure(parseTree);

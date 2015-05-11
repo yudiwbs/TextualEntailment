@@ -1,16 +1,235 @@
-251:
-Estimates vary widely, but it is believed there are up to 100 million children
-toiling in homes, factories, shops, fields, brothels and on the streets of rural and urban India.
+- bug stanford coref:
+I, her
+id:51, 48
+
+- pencarian NP (search di dokumen ini dengan keyword "pencarian NP")
+  - Dilakukan setelah split kalimat stanford.
+  - Tidak semua dalam hirarkis (bug di stanford parser?)
+  - bagaimana menentukan awal dan akhir?  <-- learning?
+  - perlu memanfaatkan isi H
+  - sebelum SBAR (sebelum which dst), id=1
+  - setelah koma, NP diikuti VP yang besar NP VP(...) id=2
+  - diakhiri PP (yg berada di dalam VP) id=4
+  - diakhiri koma (id=4)
+  - hati-hati dengan PP yang berada di NP, tetap yg jadi patokan PP dalam VP NP (PP) (VP PP(  id:294
+  - 
+	
+  
+  
+ - masalah coref:
+   id=4
+   id=6
+   308 --> salah
+   311 --> kr pemotongan?
+   
+ - 
+   
+  
+
+-sampai id 385
+-diprint kemudian dicek manual
+Hasil:
+ KAL_DALAM_PP: duplikasi, perlu dicek kalau sudah ada, jangan dimasukkan
+ id:2 split kalimat salah (1321), terpotong
 
 
-(ROOT (S (S (NP (NNS Estimates)) (VP (VBP vary) (ADVP (RB widely)))) (, ,)
-(CC but) (S (NP (PRP it)) (VP (VBZ is) (VP (VBN believed) (SBAR (S (NP (EX there))
-(VP (VBP are) (ADVP (RB up) (PP (TO to) (NP (QP (CD 100) (CD million))
-(NNS children)))) (VP (VBG toiling) (PP (IN in) (NP (NP (NP (NNS homes))
-(, ,) (NP (NNS factories)) (, ,) (NP (NNS shops)) (, ,) (NP (NNS fields)) (, ,)
-(NP (NNS brothels)) (CC and) (PP (IN on) (NP (DT the) (NNS streets)))) (PP (IN of)
-(NP (ADJP (JJ rural) (CC and) (JJ urban)) (NNS India)))))))))))) (. .)))
+- KAL dalam PP umumnya salah, dibuang saja?
+- KAL dalam PP yg di 2926 benar
+- masalah utama KAL_DALAM_PP: subyeknya sering hilang
+- FIX, jangan buang
 
-kalimat sejajar:
-Estimates vary widely ==> masuk akal juga
+Perbaikan kedua:
+- S dalam S bisa dipisah contoh id=1 "The sale was made to pay Yukos' US$ 27.5 billion tax bill"
+- kalimat lengkap NP VP yang dapat dipisah lihat contoh bawah
 
+Banyak yang belum kena, contoh:
+=================================
+Pencarian NP
+- sebelum SBAR
+
+id=1
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally
+sold for US$ 9.4 billion to ![a little known company Baikalfinansgroup which was later bought
+by the Russian state-owned oil company Rosneft .]!
+
+NP yang mengandung SBAR?
+NP yang mengandung WHNP?
+
+Baikalfinansgroup was sold to Rosneft.
+
+
+(ROOT (S (S (NP (DT The) (NN sale)) (VP (VBD was) (VP (VBN made)
+(S (VP (TO to) (VP (VB pay) (NP (NP (NNP Yukos) (POS ')) (ADJP (QP ($ US$) (QP (CD 27.5)
+(CD billion)))) (NN tax) (NN bill)))))))) (, ,) (NP (NNP Yuganskneftegaz)) (VP (VBD was)
+(ADVP (RB originally)) (VP (VBN sold) (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion)))))
+(PP (TO to) 
+(NP 
+    (NP (DT a) (ADJP (RB little) (VBN known)) (NN company) (NN Baikalfinansgroup))
+    (SBAR (WHNP (WDT which)) 
+		(S (VP (VBD was) (ADVP (RB later)) (VP (VBN bought) (PP (IN by) (NP (DT the)
+    (JJ Russian) (JJ state-owned) (NN oil) (NN company) (NN Rosneft)))))))
+)
+
+	))) (. .)))
+
+
+NP: a little known company Baikalfinanshroup
+SBAR (VP (VP (PP): 
+	
+-------------------------------------	
+id=2
+Pencarian NP
+
+dimulai dengan (,
+- NP VP (....  -> stop saat PP
+- NP lalu VP yang besar
+
+
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, ![Yuganskneftegaz was originally sold for US$9.4 billion ]! to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .
+
+Yuganskneftegaz cost US$ 27.5 billion.
+
+
+(ROOT (S (S (NP (DT The) (NN sale)) (VP (VBD was) (VP (VBN made) (S (VP (TO to) (VP (VB pay) (NP (NP (NNP Yukos) (POS ')) (ADJP (QP ($ US$) (QP (CD 27.5) (CD billion)))) (NN tax) (NN bill)))))))) (, ,) (NP (NNP Yuganskneftegaz)) (VP (VBD was) (ADVP (RB originally)) (VP (VBN sold) (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion))))) (PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company) (NN Baikalfinansgroup)) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (ADVP (RB later)) (VP (VBN bought) (PP (IN by) (NP (DT the) (JJ Russian) (JJ state-owned) (NN oil) (NN company) (NN Rosneft))))))))))) (. .)))
+
+
+(NP (NNP Yuganskneftegaz)) (VP (VBD was) (ADVP (RB originally)) (VP (VBN sold) (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion)))))
+
+
+--- 
+S dalam S,
+setelah itu NP VP 
+--------------
+
+(ROOT (S 
+
+(S (NP (DT The) (NN sale)) (VP (VBD was) (VP (VBN made) (S (VP (TO to) (VP (VB pay) (NP (NP (NNP Yukos) (POS ')) (ADJP (QP ($ US$) (QP (CD 27.5) (CD billion)))) (NN tax) (NN bill)))))))) 
+
+(, ,) 
+
+(NP (NNP Yuganskneftegaz)) (VP (VBD was) (ADVP (RB originally)) (VP (VBN sold) 
+(PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion))))) 
+(PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company) (NN Baikalfinansgroup))
+
+--------------
+Contoh kal PP yg benar (id=7)
+
+(ROOT (S (PP (IN After) (NP (PRP$ his) (NN release))) (, ,) (NP (DT the) (JJ clean-shaven) (NNP Magdy) (NN el-Nashar)) (VP (VBD told) (NP (NNS reporters)) (PP (IN outside) (NP (PRP$ his) (NN home))) (SBAR (IN that) (S (NP (PRP he)) (VP (VBD had) (NP (NN nothing) (S (VP (TO to) (VP (VB do) (PP (IN with) (NP (NP (DT the) (NNP July) (CD 7) (NN transit) (NNS attacks)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD killed) (NP (NP (CD 52) (NNS people)) (CC and) (NP (DT the) (CD four) (NNS bombers)))))))))))))))) (. .)))
+
+NP setelah SBAR harusnya dimasukkan--> perlu dicek
+----------------
+
+VP  besar diakhiri PP
+
+(NP)  (VP (VBP) (VP (VBN  -> stop oleh SBAR
+
+id=8
+![Mrs. Bush's approval ratings have remained very high, above 80%]!, even as her husband's have recently dropped below 50%.
+
+(ROOT (S 
+     (NP (NP (NNP Mrs.) (NNP Bush) (POS 's)) (NN approval) (NNS ratings)) 
+	 (VP (VBP have) (VP (VBN remained) (S (ADJP (ADJP (RB very) (JJ high)) (PRN (, ,) (PP (IN above) (NP (CD 80) (NN %))) (, ,))))
+
+(SBAR (RB even) (IN as) (S (NP (PRP$ her) (NN husband)) (VP (VBZ 's) (VP (VB have) (VP (ADVP (RB recently)) (VBN dropped) (PP (IN below) (NP (CD 50) (NN %)))))))))) (. .)))
+=====================
+id=4
+"The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. ![This Mabel Normand vehicle, produced by Mack Sennett]!, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's "Show People" (1928).
+ 
+(NP) (VP (VBN (PP
+
+
+(ROOT (S (NP (`` ``) (NP (DT The) (NNP Extra) (NNP Girl)) ('' '') (PRN (-LRB- -LRB-) (VP (VBN 1923)) (-RRB- -RRB-))) (VP (VBZ is) (NP (NP (DT a) (NN story)) (PP (IN of) (NP (NP (NP (DT a) (JJ small-town) (NN girl)) (, ,) (NP (NNP Sue) (NNP Graham)) (PRN (-LRB- -LRB-) (VP (VBN played) (PP (IN by) (NP (NNP Mabel) (NNP Normand)))) (-RRB- -RRB-))) (SBAR (WHNP (WP who)) (S (VP (VP (VBZ comes) (PP (TO to) (NP (NNP Hollywood))) (S (VP (TO to) (VP (VB be) (PP (IN in) (NP (NP (NP (DT the) (NNS pictures)) (. .) (NP (DT This) (NNP Mabel) (NNP Normand) (NN vehicle)) (, ,)) (VP (VBN produced) (PP (IN by) (NP (NNP Mack) (NNP Sennett)))))))))) (, ,) (VP (VBD followed) (NP (JJR earlier) (NNS films)) (PP (IN about) (NP (DT the) (NN film) (NN industry)))) (CC and) (VP (ADVP (RB also)) (VBD paved) (NP (NP (DT the) (NN way)) (PP (IN for) (NP (JJ later) (NNS films)))) (PP (IN about) (NP (NNP Hollywood))) (, ,) (PP (JJ such) (IN as) (NP (NP (NP (NNP King) (NNP Vidor) (POS 's)) (`` ``) (NN Show) (NNS People) ('' '')) (PRN (-LRB- -LRB-) (NP (CD 1928)) (-RRB- -RRB-)))))))))))) (. .)))
+
+
+(NP (DT This) (NNP Mabel) (NNP Normand) (NN vehicle)) (, ,)) (VP (VBN produced) (PP (IN by) (NP (NNP Mack) (NNP Sennett))))
+
+=====================
+id=9
+ketemu di 2928, tapi harusnya dipotong
+
+=====================
+id=10
+salah KAL_DALAM_PP
+On May 17, 2005, the National Assembly of Kuwait passed, by a majority of 35 to 23 (with 1 abstention), an amendment to its electoral law that would allow women to vote and to stand as parliamentary candidates.
+
+(ROOT (S (PP (IN On) (NP (NNP May) (CD 17) (, ,) (CD 2005))) (, ,) (NP (NP (DT the) (NNP National) (NNP Assembly)) (PP (IN of) (NP (NNP Kuwait)))) (VP (VBD passed) (, ,) (PP (IN by) (NP (NP (DT a) (NN majority)) (PP (IN of) (NP (NP (QP (CD 35) (TO to) (CD 23))) (PRN (-LRB- -LRB-) (PP (IN with) (NP (CD 1) (NN abstention))) (-RRB- -RRB-)))))) (, ,) (S (NP (NP (DT an) (NN amendment)) (PP (TO to) (NP (NP (PRP$ its) (JJ electoral) (NN law)) (SBAR (WHNP (WDT that)) (S (VP (MD would) (VP (VB allow) (NP (NNS women))))))))) (VP (VP (TO to) (VP (VB vote))) (CC and) (VP (TO to) (VP (VB stand) (PP (IN as) (NP (JJ parliamentary) (NNS candidates)))))))) (. .)))
+ 
+--
+coref its belum dirposes?
+
+kalimat setelah To harusnya tidak dibuang, gimana cara menentukannya?
+
+(NP (NP (PRP$ its) (JJ electoral) (NN law)) (SBAR (WHNP (WDT that)) (S (VP (MD would) (VP (VB allow) (NP (NNS women)))))))  ....  
+
+2930: sama, to harusnya tidak dibuang
+=========================
+id=11
+Pencarian NP
+NP PP
+
+I recently took a round trip from Abuja to Yola, the capital of Adamawa State and back to Abuja, with a fourteen-seater bus.
+
+
+(ROOT (S (NP (PRP I)) (ADVP (RB recently)) (VP (VBD took) (NP (DT a) (NN round) (NN trip)) (PP (IN from) (NP (NP (NNP Abuja)) (PP (PP (TO to) (NP (NP (NNP Yola)) (, ,) (NP (NP (DT the) (NN capital)) (PP (IN of) (NP (NNP Adamawa) (NNP State)))))) (CC and) (ADVP (RB back)) (PP (TO to) (NP (NNP Abuja))) (, ,)))) (PP (IN with) (NP (DT a) (JJ fourteen-seater) (NN bus)))) (. .)))
+
+Harusnya ketemu KAL_DALAM_PP: 
+Yola, the capital of Adamawa State and back to Abuja, with a fourteen-seater bus.
+
+
+(NP (NP (NNP Yola)) (, ,) (NP (NP (DT the) (NN capital)) (PP (IN of) (NP (NNP Adamawa) (NNP State)))))
+
+[with bisa dibuang]
+--------------
+id=12
+ketemu di 1235
+
+--------------
+id=52
+Pencarian NP
+
+tdk berlevel
+NP VP VBD VP VBN .. PP   sbar sebagai clue penutup?
+
+
+![El-Nashar was detained July 14 in Cairo]! after Britain notified Egyptian authorities that it suspected he may have had links to some of the attackers.
+
+(ROOT (S (NP (NNP El-Nashar)) (VP (VBD was) (VP (VBN detained) (NP-TMP (NNP July) (CD 14)) (PP (IN in) (NP (NNP Cairo))) (SBAR (IN after) (S (NP (NNP Britain)) (VP (VBD notified) (NP (JJ Egyptian) (NNS authorities)) (SBAR (IN that) (S (NP (PRP it)) (VP (VBD suspected) (SBAR (S (NP (PRP he)) (VP (MD may) (VP (VB have) (VP (VBN had) (NP (NNS links)) (PP (TO to) (NP (NP (DT some)) (PP (IN of) (NP (DT the) (NNS attackers)))))))))))))))))) (. .)))
+
+
+--------------
+id= 55
+
+Pencarian NP
+
+pola:
+NP  (NP  (PP  ADVP
+
+(ROOT (S (NP (NP (NNP Bosnia) (POS 's)) (VBG leading) (JJ Muslim) (NN daily)) (NP (NNP Dnevni) (NNP Avaz)) (VP (VBZ writes) (ADVP (RB excitedly)) (PP (IN about) (NP (`` ``) (NP (DT a) (JJ sensational) (NN discovery)) ('' '') (PP (IN of) (NP (`` ``) (NP (DT the) (JJ first) (JJ European) (NN pyramid)) ('' '') (PP (IN in) (NP (NP (DT the) (JJ central) (NN town)) (PP (IN of) (NP (NNP Visoko))))))))) (, ,) (ADVP (ADVP (RB just) (RB north)) (PP (IN of) (NP (NNP Sarajevo))))) (. .)))
+
+harusnya ketemu:
+(NP (`` ``) (NP (DT the) (JJ first) (JJ European) (NN pyramid)) ('' '') (PP (IN in) (NP (NP (DT the) (JJ central) (NN town)) (PP (IN of) (NP (NNP Visoko))))))))) (, ,) (ADVP (ADVP (RB just) (RB north)) (PP (IN of) (NP (NNP Sarajevo)))))
+
+-------------------
+NP yang besar?
+
+(NP (NP (PP
+id:58
+On the morning of 1 June, there was ![a blackout throughout most of the capital caused by urban commandos of the Farabundo Marti National Liberation Front (FMLN)]!.
+h:
+
+
+(ROOT (S (PP (IN On) (NP (NP (DT the) (NN morning)) (PP (IN of) (NP (CD 1))))) (NP-TMP (NNP June)) (, ,) (NP (EX there)) (VP (VBD was) (NP (NP (DT a) (NN blackout)) (PP (IN throughout) (NP (NP (JJS most)) (PP (IN of) (NP (NP (DT the) (NN capital)) (VP (VBN caused) (PP (IN by) (NP (NP (JJ urban) (NNS commandos)) (PP (IN of) (NP (DT the) (NNP Farabundo) (NNP Marti) (NNP National) (NNP Liberation) (NNP Front)))))))) (PRN (-LRB- -LRB-) (NP (NNP FMLN)) (-RRB- -RRB-)))))) (. .)))
+-->
+(NP (NP (DT a) (NN blackout)) (PP (IN throughout) (NP (NP (JJS most)) (PP (IN of) (NP (NP (DT the) (NN capital)) (VP (VBN caused) (PP (IN by) (NP (NP (JJ urban) (NNS commandos)) (PP (IN of) (NP (DT the) (NNP Farabundo) (NNP Marti) (NNP National) (NNP Liberation) (NNP Front)))))))) (PRN (-LRB- -LRB-) (NP (NNP FMLN)) (-RRB- -RRB-)))))
+
+==============
+id:294
+
+NP (PP) (VP PP(
+
+![Mental health problems in children and adolescents are on the rise]!, the British Medical Association has warned, and services are ill-equipped to cope.
+
+(ROOT (S (S (NP (NP (NNP Mental) (NN health) (NNS problems)) (PP (IN in) (NP (NNS children) (CC and) (NNS adolescents)))) (VP (VBP are) (PP (IN on) (NP (DT the) (NN rise))))) (PRN (, ,) (S (NP (DT the) (NNP British) (NNP Medical) (NNP Association)) (VP (VBZ has) (VP (VBN warned)))) (, ,)) (CC and) (S (NP (NNS services)) (VP (VBP are) (ADJP (JJ ill-equipped) (S (VP (TO to) (VP (VB cope))))))) (. .)))
+
+
+(S (NP (NP (NNP Mental) (NN health) (NNS problems)) (PP (IN in) (NP (NNS children) (CC and) (NNS adolescents)))) (VP (VBP are) (PP (IN on) (NP (DT the) (NN rise)))))

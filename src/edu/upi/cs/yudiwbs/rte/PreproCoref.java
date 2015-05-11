@@ -1,7 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -144,6 +143,8 @@ public class PreproCoref {
         //update
         //yang diproses hanya
         //he, she, they, her, his, them, it
+		//these, those, I
+
         //jika pengganti lebih dari 2 kata
         //misal id=90, he = "an active member of the National Guard" nah ini dibuang
          //mungkin nantinya diproses dengan "he" yang lain
@@ -151,6 +152,7 @@ public class PreproCoref {
         //misalnya: he=his, she=her dst. (percuma juga)
 
         ArrayList<String> alDaftarCoref = new ArrayList<>();
+        alDaftarCoref.add("I");
         alDaftarCoref.add("he");
         alDaftarCoref.add("his");
         alDaftarCoref.add("she");
@@ -228,7 +230,8 @@ public class PreproCoref {
 		         clust = clust.trim();
 		         arrMention[cc] = clust;
 		         cc++;
-		         //System.out.println("representative mention: \"" + clust + "\" is mentioned by:");
+		         //debug
+		         System.out.println("representative mention: \"" + clust + "\" is mentioned by:");
 		         
 		         //ambil corefnya (misal it, she the the company dst)
 		         boolean isProses =false;
@@ -242,6 +245,11 @@ public class PreproCoref {
 		                	clust2 += tks.get(i).get(TextAnnotation.class) + " ";
 		                }
 		                clust2 = clust2.trim();
+
+                        //debug:
+                        System.out.println("clust="+clust.toString());
+                        System.out.println("clust2="+clust2.toString());
+
 		                //don't need the self mention
 		                if(clust.equals(clust2))
 		                    continue;
@@ -282,11 +290,12 @@ public class PreproCoref {
 			                }
 		                }
 
-                        /*
+
+                        //debug
                         for (int i = 0; i<=arrStr.length-1;i++) {
                             System.out.println(arrStr[i]+ " ");
                         }
-                        */
+
 
                         isProses = false;
 		                /*
@@ -300,7 +309,7 @@ public class PreproCoref {
 		
 		if (isDiganti) {
 			StringBuilder sb = new StringBuilder();
-			//prosesDBSimWordnetYW penggantian
+
 			Pattern pat = Pattern.compile("\\[\\[([0-9]+)\\]\\]");
 			Matcher matcher;
 			for (int i=0;i<=arrStr.length-1;i++) {
@@ -425,8 +434,6 @@ public class PreproCoref {
 						pUpdate.setString(2, outH);
 		                pUpdate.setInt(3,idInternal);
 		                pUpdate.executeUpdate();
-
-
 				}
 		   		pUpdate.close();
 		   		rs.close();
@@ -440,8 +447,15 @@ public class PreproCoref {
 	
 	public static void main(String[] args) {
 		PreproCoref pc= new PreproCoref();
-		pc.proses("rte3");
-		System.out.println("benar-benar selesai :)");
+		//pc.proses("rte3");
+
+        //-------- debug
+        pc.init();
+        //String s = pc.gantiCoref("\"I want to go back again. But I am afraid, honestly, I am afraid. Propaganda against me made people think I am terrorist.\", said el-Nashar.");
+        String s = pc.gantiCoref("She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing. Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days. As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.");
+		//---------
+        System.out.println(s);
+        System.out.println("benar-benar selesai :)");
 	}
 	
 }
