@@ -1,0 +1,35 @@
+Rangkuman Pencarian Subkalimat
+
+- pencarian NP (search di dokumen ini dengan keyword "pencarian NP")
+  - Dilakukan setelah split kalimat stanford.
+  - Tidak semua dalam hirarkis (bug di stanford parser?)
+  - bagaimana menentukan awal dan akhir?  <-- learning?
+  - perlu memanfaatkan isi H
+  - sebelum SBAR (sebelum which dst), id=1
+  - setelah koma, NP diikuti VP yang besar NP VP(...) id=2
+  - diakhiri PP (yg berada di dalam VP) id=4
+  - diakhiri koma (id=4) atau (koma dan SBAR (id:180) )
+  - hati-hati dengan PP yang berada di NP, tetap yg jadi patokan PP dalam VP NP (PP) (VP PP(  id:294
+  
+-Non NP: kalimat dalam PP
+  -   hati-hati dengan koma dilanjutkan SBAR WHNP (, ,) (SBAR (WHNP (WP who), id:118 harus diambil kalimat sebelum koma, dan sesudahnya -> KAL dalam PP   
+  - 
+- bug SPLIT kalimat stanford:
+   id:118
+
+- bug KAL_DALAM_PP
+  - duplikasi (harusnya dicek apakah sudah ada)
+  - informasi terpotong: id:198   
+  - prioritas rendah, karena seringkali kehilangan subyek
+- 
+  
+- susah:
+id:120 proses tempat info tersebar
+id:223 Ottey = sportswoman??
+id:232 variasi vocab
+id:    
+
+- lokasi
+  -id:167
+   (PP (IN   (PP IN   dua berurutan
+  - 

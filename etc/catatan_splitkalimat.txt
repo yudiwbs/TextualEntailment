@@ -2,18 +2,8 @@
 I, her
 id:51, 48
 
-- pencarian NP (search di dokumen ini dengan keyword "pencarian NP")
-  - Dilakukan setelah split kalimat stanford.
-  - Tidak semua dalam hirarkis (bug di stanford parser?)
-  - bagaimana menentukan awal dan akhir?  <-- learning?
-  - perlu memanfaatkan isi H
-  - sebelum SBAR (sebelum which dst), id=1
-  - setelah koma, NP diikuti VP yang besar NP VP(...) id=2
-  - diakhiri PP (yg berada di dalam VP) id=4
-  - diakhiri koma (id=4)
-  - hati-hati dengan PP yang berada di NP, tetap yg jadi patokan PP dalam VP NP (PP) (VP PP(  id:294
-  - 
-	
+
+[rekap ada di rekap_split_kalimat.txt, disini detilnya]	
   
   
  - masalah coref:
@@ -221,7 +211,28 @@ h:
 (ROOT (S (PP (IN On) (NP (NP (DT the) (NN morning)) (PP (IN of) (NP (CD 1))))) (NP-TMP (NNP June)) (, ,) (NP (EX there)) (VP (VBD was) (NP (NP (DT a) (NN blackout)) (PP (IN throughout) (NP (NP (JJS most)) (PP (IN of) (NP (NP (DT the) (NN capital)) (VP (VBN caused) (PP (IN by) (NP (NP (JJ urban) (NNS commandos)) (PP (IN of) (NP (DT the) (NNP Farabundo) (NNP Marti) (NNP National) (NNP Liberation) (NNP Front)))))))) (PRN (-LRB- -LRB-) (NP (NNP FMLN)) (-RRB- -RRB-)))))) (. .)))
 -->
 (NP (NP (DT a) (NN blackout)) (PP (IN throughout) (NP (NP (JJS most)) (PP (IN of) (NP (NP (DT the) (NN capital)) (VP (VBN caused) (PP (IN by) (NP (NP (JJ urban) (NNS commandos)) (PP (IN of) (NP (DT the) (NNP Farabundo) (NNP Marti) (NNP National) (NNP Liberation) (NNP Front)))))))) (PRN (-LRB- -LRB-) (NP (NNP FMLN)) (-RRB- -RRB-)))))
+==============
+id: 118 
+![According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. ]! and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.
 
+(ROOT (S (PP (VBG According) (PP (TO to) (NP (NP (NNP Nelson) (NNP Beavers)) (, ,) (SBAR (WHNP (WP who)) (S (VP (VP (VBZ is) (NP (NP (DT a) (NN co-owner)) (PP (IN of) (NP (NP (DT the) (JJ current) (NN company)) (, ,) (NP (NP (NNP Carolina) (NNP Analytical) (NNPS Laboratories)) (, ,) (NP (NNP LLC) (. .))))))) (CC and) (VP (VBZ has) (NP (NP (JJ ownership/employment) (NN history)) (PP (IN with) (NP (NNP Woodson-Tenent) (CC and) (NNP Eurofins))))))))))) (, ,) (NP (DT the) (JJ septic) (NN system)) (VP (VBD was) (VP (VBN installed) (PP (IN in) (NP (DT the) (JJ early) (NNS 1990s))))) (. .)))
+=============
+id:167
+lokasi: (PP (IN   (PP IN   dua berurutan
+
+(ROOT (S (NP (NP (DT The) (NN bus)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (VP (VBG heading) (PP (IN for) (NP (NP (NNP Nairobi)) (PP (IN in) (NP (NNP Kenya))))))))) (, ,)) (VP (VBD crashed) (PP (IN in) (NP (NP (DT the) (JJ Kabale) (NN district)) (PP (IN of) (NP (NNP Uganda))))) (PP (IN near) (NP (DT the) (NNP Rwandan) (NN border)))) (. .)))
+
+
+(NP (NP (DT the) (JJ Kabale) (NN district)) (PP (IN of) (NP (NNP Uganda))))) (PP (IN near) (NP (DT the) (NNP Rwandan) (NN border)))
+
+==============
+id:180
+
+NP dalam PP diakhiri koma dan sbar 
+
+A senior Russian politician has hailed a decision by ![Uzbekistan to shut down a United States military base there]!, although Moscow officially denies that it is applying pressure on Central Asian states to expel American forces.
+
+(ROOT (S (NP (DT A) (JJ senior) (JJ Russian) (NN politician)) (VP (VBZ has) (VP (VBN hailed) (NP (DT a) (NN decision)) (PP (IN by) (NP (NNP Uzbekistan))) (S (VP (TO to) (VP (VB shut) (PRT (RP down)) (NP (DT a) (NNP United) (NNPS States) (JJ military) (NN base)) (ADVP (RB there)) (, ,) (SBAR (IN although) (S (NP (NNP Moscow)) (ADVP (RB officially)) (VP (VBZ denies) (SBAR (IN that) (S (NP (PRP it)) (VP (VBZ is) (VP (VBG applying) (NP (NN pressure)) (PP (IN on) (NP (NNP Central) (NNP Asian) (NNS states) (S (VP (TO to) (VP (VB expel) (NP (JJ American) (NNS forces))))))))))))))))))) (. .)))
 ==============
 id:294
 
