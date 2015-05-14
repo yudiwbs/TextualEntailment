@@ -12,9 +12,6 @@ id:51, 48
    308 --> salah
    311 --> kr pemotongan?
    
- - 
-   
-  
 
 -sampai id 385
 -diprint kemudian dicek manual
@@ -23,14 +20,8 @@ Hasil:
  id:2 split kalimat salah (1321), terpotong
 
 
-- KAL dalam PP umumnya salah, dibuang saja?
-- KAL dalam PP yg di 2926 benar
-- masalah utama KAL_DALAM_PP: subyeknya sering hilang
-- FIX, jangan buang
-
 Perbaikan kedua:
-- S dalam S bisa dipisah contoh id=1 "The sale was made to pay Yukos' US$ 27.5 billion tax bill"
-- kalimat lengkap NP VP yang dapat dipisah lihat contoh bawah
+
 
 Banyak yang belum kena, contoh:
 =================================
@@ -41,9 +32,6 @@ id=1
 The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally
 sold for US$ 9.4 billion to ![a little known company Baikalfinansgroup which was later bought
 by the Russian state-owned oil company Rosneft .]!
-
-NP yang mengandung SBAR?
-NP yang mengandung WHNP?
 
 Baikalfinansgroup was sold to Rosneft.
 
@@ -71,8 +59,9 @@ id=2
 Pencarian NP
 
 dimulai dengan (,
-- NP VP (....  -> stop saat PP
+- NP VP (....  -> stop saat PP kalau ada dua PP? hasilnya dua kalimat
 - NP lalu VP yang besar
+- tidak perlu  menelusri VP sampai habis
 
 
 The sale was made to pay Yukos' US$ 27.5 billion tax bill, ![Yuganskneftegaz was originally sold for US$9.4 billion ]! to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .
@@ -101,26 +90,6 @@ setelah itu NP VP
 (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion))))) 
 (PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company) (NN Baikalfinansgroup))
 
---------------
-Contoh kal PP yg benar (id=7)
-
-(ROOT (S (PP (IN After) (NP (PRP$ his) (NN release))) (, ,) (NP (DT the) (JJ clean-shaven) (NNP Magdy) (NN el-Nashar)) (VP (VBD told) (NP (NNS reporters)) (PP (IN outside) (NP (PRP$ his) (NN home))) (SBAR (IN that) (S (NP (PRP he)) (VP (VBD had) (NP (NN nothing) (S (VP (TO to) (VP (VB do) (PP (IN with) (NP (NP (DT the) (NNP July) (CD 7) (NN transit) (NNS attacks)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD killed) (NP (NP (CD 52) (NNS people)) (CC and) (NP (DT the) (CD four) (NNS bombers)))))))))))))))) (. .)))
-
-NP setelah SBAR harusnya dimasukkan--> perlu dicek
-----------------
-
-VP  besar diakhiri PP
-
-(NP)  (VP (VBP) (VP (VBN  -> stop oleh SBAR
-
-id=8
-![Mrs. Bush's approval ratings have remained very high, above 80%]!, even as her husband's have recently dropped below 50%.
-
-(ROOT (S 
-     (NP (NP (NNP Mrs.) (NNP Bush) (POS 's)) (NN approval) (NNS ratings)) 
-	 (VP (VBP have) (VP (VBN remained) (S (ADJP (ADJP (RB very) (JJ high)) (PRN (, ,) (PP (IN above) (NP (CD 80) (NN %))) (, ,))))
-
-(SBAR (RB even) (IN as) (S (NP (PRP$ her) (NN husband)) (VP (VBZ 's) (VP (VB have) (VP (ADVP (RB recently)) (VBN dropped) (PP (IN below) (NP (CD 50) (NN %)))))))))) (. .)))
 =====================
 id=4
 "The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. ![This Mabel Normand vehicle, produced by Mack Sennett]!, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's "Show People" (1928).
@@ -134,6 +103,43 @@ id=4
 (NP (DT This) (NNP Mabel) (NNP Normand) (NN vehicle)) (, ,)) (VP (VBN produced) (PP (IN by) (NP (NNP Mack) (NNP Sennett))))
 
 =====================
+
+==============
+setelah koma
+(NP) (ADVP) (VP......PP)
+hasilnya dua subkalimat karena berakhir dengan dua PP
+
+id=6
+Take consumer products giant Procter and Gamble. Even with a $1.8 billion Research and Development budget, ![ it still manages 500 active partnerships each year  , many of them with small companies.]!
+
+(ROOT (S (S (VP (VB Take) (NP (NN consumer) (NNS products)) (NP (NP (JJ giant) (NNP Procter)) (CC and) (NP (NP (NNP Gamble) (. .)) (PP (RB Even) (IN with) (NP (NP (DT a) (ADJP (QP ($ $) (QP (CD 1.8) (CD billion)))) (NN Research)) (CC and) (NP (NNP Development) (NN budget)))))))) (, ,) (NP (PRP it)) (ADVP (RB still)) (VP (VBZ manages) (NP (NP (NP (CD 500) (JJ active) (NNS partnerships)) (NP (DT each) (NN year))) (, ,) (NP (NP (JJ many)) (PP (IN of) (NP (PRP them))))) (PP (IN with) (NP (JJ small) (NNS companies)))) (. .)))
+
+==============
+id=7  
+masih ada bug di EkstrakNPVP
+
+After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.
+
+(ROOT (S (PP (IN After) (NP (PRP$ his) (NN release))) (, ,) (NP (DT the) (JJ clean-shaven) (NNP Magdy) (NN el-Nashar)) (VP (VBD told) (NP-15 (NNS reporters)) (PP (IN outside) (NP (-20PRP$ his) (NN home))) (-22SBAR (-23IN that) (-24S (25NP (PRP he)) (27VP (28VBD had) (29NP (NN nothing) (S (VP (TO to) (VP (VB do) (PP (IN with) (NP (NP (DT the) (NNP July) (CD 7) (NN transit) (NNS attacks)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD killed) (NP (NP (CD 52) (NNS people)) (CC and) (NP (DT the) (CD four) (NNS bombers)))))))))))))))) (. .)))
+
+NP setelah SBAR harusnya dimasukkan--> perlu dicek
+----------------
+id=8
+VP  besar diakhiri PP dan koma
+
+(NP)  (VP (VBP) (VP (VBN  -> stop oleh PP
+
+
+![Mrs. Bush's approval ratings have remained very high, above 80%]!, even as her husband's have recently dropped below 50%.
+
+(ROOT (S 
+     (NP (NP (NNP Mrs.) (NNP Bush) (POS 's)) (NN approval) (NNS ratings)) 
+	 (VP (VBP have) (VP (VBN remained) (S (ADJP (ADJP (RB very) (JJ high)) (PRN (, ,) (PP (IN above) (NP (CD 80) (NN %))) (, ,))))
+
+(SBAR (RB even) (IN as) (S (NP (PRP$ her) (NN husband)) (VP (VBZ 's) (VP (VB have) (VP (ADVP (RB recently)) (VBN dropped) (PP (IN below) (NP (CD 50) (NN %)))))))))) (. .)))
+
+
+
 id=9
 ketemu di 2928, tapi harusnya dipotong
 
@@ -157,7 +163,7 @@ id=11
 Pencarian NP
 NP PP
 
-I recently took a round trip from Abuja to Yola, the capital of Adamawa State and back to Abuja, with a fourteen-seater bus.
+I recently took a round trip from Abuja to ![Yola, the capital of Adamawa State!] and back to Abuja, with a fourteen-seater bus.
 
 
 (ROOT (S (NP (PRP I)) (ADVP (RB recently)) (VP (VBD took) (NP (DT a) (NN round) (NN trip)) (PP (IN from) (NP (NP (NNP Abuja)) (PP (PP (TO to) (NP (NP (NNP Yola)) (, ,) (NP (NP (DT the) (NN capital)) (PP (IN of) (NP (NNP Adamawa) (NNP State)))))) (CC and) (ADVP (RB back)) (PP (TO to) (NP (NNP Abuja))) (, ,)))) (PP (IN with) (NP (DT a) (JJ fourteen-seater) (NN bus)))) (. .)))
@@ -177,8 +183,8 @@ ketemu di 1235
 id=52
 Pencarian NP
 
-tdk berlevel
-NP VP VBD VP VBN .. PP   sbar sebagai clue penutup?
+tanpa koma
+(NP) (VP (VBD (VP (VBN .. PP)..     
 
 
 ![El-Nashar was detained July 14 in Cairo]! after Britain notified Egyptian authorities that it suspected he may have had links to some of the attackers.
@@ -187,12 +193,17 @@ NP VP VBD VP VBN .. PP   sbar sebagai clue penutup?
 
 
 --------------
-id= 55
+id=55
+lokasi:
 
-Pencarian NP
+Pencarian NP 
+
+tidak ada VP!
 
 pola:
-NP  (NP  (PP  ADVP
+(NP)  (PP)
+
+Bosnia's leading Muslim daily Dnevni Avaz writes excitedly about "a sensational discovery" of !["the first European pyramid" in the central town of Visoko, just north of Sarajevo.!]
 
 (ROOT (S (NP (NP (NNP Bosnia) (POS 's)) (VBG leading) (JJ Muslim) (NN daily)) (NP (NNP Dnevni) (NNP Avaz)) (VP (VBZ writes) (ADVP (RB excitedly)) (PP (IN about) (NP (`` ``) (NP (DT a) (JJ sensational) (NN discovery)) ('' '') (PP (IN of) (NP (`` ``) (NP (DT the) (JJ first) (JJ European) (NN pyramid)) ('' '') (PP (IN in) (NP (NP (DT the) (JJ central) (NN town)) (PP (IN of) (NP (NNP Visoko))))))))) (, ,) (ADVP (ADVP (RB just) (RB north)) (PP (IN of) (NP (NNP Sarajevo))))) (. .)))
 
@@ -200,10 +211,13 @@ harusnya ketemu:
 (NP (`` ``) (NP (DT the) (JJ first) (JJ European) (NN pyramid)) ('' '') (PP (IN in) (NP (NP (DT the) (JJ central) (NN town)) (PP (IN of) (NP (NNP Visoko))))))))) (, ,) (ADVP (ADVP (RB just) (RB north)) (PP (IN of) (NP (NNP Sarajevo)))))
 
 -------------------
-NP yang besar?
-
-(NP (NP (PP
 id:58
+pencarian NP
+
+(NP  (PP
+- tanpa VP!
+
+
 On the morning of 1 June, there was ![a blackout throughout most of the capital caused by urban commandos of the Farabundo Marti National Liberation Front (FMLN)]!.
 h:
 
@@ -211,14 +225,23 @@ h:
 (ROOT (S (PP (IN On) (NP (NP (DT the) (NN morning)) (PP (IN of) (NP (CD 1))))) (NP-TMP (NNP June)) (, ,) (NP (EX there)) (VP (VBD was) (NP (NP (DT a) (NN blackout)) (PP (IN throughout) (NP (NP (JJS most)) (PP (IN of) (NP (NP (DT the) (NN capital)) (VP (VBN caused) (PP (IN by) (NP (NP (JJ urban) (NNS commandos)) (PP (IN of) (NP (DT the) (NNP Farabundo) (NNP Marti) (NNP National) (NNP Liberation) (NNP Front)))))))) (PRN (-LRB- -LRB-) (NP (NNP FMLN)) (-RRB- -RRB-)))))) (. .)))
 -->
 (NP (NP (DT a) (NN blackout)) (PP (IN throughout) (NP (NP (JJS most)) (PP (IN of) (NP (NP (DT the) (NN capital)) (VP (VBN caused) (PP (IN by) (NP (NP (JJ urban) (NNS commandos)) (PP (IN of) (NP (DT the) (NNP Farabundo) (NNP Marti) (NNP National) (NNP Liberation) (NNP Front)))))))) (PRN (-LRB- -LRB-) (NP (NNP FMLN)) (-RRB- -RRB-)))))
+
+bug:
+the capital  caused by urban commandos of the Farabundo Marti National Liberation Front -LRB- FMLN -RRB- 
+
 ==============
 id: 118 
+
+subkalimat
+
 ![According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. ]! and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.
 
 (ROOT (S (PP (VBG According) (PP (TO to) (NP (NP (NNP Nelson) (NNP Beavers)) (, ,) (SBAR (WHNP (WP who)) (S (VP (VP (VBZ is) (NP (NP (DT a) (NN co-owner)) (PP (IN of) (NP (NP (DT the) (JJ current) (NN company)) (, ,) (NP (NP (NNP Carolina) (NNP Analytical) (NNPS Laboratories)) (, ,) (NP (NNP LLC) (. .))))))) (CC and) (VP (VBZ has) (NP (NP (JJ ownership/employment) (NN history)) (PP (IN with) (NP (NNP Woodson-Tenent) (CC and) (NNP Eurofins))))))))))) (, ,) (NP (DT the) (JJ septic) (NN system)) (VP (VBD was) (VP (VBN installed) (PP (IN in) (NP (DT the) (JJ early) (NNS 1990s))))) (. .)))
 =============
 id:167
 lokasi: (PP (IN   (PP IN   dua berurutan
+
+The bus, which was heading for Nairobi in Kenya , crashed in the Kabale district of Uganda near the Rwandan border.
 
 (ROOT (S (NP (NP (DT The) (NN bus)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (VP (VBG heading) (PP (IN for) (NP (NP (NNP Nairobi)) (PP (IN in) (NP (NNP Kenya))))))))) (, ,)) (VP (VBD crashed) (PP (IN in) (NP (NP (DT the) (JJ Kabale) (NN district)) (PP (IN of) (NP (NNP Uganda))))) (PP (IN near) (NP (DT the) (NNP Rwandan) (NN border)))) (. .)))
 
@@ -228,7 +251,7 @@ lokasi: (PP (IN   (PP IN   dua berurutan
 ==============
 id:180
 
-NP dalam PP diakhiri koma dan sbar 
+tidak diakhiri PP!, tapi koma dan sbar 
 
 A senior Russian politician has hailed a decision by ![Uzbekistan to shut down a United States military base there]!, although Moscow officially denies that it is applying pressure on Central Asian states to expel American forces.
 

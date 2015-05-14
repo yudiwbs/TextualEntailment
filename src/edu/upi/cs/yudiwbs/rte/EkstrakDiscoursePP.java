@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EkstrakDiscoursePP {
+	//JANGAN DIGUNAKAN!! GUNAKAN EKSTRAKDISCOURSENPVP!!
 	//sepertinya lebih banyak bug (karena subyek hilang), lebih baik dihilangkan
 
 
     //diperbaiki
     // 10 mei 2015
-    //
+    // id:3
+	// cuma 3 kata dan salah
+    // perbaiki dupilikasi, cek kalau sudah ada jangan ditambahkan
 
 
 	//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN

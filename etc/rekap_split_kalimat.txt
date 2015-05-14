@@ -1,15 +1,64 @@
 Rangkuman Pencarian Subkalimat
 
+- Fitur-fitur apa yang digunakan untuk memasangkan h dengan sub kalimat t?
+  Coba lihat ref:
+  - 
+
 - pencarian NP (search di dokumen ini dengan keyword "pencarian NP")
+  - penangangan WHNP (WDT  => which, WHO  dst id=1
+    ambil NP sebelumnya, ini bisa dikatakan perbaikan KAL_DALAM_PP yg kehilangan subyek
+	==> sudah ditanganti di ambil subkalimat, karena yg itu biasanya ada SBAR
+	
+  - sebenarnya yg penting itu VP?
+  - atau yang lebih penting adalah PP? (lihat ID=55, NP PP)
   - Dilakukan setelah split kalimat stanford.
-  - Tidak semua dalam hirarkis (bug di stanford parser?)
+  - Tidak semua dalam hirarkis (bug di stanford parser?), tdk bisa dgn stack
   - bagaimana menentukan awal dan akhir?  <-- learning?
-  - perlu memanfaatkan isi H
-  - sebelum SBAR (sebelum which dst), id=1
-  - setelah koma, NP diikuti VP yang besar NP VP(...) id=2
+  - perlu memanfaatkan isi H? <-- sudah dicoba, gagagal
+  
+  - setelah koma, NP diikuti VP yang besar NP VP(...) id=2, tapi jangan ditelusuri sampai selesai! 
+    berhenti setelah PP atau SBAR (id=2) atau koma
   - diakhiri PP (yg berada di dalam VP) id=4
   - diakhiri koma (id=4) atau (koma dan SBAR (id:180) )
   - hati-hati dengan PP yang berada di NP, tetap yg jadi patokan PP dalam VP NP (PP) (VP PP(  id:294
+  - id=6, antara NP dan VP ada ADVP
+  - id=11, full NP --> tapi urusannya lebih ke lokasi
+  - cari VP yang didalamnya ada PP
+  - id=52, (NP) (VP (VBD (VP (VBN .. PP)..   => VP dalam VP, tidak ada koma
+  - 118 OK
+  - 294
+  
+  Masih ada BUG:
+  - BUG id=7:   (lihat bawah penjelasannnya)
+	VP antara NP VP perlu diproses?
+  - BUG: id=58   
+	NP yang diambil tidak cocok dengan VP, jangan ambil NP dalam PP?
+  - BUG: id=167 tanpa NP PP, lokasi
+	NP yg diambil tdk cocok, jangan ambil NP didalam PP?	
+  - BUG: id=180 tidak diakhiri PP! NP VP ..... diakhiri koma dan SBAR
+	NP yang diambil belum selesai (kurung tutup melewati VP)
+	
+  
+  NP_PP:
+  - id=55, tanpa VP  polanya NP PP  --> proses terpisah?  khusus NP VP?
+===============================================================================
+- SUDAH DILAKUKAN
+  - bug pada id=7 setelah
+  
+  After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.
+  
+  (ROOT (S (PP (IN After) (NP (PRP$ his) (NN release))) (, ,) (NP (DT the) (JJ clean-shaven) (NNP Magdy) (NN el-Nashar)) (VP (VBD told) (NP-15 (NNS reporters)) (PP (IN outside) (NP (-20PRP$ his) (NN home))) (-22SBAR (-23IN that) (-24S (25NP (PRP he)) (27VP (28VBD had) (29NP (NN nothing) (S (VP (TO to) (VP (VB do) (PP (IN with) (NP (NP (DT the) (NNP July) (CD 7) (NN transit) (NNS attacks)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD killed) (NP (NP (CD 52) (NNS people)) (CC and) (NP (DT the) (CD four) (NNS bombers)))))))))))))))) (. .)))
+  
+  (25NP (PRP he)) (27VP (28VBD had) (29NP (NN nothing) (S (VP (TO to) (VP (VB do) (PP (IN with) (NP (NP (DT the) (NNP July) (CD 7) (NN transit) (NNS attacks))  
+  
+  saat bertemu koma, VP adalah 
+   to do with the July 7 transit attacks
+  - tapi saat cari NP terakhir, dapetnya he
+  - yg hilang: had nothing 
+  
+  -solusi? jika NP ... VP  .. VP  maka kedua VP harus digabung walaupun VP pertama belum closing
+   lihat dulu yg lain
+
   
 -Non NP: kalimat dalam PP
   -   hati-hati dengan koma dilanjutkan SBAR WHNP (, ,) (SBAR (WHNP (WP who), id:118 harus diambil kalimat sebelum koma, dan sesudahnya -> KAL dalam PP   
@@ -24,12 +73,29 @@ Rangkuman Pencarian Subkalimat
 - 
   
 - susah:
-id:120 proses tempat info tersebar
-id:223 Ottey = sportswoman??
-id:232 variasi vocab
-id:    
+  id:120 proses tempat info tersebar
+  id:223 Ottey = sportswoman??
+  297:   info yg tidak ada "last a year"   
+  339:   info yg tidak ada
+
+- variasi vocab
+  id:232 
+  id: 352
+   global warming = global climate
+   causes = effect
+   
+- angka
+  296:   angka 800, ten thousand. Kalau deteksi angka di hipotesis perlu dinormalisasi
+
+- bug coref: 
+  -349
+  
 
 - lokasi
+  -id:11
   -id:167
-   (PP (IN   (PP IN   dua berurutan
-  - 
+   (PP (IN   (PP IN   => dua PP berurutan
+  -486
+  -kalau detect lokasi di H, maka proses lokasi secara khusus di T
+  
+  

@@ -6,10 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Stack;
 
 
 //JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
 //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
+
+//TIDAK DIPERLUKAN LAGI karena sudah ada EKSTRAKDISCOURSENPVP
+// eh belum tentu, lihat id=7
 
 public class EkstrakDiscourseSubKalimat {
    /* lihat class ProsesSemua!
@@ -39,16 +43,98 @@ public class EkstrakDiscourseSubKalimat {
         
         
     * */
+   public String cariDiscSBARVer2(String tree) {
+       //12 Mei, ada bug
+       //harusnya jika menemui WHNP spt which, who maka diambil NP yang paling awal
+       //tree: syntatic tree
+       //gila code yang sebelumnya susah banget dibaca
+       //pake stack yang lebih elegan
+       //String strOut="";
+       ArrayList<String> alOut = new ArrayList<>();
+       String t = tree.replace(")", " ) ");  //biar kurung tutup tidak bergabung dgn token
+       Scanner sc = new Scanner(t);
+       StringBuilder sbKalSBAR = new StringBuilder();
+
+
+       String kata;
+       Stack<String> st = new Stack<>();
+       boolean isSBAR = false;
+       boolean isNP = false;
+       int ccSbar = 0;  //kalau2 lebih ada satu SBAR
+       ArrayList<String> alKata = new ArrayList<>();  //semua kata
+
+       int ccPosKata = 0;
+       int idxSbar = 0; //index SBAR
+       int idxNP  = 0; //index NP sebelum SBAR, yang akan diambil yg terdekat tapi tertutup (nanti dicek lagi)
+       StringBuilder sbKalNP = new StringBuilder();
+	   boolean stop = false;
+	   while (sc.hasNext() && (!stop)) {
+           kata = sc.next();
+           //tangkep NP yang berada diluar SBAR
+           if ( kata.equals("(NP") && !isSBAR ) {
+               st.push(kata);
+               idxNP = ccPosKata; //ambil yang terakhir
+           }
+           else
+           if (  kata.equals("(SBAR") ) {
+               isSBAR = true;
+               st.push(kata+ccSbar);    //menangani SBAR yang bertumpuk
+               ccSbar++;
+               if (idxSbar<0) {
+                   //belum ada, artinya SBAR terluar, SBAR setelahnya tidak diproses
+                   idxSbar = ccPosKata;  //index di alKata
+               }
+           } else
+             if (kata.equals(")")) {      //kurung tutup, pop
+                   String p = st.pop();
+                   if (p.equals("(SBAR0")) {  //sbar yang paling luar
+                        stop = true;
+                        //ambil mulai dari idx
+                        for (int i=idxSbar;i<alKata.size();i++) {
+                            sbKalSBAR.append(alKata.get(i));
+                            sbKalSBAR.append(" ");
+                        }
+                   } else
+                   if (p.equals("(NP")) {
+                       //ambil mulai dari NP terakhir
+                       if (!isSBAR) {
+                           sbKalNP = new StringBuilder();  //NP terdekat dengan SBAR
+                           for (int i = idxNP; i < alKata.size(); i++) {
+                               sbKalNP.append(alKata.get(i));
+                               sbKalNP.append(" ");
+                           }
+                           //System.out.println("debug: " + sbKalNP.toString());
+                       }
+                   }
+             }
+           else
+             if (kata.contains("(")) {  //tag yang lain
+                 st.push(kata);
+             }
+           else //kata biasa
+             {
+                 alKata.add(kata);
+                 ccPosKata++;
+             }
+
+
+       }
+
+       return sbKalNP.toString()+"==>"+sbKalSBAR.toString();
+   }
+
 	
 	
 	public ArrayList<String> cariDiscSBAR(String tree) {
+		//12 Mei, ada bug
+        //harusnya jika menemui WHNP spt which, who maka diambil NP yang paling awal
 		//tree: syntatic tree
 		
 		//kalimat sudahdipisahkan
 		//pisahkan SBAR (subkalimat)
 		
 		
-		ArrayList<String> alOut = new ArrayList<String>();
+		ArrayList<String> alOut = new ArrayList<>();
 		//cari SBAR
 		
 		//kalau kurung buka diperlukan untuk menentukan tag
@@ -329,7 +415,19 @@ public class EkstrakDiscourseSubKalimat {
 	public static void main(String [] args) {
 		//pastikan subj-verb-obj sudah terisi
 		EkstrakDiscourseSubKalimat ED = new EkstrakDiscourseSubKalimat();
-		ED.prosesDiscourse("disc_t_rte3");
+		//ED.prosesDiscourse("disc_t_rte3");
+
+		//debug
+        //String sDisc =  ED.cariDiscSBARVer2("(ROOT (S (S (NP (DT The) (NN sale)) (VP (VBD was) (VP (VBN made) (S (VP (TO to) (VP (VB pay) (NP (NP (NNP Yukos) (POS ')) (ADJP (QP ($ US$) (QP (CD 27.5) (CD billion)))) (NN tax) (NN bill)))))))) (, ,) (NP (NNP Yuganskneftegaz)) (VP (VBD was) (ADVP (RB originally)) (VP (VBN sold) (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion))))) (PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company) (NN Baikalfinansgroup)) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (ADVP (RB later)) (VP (VBN bought) (PP (IN by) (NP (DT the) (JJ Russian) (JJ state-owned) (NN oil) (NN company) (NN Rosneft))))))))))) (. .)))");
+        //String sDisc =  ED.cariDiscSBARVer2("(ROOT (S (PP (VBG According) (PP (TO to) (NP (NP (NNP Nelson) (NNP Beavers)) (, ,) (SBAR (WHNP (WP who)) (S (VP (VP (VBZ is) (NP (NP (DT a) (NN co-owner)) (PP (IN of) (NP (NP (DT the) (JJ current) (NN company)) (, ,) (NP (NP (NNP Carolina) (NNP Analytical) (NNPS Laboratories)) (, ,) (NP (NNP LLC) (. .))))))) (CC and) (VP (VBZ has) (NP (NP (JJ ownership/employment) (NN history)) (PP (IN with) (NP (NNP Woodson-Tenent) (CC and) (NNP Eurofins))))))))))) (, ,) (NP (DT the) (JJ septic) (NN system)) (VP (VBD was) (VP (VBN installed) (PP (IN in) (NP (DT the) (JJ early) (NNS 1990s))))) (. .)))");
+
+        String sDisc =  ED.cariDiscSBARVer2("(ROOT (S (PP (IN After) (NP (PRP$ his) (NN release))) (, ,) (NP (DT the) (JJ clean-shaven) (NNP Magdy) (NN el-Nashar)) (VP (VBD told) (NP (NNS reporters)) (PP (IN outside) (NP (PRP$ his) (NN home))) (SBAR (IN that) (S (NP (PRP he)) (VP (VBD had) (NP (NN nothing) (S (VP (TO to) (VP (VB do) (PP (IN with) (NP (NP (DT the) (NNP July) (CD 7) (NN transit) (NNS attacks)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD killed) (NP (NP (CD 52) (NNS people)) (CC and) (NP (DT the) (CD four) (NNS bombers)))))))))))))))) (. .)))");
+
+        //for (String s:alDisc) {
+        System.out.println(sDisc);
+        //}
+		//end debug
+
         System.out.println("Selesai. Lanjutkan dengan parsinghypotext. Hati2 jika mengguna HEIDISQL, tidak semua recod " +
                 "ditampilkan jadi berkesan tidak ada data baru");
 		//ED.prosesKalimatPasif("disc_t_rte3_ver1","disc_h_rte3_ver1");

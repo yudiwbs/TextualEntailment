@@ -425,7 +425,16 @@ public class ProsesDependency {
 		    [1]:  blackout
 	 */
 
+    /*
     public ArrayList<String[]> ekstrak(String strTypeDep) {
+
+    }
+    */
+
+    public ArrayList<String[]> ekstrak(String strTypeDep) {
+    //WARNING, harus diperbaiki, pasangannya juga penting
+    // misal agent(beli, budi)  = budi melakukan beli    jadi tidak hanya budi yg penting
+    // tapi belinnya juga penting, outputnya triplet??
     //ambil type yg penting, termasuk menggabungkan
     //input dalam bentuk stanford dependency
 
@@ -487,7 +496,6 @@ public class ProsesDependency {
         String s="";
         boolean stop=false;
         while (sc.hasNext()) {
-
             if (!isNN) {
                 s = sc.next(); //kalau setelah diproses nn, string sudah maju satu next
             } else isNN = false;
@@ -588,6 +596,8 @@ public class ProsesDependency {
 		// TODO Auto-generated method stub
 		ProsesDependency pd = new ProsesDependency();
 		pd.proses4("rte3");
+
+
 	}
 
 }
