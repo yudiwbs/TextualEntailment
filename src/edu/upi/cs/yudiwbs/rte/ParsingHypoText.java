@@ -3,6 +3,7 @@ package edu.upi.cs.yudiwbs.rte;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.trees.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -135,7 +136,19 @@ public class ParsingHypoText {
 	
 	//todo duplikasi banget, biarkan dulu 
 	public void prosesDiscourseT(String namaTabel) {
-		System.out.println("Proses T");
+
+        //pengaman
+        try {
+            System.out.println("anda yakin ingin memproses ParsingHypoText.prosesDiscourseT??, tekan enter untuk melanjutkan");
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        System.out.println("mulai memproses disc_t! hati2 hanya memnproses yg  t_gram_structure kosong");
+        System.out.println("Proses T");
 		PreparedStatement pSelT=null;
 		PreparedStatement pUpdT=null;
 		
@@ -154,9 +167,6 @@ public class ParsingHypoText {
     		rs = pSelT.executeQuery();
     		int cc=0;
 			while (rs.next()) {
-					System.out.println(".");
-
-
 					String text = rs.getString(1);
 			        int id      = rs.getInt(2);
 			        String[] outT = parse(text);
@@ -165,7 +175,7 @@ public class ParsingHypoText {
 			        pUpdT.setString(2, outT[1]);
 			        pUpdT.setInt(3, id);
 			        pUpdT.executeUpdate();
-			        
+
 			        cc++;
 			        if (cc%5==0) {
 			        	System.out.print(".");
@@ -184,6 +194,7 @@ public class ParsingHypoText {
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
+        System.out.println("selesai memproses disc_t!");
 	}
 
 	/**
@@ -256,8 +267,9 @@ public class ParsingHypoText {
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
          //hasil parsing disimpan di t_gram_structure
-         pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
+         //pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
 
+        pht.prosesDiscourseT("disc_t_rte3");
 
 		 //pht.proses();
     	 

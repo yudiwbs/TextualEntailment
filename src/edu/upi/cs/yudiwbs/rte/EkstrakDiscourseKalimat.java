@@ -1,7 +1,7 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
@@ -31,7 +31,7 @@ public class EkstrakDiscourseKalimat {
 	//urutan EkstrakDiscourse: [jangan digunakan]
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
 
-    //urutan yg baru:   preprocoref -> Hypotext -> Kalimat (yg ini) -> EkstrakDiscourseNPVP
+    //urutan yg baru:   Preprocoref -> Hypotext -> Kalimat (yg ini) -> Hypotext disc -> EkstrakDiscourseNPVP
 
 
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
@@ -49,6 +49,7 @@ public class EkstrakDiscourseKalimat {
 	//kosongkan tabel disc:
 	//delete from disc_h_rte3;
 	//delete from disc_t_rte3;
+    //reset autoincrement: ALTER TABLE disc_t_rte3 AUTO_INCREMENT = 1
 	
 	
 	//memotong2 kalimat (sentence detection)
@@ -56,7 +57,17 @@ public class EkstrakDiscourseKalimat {
     //coref sudah dilakukan terlebih dulu
 
     public void proses(String namaTabelUtama, String namaFieldT, String namaTabelDiscT) {
-		Properties props = new Properties();
+
+        //pengaman
+        try {
+            System.out.println("anda yakin ingin memproses EkstrakDiscourseKalimat.proses??, tekan enter untuk melanjutkan");
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Properties props = new Properties();
 	    props.put("annotators", "tokenize, ssplit");
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 

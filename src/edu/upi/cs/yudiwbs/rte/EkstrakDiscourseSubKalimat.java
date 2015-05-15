@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 
+//TIDAK DIGUNAKAN, LIHAT  EkstrakDiscourseSbar
 
 //JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
 //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
 
-//TIDAK DIPERLUKAN LAGI karena sudah ada EKSTRAKDISCOURSENPVP
-// eh belum tentu, lihat id=7
+
 
 public class EkstrakDiscourseSubKalimat {
    /* lihat class ProsesSemua!

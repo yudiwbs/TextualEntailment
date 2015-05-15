@@ -103,6 +103,12 @@ id=4
 (NP (DT This) (NNP Mabel) (NNP Normand) (NN vehicle)) (, ,)) (VP (VBN produced) (PP (IN by) (NP (NNP Mack) (NNP Sennett))))
 
 =====================
+id=5
+
+A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.
+
+(ROOT (S (NP (NP (DT A) (NN bus) (NN collision)) (PP (IN with) (NP (NP (DT a) (NN truck)) (PP (IN in) (NP (NNP Uganda)))))) (VP (VP (VBZ has) (VP (VBN resulted) (PP (IN in) (NP (QP (XS (IN at) (JJS least)) (CD 30)) (NNS fatalities))))) (CC and) (VP (VBZ has) (VP (VBN left) (NP (NP (DT a) (JJ further) (CD 21)) (VP (VBN injured)))))) (. .)))
+
 
 ==============
 setelah koma
@@ -116,6 +122,7 @@ Take consumer products giant Procter and Gamble. Even with a $1.8 billion Resear
 
 ==============
 id=7  
+
 
 After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.
 
@@ -138,9 +145,12 @@ VP  besar diakhiri PP dan koma
 (SBAR (RB even) (IN as) (S (NP (PRP$ her) (NN husband)) (VP (VBZ 's) (VP (VB have) (VP (ADVP (RB recently)) (VBN dropped) (PP (IN below) (NP (CD 50) (NN %)))))))))) (. .)))
 
 
-
+==========================
 id=9
-ketemu di 2928, tapi harusnya dipotong
+Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National University of La Plata, and their colleagues.
+
+(ROOT (S (NP (JJ Recent) (NN Dakosaurus) (NN research)) (VP (VBZ comes) (PP (IN from) (NP (NP (DT a) (JJ complete) (NN skull)) (VP (VBN found) (PP (IN in) (NP (NP (NNP Argentina)) (PP (IN in) (NP (CD 1996))) (, ,) (VP (VBN studied) (PP (IN by) (NP (NP (NNP Diego) (NNP Pol)) (PP (IN of) (NP (NP (NNP Ohio) (NNP State) (NNP University)) (, ,) (NP (NP (NNP Zulma) (NNP Gasparini)) (PP (IN of) (NP (NP (NNP Argentinas) (NNP National) (NNP University)) (PP (IN of) (NP (NNP La) (NNP Plata)))))) (, ,) (CC and) (NP (PRP$ their) (NNS colleagues))))))))))))) (. .)))
+
 
 =====================
 id=10
@@ -177,6 +187,63 @@ Yola, the capital of Adamawa State and back to Abuja, with a fourteen-seater bus
 --------------
 id=12
 ketemu di 1235
+================
+id=14
+Alex Dyer, spokesman for the group, stated that Santarchy in Auckland is part of a worldwide phenomenon.
+
+Alex Dyer represents Santarchy.
+
+(ROOT (S (NP (NP (NNP Alex) (NNP Dyer)) (, ,) (NP (NP (NN spokesman)) (PP (IN for) (NP (DT the) (NN group)))) (, ,)) (VP (VBD stated) (SBAR (IN that) (S (NP (NP (NNP Santarchy)) (PP (IN in) (NP (NNP Auckland)))) (VP (VBZ is) (NP (NP (NN part)) (PP (IN of) (NP (DT a) (JJ worldwide) (NN phenomenon)))))))) (. .)))
+
+
+================
+id=21
+
+Blue Mountain Lumber said today it may have to relocate a $30 million project offshore in the wake of an Environment Court decision that blocked it from a planned development site on the Coromandel.
+
+Blue Mountain Lumber will locate a development site on the Coromandel.
+
+(ROOT (S (NP (NNP Blue) (NNP Mountain) (NNP Lumber)) (VP (VBD said) (NP-TMP (NN today)) (SBAR (S (NP (PRP it)) (VP (MD may) (VP (VB have) (S (VP (TO to) (VP (VB relocate) (NP (DT a) (ADJP (QP ($ $) (QP (CD 30) (CD million)))) (NN project)) (PP (ADVP (RB offshore)) (IN in) (NP (NP (DT the) (NN wake)) (PP (IN of) (NP (DT an) (NNP Environment) (NNP Court) (NN decision))) (SBAR (WHNP (WDT that)) (S (VP (VBD blocked) (NP (PRP it)) (PP (IN from) (NP (DT a) (JJ planned) (NN development) (NN site))) (PP (IN on) (NP (DT the) (NNP Coromandel)))))))))))))))) (. .)))
+================
+id:22  (pasif)
+
+Chicago-based Boeing has already scrubbed three delivery slots in 2006 that had been booked by Air Canada.
+
+Boeing's headquarters is in Canada.
+
+(ROOT (S (NP (JJ Chicago-based) (NNP Boeing)) (VP (VBZ has) (ADVP (RB already)) (VP (VBN scrubbed) (NP (NP (CD three) (NN delivery) (NNS slots)) (PP (IN in) (NP (CD 2006))) (SBAR (WHNP (WDT that)) (S (VP (VBD had) (VP (VBN been) (VP (VBN booked) (PP (IN by) (NP (NNP Air) (NNP Canada))))))))))) (. .)))
+
+
+
+===================
+id=27
+Under the headline "Greed instead of quality", Germany's Die Tageszeitung says no good will come of the acquisition of the publisher Berliner Verlag by two British and US-based investment funds.
+
+British and US-based investment funds acquire Berliner Verlag.
+
+(ROOT (S (PP (IN Under) (NP (DT the) (NN headline) (`` ``) (NP (NP (NNP Greed)) (PP (RB instead) (IN of) (NP (NN quality)))) ('' ''))) (, ,) (NP (NP (NNP Germany) (POS 's)) (NNP Die) (NNP Tageszeitung)) (VP (VBZ says) (SBAR (S (NP (DT no) (NN good)) (VP (MD will) (VP (VB come) (PP (IN of) (NP (NP (DT the) (NN acquisition)) (PP (IN of) (NP (DT the) (NN publisher) (NNP Berliner) (NNP Verlag))))) (PP (IN by) (NP (NP (CD two) (NNS British)) (CC and) (NP (JJ US-based) (NN investment) (NNS funds))))))))) (. .)))
+
+no good will  come of the acquisition of the publisher Berliner Verlag 
+no good will  come of the acquisition of the publisher Berliner Verlag by two British and US-based investment funds 
+
+================
+id=29
+
+As well as receiving much praise from both her own patients and the media, she also attracted controversy among other burns surgeons due to the fact that spray-on skin had not yet been subjected to clinical trials.
+
+
+(ROOT (S (PP (IN As) (S (ADVP (RB well) (RB as)) (VP (VBG receiving) (NP (JJ much) (NN praise)) (PP (IN from) (NP (PDT both) (NP (PRP$ her) (JJ own) (NNS patients)) (CC and) (NP (DT the) (NNS media))))))) (, ,) (NP (PRP she)) (ADVP (RB also)) (VP (VBD attracted) (SBAR (S (NP (NP (NN controversy)) (PP (IN among) (NP (JJ other) (NNS burns)))) (VP (VBZ surgeons) (ADJP (JJ due) (PP (TO to) (NP (DT the) (NN fact)))) (SBAR (IN that) (S (NP (JJ spray-on) (NN skin)) (VP (VBD had) (RB not) (ADVP (RB yet)) (VP (VBN been) (VP (VBN subjected) (PP (TO to) (NP (JJ clinical) (NNS trials)))))))))))) (. .)))
+
+
+===============
+id=37
+
+Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .
+
+
+(ROOT (S (NP (NP (NNP Colarusso)) (, ,) (NP (DT the) (NNP Dover) (NN police) (NN captain)) (, ,)) (VP (VBD said) (SBAR (S (NP (NNS authorities)) (VP (VBP are) (ADJP (JJ interested) (PP (IN in) (SBAR (IN whether) (S (NP (NNS authorities)) (VP (VBP suspect) (SBAR (S (VP (VBD made) (SBAR (S (NP (DT a) (NN cell) (NN phone)) (VP (VBP call) (SBAR (IN while) (S (NP (PRP$ their) (NN suspect)) (VP (VBD was) (PP (IN in) (NP (NP (DT the) (NNP Dover) (NN woman) (POS 's)) (NN home))))))))))))))))))))) (. .)))
+
+
 
 --------------
 id=52
@@ -284,3 +351,11 @@ Altai ice maiden triggers major dispute.
 id: 348
 The Salt Lake City 2002 Winter Olympics will take place from February 8th to February 24th 2002. The Paralympics will take place in Salt Lake City from March 7th to March 16th 2002.
 =============================
+id=673
+PP ada diantara NP dan VP: jail time for reckelessly handling
+
+Two brothers who operated a North Hollywood plating company that dumped thousands of gallons of cyanide-laced waste water into the Los Angeles sewer system pleaded guilty Thursday and must serve jail time for recklessly handling and storing hazardous materials.
+
+A California company was charged with reckless storage of chemicals.
+
+(ROOT (S (NP (NP (CD Two) (NNS brothers)) (SBAR (WHNP (WP who)) (S (VP (VBD operated) (NP (NP (DT a) (NNP North) (NNP Hollywood) (NN plating) (NN company)) (SBAR (WHNP (WDT that)) (S (VP (VBD dumped) (NP (NP (NNS thousands)) (PP (IN of) (NP (NP (NNS gallons)) (PP (IN of) (NP (JJ cyanide-laced) (NN waste) (NN water)))))) (PP (IN into) (NP (DT the) (NNP Los) (NNP Angeles) (NN sewer) (NN system))))))))))) (VP (VP (VBD pleaded) (NP-TMP (JJ guilty) (NNP Thursday))) (CC and) (VP (MD must) (VP (VB serve) (NP (NN jail) (NN time)) (PP (IN for) (S (VP (ADVP (RB recklessly)) (VBG handling) (CC and) (VBG storing) (NP (JJ hazardous) (NNS materials)))))))) (. .)))

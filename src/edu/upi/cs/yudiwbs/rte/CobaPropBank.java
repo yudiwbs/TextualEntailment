@@ -8,4 +8,5 @@ package edu.upi.cs.yudiwbs.rte;
  *
  */
 public class CobaPropBank {
+
 }

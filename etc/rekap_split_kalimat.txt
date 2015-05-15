@@ -1,29 +1,45 @@
 Rangkuman Pencarian Subkalimat
 
-- Fitur-fitur apa yang digunakan untuk memasangkan h dengan sub kalimat t?
-  Coba lihat ref:
-  - 
+Masih ada BUG:
+  - KALIMAT PASIF
+	  - id=9: kalimat pasif?  (by)  
+		id=22 (had been) 
+		id=58
+	
+  
+  - 37: perlu penanganan SBAR dalam SBAR	
+        ambil SBAR parent?
+		-> SBAR perlu diproses terpisah??
+		
+  
+ -  29: tidak selesai
+    bug POS TAG
+	
+  
+  - id=5 (terlalu pendek?)
+
+  
+- masalah coref:
+  id=7
+  349
+  180
+  21
+  14 => the
+  777:it
+
+stated
 
 - pencarian NP (search di dokumen ini dengan keyword "pencarian NP")
   - penangangan WHNP (WDT  => which, WHO  dst id=1
     ambil NP sebelumnya, ini bisa dikatakan perbaikan KAL_DALAM_PP yg kehilangan subyek
 	==> sudah ditanganti di ambil subkalimat, karena yg itu biasanya ada SBAR
 	
-  - sebenarnya yg penting itu VP?
-  - atau yang lebih penting adalah PP? (lihat ID=55, NP PP)
   - Dilakukan setelah split kalimat stanford.
-  - Tidak semua dalam hirarkis (bug di stanford parser?), tdk bisa dgn stack
-  - bagaimana menentukan awal dan akhir?  <-- learning?
-  - perlu memanfaatkan isi H? <-- sudah dicoba, gagagal
   
   - setelah koma, NP diikuti VP yang besar NP VP(...) id=2, tapi jangan ditelusuri sampai selesai! 
     berhenti setelah PP atau SBAR (id=2) atau koma
-  - diakhiri PP (yg berada di dalam VP) id=4
-  - diakhiri koma (id=4) atau (koma dan SBAR (id:180) )
-  - hati-hati dengan PP yang berada di NP, tetap yg jadi patokan PP dalam VP NP (PP) (VP PP(  id:294
   - id=6, antara NP dan VP ada ADVP
   - id=11, full NP --> tapi urusannya lebih ke lokasi
-  - cari VP yang didalamnya ada PP
   - id=52, (NP) (VP (VBD (VP (VBN .. PP)..   => VP dalam VP, tidak ada koma
   - 118 OK
   - 167 OK
@@ -32,15 +48,14 @@ Rangkuman Pencarian Subkalimat
   
   
   
-  Masih ada BUG:
+
+	
   - BUG: id=58    ---> KALIMAT PASIF, perlu diubah dulu 
 	NP yang diambil tidak cocok dengan VP, jangan ambil NP dalam PP?
 	hasilnya sudah mending, tapi keambil semua
-
-  
-	
   
   NP_PP:
+  - id=37
   - id=55, tanpa VP  polanya NP PP  --> proses terpisah?  khusus NP VP?
 ===============================================================================
 
@@ -52,12 +67,6 @@ Rangkuman Pencarian Subkalimat
 - bug SPLIT kalimat stanford:
    id:118
 
-- bug KAL_DALAM_PP
-  - duplikasi (harusnya dicek apakah sudah ada)
-  - informasi terpotong: id:198   
-  - prioritas rendah, karena seringkali kehilangan subyek
-- 
-  
 - susah:
   id:120 proses tempat info tersebar
   id:223 Ottey = sportswoman??
@@ -72,9 +81,6 @@ Rangkuman Pencarian Subkalimat
    
 - angka
   296:   angka 800, ten thousand. Kalau deteksi angka di hipotesis perlu dinormalisasi
-
-- bug coref: 
-  -349
   
 
 - lokasi
