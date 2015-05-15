@@ -54,8 +54,8 @@ public class EkstrakDiscourseKalimat {
 	//memotong2 kalimat (sentence detection)
 	//memanfaatkan stanford
     //coref sudah dilakukan terlebih dulu
-	//todo: nanti yg berkaitan dengan H dihapus
-    public void proses(String namaTabelUtama, String namaFieldT, String namaFieldH, String namaTabelDiscT, String namaTabelDiscH) {
+
+    public void proses(String namaTabelUtama, String namaFieldT, String namaTabelDiscT) {
 		Properties props = new Properties();
 	    props.put("annotators", "tokenize, ssplit");
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
@@ -70,7 +70,7 @@ public class EkstrakDiscourseKalimat {
 		try {
 	            KoneksiDB db = new KoneksiDB();
 				conn = db.getConn();
-		   		String sql = "select id_internal,"+namaFieldT+", "+namaFieldH
+		   		String sql = "select id_internal,"+namaFieldT
 		   				+    " from "+namaTabelUtama;
 		   		
 		   		pStat = conn.prepareStatement(sql);
@@ -84,8 +84,7 @@ public class EkstrakDiscourseKalimat {
 				        
 						int idInternal = rs.getInt(1);
 					    String t       = rs.getString(2);  //text
-				        String h       = rs.getString(3);  //hypo  <-- tidak digunakan, nanti dihapus
-					    
+
 				        cc++;
 				        if (cc%5==0) {
 				        	System.out.print(".");
@@ -112,8 +111,8 @@ public class EkstrakDiscourseKalimat {
 		   		rs.close();
 		   		pStat.close();
 		   		pInsT.close();
-		   		//pInsH.close();
-		   		conn.close();
+
+            conn.close();
 		   		System.out.println("");
 		   		System.out.println("selesai");
 		   	   } catch (Exception ex) {
@@ -129,7 +128,8 @@ public class EkstrakDiscourseKalimat {
 	public static void main(String[] args) {
 		EkstrakDiscourseKalimat edk = new EkstrakDiscourseKalimat();
 		//yg digunakan yg sudah diprepro
-        edk.proses("rte3","t_preprogabungan","h","disc_t_rte3", "disc_h_rte3");
+        //kosongkan dulu biar yakin
+        edk.proses("rte3","t_preprogabungan","disc_t_rte3");
 
 		/*
         edk.proses("rte3", "t_preprocoref","h","disc_t_rte3", "disc_h_rte3");
