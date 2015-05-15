@@ -255,12 +255,17 @@ public class ParsingHypoText {
 	
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
+         //hasil parsing disimpan di t_gram_structure
+         pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
+
+
+		 //pht.proses();
     	 
 
     	 //pht.prosesDiscourseT("disc_t_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
 
-        //pht.proses("rte3","id", "t","t_gram_structure","t_type_dependency");
+
         //pht.proses("rte3","id", "h","h_gram_structure","h_type_dependency");
     	    //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
 		  //pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
@@ -268,7 +273,7 @@ public class ParsingHypoText {
     	 //pht.prosesDiscourseH("disc_h_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
 
-        pht.prosesDiscourseT("disc_t_rte3");
+        //pht.prosesDiscourseT("disc_t_rte3");
 
     }
 }

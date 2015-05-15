@@ -48,44 +48,33 @@ public class PreproCoref {
 	    -awas: membutuhkan waktu lama denga heap memori besar -Xms2G
 
 	    --tambah dulu penampung hasil coref
-	    
+	    -- preprogabungan adalah gabungaqn dari t dan t_preprocoref  (tidak semua t ada corefnya)
 		alter table rte3
 		add t_preprocoref text, 
-		add h_preprocoref text;
+		add t_preprogabungan text;
+
 
 		atau kosongkan
 
 		update rte3
 		set
 		t_preprocoref = "",
-		h_preprocoref = "";
+		t_preprogabungan ="";
 		
-		lalu jlankan.... 
-		lalu update preprocoref ke t dan h (query ada dibawah)
-	
+
+	   lalu update preprocoref ke t dan h (query ada dibawah)
 
 
-	
+       update rte3
+       set t_preprogabungan = t_preprocoref;
 
-	
-
-	
-	
-	//copy yg original dulu	kalau perlu... tapi bisa diskp
-	update rte1_ver4
-	set
-	t_original = t,
-	h_original = h;
+       update rte3
+       set t_preprogabungan = t
+       where
+       t_preprocoref = "";
 
 
-	// pindahkan  rte3.t ->  rte3.tpreprocoref jika tprepocoref kosong
-	// untuk selanjutnya, yang digunakan adalah tprepocoref atau sebaiknya
-	// dari prepocoref dipindahkan ke t saja?
 
-   update rte3
-   set t_preprocoref = t
-   where
-   t_preprocoref = ""
 
 
 
@@ -447,14 +436,14 @@ public class PreproCoref {
 	
 	public static void main(String[] args) {
 		PreproCoref pc= new PreproCoref();
-		//pc.proses("rte3");
+		pc.proses("rte3");
 
         //-------- debug
-        pc.init();
+        //pc.init();
         //String s = pc.gantiCoref("\"I want to go back again. But I am afraid, honestly, I am afraid. Propaganda against me made people think I am terrorist.\", said el-Nashar.");
-        String s = pc.gantiCoref("She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing. Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days. As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.");
+        //String s = pc.gantiCoref("She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing. Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days. As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.");
 		//---------
-        System.out.println(s);
+        //System.out.println(s);
         System.out.println("benar-benar selesai :)");
 	}
 	

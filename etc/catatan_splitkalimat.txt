@@ -54,7 +54,7 @@ Baikalfinansgroup was sold to Rosneft.
 NP: a little known company Baikalfinanshroup
 SBAR (VP (VP (PP): 
 	
--------------------------------------	
+-------------------------------------------------------------------	
 id=2
 Pencarian NP
 
@@ -116,7 +116,6 @@ Take consumer products giant Procter and Gamble. Even with a $1.8 billion Resear
 
 ==============
 id=7  
-masih ada bug di EkstrakNPVP
 
 After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.
 
@@ -213,12 +212,17 @@ harusnya ketemu:
 -------------------
 id:58
 pencarian NP
+kalimat pasif??
 
 (NP  (PP
 - tanpa VP!
 
-
 On the morning of 1 June, there was ![a blackout throughout most of the capital caused by urban commandos of the Farabundo Marti National Liberation Front (FMLN)]!.
+
+aktif:
+On the morning of 1 June, urban commandos of the Farabundo Marti National Liberation Front caused a blackout throughout most of the capital.
+
+
 h:
 
 
@@ -266,4 +270,17 @@ NP (PP) (VP PP(
 (ROOT (S (S (NP (NP (NNP Mental) (NN health) (NNS problems)) (PP (IN in) (NP (NNS children) (CC and) (NNS adolescents)))) (VP (VBP are) (PP (IN on) (NP (DT the) (NN rise))))) (PRN (, ,) (S (NP (DT the) (NNP British) (NNP Medical) (NNP Association)) (VP (VBZ has) (VP (VBN warned)))) (, ,)) (CC and) (S (NP (NNS services)) (VP (VBP are) (ADJP (JJ ill-equipped) (S (VP (TO to) (VP (VB cope))))))) (. .)))
 
 
-(S (NP (NP (NNP Mental) (NN health) (NNS problems)) (PP (IN in) (NP (NNS children) (CC and) (NNS adolescents)))) (VP (VBP are) (PP (IN on) (NP (DT the) (NN rise)))))
+(S (NP (NP (NNP Mental) (NN health) (NNS problems)) (PP (IN in) (NP (NNS children) (CC and) (NNS adolescents)))) (VP (VBP are) (PP (IN on) (NP (DT the) (NN rise
+
+==================
+id: 322
+
+Research workers of the German archaeological institute have discovered a mummy in permafrost at excavation work in Mongolia of approximately 2,500 years old.
+
+Altai ice maiden triggers major dispute.
+
+(entail false)
+=====================
+id: 348
+The Salt Lake City 2002 Winter Olympics will take place from February 8th to February 24th 2002. The Paralympics will take place in Salt Lake City from March 7th to March 16th 2002.
+=============================

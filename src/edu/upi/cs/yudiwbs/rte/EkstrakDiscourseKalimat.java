@@ -24,12 +24,20 @@ public class EkstrakDiscourseKalimat {
     //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
 
     //split kalimat yang menggunakan titik
+    //preprocoref sudah dilakukan terlebih dulu!
 
     //hanya memproses T
 
-	//urutan EkstrakDiscourse:
+	//urutan EkstrakDiscourse: [jangan digunakan]
 	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
+
+    //urutan yg baru:   preprocoref -> Hypotext -> Kalimat (yg ini) -> EkstrakDiscourseNPVP
+
+
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
+
+
+
 	// setelah itu parsingHypoText dipanggil untuk tabel agar dibangkitkan
 	// HypoText harus dipanggil setelah selesai tiap tahap
 
@@ -45,7 +53,9 @@ public class EkstrakDiscourseKalimat {
 	
 	//memotong2 kalimat (sentence detection)
 	//memanfaatkan stanford
-	public void proses(String namaTabelUtama, String namaFieldT, String namaFieldH, String namaTabelDiscT, String namaTabelDiscH) {
+    //coref sudah dilakukan terlebih dulu
+	//todo: nanti yg berkaitan dengan H dihapus
+    public void proses(String namaTabelUtama, String namaFieldT, String namaFieldH, String namaTabelDiscT, String namaTabelDiscH) {
 		Properties props = new Properties();
 	    props.put("annotators", "tokenize, ssplit");
 	    StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
@@ -53,34 +63,28 @@ public class EkstrakDiscourseKalimat {
 	    Connection conn=null;
 		PreparedStatement pStat=null;
 		PreparedStatement pInsT=null;
-		//PreparedStatement pInsH=null;
-		
+
 		ResultSet rs = null;
 		
 		//ambil data 
 		try {
 	            KoneksiDB db = new KoneksiDB();
 				conn = db.getConn();
-		   		String sql = "select id_internal,"+namaFieldT+", "+ namaFieldH
-		   				+ " from "+namaTabelUtama;
+		   		String sql = "select id_internal,"+namaFieldT+", "+namaFieldH
+		   				+    " from "+namaTabelUtama;
 		   		
-		   		//System.out.println("sql="+sql);
 		   		pStat = conn.prepareStatement(sql);
 				rs = pStat.executeQuery();
 				
 				String sqlInsT = "insert into "+namaTabelDiscT+" (id_kalimat,t,jenis) values (?,?,?) ";
 		   		pInsT = conn.prepareStatement(sqlInsT);
 
-
-		   		//String sqlInsH = "insert into "+namaTabelDiscH+" (id_kalimat,h,jenis) values (?,?,?) ";
-		   		//pInsH = conn.prepareStatement(sqlInsH);
-		   		
 				int cc=0;
 				while (rs.next()) {
 				        
 						int idInternal = rs.getInt(1);
 					    String t       = rs.getString(2);  //text
-				        String h       = rs.getString(3);  //hypo
+				        String h       = rs.getString(3);  //hypo  <-- tidak digunakan, nanti dihapus
 					    
 				        cc++;
 				        if (cc%5==0) {
@@ -89,11 +93,14 @@ public class EkstrakDiscourseKalimat {
 				        if (cc%500==0) {
 				        	System.out.println("");
 				        }
+
+                        //gunakan coref, kalau tidak ada baru
 				        
-				        //prosesDBSimWordnetYW T
 				        Annotation docT = new Annotation(t);
 					    pipeline.annotate(docT);
 					    List<CoreMap> sentencesT = docT.get(SentencesAnnotation.class);
+
+
 					    for(CoreMap kalimat: sentencesT) {
 					    	//System.out.println(kalimat.toString());
 					    	pInsT.setInt(1, idInternal);
@@ -101,20 +108,6 @@ public class EkstrakDiscourseKalimat {
 			                pInsT.setString(3,"SPLITKALIMAT_STANFORD");
 			                pInsT.executeUpdate(); 	
 					    }	
-					    
-
-						/*
-					    Annotation docH = new Annotation(h);
-					    pipeline.annotate(docH);
-					    List<CoreMap> sentencesH = docH.get(SentencesAnnotation.class);
-					    for(CoreMap kalimat: sentencesH) {
-					    	pInsH.setInt(1, idInternal);
-			                pInsH.setString(2,kalimat.toString());
-			                pInsH.setString(3,"SPLITKALIMAT");
-			                pInsH.executeUpdate(); 	
-					    }
-					    	*/
-		                
 				}
 		   		rs.close();
 		   		pStat.close();
@@ -126,75 +119,18 @@ public class EkstrakDiscourseKalimat {
 		   	   } catch (Exception ex) {
 				   ex.printStackTrace();
 			   }
-	    
 	}
 
 
 
-	//untuk dprint, tampilkan semua hasil
-    public void printSemuaDisc(String namaTabelUtama,String namaTabelDisc)  {
-        Connection conn=null;
-        PreparedStatement pSelUtama=null;
-        PreparedStatement pSelDisc=null;
-        ResultSet rs = null;
-        ResultSet rsDisc = null;
 
-        String sql = "select id,t,h,isEntail"
-                + " from "+namaTabelUtama;
-
-        String sqlDisc = "select id,t,jenis"
-                + " from "+namaTabelDisc+ " where id_kalimat = ?";
-
-        //ambil data
-        try {
-            KoneksiDB db = new KoneksiDB();
-            conn = db.getConn();
-
-
-            //System.out.println("sql="+sql);
-            pSelUtama = conn.prepareStatement(sql);
-            pSelDisc  = conn.prepareStatement(sqlDisc);
-            rs = pSelUtama.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt(1);
-                String t = rs.getString(2);  //text
-                String h = rs.getString(3);  //hypo
-                boolean isEntail = rs.getBoolean(4);
-                System.out.println("["+id+"]:");
-                System.out.println("t:"+t);
-                System.out.println("h:" +h);
-                System.out.println("isEntail:"+isEntail);
-
-                pSelDisc.setInt(1, id);
-                rsDisc = pSelDisc.executeQuery();
-                System.out.println("==========");
-                while (rsDisc.next()) {
-                    int idDisc = rsDisc.getInt(1);
-                    String t_disc = rsDisc.getString(2);
-                    String jenis  = rsDisc.getString(3);
-                    System.out.println(idDisc+":");
-                    System.out.println("t:"+t_disc);
-                    System.out.println("jenis:" + jenis);
-                }
-                System.out.println("===========");
-
-
-
-
-            }
-            rs.close();
-            conn.close();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
 	
 	
 	public static void main(String[] args) {
 		EkstrakDiscourseKalimat edk = new EkstrakDiscourseKalimat();
-        edk.printSemuaDisc("rte3","disc_t_rte3");
+		//yg digunakan yg sudah diprepro
+        edk.proses("rte3","t_preprogabungan","h","disc_t_rte3", "disc_h_rte3");
+
 		/*
         edk.proses("rte3", "t_preprocoref","h","disc_t_rte3", "disc_h_rte3");
         System.out.println();
