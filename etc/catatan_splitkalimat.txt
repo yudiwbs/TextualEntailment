@@ -194,7 +194,8 @@ Alex Dyer, spokesman for the group, stated that Santarchy in Auckland is part of
 Alex Dyer represents Santarchy.
 
 (ROOT (S (NP (NP (NNP Alex) (NNP Dyer)) (, ,) (NP (NP (NN spokesman)) (PP (IN for) (NP (DT the) (NN group)))) (, ,)) (VP (VBD stated) (SBAR (IN that) (S (NP (NP (NNP Santarchy)) (PP (IN in) (NP (NNP Auckland)))) (VP (VBZ is) (NP (NP (NN part)) (PP (IN of) (NP (DT a) (JJ worldwide) (NN phenomenon)))))))) (. .)))
-
+================
+id=16 masalah date
 
 ================
 id=21
@@ -233,6 +234,23 @@ As well as receiving much praise from both her own patients and the media, she a
 
 
 (ROOT (S (PP (IN As) (S (ADVP (RB well) (RB as)) (VP (VBG receiving) (NP (JJ much) (NN praise)) (PP (IN from) (NP (PDT both) (NP (PRP$ her) (JJ own) (NNS patients)) (CC and) (NP (DT the) (NNS media))))))) (, ,) (NP (PRP she)) (ADVP (RB also)) (VP (VBD attracted) (SBAR (S (NP (NP (NN controversy)) (PP (IN among) (NP (JJ other) (NNS burns)))) (VP (VBZ surgeons) (ADJP (JJ due) (PP (TO to) (NP (DT the) (NN fact)))) (SBAR (IN that) (S (NP (JJ spray-on) (NN skin)) (VP (VBD had) (RB not) (ADVP (RB yet)) (VP (VBN been) (VP (VBN subjected) (PP (TO to) (NP (JJ clinical) (NNS trials)))))))))))) (. .)))
+===============
+id=32
+cat: pos tag bermasalah, harusnya Carl Smith  dan life support ... satu blok.
+
+Carl Smith collided with a concrete lamp-post while skating and suffered a skull fracture that caused a coma . When Carl Smith failed to regain consciousness , ![Carl Smith parents on August 8 consented to Carl Smith life support machine being turned off .]! 
+
+
+(ROOT (S (S (NP (NNP Carl) (NNP Smith)) (VP (VP (VBD collided) (PP (IN with) (NP (DT a) (JJ concrete) (JJ lamp-post) (NN while) (NN skating)))) (CC and) (VP (VBD suffered) (NP (DT a) (NN skull)) (S (ADJP (JJ fracture) (SBAR (WHNP (WDT that)) (S (VP (VBD caused) (NP (DT a) (NN coma)))) (. .))) (SBAR (WHADVP (WRB When)) (S (NP (NNP Carl) (NNP Smith)) (VP (VBD failed) (S (VP (TO to) (VP (VB regain) (NP (NN consciousness)))))))))))) (, ,) (NP (NP (NNP Carl) (NNP Smith) (NNS parents)) (PP (IN on) (NP (NNP August) (CD 8)))) (VP (VBD consented) (PP (TO to) (NP (NNP Carl) (NNP Smith))) (NP (NP (NN life) (NN support) (NN machine)) (VP (VBG being) (VP (VBN turned) (PRT (RP off)))))) (. .)))
+
+===============
+id=36
+
+kasus: (NP (NP (PP  terutama yang mengandung koma
+
+The car which crashed against the mail-box belonged to ![James Clark, 68, an acquaintance of James Jones' family. ]!
+
+(ROOT (S (NP (NP (DT The) (NN car)) (SBAR (WHNP (WDT which)) (S (VP (VBD crashed) (PP (IN against) (NP (DT the) (JJ mail-box))))))) (VP (VBD belonged) (PP (TO to) (NP (NP (NNP James) (NNP Clark)) (, ,) (NP (NP (CD 68)) (, ,) (NP (NP (DT an) (NN acquaintance)) (PP (IN of) (NP (NP (NNP James) (NNP Jones) (POS ')) (NN family)))))))) (. .)))
 
 
 ===============

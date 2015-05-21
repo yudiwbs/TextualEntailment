@@ -1,9 +1,5 @@
 package edu.upi.cs.yudiwbs.rte;
 
-import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.pipeline.Annotation;
-import edu.stanford.nlp.util.CoreMap;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,6 +16,7 @@ import java.util.*;
  *    IS: input string HARUS melewati EkstrakKalimat-> parsing syntatic untuk discourse t (ParsingHyptText.prosesDiscT)
  *
  *    //urutan yg baru:   preprocoref -> Hypotext -> Kalimat  -> Hypotext  -> EkstrakDiscourseNPVP (yg ini)
+ *    //setelah itu ToolsDiscourses.removeDup
  *
  *    untuk debug, bisa print dengan class PrintDiscourses
  *
@@ -52,6 +49,9 @@ public class EkstrakDiscourseNPVP {
         StringBuilder sbVp = new StringBuilder();
         //tdk ada VP, abort
         if (posVp.size()<=0) {
+            //kasus id:36
+            //tanpa VP
+
             return;
         }
 
@@ -371,11 +371,11 @@ public class EkstrakDiscourseNPVP {
             pInsT.close();
             conn.close();
             System.out.println("");
-            System.out.println("selesai!!");
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println("selesai!");
+        System.out.println("selesai proses NPVP!");
 
     }
 
@@ -398,7 +398,7 @@ public class EkstrakDiscourseNPVP {
         //t = "This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's \"Show People\" (1928).";
 
         //id=5
-        t="A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.";
+        //t="A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.";
 
         //id=6
         //t ="Even with a $1.8 billion Research and Development budget, it still manages 500 active partnerships each year, many of them with small companies.";
@@ -433,6 +433,16 @@ public class EkstrakDiscourseNPVP {
 
         //id=29
         //t="As well as receiving much praise from both her own patients and the media, she also attracted controversy among other burns surgeons due to the fact that spray-on skin had not yet been subjected to clinical trials.";
+
+
+        //id =32
+        //bug di pos tag
+        //t="Carl Smith collided with a concrete lamp-post while skating and suffered a skull fracture that caused a coma . When Carl Smith failed to regain consciousness , Carl Smith parents on August 8 consented to Carl Smith life support machine being turned off . ";
+
+        //id=36
+        //ambil NP James clark dst
+        t="The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.";
+
 
         //bug id=37  (SBAR dalam SBAR)
         //t="Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .";
@@ -483,6 +493,7 @@ public class EkstrakDiscourseNPVP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
+
         ArrayList<String> alNpVp;
         alNpVp = edNP.prosesNpVp(t);
 
@@ -491,6 +502,8 @@ public class EkstrakDiscourseNPVP {
         for (String s:alNpVp) {
             System.out.println(s);
         }
+
+
 
     }
 }

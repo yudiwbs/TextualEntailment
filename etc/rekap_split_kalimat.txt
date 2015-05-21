@@ -6,7 +6,9 @@ Masih ada BUG:
 		id=22 (had been) 
 		id=58
 	
-  
+  - 32: bug setelah carl smith dipotong 
+        bug di pos tag, POS Tag-nya memang terpisah 
+		
   - 37: perlu penanganan SBAR dalam SBAR	
         ambil SBAR parent?
 		-> SBAR perlu diproses terpisah??
@@ -27,7 +29,24 @@ Masih ada BUG:
   14 => the
   777:it
 
-stated
+- masalah date
+  id=16 (waktu kejadian)
+  id=32 "died on "
+  
+
+- lokasi
+  -id=11
+  -id=28   "is located in ..."
+  -id=167
+   (PP ( IN   (PP IN   => dua PP berurutan
+  -486
+  -kalau detect lokasi di H, maka proses lokasi secara khusus di T
+
+- variasi vocab
+  id:232 
+  id: 352
+   global warming = global climate
+   causes = effect
 
 - pencarian NP (search di dokumen ini dengan keyword "pencarian NP")
   - penangangan WHNP (WDT  => which, WHO  dst id=1
@@ -45,9 +64,6 @@ stated
   - 167 OK
   - 180 OK
   - 294 OK
-  
-  
-  
 
 	
   - BUG: id=58    ---> KALIMAT PASIF, perlu diubah dulu 
@@ -73,21 +89,11 @@ stated
   297:   info yg tidak ada "last a year"   
   339:   info yg tidak ada
 
-- variasi vocab
-  id:232 
-  id: 352
-   global warming = global climate
-   causes = effect
+
    
 - angka
   296:   angka 800, ten thousand. Kalau deteksi angka di hipotesis perlu dinormalisasi
   
 
-- lokasi
-  -id:11
-  -id:167
-   (PP (IN   (PP IN   => dua PP berurutan
-  -486
-  -kalau detect lokasi di H, maka proses lokasi secara khusus di T
   
   

@@ -225,6 +225,7 @@ public class ParsingHypoText {
 			/*pUpd = conn.prepareStatement("update "+ namaTabel  +" set "
 					+ "	t_gram_structure=?, t_type_dependency=?, h_gram_structure=?, h_type_dependency=? "
 					+ " where id=?");*/
+
 			pUpd = conn.prepareStatement(String.format("update %s set %s=?,%s=? where %s=?",namaTabel,namaFieldOutPosTag,namaFieldOutDependency,namaFieldId));
 
 			rs = pSel.executeQuery();
@@ -267,9 +268,9 @@ public class ParsingHypoText {
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
          //hasil parsing disimpan di t_gram_structure
-         //pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
+         pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
 
-        pht.prosesDiscourseT("disc_t_rte3");
+         //pht.prosesDiscourseT("disc_t_rte3");
 
 		 //pht.proses();
     	 
