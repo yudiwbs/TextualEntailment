@@ -107,7 +107,7 @@ public class TextualEntailment {
     	//split subkalimat (SBAR
     	System.out.println();
 		System.out.println("Proses subkalimat");
-		EkstrakDiscourseSubKalimat ED = new EkstrakDiscourseSubKalimat();
+		old_EkstrakDiscourseSubKalimat ED = new old_EkstrakDiscourseSubKalimat();
 		ED.prosesDiscourse(namaTabelDiscT);
 		
 		
@@ -137,7 +137,7 @@ public class TextualEntailment {
         //prosesDBSimWordnetYW PP (kalimat dalam PP dipisah)
     	System.out.println();
     	System.out.println("Proses PP");
-        EkstrakDiscoursePP pp = new EkstrakDiscoursePP();
+        old_EkstrakDiscoursePP pp = new old_EkstrakDiscoursePP();
  	   	pp.prosesKalimatdalamPP(namaTabelDiscT);
  	   	
  	   	//buat syntax tree 

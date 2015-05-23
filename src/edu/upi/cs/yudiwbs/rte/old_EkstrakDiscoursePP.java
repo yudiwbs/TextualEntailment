@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class EkstrakDiscoursePP {
+public class old_EkstrakDiscoursePP {
 	//JANGAN DIGUNAKAN!! GUNAKAN EKSTRAKDISCOURSENPVP!!
 	//sepertinya lebih banyak bug (karena subyek hilang), lebih baik dihilangkan
 
@@ -427,7 +427,7 @@ public class EkstrakDiscoursePP {
 	
 	
    public static void main(String[] args) {
-	   EkstrakDiscoursePP pp = new EkstrakDiscoursePP();
+	   old_EkstrakDiscoursePP pp = new old_EkstrakDiscoursePP();
 
 	   //debug dulu
 	   /*

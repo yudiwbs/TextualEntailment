@@ -1,6 +1,9 @@
 Rangkuman Pencarian Subkalimat
 
 Masih ada BUG:
+  - 132: kasus NP VP  (PP (NP)) VP PP ,   saat diambil NP VP terakhir, 
+         jadinya terpotong, perlu cek apakah NP bagian dari PP?  
+  
   - KALIMAT PASIF
 	  - id=9: kalimat pasif?  (by)  
 		id=22 (had been) 
@@ -23,10 +26,16 @@ Masih ada BUG:
   
 - masalah coref:
   id=7
-  349
-  180
   21
   14 => the
+  64
+  88
+  104
+  112
+  152
+  180
+  349
+
   777:it
 
 - masalah date

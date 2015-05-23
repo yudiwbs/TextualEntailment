@@ -1,7 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.Stack;
 
 
 
-public class EkstrakDiscourseSubKalimat {
+public class old_EkstrakDiscourseSubKalimat {
    /* lihat class ProsesSemua!
     * 
     
@@ -415,7 +414,7 @@ public class EkstrakDiscourseSubKalimat {
 	
 	public static void main(String [] args) {
 		//pastikan subj-verb-obj sudah terisi
-		EkstrakDiscourseSubKalimat ED = new EkstrakDiscourseSubKalimat();
+		old_EkstrakDiscourseSubKalimat ED = new old_EkstrakDiscourseSubKalimat();
 		//ED.prosesDiscourse("disc_t_rte3");
 
 		//debug

@@ -24,6 +24,8 @@ import java.util.*;
  *
  */
 public class EkstrakDiscourseNPVP {
+
+    ToolsDiscourses td = new ToolsDiscourses();
     ArrayList<String> out;
     StringBuilder sbNp ;
     StringBuilder sbVp;
@@ -31,8 +33,11 @@ public class EkstrakDiscourseNPVP {
     //mungkin gak tepat pake hashmap, tapi sudahlah
     HashMap<Integer,Integer> posNp;
     HashMap<Integer,Integer> posVp;
+    HashMap<Integer,Integer> posPp;
 
     HashMap<Integer,Integer> postEndNp;
+    HashMap<Integer,Integer> postEndPp;
+
     HashMap<Integer,String>  listNP; //list semua NP, key adalah nomorTag
     ArrayList<String> alKata;
     int lastVp=0;
@@ -93,11 +98,13 @@ public class EkstrakDiscourseNPVP {
             for (Map.Entry<Integer, String> entry : listNP.entrySet()) {
                 int p = entry.getKey();
                 String kalNp = entry.getValue();
+
                 //ruwet banget ya,
                 //intinya NP mencakup NPterdekat, tapi tidak melewati VP
                 //karena bisa saja belum tertutup maka postEndNP bisa null jadi harus dicek
                 if ((postEndNp.get(p)!=null) && (postEndNp.get(npTerdekat)!=null)) {
-                   if (    (p<npTerdekat) && (postEndNp.get(p)>postEndNp.get(npTerdekat))  && (postEndNp.get(p)<lastVp) ) {
+                    //parent?
+                    if (    (p<npTerdekat) && (postEndNp.get(p)>postEndNp.get(npTerdekat))  && (postEndNp.get(p)<lastVp) ) {
                         if (p<parentNp) {
                             parentNp = p;
                             foundParentNp = true;
@@ -110,7 +117,64 @@ public class EkstrakDiscourseNPVP {
                 npTerdekat = parentNp;
                 //System.out.println("np parent:"+listNP.get(npTerdekat));
                 //System.out.println("ambil NP parent");
+
             }
+
+            //test... coba2=====================
+            //kasus id:132
+            // NP terdekat ternyata merupakan bagian dari PP
+            // apa perlu dicari NP yang lebih luar?
+            //  NP VP  (PP NP) VP PP
+
+            //cari apakah NP terdekat berada di dalam PP
+            //pos (key): adalah awal tag
+            //value: adalah awal kata (tdk digunakan)
+
+            int parentPpTerdekat=-1;
+            boolean foundParentPp = false;
+            for (Integer pos : posPp.keySet()) {
+                if (pos<npTerdekat) {
+                    //tag lebih kecil, tapi NP harus sudah lengkap
+                    //System.out.println("pos="+pos);
+                    //System.out.println("isi="+listNP.get(pos));
+                    //tag lebih kecil, tapi NP harus sudah tertutup
+                    //np harus sebelum VP
+                    //System.out.println(pos);
+                    if ( (postEndPp.get(pos)!=null) && (postEndPp.get(pos)>postEndNp.get(npTerdekat))&& (postEndPp.get(pos)<lastVp))
+                    { //&& (listNP.get(pos)!=null
+                        if (pos>parentPpTerdekat) {  //cari yang paling dekat
+                            parentPpTerdekat  = pos;
+                            foundParentPp = true;
+                        }
+                    }
+                }
+            }
+
+            if (foundParentPp) {
+                System.out.println("parent pp terdekat=" + parentPpTerdekat);
+                //geser NP terdekat ke kiri
+                //tapi NP tersebut harus tertutup sebelum PP parent
+                //(NP  ) .... (PP (NP))  NP yg paling kiri yg dicari
+                int npTerdekat2=-1;
+                boolean foundNPTerdekat2 = false;
+                for (Integer pos : posNp.keySet()) {
+                    if ((pos<parentPpTerdekat) && (postEndNp.get(pos)<parentPpTerdekat) ) {
+                        if (pos>npTerdekat2) {
+                            npTerdekat2= pos;
+                            foundNPTerdekat2 = true;
+                        }
+                    }
+                }
+                if (foundNPTerdekat2) {
+                      npTerdekat = npTerdekat2;
+                      System.out.println("== GESER NP terdekat karena di dalam PP!!");
+                }
+            }
+
+
+
+
+            //============================end test coba2
 
 
 
@@ -150,9 +214,10 @@ public class EkstrakDiscourseNPVP {
         }
         String hasil = lastStrNp+" "+sbVp.toString();
         //
-        // -LRB- with 1 abstention -RRB-
-        hasil = hasil.replace("-LRB-","(");
-        hasil = hasil.replace("-RRB-",")");
+
+
+        hasil = td.postProses(hasil);
+
         System.out.println(hasil);
 
         if (!out.contains(hasil)) {
@@ -181,8 +246,11 @@ public class EkstrakDiscourseNPVP {
         //mungkin gak tepat pake hashmap, tapi sudahlah
         posNp  = new HashMap<>();
         posVp  = new HashMap<>();
+        posPp  = new HashMap<>();
 
         postEndNp = new HashMap<>();
+        postEndPp = new HashMap<>();
+
         listNP = new HashMap<>(); //list semua NP, key adalah nomorTag
         alKata = new ArrayList<>();
 
@@ -202,7 +270,7 @@ public class EkstrakDiscourseNPVP {
 
 
         int ccTag = 0;  //no urut untuk kurung awal dan kurung buka
-        //contoh: (;1 ROOT (S;2 (PP;3 (;4 IN On);5 --> 1,2 ..5 itu no urutnya
+        //contoh: (;0 ROOT (S;1 (PP;2 (;3 IN On);4 --> 1,2 ..5 itu no urutnya
         //String lastPushTag = "";
         //String oldPushTag ="";
         while (sc.hasNext() && (!stop)) {
@@ -214,13 +282,16 @@ public class EkstrakDiscourseNPVP {
                 //lastPushTag = oldPushTag;
                 //oldPushTag = kata;
                 String p = st.push(kata+";"+ccTag);
-
+                //System.out.println(p);
                 if (kata.equals("(NP")) {
                     posNp.put(ccTag, ccPosKata);
                 } else
                 if (kata.equals("(VP")) {
                     posVp.put(ccTag, ccPosKata);
                     lastVp = ccTag;
+                } else
+                if (kata.equals("(PP")) {
+                    posPp.put(ccTag, ccPosKata);
                 }
                 else
                 //penanganan stop paksa (tidak menunggu kurung tutup lengkap)
@@ -228,13 +299,18 @@ public class EkstrakDiscourseNPVP {
                 //banyak kasus jadi salah, she said, he tell dst.. (id:21, 27)
                 //dipindahkan ke belakang (setelah pop SBAR, bukan push)
 
-                if (kata.equals("(,")) {
-                   System.out.println("------------> START-END KOMA");
+                     if (kata.equals("(,")) {
+                   System.out.println("------------> START KOMA");
+                    generateNpVp();
+                     }
+                else
+                if (kata.equals("(.")) {
+                   System.out.println("------------> START TITIK");
                     generateNpVp();
                 }
-
-                if (kata.equals("(.")) {
-                   System.out.println("------------> START-END TITIK");
+                else
+                if (kata.equals("(SBAR")) {
+                    System.out.println("------------> START SBAR");
                     generateNpVp();
                 }
 
@@ -286,6 +362,7 @@ public class EkstrakDiscourseNPVP {
                     //cari NP dan VP terkahir sehingga bisa membentuk
                     // NP VP PP
                     System.out.println("------------> END PP");
+                    postEndPp.put(pos,ccTag);
                     generateNpVp();
                 } else
                 if (p.equals("(SBAR")) {
@@ -311,7 +388,7 @@ public class EkstrakDiscourseNPVP {
      */
     public void proseNpVpDb(String namaTabelDiscT) {
 
-        //pengaman
+        //pengaman karena mengubah database
         try {
             System.out.println("anda yakin ingin memproses EkstrakDiscourseNPVP.prosesNpVpDb??, tekan enter untuk melanjutkan");
             System.in.read();
@@ -389,9 +466,10 @@ public class EkstrakDiscourseNPVP {
 
 
         String t;
+        String tTag;
 
         //id=1 & 2
-        //t ="The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .";
+        t ="The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .";
 
         //id=4
         //t ="\"The Extra Girl\" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. ";
@@ -421,6 +499,9 @@ public class EkstrakDiscourseNPVP {
         //id=14
         //t="Alex Dyer, spokesman for the group, stated that Santarchy in Auckland is part of a worldwide phenomenon.";
 
+        //id=20
+        //t="Blue Mountain Lumber is a subsidiary of Malaysian forestry transnational corporation, Ernslaw One.";
+
         //id=21
         //t="Blue Mountain Lumber said today it may have to relocate a $30 million project offshore in the wake of an Environment Court decision that blocked it from a planned development site on the Coromandel.";
 
@@ -441,7 +522,7 @@ public class EkstrakDiscourseNPVP {
 
         //id=36
         //ambil NP James clark dst
-        t="The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.";
+        //t="The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.";
 
 
         //bug id=37  (SBAR dalam SBAR)
@@ -462,8 +543,22 @@ public class EkstrakDiscourseNPVP {
         //kalau diubah jadi aktif, id=58
         //t= "On the morning of 1 June, urban commandos of the Farabundo Marti National Liberation Front caused a blackout throughout most of the capital.";
 
+
+
+        //id:72
+        //t="But these are only first hazards. \"If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning,\" said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.";
+
+        //id:96
+        //t="Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.";
+
+
+
         //id:118
         //t = "According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.";
+
+
+        //id:132
+        //t="The president Cristiani spoke today at the El Salvador military airport before The president Cristiani left for Costa Rica to attend the inauguration ceremony of president-elect Rafael Calderon Fournier.";
 
         //id:167
         //t="The bus, which was heading for Nairobi in Kenya , crashed in the Kabale district of Uganda near the Rwandan border.";
@@ -496,6 +591,7 @@ public class EkstrakDiscourseNPVP {
 
         ArrayList<String> alNpVp;
         alNpVp = edNP.prosesNpVp(t);
+
 
         System.out.println();
         System.out.println("====================");

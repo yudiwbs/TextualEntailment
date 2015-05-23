@@ -5,14 +5,67 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Created by yudi  on 5/14/2015.
  *
  *  berbagai tools untuk disc: mulai dari print, hilangkan duplikasi dll
  *
+ *
  */
+
 public class ToolsDiscourses {
+
+    //input tag
+    //output tag yang sudah diberi nomor contoh:
+    // (1ROOT (2S (3NP (4DT The)5 (6NN president)7
+    public String debugPrintNoTag(String tag) {
+        String out="error";
+
+        StringBuilder sb = new StringBuilder();
+        String t2 = tag.replace(")", " ) ");  //biar kurung tutup tidak bergabung dgn token
+        Scanner sc = new Scanner(t2);
+        int ccTag = 0;  //no urut untuk kurung awal dan kurung buka
+        String kata;
+        while (sc.hasNext()) {
+            kata = sc.next();
+
+            if ( kata.contains("(") || kata.contains(")") ) {
+                kata = kata + ccTag;
+                ccTag++;
+            }
+            sb.append(kata);
+            sb.append(" ");
+        }
+        out = sb.toString();
+        return out;
+    }
+
+    public String postProses(String input) {
+
+        String out;
+        out = input.trim();
+        // kurung buka dan tutup
+        out  = out.replace("-LRB-","(");
+        out  = out.replace("-RRB-",")");
+
+        out  = out.replace("-LSB-","[");
+        out  = out.replace("-RSB-","]");
+
+        //buang spasi berurutan
+        out = out.replaceAll("\\s+", " ");
+
+        //buang koma dibelakang
+
+        if (out.endsWith(",")) {
+           //System.out.println("ada koma");
+            out= out.substring(0,out.length()-1);
+            out = out.trim(); //setelah koma sering ada spasi
+        }
+        return out;
+    }
 
     //buang duplikasi discourse untuik id kalimat yang sama
     public void buangDuplikasi(String namaTabelDisc) {
@@ -71,6 +124,7 @@ public class ToolsDiscourses {
                         t_disc = t_disc + ".";
                     }
 
+                    //buang dua spasi berurutan
                     t_disc = t_disc.replaceAll("\\s+", " ");
 
                     if (t_disc.equals(strOld)) {
@@ -156,7 +210,9 @@ public class ToolsDiscourses {
     public static void main(String[] args) {
         //edk.printSemuaDisc("rte3","disc_t_rte3");]
         ToolsDiscourses pd = new ToolsDiscourses();
-        pd.print("rte3","disc_t_rte3");
+        //pd.print("rte3","disc_t_rte3");
         //pd.buangDuplikasi("disc_t_rte3");
+        String s= pd.debugPrintNoTag("(ROOT (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD spoke) (NP-TMP (NN today)) (PP (IN at) (NP (DT the) (NNP El) (NNP Salvador) (JJ military) (NN airport))) (SBAR (IN before) (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD left) (PP (IN for) (NP (NNP Costa) (NNP Rica))) (S (VP (TO to) (VP (VB attend) (NP (NP (DT the) (NN inauguration) (NN ceremony)) (PP (IN of) (NP (NNP president-elect) (NNP Rafael) (NNP Calderon) (NNP Fournier))))))))))) (. .)))");
+        System.out.println(s);
     }
 }

@@ -27,11 +27,12 @@ import java.util.Stack;
  *  - kalau untuk lokasi cocok
  *
  *
- *   untuk menghapus: "delete from disc_t_rte3 where _
+ *   untuk menghapus: "delete from disc_t_rte3 where jenis ='SPLIT_NPPP';
  *
 
  */
 public class EkstrakDiscourseNPPP {
+    ToolsDiscourses td = new ToolsDiscourses();
 
     private boolean isInclude(HashMap<Integer, Integer> hmAwal, HashMap<Integer, Integer> hmAkhir, int awal, int akhir) {
         boolean out = false;
@@ -228,16 +229,12 @@ public class EkstrakDiscourseNPPP {
                             }
                             //listNP.put(pos, sbNp.toString());
                             String hasil = sbNp.toString();
-                            hasil = hasil.replace("-LRB-","(");
-                            hasil = hasil.replace("-RRB-",")");
-                            //System.out.println("np: " + hasil);
-                            hasil = hasil.trim();
-                            if (hasil.endsWith(",")) {
-                                System.out.println("ada koma");
-                                hasil = hasil.substring(0,hasil.length()-1);
-                            }
 
-                            out.add(hasil);
+                            hasil = td.postProses(hasil);
+
+                            if (!out.contains(hasil)) {
+                                out.add(hasil);
+                            }
                         }
                     }
                     ccTag++;  //jangan sampai kehapus
@@ -257,15 +254,13 @@ public class EkstrakDiscourseNPPP {
 
 
 
-        //id=36
-        //t="The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.";
 
         //id=1 & 2
         //t ="The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .";
 
         //id=4
         //t ="\"The Extra Girl\" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. ";
-        t = "This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's \"Show People\" (1928).";
+        //t = "This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's \"Show People\" (1928).";
 
         //id=5
         //bagus hasilnya, walaupun tidak ada WHNP dan koma
@@ -310,10 +305,17 @@ public class EkstrakDiscourseNPPP {
         //pos tag salah "burn surgeon" nggak kena
         //t="As well as receiving much praise from both her own patients and the media, she also attracted controversy among other burns surgeons due to the fact that spray-on skin had not yet been subjected to clinical trials.";
 
+        //id=28  (lokasi)
+        //t="As much as 200 mm of rain have been recorded in portions of British Columbia , on the west coast of Canada since Monday.";
+
 
         //id =32
         //bug di pos tag
         //t="Carl Smith collided with a concrete lamp-post while skating and suffered a skull fracture that caused a coma . When Carl Smith failed to regain consciousness , Carl Smith parents on August 8 consented to Carl Smith life support machine being turned off . ";
+
+
+        //id=36
+        //t="The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.";
 
 
         //bug id=37  (SBAR dalam SBAR)
@@ -328,12 +330,19 @@ public class EkstrakDiscourseNPPP {
         //t ="Bosnia's leading Muslim daily Dnevni Avaz writes excitedly about \"a sensational discovery\" of \"the first European pyramid\" in the central town of Visoko, just north of Sarajevo.";
 
 
+        //id=64
+        //gus on friday?
+        //t="GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the 390m (265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.";
+
         //BUG: NP yang diambil tidak cocok, KALIMAT PASIF
         // pos tag nya juga salah
         //id=58
         //t="On the morning of 1 June, there was a blackout throughout most of the capital caused by urban commandos of the Farabundo Marti National Liberation Front (FMLN).";
         //kalau diubah jadi aktif, id=58
         //t= "On the morning of 1 June, urban commandos of the Farabundo Marti National Liberation Front caused a blackout throughout most of the capital.";
+
+        //id:96
+        t="Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.";
 
         //id:118
         //t = "According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.";
