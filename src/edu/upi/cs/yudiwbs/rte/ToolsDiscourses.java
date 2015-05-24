@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -87,8 +89,7 @@ public class ToolsDiscourses {
         ResultSet rsDisc = null;
 
         String sqlIdKal = "select distinct id_kalimat \n" +
-                "from\n" +
-                namaTabelDisc;
+                "from " + namaTabelDisc ; // + " where id_kalimat=184";
 
         String sqlSelDisc = "select id, trim(t) t"
                 + " from " + namaTabelDisc + " where id_kalimat = ? order by t";
@@ -113,6 +114,7 @@ public class ToolsDiscourses {
                 String t_disc ="";
                 int oldIdDisc = 0;
                 int idDisc = 0;
+                //LinkedHashMap<Integer,String>  lhmDisc = new LinkedHashMap<>(); //simpan semua
                 while (rsDisc.next()) {
                     oldIdDisc = idDisc;
                     idDisc = rsDisc.getInt(1);
@@ -124,11 +126,15 @@ public class ToolsDiscourses {
                         t_disc = t_disc + ".";
                     }
 
+                    //koma npvp ada spasinya sebelum dan sesudah
+                    t_disc = t_disc.replaceAll(","," , ");
+
                     //buang dua spasi berurutan
                     t_disc = t_disc.replaceAll("\\s+", " ");
 
+                    //lhmDisc.put(idDisc,t_disc);
                     if (t_disc.equals(strOld)) {
-                        System.out.println("====>sama!!");
+                       System.out.println("====>sama!!");
                         System.out.println(oldIdDisc+":" + strOld);
                         System.out.println(idDisc+":" + t_disc);
 
@@ -162,7 +168,7 @@ public class ToolsDiscourses {
         //ambil selang 4
         String sql = "select id,t,h,isEntail"
                 + " from "+namaTabelUtama+
-                " where id mod 4 = 0 ";
+                " where id mod 8 = 0 ";
 
         String sqlDisc = "select id,t,jenis"
                 + " from "+namaTabelDisc+ " where id_kalimat = ?";
@@ -196,7 +202,7 @@ public class ToolsDiscourses {
                     System.out.println("Jenis:" + jenis);
                 }
                 System.out.println("");
-                System.out.println("===============================");
+                System.out.println("================================================");
             }
             rs.close();
             conn.close();
@@ -210,9 +216,10 @@ public class ToolsDiscourses {
     public static void main(String[] args) {
         //edk.printSemuaDisc("rte3","disc_t_rte3");]
         ToolsDiscourses pd = new ToolsDiscourses();
-        //pd.print("rte3","disc_t_rte3");
         //pd.buangDuplikasi("disc_t_rte3");
-        String s= pd.debugPrintNoTag("(ROOT (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD spoke) (NP-TMP (NN today)) (PP (IN at) (NP (DT the) (NNP El) (NNP Salvador) (JJ military) (NN airport))) (SBAR (IN before) (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD left) (PP (IN for) (NP (NNP Costa) (NNP Rica))) (S (VP (TO to) (VP (VB attend) (NP (NP (DT the) (NN inauguration) (NN ceremony)) (PP (IN of) (NP (NNP president-elect) (NNP Rafael) (NNP Calderon) (NNP Fournier))))))))))) (. .)))");
-        System.out.println(s);
+        pd.print("rte3","disc_t_rte3");  //pastikan duplikasi sudah dibuang!
+
+        //String s= pd.debugPrintNoTag("(ROOT (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD spoke) (NP-TMP (NN today)) (PP (IN at) (NP (DT the) (NNP El) (NNP Salvador) (JJ military) (NN airport))) (SBAR (IN before) (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD left) (PP (IN for) (NP (NNP Costa) (NNP Rica))) (S (VP (TO to) (VP (VB attend) (NP (NP (DT the) (NN inauguration) (NN ceremony)) (PP (IN of) (NP (NNP president-elect) (NNP Rafael) (NNP Calderon) (NNP Fournier))))))))))) (. .)))");
+        //System.out.println(s);
     }
 }

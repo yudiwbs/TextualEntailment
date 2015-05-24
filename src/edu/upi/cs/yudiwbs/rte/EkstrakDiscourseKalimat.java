@@ -23,15 +23,16 @@ public class EkstrakDiscourseKalimat {
 	//JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
     //JADI TERLIHAT SEPERTI TIDAK ADA TAMBAHAN RECORD!!
 
-    //split kalimat yang menggunakan titik
-    //preprocoref sudah dilakukan terlebih dulu!
+    //split kalimat yang menggunakan titik menggunakan stanford
+    //preprocoref sudah dilakukan terlebih dulu! sehingga syn tag adalah versi coref
+	//t_preprogabungan sudah terisi
 
     //hanya memproses T
 
-	//urutan EkstrakDiscourse: [jangan digunakan]
-	// kalimat --> kalimat sejajar --> SubKalimat --> PP --> Pasif
-
-    //urutan yg baru:   Preprocoref -> Hypotext -> Kalimat (yg ini) -> Hypotext disc -> EkstrakDiscourseNPVP
+    //urutan yg baru:   Preprocoref -> Hypotext -> Kalimat (yg ini)
+    //                   -> Hypotext disc -> EkstrakDiscourseNPVP
+    //                   -> EkstrakDiscourseNPPP -> EkstrakDiscoursePPPP ->
+    //                   ToolsDiscourse.buangdup
 
 
 	// hati2 jangan sampai dipanggil dua kali (setiap pemanggilan menambah rec di tabel disc)
@@ -47,7 +48,6 @@ public class EkstrakDiscourseKalimat {
 	
 	
 	//kosongkan tabel disc:
-	//delete from disc_h_rte3;
 	//delete from disc_t_rte3;
     //reset autoincrement: ALTER TABLE disc_t_rte3 AUTO_INCREMENT = 1
 	

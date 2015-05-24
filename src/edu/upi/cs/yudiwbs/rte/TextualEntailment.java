@@ -123,7 +123,7 @@ public class TextualEntailment {
     	//prosesDBSimWordnetYW kalimat sejajar
     	System.out.println();
     	System.out.println("Proses kalimat sejajar");
-		EkstrakDiscourseKalimatSejajar eds = new EkstrakDiscourseKalimatSejajar();
+		old_EkstrakDiscourseKalimatSejajar eds = new old_EkstrakDiscourseKalimatSejajar();
 		//,namaTabelDiscH
 		eds.prosesDiscourseSejajar(namaTabelDiscT);
     	

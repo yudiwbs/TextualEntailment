@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 
 //untuk penggunaan lihat class ProsesSemua
-public class EkstrakDiscourseKalimatSejajar {
+public class old_EkstrakDiscourseKalimatSejajar {
     /*
        alter table disc_h_rte3 add id_source int;
        alter table disc_t_rte3 add id_source int;
@@ -458,7 +458,7 @@ public class EkstrakDiscourseKalimatSejajar {
 
 
     public static void main(String[] args) {
-        EkstrakDiscourseKalimatSejajar ed = new EkstrakDiscourseKalimatSejajar();
+        old_EkstrakDiscourseKalimatSejajar ed = new old_EkstrakDiscourseKalimatSejajar();
         //ed.testDB();
         //h tidak diproses
         ed.prosesDiscourseSejajar("disc_t_rte3");

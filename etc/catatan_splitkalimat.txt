@@ -281,8 +281,9 @@ The car which crashed against the mail-box belonged to ![James Clark, 68, an acq
 ===============
 id=37
 
-Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .
+[Colarusso , the Dover police captain ,] said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .
 
+Colarusso works for Dover police.
 
 (ROOT (S (NP (NP (NNP Colarusso)) (, ,) (NP (DT the) (NNP Dover) (NN police) (NN captain)) (, ,)) (VP (VBD said) (SBAR (S (NP (NNS authorities)) (VP (VBP are) (ADJP (JJ interested) (PP (IN in) (SBAR (IN whether) (S (NP (NNS authorities)) (VP (VBP suspect) (SBAR (S (VP (VBD made) (SBAR (S (NP (DT a) (NN cell) (NN phone)) (VP (VBP call) (SBAR (IN while) (S (NP (PRP$ their) (NN suspect)) (VP (VBD was) (PP (IN in) (NP (NP (DT the) (NNP Dover) (NN woman) (POS 's)) (NN home))))))))))))))))))))) (. .)))
 
@@ -358,7 +359,7 @@ setelah coref:
 =============
 id:72
 
-But these are only first hazards. "If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning," said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria
+But these are only first hazards. "If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning," said ![ Allan Chapman, a hydrologist with the River Forecast Centre]! in Victoria
 
 Allan Chapman is employed at the River Forecast Centre.
 
@@ -390,20 +391,15 @@ id:132
 The president Cristiani spoke today at the El Salvador military airport before The president Cristiani left for Costa Rica to attend the inauguration ceremony of president-elect Rafael Calderon Fournier . 
 
 (ROOT0 (S1 (NP2 (DT3 The )4 (NN5 president )6 (NNP7 Cristiani )8 )9 (VP10 (VBD11 spoke )12 (NP-TMP13 (NN14 today )15 )16 (PP17 (IN18 at )19 (NP20 (DT21 the )22 (NNP23 El )24 (NNP25 Salvador )26 (JJ27 military )28 (NN29 airport )30 )31 )32 (SBAR33 (IN34 before )35 (S36 (NP37 (DT38 The )39 (NN40 president )41 (NNP42 Cristiani )43 )44 (VP45 (VBD46 left )47 (PP48 (IN49 for )50 (NP51 (NNP52 Costa )53 (NNP54 Rica )55 )56 )57 (S58 (VP59 (TO60 to )61 (VP62 (VB63 attend )64 (NP65 (NP66 (DT67 the )68 (NN69 inauguration )70 (NN71 ceremony )72 )73 (PP74 (IN75 of )76 (NP77 (NNP78 president-elect )79 (NNP80 Rafael )81 (NNP82 Calderon )83 (NNP84 Fournier )85 )86 )87 )88 )89 )90 )91 )92 )93 )94 )95 (.96 . )97 )98 )99 
+===============
+id:144
+Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition, which forced Louis Riel, now branded a murderer, to flee the settlement.
 
-(IN;34
-(S;36
-(NP;37
-(PRP;38
-(VP;41
-(VBD;42
-(PP;44
-(IN;45
-(NP;47
-(NNP;48
-(NNP;50
+Scott's execution caused the Wolseley Expedition.
 
+(ROOT (S (NP (NP (NNP Scott) (POS 's)) (NN execution)) (VP (VP (VBD led) (PP (TO to) (NP (NN outrage))) (PP (IN in) (NP (NNP Ontario)))) (, ,) (CC and) (VP (VBD was) (ADJP (RB largely) (JJ responsible) (PP (IN for) (S (VP (VBG prompting) (SBAR (S (NP (NP (DT the) (NNP Wolseley) (NNP Expedition)) (, ,) (SBAR (WHNP (WDT which)) (S (VP (VBD forced) (NP (NNP Louis) (NNP Riel))))) (, ,)) (ADVP (RB now)) (VP (VBD branded) (NP (DT a) (NN murderer))))))))) (, ,) (S (VP (TO to) (VP (VB flee) (NP (DT the) (NN settlement))))))) (. .)))
 
+================
 
 
 =============
@@ -425,6 +421,16 @@ tidak diakhiri PP!, tapi koma dan sbar
 A senior Russian politician has hailed a decision by ![Uzbekistan to shut down a United States military base there]!, although Moscow officially denies that it is applying pressure on Central Asian states to expel American forces.
 
 (ROOT (S (NP (DT A) (JJ senior) (JJ Russian) (NN politician)) (VP (VBZ has) (VP (VBN hailed) (NP (DT a) (NN decision)) (PP (IN by) (NP (NNP Uzbekistan))) (S (VP (TO to) (VP (VB shut) (PRT (RP down)) (NP (DT a) (NNP United) (NNPS States) (JJ military) (NN base)) (ADVP (RB there)) (, ,) (SBAR (IN although) (S (NP (NNP Moscow)) (ADVP (RB officially)) (VP (VBZ denies) (SBAR (IN that) (S (NP (PRP it)) (VP (VBZ is) (VP (VBG applying) (NP (NN pressure)) (PP (IN on) (NP (NNP Central) (NNP Asian) (NNS states) (S (VP (TO to) (VP (VB expel) (NP (JJ American) (NNS forces))))))))))))))))))) (. .)))
+===============
+id:184
+Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall.
+
+(ROOT (S (NP (NP (NNP Vera) (NNP Beers)) (, ,) (PP (IN of) (NP (NNP Olivet))) (, ,)) (ADVP (RB recently)) (VP (VBD was) (VP (VBN named) (NP (NP (NN employee)) (PP (IN of) (NP (DT the) (NN month)))) (PP (IN at) (NP (NP (NNP Standard) (NNP Printing)) (PP (IN in) (NP (NNP Marshall))))))) (. .)))
+
+================
+id=224
+
+(ROOT (S (PP (VBN Based) (PP (IN on) (NP (NP (DT a) (JJ worldwide) (NN study)) (PP (IN of) (NP (NP (JJ smoking-related) (NN fire)) (CC and) (NP (NN disaster) (NNS data))))))) (, ,) (NP (NNP UC) (NNP Davis)) (VP (VBZ epidemiologists) (SBAR (S (NP (NN show) (NN smoking)) (VP (VBZ is) (NP (NP (DT a) (VBG leading) (NN cause)) (PP (IN of) (NP (NNS fires) (CC and) (NN death))) (PP (IN from) (NP (NP (NNS fires)) (ADVP (RB globally))))))))) (. .)))
 ==============
 id:294
 

@@ -249,7 +249,7 @@ public class EkstrakDiscourseNPPP {
 
     public static void main(String[] args) {
         EkstrakDiscourseNPPP ed = new EkstrakDiscourseNPPP();
-        //ed.prosesDb("disc_t_rte3");
+        ed.prosesDb("disc_t_rte3");
         String t;
 
 
@@ -330,10 +330,6 @@ public class EkstrakDiscourseNPPP {
         //t ="Bosnia's leading Muslim daily Dnevni Avaz writes excitedly about \"a sensational discovery\" of \"the first European pyramid\" in the central town of Visoko, just north of Sarajevo.";
 
 
-        //id=64
-        //gus on friday?
-        //t="GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the 390m (265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.";
-
         //BUG: NP yang diambil tidak cocok, KALIMAT PASIF
         // pos tag nya juga salah
         //id=58
@@ -341,8 +337,19 @@ public class EkstrakDiscourseNPPP {
         //kalau diubah jadi aktif, id=58
         //t= "On the morning of 1 June, urban commandos of the Farabundo Marti National Liberation Front caused a blackout throughout most of the capital.";
 
+
+        //id=64
+        //gus on friday?
+        //t="GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the 390m (265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.";
+
+
+        //id:72
+        //t="But these are only first hazards. \"If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning,\" said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.";
+
+
+
         //id:96
-        t="Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.";
+        //t="Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.";
 
         //id:118
         //t = "According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.";
@@ -377,12 +384,13 @@ public class EkstrakDiscourseNPPP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
-
+        /*
         ArrayList<String> alNpPp;
         alNpPp = ed.proses(t);
         for (String s:alNpPp) {
             System.out.println(s);
         }
+        */
 
     }
 

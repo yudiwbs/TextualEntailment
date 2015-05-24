@@ -1,41 +1,42 @@
 Rangkuman Pencarian Subkalimat
 
 Masih ada BUG:
-  - 132: kasus NP VP  (PP (NP)) VP PP ,   saat diambil NP VP terakhir, 
-         jadinya terpotong, perlu cek apakah NP bagian dari PP?  
+  - penanganan start->SBAR: 32, 37
+    
   
   - KALIMAT PASIF
-	  - id=9: kalimat pasif?  (by)  
+	  - id=9: kalimat pasif?   
 		id=22 (had been) 
 		id=58
-	
-  - 32: bug setelah carl smith dipotong 
-        bug di pos tag, POS Tag-nya memang terpisah 
-		
+			
   - 37: perlu penanganan SBAR dalam SBAR	
+		postag juga salah: authorithies suspect
         ambil SBAR parent?
 		-> SBAR perlu diproses terpisah??
+		 tidak semua START SBAR bisa dijadikan trigger
+         misalnya whether
+        atau lihat dari jenis verbnya? membutuhkan objek atau tidak?
 		
-  
- -  29: tidak selesai
-    bug POS TAG
-	
+  - bug POS TAG
+    29: tidak selesai
+    32: carl smith dipotong 
   
   - id=5 (terlalu pendek?)
 
   
 - masalah coref:
-  id=7
+  7
   21
   14 => the
+  52
   64
+  75
   88
   104
   112
   152
   180
   349
-
   777:it
 
 - masalah date
@@ -73,11 +74,6 @@ Masih ada BUG:
   - 167 OK
   - 180 OK
   - 294 OK
-
-	
-  - BUG: id=58    ---> KALIMAT PASIF, perlu diubah dulu 
-	NP yang diambil tidak cocok dengan VP, jangan ambil NP dalam PP?
-	hasilnya sudah mending, tapi keambil semua
   
   NP_PP:
   - id=37

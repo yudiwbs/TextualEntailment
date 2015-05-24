@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +10,9 @@ import java.util.*;
  *   Created by yw  on 5/21/2015.
  *
  *   kasus untuk id =28
- *
  *   (PP),(PP)  --> menunjukkan lokasi?
+ *
+ *   kalau (NP, (NP))  sudah kena di NPPP
  *
  *   mungkin lebih tepat kalau PP yang pertama in dan at?
  *
@@ -23,9 +25,19 @@ public class EkstrakDiscoursePPPP {
     ToolsDiscourses td = new ToolsDiscourses();
 
     public void prosesDb(String namaTabelDiscT) {
+
+        //pengaman
+        try {
+            System.out.println("PP,PP: anda yakin ingin memproses EkstrakDiscoursePPPP.prosesDb??, " +
+                    "tekan enter untuk melanjutkan!!");
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Connection conn=null;
         PreparedStatement pStat=null;
-        //PreparedStatement pInsT=null;
+        PreparedStatement pInsT=null;
 
         ResultSet rs = null;
 
@@ -44,8 +56,8 @@ public class EkstrakDiscoursePPPP {
             pStat = conn.prepareStatement(sql);
             rs = pStat.executeQuery();
 
-            //String sqlInsT = "insert into "+namaTabelDiscT+" (id_kalimat,t,jenis,id_source) values (?,?,?,?) ";
-           // pInsT = conn.prepareStatement(sqlInsT);
+            String sqlInsT = "insert into "+namaTabelDiscT+" (id_kalimat,t,jenis,id_source) values (?,?,?,?) ";
+            pInsT = conn.prepareStatement(sqlInsT);
 
             int cc=0;
             while (rs.next()) {
@@ -73,20 +85,20 @@ public class EkstrakDiscoursePPPP {
                 ArrayList<String> alDisc = prosesTag(synT);
 
 
-                /*
+
                 for(String d: alDisc) {
                     //System.out.println("d="+d);
                     pInsT.setInt(1, idKalimat);
                     pInsT.setString(2,d);
-                    pInsT.setString(3,"SPLIT_NPPP");  // <---- penting
+                    pInsT.setString(3,"SPLIT_PP_KOMA_PP");  // <---- penting
                     pInsT.setInt(4,idSource);
                     pInsT.executeUpdate();
                 }
-                */
+
             }
             rs.close();
             pStat.close();
-            //pInsT.close();
+            pInsT.close();
             conn.close();
             System.out.println("");
 
@@ -110,7 +122,7 @@ public class EkstrakDiscoursePPPP {
      }
 
      public ArrayList<String>  prosesTag(String s) {
-
+         ArrayList<String> out = new ArrayList<>();
 
          LinkedHashMap<Integer,Integer> posPp;
          LinkedHashMap<Integer,Integer> posEndPp;
@@ -129,7 +141,7 @@ public class EkstrakDiscoursePPPP {
          alKata = new ArrayList<>();
 
 
-         ArrayList<String> out = new ArrayList<>();
+
          StringBuilder sbNp = new StringBuilder();
 
          String t2 = s.replace(")", " ) ");  //biar kurung tutup tidak bergabung dgn token

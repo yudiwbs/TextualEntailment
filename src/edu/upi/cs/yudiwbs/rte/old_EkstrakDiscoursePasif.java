@@ -4,7 +4,6 @@ import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.trees.Tree;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.Scanner;
 
 
 
-public class EkstrakDiscoursePasif {
+public class old_EkstrakDiscoursePasif {
 	//subject verb objek harus terisi
 
     //JIKA MENGGUNAKAN HEIDISQL HATI-HATI YG DITAMPILKAN HANYA SEBAGIAN
@@ -367,11 +366,11 @@ public class EkstrakDiscoursePasif {
 	}
 
 	public static void main(String[] args) {
-		EkstrakDiscoursePasif ed= new EkstrakDiscoursePasif();
-		ed.prosesDisc("disc_t_rte3");
+		old_EkstrakDiscoursePasif ed= new old_EkstrakDiscoursePasif();
+		//ed.prosesDisc("disc_t_rte3");
 		//String out = ed.cariDiscPasif("(ROOT (S (NP (NP (NNP Ebola)) (SBAR (S (NP (JJ haemorrhagic) (NN fever)) (VP (VBZ is) (NP (NP (DT a) (JJ fatal) (NN disease)) (VP (VBN caused) (PP (IN by) (NP (NP (DT a) (JJ new) (NN virus)) (SBAR (WHNP (WDT which)) (S (VP (VBZ has) (NP (DT no) (VP (JJ known) (NP (NP (NNP cure) (. .)) (SBAR (S (SBAR (WHADVP (WRB When)) (S (NP (DT a) (JJ new) (NN epidemic)) (VP (VBD was) (VP (VBN detected) (PP (IN in) (NP (NNP Zaire))) (PP (IN in) (NP (NP (DT the) (NN spring)) (PP (IN of) (NP (CD 1995))))))))) (, ,) (NP (PRP it)) (VP (VBD was) (ADVP (RB widely)) (VP (VBN perceived) (PP (IN as) (NP (DT a) (NN threat))) (PP (TO to) (NP (DT the) (NNP West) (. .) (NNP Public))))))))) (NN attention))))))))))))) (VP (VBD was) (ADJP (JJ intense))) (. .)))","");
-		//String out = ed.cariDebugDiscPasif("The house is painted red by Budi ","the house");
-		//System.out.println(out);
+		String out = ed.cariDebugDiscPasif("Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National University of La Plata, and their colleagues.\n ","the house");
+		System.out.println(out);
 		System.out.println("Jalankan parsing hypotext pada disct setelah selesai");
 		System.out.println("Selesai. Hati2 jika mengguna HEIDISQL, tidak semua recod " +
 				"ditampilkan jadi berkesan tidak ada data baru");

@@ -15,7 +15,7 @@ import java.util.*;
  *
  *    IS: input string HARUS melewati EkstrakKalimat-> parsing syntatic untuk discourse t (ParsingHyptText.prosesDiscT)
  *
- *    //urutan yg baru:   preprocoref -> Hypotext -> Kalimat  -> Hypotext  -> EkstrakDiscourseNPVP (yg ini)
+ *    //urutan yg baru:   preprocoref -> Hypotext -> Kalimat  -> Hypotext  -> EkstrakDiscourseNPVP (yg ini) -> NPPP -> PPPP
  *    //setelah itu ToolsDiscourses.removeDup
  *
  *    untuk debug, bisa print dengan class PrintDiscourses
@@ -47,7 +47,7 @@ public class EkstrakDiscourseNPVP {
     */
 
     private void  generateNpVp() {
-
+        boolean foundNPTerdekat2;
         String vpTengah="";
         String lastStrNp="";
         StringBuilder sbVpTengah = new StringBuilder();
@@ -120,7 +120,7 @@ public class EkstrakDiscourseNPVP {
 
             }
 
-            //test... coba2=====================
+
             //kasus id:132
             // NP terdekat ternyata merupakan bagian dari PP
             // apa perlu dicari NP yang lebih luar?
@@ -130,67 +130,88 @@ public class EkstrakDiscourseNPVP {
             //pos (key): adalah awal tag
             //value: adalah awal kata (tdk digunakan)
 
-            int parentPpTerdekat=-1;
-            boolean foundParentPp = false;
-            for (Integer pos : posPp.keySet()) {
-                if (pos<npTerdekat) {
-                    //tag lebih kecil, tapi NP harus sudah lengkap
-                    //System.out.println("pos="+pos);
-                    //System.out.println("isi="+listNP.get(pos));
-                    //tag lebih kecil, tapi NP harus sudah tertutup
-                    //np harus sebelum VP
-                    //System.out.println(pos);
-                    if ( (postEndPp.get(pos)!=null) && (postEndPp.get(pos)>postEndNp.get(npTerdekat))&& (postEndPp.get(pos)<lastVp))
-                    { //&& (listNP.get(pos)!=null
-                        if (pos>parentPpTerdekat) {  //cari yang paling dekat
-                            parentPpTerdekat  = pos;
-                            foundParentPp = true;
+            //ulang sampai NPterakhir bukan berada di dalam PP
+            boolean foundParentPp;
+            do {
+                foundNPTerdekat2 = false;
+                foundParentPp = false;
+                int parentPpTerdekat = -1;
+                for (Integer pos : posPp.keySet()) {
+                    if (pos < npTerdekat) {
+                        //tag lebih kecil, tapi NP harus sudah lengkap
+                        //System.out.println("pos="+pos);
+                        //System.out.println("isi="+listNP.get(pos));
+                        //tag lebih kecil, tapi NP harus sudah tertutup
+                        //np harus sebelum VP
+                        //System.out.println(pos);
+                        if ((postEndPp.get(pos) != null) && (postEndPp.get(pos) > postEndNp.get(npTerdekat)) && (postEndPp.get(pos) < lastVp)) { //&& (listNP.get(pos)!=null
+                            if (pos > parentPpTerdekat) {  //cari yang paling dekat
+                                parentPpTerdekat = pos;
+                                foundParentPp = true;
+                            }
                         }
                     }
                 }
-            }
 
-            if (foundParentPp) {
-                System.out.println("parent pp terdekat=" + parentPpTerdekat);
-                //geser NP terdekat ke kiri
-                //tapi NP tersebut harus tertutup sebelum PP parent
-                //(NP  ) .... (PP (NP))  NP yg paling kiri yg dicari
-                int npTerdekat2=-1;
-                boolean foundNPTerdekat2 = false;
-                for (Integer pos : posNp.keySet()) {
-                    if ((pos<parentPpTerdekat) && (postEndNp.get(pos)<parentPpTerdekat) ) {
-                        if (pos>npTerdekat2) {
-                            npTerdekat2= pos;
-                            foundNPTerdekat2 = true;
+                if (foundParentPp) {
+                    //System.out.println("parent pp terdekat=" + parentPpTerdekat);
+                    //geser NP terdekat ke kiri
+                    //tapi NP tersebut harus tertutup sebelum PP parent
+                    //(NP  ) .... (PP (NP))  NP yg paling kiri yg dicari
+                    int npTerdekat2 = -1;
+
+                    for (Integer pos : posNp.keySet()) {
+                        if ((postEndNp.get(pos) != null) && (pos < parentPpTerdekat) && (postEndNp.get(pos) < parentPpTerdekat)) {
+                            if (pos > npTerdekat2) {
+                                npTerdekat2 = pos;
+                                foundNPTerdekat2 = true;
+                            }
+                        }
+                    }
+                    if (foundNPTerdekat2) {
+                        String npLama = listNP.get(npTerdekat);
+                        npTerdekat = npTerdekat2;
+                        System.out.println("== GESER NP terdekat karena di dalam PP!!");
+                        //System.out.println(npLama);
+                    }
+                }
+
+            } while (foundNPTerdekat2);  //loop selama terjadi pengeseran
+
+
+
+
+            //pergeseran NP karena berada di dalam PP telah dilakukan
+            //ambil semua kata antara NP dan PP
+            //if (foundNPTerdekat2) {
+                StringBuilder sb = new StringBuilder();
+                int posAwal  = posNp.get(npTerdekat);
+                int posAkhir = posVp.get(lastVp);
+                for (int i = posAwal; i < posAkhir; i++) {
+                    sb.append(alKata.get(i));
+                    sb.append(" ");
+                }
+
+                lastStrNp = sb.toString();
+                //System.out.println(lastStrNp);
+
+            //} else {
+            /*
+                //DIPERLUAS SAJA, ANTARA NP DAN VP MASUK SEMUA
+
+                //cek kalau2 ada VP yang berada di antara NP dan VP
+                //lihat kasus di id=7, VP tersebut belum tertutup tapi kalau dibuang efeknya fatal
+                int minPv = 9999; //ambil yg paling maksimal di kiri
+                boolean foundVp = false;
+                for (Integer pv : posVp.keySet()) {
+                    if ((pv > npTerdekat) && (pv < lastVp)) {
+                        if (pv < minPv) {
+                            minPv = pv;
+                            foundVp = true;
                         }
                     }
                 }
-                if (foundNPTerdekat2) {
-                      npTerdekat = npTerdekat2;
-                      System.out.println("== GESER NP terdekat karena di dalam PP!!");
-                }
-            }
-
-
-
-
-            //============================end test coba2
-
-
-
-            //cek kalau2 ada VP yang berada di antara NP dan VP
-            //lihat kasus di id=7, VP tersebut belum tertutup tapi kalau dibuang efeknya fatal
-            int minPv = 9999; //ambil yg paling maksimal di kiri
-            boolean foundVp = false;
-            for (Integer pv : posVp.keySet()) {
-                if ((pv > npTerdekat ) && (pv < lastVp) ) {
-                    if (pv < minPv) {
-                        minPv = pv;
-                        foundVp = true;
-                    }
-                }
-            }
-            if (foundVp) {
+                if (foundVp) {
 
                     //ambil string VP tengah kalau ada
 
@@ -198,7 +219,7 @@ public class EkstrakDiscourseNPVP {
                     int posAkhir = posVp.get(lastVp);
 
                     sbVpTengah = new StringBuilder();
-                    for (int i=posAwal;i<posAkhir ;i++) {
+                    for (int i = posAwal; i < posAkhir; i++) {
                         sbVpTengah.append(alKata.get(i));
                         sbVpTengah.append(" ");
                     }
@@ -209,9 +230,11 @@ public class EkstrakDiscourseNPVP {
                         vpTengah = "";
                     }
                     //System.out.println("vp tengah:"+vpTengah);
-            }
-            lastStrNp = listNP.get(npTerdekat)+vpTengah;
-        }
+                } //foundNP
+                lastStrNp = listNP.get(npTerdekat) + vpTengah;
+            } //if foundNPterdekat2
+            */
+        } //if npterdekat>0
         String hasil = lastStrNp+" "+sbVp.toString();
         //
 
@@ -308,11 +331,16 @@ public class EkstrakDiscourseNPVP {
                    System.out.println("------------> START TITIK");
                     generateNpVp();
                 }
+                /*
+
+                sering buat kalimat terpotong, di disable dulu
+
                 else
                 if (kata.equals("(SBAR")) {
                     System.out.println("------------> START SBAR");
                     generateNpVp();
                 }
+                */
 
                 ccTag++;  //jangan sampai kehapus
 
@@ -406,7 +434,7 @@ public class EkstrakDiscourseNPVP {
         try {
             KoneksiDB db = new KoneksiDB();
             conn = db.getConn();
-            String sql = "select id,id_kalimat,t,t_gram_structure from "+namaTabelDiscT; //+" limit 5"
+            String sql = "select id,id_kalimat,t,t_gram_structure from "+namaTabelDiscT; //+" limit 5"   where id_kalimat=118
 
             pStat = conn.prepareStatement(sql);
             rs = pStat.executeQuery();
@@ -460,16 +488,14 @@ public class EkstrakDiscourseNPVP {
 
     public static void main(String[] args) {
         EkstrakDiscourseNPVP edNP = new EkstrakDiscourseNPVP();
-
-        //edNP.proseNpVpDb("disc_t_rte3");
+        edNP.proseNpVpDb("disc_t_rte3");
 
 
 
         String t;
-        String tTag;
 
         //id=1 & 2
-        t ="The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .";
+        //t ="The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .";
 
         //id=4
         //t ="\"The Extra Girl\" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. ";
@@ -503,6 +529,7 @@ public class EkstrakDiscourseNPVP {
         //t="Blue Mountain Lumber is a subsidiary of Malaysian forestry transnational corporation, Ernslaw One.";
 
         //id=21
+
         //t="Blue Mountain Lumber said today it may have to relocate a $30 million project offshore in the wake of an Environment Court decision that blocked it from a planned development site on the Coromandel.";
 
 
@@ -526,9 +553,14 @@ public class EkstrakDiscourseNPVP {
 
 
         //bug id=37  (SBAR dalam SBAR)
+        //postag juga salah: authorities suspect
+        //tidak semua START SBAR bisa dijadikan trigger
+        // misalnya whether
+        //atau lihat dari jenis verbnya? membutuhkan objek atau tidak?
         //t="Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .";
 
         //id=52
+
         //t ="El-Nashar was detained July 14 in Cairo after Britain notified Egyptian authorities that it suspected he may have had links to some of the attackers.";
 
 
@@ -546,9 +578,13 @@ public class EkstrakDiscourseNPVP {
 
 
         //id:72
+        //kena di NPPP
+        //then?
+        //awal SBAR, jangan then
         //t="But these are only first hazards. \"If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning,\" said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.";
 
         //id:96
+        //bug postag
         //t="Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.";
 
 
@@ -560,6 +596,10 @@ public class EkstrakDiscourseNPVP {
         //id:132
         //t="The president Cristiani spoke today at the El Salvador military airport before The president Cristiani left for Costa Rica to attend the inauguration ceremony of president-elect Rafael Calderon Fournier.";
 
+        //id:144
+        //t="Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition, which forced Louis Riel, now branded a murderer, to flee the settlement.";
+
+
         //id:167
         //t="The bus, which was heading for Nairobi in Kenya , crashed in the Kabale district of Uganda near the Rwandan border.";
 
@@ -567,8 +607,11 @@ public class EkstrakDiscourseNPVP {
         //id:180
         //t ="A senior Russian politician has hailed a decision by Uzbekistan to shut down a United States military base there, although Moscow officially denies that it is applying pressure on Central Asian states to expel American forces.";
 
+        //id=184
+        //t="Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall";
+
         //id=294
-       //t = "Mental health problems in children and adolescents are on the rise, the British Medical Association has warned, and services are ill-equipped to cope.";
+        //t = "Mental health problems in children and adolescents are on the rise, the British Medical Association has warned, and services are ill-equipped to cope.";
 
         //id=322
         //t="Research workers of the German archaeological institute have discovered a mummy in permafrost at excavation work in Mongolia of approximately 2,500 years old.";
@@ -588,7 +631,7 @@ public class EkstrakDiscourseNPVP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
-
+        /*
         ArrayList<String> alNpVp;
         alNpVp = edNP.prosesNpVp(t);
 
@@ -598,6 +641,11 @@ public class EkstrakDiscourseNPVP {
         for (String s:alNpVp) {
             System.out.println(s);
         }
+        */
+
+
+        System.out.println("selesai semua!!");
+
 
 
 
