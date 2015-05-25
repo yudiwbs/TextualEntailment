@@ -49,6 +49,7 @@ public class EkstrakDiscourseNPPP {
         return out;
     }
 
+    //untuk debug
     public ArrayList<String> proses (String t) {
         ParsingHypoText ph = new ParsingHypoText();
         ph.init();

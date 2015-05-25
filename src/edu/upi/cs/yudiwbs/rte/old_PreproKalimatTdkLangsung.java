@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
 
-public class PreproKalimatTdkLangsung {
+public class old_PreproKalimatTdkLangsung {
 	//TIDAK DIGUNAKAN, setidaknya untuk sementara karena SBAR sudah diproses
 	
 	
@@ -306,7 +306,7 @@ public class PreproKalimatTdkLangsung {
 	}
 	
 	public static void main(String[] args) {
-		PreproKalimatTdkLangsung pp = new PreproKalimatTdkLangsung();
+		old_PreproKalimatTdkLangsung pp = new old_PreproKalimatTdkLangsung();
 		pp.proses();
 	}
 }

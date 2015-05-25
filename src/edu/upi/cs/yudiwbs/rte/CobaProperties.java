@@ -5,6 +5,9 @@ import java.util.Properties;
 
 /**
  * Created by user on 4/20/2015.
+ *
+ *  coba2 properties untuk menyimpan konfigurasi db
+ *
  */
 public class CobaProperties {
 

@@ -1,7 +1,20 @@
 Rangkuman Pencarian Subkalimat
 
 Masih ada BUG:
+  - 440: tidak ketemu
+  - 432: kepotong
+  - 416: tidak ketemu NP,NP ?
+  - 408: penanganan and	
+  - 392,496: penelusuran subyek melakukan apa  
+  - 280: prehistoric art hilang
   - penanganan start->SBAR: 32, 37
+  - 520 konversi feet -> m
+  - 544,560 ambil tgl.
+  - 584,712 temporal event
+  - 592: enumerasi
+  - 600: tdk ketemu
+  - 624: subyek hilang
+  - 768: sebelum but
     
   
   - KALIMAT PASIF
@@ -62,11 +75,6 @@ Masih ada BUG:
   - penangangan WHNP (WDT  => which, WHO  dst id=1
     ambil NP sebelumnya, ini bisa dikatakan perbaikan KAL_DALAM_PP yg kehilangan subyek
 	==> sudah ditanganti di ambil subkalimat, karena yg itu biasanya ada SBAR
-	
-  - Dilakukan setelah split kalimat stanford.
-  
-  - setelah koma, NP diikuti VP yang besar NP VP(...) id=2, tapi jangan ditelusuri sampai selesai! 
-    berhenti setelah PP atau SBAR (id=2) atau koma
   - id=6, antara NP dan VP ada ADVP
   - id=11, full NP --> tapi urusannya lebih ke lokasi
   - id=52, (NP) (VP (VBD (VP (VBN .. PP)..   => VP dalam VP, tidak ada koma

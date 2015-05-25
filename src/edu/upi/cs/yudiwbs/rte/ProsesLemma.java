@@ -63,7 +63,13 @@ public class ProsesLemma {
         return out;
     }
 
-    public void proses() {
+
+    public void proses(String s) {
+        String out = lemmatize(s);
+        System.out.println(out);
+    }
+
+    public void prosesDb() {
         initLemma();
 
         //double v = pw.hitungSimWordnet("A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.","30 die in a bus collision in Uganda.");
@@ -121,6 +127,12 @@ public class ProsesLemma {
 
     public static void main(String[] args) {
         ProsesLemma pl = new ProsesLemma();
-        pl.proses();
+
+        //pl.prosesDb();
+        pl.initLemma();
+        //pl.proses("80% approve of Mr. Bush.");
+        //.proses("Mrs. Bush 's approval ratings have remained very high , above 80 %");
+        //pl.proses("A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.");
+        //
     }
 }

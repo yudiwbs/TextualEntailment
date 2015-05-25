@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class DebugNPKalimat {
+public class old_DebugNPKalimat {
 	
 	
 	public static void main(String[] args) {

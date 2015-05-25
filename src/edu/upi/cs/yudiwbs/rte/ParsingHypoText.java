@@ -134,7 +134,8 @@ public class ParsingHypoText {
 			}
 		}
 	
-	//todo duplikasi banget, biarkan dulu 
+	//hanya memrpseos yang t_gram_structure yang null (bukan overwrite). Tujuan: biar cepat
+    //kalau mau overwrite harus dikosongkan dulu.
 	public void prosesDiscourseT(String namaTabel) {
 
         //pengaman
@@ -159,7 +160,8 @@ public class ParsingHypoText {
             conn = db.getConn();
 
     		init();
-    		pSelT = conn.prepareStatement("select t,id from "+namaTabel+" where t_gram_structure is null");
+    		pSelT = conn.prepareStatement("select t,id from "+namaTabel+" " +
+					"where t_gram_structure is null");
     		pUpdT = conn.prepareStatement("update "+namaTabel+" set "
     				+ "	t_gram_structure=?, t_type_dependency=? "
     				+ " where id=?");
@@ -270,7 +272,7 @@ public class ParsingHypoText {
          //hasil parsing disimpan di t_gram_structure
          //pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
 
-         pht.prosesDiscourseT("disc_t_rte3");
+         pht.prosesDiscourseT("disc_t_rte3_label");
 
 		 //pht.proses();
     	 

@@ -432,7 +432,7 @@ public class ProsesDependency {
     */
 
     public ArrayList<String[]> ekstrak(String strTypeDep) {
-    //WARNING, harus diperbaiki, pasangannya juga penting
+    //WARNING, harus diperbaiki, pasangannya juga pentin
     // misal agent(beli, budi)  = budi melakukan beli    jadi tidak hanya budi yg penting
     // tapi belinnya juga penting, outputnya triplet??
     //ambil type yg penting, termasuk menggabungkan
@@ -488,6 +488,7 @@ public class ProsesDependency {
                 */
         //tidak pake regex karena butuh berurutan
 
+        // [ ] ( dibuang
         String tempTypeDep = strTypeDep.replace("[","").replace("]","").replace("(",",");
         Scanner sc = new Scanner(tempTypeDep);
         sc.useDelimiter("\\),");
@@ -495,13 +496,17 @@ public class ProsesDependency {
         String gab="";
         String s="";
         boolean stop=false;
+        //scanner delimeter:  ),
         while (sc.hasNext()) {
             if (!isNN) {
                 s = sc.next(); //kalau setelah diproses nn, string sudah maju satu next
             } else isNN = false;
 
+            //contoh s : nsubjpass,rejected-5, amendment-3
             String[] sp = s.split(",");
             gab = "";
+            String last;
+            //proses term yang bersambung
             if (sp[0].trim().equals("nn")) {
                 //ambil sampai habis dereten nn
                 String a1,a2;
@@ -510,18 +515,40 @@ public class ProsesDependency {
                     a1 = sp[1];
                     a2 = sp[2];
                     sb.append(getCore(a2));  //tambah belakang
+
                     sb.append(" ");
                     if (sc.hasNext()) {
                         s = sc.next();
                         sp = s.split(",");
                     }
                 } while (sp[0].trim().equals("nn") && (sc.hasNext()) );
-                sb.append(getCore(a1)); //tambah depan
-                gab = sb.toString();
+                last = getCore(a1);
+                sb.append(last); //tambah depan
+
+
+                //System.out.println("last="+last);
+                //System.out.println(" s stelah last"+s);
+
+                sp = s.split(",");
+                //System.out.println("last="+last);
+                //System.out.println("sp2="+sp[2]);
+                if (getCore(sp[2]).trim().equals(last)) {
+                    sb.append("|");
+                    sb.append(getCore(sp[1]));
+                }
+
+                //cari pasangan
+                //if (sc.hasNext()) {
+                //    s = sc.next();
+
+                //}
+
+
                 isNN = true;
+                gab = sb.toString();
                 //System.out.println("long_"+sp[0].trim()+"="+gab);
-                String[] aS =new String[2];
-                aS[0] =  "long_"+sp[0].trim();
+                String[] aS =new String[3];
+                aS[0] = "long_"+sp[0].trim();
                 aS[1] = gab;
                 alOut.add(aS);
             }
@@ -535,9 +562,11 @@ public class ProsesDependency {
             if (alEl.size()>0) {
                 for (String[] el:alEl) {
                     //el = alEl.get(0);
-                    String isi = getCore(el[1]); //ambil isinya
+                    String isi  = getCore(el[1]); //ambil isinya
+                    String pasanganIsi = getCore(el[0]); //ambil isinya
+                    isi = isi + "|" + pasanganIsi;
                     //System.out.println(type + "=" + isi);
-                    String[] aS =new String[2];
+                    String[] aS =new String[3];
                     aS[0] = type;
                     aS[1] = isi;
                     alOut.add(aS);
@@ -548,7 +577,7 @@ public class ProsesDependency {
         return alOut;
     }
 
-    public void proses4(String namaTabel) {
+    public void proses4Db(String namaTabel) {
         //15 april
 
         PreparedStatement pSel = null;
@@ -559,10 +588,12 @@ public class ProsesDependency {
         try {
             log.log(Level.INFO, "Mulai parsing postag + dependency tree");
             conn = db.getConn();
+            String sql = String.format("select id,t,h,h_gram_structure, " +
+                    "h_type_dependency,t_type_dependency,isEntail from %s " +
+                    " where id=8",namaTabel); //limit 5
+
             //testing id = 23 dulu
-            pSel = conn.prepareStatement(String.format("select id,t,h,h_gram_structure, " +
-					"h_type_dependency,t_type_dependency,isEntail from %s " +
-					"limit 200",namaTabel));
+            pSel = conn.prepareStatement(sql);
 					//"where id=2", namaTabel));
 			rs = pSel.executeQuery();
             while (rs.next()) {
@@ -577,11 +608,17 @@ public class ProsesDependency {
                 System.out.println();
                 System.out.println(id+":");
                 System.out.println("h:"+h);
-				System.out.println("t:"+t);
+				//System.out.println("t:"+t);
 				//System.out.println("hdep:"+ hTypeDep);
                 System.out.println();
+                ArrayList<String[]> alHasil = ekstrak(hTypeDep);
 
-                ekstrak(hTypeDep);
+                for (String[] hasil:alHasil) {
+                    System.out.println("0="+hasil[0]);
+                    System.out.println("1="+hasil[1]);
+                }
+
+
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -592,12 +629,46 @@ public class ProsesDependency {
         }
     }
 
+    public String proses4(String t) {
+        ParsingHypoText ph = new ParsingHypoText();
+        ph.init();
+        String[] sT = ph.parse(t);
+
+        String synT = sT[0];  //tidak digunakan
+        String depT = sT[1];
+
+        ArrayList<String[]> hasil;
+        System.out.println(t);
+        System.out.println(depT);
+
+
+        hasil = ekstrak(depT);
+
+        StringBuilder sb = new StringBuilder();
+
+        for (String[] as:hasil) {
+            sb.append(as[0]);
+            sb.append("=");
+            sb.append(as[1]);
+            sb.append(";");
+        }
+
+        return sb.toString();
+    }
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ProsesDependency pd = new ProsesDependency();
-		pd.proses4("rte3");
+        String s;
+		//pd.proses4Db("rte3");
+        s="80% approve of Mr. Bush";
+        //s="Mrs. Bush 's approval ratings have remained very high , above 80 %";
 
-
+        //s="Yuganskneftegaz cost US$ 27.5 billion";
+        //s="Yuganskneftegaz was orig inally sold for US$ 9.4 billion";
+        //s="A pro-women amendment was rejected by the National Assembly of Kuwait.";
+        String hasil;
+        hasil = pd.proses4(s);
+        System.out.println(hasil);
 	}
-
 }

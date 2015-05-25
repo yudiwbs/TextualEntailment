@@ -1,0 +1,23 @@
+Catatan Analisis Struktur Dependency
+====================================
+80% approve of Mr. Bush.
+long_prep_of= Mr. Bush|approve;root=%|ROOT;prep_of=Bush|approve;
+
+
+[num(%-2, 80-1), nsubj(approve-3, %-2), root(ROOT-0, approve-3), nn(Bush-6, Mr.-5), prep_of(approve-3, Bush-6
+
+--------------------
+Mrs. Bush 's approval ratings have remained very high , above 80 %
+long_poss= Mrs. Bush|ratings;long_nsubj= approval ratings|high;root=high|ROOT;nsubj=ratings|high;
+
+Hasil dari analisis dependency (long):
+Mrs. Bush
+approval ratings
+
+(ROOT (S (NP (NP (NNP Mrs.) (NNP Bush) (POS 's)) (NN approval) (NNS ratings)) (VP (VBP have) (VP (VBN remained) (ADJP (RB very) (JJ high)) (, ,) (PP (IN above) (NP (CD 80) (NN %)))))))
+
+[nn(Bush-2, Mrs.-1), poss(ratings-5, Bush-2), nn(ratings-5, approval-4), nsubj(high-9, ratings-5), aux(high-9, have-6), cop(high-9, remained-7), advmod(high-9, very-8), root(ROOT-0, high-9), num(%-13, 80-12), prep_above(high-9, %-13)]
+
+
+
+

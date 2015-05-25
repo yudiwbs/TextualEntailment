@@ -1,5 +1,7 @@
 package edu.upi.cs.yudiwbs.rte;
 
+//yw tambah versi off db untuk testing
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,7 +36,7 @@ set h = h_preprolemma
 */
 
 
-public class PreproLemmatization {
+public class old_PreproLemmatization {
 	
 	StanfordCoreNLP pipeline;
 	
@@ -66,7 +68,7 @@ public class PreproLemmatization {
 	}
 	
 	
-	public void proses(String namaTabelUtama) {
+	public void prosesDb(String namaTabelUtama) {
 		//tabel utama perlu ditambahkan dua field:
 
 		
@@ -137,12 +139,24 @@ public class PreproLemmatization {
 		
 		
 	}
+
+    //ternyata bisa langsung T tanpa perlu syntatic tree
+    //ya sudah biar saja
+    public void proses(String s) {
+        String out = prosesLemma(s);
+        System.out.println(s);
+    }
 	
 	
-	
+	//apa bedanya dengan prosesLemma?
+    //perlu diberesin biar tidak duplikasi
+    //
 	public static void main(String[] args) {
-		PreproLemmatization pl = new PreproLemmatization();
-		pl.proses("rte3_ver1_coba3");	
+		old_PreproLemmatization pl = new old_PreproLemmatization();
+		//pl.prosesDb("rte3_ver1_coba3");
+        pl.init();
+        pl.proses("A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.");
+
 	}
 	
 	

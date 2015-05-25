@@ -158,9 +158,9 @@ public class PreproCoref {
 		String out="";
 		Annotation document = new Annotation(teks);
 		pipeline.annotate(document);
-		
-		
-		Map<Integer, CorefChain> graph = 
+
+
+		Map<Integer, CorefChain> graph =
 			      document.get(CorefChainAnnotation.class);
 
 		//System.out.println(graph);
@@ -195,7 +195,7 @@ public class PreproCoref {
 
         //penting!!: crm.sentNum = sentence num
 
-        //jadi kalau ada dua kalimat   saya mau makan. dia makan nasi
+        //jadi kalau ada dua kalimat   Saya mau makan. Dia makan nasi
         // sentNum = 1 saya mau...
         // sentNum = 2 dia makan..
         // startindex dan endindexnya juga relatif

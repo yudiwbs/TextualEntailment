@@ -16,12 +16,12 @@ import java.util.logging.Logger;
  *
  */
 
-public class ProsesAlignment {
+public class old_ProsesAlignment {
 
     Connection conn=null;
 
     private static final Logger log =
-            Logger.getLogger(ProsesAlignment.class.getName());
+            Logger.getLogger(old_ProsesAlignment.class.getName());
 
     /**
      *   mulai dari h
@@ -87,7 +87,7 @@ public class ProsesAlignment {
     }
 
     public static void main(String [] args) {
-       ProsesAlignment pa = new ProsesAlignment();
+       old_ProsesAlignment pa = new old_ProsesAlignment();
 
        //String t= "(ROOT (S (S (NP (DT The) (NN sale)) (VP (VBD was) (VP (VBN made) (S (VP (TO to) (VP (VB pay) (NP (NP (NNP Yukos) (POS ')) (ADJP (QP ($ US$) (QP (CD 27.5) (CD billion)))) (NN tax) (NN bill)))))))) (, ,) (NP (NNP Yuganskneftegaz)) (VP (VBD was) (ADVP (RB originally)) (VP (VBN sold) (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion))))) (PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company) (NN Baikalfinansgroup)) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (ADVP (RB later)) (VP (VBN bought) (PP (IN by) (NP (DT the) (JJ Russian) (JJ state-owned) (NN oil) (NN company) (NN Rosneft))))))))))) (. .)))";
        //String h= "(ROOT (S (NP (NNP Baikalfinansgroup)) (VP (VBD was) (VP (VBN sold) (PP (TO to) (NP (NNP Rosneft))))) (. .)))";

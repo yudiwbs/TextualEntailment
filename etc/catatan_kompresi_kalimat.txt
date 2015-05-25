@@ -1,0 +1,37 @@
+Kompresi kalimat
+================
+arg:
+        agent - agent
+        comp  - complement
+           acomp - adjectival complement
+           ccomp - clausal complement with internal subject
+           xcomp - clausal complement with external subject
+        obj  - object
+           dobj - direct object
+           iobj - indirect object
+           pobj - object of preposition
+           subj - subject
+           nsubj - nominal subject
+           nsubjpass - passive nominal subject
+           csubj - clausal subject
+           csubjpass - passive clausal subject
+
+		   
+The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .
+
+
+Baikalfinansgroup was sold to Rosneft.
+
+Potongan yg pas:
+a little known company *Baikalfinansgroup* which was later *bought* by the Russian state-owned oil company *Rosneft*
+
+[det(Baikalfinansgroup-5, a-1), advmod(known-3, little-2), amod(Baikalfinansgroup-5, known-3), nn(Baikalfinansgroup-5, company-4), root(ROOT-0, Baikalfinansgroup-5), nsubjpass(bought-9, Baikalfinansgroup-5), auxpass(bought-9, was-7), advmod(bought-9, later-8), rcmod(Baikalfinansgroup-5, bought-9), det(Rosneft-16, the-11), amod(Rosneft-16, Russian-12), amod(Rosneft-16, state-owned-13), nn(Rosneft-16, oil-14), nn(Rosneft-16, company-15), agent(bought-9, Rosneft-16)]
+
+long_root= company Baikalfinansgroup
+long_agent= oil  company Rosneft
+root=Baikalfinansgroup
+agent=Rosneft
+nsubjpass=Baikalfinansgroup
+
+Dikompres:
+Baikalfinansgroup was bought by Rosneft

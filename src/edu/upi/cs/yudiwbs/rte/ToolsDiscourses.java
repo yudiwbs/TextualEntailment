@@ -20,6 +20,45 @@ import java.util.Stack;
 
 public class ToolsDiscourses {
 
+    //update tabelutama.label berdasarkan disc
+    public void labelDiscToUtama(String namaTabelDisc, String namaTabelUtama) {
+        //cari di disc_rte yang labelnya 1
+        //lihat id_kalimat
+        //update sesuai id_kalimat di tabel utama (rte3)
+        Connection conn = null;
+        PreparedStatement pDisc = null;
+        PreparedStatement pUpdateUtama = null;
+        ResultSet rs = null;
+
+        String sqlDisc = "select id,id_kalimat \n" +
+                " from " + namaTabelDisc + " where label=1"  ;
+
+        String sqlUpdateUtama = "update "+namaTabelUtama+" set id_disc_t=? where id=?";
+
+        //ambil data
+        try {
+            KoneksiDB db = new KoneksiDB();
+            conn = db.getConn();
+            pDisc = conn.prepareStatement(sqlDisc);
+            pUpdateUtama = conn.prepareStatement(sqlUpdateUtama);
+            rs = pDisc.executeQuery();
+            while (rs.next()) {
+                int idDisc = rs.getInt(1);
+                int idKalimat = rs.getInt(2);
+                System.out.println("id="+idKalimat);
+                pUpdateUtama.setInt(1, idDisc);
+                pUpdateUtama.setInt(2, idKalimat);
+                pUpdateUtama.executeUpdate();
+            }
+            rs.close();
+            pUpdateUtama.close();
+            pDisc.close();
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
     //input tag
     //output tag yang sudah diberi nomor contoh:
     // (1ROOT (2S (3NP (4DT The)5 (6NN president)7
@@ -217,7 +256,8 @@ public class ToolsDiscourses {
         //edk.printSemuaDisc("rte3","disc_t_rte3");]
         ToolsDiscourses pd = new ToolsDiscourses();
         //pd.buangDuplikasi("disc_t_rte3");
-        pd.print("rte3","disc_t_rte3");  //pastikan duplikasi sudah dibuang!
+        //pd.print("rte3","disc_t_rte3");  //pastikan duplikasi sudah dibuang!
+        pd.labelDiscToUtama("disc_t_rte3_label","rte3_label");
 
         //String s= pd.debugPrintNoTag("(ROOT (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD spoke) (NP-TMP (NN today)) (PP (IN at) (NP (DT the) (NNP El) (NNP Salvador) (JJ military) (NN airport))) (SBAR (IN before) (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD left) (PP (IN for) (NP (NNP Costa) (NNP Rica))) (S (VP (TO to) (VP (VB attend) (NP (NP (DT the) (NN inauguration) (NN ceremony)) (PP (IN of) (NP (NNP president-elect) (NNP Rafael) (NNP Calderon) (NNP Fournier))))))))))) (. .)))");
         //System.out.println(s);
