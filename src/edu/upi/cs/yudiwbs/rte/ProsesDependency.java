@@ -537,6 +537,8 @@ public class ProsesDependency {
                     sb.append(getCore(sp[1]));
                 }
 
+				//test
+
                 //cari pasangan
                 //if (sc.hasNext()) {
                 //    s = sc.next();
