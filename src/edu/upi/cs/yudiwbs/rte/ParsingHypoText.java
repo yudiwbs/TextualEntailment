@@ -270,9 +270,9 @@ public class ParsingHypoText {
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
          //hasil parsing disimpan di t_gram_structure
-         //pht.proses("rte3","id", "t_preprogabungan","t_gram_structure","t_type_dependency");
+         pht.proses("rte3","id", "t_preprocoref","t_gram_structure","t_type_dependency");
 
-         pht.prosesDiscourseT("disc_t_rte3_label");
+         //pht.prosesDiscourseT("disc_t_rte3_label");
 
 		 //pht.proses();
     	 

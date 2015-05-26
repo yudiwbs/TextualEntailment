@@ -537,7 +537,7 @@ public class ProsesDependency {
                     sb.append(getCore(sp[1]));
                 }
 
-				//test
+
 
                 //cari pasangan
                 //if (sc.hasNext()) {
@@ -579,7 +579,9 @@ public class ProsesDependency {
         return alOut;
     }
 
-    public void proses4Db(String namaTabel) {
+    //fieldDep = hasil dependency parser (parsingHypoText)
+    //asumsi tabel sudah punya field id
+    public void proses4Db(String namaTabel, String namaFieldDep, String namaFieldOut) {
         //15 april
 
         PreparedStatement pSel = null;
@@ -587,41 +589,45 @@ public class ProsesDependency {
 
         ResultSet rs = null;
         KoneksiDB db = new KoneksiDB();
-        try {
-            log.log(Level.INFO, "Mulai parsing postag + dependency tree");
-            conn = db.getConn();
-            String sql = String.format("select id,t,h,h_gram_structure, " +
-                    "h_type_dependency,t_type_dependency,isEntail from %s " +
-                    " where id=8",namaTabel); //limit 5
 
-            //testing id = 23 dulu
+        String sql       = String.format("select id, %s from %s ",namaFieldDep,namaTabel); //debug dulu nanti where.. dibuang
+        String sqlUpdate = String.format("update %s set %s = ? where id=?",namaTabel,namaFieldOut);
+        System.out.println(sqlUpdate);
+
+        try {
+            log.log(Level.INFO, "Mulai");
+            conn = db.getConn();
+
             pSel = conn.prepareStatement(sql);
-					//"where id=2", namaTabel));
-			rs = pSel.executeQuery();
+            pUpd = conn.prepareStatement(sqlUpdate);
+
+            rs = pSel.executeQuery();
             while (rs.next()) {
                 int id      = rs.getInt(1);
-                String t = rs.getString(2);
-                String h = rs.getString(3);
-                String hGramStru = rs.getString(4);
-                String hTypeDep  = rs.getString(5);
-                String tTypeDep  = rs.getString(6);
-                boolean isEntail = rs.getBoolean(7);
+                String hTypeDep  = rs.getString(2);
 
-                System.out.println();
                 System.out.println(id+":");
-                System.out.println("h:"+h);
-				//System.out.println("t:"+t);
-				//System.out.println("hdep:"+ hTypeDep);
                 System.out.println();
                 ArrayList<String[]> alHasil = ekstrak(hTypeDep);
 
-                for (String[] hasil:alHasil) {
-                    System.out.println("0="+hasil[0]);
-                    System.out.println("1="+hasil[1]);
+                StringBuilder sb = new StringBuilder();
+
+                for (String[] as:alHasil) {
+                    sb.append(as[0]);
+                    sb.append("=");
+                    sb.append(as[1]);
+                    sb.append(";");
                 }
-
-
+                String roleArg = sb.toString();
+                pUpd.setString(1,roleArg);
+                pUpd.setInt(2,id);
+                pUpd.executeUpdate();
             }
+            rs.close();
+            pSel.close();
+            pUpd.close();
+            conn.close();
+            System.out.println("selesai");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -659,18 +665,17 @@ public class ProsesDependency {
     }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ProsesDependency pd = new ProsesDependency();
         String s;
-		//pd.proses4Db("rte3");
-        s="80% approve of Mr. Bush";
+		pd.proses4Db("rte3","h_type_dependency","h_role_arg");
+        //s="80% approve of Mr. Bush";
         //s="Mrs. Bush 's approval ratings have remained very high , above 80 %";
 
         //s="Yuganskneftegaz cost US$ 27.5 billion";
         //s="Yuganskneftegaz was orig inally sold for US$ 9.4 billion";
         //s="A pro-women amendment was rejected by the National Assembly of Kuwait.";
-        String hasil;
-        hasil = pd.proses4(s);
-        System.out.println(hasil);
+        //String hasil;
+        //hasil = pd.proses4(s);
+        //System.out.println(hasil);
 	}
 }

@@ -20,6 +20,34 @@ import java.util.Stack;
 
 public class ToolsDiscourses {
 
+    //print h, h_ner, h_role_arg
+    public void printH(String namaTabelUtama) {
+        Connection conn=null;
+        PreparedStatement pSel = null;
+        ResultSet rs = null;
+        KoneksiDB db = new KoneksiDB();
+        String sql = "select id,h,h_ner,h_role_arg from "+namaTabelUtama;
+        try {
+            conn = db.getConn();
+            pSel = conn.prepareStatement(sql);
+            rs = pSel.executeQuery();
+            while (rs.next()) {
+                int id            = rs.getInt(1);
+                String h          = rs.getString(2);
+                String h_ner = rs.getString(3);
+                String h_role_arg = rs.getString(4);
+                System.out.println("["+id+"]");
+                System.out.println(h);
+                System.out.println(h_ner);
+                System.out.println(h_role_arg);
+            }
+
+        } catch (Exception e ) {
+            e.printStackTrace();
+        }
+
+    }
+
     //update tabelutama.label berdasarkan disc
     public void labelDiscToUtama(String namaTabelDisc, String namaTabelUtama) {
         //cari di disc_rte yang labelnya 1
@@ -254,10 +282,11 @@ public class ToolsDiscourses {
 
     public static void main(String[] args) {
         //edk.printSemuaDisc("rte3","disc_t_rte3");]
-        ToolsDiscourses pd = new ToolsDiscourses();
-        //pd.buangDuplikasi("disc_t_rte3");
-        //pd.print("rte3","disc_t_rte3");  //pastikan duplikasi sudah dibuang!
-        pd.labelDiscToUtama("disc_t_rte3_label","rte3_label");
+        ToolsDiscourses td = new ToolsDiscourses();
+        //td.buangDuplikasi("disc_t_rte3");
+        //td.print("rte3","disc_t_rte3");  //pastikan duplikasi sudah dibuang!
+        //td.labelDiscToUtama("disc_t_rte3_label","rte3_label");
+        td.printH("rte3");
 
         //String s= pd.debugPrintNoTag("(ROOT (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD spoke) (NP-TMP (NN today)) (PP (IN at) (NP (DT the) (NNP El) (NNP Salvador) (JJ military) (NN airport))) (SBAR (IN before) (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD left) (PP (IN for) (NP (NNP Costa) (NNP Rica))) (S (VP (TO to) (VP (VB attend) (NP (NP (DT the) (NN inauguration) (NN ceremony)) (PP (IN of) (NP (NNP president-elect) (NNP Rafael) (NNP Calderon) (NNP Fournier))))))))))) (. .)))");
         //System.out.println(s);
