@@ -127,8 +127,8 @@ public class ProsesNER {
 
     public static void main(String[] args) {
            ProsesNER cn = new ProsesNER();
-           cn.prosesDb("rte3","h","h_ner");
-           //cn.prosesDb("disc_t_rte3_label","t","t_ner");
+           //cn.prosesDb("rte3","h","h_ner");
+           cn.prosesDb("disc_t_rte3_label","t","t_ner");
            //cn.init();
            //cn.proses("Mrs. Bush 's approval ratings have remained very high , above 80 %");
            //String s;

@@ -82,58 +82,7 @@ public class ParsingHypoText {
 	    return out;
 	}
 	
-	
-	
-	
-	    //todo duplikasi banget, biarkan dulu
-		public void prosesDiscourseH(String namaTabel) {
-			System.out.println("Proses H");
-			PreparedStatement pSelH=null;
-			PreparedStatement pUpdH=null;
-			KoneksiDB db = new KoneksiDB();
 
-			ResultSet rs = null;
-			try {
-	    		//Class.forName("com.mysql.jdbc.Driver");
-
-	    		//conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"+ "user=textentailment&password=textentailment");
-	    		conn = db.getConn();
-
-	    		init();
-	    		pSelH = conn.prepareStatement("select h,id from "+namaTabel+ " where h_gram_structure is null");
-	    		
-	    		pUpdH = conn.prepareStatement("update "+namaTabel+ " set "
-	    				+ "	h_gram_structure=?, h_type_dependency=? "
-	    				+ " where id=?");
-	    		
-	    		rs = pSelH.executeQuery();
-	    		int cc=0;
-				while (rs.next()) {
-				        String text = rs.getString(1);
-				        int id      = rs.getInt(2);
-				        String[] outH = parse(text);
-				        //System.out.println(text+"-->"+out[0]+","+out[1]);
-				        pUpdH.setString(1, outH[0]);
-				        pUpdH.setString(2, outH[1]);
-				        pUpdH.setInt(3, id);
-				        pUpdH.executeUpdate();
-				        cc++;
-				        System.out.print(".");
-				        if (cc%75==0) {
-				        	System.out.println("");
-				        }
-				}
-	    		rs.close();
-				pSelH.close();
-				pUpdH.close();
-				conn.close();
-				System.out.println("");
-				System.out.println("selesai");
-			} catch(Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-	
 	//hanya memrpseos yang t_gram_structure yang null (bukan overwrite). Tujuan: biar cepat
     //kalau mau overwrite harus dikosongkan dulu.
 	public void prosesDiscourseT(String namaTabel) {
@@ -148,7 +97,7 @@ public class ParsingHypoText {
 
 
 
-        System.out.println("mulai memproses disc_t! hati2 hanya memnproses yg  t_gram_structure kosong");
+        System.out.println("mulai memproses disc_t! !!!hati2 hanya memnproses yg  t_gram_structure kosong!!");
         System.out.println("Proses T");
 		PreparedStatement pSelT=null;
 		PreparedStatement pUpdT=null;
@@ -270,9 +219,9 @@ public class ParsingHypoText {
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
          //hasil parsing disimpan di t_gram_structure
-         pht.proses("rte3","id", "t_preprocoref","t_gram_structure","t_type_dependency");
+         //pht.proses("rte3","id", "t_preprocoref","t_gram_structure","t_type_dependency");
 
-         //pht.prosesDiscourseT("disc_t_rte3_label");
+         pht.prosesDiscourseT("disc_t_rte3_label");
 
 		 //pht.proses();
     	 

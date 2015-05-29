@@ -1,5 +1,17 @@
 Rangkuman Pencarian Subkalimat
 
+Fitur pasangan disc_t-h (atau langsung bisa untuk entailment?)
+- jumlah kata sama yg berurutan
+- jumlah NER yang sama
+- jumlah long_ yang sama (tapi tidak memperhatikan role)
+- LSA?
+- tf-idf similarity?
+
+lalu bobot dihitung.
+
+
+
+
 Masih ada BUG:
   - 440: tidak ketemu
   - 432: kepotong

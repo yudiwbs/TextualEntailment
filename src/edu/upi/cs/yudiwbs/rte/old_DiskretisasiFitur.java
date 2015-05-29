@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class DiskretisasiFitur {
+public class old_DiskretisasiFitur {
    //diskretitasi bobot SVO = sedang, rendah, tinggi
    //kombinasi bobot SV, SO, VO
    
@@ -174,7 +174,7 @@ skor_s<0.33;
    }
    	
    public static void main(String[] args) {
-	   DiskretisasiFitur df = new DiskretisasiFitur();
+	   old_DiskretisasiFitur df = new old_DiskretisasiFitur();
 	   df.proses();
    }
    

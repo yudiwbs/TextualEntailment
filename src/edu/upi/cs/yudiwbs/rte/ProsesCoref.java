@@ -15,7 +15,6 @@ import java.util.regex.Pattern;
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefChain.CorefMention;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations.CorefChainAnnotation;
-import edu.stanford.nlp.dcoref.Mention;
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TextAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
@@ -24,7 +23,7 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 
-public class PreproCoref {
+public class ProsesCoref {
 
 	private static final Logger log =
 			Logger.getLogger(ParsingHypoText.class.getName());
@@ -126,6 +125,12 @@ public class PreproCoref {
 	    Properties props = new Properties();
 	    props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
 	    pipeline = new StanfordCoreNLP(props);
+	}
+
+	public void  corefNER (String teks) {
+		//isi coref (she,he) yang belum diproses berdasarkan data NER PERSON
+
+
 	}
 	
 	public String gantiCoref(String teks) {
@@ -435,7 +440,7 @@ public class PreproCoref {
 	}
 	
 	public static void main(String[] args) {
-		PreproCoref pc= new PreproCoref();
+		ProsesCoref pc= new ProsesCoref();
 		pc.proses("rte3");
 
         //-------- debug

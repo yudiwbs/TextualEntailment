@@ -101,7 +101,7 @@ public class TextualEntailment {
 		System.out.println("Proses parsetree");
 		ParsingHypoText pht = new ParsingHypoText();
     	pht.prosesDiscourseT(namaTabelDiscT);
-    	pht.prosesDiscourseH(namaTabelDiscH);
+    	//pht.prosesDiscourseH(namaTabelDiscH);
 	
     	
     	//split subkalimat (SBAR
@@ -118,7 +118,7 @@ public class TextualEntailment {
 		
 		//ParsingHypoText pht = new ParsingHypoText();
 		pht.prosesDiscourseT(namaTabelDiscT);
-    	pht.prosesDiscourseH(namaTabelDiscH);
+    	//pht.prosesDiscourseH(namaTabelDiscH);
     	
     	//prosesDBSimWordnetYW kalimat sejajar
     	System.out.println();
@@ -131,7 +131,7 @@ public class TextualEntailment {
 		System.out.println();
 		System.out.println("Proses parsetree");
 		pht.prosesDiscourseT(namaTabelDiscT);
-    	pht.prosesDiscourseH(namaTabelDiscH);
+    	//pht.prosesDiscourseH(namaTabelDiscH);
     	
     	
         //prosesDBSimWordnetYW PP (kalimat dalam PP dipisah)
@@ -144,7 +144,7 @@ public class TextualEntailment {
  	   	System.out.println();
  	   	System.out.println("Proses parsetree");
  	 	pht.prosesDiscourseT(namaTabelDiscT);
- 	    pht.prosesDiscourseH(namaTabelDiscH);
+ 	    //pht.prosesDiscourseH(namaTabelDiscH);
  	    
  	   
  	    AmbilSubject af = new AmbilSubject();
@@ -187,8 +187,8 @@ public class TextualEntailment {
         //selanjutnya prosesDBSimWordnetYW fitur
         System.out.println();
  	    System.out.println("Proses ekstrak fitur");
-		EkstrakFitur ef = new EkstrakFitur();
-		ef.prosesDiscourses(namaTabelUtama,namaTabelDiscT,namaTabelDiscH);
+		//EkstrakFitur ef = new EkstrakFitur();
+		//ef.prosesDiscourses(namaTabelUtama,namaTabelDiscT,namaTabelDiscH);
 		
 		System.out.println("selesai semua, selanjutnya lihat class EkstrakFitur untuk tfidf ");
 		

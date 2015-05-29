@@ -104,7 +104,7 @@ class Word {
 	String word;
 }
 
-public class EkstrakFitur {
+public class old_EkstrakFitur {
 	//menghasilkan fitur2 untuk prosesDBSimWordnetYW klasifikasi
 	//
 	
@@ -1301,7 +1301,7 @@ where bobot_jenis_cocok is null;
 		//String namaTabelDiscT = "disc_t_rte3_ver1_coba2";
 		
 		
-		EkstrakFitur ef = new EkstrakFitur();
+		old_EkstrakFitur ef = new old_EkstrakFitur();
 		//prepro ditambahkan saat t atau h diambil dari DB
 		
 		//(String namaTabelUtama,String namaTabelDiscH, String namaTabelDiscT

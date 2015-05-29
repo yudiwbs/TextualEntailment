@@ -22,6 +22,10 @@ import java.util.logging.Logger;
 /**
  * Created by Yudi Wibisono (yudi@upi.edu) on 12/9/2014.
  *
+ *   update: mei 2015
+ *   sim tidak diproses untuk semua kata, tapi hanya verb tertentu yang dianggap penting
+ *   berdasarkan dep parser (misal yg ada di Root)
+ *
  *
  *   untuk tambah field
  *   alter table rte3 add skorSimWN double;

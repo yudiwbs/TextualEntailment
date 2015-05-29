@@ -24,12 +24,13 @@ import java.util.logging.Logger;
 
 public class ProsesLemma {
 
+    ToolsDiscourses td = new ToolsDiscourses();
     private static final Logger log =
             Logger.getLogger(ProsesTfidf.class.getName());
 
     private StanfordCoreNLP pipeline;
 
-    private void initLemma() {
+    public void initLemma() {
         Properties props = new Properties();
         props.put("annotators", "tokenize, ssplit, pos, lemma");
         pipeline = new StanfordCoreNLP(props);
@@ -50,7 +51,6 @@ public class ProsesLemma {
         for(CoreMap sentence: sentences) {
             // Iterate over all tokens in a sentence
             for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
-                // Retrieve and add the lemma for each word into the list of lemmas
                 lemmas.add(token.get(CoreAnnotations.LemmaAnnotation.class));
             }
         }
@@ -60,6 +60,7 @@ public class ProsesLemma {
             sb.append(s+" ");
         }
         String out = sb.toString();
+        out = td.postProses(out);
         return out;
     }
 
@@ -69,53 +70,50 @@ public class ProsesLemma {
         System.out.println(out);
     }
 
-    public void prosesDb() {
+    //"rte_3","h","h_lemma"
+
+    public void prosesDb(String namaTabel, String namaField, String namaFieldOut ) {
         initLemma();
-
-        //double v = pw.hitungSimWordnet("A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.","30 die in a bus collision in Uganda.");
-        //System.out.println(v);
-
         Connection conn;
-        PreparedStatement pTw;
+        PreparedStatement pSel;
         PreparedStatement pUpdate;
-        String SQLambilTw;
+        String strSel;
         String strUpdate;
+        strSel       = String.format("select id, %s from %s",namaField,namaTabel);
+        strUpdate    = String.format("update %s set %s=? where id=?",namaTabel,namaFieldOut);
+
+        System.out.println(strSel);
+        System.out.println(strUpdate);
+
         KoneksiDB db = new KoneksiDB();
         String kata;
-        log.log(Level.INFO,"Mulai prosesDBSimWordnetYW lemma");
+        log.log(Level.INFO,"Mulai lemma");
         try {
             conn = db.getConn();
-            SQLambilTw   = "select id,t,h from rte3";
-            strUpdate    = "update rte3 set t_lemma=?, h_lemma=? where id=?";
-
-            pTw  =  conn.prepareStatement (SQLambilTw);
+            pSel  =  conn.prepareStatement (strSel);
             pUpdate = conn.prepareStatement(strUpdate);
 
             //loop untuk semua instance
-            ResultSet rsTw = pTw.executeQuery();
+            ResultSet rs = pSel.executeQuery();
 
-            while (rsTw.next()) {
-                long id = rsTw.getLong(1);
-                String s1 = rsTw.getString(2);
-                String s2 = rsTw.getString(3);
-                System.out.println(s1);
-                System.out.println(s2);
+            while (rs.next()) {
+                long id = rs.getLong(1);
+                String s = rs.getString(2);
+
+                String sL = lemmatize(s);
+
+                System.out.println(s);
+                System.out.println(sL);
                 System.out.println();
 
-                String s1L = lemmatize(s1);
-                String s2L = lemmatize(s2);
-
-                System.out.println(s1L);
-                System.out.println(s2L);
-
-                pUpdate.setString(1, s1L);
-                pUpdate.setString(2, s2L);
-                pUpdate.setLong(3, id);
+                pUpdate.setString(1, sL);
+                pUpdate.setLong(2, id);
                 pUpdate.executeUpdate();
 
             }
+            rs.close();
             pUpdate.close();
-            pTw.close();
+            pSel.close();
             conn.close();
         } catch (Exception e) {
             log.log(Level.SEVERE,e.getMessage(),e);
@@ -127,9 +125,11 @@ public class ProsesLemma {
 
     public static void main(String[] args) {
         ProsesLemma pl = new ProsesLemma();
+        //pl.prosesDb("rte3_label","h","h_lemma");
 
-        //pl.prosesDb();
-        pl.initLemma();
+        pl.prosesDb("disc_t_rte3_label","t","t_lemma");
+
+        //pl.initLemma();
         //pl.proses("80% approve of Mr. Bush.");
         //.proses("Mrs. Bush 's approval ratings have remained very high , above 80 %");
         //pl.proses("A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.");

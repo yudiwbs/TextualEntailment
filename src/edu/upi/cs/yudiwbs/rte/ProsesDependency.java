@@ -465,10 +465,21 @@ public class ProsesDependency {
         ArrayList<String[]> alOut = new ArrayList<>();
         //penggabungan amod dan nn
         ArrayList<String[]> alEl = new ArrayList<>();
-        String[] arType = {"root","arg","agent","acomp","ccomp","xcomp","dobj",
-                "iobj","pobj","nsubj",
-                "nsubjpass","csubj","csubjpass",
-                "prep_to","prep_in","prep_of","prep_on"};
+        String[] arType = {"root","arg","agent","acomp","ccomp","xcomp","dobj","poss",
+                "iobj","pobj","nsubj","nsubjpass","csubj","csubjpass",
+                "prep_to","prep_in","prep_of","prep_on","prep_with","prep_at",
+                "prep_from", "prep_prior_to", "prep_for","prep_through", "prep_between",
+                "prep_after", "prep_like","prep_above", "prep_below", "prep_out",
+                "prep_during", "prep_by","prep_as","prep_including", "prep_near", "prep_over",
+                "prep_in_front_of", "prep_into", "prep_via", "prep_without",
+                "prep_around", "prep_following", "prep_within",
+                "prep_across", "prep_against",
+                "prep_before", "prep_upon", "prep_onto", "prep_among",
+                "prep_that", "prep_out_of", "prep_about",  "prep_in_accordance_with",
+                "prep_such_as", "prep_irrespective_of", "prep_regardless_of",
+                "prep_along", "prep_than", "prep_towards", "prep_inside",  "prep_under",
+                "prep_along_with", "prep_per"
+        };
 
 
          /*
@@ -504,7 +515,6 @@ public class ProsesDependency {
 
             //contoh s : nsubjpass,rejected-5, amendment-3
             String[] sp = s.split(",");
-            gab = "";
             String last;
             //proses term yang bersambung
             if (sp[0].trim().equals("nn")) {
@@ -581,8 +591,18 @@ public class ProsesDependency {
 
     //fieldDep = hasil dependency parser (parsingHypoText)
     //asumsi tabel sudah punya field id
+    //pastikan parsingHypoText sudah dipanggil sehingga namaFieldDep terisi
     public void proses4Db(String namaTabel, String namaFieldDep, String namaFieldOut) {
         //15 april
+
+        //pengaman
+        try {
+            System.out.println("Dependency-role: anda yakin ingin memproses ProsesDependency.proses4Db? " +
+                    " Tekan enter untuk melanjutkan!");
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         PreparedStatement pSel = null;
         PreparedStatement pUpd = null;
@@ -590,7 +610,7 @@ public class ProsesDependency {
         ResultSet rs = null;
         KoneksiDB db = new KoneksiDB();
 
-        String sql       = String.format("select id, %s from %s ",namaFieldDep,namaTabel); //debug dulu nanti where.. dibuang
+        String sql       = String.format("select id, %s from %s ",namaFieldDep,namaTabel);
         String sqlUpdate = String.format("update %s set %s = ? where id=?",namaTabel,namaFieldOut);
         System.out.println(sqlUpdate);
 
@@ -607,7 +627,6 @@ public class ProsesDependency {
                 String hTypeDep  = rs.getString(2);
 
                 System.out.println(id+":");
-                System.out.println();
                 ArrayList<String[]> alHasil = ekstrak(hTypeDep);
 
                 StringBuilder sb = new StringBuilder();
@@ -667,7 +686,8 @@ public class ProsesDependency {
 	public static void main(String[] args) {
 		ProsesDependency pd = new ProsesDependency();
         String s;
-		pd.proses4Db("rte3","h_type_dependency","h_role_arg");
+		//pd.proses4Db("rte3_label","h_type_dependency","h_role_arg");
+        pd.proses4Db("disc_t_rte3_label","t_type_dependency","t_role_arg");
         //s="80% approve of Mr. Bush";
         //s="Mrs. Bush 's approval ratings have remained very high , above 80 %";
 
