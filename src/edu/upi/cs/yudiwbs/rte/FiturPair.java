@@ -54,8 +54,15 @@ import java.util.Scanner;
  ALTER TABLE fiturPairDiscT_H AUTO_INCREMENT = 1
 
 
- setelah proses, query untuk lihat hasil:
- select d.id,d.t,r.h,f.label,MongeElkan,MongeElkanLemma,simNER
+ query untuk jadikan arff (mencari Label yang paling mirip)
+ ==========================================================
+ select
+ MongeElkan,MongeElkanLemma,simNER,
+ rasioPanjangKal,simRoot,simRootEksak,
+ simSubj,simSubjEksak,
+ simObj,simObjEksak,simArgSubj,simArgObj,
+ f.label,
+ r.isEntail
  from
  fiturpairdisct_h f,
  disc_t_rte3_label d,
@@ -65,9 +72,50 @@ import java.util.Scanner;
  f.idDiscT = d.id and
  f.label is not null
  order by
- r.id asc,
- MongeElkan desc,
- MongeElkanLemma desc
+ r.id asc
+
+ query untuk mencaari entail
+ ===========================
+ select
+ MongeElkan,MongeElkanLemma,simNER,
+ rasioPanjangKal,simRoot,simRootEksak,
+ simSubj,simSubjEksak,
+ simObj,simObjEksak,simArgSubj,simArgObj,
+ task,
+ r.isEntail
+ from
+ fiturpairdisct_h f,
+ disc_t_rte3_label d,
+ rte3_label r
+ where
+ f.idKal = r.id and
+ f.idDiscT = d.id and
+ f.label is not null and
+ f.label = 1
+ order by
+ r.id asc
+
+
+ setelah proses, query untuk lihat hasil:
+
+ select
+ d.id,d.t,r.h,
+ MongeElkan,MongeElkanLemma,simNER,
+ rasioPanjangKal,simRoot,simRootEksak,
+ simSubj,simSubjEksak,
+ simObj,simObjEksak,simArgSubj,simArgObj,
+ f.label,
+ r.isEntail
+ from
+ fiturpairdisct_h f,
+ disc_t_rte3_label d,
+ rte3_label r
+ where
+ f.idKal = r.id and
+ f.idDiscT = d.id and
+ f.label is not null
+ order by
+ r.id asc
 
  *
  */
@@ -86,16 +134,10 @@ public class FiturPair {
             new Resnik(db), new JiangConrath(db), new Lin(db), new Path(db)
     };*/
 
-
-    public void HitungBobot() {
-        /*
-            bobot setiap fitur dihitung dengan cara mencari satu persatu
-            di increment setiap fitur sampai mendapatkan yg paling sedikit errornya
-         */
-
-
-
-    }
+    //todo: sesuai paper hickl: alighnment feature, dependeny feature, semantic/pragmatic feature
+    //todo: wordnet untuk semua kalimat
+    //1h
+    //
 
     //ambil arg2
     ////Walter  Stauffer Academy|member  => member
@@ -123,8 +165,12 @@ public class FiturPair {
         return out;
     }
 
-    public String cariRole(String roleCari, String allRole) {
-        String out ="";
+    //cari roleCari di allRole
+    //contoh input (lihat ROLE1 bisa berulang): .... ROLE1=ARG11|ARG12;ROLE2=ARG21|ARG22;ROLE1=ARG31|ARG32
+    //output: misal yg dicari ROLE1, maka output  {ARG11,ARG31}
+
+    public ArrayList<String> cariRole(String roleCari, String allRole) {
+        ArrayList<String> out = new ArrayList<>();
 
         Scanner sc = new Scanner(allRole);
         sc.useDelimiter(";");
@@ -133,7 +179,9 @@ public class FiturPair {
             String[] arrRole = s.split("=");
             String role = arrRole[0].trim();  // long_prep_of
             String args = arrRole[1].trim();  //Walter  Stauffer Academy|member
-            if (role.equals(roleCari)||role.equals("long_"+roleCari)) {
+            //long dimatikan, atau nant dipsaih?
+            // || role.equals("long_"+roleCari)
+            if (role.equals(roleCari)) {
                 String[] arrArgs = args.split("\\|");
                 String arg1;
                 if (arrArgs.length>0) {
@@ -142,12 +190,56 @@ public class FiturPair {
                     System.out.println("KOSONG==============>"+args);
                     arg1 = "";
                 }
-                out = arg1;
+                out.add(arg1);
             }
         }
         return out;
     }
 
+
+    //isEksak = false => menggunakan lemma
+    //bentuk string: long_prep_of= Walter  Stauffer Academy|member;root=member|ROOT;nsubj=Accardo|member;prep_of=Academy|member;
+    //hasil adalah rata2
+    public double cariSimRole(String role, boolean isEksak, String s1, String s2) {
+        double out;
+        System.out.println("role="+role);
+        ArrayList<String> alVal1 = cariRole(role,s1);
+        ArrayList<String> alVal2 = cariRole(role,s2);
+        double totOut=0;
+        int cc=0;
+        for (String v1: alVal1) {
+            for (String v2: alVal2) {
+                cc++;
+                if (!v1.equals(v2)) {
+                    //cari lemmanya dulu
+                    v1 = pl.lemmatize(v1).replaceAll("\\.", "");
+                    v2 = pl.lemmatize(v2).replaceAll("\\.", "");
+                }
+                System.out.println(v1);
+                System.out.println(v2);
+                double nilai=0;
+                if (v1.equals("") || v2.equals("")) {
+                    nilai = 0;
+                } else if (v1.equals(v2)) {
+                    nilai = 1;
+                } else if (!isEksak)  {
+                    nilai = rc.calcRelatednessOfWords(v1, v2);
+                    if (nilai>5) {  //entah masih ada yg lolos
+                        nilai = 1;
+                    }
+                }
+                totOut = totOut + nilai;
+            }
+        }
+
+        if (cc==0) {
+            out = 0;
+        } else {
+            out = totOut / (double) cc;
+        }
+
+        return out;
+    }
 
     public double cariSimRoleArg(String role, String s1, String s2) {
         //yang diambil argnya
@@ -175,32 +267,6 @@ public class FiturPair {
         return out;
     }
 
-    public double cariSimRole(String role, String s1, String s2) {
-        double out=0;
-        //bentuk string: long_prep_of= Walter  Stauffer Academy|member;root=member|ROOT;nsubj=Accardo|member;prep_of=Academy|member;
-        System.out.println("role="+role);
-        String val1 = cariRole(role,s1);
-        String val2 = cariRole(role,s2);
-
-        if (!val1.equals(val2)) {
-            //cari lemmanya
-            val1 = pl.lemmatize(val1).replaceAll("\\.", "");
-            val2 = pl.lemmatize(val2).replaceAll("\\.", "");
-        }
-        System.out.println(val1);
-        System.out.println(val2);
-        if (val1.equals("") || val2.equals("")) {
-            out = 0;
-        } else if (val1.equals(val2)) {
-            out = 1;
-        } else {
-            out = rc.calcRelatednessOfWords(val1, val2);
-            if (out>5) {  //entah masih ada yg lolos
-                out = 1;
-            }
-        }
-        return out;
-    }
 
 
     public void isiArgRootSubjObjSim(String tabelFitur, String tabelDisc, String tabelUtama) {
@@ -252,8 +318,8 @@ public class FiturPair {
 
     }
 
-
-    public void isiRootSubjObjSim(String tabelFitur, String tabelDisc, String tabelUtama) {
+    //isi skor simRoot,Subj,Obj,Agent
+    public void isiSimRootSubjObjSim(String tabelFitur, String tabelDisc, String tabelUtama) {
         //skor 1 kalau sama, jika tidak menggunakan wordnet
 
         pl.initLemma();
@@ -261,12 +327,21 @@ public class FiturPair {
         PreparedStatement pSel   = null;
         PreparedStatement pUpdate = null;
         ResultSet rs = null;
+        ///System.out.println("debug!!!, 10 record dulu! dan khusus yg dilabeli 1 tanpa tulis ke db nanti buang f.label=1 dan limit!!!");
 
         String sqlSel  = String.format("select f.id, d.t_role_arg, r.h_role_arg from " +
                 " %s f, %s d, %s r " +
-                "where f.idKal = r.id and f.idDiscT = d.id",tabelFitur,tabelDisc,tabelUtama);
+                "where f.idKal = r.id and f.idDiscT = d.id ",tabelFitur,tabelDisc,tabelUtama);
 
-        String sqlUpdate  = String.format("update %s  set simRoot=?, simSubj=?, simObj=?  where id=?",tabelFitur);
+
+        /*
+        String sqlSel  = String.format("select f.id, d.t_role_arg, r.h_role_arg from " +
+                " %s f, %s d, %s r " +
+                "where f.idKal = r.id and f.idDiscT = d.id     and f.label=1    limit 100",tabelFitur,tabelDisc,tabelUtama);
+        */
+
+        String sqlUpdate  = String.format("update %s  set simRoot=?, simSubj=?, " +
+                "simObj=?, simRootEksak=?, simSubjEksak=?, simObjEksak=?  where id=?",tabelFitur);
 
         //ambil data
         try {
@@ -280,21 +355,41 @@ public class FiturPair {
                 String tRole       = rs.getString(2);
                 String hRole       = rs.getString(3);
 
+                System.out.println();
                 System.out.println("id="+id);
+                System.out.println("t="+tRole);
+                System.out.println("h="+hRole);
 
-                double simRoot = cariSimRole("root", tRole, hRole);
-                double simSubj = cariSimRole("nsubj",tRole, hRole);
-                double simObj  = cariSimRole("dobj", tRole, hRole);
+                double simRootEksak   = cariSimRole("root",true, tRole, hRole);
+                double simSubjEksak   = cariSimRole("nsubj",true,tRole, hRole);
+                double simObjEksak    = cariSimRole("dobj", true,tRole, hRole);
+                //double simAgentEksak  = cariSimRole("agent", true,tRole, hRole);
 
-                System.out.println(simRoot);
-                System.out.println(simSubj);
-                System.out.println(simObj);
+
+                double simRoot   = cariSimRole("root",false, tRole, hRole);
+                double simSubj   = cariSimRole("nsubj",false,tRole, hRole);
+                double simObj    = cariSimRole("dobj", false,tRole, hRole);
+                //double simAgent  = cariSimRole("agent", false,tRole, hRole);
+
+                System.out.println("valroot="+simRoot);
+                System.out.println("valsubj="+simSubj);
+                System.out.println("valobj="+simObj);
+                //System.out.println("valAgent="+simAgent);
+
+                //simRoot=?, simSubj=?, "simObj=?,
+                //simRootEksak=?, simSubjEksak=?, simObjEksak=?  where id=?",tabelFitur);
+
+
 
                 pUpdate.setDouble(1, simRoot);
                 pUpdate.setDouble(2, simSubj);
                 pUpdate.setDouble(3, simObj);
-                pUpdate.setInt(4, id);
+                pUpdate.setDouble(4, simRootEksak);
+                pUpdate.setDouble(5, simSubjEksak);
+                pUpdate.setDouble(6, simObjEksak);
+                pUpdate.setInt(7, id);
                 pUpdate.executeUpdate();
+
             }
             rs.close();
             pSel.close();
@@ -610,9 +705,23 @@ public class FiturPair {
     }
 
     public static void main(String[] args) {
+
         FiturPair ef = new FiturPair();
+        ef.isiSimRootSubjObjSim("fiturpairdisct_h", "disc_t_rte3_label","rte3_label");
+
+        /*
+        String s1 = "long_prep_of= Walter Stauffer Academy|member;" +
+                "root=member|ROOT;nsubj=Accardo|member;prep_of=Academy|member;root=dummy|ROOT";
+
+        ArrayList<String> alR  = ef.cariRole("root",s1);
+        for (String s: alR) {
+            System.out.println(s);
+        }
+        */
+
+
         //ef.isiRootSim("fiturpairdisct_h","disc_t_rte3_label","rte3_label");
-        ef.isiArgRootSubjObjSim("fiturpairdisct_h","disc_t_rte3_label","rte3_label");
+        //ef.isiArgRootSubjObjSim("fiturpairdisct_h","disc_t_rte3_label","rte3_label");
 
         /*
         String s1 = "long_prep_of= Walter Stauffer Academy|member;root=member|ROOT;nsubj=Accardo|member;prep_of=Academy|member;";

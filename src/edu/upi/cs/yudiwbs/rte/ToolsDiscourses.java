@@ -483,7 +483,7 @@ public class ToolsDiscourses {
                 System.out.println("================================================");
             }
             rs.close();
-            conn.close();  
+            conn.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();

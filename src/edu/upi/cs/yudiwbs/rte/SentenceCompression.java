@@ -3,7 +3,7 @@ package edu.upi.cs.yudiwbs.rte;
 import java.util.ArrayList;
 
 /**
- * Created by user on 5/12/2015.
+ * Created by yudiwbs on 5/12/2015.
  */
 public class SentenceCompression {
 

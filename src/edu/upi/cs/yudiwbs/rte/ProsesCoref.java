@@ -127,11 +127,18 @@ public class ProsesCoref {
 	    pipeline = new StanfordCoreNLP(props);
 	}
 
+	//isi coref (she,he) yang belum diproses berdasarkan data NER PERSON
+
 	public void  corefNER (String teks) {
-		//isi coref (she,he) yang belum diproses berdasarkan data NER PERSON
+
 
 
 	}
+
+    public void isiCorefNER(String namaTabelUtama, String namaTabelDiscT) {
+        //coba cek berapa banyak yang corenya gagal dan bisa
+        //ditangani oleh NER, jangan2 tidak banyak
+    }
 	
 	public String gantiCoref(String teks) {
         //update

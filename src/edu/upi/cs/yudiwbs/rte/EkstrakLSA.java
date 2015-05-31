@@ -42,7 +42,7 @@ import tml.vectorspace.operations.PassagesSimilarity;
  *   4. filter, sehingga yg digunakan hanya pasangan yang terkait 1t-1h, 2t-2h (filterOut)
  *   5. pindahkan hasil filter ke dalam db outToDB
  *
- *   todo: ganti semua system.out.println dengan logger
+ *
  */
 
 
@@ -353,7 +353,6 @@ public class EkstrakLSA {
 				pw.close();
 				log.log(Level.INFO,"selesai prosesDBSimWordnetYW repo");
 			} catch (IOException | SQLException e) {
-				// TODO Auto-generated catch block
 				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 	}

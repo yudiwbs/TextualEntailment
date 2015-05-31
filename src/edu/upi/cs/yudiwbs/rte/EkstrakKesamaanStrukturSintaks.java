@@ -195,7 +195,6 @@ public class EkstrakKesamaanStrukturSintaks {
  
 	//cari jumlah kecocokan NP? VP?
 	public void prosesCocokPOSTag(String namaTabelUtama) {
-		// TODO Auto-generated method stub
 	    // cari kecocokan NP
 		// tapi curiga bakal nggak terlalu bagus
 		

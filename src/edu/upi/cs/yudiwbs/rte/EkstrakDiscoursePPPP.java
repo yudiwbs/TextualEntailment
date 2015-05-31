@@ -18,6 +18,8 @@ import java.util.*;
  *
  *   id:770 masih bug
  *
+ *   todo: buang kata yang tidak penting (lihat id : 28)
+ *
  */
 
 

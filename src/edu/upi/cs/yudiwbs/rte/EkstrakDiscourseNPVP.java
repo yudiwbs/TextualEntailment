@@ -20,7 +20,7 @@ import java.util.*;
  *
  *    untuk debug, bisa print dengan class PrintDiscourses
  *
- *
+ *     todo: id 77, bug, jika NP berada di dalam VP, harus diterik sampai ke NP berikutnya
  *
  */
 public class EkstrakDiscourseNPVP {
@@ -131,10 +131,13 @@ public class EkstrakDiscourseNPVP {
             //value: adalah awal kata (tdk digunakan)
 
             //ulang sampai NPterakhir bukan berada di dalam PP
+
+            //update, kasus: id 77
+            //tidak hanya NP dalam PP tapi NP dalm VP juga tidak boleh
             boolean foundParentPp;
             do {
                 foundNPTerdekat2 = false;
-                foundParentPp = false;
+                foundParentPp    = false;
                 int parentPpTerdekat = -1;
                 for (Integer pos : posPp.keySet()) {
                     if (pos < npTerdekat) {
@@ -488,7 +491,7 @@ public class EkstrakDiscourseNPVP {
 
     public static void main(String[] args) {
         EkstrakDiscourseNPVP edNP = new EkstrakDiscourseNPVP();
-        edNP.proseNpVpDb("disc_t_rte3");
+        //edNP.proseNpVpDb("disc_t_rte3");
 
 
 
@@ -583,6 +586,9 @@ public class EkstrakDiscourseNPVP {
         //awal SBAR, jangan then
         //t="But these are only first hazards. \"If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning,\" said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.";
 
+        //id=77
+        t="Following the Declaration of the Establishment of the State of Israel, May 14, 1948, seven Arab states entered Palestine and engaged Israeli forces.";
+
         //id:96
         //bug postag
         //t="Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.";
@@ -631,7 +637,7 @@ public class EkstrakDiscourseNPVP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
-        /*
+
         ArrayList<String> alNpVp;
         alNpVp = edNP.prosesNpVp(t);
 
@@ -641,7 +647,7 @@ public class EkstrakDiscourseNPVP {
         for (String s:alNpVp) {
             System.out.println(s);
         }
-        */
+
 
 
         System.out.println("selesai semua!!");
