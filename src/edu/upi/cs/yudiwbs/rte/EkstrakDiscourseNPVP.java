@@ -37,6 +37,7 @@ public class EkstrakDiscourseNPVP {
 
     HashMap<Integer,Integer> postEndNp;
     HashMap<Integer,Integer> postEndPp;
+    HashMap<Integer,Integer> postEndVp;
 
     HashMap<Integer,String>  listNP; //list semua NP, key adalah nomorTag
     ArrayList<String> alKata;
@@ -135,46 +136,94 @@ public class EkstrakDiscourseNPVP {
             //update, kasus: id 77
             //tidak hanya NP dalam PP tapi NP dalm VP juga tidak boleh
             boolean foundParentPp;
+            boolean foundParentVp;
             do {
-                foundNPTerdekat2 = false;
+                foundNPTerdekat2 = false;  //pencarian NP terdekat
                 foundParentPp    = false;
+                foundParentVp    = false;
                 int parentPpTerdekat = -1;
-                for (Integer pos : posPp.keySet()) {
-                    if (pos < npTerdekat) {
+                int parentVpTerdekat = -1;
+
+                //cari parent PP kalau ada.
+                for (Integer pPp : posPp.keySet()) {
+                    if (pPp < npTerdekat) {
                         //tag lebih kecil, tapi NP harus sudah lengkap
                         //System.out.println("pos="+pos);
                         //System.out.println("isi="+listNP.get(pos));
                         //tag lebih kecil, tapi NP harus sudah tertutup
                         //np harus sebelum VP
                         //System.out.println(pos);
-                        if ((postEndPp.get(pos) != null) && (postEndPp.get(pos) > postEndNp.get(npTerdekat)) && (postEndPp.get(pos) < lastVp)) { //&& (listNP.get(pos)!=null
-                            if (pos > parentPpTerdekat) {  //cari yang paling dekat
-                                parentPpTerdekat = pos;
+                        if ((postEndPp.get(pPp) != null)
+                                && (postEndPp.get(pPp) > postEndNp.get(npTerdekat))
+                                && (postEndPp.get(pPp) < lastVp)) {
+                            if (pPp > parentPpTerdekat) {  //cari yang paling dekat
+                                parentPpTerdekat = pPp;
                                 foundParentPp = true;
                             }
                         }
                     }
                 }
 
-                if (foundParentPp) {
+                //cari parent VP kalau ada
+                //!!!
+                for (Integer pVp : posVp.keySet()) {
+                    if (pVp < npTerdekat) {
+                        //tag lebih kecil, tapi NP harus sudah lengkap
+                        //System.out.println("pos="+pos);
+                        //System.out.println("isi="+listNP.get(pos));
+                        //tag lebih kecil, tapi NP harus sudah tertutup
+                        //np harus sebelum VP
+                        //System.out.println(pos);
+                        if (    (postEndVp.get(pVp) != null) &&
+                                (postEndVp.get(pVp) > postEndNp.get(npTerdekat))
+                                && (postEndVp.get(pVp) < lastVp)
+                            )
+                            {
+                              if (pVp > parentVpTerdekat) {  //cari yang paling dekat
+                                 parentVpTerdekat = pVp;
+                                 foundParentVp = true;
+                                 System.out.println("!!!!!!!!!!!!!!!!!!!! found parent vp!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                              }
+                            }
+                    }
+                }
+
+
+
+                if (foundParentPp || foundParentVp) {
+                    //ketemu parentPP
                     //System.out.println("parent pp terdekat=" + parentPpTerdekat);
                     //geser NP terdekat ke kiri
-                    //tapi NP tersebut harus tertutup sebelum PP parent
+                    //tapi NP tersebut harus tertutup sebelum PP atau VP parent
                     //(NP  ) .... (PP (NP))  NP yg paling kiri yg dicari
                     int npTerdekat2 = -1;
 
                     for (Integer pos : posNp.keySet()) {
-                        if ((postEndNp.get(pos) != null) && (pos < parentPpTerdekat) && (postEndNp.get(pos) < parentPpTerdekat)) {
-                            if (pos > npTerdekat2) {
+                        if (    (postEndNp.get(pos) != null) &&
+                                (
+                                    (
+                                       (foundParentPp)   &&
+                                       (pos < parentPpTerdekat) &&
+                                       (postEndNp.get(pos) < parentPpTerdekat)
+                                    ) ||
+                                    (
+                                        (foundParentVp)  &&
+                                        (pos < parentVpTerdekat) &&
+                                        (postEndNp.get(pos) < parentVpTerdekat)
+                                    )
+                                )
+                            )
+                            {
+                               if (pos > npTerdekat2) {
                                 npTerdekat2 = pos;
                                 foundNPTerdekat2 = true;
-                            }
-                        }
+                               }
+                             }
                     }
                     if (foundNPTerdekat2) {
                         String npLama = listNP.get(npTerdekat);
                         npTerdekat = npTerdekat2;
-                        System.out.println("== GESER NP terdekat karena di dalam PP!!");
+                        System.out.println("== GESER NP terdekat karena di dalam PP atau VP !!");
                         //System.out.println(npLama);
                     }
                 }
@@ -275,6 +324,7 @@ public class EkstrakDiscourseNPVP {
         posPp  = new HashMap<>();
 
         postEndNp = new HashMap<>();
+        postEndVp = new HashMap<>();
         postEndPp = new HashMap<>();
 
         listNP = new HashMap<>(); //list semua NP, key adalah nomorTag
@@ -381,6 +431,7 @@ public class EkstrakDiscourseNPVP {
                 else
                 if (p.equals("(VP")) {
                     //ambil mulai dari idx
+                    postEndVp.put(pos,ccTag);
                     sbVp = new StringBuilder();
                     for (int i=posVp.get(pos);i<alKata.size();i++) {
                         sbVp.append(alKata.get(i));
@@ -518,7 +569,9 @@ public class EkstrakDiscourseNPVP {
 
         //BUG id=9  (kal pasif)
         //t="Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National University of La Plata, and their colleagues.";
-
+        t="Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National \n" +
+                "University of La Plata, and their colleagues studied a complete skull \n" +
+                "found in Argentina in 1996 as recent Dakosaurus research";
         //id=10
         //t ="On May 17, 2005, the National Assembly of Kuwait passed, by a majority of 35 to 23 (with 1 abstention), an amendment to its electoral law that would allow women to vote and to stand as parliamentary candidates.";
 
@@ -532,7 +585,6 @@ public class EkstrakDiscourseNPVP {
         //t="Blue Mountain Lumber is a subsidiary of Malaysian forestry transnational corporation, Ernslaw One.";
 
         //id=21
-
         //t="Blue Mountain Lumber said today it may have to relocate a $30 million project offshore in the wake of an Environment Court decision that blocked it from a planned development site on the Coromandel.";
 
 
@@ -587,7 +639,7 @@ public class EkstrakDiscourseNPVP {
         //t="But these are only first hazards. \"If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning,\" said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.";
 
         //id=77
-        t="Following the Declaration of the Establishment of the State of Israel, May 14, 1948, seven Arab states entered Palestine and engaged Israeli forces.";
+        //t="Following the Declaration of the Establishment of the State of Israel, May 14, 1948, seven Arab states entered Palestine and engaged Israeli forces.";
 
         //id:96
         //bug postag
@@ -603,10 +655,14 @@ public class EkstrakDiscourseNPVP {
         //t="The president Cristiani spoke today at the El Salvador military airport before The president Cristiani left for Costa Rica to attend the inauguration ceremony of president-elect Rafael Calderon Fournier.";
 
         //id:144
+        //bug: which forced lois riel --> belum selesai
         //t="Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition, which forced Louis Riel, now branded a murderer, to flee the settlement.";
 
 
         //id:167
+        //generate kalimat? untuk menggantikan which
+        //the bus was heading for...
+        //the bus crasheed..
         //t="The bus, which was heading for Nairobi in Kenya , crashed in the Kabale district of Uganda near the Rwandan border.";
 
 
@@ -637,23 +693,21 @@ public class EkstrakDiscourseNPVP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
-
+        //t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan’s White House hostess.";
+        //ProsesCoref pc= new ProsesCoref();
+        //pc.init();
+        //String s = pc.gantiCoref(t);
         ArrayList<String> alNpVp;
         alNpVp = edNP.prosesNpVp(t);
 
 
         System.out.println();
         System.out.println("====================");
-        for (String s:alNpVp) {
-            System.out.println(s);
+        for (String str:alNpVp) {
+            System.out.println(str);
         }
 
-
-
         System.out.println("selesai semua!!");
-
-
-
 
     }
 }

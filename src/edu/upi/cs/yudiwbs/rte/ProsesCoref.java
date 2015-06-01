@@ -140,7 +140,15 @@ public class ProsesCoref {
         //ditangani oleh NER, jangan2 tidak banyak
     }
 	
-	public String gantiCoref(String teks) {
+
+    //
+    //public HashMap<String,ArrayList<String>>  prosesCoref(String teks) {
+
+    //}
+
+
+
+    public String gantiCoref(String teks) {
         //update
         //yang diproses hanya
         //he, she, they, her, his, them, it
@@ -448,14 +456,18 @@ public class ProsesCoref {
 	
 	public static void main(String[] args) {
 		ProsesCoref pc= new ProsesCoref();
-		pc.proses("rte3");
+		//pc.proses("rte3");
 
         //-------- debug
-        //pc.init();
+        pc.init();
         //String s = pc.gantiCoref("\"I want to go back again. But I am afraid, honestly, I am afraid. Propaganda against me made people think I am terrorist.\", said el-Nashar.");
-        //String s = pc.gantiCoref("She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing. Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days. As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.");
+        String t;
+        //t = "She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing. Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days. As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.";
+        //t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan’s White House hostess.";
+        t="Female mosquitoes become infected with the malaria parasite when they draw blood from humans with malaria. The insects can then pass this on to other humans they bite, but do not get sick themselves.";
+        String s = pc.gantiCoref(t);
 		//---------
-        //System.out.println(s);
+        System.out.println(s);
         System.out.println("benar-benar selesai :)");
 	}
 	

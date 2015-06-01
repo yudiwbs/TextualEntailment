@@ -250,7 +250,7 @@ public class EkstrakDiscourseNPPP {
 
     public static void main(String[] args) {
         EkstrakDiscourseNPPP ed = new EkstrakDiscourseNPPP();
-        ed.prosesDb("disc_t_rte3");
+        //ed.prosesDb("disc_t_rte3");
         String t;
 
 
@@ -385,13 +385,16 @@ public class EkstrakDiscourseNPPP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
-        /*
+
+        t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan’s White House hostess.";
+
+
         ArrayList<String> alNpPp;
         alNpPp = ed.proses(t);
         for (String s:alNpPp) {
             System.out.println(s);
         }
-        */
+
 
     }
 

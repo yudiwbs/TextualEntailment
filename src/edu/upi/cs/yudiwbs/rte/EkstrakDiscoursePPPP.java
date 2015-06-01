@@ -252,11 +252,14 @@ public class EkstrakDiscoursePPPP {
 
      public static void main(String[] args) {
             EkstrakDiscoursePPPP edp = new EkstrakDiscoursePPPP();
-            edp.prosesDb("disc_t_rte3");
-            //String t;
+            //edp.prosesDb("disc_t_rte3");
+            String t;
 
-            //t = "As much as 200 mm of rain have been recorded in portions of British Columbia , on the west coast of Canada since Monday.";
-            //edp.proses(t);
+            t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan’s White House hostess.";
+
+
+             //t = "As much as 200 mm of rain have been recorded in portions of British Columbia , on the west coast of Canada since Monday.";
+            edp.proses(t);
      }
 
 }

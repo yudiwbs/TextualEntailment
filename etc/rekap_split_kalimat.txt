@@ -1,9 +1,19 @@
 Rangkuman Pencarian Subkalimat
 -todo:  
   pemrosesan S?  id: 49
+  
   koma PP koma PP koma -> bisa dibuang? id: 63
+  
   np yang mengandung np koma (NP (NP koma NP)) id: 70
   
+  bug 72: then..
+  
+  Coref yg panjang bisa jadi kalimat
+  
+  118: who, which diganti kalimatnya?
+  167: 
+    63: x,a,b,c  -> x b , x c
+         (NP)  (,)  (PP)  (,) (VP  (,) (VP)
   
  
 
@@ -20,9 +30,6 @@ Fitur pasangan disc_t-h (atau langsung bisa untuk entailment?)
 - tf-idf similarity?
 
 lalu bobot dihitung.
-
-todo: 
-hitung Role.arg1 yg sama masih hanya untuk satu saja, jika lebih dari satu belum
 
 todo prepro:
 - coref paksa berdasarkan NER,atau lainnya
@@ -51,6 +58,7 @@ Masih ada BUG:
 	  - id=9: kalimat pasif?   
 		id=22 (had been) 
 		id=58
+		id=91
 			
   - 37: perlu penanganan SBAR dalam SBAR	
 		postag juga salah: authorithies suspect
@@ -72,7 +80,7 @@ Masih ada BUG:
   21
   14 => the group
   52
-  56=> the insect, this
+  56=> the insect, this. 
   64
   75
   88

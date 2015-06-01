@@ -556,7 +556,7 @@ public class ToolsDiscourses {
     public static void main(String[] args) {
         //edk.printSemuaDisc("rte3","disc_t_rte3");]
         ToolsDiscourses td = new ToolsDiscourses();
-        td.printWithTebakan("rte3_label","disc_t_rte3_label","fiturpairdisct_h");
+        //td.printWithTebakan("rte3_label","disc_t_rte3_label","fiturpairdisct_h");
         //td.postProsesDb("disc_t_rte3_label", "t");
         //td.isiLabel("rte3_label","disc_t_rte3_label");
         //td.cobaGantiTitik();
@@ -565,7 +565,7 @@ public class ToolsDiscourses {
         //td.labelDiscToUtama("disc_t_rte3_label","rte3_label");
         //td.printH("rte3_label");
         //td.printPair("rte3_label","disc_t_rte3_label");
-        //String s= pd.debugPrintNoTag("(ROOT (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD spoke) (NP-TMP (NN today)) (PP (IN at) (NP (DT the) (NNP El) (NNP Salvador) (JJ military) (NN airport))) (SBAR (IN before) (S (NP (DT The) (NN president) (NNP Cristiani)) (VP (VBD left) (PP (IN for) (NP (NNP Costa) (NNP Rica))) (S (VP (TO to) (VP (VB attend) (NP (NP (DT the) (NN inauguration) (NN ceremony)) (PP (IN of) (NP (NNP president-elect) (NNP Rafael) (NNP Calderon) (NNP Fournier))))))))))) (. .)))");
-        //System.out.println(s);
+        String s= td.debugPrintNoTag("(ROOT (S (PP (VBG Following) (NP (NP (DT the) (NN Declaration)) (PP (IN of) (NP (NP (DT the) (NN Establishment)) (PP (IN of) (NP (NP (DT the) (NN State)) (PP (IN of) (NP (NNP Israel))))))))) (, ,) (NP (NP (NNP May) (CD 14) (, ,) (CD 1948) (, ,) (CD seven)) (NP (JJ Arab) (NNS states))) (VP (VP (VBD entered) (NP (NNP Palestine))) (CC and) (VP (VBD engaged) (NP (JJ Israeli) (NNS forces)))) (. .)))");
+        System.out.println(s);
     }
 }

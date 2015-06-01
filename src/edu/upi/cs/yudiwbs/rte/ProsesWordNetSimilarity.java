@@ -253,13 +253,18 @@ public class ProsesWordNetSimilarity {
         LARGE_EPSILON = 1;
     }
 
+
+    public void prosesDb(String tabelUtama, String tabelDisc) {
+
+    }
+
     /**
      *  versi yw
      *
      *
 
      */
-    public void prosesDBSimWordnetYW() {
+    public void oldProsesDBSimWordnetYW() {
         //ambil kata s1 dan s2
         //double v = hitungSimilarity("kill","sleep");
 
@@ -421,7 +426,7 @@ public class ProsesWordNetSimilarity {
         //System.out.println(v);
 
         //pw.prosesDbSimWordnet();
-        pw.prosesDBSimWordnetYW();
+        pw.prosesDb("rte3_label","disc_t_rte3_label");
     }
 
 
