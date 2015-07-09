@@ -122,6 +122,12 @@ public class GenerateDatasetBerkeley {
 
         //String namaDir = "";
 
+        //String  namaFileTrainingAlign = "C:\\yudiwbs\\nlp-tools\\berkeleyaligner\\berkeleyaligner\\outputyw5\\datasetideal.align";
+        //String  namaFileF ="C:\\yudiwbs\\nlp-tools\\berkeleyaligner\\berkeleyaligner\\datayw\\temp\\tambahan.f";
+        //String  namaFileE ="C:\\yudiwbs\\nlp-tools\\berkeleyaligner\\berkeleyaligner\\datayw\\temp\\tambahan.e";
+
+        String dirBerkeleyAligner = "resources\\";
+
         String  namaFileTrainingAlign = "C:\\yudiwbs\\nlp-tools\\berkeleyaligner\\berkeleyaligner\\outputyw5\\datasetideal.align";
         String  namaFileF ="C:\\yudiwbs\\nlp-tools\\berkeleyaligner\\berkeleyaligner\\datayw\\temp\\tambahan.f";
         String  namaFileE ="C:\\yudiwbs\\nlp-tools\\berkeleyaligner\\berkeleyaligner\\datayw\\temp\\tambahan.e";
