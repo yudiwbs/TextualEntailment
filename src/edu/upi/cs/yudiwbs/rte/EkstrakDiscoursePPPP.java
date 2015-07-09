@@ -253,12 +253,19 @@ public class EkstrakDiscoursePPPP {
      public static void main(String[] args) {
             EkstrakDiscoursePPPP edp = new EkstrakDiscoursePPPP();
             //edp.prosesDb("disc_t_rte3");
-            String t;
+            String t="";
 
-            t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan’s White House hostess.";
+            //t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchananï¿½s White House hostess.";
+
+           //id=37
+           //t="Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .";
 
 
-             //t = "As much as 200 mm of rain have been recorded in portions of British Columbia , on the west coast of Canada since Monday.";
+         //id=600
+           //t="Sotheby's and Christie's, the world's two most powerful auction houses, swapped confidential lists of super-rich clients who were spared from paying fees charged to other sellers, people close to the companies and to a federal antitrust investigation of them said.";
+
+
+           //t = "As much as 200 mm of rain have been recorded in portions of British Columbia , on the west coast of Canada since Monday.";
             edp.proses(t);
      }
 

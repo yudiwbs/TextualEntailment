@@ -18,8 +18,10 @@ import java.util.Properties;
  *
  */
 public class KoneksiDB {
+    public String propFileName="resources/conf/db.properties";  //default, tapi bisa diganti
     String koneksiDB = "";
     String userPwd="";
+
 
 
     public static void main(String [] args) {
@@ -36,7 +38,7 @@ public class KoneksiDB {
 
         Properties prop = new Properties();
         InputStream input = null;
-        String propFileName = "resources/conf/db.properties";
+        //String propFileName = "resources/conf/db.properties";
         //diletakkan di tempat .class
         //String propFileName = "db.properties";
         //InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);

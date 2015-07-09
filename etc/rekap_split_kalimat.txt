@@ -1,21 +1,51 @@
 Rangkuman Pencarian Subkalimat
+
+-535 kenapa skor subkalimatnya tinggi??
 -todo:  
   pemrosesan S?  id: 49
+
+  Sentence Compression:
+  koma PP koma PP koma -> bisa dibuang? 
+   63
+   70 np yang mengandung np koma (NP (NP koma NP)) 
+   788
+   798
+   
+   20: of Malaysian forestry transnational corporation, Ernslaw One.
   
-  koma PP koma PP koma -> bisa dibuang? id: 63
-  
-  np yang mengandung np koma (NP (NP koma NP)) id: 70
   
   bug 72: then..
   
+  proses tanda petik:
+    561
+  
   Coref yg panjang bisa jadi kalimat
   
-  118: who, which diganti kalimatnya?
-  167: 
-    63: x,a,b,c  -> x b , x c
-         (NP)  (,)  (PP)  (,) (VP  (,) (VP)
+	  118,119,763: who, which diganti kalimatnya? who VA , VB. jadi SUBJ VA dan SUBJ VB
+	  167: 
+	   63: x,a,b,c  -> x b , x c
+			 (NP)  (,)  (PP)  (,) (VP  (,) (VP)
+	  
+  238: ada dua t yang bisa digunakan  
+  796: tidak ketemu
+  788: kalimat negatif
   
- 
+  tidak ketemu subkalimat:  
+	  786: tidak ketemu
+	  785: tidak ketemu
+	  779: tidak ketemu
+	  774: tidak ketemu
+	  772: tidak ketemu
+	  786: tidak ketemu
+	  764
+	  
+   
+  normalisasi angka:
+      511  
+  
+  
+  Singkatan:
+     35, 392 
 
 Untuk masalah penggunaan dep tree:
 id: 
@@ -24,10 +54,9 @@ id:
 
 Fitur pasangan disc_t-h (atau langsung bisa untuk entailment?)
 - jumlah kata sama yg berurutan
-- jumlah NER yang sama (sudah)
-- jumlah arg role long_x dan x yang sama 
 - LSA?
 - tf-idf similarity?
+- kalimat tidak langsung: she said, it said dst
 
 lalu bobot dihitung.
 
@@ -38,21 +67,41 @@ todo prepro:
 
 
 Masih ada BUG:
-  - 440: tidak ketemu
   - 432: kepotong
-  - 416: tidak ketemu NP,NP ?
-  - 408: penanganan and	
+
+  -  37: NP,NP,NP 
+    416: tidak ketemu NP,NP ?
+    600: tdk ketemu  -> sebelum koma:  NP,NP. -> tapi NP yg kedua mengandung ADJP? tdk harus`
+
+
+  - 408,735: penanganan and	
   - 392,496: penelusuran subyek melakukan apa  
   - 280: prehistoric art hilang
   - penanganan start->SBAR: 32, 37
+  
   - 520 konversi feet -> m
+    693 by the thousand = >1000 
+	296:   angka 800, ten thousand. Kalau deteksi angka di hipotesis perlu dinormalisasi
+
+	waktu / temporal
+  - 543
   - 544,560 ambil tgl.
   - 584,712 temporal event
-  - 592: enumerasi
-  - 600: tdk ketemu
-  - 624: subyek hilang
+    id=16 (waktu kejadian)
+    id=32 "died on "
+	
+
+  enumerasi
+  - 592:  
+    791  
+	518
+ 
+  - 756: tdk ketemu  -> ambil dari depan NP VP sampai ketemu PP?.
   - 768: sebelum but
-    
+  - 770: berantakan
+  - 509,510 setelah which
+  
+  
   
   - KALIMAT PASIF
 	  - id=9: kalimat pasif?   
@@ -71,29 +120,31 @@ Masih ada BUG:
   - bug POS TAG
     29: tidak selesai
     32: carl smith dipotong 
+	742 in lebanon: PP-nya sampai ke bawah  
   
   - id=5 (terlalu pendek?)
 
   
 - masalah coref:
+  6 
   7
   21
   14 => the group
   52
-  56=> the insect, this. 
+  56 => the insect, this. 
   64
   75
   88
   104
   112
+  133
   152
+  168
   180
   349
+  459
   777:it
 
-- masalah date
-  id=16 (waktu kejadian)
-  id=32 "died on "
   
 
 - lokasi
@@ -117,16 +168,9 @@ Masih ada BUG:
   - id=6, antara NP dan VP ada ADVP
   - id=11, full NP --> tapi urusannya lebih ke lokasi
   - id=52, (NP) (VP (VBD (VP (VBN .. PP)..   => VP dalam VP, tidak ada koma
-  - 118 OK
-  - 167 OK
-  - 180 OK
-  - 294 OK
-  
-  NP_PP:
-  - id=37
-  - id=55, tanpa VP  polanya NP PP  --> proses terpisah?  khusus NP VP?
-===============================================================================
 
+  
+===============================================================================
 
   
 -Non NP: kalimat dalam PP
@@ -143,8 +187,6 @@ Masih ada BUG:
 
 
    
-- angka
-  296:   angka 800, ten thousand. Kalau deteksi angka di hipotesis perlu dinormalisasi
   
 
   

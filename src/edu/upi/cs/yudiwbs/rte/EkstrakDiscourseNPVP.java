@@ -612,7 +612,7 @@ public class EkstrakDiscourseNPVP {
         //tidak semua START SBAR bisa dijadikan trigger
         // misalnya whether
         //atau lihat dari jenis verbnya? membutuhkan objek atau tidak?
-        //t="Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .";
+        t="Colarusso , the Dover police captain , said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .";
 
         //id=52
 
@@ -672,6 +672,9 @@ public class EkstrakDiscourseNPVP {
         //id=184
         //t="Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall";
 
+        //id=238
+        //t="COLOMBO (Reuters) - At least five people were killed and 11 wounded when a suspected Tamil Tiger suicide bomber blew herself up inside a police station in the Sri Lankan capital on Wednesday, shattering more than two years of relative peace.";
+
         //id=294
         //t = "Mental health problems in children and adolescents are on the rise, the British Medical Association has warned, and services are ill-equipped to cope.";
 
@@ -682,10 +685,19 @@ public class EkstrakDiscourseNPVP {
         //t="This course helps students pursuing an AOS or AAS degree, gain an understanding of the experiences of Black people from hearing and deaf communities in America.";
 
         //id=426
-        //t="According to members of Brazilian Court, President Luiz Inácio Lula da Silva may be subjected to an impeachment process, if there is some proof that he is really involved in some of the alleged scandals, or in case someone can prove that he was acting with negligence.";
+        //t="According to members of Brazilian Court, President Luiz Inï¿½cio Lula da Silva may be subjected to an impeachment process, if there is some proof that he is really involved in some of the alleged scandals, or in case someone can prove that he was acting with negligence.";
+
+        //id=440
+        //t="Article 19 said a correspondent for the independent newspaper Narodnaya Volya who attempted to determine how many people involved in emergency work in the contaminated zone around the Chernobyl nuclear reactor after the 1986 catastrophe were still alive was told by the Ministry of Emergencies that non-state newspapers could be refused access to any information.";
 
         //id=534
         //t="Alternately known as brash, emotional and brilliant, the maverick Kasparov could be a formidable opponent in the realm of politics.";
+
+        //id=600
+        //t="Sotheby's and Christie's, the world's two most powerful auction houses, swapped confidential lists of super-rich clients who were spared from paying fees charged to other sellers, people close to the companies and to a federal antitrust investigation of them said.";
+
+        //id=624
+        //t="As his jubilant nation cheered, Yunus told reporters in the capital of Dhaka that he wants \"to work to create some more new things in the world\" and would use the award money to start a company to produce inexpensive yet nutritious food for poor people and set up an eye hospital to treat impoverished patients.";
 
         //id=673 BUG? PP ada diantara NP dan VP
         //t="Two brothers who operated a North Hollywood plating company that dumped thousands of gallons of cyanide-laced waste water into the Los Angeles sewer system pleaded guilty Thursday and must serve jail time for recklessly handling and storing hazardous materials.";
@@ -693,7 +705,7 @@ public class EkstrakDiscourseNPVP {
         //id=777
         //t="The Hercules transporter plane which flew straight here from the first round of the trip in Pakistan, touched down and it was just a brisk 100m stroll to the handshakes.";
 
-        //t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan’s White House hostess.";
+        //t="A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchananï¿½s White House hostess.";
         //ProsesCoref pc= new ProsesCoref();
         //pc.init();
         //String s = pc.gantiCoref(t);
@@ -701,6 +713,7 @@ public class EkstrakDiscourseNPVP {
         alNpVp = edNP.prosesNpVp(t);
 
 
+        System.out.println("NPVP:"+t);
         System.out.println();
         System.out.println("====================");
         for (String str:alNpVp) {

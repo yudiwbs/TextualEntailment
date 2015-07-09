@@ -1,0 +1,1778 @@
+numerik tidak cocok
+idFitur=6444
+idDisc=6805
+T=Yuganskneftegaz was originally sold for US$ 9.4 billion.
+H=Yuganskneftegaz cost US$ 27.5 billion.
+Entail?=false
+Kata diantara pasangan cocok:
+cost == was originally sold for 
+27.5 == 9.4 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=1.3195286648076294
+skorLe=2.5
+skorWp=0.4
+skorRe=1.5689600685706366
+skorJc=0.08389298511466066
+skorLi=0.19814304014541542
+skorPa=0.25
+
+the, were tidak perlu diproses? apalagi kalau pasangannya kosong
+diberi skor maksimal saja (perbedaaannya sedikit)
+
+idFitur=6494
+idDisc=6855
+T=52 people and the four bombers killed on July 7.
+H=52 people and four bombers were killed on July 7.
+Entail?=true
+Kata diantara pasangan cocok:
+== the 
+were == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+----------------------
+Mr dan Mrs harusnya dapat skor 0
+
+idFitur=6445
+idDisc=6806
+T=above 80% approval of Mrs. Bush.
+H=80% approve of Mr. Bush.
+Entail?=false
+Kata diantara pasangan cocok:
+== above 
+Mr. == Mrs. 
+Skor kata diantara pasangan cocok:
+skorHs=2.5
+skorLc=1.2951335827229133
+skorLe=2.0
+skorWp=0.45
+skorRe=5.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.16666666666666666
+
+-------------------------
+sudah ok
+
+idFitur=6463
+idDisc=6824
+T=Yola is the capital of Adamawa State.
+H=Abuja is located in Adamawa State.
+Entail?=false
+Kata diantara pasangan cocok:
+Abuja == Yola 
+located in == the capital of 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+------------------
+?? member, pupil
+
+idFitur=6446
+idDisc=6807
+T=the Orchestra da Camera Italiana ( O.C.I. ) members are the pupils of the Walter Stauffer Academy.
+H=Accardo was a member of the Walter Stauffer Academy.
+Entail?=false
+Kata diantara pasangan cocok:
+Accardo was a member == the Orchestra da Camera Italiana ( O.C.I. ) members are the pupils 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+--------------------------
+die = died? 
+
+
+idFitur=6447
+idDisc=6808
+T=Pope Pius VI die in 1799.
+H=Alexandre Berthier died in 1799.
+Entail?=false
+Kata diantara pasangan cocok:
+Alexandre Berthier died == Pope Pius VI die 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+--------------------------
+sudah benar pasangannya
+harusnya skornya nol
+
+idFitur=6421
+idDisc=6782
+T=Aspirin can make gastrointestinal bleeding.
+H=Aspirin prevents gastrointestinal bleeding.
+Entail?=false
+Kata diantara pasangan cocok:
+prevents == can make 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=2.2335922215070942
+skorLe=0.0
+skorWp=0.5
+skorRe=0.0
+skorJc=0.09194754723172402
+skorLi=0.0
+skorPa=0.3333333333333333
+--------------------------
+
+idFitur=6422
+idDisc=6783
+T=Blue Mountain Lumber is a subsidiary of Ernslaw One.
+H=Blue Mountain Lumber owns Ernslaw One.
+Entail?=false
+Kata diantara pasangan cocok:
+owns == is a subsidiary of 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=2.2335922215070942
+skorLe=0.0
+skorWp=0.5
+skorRe=0.0
+skorJc=0.12316389305552713
+skorLi=0.0
+skorPa=0.3333333333333333
+
+idFitur=6448
+idDisc=6809
+T=Blue Mountain Lumber blocked from a planned development site on the Coromandel.
+H=Blue Mountain Lumber will locate a development site on the Coromandel.
+Entail?=false
+Kata diantara pasangan cocok:
+will locate == blocked from 
+== planned 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.6019864021629681
+skorLe=0.0
+skorWp=0.13333333333333333
+skorRe=0.0
+skorJc=0.029405603748146224
+skorLi=0.0
+skorPa=0.045454545454545456
+
+proses tanggal! 
+idFitur=6469
+idDisc=6830
+T=Bountiful sailing into San Francisco Bay 21 August 1945.
+H=Bountiful reached San Francisco in August 1945.
+Entail?=true
+Kata diantara pasangan cocok:
+reached == sailing into 
+in == Bay 21 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.2628643221541276
+skorLe=0.0
+skorWp=0.3993808049535604
+skorRe=2.1921289770689336
+skorJc=0.07701251977674568
+skorLi=0.2372220395126382
+skorPa=0.09375
+------------------
+
+harusnya skor tinggi!
+
+idFitur=6423
+idDisc=6784
+T=Bountiful departing San Francisco on 1 November 1945.
+H=Bountiful reached San Francisco on 1 November 1945.
+Entail?=false
+Kata diantara pasangan cocok:
+reached == departing 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.7227665977411035
+skorLe=0.0
+skorWp=0.3333333333333333
+skorRe=0.0
+skorJc=0.07261503485279805
+skorLi=0.0
+skorPa=0.2
+
+* ganti !!*
+
+idFitur=6470
+idDisc=6831
+T=On August 8 Carl Smith life support machine being turned off.
+H=Carl Smith died on August 8.
+Entail?=true
+Kata diantara pasangan cocok:
+== On August 8 
+died on August 8 == life support machine being turned off 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.8714846525293115
+skorLe=0.0
+skorWp=0.3333333333333333
+skorRe=1.2466920428744694
+skorJc=0.06008470814127215
+skorLi=0.1545602088439266
+skorPa=0.1
+
+* ganti !! *
+idFitur=6472
+idDisc=6833
+T=The Civil War began and the governments of the United States began purchasing arms in Britain.
+H=Carl Smith died on August 8.
+Entail?=true
+Kata diantara pasangan cocok:
+Carl Smith died on August 8 == The Civil War began and the governments of the United States began purchasing arms in Britain 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+skor rendah
+idFitur=6449
+idDisc=6810
+T=The president Cristiani left for Costa Rica.
+H=Cristiani is the president of Costa Rica.
+Entail?=false
+Kata diantara pasangan cocok:
+== The president 
+is the president of == left for 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.6454920906577828
+skorLe=0.0
+skorWp=0.2
+skorRe=0.30718197469345426
+skorJc=0.025897263089367364
+skorLi=0.02991674663893481
+skorPa=0.045454545454545456
+
+
+reuters dan police jauh!  <-- objek
+
+idFitur=6464
+idDisc=6825
+T=Cyprian Gatete is assistant commissioner of police.
+H=Cyprian Gatete is an employee of Reuters.
+Entail?=false
+Kata diantara pasangan cocok:
+an employee == assistant commissioner 
+Reuters == police 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.4581453659370775
+skorLe=0.0
+skorWp=0.10526315789473684
+skorRe=0.0
+skorJc=0.028465094432712827
+skorLi=0.0
+skorPa=0.03125
+
+
+skor harusnya tinggi!!
+
+idFitur=6471
+idDisc=6832
+T=Dr Fiona Wood has patented invention of a treatment for burns victims.
+H=Dr Fiona Wood has invented a treatment for burns victims.
+Entail?=true
+Kata diantara pasangan cocok:
+invented == patented invention of 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+---------------------------------
+
+harusnya besar!
+hs, le sepertinya salah
+
+idFitur=6473
+idDisc=6834
+T=Female mosquitoes pass malaria on to other humans they bite.
+H=Female mosquitoes spread malaria.
+Entail?=true
+Kata diantara pasangan cocok:
+spread == pass 
+== on to other humans they bite 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.9729550745276567
+skorLe=0.0
+skorWp=0.2777777777777778
+skorRe=1.1270652004051969
+skorJc=0.036734030746291974
+skorLi=0.11644960374504801
+skorPa=0.125
+
+--
+penanganan not
+
+idFitur=6424
+idDisc=6785
+T=Guatemala will not accept the Pet passport as proof of vaccination.
+H=Guatemala accepts the Pet passport as proof of vaccination.
+Entail?=false
+Kata diantara pasangan cocok:
+accepts == will not accept 
+Skor kata diantara pasangan cocok:
+skorHs=10.0
+skorLc=10.0
+skorLe=10.0
+skorWp=10.0
+skorRe=10.0
+skorJc=10.0
+skorLi=10.0
+skorPa=10.0
+-----------------------
+
+harusnya besar!
+masalah konteks?
+
+idFitur=6495
+idDisc=6856
+T=GUS disposed Wehkamp.
+H=GUS sold Wehkamp.
+Entail?=true
+Kata diantara pasangan cocok:
+sold == disposed 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+----------------
+
+idFitur=6516
+idDisc=6877
+T=Allan Chapman is a hydrologist with the River Forecast Centre.
+H=Allan Chapman is employed at the River Forecast Centre.
+Entail?=true
+Kata diantara pasangan cocok:
+employed at == a hydrologist with 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.3862943611198906
+skorLe=0.0
+skorWp=0.4
+skorRe=0.7794168300527748
+skorJc=0.05593359995950929
+skorLi=0.08019857048533881
+skorPa=0.1
+
+idFitur=6496
+idDisc=6857
+T=Henry Borski and Jake Borski are son and father.
+H=Henry Borski and Jake Borski are relatives.
+Entail?=true
+Kata diantara pasangan cocok:
+relatives == son and father 
+Skor kata diantara pasangan cocok:
+skorHs=4.0
+skorLc=2.0794415416798357
+skorLe=0.0
+skorWp=0.8181818181818182
+skorRe=5.047955153620883
+skorJc=0.5270027988045503
+skorLi=0.8417864959654938
+skorPa=0.2
+
+harusnya rendah
+
+idFitur=6465
+idDisc=6826
+T=Joseph Wilson is Valerie Plame's husband.
+H=Joseph Wilson is Valerie Plame's ex-husband.
+Entail?=false
+Kata diantara pasangan cocok:
+ex-husband == husband 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.742969305058623
+skorLe=0.0
+skorWp=0.7272727272727273
+skorRe=1.9033026456664381
+skorJc=0.0644936324017663
+skorLi=0.1971107563980118
+skorPa=0.14285714285714285
+
+idFitur=6450
+idDisc=6811
+T=Jyestadeva writing the first calculus text.
+H=Jyestadeva invented calculus.
+Entail?=false
+Kata diantara pasangan cocok:
+invented == writing the first 
+== text 
+Skor kata diantara pasangan cocok:
+skorHs=1.5
+skorLc=0.8613832988705518
+skorLe=0.0
+skorWp=0.25
+skorRe=1.6475172805792022
+skorJc=0.06358428663884334
+skorLi=0.22797253347347693
+skorPa=0.1
+
+idFitur=6474
+idDisc=6835
+T=Live At Leeds is The Who's first live album.
+H=Live At Leeds was recorded by The Who.
+Entail?=true
+Kata diantara pasangan cocok:
+was recorded by == is 
+Who == Who's first live album 
+Skor kata diantara pasangan cocok:
+skorHs=10.0
+skorLc=10.0
+skorLe=10.0
+skorWp=10.0
+skorRe=10.0
+skorJc=10.0
+skorLi=10.0
+skorPa=10.0
+
+idFitur=6451
+idDisc=6812
+T=Marlowe was given an arrest warrant by the authorities.
+H=Marlowe was arrested by Italian authorities.
+Entail?=false
+Kata diantara pasangan cocok:
+arrested == given an arrest warrant 
+Italian == the 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.0
+skorLe=5.0
+skorWp=5.0
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.0
+
+idFitur=6475
+idDisc=6836
+T=Mr. Zhao death in the Beijing home.
+H=Mr. Zhao died in Beijing.
+Entail?=true
+Kata diantara pasangan cocok:
+died == death 
+== the 
+== home 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.34994070816622597
+skorLe=0.0
+skorWp=0.0784313725490196
+skorRe=0.0
+skorJc=0.01977866379790559
+skorLi=0.0
+skorPa=0.023809523809523808
+
+idFitur=6452
+idDisc=6813
+T=Côte d'Ivoire 's President promulgated new election laws on July 14.
+H=New elections in Côte d'Ivoire will take place on July 14.
+Entail?=false
+Kata diantara pasangan cocok:
+New elections in == 
+will take place == 's President promulgated new election laws 
+Skor kata diantara pasangan cocok:
+skorHs=1.5
+skorLc=0.8613832988705518
+skorLe=0.0
+skorWp=0.3333333333333333
+skorRe=2.616550766376346
+skorJc=0.05851495857497764
+skorLi=0.2752666449871823
+skorPa=0.1
+
+harusnya kecil!
+
+idFitur=6425
+idDisc=6786
+T=Pierce had built the home on E. 28th Street.
+H=Pierce lives on E. 28th Street.
+Entail?=false
+Kata diantara pasangan cocok:
+lives == had built the home 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.742969305058623
+skorLe=0.0
+skorWp=0.5714285714285714
+skorRe=2.398244802296393
+skorJc=0.07599314882202828
+skorLi=0.26713100424429936
+skorPa=0.14285714285714285
+
+harusnya kecil !!
+
+idFitur=6453
+idDisc=6814
+T=Pretoria give intervention in the West African.
+H=Pretoria is located in Côte d'Ivoire.
+Entail?=false
+Kata diantara pasangan cocok:
+is located == give intervention 
+Côte d'Ivoire == the West African 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.1167961107535471
+skorLe=0.0
+skorWp=0.25
+skorRe=0.0
+skorJc=0.06123818576485412
+skorLi=0.0
+skorPa=0.16666666666666666
+
+harusnya kecil
+
+idFitur=6454
+idDisc=6815
+T=Robert Senacal was looked out by patrols.
+H=Robert Senacal was arrested by police.
+Entail?=false
+Kata diantara pasangan cocok:
+arrested == looked out 
+police == patrols 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=2.5375869076169133
+skorLe=1.5
+skorWp=0.8333333333333333
+skorRe=5.939300619673045
+skorJc=5.037591922982732
+skorLi=0.6226815997804798
+skorPa=0.6
+
+was dan is harus dibuang
+
+idFitur=6466
+idDisc=6827
+T=Saad Hariri is son of former Prime Minister of Lebanon.
+H=Saad Hariri was elected Prime Minister of Lebanon.
+Entail?=false
+Kata diantara pasangan cocok:
+was elected == is son of former 
+Skor kata diantara pasangan cocok:
+skorHs=10.0
+skorLc=10.0
+skorLe=10.0
+skorWp=10.0
+skorRe=10.0
+skorJc=10.0
+skorLi=10.0
+skorPa=10.0
+
+idFitur=6497
+idDisc=6858
+T=Scott 's execution was responsible for prompting the Wolseley Expedition.
+H=Scott's execution caused the Wolseley Expedition.
+Entail?=true
+Kata diantara pasangan cocok:
+Scott's == Scott 's 
+caused == was responsible for prompting 
+Skor kata diantara pasangan cocok:
+skorHs=7.0
+skorLc=6.319528664807629
+skorLe=7.5
+skorWp=5.428571428571429
+skorRe=7.37741569213561
+skorJc=5.134377446090641
+skorLi=5.359383417345373
+skorPa=5.25
+
+idFitur=6455
+idDisc=6816
+T=Southwest Airlines rebuilding service at New Orleans.
+H=Southwest Airlines operates in New Orleans.
+Entail?=false
+Kata diantara pasangan cocok:
+operates in == rebuilding service at 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.3862943611198906
+skorLe=0.0
+skorWp=0.25
+skorRe=0.0
+skorJc=0.06385939046308733
+skorLi=0.0
+skorPa=0.14285714285714285
+
+idFitur=6498
+idDisc=6859
+T=Sylvia married Costas Andy Sipowicz.
+H=Sylvia Costas is the wife of Andy Sipowicz.
+Entail?=true
+Kata diantara pasangan cocok:
+== married 
+is the wife of == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6426
+idDisc=6787
+T=The Canadian parliament 's Ethics Commission said Judy Sgro did nothing wrong.
+H=The Canadian parliament's Ethics Commission accuses Judy Sgro.
+Entail?=false
+Kata diantara pasangan cocok:
+parliament's == parliament 's 
+accuses == said 
+== did nothing wrong 
+Skor kata diantara pasangan cocok:
+skorHs=3.3333333333333335
+skorLc=3.907588865913701
+skorLe=3.3333333333333335
+skorWp=3.4444444444444446
+skorRe=3.3333333333333335
+skorJc=3.36260930815693
+skorLi=3.3333333333333335
+skorPa=3.4
+
+idFitur=6499
+idDisc=6860
+T=The Kakhovskaya Line was formed in 1995.
+H=The Kakhovskaya Line was built in 1995.
+Entail?=true
+Kata diantara pasangan cocok:
+built == formed 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=2.2335922215070942
+skorLe=2.0
+skorWp=0.6666666666666666
+skorRe=3.2950345611584044
+skorJc=0.13716520048960065
+skorLi=0.4747700963726394
+skorPa=0.3333333333333333
+
+idFitur=6500
+idDisc=6861
+T=Tokyo Stock Exchange closed down by a computer system failure.
+H=The Tokyo Stock Exchange was closed down by computer system failure.
+Entail?=true
+Kata diantara pasangan cocok:
+The == 
+was == 
+== a 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6501
+idDisc=6862
+T=Tom Online revenues for the three months were US$ 42.78 mn.
+H=Tom Online earned US$42.78 mn in three months.
+Entail?=true
+Kata diantara pasangan cocok:
+earned US$42.78 == revenues for the three months were US$ 42.78 
+in three months == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.9729550745276567
+skorLe=0.0
+skorWp=0.2
+skorRe=0.0
+skorJc=0.05327946222047982
+skorLi=0.0
+skorPa=0.125
+
+idFitur=6502
+idDisc=6863
+T=Vance used to be Hooper 's supervisor.
+H=Vance worked with Hooper.
+Entail?=true
+Kata diantara pasangan cocok:
+worked with == used to be 
+== 's supervisor 
+Skor kata diantara pasangan cocok:
+skorHs=2.5
+skorLc=1.2951335827229133
+skorLe=0.5
+skorWp=0.4375
+skorRe=1.6912776486158267
+skorJc=0.10761345070115384
+skorLi=0.2964197390709513
+skorPa=0.16666666666666666
+
+idFitur=6476
+idDisc=6837
+T=Vera Beers was named employee of the month at Standard Printing.
+H=Vera Beers works for Standard Printing.
+Entail?=true
+Kata diantara pasangan cocok:
+works for == was named employee of the month at 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=2.2335922215070942
+skorLe=0.0
+skorWp=0.5
+skorRe=0.7794168300527748
+skorJc=0.12255394256644855
+skorLi=0.14490099205983845
+skorPa=0.3333333333333333
+
+idFitur=6489
+idDisc=6850
+T=Qatar and Oman are members of the Gulf Cooperation Council groups Saudi Arabia, Kuwait, Bahrain and the United Arab Emirates.
+H=Vladimir Putin participated in the ceremonies for the freeing of the Auschwitz Birkenau concentration camp.
+Entail?=true
+Kata diantara pasangan cocok:
+Vladimir Putin participated in == Qatar and Oman are members of 
+ceremonies for == Gulf Cooperation Council groups Saudi Arabia, Kuwait, Bahrain and 
+freeing of the Auschwitz Birkenau concentration camp == United Arab Emirates 
+Skor kata diantara pasangan cocok:
+skorHs=1.3333333333333333
+skorLc=0.9309304765191003
+skorLe=0.0
+skorWp=0.286764705882353
+skorRe=0.7513768002701312
+skorJc=0.034673904801351185
+skorLi=0.09052706415940943
+skorPa=0.07142857142857142
+
+idFitur=6427
+idDisc=6788
+T=White declined both the $ 10,000 Britannia Award.
+H=White got the $10,000 Britannia Award.
+Entail?=false
+Kata diantara pasangan cocok:
+got == declined both 
+$10,000 == $ 10,000 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.861383298870551
+skorLe=5.0
+skorWp=5.166666666666667
+skorRe=5.0
+skorJc=5.041661050235806
+skorLi=5.0
+skorPa=5.1
+
+idFitur=6428
+idDisc=6789
+T=Only male can vote in elections in Saudi Arabia.
+H=Women can vote in elections in Saudi Arabia.
+Entail?=false
+Kata diantara pasangan cocok:
+Women == Only male 
+Skor kata diantara pasangan cocok:
+skorHs=2.0
+skorLc=1.8971199848858813
+skorLe=0.0
+skorWp=0.7368421052631579
+skorRe=1.823051582955165
+skorJc=0.08730741229167926
+skorLi=0.24146563448541938
+skorPa=0.16666666666666666
+
+idFitur=6429
+idDisc=6790
+T=Zorrilla returned to Spain when revolution of 1868 took place.
+H=Zorrilla started the revolution of 1868.
+Entail?=false
+Kata diantara pasangan cocok:
+started the == returned to Spain when 
+== took place 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.9729550745276567
+skorLe=0.0
+skorWp=0.2
+skorRe=0.3897084150263874
+skorJc=0.04328160173190876
+skorLi=0.049673450181068904
+skorPa=0.125
+
+idFitur=6456
+idDisc=6817
+T=A decision to allow the Italian royal family to return to Italy.
+H=Italian royal family returns home.
+Entail?=false
+Kata diantara pasangan cocok:
+== A decision to allow the 
+returns home == to return to Italy 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.0
+skorLe=5.0
+skorWp=5.0
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.0
+
+idFitur=6477
+idDisc=6838
+T=Delayed radioactive waste toward a dump in northern Germany.
+H=Nuclear waste transport delayed in Germany.
+Entail?=true
+Kata diantara pasangan cocok:
+Nuclear == Delayed radioactive 
+transport delayed == toward a dump 
+== northern 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.5134816803157164
+skorLe=0.0
+skorWp=0.1111111111111111
+skorRe=0.2047879831289695
+skorJc=0.0216031592816741
+skorLi=0.0
+skorPa=0.05555555555555555
+
+idFitur=6457
+idDisc=6818
+T=Smoking is a leading cause of fires death.
+H=Domestic fires are the major cause of fire death.
+Entail?=false
+Kata diantara pasangan cocok:
+Domestic == Smoking is a leading cause of 
+are the major cause of fire == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.5249110622493389
+skorLe=0.0
+skorWp=0.16666666666666666
+skorRe=0.30718197469345426
+skorJc=0.030340424279566472
+skorLi=0.029987993926247614
+skorPa=0.03571428571428571
+
+idFitur=6478
+idDisc=6839
+T=Floods in Europe cause heavy economic losses.
+H=Flooding in Europe causes major economic losses.
+Entail?=true
+Kata diantara pasangan cocok:
+Flooding == Floods 
+causes major == cause heavy 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.346573590279973
+skorLe=5.0
+skorWp=5.086956521739131
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.025
+
+idFitur=6479
+idDisc=6840
+T=Cosmonaut has longest total stay in space.
+H=Russians hold record for longest stay in space.
+Entail?=true
+Kata diantara pasangan cocok:
+Russians hold record for == Cosmonaut has 
+== total 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6458
+idDisc=6819
+T=142 sportswomen take banned performance-enhancing drugs.
+H=Several sportswomen have been accused of doping.
+Entail?=false
+Kata diantara pasangan cocok:
+Several == 142 
+have been accused of doping == take banned performance-enhancing drugs 
+Skor kata diantara pasangan cocok:
+skorHs=1.5
+skorLc=0.9729550745276567
+skorLe=0.0
+skorWp=0.23076923076923078
+skorRe=0.30718197469345426
+skorJc=0.045755087791659786
+skorLi=0.0355582209133574
+skorPa=0.125
+
+idFitur=6480
+idDisc=6841
+T=Parliamentary elections in France lead to a new government.
+H=Parliamentary elections may lead to a new government in France.
+Entail?=true
+Kata diantara pasangan cocok:
+may == in France 
+in France == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.6931471805599453
+skorLe=0.0
+skorWp=0.23529411764705882
+skorRe=1.4748239764252842
+skorJc=0.04847928133328108
+skorLi=0.18193126283962135
+skorPa=0.05
+
+idFitur=6503
+idDisc=6864
+T=Sex-change operations become more common.
+H=Sex-change operations become more common.
+Entail?=true
+Kata diantara pasangan cocok:
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6459
+idDisc=6820
+T=In the women 's 800 metres Mozambique 's Maria Mutola produced the best performances.
+H=The women's ten thousand metres champion is from Mozambique.
+Entail?=false
+Kata diantara pasangan cocok:
+The women's ten thousand == In the women 's 800 
+champion is from == 
+== 's Maria Mutola produced the best performances 
+Skor kata diantara pasangan cocok:
+skorHs=3.3333333333333335
+skorLc=3.3333333333333335
+skorLe=3.3333333333333335
+skorWp=3.3333333333333335
+skorRe=3.3333333333333335
+skorJc=3.3333333333333335
+skorLi=3.3333333333333335
+skorPa=3.3333333333333335
+
+idFitur=6481
+idDisc=6842
+T=Nick Leeson was jailed for collapse of Barings Bank.
+H=Nick Leeson was arrested for collapse of Barings Bank PLC.
+Entail?=true
+Kata diantara pasangan cocok:
+arrested == jailed 
+PLC == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.7702225204735745
+skorLe=0.0
+skorWp=0.14285714285714285
+skorRe=0.0
+skorJc=0.02743581557109657
+skorLi=0.0
+skorPa=0.08333333333333333
+
+idFitur=6430
+idDisc=6791
+T=People who are deaf may face unique challenges in an emergency.
+H=Deaf people encounter problems in the social community.
+Entail?=false
+Kata diantara pasangan cocok:
+Deaf people encounter problems == People who are deaf may face unique challenges 
+the social community == an emergency 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.0
+skorLe=5.0
+skorWp=5.0
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.0
+
+idFitur=6482
+idDisc=6843
+T=The Ebro Delta lie around farm region.
+H=The Ebro Delta is used for farming.
+Entail?=true
+Kata diantara pasangan cocok:
+is used for farming == lie around farm region 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.9459101490553135
+skorLe=0.0
+skorWp=0.46153846153846156
+skorRe=0.6143639493869085
+skorJc=0.11972668946239748
+skorLi=0.07231242290925671
+skorPa=0.25
+
+idFitur=6483
+idDisc=6844
+T=Greenhouse cause global warming.
+H=Greenhouse effect changes global climate.
+Entail?=true
+Kata diantara pasangan cocok:
+effect changes == cause 
+climate == warming 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=1.9215150669705974
+skorLe=2.0
+skorWp=0.5619047619047619
+skorRe=2.3774156921356107
+skorJc=0.5172510170400803
+skorLi=0.45173051684389476
+skorPa=0.2916666666666667
+
+idFitur=6431
+idDisc=6792
+T=The Italian parliament may allowing royal family to return home.
+H=Italian royal family returns home.
+Entail?=false
+Kata diantara pasangan cocok:
+== The 
+== parliament may allowing 
+returns == to return 
+Skor kata diantara pasangan cocok:
+skorHs=3.3333333333333335
+skorLc=3.3333333333333335
+skorLe=3.3333333333333335
+skorWp=3.3333333333333335
+skorRe=3.3333333333333335
+skorJc=3.3333333333333335
+skorLi=3.3333333333333335
+skorPa=3.3333333333333335
+
+idFitur=6432
+idDisc=6793
+T=The Russian Salyuts has longest mission.
+H=Russians hold record for longest stay in space.
+Entail?=false
+Kata diantara pasangan cocok:
+Russians hold record for == The Russian Salyuts has 
+stay in space == mission 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.6931471805599453
+skorLe=0.0
+skorWp=0.2
+skorRe=0.3897084150263874
+skorJc=0.029177649885012792
+skorLi=0.041690661482551655
+skorPa=0.05
+
+idFitur=6504
+idDisc=6865
+T=The spelling reform across the German-speaking countries.
+H=A spelling reform was approved in all German speaking countries.
+Entail?=true
+Kata diantara pasangan cocok:
+A == The 
+was approved in all German speaking == across the German-speaking 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6505
+idDisc=6866
+T=The son of Italy's king returned to homeland.
+H=Italian royal family returns home.
+Entail?=true
+Kata diantara pasangan cocok:
+Italian royal family returns home == The son of Italy's king returned to homeland 
+Skor kata diantara pasangan cocok:
+skorHs=10.0
+skorLc=1.742969305058623
+skorLe=8.0
+skorWp=0.9411764705882353
+skorRe=1.9033026456664381
+skorJc=0.07259911889683276
+skorLi=0.21651964574930907
+skorPa=0.14285714285714285
+
+idFitur=6433
+idDisc=6794
+T=US shuttle Atlantis docked with the orbital outpost.
+H=US shuttle Atlantis docks with the Mir space station.
+Entail?=false
+Kata diantara pasangan cocok:
+docks == docked 
+Mir space station == orbital outpost 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.0
+skorLe=5.0
+skorWp=5.0
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.0
+
+idFitur=6484
+idDisc=6845
+T=Elizabeth II was child of King George VI.
+H=Elizabeth the Second's father was George VI.
+Entail?=true
+Kata diantara pasangan cocok:
+the Second's father == II 
+== child of King 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6485
+idDisc=6846
+T=In 1945 the atomic bomb was dropped on Hiroshima.
+H=In 1945, an atomic bomb was dropped on Hiroshima.
+Entail?=true
+Kata diantara pasangan cocok:
+1945, an == 1945 the 
+Skor kata diantara pasangan cocok:
+skorHs=10.0
+skorLc=10.0
+skorLe=10.0
+skorWp=10.0
+skorRe=10.0
+skorJc=10.0
+skorLi=10.0
+skorPa=10.0
+
+idFitur=6434
+idDisc=6795
+T=Gabriel Garcia Marquez was a liberal thinker.
+H=Gabriel Garcia Marquez was a conservative politician.
+Entail?=false
+Kata diantara pasangan cocok:
+conservative politician == liberal thinker 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=2.5902671654458267
+skorLe=2.0
+skorWp=0.9
+skorRe=4.227797188876366
+skorJc=0.11986780842350107
+skorLi=0.5033655839113409
+skorPa=0.3333333333333333
+
+idFitur=6486
+idDisc=6847
+T=Nobel obtained a patent on dynamite.
+H=Alfred Nobel is the inventor of dynamite.
+Entail?=true
+Kata diantara pasangan cocok:
+Alfred == 
+is the inventor of == obtained a patent on 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.9729550745276567
+skorLe=0.0
+skorWp=0.2
+skorRe=0.0
+skorJc=0.062130069639604324
+skorLi=0.0
+skorPa=0.125
+
+idFitur=6487
+idDisc=6848
+T=Euro Disney is theme park.
+H=Euro-Disney is an Entertainment Park.
+Entail?=true
+Kata diantara pasangan cocok:
+Euro-Disney == Euro Disney 
+an Entertainment Park == theme park 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.6931471805599453
+skorLe=0.0
+skorWp=0.2
+skorRe=0.3897084150263874
+skorJc=0.03260145356209683
+skorLi=0.046131422918917864
+skorPa=0.05
+
+idFitur=6435
+idDisc=6796
+T=Charles de Gaulle died in November.
+H=Charles de Gaulle died in 1970.
+Entail?=false
+Kata diantara pasangan cocok:
+1970 == November 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6506
+idDisc=6867
+T=Comet Shoemaker-Levy hit Jupiter.
+H=The Shoemaker-Levy comet hit Jupiter.
+Entail?=true
+Kata diantara pasangan cocok:
+The == Comet 
+comet == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+penting!
+contoh yang lain 
+tentang skor rendah
+
+idFitur=6488
+idDisc=6849
+T=Franz Liszt lived from 1811 to 1886.
+H=Franz Liszt lived from 1811 to 1886.
+Entail?=true
+Kata diantara pasangan cocok:
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6436
+idDisc=6797
+T=Spirou was created by Hergé.
+H=Spirou was created by Rob-Vel.
+Entail?=false
+Kata diantara pasangan cocok:
+Rob-Vel == Hergé 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+ini contoh satu kata penting  "Theravada = [kosong]"
+
+idFitur=6437
+idDisc=6798
+T=Thailand 's official religion is Buddhism.
+H=The official religion of Thailand is Theravada Buddhism.
+Entail?=false
+Kata diantara pasangan cocok:
+The == Thailand 's 
+of Thailand == 
+Theravada == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+! ganti ! bagian Tnya kurang lengkap
+idFitur=6438
+idDisc=6799
+T=The official religion is Theravada Buddhism.
+H=The official religion of Thailand is Theravada Buddhism.
+Entail?=false
+Kata diantara pasangan cocok:
+of Thailand == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6507
+idDisc=6868
+T=Arabic is the language of Quran.
+H=Arabic is the language of the Quran.
+Entail?=true
+Kata diantara pasangan cocok:
+the == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+
+ini menarik, skor nol bukannya jelek
+- jumlah pair perlu dibagi dengan jumlah kata?
+- perlu jumlah kalimat antara pair? (kasus yg ini nol)
+
+
+idFitur=6439
+idDisc=6800
+T=Dagbladet is a Norwegian newspaper.
+H=Dagbladet is a Norwegian newspaper.
+Entail?=false
+Kata diantara pasangan cocok:
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6467
+idDisc=6828
+T=Luis Roldan is the former Spanish chief of police.
+H=Luis Roldan was director of police from 1986 to 1993.
+Entail?=false
+Kata diantara pasangan cocok:
+was director == is the former Spanish chief 
+from 1986 to 1993 == 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.0
+skorLe=5.0
+skorWp=5.0
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.0
+
+idFitur=6508
+idDisc=6869
+T=The Berlin Wall fell in early November, 1989.
+H=The Berlin Wall was torn down in November, 1989.
+Entail?=true
+Kata diantara pasangan cocok:
+was torn down == fell 
+== early 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.9729550745276567
+skorLe=0.0
+skorWp=0.2
+skorRe=0.0
+skorJc=0.05172593803799408
+skorLi=0.0
+skorPa=0.125
+
+idFitur=6460
+idDisc=6821
+T=George W. Bush and the wife Elizabeth Dole.
+H=The name of George W. Bush's wife is Laura.
+Entail?=false
+Kata diantara pasangan cocok:
+The name of == 
+Bush's == Bush and the 
+is Laura == Elizabeth Dole 
+Skor kata diantara pasangan cocok:
+skorHs=3.3333333333333335
+skorLc=3.869812637478033
+skorLe=3.3333333333333335
+skorWp=3.511111111111111
+skorRe=4.379306712380425
+skorJc=3.3333333333333335
+skorLi=3.3333333333333335
+skorPa=3.375
+
+idFitur=6509
+idDisc=6870
+T=The moon was first step on by Neil Armstrong in 1969.
+H=The moon was first touched by mankind in 1969.
+Entail?=true
+Kata diantara pasangan cocok:
+touched == step on 
+mankind == Neil Armstrong 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=2.1242476210246792
+skorLe=0.0
+skorWp=0.45
+skorRe=1.1270652004051969
+skorJc=0.0388484504978934
+skorLi=0.12970585349110372
+skorPa=0.25
+
+idFitur=6490
+idDisc=6851
+T=Christie's , the world 's most powerful auction houses.
+H=Christie's is one of the world's largest auction houses.
+Entail?=true
+Kata diantara pasangan cocok:
+is one of == , 
+world's largest == world 's most powerful 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.0
+skorLe=5.0
+skorWp=5.0
+skorRe=5.0
+skorJc=5.0
+skorLi=5.0
+skorPa=5.0
+
+idFitur=6510
+idDisc=6871
+T=Neighbours in the village of Joba was loaned from Yunus.
+H=Some people in the village of Joba received loans from Yunus.
+Entail?=true
+Kata diantara pasangan cocok:
+Some people == Neighbours 
+received loans == was loaned 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.9729550745276567
+skorLe=0.5
+skorWp=0.2
+skorRe=0.0
+skorJc=0.05877133045671985
+skorLi=0.0
+skorPa=0.125
+
+idFitur=6511
+idDisc=6872
+T=The first two borrowers have to start repaying the principal plus interest over a six-week period.
+H=The first two borrowers must start repaying the principal plus interest over a six-week period.
+Entail?=true
+Kata diantara pasangan cocok:
+must == have to 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.3862943611198906
+skorLe=0.0
+skorWp=0.4
+skorRe=0.6143639493869085
+skorJc=0.0
+skorLi=0.0
+skorPa=0.1
+
+idFitur=6468
+idDisc=6829
+T=The acquisition of acquire the Klaipeda Tobacco is the biggest western investment in the Baltic states.
+H=The acquisition of the Klaipeda Tobacco company is the biggest investment in the Baltic states.
+Entail?=false
+Kata diantara pasangan cocok:
+== acquire 
+company == 
+== western 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6512
+idDisc=6873
+T=Britain imposed an arms embargo.
+H=Britain has maintained an arm embargo.
+Entail?=true
+Kata diantara pasangan cocok:
+has maintained == imposed 
+arm == arms 
+Skor kata diantara pasangan cocok:
+skorHs=5.0
+skorLc=5.861383298870551
+skorLe=5.0
+skorWp=5.166666666666667
+skorRe=5.0
+skorJc=5.03998369916546
+skorLi=5.0
+skorPa=5.1
+
+idFitur=6513
+idDisc=6874
+T=Philip Morris makes Marlboro.
+H=Philip Morris owns the Marlboro brand.
+Entail?=true
+Kata diantara pasangan cocok:
+owns the == makes 
+brand == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=1.1167961107535471
+skorLe=0.0
+skorWp=0.25
+skorRe=0.0
+skorJc=0.046766287984146775
+skorLi=0.0
+skorPa=0.16666666666666666
+
+idFitur=6514
+idDisc=6875
+T=Cameroon use a cyanide compound to stun bees.
+H=Cameroon honey gatherers use cyanide to stun bees.
+Entail?=true
+Kata diantara pasangan cocok:
+honey gatherers == 
+== a 
+== compound 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6440
+idDisc=6801
+T=Since 1987 Brazil has taken steps to reduce the destruction.
+H=In the early 1990s Brazil began to take action to save the rainforest.
+Entail?=false
+Kata diantara pasangan cocok:
+In == Since 1987 Brazil has taken steps to reduce 
+early 1990s Brazil began to take action to save the rainforest == destruction 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.7458274383888585
+skorLe=0.0
+skorWp=0.15789473684210525
+skorRe=0.3897084150263874
+skorJc=0.03528259132201961
+skorLi=0.049549298732521764
+skorPa=0.05555555555555555
+
+idFitur=6515
+idDisc=6876
+T=Iran's program findings by IAEA inspectors have increased suspicions.
+H=Iran's program is under suspicion because of the findings by IAEA inspectors.
+Entail?=true
+Kata diantara pasangan cocok:
+is under suspicion because of the == 
+== have increased suspicions 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6461
+idDisc=6822
+T=Mr Lopez Obrador lost presidential election in July.
+H=Mr Lopez Obrador didn't loose the presidential election in July.
+Entail?=false
+Kata diantara pasangan cocok:
+didn't loose the == lost 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=2.2335922215070942
+skorLe=0.0
+skorWp=0.5
+skorRe=0.0
+skorJc=0.08944985215151878
+skorLi=0.0
+skorPa=0.3333333333333333
+
+idFitur=6491
+idDisc=6852
+T=Former Prime Minister Rafik Hariri was killed, which led to the withdrawal of Syrian troops from Lebanon.
+H=Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.
+Entail?=true
+Kata diantara pasangan cocok:
+== Former Prime Minister Rafik Hariri was killed, which led to the withdrawal of 
+have been withdrawn == 
+after the murder of Rafik Hariri == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6462
+idDisc=6823
+T=Jordan was chosen as the site of the meeting between Bush and al-Maliki.
+H=Bush will meet al-Maliki in Hadley.
+Entail?=false
+Kata diantara pasangan cocok:
+== Jordan was chosen as the site of the meeting between 
+will meet == and 
+in Hadley == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6441
+idDisc=6802
+T=A company investigation turned up metal in roughly 200 pills of the 70 million passed through a metal detector.
+H=The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.
+Entail?=false
+Kata diantara pasangan cocok:
+The FDA == A company investigation 
+it == 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6442
+idDisc=6803
+T=The FDA would not say in which states the pills had been sold.
+H=The FDA provided a list of states in which the pills have been sold.
+Entail?=false
+Kata diantara pasangan cocok:
+provided a list of == would not say in which 
+in which == 
+have == had 
+Skor kata diantara pasangan cocok:
+skorHs=3.3333333333333335
+skorLc=3.8468150136490498
+skorLe=3.3333333333333335
+skorWp=3.428571428571429
+skorRe=3.3333333333333335
+skorJc=3.3739248970440765
+skorLi=3.3333333333333335
+skorPa=3.388888888888889
+
+idFitur=6443
+idDisc=6804
+T=Yunus is the first person from Bangladesh to win a Nobel Prize.
+H=Yunus is the first person to win a Nobel Prize.
+Entail?=false
+Kata diantara pasangan cocok:
+== from Bangladesh 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.0
+skorLe=0.0
+skorWp=0.0
+skorRe=0.0
+skorJc=0.0
+skorLi=0.0
+skorPa=0.0
+
+idFitur=6492
+idDisc=6853
+T=Three nurses of Vienna's have been arrested on suspicion of killing patients.
+H=Three Vienna nurses are under suspicion for killing patients.
+Entail?=true
+Kata diantara pasangan cocok:
+Vienna == 
+are under == of Vienna's have been arrested on 
+for == of 
+Skor kata diantara pasangan cocok:
+skorHs=3.3333333333333335
+skorLc=3.3333333333333335
+skorLe=3.3333333333333335
+skorWp=3.3333333333333335
+skorRe=3.3333333333333335
+skorJc=3.3333333333333335
+skorLi=3.3333333333333335
+skorPa=3.3333333333333335
+
+idFitur=6493
+idDisc=6854
+T=The Supreme Court said today states may bar the removal of life-sustaining treatment.
+H=There is a Supreme Court decision about the removal of life-support.
+Entail?=true
+Kata diantara pasangan cocok:
+There is a == The 
+decision about == said today states may bar 
+life-support == life-sustaining treatment 
+Skor kata diantara pasangan cocok:
+skorHs=0.0
+skorLc=0.43032806043852184
+skorLe=0.0
+skorWp=0.125
+skorRe=0.2598056100175916
+skorJc=0.025574597564073362
+skorLi=0.03534218831909136
+skorPa=0.030303030303030304
+
+Process finished with exit code 0

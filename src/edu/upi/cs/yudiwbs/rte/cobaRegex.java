@@ -5,7 +5,20 @@ import java.util.regex.Pattern;
 
 public class CobaRegex {
 	public static void main(String[] args) {
-		String[] arrMention =  {"hoi"}; 
+
+        String s ="Segment 83 score:       0.38858363246780336";
+        Pattern pat = Pattern.compile("\\s([-+]?[0-9]*\\.?[0-9]+)$");
+
+        Matcher mat;
+        mat = pat.matcher(s);
+        if (mat.find()) {
+            System.out.println("ketemu");
+            String out = mat.group(1);
+            System.out.println(out);
+        }
+
+		/*
+		String[] arrMention =  {"hoi"};
 		
 		StringBuilder sb = new StringBuilder();
 		String kalimat = "satu dua [[1]]tiga empat";
@@ -40,5 +53,6 @@ public class CobaRegex {
             }
         }
         System.out.println(sb);
+        */
 	}
 }
