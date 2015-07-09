@@ -9,5 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="stanford-corenlp-3.3.1" level="project" />
     <orderEntry type="library" name="tml-cmm-3.2" level="project" />
+    <orderEntry type="library" name="simmetrics_jar_v1_6_2_d07_02_07" level="project" />
+    <orderEntry type="library" name="weka" level="project" />
   </component>
 </module>
