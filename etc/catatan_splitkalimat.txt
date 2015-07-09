@@ -279,7 +279,7 @@ The car which crashed against the mail-box belonged to ![James Clark, 68, an acq
 
 
 ===============
-id=37
+id=37  NP,NP,
 
 [Colarusso , the Dover police captain ,] said authorities are interested in whether authorities suspect made a cell phone call while their suspect was in the Dover woman 's home .
 
@@ -463,7 +463,13 @@ Two brothers who operated a North Hollywood plating company that dumped thousand
 A California company was charged with reckless storage of chemicals.
 
 (ROOT (S (NP (NP (CD Two) (NNS brothers)) (SBAR (WHNP (WP who)) (S (VP (VBD operated) (NP (NP (DT a) (NNP North) (NNP Hollywood) (NN plating) (NN company)) (SBAR (WHNP (WDT that)) (S (VP (VBD dumped) (NP (NP (NNS thousands)) (PP (IN of) (NP (NP (NNS gallons)) (PP (IN of) (NP (JJ cyanide-laced) (NN waste) (NN water)))))) (PP (IN into) (NP (DT the) (NNP Los) (NNP Angeles) (NN sewer) (NN system))))))))))) (VP (VP (VBD pleaded) (NP-TMP (JJ guilty) (NNP Thursday))) (CC and) (VP (MD must) (VP (VB serve) (NP (NN jail) (NN time)) (PP (IN for) (S (VP (ADVP (RB recklessly)) (VBG handling) (CC and) (VBG storing) (NP (JJ hazardous) (NNS materials)))))))) (. .)))
+===============
+id=735  (masalah and   NP VP and NP VP )
+Trade between China and India is expected to touch $20 bn this year and Chinese investors are now rushing into India - lured by the country's growing wealth.
 
+There is a profitable trade between China and India.
+
+(ROOT (S (S (S (NP (NP (NNP Trade)) (PP (IN between) (NP (NNP China) (CC and) (NNP India)))) (VP (VBZ is) (VP (VBN expected) (S (VP (TO to) (VP (VB touch) (NP (NP (QP ($ $) (QP (CD 20) (CD bn)))) (NP (DT this) (NN year))))))))) (CC and) (S (NP (JJ Chinese) (NNS investors)) (VP (VBP are) (ADVP (RB now)) (VP (VBG rushing) (PP (IN into) (NP (NNP India))))))) (: -) (S (VP (VBN lured) (PP (IN by) (NP (NP (DT the) (NN country) (POS 's)) (VBG growing) (NN wealth))))) (. .)))
 ===============
 id=770
 

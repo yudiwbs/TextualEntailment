@@ -29,7 +29,7 @@ public class ToolsDiscourses {
     public void printPair(String namaTabelUtama,String namaTabelDiscT) {
 
         int id,id_disc;
-        String h,t_disc;
+        String t,h,t_disc;
         String h_ner,t_ner_disc;
         String h_role_arg,t_role_arg_disc;
         boolean isEntail;
@@ -43,7 +43,9 @@ public class ToolsDiscourses {
         ResultSet rsDisc = null;
         KoneksiDB db = new KoneksiDB();
         //hanya yg sudah dilabeli
-        String sql = "select id,h,h_ner,h_role_arg,id_disc_t,isEntail from "+namaTabelUtama+ " where id_disc_t>0";
+        //debug, hanya yg entailnya negatif
+        String sql = "select id,t,h,h_ner,h_role_arg,id_disc_t,isEntail from "+namaTabelUtama+
+                " where id_disc_t>0"; //isEntail = 1 and
         String sqlDisc = "select t,t_ner,t_role_arg from "+namaTabelDiscT+ " where id =?";
         try {
             conn = db.getConn();
@@ -51,12 +53,13 @@ public class ToolsDiscourses {
             pSelDisc = conn.prepareStatement(sqlDisc);
             rs = pSel.executeQuery();
             while (rs.next()) {
-                id            = rs.getInt(1);
-                h          = rs.getString(2);
-                h_ner      = rs.getString(3);
-                h_role_arg = rs.getString(4);
-                id_disc       = rs.getInt(5);
-                isEntail      = rs.getBoolean(6);
+                id         = rs.getInt(1);
+                t          = rs.getString(2);
+                h          = rs.getString(3);
+                h_ner      = rs.getString(4);
+                h_role_arg = rs.getString(5);
+                id_disc       = rs.getInt(6);
+                isEntail      = rs.getBoolean(7);
 
                 //supaya saat dipindahkan ke word lebih rapi
                 h_ner      = h_ner.replaceAll(";","; ");
@@ -65,8 +68,9 @@ public class ToolsDiscourses {
                 System.out.println("================================");
                 System.out.println("["+id+"]");
                 System.out.println("h:"+h);
-                System.out.println("ner=>"+h_ner);
-                System.out.println("role=>"+h_role_arg);
+                System.out.println("t_lengkap:"+t);
+                //System.out.println("ner=>"+h_ner);
+                //System.out.println("role=>"+h_role_arg);
                 System.out.println("isEntail=>"+isEntail);
 
                 pSelDisc.setInt(1,id_disc);
@@ -84,8 +88,8 @@ public class ToolsDiscourses {
                     System.out.println("---");
                     System.out.println("id"+id_disc);
                     System.out.println("t:"+t_disc);
-                    System.out.println("t_ner=>"+t_ner_disc);
-                    System.out.println("t_role=>"+t_role_arg_disc);
+                    //System.out.println("t_ner=>"+t_ner_disc);
+                    //System.out.println("t_role=>"+t_role_arg_disc);
                 }
             }
             rs.close();
@@ -134,6 +138,21 @@ public class ToolsDiscourses {
     //memberikan label -1 pada
     //discT yang tidak terplih
     //label DiscToUtama sudah dijalankan  (tabelutama.label sudah terisi)
+    //setelah itu jalankan query untuk mengisi tabel fitur
+    /*
+
+    update
+    fiturpairdisct_h f
+    set
+    f.label =
+    (select label
+     from disc_t_rte3_label d
+     where f.idDiscT = d.id)
+
+
+     */
+
+
     public void isiLabel(String tabelUtama,String tabelDisc) {
 
         Connection conn = null;
@@ -325,7 +344,7 @@ public class ToolsDiscourses {
         //ganti " %" (ada spasi) dengan "%"
         out = out.replaceAll(" %", "%");
 
-        //ganti titik yg ada spasi sebelum titik
+        //buang spasi sebelum titik
         out = out.replaceAll(" \\.","\\.");
 
         //buang dua spasi berurutan
@@ -432,6 +451,7 @@ public class ToolsDiscourses {
     //variasi print
     //dengan prediksi plus probabilitasnya
     //record disc_t diurut berdasarkan probabilitas
+    //warning: hanya ambil LABEL yg NULL!!  edit jika ingin semua
     public void printWithTebakan(String namaTabelUtama,String namaTabelDisc, String namaTabelFitur) {
         Connection conn=null;
         PreparedStatement pSelUtama=null;
@@ -439,14 +459,30 @@ public class ToolsDiscourses {
         ResultSet rs = null;
         ResultSet rsDisc = null;
 
-        //ambil selang 4
+        //ambil selang 7
+        //warning: hanya ambil LABEL yg NULL!! QUERY SERING DIUBAH2, CEK DULU!!
+
+
+        String sql = "select id,t,h,isEntail"
+                + " from "+namaTabelUtama+
+                " where id_disc_t is null and isEntail=0";
+
+        String sqlDisc = String.format("select d.id,d.t,d.jenis,f.tebak_prob"
+                + " from %s d, %s f where d.label is null and f.idDiscT = d.id and d.id_kalimat = ? " +
+                "order by f.tebak_prob desc",namaTabelDisc,namaTabelFitur);
+
+        //kalau sudah beres, KEMBALIKAN KE QUERY INI!!!
+        /*
         String sql = "select id,t,h,isEntail"
                 + " from "+namaTabelUtama+
                 " where id mod 7 = 0 ";
+        */
 
+        /*
         String sqlDisc = String.format("select d.id,d.t,d.jenis,f.tebak_prob"
                 + " from %s d, %s f where f.idDiscT = d.id and d.id_kalimat = ? " +
                 "order by f.tebak_prob desc",namaTabelDisc,namaTabelFitur);
+        */
 
         //ambil data
         try {
@@ -557,15 +593,17 @@ public class ToolsDiscourses {
         //edk.printSemuaDisc("rte3","disc_t_rte3");]
         ToolsDiscourses td = new ToolsDiscourses();
         //td.printWithTebakan("rte3_label","disc_t_rte3_label","fiturpairdisct_h");
-        //td.postProsesDb("disc_t_rte3_label", "t");
+        //td.postProsesDb("disc_t_rte3_label_ideal", "t");
         //td.isiLabel("rte3_label","disc_t_rte3_label");
         //td.cobaGantiTitik();
         //td.buangDuplikasi("disc_t_rte3_label");
         //td.print("rte3","disc_t_rte3");  //pastikan duplikasi sudah dibuang!
         //td.labelDiscToUtama("disc_t_rte3_label","rte3_label");
+        //td.labelDiscToUtama("disc_t_rte3_label_ideal","rte3_label_ideal");
         //td.printH("rte3_label");
         //td.printPair("rte3_label","disc_t_rte3_label");
-        String s= td.debugPrintNoTag("(ROOT (S (PP (VBG Following) (NP (NP (DT the) (NN Declaration)) (PP (IN of) (NP (NP (DT the) (NN Establishment)) (PP (IN of) (NP (NP (DT the) (NN State)) (PP (IN of) (NP (NNP Israel))))))))) (, ,) (NP (NP (NNP May) (CD 14) (, ,) (CD 1948) (, ,) (CD seven)) (NP (JJ Arab) (NNS states))) (VP (VP (VBD entered) (NP (NNP Palestine))) (CC and) (VP (VBD engaged) (NP (JJ Israeli) (NNS forces)))) (. .)))");
-        System.out.println(s);
+        td.printPair("rte3_label_ideal","disc_t_rte3_label_ideal");
+        //String s= td.debugPrintNoTag("(ROOT (S (PP (VBG Following) (NP (NP (DT the) (NN Declaration)) (PP (IN of) (NP (NP (DT the) (NN Establishment)) (PP (IN of) (NP (NP (DT the) (NN State)) (PP (IN of) (NP (NNP Israel))))))))) (, ,) (NP (NP (NNP May) (CD 14) (, ,) (CD 1948) (, ,) (CD seven)) (NP (JJ Arab) (NNS states))) (VP (VP (VBD entered) (NP (NNP Palestine))) (CC and) (VP (VBD engaged) (NP (JJ Israeli) (NNS forces)))) (. .)))");
+        //System.out.println(s);
     }
 }

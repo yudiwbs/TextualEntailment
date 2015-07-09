@@ -221,7 +221,8 @@ public class ParsingHypoText {
          //hasil parsing disimpan di t_gram_structure
          //pht.proses("rte3","id", "t_preprocoref","t_gram_structure","t_type_dependency");
 
-         pht.prosesDiscourseT("disc_t_rte3_label");
+         //pht.prosesDiscourseT("disc_t_rte3_label");
+        pht.prosesDiscourseT("disc_t_rte3_label_ideal");
 
 		 //pht.proses();
     	 

@@ -687,7 +687,9 @@ public class ProsesDependency {
 		ProsesDependency pd = new ProsesDependency();
         String s;
 		//pd.proses4Db("rte3_label","h_type_dependency","h_role_arg");
-        pd.proses4Db("disc_t_rte3_label","t_type_dependency","t_role_arg");
+        //pd.proses4Db("disc_t_rte3_label","t_type_dependency","t_role_arg");
+
+        pd.proses4Db("disc_t_rte3_label_ideal","t_type_dependency","t_role_arg");
         //s="80% approve of Mr. Bush";
         //s="Mrs. Bush 's approval ratings have remained very high , above 80 %";
 

@@ -1,0 +1,831 @@
+
+[18]
+h:Aspirin prevents gastrointestinal bleeding.
+ner=>MISC=Aspirin; 
+role=>root=prevents|ROOT; dobj=bleeding|prevents; nsubj=Aspirin|prevents; 
+isEntail=>false
+---
+t2: Aspirin can make gastrointestinal bleeding. 
+
+id22
+t:Gastrointestinal bleeding can happen as an adverse effect of non-steroidal anti-inflammatory drugs such as aspirin or ibuprofen.
+t_ner=>
+t_role=>root=happen|ROOT; nsubj=bleeding|happen; prep_of=drugs|effect; prep_as=effect|happen; prep_such_as=aspirin|drugs; prep_such_as=ibuprofen|drugs; 
+================================
+
+[20]
+h:Blue Mountain Lumber owns Ernslaw One.
+ner=>MISC=Ernslaw; NUMBER=One; 
+role=>long_nsubj= Blue  Mountain Lumber|owns; root=owns|ROOT; dobj=Ernslaw|owns; nsubj=Lumber|owns; 
+isEntail=>false
+---
+t2: Blue Mountain Lumber is a subsidiary of Ernslaw One.
+
+id25
+t:Blue Mountain Lumber is a subsidiary of Malaysian forestry transnational corporation, Ernslaw One.
+t_ner=>MISC=Malaysian; MISC=Ernslaw; NUMBER=One; 
+t_role=>long_nsubj= Blue  Mountain Lumber|subsidiary; long_amod= forestry corporation; root=subsidiary|ROOT; nsubj=Lumber|subsidiary; prep_of=corporation|subsidiary; 
+================================
+[25]
+h:Bountiful reached San Francisco on 1 November 1945.
+ner=>LOCATION=San Francisco; DATE=1 November 1945; 
+role=>long_dobj= San Francisco|reached; root=reached|ROOT; dobj=Francisco|reached; nsubj=Bountiful|reached; prep_on=1|Francisco; 
+isEntail=>false
+---
+t2: Bountiful departing San Francisco on 1 November 1945.
+
+id32
+t:Bountiful was then assigned as hospital ship at Yokosuka, Japan, departing San Francisco 1 November 1945.
+t_ner=>PERSON=Bountiful; LOCATION=Yokosuka; LOCATION=Japan; LOCATION=San Francisco; DATE=1 November 1945; 
+t_role=>long_prep_as= hospital ship|assigned; long_appos= Yokosuka Francisco; long_prep_at= San Francisco|assigned; root=assigned|ROOT; nsubjpass=Bountiful|assigned; prep_at=Francisco|assigned; prep_as=ship|assigned; 
+================================
+[63]
+h:Guatemala accepts the Pet passport as proof of vaccination.
+ner=>LOCATION=Guatemala; 
+role=>long_dobj= Pet passport|accepts; root=accepts|ROOT; dobj=passport|accepts; nsubj=Guatemala|accepts; prep_of=vaccination|proof; prep_as=proof|accepts; 
+isEntail=>false
+---
+t2: Guatemala will not accept the Pet passport as proof of vaccination.
+
+id84
+t:For instance Guatemala , like almost every country , demands that all imported pets have a rabies vaccination , but will not accept the Pet passport as proof of said vaccination.
+t_ner=>LOCATION=Guatemala; 
+t_role=>long_prep_for= instance Guatemala|demands; long_dobj= rabies vaccination|have; long_dobj= Pet passport|accept; root=demands|ROOT; ccomp=have|demands; ccomp=accept|demands; dobj=vaccination|have; dobj=passport|accept; nsubj=pets|have; nsubj=pets|accept; prep_of=vaccination|proof; prep_for=Guatemala|demands; prep_like=country|demands; prep_as=proof|accept; 
+================================
+[105]
+h:Mbeki holds the office of Prime Minister.
+ner=>PERSON=Mbeki; 
+role=>long_prep_of= Prime Minister|office; root=holds|ROOT; dobj=office|holds; nsubj=Mbeki|holds; prep_of=Minister|office; 
+isEntail=>false
+---
+t2: harusnya tidak ada
+
+id144
+t:"We are... deploying more people into Côte d'Ivoire -- police, military people and people to work directly with the office of the prime minister" Mbeki told a news conference in Pretoria.
+t_ner=>PERSON=Mbeki; LOCATION=Pretoria; 
+t_role=>long_prep_into= Côte d'Ivoire|deploying; long_dobj= news conference|told; root=told|ROOT; ccomp=deploying|told; xcomp=work|deploying; dobj=people|deploying; dobj=conference|told; nsubj=We|deploying; nsubj=Mbeki|told; prep_in=Pretoria|told; prep_of=minister|office; prep_with=office|work; prep_into=d'Ivoire|deploying; 
+================================
+[126]
+h:Pierce lives on E. 28th Street.
+ner=>PERSON=Pierce; ORDINAL=28th; 
+role=>long_prep_on= E.  28th Street|lives; root=lives|ROOT; nsubj=Pierce|lives; prep_on=Street|lives; 
+isEntail=>false
+---
+t2: Pierce had built the home on E. 28th Street.
+
+
+id173
+t:Councilman Pierce had built the home for Councilman Pierce daughter on E. 28th Street off Rossville Blvd , as Councilman Pierce lives nearby.
+t_ner=>PERSON=Pierce; PERSON=Pierce; ORDINAL=28th; LOCATION=Rossville; PERSON=Pierce; 
+t_role=>long_nsubj= Councilman Pierce|built; long_prep_for= Councilman  Pierce daughter|home; long_prep_on= E.  28th Street|built; long_prep_off= Rossville Blvd|Street; long_nsubj= Councilman Pierce|lives; root=built|ROOT; dobj=home|built; nsubj=Pierce|built; nsubj=Pierce|lives; prep_on=Street|built; prep_for=daughter|home; 
+================================
+[160]
+h:The Canadian parliament's Ethics Commission accuses Judy Sgro.
+ner=>MISC=Canadian; ORGANIZATION=Ethics Commission; PERSON=Judy Sgro; 
+role=>long_nsubj= Ethics Commission|accuses; long_dobj= Judy Sgro|accuses; root=accuses|ROOT; dobj=Sgro|accuses; poss=parliament|Commission; nsubj=Commission|accuses; 
+isEntail=>false
+---
+t2:The Canadian parliament 's Ethics Commission said Judy Sgro did nothing wrong.
+
+
+id216
+t:The Canadian parliament 's Ethics Commission said former immigration minister , Judy Sgro , did nothing wrong and Judy Sgro staff had put her staff into a conflict of interest.
+t_ner=>MISC=Canadian; ORGANIZATION=Ethics Commission; PERSON=Judy Sgro; PERSON=Judy Sgro; 
+t_role=>long_nsubj= Ethics Commission|said; long_nsubj= immigration minister|wrong; long_appos= Judy Sgro|minister; long_nsubj= Judy  Sgro staff|put; root=said|ROOT; dobj=staff|put; poss=parliament|Commission; poss=her|staff; nsubj=Commission|said; nsubj=minister|wrong; nsubj=staff|put; prep_of=interest|conflict; prep_into=conflict|put; 
+================================
+[189]
+h:White got the $10,000 Britannia Award.
+ner=>MONEY=$ 10,000; 
+role=>root=got|ROOT; dobj=Award|got; nsubj=White|got; 
+isEntail=>false
+---
+t2:White declined both the $ 10,000 Britannia Award.
+
+
+id254
+t:White declined both the $ 10,000 Britannia Award and another Miles Franklin Award.
+t_ner=>MONEY=$ 10,000; 
+t_role=>long_dobj= Britannia Award|declined; long_dobj= Miles  Franklin Award|declined; root=declined|ROOT; dobj=Award|declined; dobj=Award|declined; nsubj=White|declined; 
+================================
+[192]
+h:Women can vote in elections in Saudi Arabia.
+ner=>LOCATION=Saudi Arabia; 
+role=>long_prep_in= Saudi Arabia|elections; root=vote|ROOT; nsubj=Women|vote; prep_in=elections|vote; prep_in=Arabia|elections; 
+isEntail=>false
+---
+t2: Only male can vote in elections in Saudi Arabia. 
+
+id258
+t:Saudi Arabia holds strictly limited, male-only elections.
+t_ner=>LOCATION=Saudi Arabia; 
+t_role=>long_nsubj= Saudi Arabia|holds; root=holds|ROOT; dobj=elections|holds; nsubj=Arabia|holds; 
+================================
+[200]
+h:Zorrilla started the revolution of 1868.
+ner=>PERSON=Zorrilla; DATE=1868; 
+role=>root=started|ROOT; dobj=revolution|started; nsubj=Zorrilla|started; prep_of=1868|revolution; 
+isEntail=>false
+---
+t2: Zorrilla returned to Spain when revolution of 1868 took place.
+
+id269
+t:Manuel Ruiz Zorrilla had to take refuge in France for two years , like Manuel Ruiz Zorrilla fellow-conspirators , and only returned to Spain when the revolution of 1868 took place.
+t_ner=>PERSON=Manuel Ruiz Zorrilla; LOCATION=France; DURATION=two years; PERSON=Manuel Ruiz Zorrilla; LOCATION=Spain; DATE=1868; 
+t_role=>long_nsubj= Manuel  Ruiz Zorrilla|had; long_nsubj= Manuel  Ruiz Zorrilla|fellow; root=had|ROOT; xcomp=take|had; dobj=refuge|take; dobj=place|took; nsubj=Zorrilla|had; nsubj=Zorrilla|fellow; nsubj=Zorrilla|returned; nsubj=revolution|took; prep_to=Spain|returned; prep_in=France|refuge; prep_of=1868|revolution; prep_for=years|take; 
+================================
+[280]
+h:Prehistoric art discovered in South Africa.
+ner=>LOCATION=South Africa; 
+role=>long_prep_in= South Africa|discovered; root=discovered|ROOT; nsubj=art|discovered; prep_in=Africa|discovered; 
+isEntail=>false
+---
+t2:harusnya tidak ada subkalimat
+
+
+id411
+t:In the history of art, prehistoric art is all art produced in preliterate cultures (prehistory), beginning somewhere in very late geological history.
+t_ner=>
+t_role=>root=art|ROOT; nsubj=art|art; prep_in=history|art; prep_in=cultures|produced; prep_in=history|beginning; prep_of=art|history; 
+================================
+[314]
+h:Deaf people encounter problems in the social community.
+ner=>
+role=>long_nsubj= Deaf people|encounter; root=encounter|ROOT; dobj=problems|encounter; nsubj=people|encounter; prep_in=community|encounter; 
+isEntail=>false
+---
+t2:People who are deaf may face unique challenges in an emergency.
+
+
+id468
+t:People who are deaf or have hearing impairments , those who are blind or have vision impairments , and those with mobility impairments may face unique challenges in an emergency.
+t_ner=>
+t_role=>long_dobj= hearing impairments|have; long_dobj= vision impairments|have; root=face|ROOT; dobj=impairments|have; dobj=impairments|have; dobj=challenges|face; nsubj=People|deaf; nsubj=People|have; nsubj=People|face; nsubj=those|blind; nsubj=those|have; nsubj=those|deaf; nsubj=those|face; prep_in=emergency|face; prep_with=impairments|those; 
+================================
+[336]
+h:Baltic Countries join the EU.
+ner=>MISC=Baltic Countries; ORGANIZATION=EU; 
+role=>long_nsubj= Baltic Countries|join; root=join|ROOT; dobj=EU|join; nsubj=Countries|join; 
+isEntail=>false
+---
+t2:harusnya tidak ketemu
+
+id501
+t:The agreement also stated a period of transition for the Baltic countries to last until December 31, 1999.
+t_ner=>MISC=Baltic; DATE=December 31 , 1999; 
+t_role=>root=stated|ROOT; xcomp=last|stated; dobj=period|stated; nsubj=agreement|stated; prep_of=transition|period; prep_for=countries|stated; 
+================================
+[357]
+h:Italian royal family returns home.
+ner=>MISC=Italian; 
+role=>root=returns|ROOT; dobj=home|returns; nsubj=family|returns; 
+isEntail=>false
+---
+t2: The Italian parliament may  allowing royal family to return home.
+
+id540
+t:The Italian parliament may approve a draft law allowing descendants of the exiled royal family to return home.
+t_ner=>MISC=Italian; 
+t_role=>long_dobj= draft law|approve; long_prep_of= royal family|descendants; root=approve|ROOT; xcomp=return|allowing; dobj=law|approve; dobj=descendants|allowing; dobj=home|return; nsubj=parliament|approve; prep_of=family|descendants; 
+================================
+[360]
+h:Russians hold record for longest stay in space.
+ner=>MISC=Russians; 
+role=>root=hold|ROOT; dobj=record|hold; nsubj=Russians|hold; prep_in=space|hold; prep_for=stay|record; 
+isEntail=>false
+---
+t2:The Russian Salyuts has longest mission.
+
+id547
+t:The longest mission which the Russian Salyuts supported was 63 days.
+t_ner=>MISC=Russian Salyuts; DURATION=63 days; 
+t_role=>long_nsubj= Russian Salyuts|supported; root=days|ROOT; dobj=mission|supported; nsubj=mission|days; nsubj=Salyuts|supported; 
+================================
+[392]
+h:US shuttle Atlantis docks with the Mir space station.
+ner=>LOCATION=US; MISC=Atlantis; MISC=Mir; 
+role=>long_nsubj= US  shuttle Atlantis|docks; long_prep_with= space station|docks; root=docks|ROOT; nsubj=Atlantis|docks; prep_with=station|docks; 
+isEntail=>false
+---
+t2: US shuttle Atlantis docked with the orbital outpost.
+
+id600
+t:U.S. space shuttle Atlantis and its seven-member crew concluded their pursuit of the International Space Station (ISS) on Wednesday and docked with the orbital outpost at 12:05 EDT (1605 GMT).
+t_ner=>LOCATION=U.S.; DATE=Wednesday; TIME=12:05; NUMBER=1605; MISC=GMT; 
+t_role=>long_nsubj= U.S.  space  shuttle Atlantis|concluded; long_prep_of= International  Space Station|pursuit; long_appos= 1605 GMT|EDT; root=concluded|ROOT; dobj=pursuit|concluded; poss=its|crew; poss=their|pursuit; nsubj=Atlantis|concluded; nsubj=Atlantis|docked; nsubj=crew|concluded; prep_of=Station|pursuit; prep_on=Wednesday|concluded; prep_with=outpost|docked; prep_at=EDT|docked; 
+================================
+[416]
+h:The name of Helmut Kohl's political party is the Christian Democratic Union.
+ner=>PERSON=Helmut Kohl; ORGANIZATION=Christian Democratic Union; 
+role=>long_poss= Helmut Kohl|party; long_root= Christian  Democratic Union|ROOT; root=Union|ROOT; poss=Kohl|party; nsubj=name|Union; prep_of=party|name; 
+isEntail=>false
+---
+t2: harusnya tidak ketemu
+
+id648
+t:Since '82 Federal Chancellor (elected by "constructive vote of no confidence" against former Chancellor Helmut Schmidt, Social Democratic Party (SPD); reelected 1983, 1987, 1991 and 1994).
+t_ner=>NUMBER='82; PERSON=Helmut Schmidt; ORGANIZATION=Social Democratic Party; DATE=1983 , 1987 , 1991 and 1994; 
+t_role=>long_pobj= Federal Chancellor|Since; long_appos= Chancellor  Helmut  Schmidt Party; long_prep_against= Democratic Party|elected; root=Since|ROOT; pobj=Chancellor|Since; prep_of=confidence|vote; prep_by=vote|elected; prep_against=Party|elected; 
+================================
+
+[471]
+h:Gabriel Garcia Marquez was a conservative politician.
+ner=>PERSON=Gabriel Garcia Marquez; 
+role=>long_nsubj= Gabriel  Garcia Marquez|politician; root=politician|ROOT; nsubj=Marquez|politician; 
+isEntail=>false
+---
+t2:Gabriel Garcia Marquez was a liberal thinker.
+
+
+id753
+t:Gabriel Garcia Marquez was a liberal thinker whose left-wing politics angered many conservative politicians and heads of state.
+t_ner=>PERSON=Gabriel Garcia Marquez; 
+t_role=>long_nsubj= Gabriel  Garcia Marquez|thinker; root=thinker|ROOT; dobj=politicians|angered; dobj=heads|angered; nsubj=Marquez|thinker; nsubj=politics|angered; prep_of=state|politicians; 
+================================
+[478]
+h:Charles de Gaulle died in 1970.
+ner=>PERSON=Charles de Gaulle; DATE=1970; 
+role=>long_nsubj= Charles  de Gaulle|died; root=died|ROOT; nsubj=Gaulle|died; prep_in=1970|died; 
+isEntail=>false
+---
+t2:Charles de Gaulle died in November.
+
+id767
+t:Charles de Gaulle retired as an earl and died in November.
+t_ner=>PERSON=Charles de Gaulle; DATE=November; 
+t_role=>long_nsubj= Charles  de Gaulle|retired; root=retired|ROOT; nsubj=Gaulle|retired; nsubj=Gaulle|died; prep_in=November|died; prep_as=earl|retired; 
+================================
+[485]
+h:Vladislav Listyev was murdered in Moscow.
+ner=>PERSON=Vladislav Listyev; LOCATION=Moscow; 
+role=>long_nsubjpass= Vladislav Listyev|murdered; root=murdered|ROOT; nsubjpass=Listyev|murdered; prep_in=Moscow|murdered; 
+isEntail=>false
+---
+t2: harusnya tidak ada
+
+
+id778
+t:An American journalist of Russian descent, Klebnikov was shot four times by at least one assassin in a passing car as he stepped outside his office that evening in Moscow.
+t_ner=>LOCATION=American; MISC=Russian; PERSON=Klebnikov; NUMBER=four; NUMBER=one; TIME=evening; LOCATION=Moscow; 
+t_role=>root=shot|ROOT; agent=assassin|shot; poss=his|office; pobj=least|at; nsubj=he|stepped; nsubjpass=journalist|shot; prep_in=car|shot; prep_in=Moscow|stepped; prep_of=descent|journalist; 
+================================
+[486]
+h:Vladislav Listyev was murdered in Moscow.
+ner=>PERSON=Vladislav Listyev; LOCATION=Moscow; 
+role=>long_nsubjpass= Vladislav Listyev|murdered; root=murdered|ROOT; nsubjpass=Listyev|murdered; prep_in=Moscow|murdered; 
+isEntail=>false
+---
+t:harusnya tidak ketemu
+
+id780
+t:An American journalist of Russian descent, Klebnikov was shot four times by at least one assassin in a passing car as he stepped outside his office that evening in Moscow.
+t_ner=>LOCATION=American; MISC=Russian; PERSON=Klebnikov; NUMBER=four; NUMBER=one; TIME=evening; LOCATION=Moscow; 
+t_role=>root=shot|ROOT; agent=assassin|shot; poss=his|office; pobj=least|at; nsubj=he|stepped; nsubjpass=journalist|shot; prep_in=car|shot; prep_in=Moscow|stepped; prep_of=descent|journalist; 
+================================
+[504]
+h:Spirou was created by Rob-Vel.
+ner=>PERSON=Spirou; PERSON=Rob-Vel; 
+role=>root=created|ROOT; agent=Rob|created; nsubjpass=Spirou|created; 
+isEntail=>false
+---
+t2: Spirou was created by Hergé.
+
+
+id808
+t:Tintin, the Smurfs, Boule et Bill, Astérix, Natacha, Spirou and other legendary characters were created by talented artists like Hergé, Morris, Franquin and Walthéry.
+t_ner=>PERSON=Bill; PERSON=Natacha; PERSON=Spirou; PERSON=Hergé; PERSON=Morris; PERSON=Franquin; 
+t_role=>root=created|ROOT; agent=artists|created; nsubjpass=Tintin|created; nsubjpass=Smurfs|created; nsubjpass=Astérix|created; nsubjpass=Natacha|created; nsubjpass=Spirou|created; nsubjpass=characters|created; prep_like=Hergé|artists; prep_like=Morris|artists; prep_like=Franquin|artists; prep_like=Walthéry|artists; 
+================================
+[509]
+h:The official religion of Thailand is Theravada Buddhism.
+ner=>LOCATION=Thailand; 
+role=>long_root= Theravada Buddhism|ROOT; root=Buddhism|ROOT; nsubj=religion|Buddhism; prep_of=Thailand|religion; 
+isEntail=>false
+---
+t2:Thailand 's official religion is Buddhism.
+
+
+id817
+t:Thailand 's official religion is Buddhism which claims the allegiance of most Thai people.
+t_ner=>LOCATION=Thailand; MISC=Buddhism; MISC=Thai; 
+t_role=>long_prep_of= Thai people|allegiance; root=Buddhism|ROOT; dobj=allegiance|claims; poss=Thailand|religion; nsubj=religion|Buddhism; nsubj=Buddhism|claims; prep_of=people|allegiance; 
+================================
+[510]
+h:The official religion of Thailand is Theravada Buddhism.
+ner=>LOCATION=Thailand; 
+role=>long_root= Theravada Buddhism|ROOT; root=Buddhism|ROOT; nsubj=religion|Buddhism; prep_of=Thailand|religion; 
+isEntail=>false
+---
+t2:The official religion is Theravada Buddhism.
+
+id820
+t:The official religion is Theravada Buddhism, which is also practiced in neighboring Laos, Thailand, Burma and Sri Lanka.
+t_ner=>MISC=Theravada Buddhism; LOCATION=Laos; LOCATION=Thailand; LOCATION=Burma; LOCATION=Sri Lanka; 
+t_role=>long_root= Theravada Buddhism|ROOT; long_conj_and= Laos Lanka; long_conj_and= Thailand Lanka; long_conj_and= Burma Lanka; long_prep_in= Sri Lanka|practiced; root=Buddhism|ROOT; nsubj=religion|Buddhism; nsubjpass=Buddhism|practiced; prep_in=Lanka|practiced; 
+================================
+[514]
+h:Dagbladet is a Norwegian newspaper.
+ner=>MISC=Norwegian; 
+role=>root=newspaper|ROOT; nsubj=Dagbladet|newspaper; 
+isEntail=>false
+---
+
+t2:Corpus is The Norwegian Newspaper.
+
+
+id825
+t:The Norwegian Newspaper Corpus is a large and self-expanding corpus of Norwegian newspaper texts.
+t_ner=>MISC=Norwegian; 
+t_role=>long_nsubj= Newspaper Corpus|corpus; long_prep_of= newspaper texts|corpus; root=corpus|ROOT; nsubj=Corpus|corpus; prep_of=texts|corpus; 
+================================
+[520]
+h:2,45 m is the world record in the high jump.
+ner=>NUMBER=2,45 m; 
+role=>long_root= world record|ROOT; root=record|ROOT; nsubj=m|record; prep_in=jump|record; 
+isEntail=>false
+---
+t2:harusnya tidak ketemu
+
+
+id833
+t:The jump still stands as an Olympic record, and stood as a world record until Mike Powell leapt 29' 4 1/2" at the 1991 World Championships in Tokyo.
+t_ner=>MISC=Olympic; PERSON=Mike Powell; NUMBER=29; NUMBER=4 1/2; DATE=1991; MISC=World Championships; LOCATION=Tokyo; 
+t_role=>long_prep_as= world record|stood; long_prep_until= Mike  Powell leapt|record; long_prep_at= World Championships|stood; root=stands|ROOT; nsubj=jump|stands; nsubj=jump|stood; prep_in=Tokyo|Championships; prep_at=Championships|stood; prep_as=record|stands; prep_as=record|stood; 
+================================
+
+[616]
+h:German officials began investigating VW for theft.
+ner=>MISC=German; ORGANIZATION=VW; 
+role=>root=began|ROOT; xcomp=investigating|began; dobj=VW|investigating; nsubj=officials|began; prep_for=theft|VW; 
+isEntail=>false
+---
+
+t2:harusnya tidak ketemu
+
+id945
+t:Volkswagen should start to co-operate fully with the investigation by public prosecutors of the alleged theft of secret documents from General Motors.
+t_ner=>ORGANIZATION=Volkswagen; ORGANIZATION=General Motors; 
+t_role=>long_prep_from= General Motors|documents; root=start|ROOT; xcomp=co|start; nsubj=Volkswagen|start; prep_of=theft|prosecutors; prep_of=documents|theft; prep_with=investigation|co; prep_from=Motors|documents; prep_by=prosecutors|co; 
+================================
+
+[648]
+h:BAT acquired production interests in the Ukraine, Hungary and Russia.
+
+ner=>LOCATION=Ukraine; LOCATION=Hungary; LOCATION=Russia; 
+role=>long_dobj= production interests|acquired; root=acquired|ROOT; dobj=interests|acquired; nsubj=BAT|acquired; prep_in=Ukraine|acquired; prep_in=Hungary|acquired; prep_in=Russia|acquired; 
+isEntail=>false
+---
+t: harusnya tidak ketemu
+
+
+id985
+t:In Russia, BAT is setting up a joint venture with Yava, Moscow's largest cigarette factory.
+t_ner=>LOCATION=Russia; LOCATION=Yava; LOCATION=Moscow; 
+t_role=>long_appos= cigarette factory|Yava; root=setting|ROOT; dobj=venture|setting; poss=Moscow|factory; nsubj=BAT|setting; prep_in=Russia|setting; prep_with=Yava|venture; 
+================================
+[712]
+h:In the early 1990s Brazil began to take action to save the rainforest.
+ner=>NUMBER=1990s; LOCATION=Brazil; 
+role=>root=began|ROOT; xcomp=take|began; xcomp=save|take; dobj=action|take; dobj=rainforest|save; nsubj=Brazil|began; prep_in=1990s|began; 
+isEntail=>false
+---
+t2:Since 1987  Brazil has taken steps to reduce the destruction.
+
+
+id1051
+t:Since 1987, however, Brazil has taken steps to dramatically reduce the destruction, including stepped-up enforcement and the elimination of tax incentives that led to large-scale land clearing.
+t_ner=>DATE=1987; LOCATION=Brazil; 
+t_role=>long_prep_of= tax incentives|elimination; long_prep_to= land clearing|led; root=taken|ROOT; xcomp=reduce|taken; dobj=steps|taken; dobj=destruction|reduce; nsubj=Brazil|taken; nsubj=elimination|led; prep_to=clearing|led; prep_of=incentives|elimination; prep_including=enforcement|taken; prep_including=elimination|taken; 
+================================
+[760]
+h:The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.
+ner=>ORGANIZATION=FDA; NUMBER=200; NUMBER=70 million; 
+role=>long_prep_through= metal detector|passed; root=turned|ROOT; dobj=metal|turned; dobj=million|passed; nsubj=FDA|turned; nsubj=it|passed; prep_in=pills|metal; prep_of=million|pills; prep_through=detector|passed; 
+isEntail=>false
+---
+t2:A company investigation turned up metal in roughly 200 pills of the 70 million passed through a metal detector.
+
+
+id1099
+t:A company investigation turned up metal in roughly 200 pills of the 70 million A company investigation passed through a metal detector , according to the FDA.
+t_ner=>NUMBER=200; NUMBER=70 million; ORGANIZATION=FDA; 
+t_role=>long_nsubj= company investigation|turned; long_prep_of= company investigation|pills; long_prep_through= metal detector|passed; root=turned|ROOT; dobj=metal|turned; pobj=FDA|turned; nsubj=investigation|turned; prep_in=pills|metal; prep_of=investigation|pills; prep_through=detector|passed; 
+================================
+[768]
+h:The FDA provided a list of states in which the pills have been sold.
+ner=>ORGANIZATION=FDA; 
+role=>root=provided|ROOT; dobj=list|provided; nsubj=FDA|provided; nsubjpass=pills|sold; prep_in=states|sold; prep_of=states|list; 
+isEntail=>false
+---
+t2:The FDA would not say in which states the pills had been sold.
+
+id1108
+t:The FDA would not say in which states the pills had been sold , but instead recommended that customers determine whether products customers bought are being recalled by checking the store list on the FDA Web site , and the batch list.
+t_ner=>ORGANIZATION=FDA; ORGANIZATION=FDA; 
+t_role=>long_nsubj= products customers|bought; long_dobj= store list|checking; long_prep_on= FDA  Web site|checking; long_prep_on= batch list|checking; root=say|ROOT; agent=checking|recalled; ccomp=determine|recommended; ccomp=bought|determine; ccomp=recalled|bought; dobj=states|sold; dobj=list|checking; nsubj=FDA|say; nsubj=pills|sold; nsubj=pills|recommended; nsubj=customers|determine; nsubj=customers|bought; prep_on=site|checking; prep_on=list|checking; 
+================================
+[776]
+h:Yunus is the first person to win a Nobel Prize.
+ner=>PERSON=Yunus; ORDINAL=first; MISC=Nobel Prize; 
+role=>long_dobj= Nobel Prize|win; root=person|ROOT; dobj=Prize|win; nsubj=Yunus|person; 
+isEntail=>false
+---
+t2: Yunus is the first person from Bangladesh to win a Nobel Prize.
+
+
+id1119
+t:Yunus , who was nominated for the peace prize at least twice before , is the first person from Bangladesh , a country of 147 million , to win a Nobel Prize.
+t_ner=>PERSON=Yunus; ORDINAL=first; LOCATION=Bangladesh; NUMBER=147 million; MISC=Nobel Prize; 
+t_role=>long_prep_for= peace prize|nominated; long_dobj= Nobel Prize|win; root=person|ROOT; xcomp=win|person; dobj=Prize|win; pobj=least|at; nsubj=Yunus|person; nsubjpass=Yunus|nominated; prep_of=million|country; prep_from=Bangladesh|person; prep_for=prize|nominated; 
+================================
+
+[2]
+h:Yuganskneftegaz cost US$ 27.5 billion.
+ner=>ORGANIZATION=Yuganskneftegaz; MONEY=US$ 27.5 billion; 
+role=>root=cost|ROOT; 
+isEntail=>false
+---
+t2:Yuganskneftegaz was originally sold for US$ 9.4 billion.
+
+
+id1152
+t:Yuganskneftegaz was originally sold for US$ 9.4 billion.
+t_ner=>ORGANIZATION=Yuganskneftegaz; MONEY=US$ 9.4 billion; 
+t_role=>root=sold|ROOT; nsubjpass=Yuganskneftegaz|sold; prep_for=US$|sold; 
+================================
+[8]
+h:80% approve of Mr. Bush.
+ner=>PERCENT=80 %; PERSON=Bush; 
+role=>long_prep_of= Mr. Bush|approve; root=approve|ROOT; nsubj=%|approve; prep_of=Bush|approve; 
+isEntail=>false
+---
+t2:above 80% approve of Mrs. Bush.
+
+id1179
+t:Mrs. Bush 's approval ratings have remained very high , above 80%.
+t_ner=>PERSON=Bush; PERCENT=80 %; 
+t_role=>long_poss= Mrs. Bush|ratings; long_nsubj= approval ratings|high; root=high|ROOT; poss=Bush|ratings; nsubj=ratings|high; prep_above=%|high; 
+================================
+[12]
+h:Accardo was a member of the Walter Stauffer Academy.
+ner=>PERSON=Accardo; ORGANIZATION=Walter Stauffer Academy; 
+role=>long_prep_of= Walter  Stauffer Academy|member; root=member|ROOT; nsubj=Accardo|member; prep_of=Academy|member; 
+isEntail=>false
+---
+t2:the Orchestra da Camera Italiana ( O.C.I. ) members are the pupils of the Walter Stauffer Academy.
+
+
+id1198
+t:the Orchestra da Camera Italiana ( O.C.I. ) , whose members are the best pupils of the Walter Stauffer Academy.
+t_ner=>ORGANIZATION=Walter Stauffer Academy; 
+t_role=>long_root= Orchestra  da  Camera Italiana|ROOT; long_prep_of= Walter  Stauffer Academy|pupils; root=Italiana|ROOT; poss=Italiana|members; nsubj=members|pupils; prep_of=Academy|pupils; 
+================================
+[15]
+h:Alexandre Berthier died in 1799.
+ner=>PERSON=Alexandre Berthier; DATE=1799; 
+role=>long_nsubj= Alexandre Berthier|died; root=died|ROOT; nsubj=Berthier|died; prep_in=1799|died; 
+isEntail=>false
+---
+t2:Pope Pius VI die in  1799.
+
+
+id1209
+t:Pope Pius VI , who would die in captivity in Valence , Drôme , France in August of 1799.
+t_ner=>PERSON=Pius VI; LOCATION=Valence; LOCATION=France; DATE=August of 1799; 
+t_role=>long_nsubj= Pope  Pius VI|die; root=Drôme|ROOT; dobj=France|Drôme; nsubj=VI|die; nsubj=VI|Drôme; prep_in=captivity|die; prep_in=Valence|captivity; prep_in=August|France; prep_of=1799|August; 
+================================
+[16]
+h:Alfredo Cristiani visits Mexico on June 7.
+
+t_lengkap:Cauhtemoc Cardenas said during a news conference on 7 June that the visit to Mexico by Salvadoran president Alfredo Cristiani is a visit by "a repressive ruler who oppresses a large sector of his people."
+
+
+ner=>PERSON=Alfredo Cristiani; LOCATION=Mexico; DATE=June 7; 
+role=>long_nsubj= Alfredo Cristiani|visits; root=visits|ROOT; dobj=Mexico|visits; nsubj=Cristiani|visits; prep_on=June|Mexico; 
+isEntail=>false
+---
+t2:harusnya tidak ada
+
+
+id1212
+t:Cauhtemoc Cardenas said during a news conference on 7 June that the visit to Mexico by Salvadoran president Alfredo Cristiani.
+t_ner=>PERSON=Cauhtemoc Cardenas; DATE=7 June; LOCATION=Mexico; LOCATION=Salvadoran; PERSON=Alfredo Cristiani; 
+t_role=>long_nsubj= Cauhtemoc Cardenas|said; long_prep_during= news conference|said; long_prep_by= president  Alfredo Cristiani|Mexico; root=said|ROOT; ccomp=Mexico|said; xcomp=Mexico|said; nsubj=Cardenas|said; nsubj=visit|Mexico; prep_on=7|conference; prep_during=conference|said; prep_by=Cristiani|Mexico; 
+================================
+[21]
+h:Blue Mountain Lumber will locate a development site on the Coromandel.
+t_lengkap: Blue Mountain Lumber said today it may have to relocate a $30 million project offshore in the wake of an Environment Court decision that blocked it from a planned development site on the Coromandel.
+ner=>LOCATION=Coromandel; 
+role=>long_nsubj= Blue  Mountain Lumber|locate; long_dobj= development site|locate; root=locate|ROOT; dobj=site|locate; nsubj=Lumber|locate; prep_on=Coromandel|locate; 
+isEntail=>false
+---
+t2:Blue Mountain Lumber blocked from a planned development site on the Coromandel.
+
+
+id1222
+t:Blue Mountain Lumber may have to relocate a $ 30 million project offshore in the wake of an Environment Court decision.
+t_ner=>MONEY=$ 30 million; ORGANIZATION=Environment Court; 
+t_role=>long_nsubj= Blue  Mountain Lumber|have; long_prep_of= Environment  Court decision|wake; root=have|ROOT; xcomp=relocate|have; dobj=project|relocate; nsubj=Lumber|have; prep_in=wake|relocate; prep_of=decision|wake; 
+================================
+[40]
+h:Cristiani is the president of Costa Rica.
+ner=>PERSON=Cristiani; LOCATION=Costa Rica; 
+role=>long_prep_of= Costa Rica|president; root=president|ROOT; nsubj=Cristiani|president; prep_of=Rica|president; 
+isEntail=>false
+---
+t2:The president Cristiani left for Costa Rica.
+
+
+id1302
+t:The president Cristiani left for Costa Rica.
+t_ner=>PERSON=Cristiani; LOCATION=Costa Rica; 
+t_role=>long_nsubj= president Cristiani|left; long_prep_for= Costa Rica|left; root=left|ROOT; nsubj=Cristiani|left; prep_for=Rica|left; 
+================================
+[88]
+h:Jyestadeva invented calculus.
+ner=>PERSON=Jyestadeva; 
+role=>root=invented|ROOT; dobj=calculus|invented; nsubj=Jyestadeva|invented; 
+isEntail=>false
+---
+t2:Jyestadeva writing the first calculus text.
+
+
+id1482
+t:He is most known for writing the first calculus text.
+t_ner=>ORDINAL=first; 
+t_role=>long_dobj= calculus text|writing; root=known|ROOT; dobj=text|writing; nsubj=He|known; 
+================================
+[104]
+h:Marlowe was arrested by Italian authorities.
+ner=>PERSON=Marlowe; MISC=Italian; 
+role=>root=arrested|ROOT; agent=authorities|arrested; nsubjpass=Marlowe|arrested; 
+isEntail=>false
+---
+t2:Marlowe was given an arrest warrant by the authorities.
+
+
+id1545
+t:an arrest warrant has been issued for him by the authorities.
+t_ner=>
+t_role=>long_nsubjpass= arrest warrant|issued; root=issued|ROOT; agent=authorities|issued; nsubjpass=warrant|issued; prep_for=him|issued; 
+================================
+[120]
+h:New elections in Côte d'Ivoire will take place on July 14.
+ner=>DATE=July 14; 
+role=>long_nsubj= New elections|take; long_prep_in= Côte d'Ivoire|elections; root=take|ROOT; dobj=place|take; nsubj=elections|take; prep_in=d'Ivoire|elections; prep_on=July|take; 
+isEntail=>false
+---
+t2:Côte d'Ivoire 's President promulgated new election laws on July 14.
+
+id1600
+t:Côte d'Ivoire 's President Laurent Gbagbo promulgated new election laws on July 14.
+t_ner=>PERSON=Laurent Gbagbo; DATE=July 14; 
+t_role=>long_nsubj= President  Laurent Gbagbo|promulgated; long_dobj= election laws|promulgated; root=promulgated|ROOT; dobj=laws|promulgated; poss=d'Ivoire|Gbagbo; nsubj=Gbagbo|promulgated; prep_on=July|promulgated; 
+================================
+[128]
+h:Pretoria is located in Côte d'Ivoire.
+ner=>LOCATION=Pretoria; 
+role=>long_prep_in= Côte d'Ivoire|located; root=located|ROOT; nsubjpass=Pretoria|located; prep_in=d'Ivoire|located; 
+isEntail=>false
+---
+t2:Pretoria give intervention in the West African.
+
+id1634
+t:Pretoria intervention in the West African nation to pave the way for elections.
+t_ner=>LOCATION=Pretoria; MISC=West African; 
+t_role=>long_root= Pretoria intervention|ROOT; root=intervention|ROOT; dobj=way|pave; prep_in=nation|intervention; prep_for=elections|way; 
+================================
+[136]
+h:Robert Senacal was arrested by police.
+ner=>PERSON=Robert Senacal; 
+role=>long_nsubjpass= Robert Senacal|arrested; root=arrested|ROOT; agent=police|arrested; nsubjpass=Senacal|arrested; 
+isEntail=>false
+---
+t2:Robert Senacal was looked out by patrols.
+
+id1663
+t:patrols to be on the lookout for Robert Senacal.
+t_ner=>PERSON=Robert Senacal; 
+t_role=>long_prep_for= Robert Senacal|lookout; root=be|ROOT; nsubj=patrols|be; prep_on=lookout|be; prep_for=Senacal|lookout; 
+================================
+[147]
+h:Southwest Airlines operates in New Orleans.
+ner=>ORGANIZATION=Southwest Airlines; LOCATION=New Orleans; 
+role=>long_nsubj= Southwest Airlines|operates; long_prep_in= New Orleans|operates; root=operates|ROOT; nsubj=Airlines|operates; prep_in=Orleans|operates; 
+isEntail=>false
+---
+t2:Southwest Airlines rebuilding service at New Orleans.
+
+id1708
+t:Southwest Airlines on Thursday said rebuilding service at New Orleans.
+t_ner=>ORGANIZATION=Southwest Airlines; DATE=Thursday; LOCATION=New Orleans; 
+t_role=>long_nsubj= Southwest Airlines|said; long_prep_at= New Orleans|rebuilding; root=said|ROOT; xcomp=rebuilding|said; dobj=service|rebuilding; nsubj=Airlines|said; prep_on=Thursday|Airlines; prep_at=Orleans|rebuilding; 
+================================
+[203]
+h:Italian royal family returns home.
+ner=>MISC=Italian; 
+role=>root=returns|ROOT; dobj=home|returns; nsubj=family|returns; 
+isEntail=>false
+---
+t2:A decision to allow the Italian royal family to return to Italy.
+
+
+id1918
+t:A decision to allow the exiled Italian royal family to return to Italy may be granted amid the discovery that the head of the family.
+t_ner=>MISC=Italian; LOCATION=Italy; 
+t_role=>long_dobj= royal family|allow; root=granted|ROOT; xcomp=return|allow; dobj=family|allow; nsubjpass=decision|granted; prep_to=Italy|return; prep_of=family|head; prep_that=head|discovery; 
+================================
+[224]
+h:Domestic fires are the major cause of fire death.
+ner=>
+role=>long_prep_of= fire death|cause; root=cause|ROOT; nsubj=fires|cause; prep_of=death|cause; 
+isEntail=>false
+---
+t2:Smoking is a leading cause of fires death.
+
+id2011
+t:show smoking is a leading cause of fires and death from fires globally.
+t_ner=>
+t_role=>long_nsubj= show smoking|cause; root=cause|ROOT; nsubj=smoking|cause; prep_of=fires|cause; prep_of=death|cause; prep_from=fires|cause; 
+================================
+[256]
+h:Several sportswomen have been accused of doping.
+ner=>
+role=>root=accused|ROOT; nsubjpass=sportswomen|accused; prep_of=doping|accused; 
+isEntail=>false
+---
+t2:142 sportswomen take banned performance-enhancing drugs.
+
+id2145
+t:142 East German sportswomen , mostly swimmers and athletes , take banned performance-enhancing drugs.
+t_ner=>NUMBER=142; MISC=German; 
+t_role=>root=take|ROOT; dobj=drugs|take; nsubj=sportswomen|take; 
+================================
+[296]
+h:The women's ten thousand metres champion is from Mozambique.
+ner=>NUMBER=ten thousand; LOCATION=Mozambique; 
+role=>long_nsubj= metres champion|is; root=is|ROOT; poss=women|champion; nsubj=champion|is; prep_from=Mozambique|is; 
+isEntail=>false
+---
+t2:In the women 's 800 metres Mozambique 's Maria Mutola produced the best performances. 
+
+id2325
+t:Mozambique 's Maria Mutola and Israel 's Alex Averbukh produced the best performances of the year , in the women 's 800 metres and men 's pole vault.
+t_ner=>LOCATION=Mozambique; PERSON=Maria Mutola; LOCATION=Israel; PERSON=Alex Averbukh; NUMBER=800; 
+t_role=>long_nsubj= Maria Mutola|produced; long_conj_and= Alex Averbukh|Mutola; long_prep_in= pole vault|produced; root=produced|ROOT; dobj=performances|produced; poss=Mozambique|Mutola; poss=Israel|Averbukh; poss=women|metres; poss=men|vault; nsubj=Mutola|produced; nsubj=Averbukh|produced; prep_in=metres|produced; prep_in=vault|produced; prep_of=year|performances; 
+================================
+[552]
+h:The name of George W. Bush's wife is Laura.
+ner=>PERSON=George W. Bush; PERSON=Laura; 
+role=>long_poss= George  W. Bush|wife; root=Laura|ROOT; poss=Bush|wife; nsubj=name|Laura; prep_of=wife|name; 
+isEntail=>false
+---
+t2: George W. Bush  and the wife  Elizabeth Dole.
+
+
+id3541
+t:the party would fare with the son , Texas Gov. George W. Bush , and the wife , Elizabeth Dole.
+t_ner=>LOCATION=Texas; PERSON=George W. Bush; PERSON=Elizabeth Dole; 
+t_role=>long_prep_with= Texas  Gov.  George  W. Bush|fare; long_appos= Elizabeth Dole|wife; root=fare|ROOT; nsubj=party|fare; prep_with=son|fare; prep_with=Bush|fare; prep_with=wife|fare; 
+================================
+[664]
+h:A weak cyanide solution is poured over it to pull the gold from the rock.
+ner=>
+role=>long_nsubjpass= cyanide solution|poured; root=poured|ROOT; xcomp=pull|poured; dobj=it|poured; dobj=gold|pull; nsubjpass=solution|poured; prep_from=rock|pull; 
+isEntail=>false
+---
+t2:-> cek dulu 
+Tons of cyanide poured each day to leach the gold from crushed ore.
+
+
+id3948
+t:tons of cyanide each day to leach the gold from crushed ore.
+t_ner=>TIME=day; 
+t_role=>root=tons|ROOT; dobj=gold|leach; prep_of=cyanide|tons; prep_from=ore|leach; 
+================================
+[732]
+h:Mr Lopez Obrador didn't loose the presidential election in July.
+ner=>PERSON=Lopez Obrador; DATE=July; 
+role=>long_nsubj= Mr  Lopez Obrador|election; root=election|ROOT; nsubj=Obrador|election; prep_in=July|election; 
+isEntail=>false
+---
+t2:Mr Lopez Obrador lost presidential election in July.
+
+id4125
+t:Mr Lopez Obrador , who lost July 's presidential election by less than one percentage point.
+t_ner=>PERSON=Lopez Obrador; DATE=July; NUMBER=one; 
+t_role=>long_nsubj= Mr  Lopez Obrador|lost; root=point|ROOT; dobj=election|lost; poss=July|election; nsubj=Obrador|lost; nsubj=Obrador|point; prep_by=percentage|lost; 
+================================
+[752]
+h:Bush will meet al-Maliki in Hadley.
+ner=>PERSON=Bush; PERSON=al-Maliki; LOCATION=Hadley; 
+role=>root=meet|ROOT; dobj=al|meet; nsubj=Bush|meet; prep_in=Hadley|meet; 
+isEntail=>false
+---
+t2:Jordan was chosen as the site of the meeting between Bush and al-Maliki.
+
+
+id4191
+t:Jordan was chosen as the site of the meeting between Bush and al-Maliki.
+t_ner=>PERSON=Jordan; PERSON=Bush; PERSON=al-Maliki; 
+t_role=>root=chosen|ROOT; nsubjpass=Jordan|chosen; prep_of=meeting|site; prep_between=Bush|meeting; prep_between=al|meeting; prep_as=site|chosen; 
+================================
+[766]
+h:Molly Walsh plans to stop buying the generic products.
+ner=>PERSON=Molly Walsh; 
+role=>long_nsubj= Molly Walsh|plans; root=plans|ROOT; xcomp=stop|plans; xcomp=buying|stop; dobj=products|buying; nsubj=Walsh|plans; 
+isEntail=>false
+---
+t2:salah entail?? cek lagi
+
+id4240
+t:Molly Walsh plan to stop buying the generic products.
+t_ner=>PERSON=Molly Walsh; 
+t_role=>long_nsubj= Molly Walsh|plan; root=plan|ROOT; xcomp=stop|plan; xcomp=buying|stop; dobj=products|buying; nsubj=Walsh|plan; 
+================================
+[11]
+h:Abuja is located in Adamawa State.
+ner=>LOCATION=Abuja; LOCATION=Adamawa; 
+role=>long_prep_in= Adamawa State|located; root=located|ROOT; nsubjpass=Abuja|located; prep_in=State|located; 
+isEntail=>false
+---
+
+t:Yola is the capital of Adamawa State.
+
+
+id4391
+t:Yola , the capital of Adamawa State.
+t_ner=>LOCATION=Yola; ORGANIZATION=Adamawa State; 
+t_role=>long_prep_of= Adamawa State|capital; root=Yola|ROOT; prep_of=State|capital; 
+================================
+[42]
+h:Cyprian Gatete is an employee of Reuters.
+ner=>PERSON=Cyprian Gatete; ORGANIZATION=Reuters; 
+role=>long_nsubj= Cyprian Gatete|employee; root=employee|ROOT; nsubj=Gatete|employee; prep_of=Reuters|employee; 
+isEntail=>false
+---
+
+t2:Cyprian Gatete is assistant commissioner of police.
+
+
+id4469
+t:Cyprian Gatete , Rwanda 's assistant commissioner of police.
+t_ner=>PERSON=Cyprian Gatete; LOCATION=Rwanda; 
+t_role=>long_root= Cyprian Gatete|ROOT; root=Gatete|ROOT; poss=Rwanda|commissioner; prep_of=police|commissioner; 
+================================
+[84]
+h:Joseph Wilson is Valerie Plame's ex-husband.
+ner=>PERSON=Joseph Wilson; PERSON=Valerie Plame; 
+role=>long_nsubj= Joseph Wilson|ex; long_poss= Valerie Plame|ex; root=ex|ROOT; poss=Plame|ex; nsubj=Wilson|ex; 
+isEntail=>false
+---
+t2:Joseph Wilson is Valerie Plame's husband.
+
+
+id4586
+t:Valerie Plame , wife of the former ambassador Joseph Wilson.
+t_ner=>PERSON=Valerie Plame; PERSON=Joseph Wilson; 
+t_role=>long_root= Valerie Plame|ROOT; long_prep_of= ambassador  Joseph Wilson|wife; root=Plame|ROOT; prep_of=Wilson|wife; 
+================================
+[140]
+h:Saad Hariri was elected Prime Minister of Lebanon.
+ner=>PERSON=Saad Hariri; LOCATION=Lebanon; 
+role=>long_nsubjpass= Saad Hariri|elected; long_dobj= Prime Minister|elected; root=elected|ROOT; dobj=Minister|elected; nsubjpass=Hariri|elected; prep_of=Lebanon|Minister; 
+isEntail=>false
+---
+t2:Saad Hariri is son of former Prime Minister of Lebanon.
+
+
+id4737
+t:Saad Hariri , son of former Prime Minister of Lebanon Rafik Hariri.
+t_ner=>PERSON=Saad Hariri; LOCATION=Lebanon; PERSON=Rafik Hariri; 
+t_role=>long_root= Saad Hariri|ROOT; long_prep_of= Prime Minister|son; long_prep_of= Lebanon  Rafik Hariri|Minister; root=Hariri|ROOT; prep_of=Minister|son; prep_of=Hariri|Minister; 
+================================
+[543]
+h:Luis Roldan was director of police from 1986 to 1993.
+ner=>PERSON=Luis Roldan; DATE=1986 to 1993; 
+role=>long_nsubj= Luis Roldan|director; root=director|ROOT; nsubj=Roldan|director; prep_of=police|director; prep_from=1993|police; 
+isEntail=>false
+---
+t2:Luis Roldan is the former Spanish chief of police. 
+
+
+id6099
+t:Luis Roldan , the former Spanish chief of police who fled the country 10 months ago after allegedly hiving off millions of pounds from secret government funds.
+t_ner=>PERSON=Luis Roldan; LOCATION=Spanish; DURATION=10 months; 
+t_role=>long_root= Luis Roldan|ROOT; long_prep_from= government funds|pounds; root=Roldan|ROOT; dobj=country|fled; dobj=millions|hiving; nsubj=chief|fled; prep_of=police|chief; prep_of=pounds|millions; prep_from=funds|pounds; 
+================================
+[656]
+h:The acquisition of the Klaipeda Tobacco company is the biggest investment in the Baltic states.
+ner=>ORGANIZATION=Klaipeda Tobacco; MISC=Baltic; 
+role=>long_prep_of= Klaipeda  Tobacco company|acquisition; root=investment|ROOT; nsubj=acquisition|investment; prep_in=states|investment; prep_of=company|acquisition; 
+isEntail=>false
+---
+t2: The acquisition of acquire the Klaipeda Tobacco is the biggest western investment in the Baltic states.
+
+
+id6421
+t:Philip Morris which in April beat British American Tobacco to acquire the Klaipeda Tobacco company for Dollars 40m - the biggest western investment in the Baltic states so far.
+t_ner=>PERSON=Philip Morris; DATE=April; ORGANIZATION=British American Tobacco; ORGANIZATION=Klaipeda Tobacco; MISC=Baltic; 
+t_role=>long_root= Philip Morris|ROOT; long_nsubj= British  American Tobacco|acquire; long_dobj= Klaipeda  Tobacco company|acquire; root=Morris|ROOT; xcomp=acquire|beat; dobj=company|acquire; nsubj=Morris|beat; nsubj=Tobacco|acquire; prep_in=April|beat; prep_in=states|investment; prep_for=Dollars|company; 
+
+Process finished with exit code 0

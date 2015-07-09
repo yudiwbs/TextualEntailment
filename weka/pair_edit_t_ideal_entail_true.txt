@@ -1,0 +1,483 @@
+
+================================
+[24]
+h:Bountiful reached San Francisco in August 1945.
+t_lengkap:Bountiful arrived after war's end, sailing into San Francisco Bay 21 August 1945. Bountiful was then assigned as hospital ship at Yokosuka, Japan, departing San Francisco 1 November 1945.
+isEntail=>true
+---
+id29
+t:Bountiful arrived after war's end, sailing into San Francisco Bay 21 August 1945.
+================================
+[32]
+h:Carl Smith died on August 8.
+t_lengkap:Carl Smith collided with a concrete lamp-post while skating and suffered a skull fracture that caused a coma. When he failed to regain consciousness, his parents on August 8 consented to his life support machine being turned off.
+isEntail=>true
+---
+id42
+t:When Carl Smith failed to regain consciousness , Carl Smith parents on August 8 consented to Carl Smith life support machine being turned off.
+================================
+[48]
+h:Dr Fiona Wood has invented a treatment for burns victims.
+t_lengkap:She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing. Via her research, Fiona found that scarring is greatly reduced if replacement skin could be provided within 10 days. As a burns specialist the holy grail for Dr Fiona Wood is 'scarless, woundless healing'.
+isEntail=>true
+---
+id60
+t:She has become world renowned for her patented invention of spray on skin for burns victims, a treatment which is continually developing.
+================================
+[49]
+h:During the Civil War the government of the United States bought arms from Britain.
+t_lengkap:The British government did not initially purchase the weapon and civilian sales were modest. However the U.S. Civil War began in 1860 and the governments of both the United States and the Confederacy began purchasing arms in Britain.
+isEntail=>true
+---
+id64
+t:However the U.S. Civil War began in 1860 and the governments of both the United States and the Confederacy began purchasing arms in Britain.
+================================
+[56]
+h:Female mosquitoes spread malaria.
+t_lengkap:Female mosquitoes become infected with the malaria parasite when they draw blood from humans with malaria. The insects can then pass this on to other humans they bite, but do not get sick themselves.
+isEntail=>true
+---
+id75
+t:The insects can then pass this on to other humans they bite, but do not get sick themselves.
+================================
+[96]
+h:Live At Leeds was recorded by The Who.
+t_lengkap:Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.
+isEntail=>true
+---
+id131
+t:Live At Leeds (1970) is The Who's first live album, and indeed is their only live album that was released while the band was still recording and performing regularly.
+================================
+[112]
+h:Mr. Zhao died in Beijing.
+t_lengkap:In the two weeks since his death, police have been posted outside the Beijing home where Mr. Zhao spent his last 15 years under house arrest and where hundreds have been assembling to pay tribute. Agents have been turning many of the mourners away.
+isEntail=>true
+---
+id152
+t:In the two weeks since his death , police have been posted outside the Beijing home where Mr. Zhao spent Mr. Zhao last 15 years under house arrest and where hundreds have been assembling to pay tribute.
+================================
+[184]
+h:Vera Beers works for Standard Printing.
+t_lengkap:Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall.
+isEntail=>true
+---
+id248
+t:Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall.
+================================
+[216]
+h:Nuclear waste transport delayed in Germany.
+t_lengkap:Anti-nuclear protesters on Wednesday delayed the progress of a shipment of radioactive waste toward a dump in northern Germany. The train stopped for the fourth time since crossing into Germany as it neared the northern town of Lueneburg.
+isEntail=>true
+---
+id295
+t:Anti-nuclear protesters on Wednesday delayed the progress of a shipment of radioactive waste toward a dump in northern Germany.
+================================
+[231]
+h:Flooding in Europe causes major economic losses.
+t_lengkap:Catastrophic floods in Europe endanger lives and cause human tragedy as well as heavy economic losses.
+isEntail=>true
+---
+id321
+t:Catastrophic floods in Europe endanger lives and cause human tragedy as well as heavy economic losses.
+================================
+[240]
+h:Russians hold record for longest stay in space.
+t_lengkap:Cosmonaut Sergei Avdeyev, currently on board the Mir space station, has become the person with the longest total stay in space. He has clocked up 681 days.
+isEntail=>true
+---
+id334
+t:Cosmonaut Sergei Avdeyev , currently on board the Mir space station , has become the person with the longest total stay in space.
+================================
+[264]
+h:Parliamentary elections may lead to a new government in France.
+t_lengkap:France is the only country with two fully governmental elections. Parliamentary elections in France, when they create a new parliamentary majority, lead to a new government.
+isEntail=>true
+---
+id382
+t:Parliamentary elections in France, when they create a new parliamentary majority, lead to a new government.
+================================
+[304]
+h:Nick Leeson was arrested for collapse of Barings Bank PLC.
+t_lengkap:Nick Leeson was jailed for fraud following the collapse of Barings Bank in 1995. He had run up losses of 850m on the Far East stock markets.
+isEntail=>true
+---
+id446
+t:Nick Leeson was jailed for fraud following the collapse of Barings Bank in 1995.
+================================
+[344]
+h:The Ebro Delta is used for farming.
+t_lengkap:The ecological problems stem in large part from the fact that the brackish water and productive coastal wetlands and natural areas are often supplied with nutrient-rich irrigation return water, sometimes from rice farming. The Ebro Delta and its wetlands suffer similar water quality problems since they lie around the fringes of the large Delta farm region.
+isEntail=>true
+---
+id515
+t:The Ebro Delta and Ebro Delta wetlands suffer similar water quality problems since they lie around the fringes of the large Delta farm region.
+================================
+[352]
+h:Greenhouse effect changes global climate.
+t_lengkap:The increased amounts of carbon dioxide (CO2) and other greenhouse gases (GHGs) are the primary causes of the human-induced component of global warming.
+isEntail=>true
+---
+id534
+t:The increased amounts of carbon dioxide (CO2) and other greenhouse gases (GHGs) are the primary causes of the human-induced component of global warming.
+================================
+[408]
+h:Elizabeth the Second's father was George VI.
+t_lengkap:Her Majesty Queen Elizabeth II was born in London on April, 21 1926, first child of the Duke and Duchess of York, subsequently King George VI and Queen Elizabeth. Five weeks later she was christened in the chapel of Buckingham Palace and was given the names Elizabeth Alexandra Mary Windsor. The Queen ascended the throne on February 6, 1952 upon the death of her father, King George VI. Her Coronation followed on June 2, 1953.
+isEntail=>true
+---
+id633
+t:Her Majesty Queen Elizabeth II was born in London on April, 21 1926, first child of the Duke and Duchess of York, subsequently King George VI and Queen Elizabeth.
+================================
+[456]
+h:In 1945, an atomic bomb was dropped on Hiroshima.
+t_lengkap:On August 6, 1945 the atomic bomb was dropped on the Japanese city of Hiroshima. The Enola Gay, piloted by Colonel Tibbetts, was chosen to make the mission. The mission was recorded as successful by Capt. William S. Parson at 9:20 A.M.
+isEntail=>true
+---
+id724
+t:On August 6, 1945 the atomic bomb was dropped on the Japanese city of Hiroshima.
+================================
+[472]
+h:Alfred Nobel is the inventor of dynamite.
+t_lengkap:In 1867, Nobel obtained a patent on a special type of nitroglycerine, which he called "dynamite". The invention quickly proved its usefulness in building and construction in many countries.
+isEntail=>true
+---
+id755
+t:In 1867 , Nobel obtained a patent on a special type of nitroglycerine , which Nobel called " dynamite ".
+================================
+[476]
+h:Euro-Disney is an Entertainment Park.
+t_lengkap:The Disneyland of Europe is located 20 miles east of Paris. Euro Disney is a huge complex with hotels, restaurants, shops and a nearby golf course apart from the actual theme park. It provides a much better experience than its American cousin thanks to the marvels of modern engineering.
+isEntail=>true
+---
+id763
+t:Euro Disney is a huge complex with hotels , restaurants , shops and a nearby golf course apart from the actual theme park.
+================================
+[496]
+h:Franz Liszt lived from 1811 to 1886.
+t_lengkap:Franz Liszt (Hungarian: Liszt Ferenc) was a Hungarian/Austrian virtuoso pianist and composer who lived from 1811 to 1886. Liszt is widely considered to be one of the greatest piano virtuosi of all time, and certainly the most famous of the nineteenth century.
+isEntail=>true
+---
+id793
+t:Franz Liszt (Hungarian: Liszt Ferenc) was a Hungarian/Austrian virtuoso pianist and composer who lived from 1811 to 1886.
+================================
+[592]
+h:The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.
+t_lengkap:Qatar and Oman are members of the Gulf Cooperation Council, GCC, which also groups Saudi Arabia, Kuwait, Bahrain and the United Arab Emirates (UAE).
+isEntail=>true
+---
+id909
+t:Qatar and Oman are members of the Gulf Cooperation Council, GCC, which also groups Saudi Arabia, Kuwait, Bahrain and the United Arab Emirates (UAE).
+================================
+[600]
+h:Christie's is one of the world's largest auction houses.
+t_lengkap:Sotheby's and Christie's, the world's two most powerful auction houses, swapped confidential lists of super-rich clients who were spared from paying fees charged to other sellers, people close to the companies and to a federal antitrust investigation of them said.
+isEntail=>true
+---
+id917
+t:Sotheby 's and Christie 's , the world 's two most powerful auction houses , swapped confidential lists of super-rich clients who were spared from paying fees charged to other sellers , people close to the companies and to a federal antitrust investigation of other sellers said.
+================================
+[744]
+h:Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.
+t_lengkap:Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed in a suicide bombing in February last year, which led to rising anti-Syrian waves and the withdrawal of Syrian troops from Lebanon.
+isEntail=>true
+---
+id1083
+t:Former Prime Minister Rafik Hariri, also a prominent anti-Syria political figure, was killed in a suicide bombing in February last year, which led to rising anti-Syrian waves and the withdrawal of Syrian troops from Lebanon.
+================================
+[784]
+h:Three Vienna nurses are under suspicion for killing patients.
+t_lengkap:Three nurses in one of Vienna's oldest hospitals have been arrested on suspicion of killing 35 patients.
+isEntail=>true
+---
+id1130
+t:Three nurses in one of Vienna's oldest hospitals have been arrested on suspicion of killing 35 patients.
+================================
+[792]
+h:There is a Supreme Court decision about the removal of life-support.
+t_lengkap:The Supreme Court said today states may bar the removal of life-sustaining treatment from comatose patients who have not made or cannot make their desires known.
+isEntail=>true
+---
+id1139
+t:The Supreme Court said today states may bar the removal of life-sustaining treatment from comatose patients who have not made or cannot make their desires known.
+================================
+[7]
+h:52 people and four bombers were killed on July 7.
+t_lengkap:After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.
+isEntail=>true
+---
+id1177
+t:the July 7 transit attacks , which killed 52 people and the four bombers.
+================================
+[35]
+h:CIA secret prisons were located in Eastern Europe.
+t_lengkap:A leading human rights group on Wednesday identified Poland and Romania as the likely locations in eastern Europe of secret prisons where al-Qaeda suspects are interrogated by the Central Intelligence Agency.
+isEntail=>true
+---
+id1288
+t:A leading human rights group on Wednesday identified Poland and Romania as the likely locations in eastern Europe of secret prisons.
+================================
+[64]
+h:GUS sold Wehkamp.
+t_lengkap:GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the 390m (265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.
+isEntail=>true
+---
+id1386
+t:GUS on Friday disposed of GUS on Friday remaining home shopping business and last non-UK retail operation with the 390m ( 265m ) sale of the Dutch home shopping company , Wehkamp.
+================================
+[80]
+h:Henry Borski and Jake Borski are relatives.
+t_lengkap:The original owner, Henry Borski, opened his tavern in 1945. He later passed it on to his son Jake Borski, then it was owned by Phylis Roberts for approximately 23 years after that.
+isEntail=>true
+---
+id1446
+t:Henry Borski later passed his tavern on to Henry Borski son Jake Borski.
+================================
+[144]
+h:Scott's execution caused the Wolseley Expedition.
+t_lengkap:Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition, which forced Louis Riel, now branded a murderer, to flee the settlement.
+isEntail=>true
+---
+id1698
+t:Scott 's execution led to outrage in Ontario , and was largely responsible for prompting the Wolseley Expedition.
+================================
+[152]
+h:Sylvia Costas is the wife of Andy Sipowicz.
+t_lengkap:Prior to that, Andy Sipowicz began to date Assistant District Attorney Sylvia Costas. They got married in 1995 and had a son Theo in 1996.
+isEntail=>true
+---
+id1727
+t:They got married in 1995.
+================================
+[168]
+h:The Kakhovskaya Line was built in 1995.
+t_lengkap:The Kakhovskaya Line is a line of the Moscow Metro. Currently it is the only line that exists outside the ring. It is the shortest line in Moscow. Although the line was formed in 1995, the stations date to 1969 when they were opened as part of the Zamoskvoretskaya Line.
+isEntail=>true
+---
+id1780
+t:the line was formed in 1995.
+================================
+[175]
+h:The Tokyo Stock Exchange was closed down by computer system failure.
+t_lengkap:A computer system failure closed down share trading at the Tokyo Stock Exchange for most of yesterday, the worst disruption to date for Asia's largest bourse.
+isEntail=>true
+---
+id1802
+t:A computer system failure closed down share trading at the Tokyo Stock Exchange for most of yesterday.
+================================
+[176]
+h:Tom Online earned US$42.78 mn in three months.
+t_lengkap:Tom Online revenues for the three months ended June 30, 2005 were US$42.78 mn, an increase of 38.5% over the same period in 2004.
+isEntail=>true
+---
+id1807
+t:Tom Online revenues for the three months ended June 30 , 2005 were US$ 42.78 mn.
+================================
+[182]
+h:Vance worked with Hooper.
+t_lengkap:Vance used to be Hooper's supervisor, he said, but was let go several months ago.
+isEntail=>true
+---
+id1825
+t:Vance used to be Hooper 's supervisor.
+================================
+[288]
+h:Sex-change operations become more common.
+t_lengkap:Jill Pilgrim, general counsel of USA Track and Field, brought up the issue during a panel on women's sports at the sports lawyers conference. Pilgrim said the law regarding who is legally considered a woman is changing as sex-change operations become more common.
+isEntail=>true
+---
+id2299
+t:sex-change operations become more common.
+================================
+[368]
+h:A spelling reform was approved in all German speaking countries.
+t_lengkap:The original spelling reform of 1996, which was meant to harmonize the spelling rules across the German-speaking countries, turned out to be a major embarrassment if not outright failure.
+isEntail=>true
+---
+id2656
+t:The original spelling reform of 1996 , which was meant to harmonize the spelling rules across the German-speaking countries.
+================================
+[376]
+h:Italian royal family returns home.
+t_lengkap:The son of Italy's last king returned to his homeland Monday, ending more than a half-century of exile. Victor Emmanuel and his family landed at a military airport in Rome in a private plane and headed immediately for an audience with Pope John Paul II.
+isEntail=>true
+---
+id2679
+t:The son of Italy 's last king returned to his homeland.
+================================
+[488]
+h:The Shoemaker-Levy comet hit Jupiter.
+t_lengkap:The final major piece of comet Shoemaker-Levy 9 was to hit just after midnight, completing a ring of crater-like plumes of swirling superheated gas and debris thousands of miles across. "It hit Jupiter like a string of machine-gun bullets" said Eugene Shoemaker, an astronomer at the Lowell Observatory in Flagstaff, Ariz., who helped discover the comet last year.
+isEntail=>true
+---
+id3305
+t:It hit Jupiter like a string of machine-gun bullets.
+================================
+[512]
+h:Arabic is the language of the Quran.
+t_lengkap:Please note that Arabic is the language of Quran so it's better to learn it to understand clearly all the miracles in Quran.
+isEntail=>true
+---
+id3402
+t:Arabic is the language of Quran.
+================================
+[544]
+h:The Berlin Wall was torn down in November, 1989.
+t_lengkap:When the Berlin Wall fell in early November, 1989 Berlin's east and west sections were rejoined to create the third-largest city in Europe , with a population of about 3 million.
+isEntail=>true
+---
+id3510
+t:the Berlin Wall fell in early November.
+================================
+[560]
+h:The moon was first touched by mankind in 1969.
+t_lengkap:Thirty years ago [1969], Neil Armstrong took humanity's first small step on the moon, declaring it "one giant leap for mankind" only to have the space program retreat to tinkering in low Earth orbit.
+isEntail=>true
+---
+id3562
+t:Neil Armstrong took humanity 's first small step on the moon.
+================================
+[584]
+h:Before Salt Lake City, Winter Olympic Games took place in Nagano.
+t_lengkap:The IOC meeting will also review reports submitted by the organizing committees of the 1998 Winter Olympic Games in Nagano, Japan; the 2000 Summer Olympic Games in Sydney, Australia and the 2002 Winter Olympic Games in the Salt Lake City, the United States, respectively.
+isEntail=>true
+---
+id3659
+t:reports submitted by the organizing committees of the 1998 Winter Olympic Games in Nagano , Japan ; the 2000 Summer Olympic Games in Sydney , Australia and the 2002 Winter Olympic Games in the Salt Lake City.
+================================
+[624]
+h:Yunus wants to start a company.
+t_lengkap:As his jubilant nation cheered, Yunus told reporters in the capital of Dhaka that he wants "to work to create some more new things in the world" and would use the award money to start a company to produce inexpensive yet nutritious food for poor people and set up an eye hospital to treat impoverished patients.
+isEntail=>true
+---
+id3825
+t:the award money to start a company to produce inexpensive yet nutritious food for poor people.
+================================
+[630]
+h:Some people in the village of Joba received loans from Yunus.
+t_lengkap:To break the grinding cycle of debt and poverty, Yunus loaned $27 to Begum and more than 40 of her neighbours in the village of Joba. He allowed them to pay him back over the next year as their businesses started to produce stable profits.
+isEntail=>true
+---
+id3852
+t:Yunus loaned $ 27 to Begum and more than 40 of Begum neighbours in the village of Joba.
+================================
+[632]
+h:The first two borrowers must start repaying the principal plus interest over a six-week period.
+t_lengkap:The borrowers must form five-member groups that, along with the bank's field workers, closely supervise the loans. Peer pressure substitutes for collateral because the group's first two borrowers have to start repaying the principal plus interest over a six-week period before the other members can take out loans. The interest rate is fixed at 16 percent.
+isEntail=>true
+---
+id3859
+t:Peer pressure substitutes for collateral because the group 's first two borrowers have to start repaying the principal plus interest over a six-week period.
+================================
+[665]
+h:Britain has maintained an arm embargo.
+t_lengkap:Military ties between the two countries have been governed officially by an arms embargo imposed by Britain on Argentina.
+isEntail=>true
+---
+id3950
+t:an arms embargo imposed by Britain on Argentina.
+================================
+[672]
+h:Philip Morris owns the Marlboro brand.
+t_lengkap:Philip Morris the US food and tobacco group that makes Marlboro, the world's best-selling cigarette, shrugged off strong anti-smoking sentiment in the US.
+isEntail=>true
+---
+id3970
+t:Philip Morris the US food and tobacco group that makes Marlboro.
+================================
+[700]
+h:Cameroon honey gatherers use cyanide to stun bees.
+t_lengkap:At the very outskirts of commerce, Baka pygmies in southeastern Cameroon use a cyanide compound to stun bees while raiding their nests for honey.
+isEntail=>true
+---
+id4033
+t:Baka pygmies in southeastern Cameroon use a cyanide compound to stun bees.
+================================
+[728]
+h:Iran's program is under suspicion because of the findings by IAEA inspectors.
+t_lengkap:The Arak plant, along with the discovery of a secret Iranian enrichment program in 2003, Tehran's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+isEntail=>true
+---
+id4117
+t:Tehran 's refusal to cease uranium enrichment and findings by IAEA inspectors have increased suspicions about Iran s program.
+================================
+[736]
+h:Management at Huawei was accused of working for Pakistan and the then Taleban government in Afghanistan.
+t_lengkap:Management at Huawei also feels that issues over security are hampering its progress - largely stemming from allegations, in 2001, that it was accused of working for Pakistan and the then Taleban government in Afghanistan.
+isEntail=>true
+---
+id4140
+t:its progress was accused of working for Pakistan and the then Taleban government.
+================================
+[72]
+h:Allan Chapman is employed at the River Forecast Centre.
+t_lengkap:But these are only first hazards. "If the rain continues at the same magnitude and according to the forecast, then some of the rivers could reach flood stage either later [Tuesday] or Wednesday morning," said Allan Chapman, a hydrologist with the River Forecast Centre in Victoria.
+isEntail=>true
+---
+id4548
+t:Allan Chapman , a hydrologist with the River Forecast Centre in Victoria.
+================================
+[232]
+h:Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.
+t_lengkap:China's announcement of a rival Panchen Lama to the boy already recognized by the Dalai Lama are indications that its Communist regime is desperate in using any means possible to strengthen control over Tibet and Tibetan affairs.
+isEntail=>true
+---
+id5037
+t:China 's announcement of a rival Panchen Lama to the boy already recognized by the Dalai Lama.
+================================
+[432]
+h:Klaus Pohl is one of Germany's most performed dramatists.
+t_lengkap:A collection of real-life testimonies by Klaus Pohl, one of Germany's most performed dramatists, its power resides less in the conventional meaning of the word drama than in what it reveals - a country still deeply at odds with itself, a kaleidoscope of events that flatters neither side, neither Western capitalism nor the former communist regime.
+isEntail=>true
+---
+id5760
+t:one of Germany 's most performed dramatists.
+================================
+[440]
+h:The catastrophe at Chernobyl happened in 1986.
+t_lengkap:Article 19 said a correspondent for the independent newspaper Narodnaya Volya who attempted to determine how many people involved in emergency work in the contaminated zone around the Chernobyl nuclear reactor after the 1986 catastrophe were still alive was told by the Ministry of Emergencies that non-state newspapers could be refused access to any information.
+isEntail=>true
+---
+id5809
+t:people involved in emergency work in the contaminated zone around the Chernobyl nuclear reactor after the 1986 catastrophe were still alive.
+================================
+[536]
+h:Euro-Disney is a theme park outside Paris.
+t_lengkap:The beleaguered Euro-Disney theme park outside Paris is doing so poorly it might have to close unless it gets help soon from its lenders, the chairman of Walt Disney Co. said in an interview published Friday.
+isEntail=>true
+---
+id6082
+t:The beleaguered Euro-Disney theme park outside Paris.
+================================
+[640]
+h:There was an industrial espionage case involving GM and VW.
+t_lengkap:The industrial espionage case involving GM and VW began with the hiring of Jos Ignacio Lopez, an employee of GM subsidiary Adam Opel, by VW as production director.
+isEntail=>true
+---
+id6392
+t:The industrial espionage case involving GM and VW.
+================================
+[704]
+h:One case involved the extradition of Libyan suspects in the Pan Am Lockerbie bombing.
+t_lengkap:Libya's case against Britain and the US concerns the dispute over their demand for extradition of Libyans charged with blowing up a Pan Am jet over Lockerbie in 1988.
+isEntail=>true
+---
+id6507
+t:extradition of Libyans charged with blowing up a Pan Am jet over Lockerbie in 1988.
+================================
+[749]
+h:The Carnival Cruise Lines is a brand of Carnival Corp.
+t_lengkap:Fourteen guests and five crew remained ill and in isolation when the ship arrived at Port Everglades, Fla., according to a statement from Carnival Cruise Lines, a brand of Carnival Corp.
+isEntail=>true
+---
+id6623
+t:Carnival Cruise Lines , a brand of Carnival Corp.
+================================
+[28]
+h:British Columbia is located in Canada.
+t_lengkap:As much as 200 mm of rain have been recorded in portions of British Columbia , on the west coast of Canada since Monday.
+isEntail=>true
+---
+id6747
+t:in portions of British Columbia , on the west coast of Canada since Monday.
+
+Process finished with exit code 0

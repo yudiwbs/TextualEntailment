@@ -60,7 +60,7 @@ public class ProsesLemma {
             sb.append(s+" ");
         }
         String out = sb.toString();
-        out = td.postProses(out);
+        //out = td.postProses(out);
         return out;
     }
 
@@ -127,7 +127,8 @@ public class ProsesLemma {
         ProsesLemma pl = new ProsesLemma();
         //pl.prosesDb("rte3_label","h","h_lemma");
 
-        pl.prosesDb("disc_t_rte3_label","t","t_lemma");
+        //pl.prosesDb("disc_t_rte3_label","t","t_lemma");
+        pl.prosesDb("disc_t_rte3_label_ideal","t","t_lemma");
 
         //pl.initLemma();
         //pl.proses("80% approve of Mr. Bush.");
