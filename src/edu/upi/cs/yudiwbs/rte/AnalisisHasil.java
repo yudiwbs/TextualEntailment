@@ -2,7 +2,7 @@ package edu.upi.cs.yudiwbs.rte;
 
 public class AnalisisHasil {
 	
-	/*
+	/*   BELUM SELESAI
 	 *   menampilkan hasil pemrosesan untuk melihat kesalahan ada dimana
 	 *   
 	 *   hasil hasilnya dilihat di excel 

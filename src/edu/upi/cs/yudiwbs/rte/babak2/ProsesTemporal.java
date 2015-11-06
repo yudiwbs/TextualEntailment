@@ -280,14 +280,13 @@ public class ProsesTemporal {
         //hitung akurasi, keluarkan yang benar dan salah tebak
 
 
-
-
     }
 
     public static void main(String[] args)  {
         ProsesTemporal pt = new  ProsesTemporal();
-        //pt.proses("rte3");
-        pt.hitungAkurasi("rte3");
+        pt.proses("rte3");
+        //pt.hitungAkurasi("rte3");
+
     }
 
 }
