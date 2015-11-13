@@ -7,6 +7,7 @@ import edu.stanford.nlp.util.CoreMap;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.Map;
 
@@ -22,38 +23,35 @@ import java.util.Map;
  *  output? terutama untuk point 1, harusnya multidokumen
  *  index saja mungkin, nanti diproses lagi
  *
+ *  todo: lintas kata dalam satu paragraph
+ *
  */
 public class BuatThesaurus {
 
-    ArrayList<String> alStopWords = new ArrayList<String>();
+    ArrayList<String> alStopWords = new ArrayList<>();
     //HashMap<String[],Integer> kataSatuKal = new HashMap<String[],Integer>();
-    HashMap<String,Integer> kataSatuKal = new HashMap<String,Integer>();
+    HashMap<String,Integer> kataSatuKal = new HashMap<>();
 
     StanfordCoreNLP pipeline;
 
 
-    public LinkedHashMap sortHashMapByValuesD(HashMap passedMap) {
-        List mapKeys = new ArrayList(passedMap.keySet());
-        List mapValues = new ArrayList(passedMap.values());
+    public LinkedHashMap<String, Integer> sortHashMapByValuesD(HashMap<String, Integer> passedMap) {
+        List<String> mapKeys    = new ArrayList<>(passedMap.keySet());
+        List<Integer> mapValues = new ArrayList<>(passedMap.values());
         Collections.sort(mapValues);
         Collections.sort(mapKeys);
 
-        LinkedHashMap sortedMap = new LinkedHashMap();
+        LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
 
-        Iterator valueIt = mapValues.iterator();
-        while (valueIt.hasNext()) {
-            Object val = valueIt.next();
-            Iterator keyIt = mapKeys.iterator();
-
-            while (keyIt.hasNext()) {
-                Object key = keyIt.next();
+        for (Integer val : mapValues) {
+            for (String key : mapKeys) {
                 String comp1 = passedMap.get(key).toString();
                 String comp2 = val.toString();
 
-                if (comp1.equals(comp2)){
+                if (comp1.equals(comp2)) {
                     passedMap.remove(key);
                     mapKeys.remove(key);
-                    sortedMap.put((String)key, (Integer)val);
+                    sortedMap.put(key, val);
                     break;
                 }
             }
@@ -118,7 +116,7 @@ public class BuatThesaurus {
                     //loop per kata dalam kalimat
                     Scanner scKal = new Scanner(kalimat.toString());
                     int ccKata = 0;
-                    ArrayList<String> alKataKal = new ArrayList<String>();
+                    ArrayList<String> alKataKal = new ArrayList<>();
                     while (scKal.hasNext()) {
 
                         String kata = scKal.next();
@@ -186,7 +184,7 @@ public class BuatThesaurus {
 
     }
 
-    public void prosesDir(String namaDir) {
+    public void prosesDir(String namaDir,String namaOutFile) {
         //asumsi direktori satu level
         //dir berisi file teks
         //loop file2 dalam direktori tersebut
@@ -201,7 +199,8 @@ public class BuatThesaurus {
         if (f.isDirectory()) {
                 System.out.println("Directory: " + f.getName());
                 File[] arrF = f.listFiles();
-                for (File f2:arrF) {
+            assert arrF != null;
+            for (File f2:arrF) {
                     System.out.println("Proses file: "+f2.getName());
                     prosesFile(f2.getAbsolutePath());
                 }
@@ -214,7 +213,7 @@ public class BuatThesaurus {
 
 
         //sementara, gak ngerti ngebaliknya
-        ArrayList<String> alTemp = new ArrayList<String>();
+        ArrayList<String> alTemp = new ArrayList<>();
 
 
         for (Map.Entry<String,Integer> entry : lhm.entrySet()) {
@@ -225,9 +224,18 @@ public class BuatThesaurus {
             alTemp.add(pasangKata+"="+freq);
         }
 
-        for (int i=alTemp.size()-1;i>=0;i--) {
-            System.out.println(alTemp.get(i));
+        try {
+            PrintWriter pw = new PrintWriter(namaOutFile);
+            for (int i=alTemp.size()-1;i>=0;i--) {
+                //System.out.println(alTemp.get(i));
+                pw.println(alTemp.get(i));
+            }
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
+
 
 
     }
@@ -239,7 +247,8 @@ public class BuatThesaurus {
     public static void main(String[] args)  {
         BuatThesaurus bt = new BuatThesaurus();
         //bt.prosesFile("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\bontiful.txt");
-        bt.prosesDir("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\");
+        bt.prosesDir("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi_scott_island.txt");
+        System.out.println("selesai");
     }
 
 }
