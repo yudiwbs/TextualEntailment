@@ -23,7 +23,7 @@ import java.util.Map;
  *  output? terutama untuk point 1, harusnya multidokumen
  *  index saja mungkin, nanti diproses lagi
  *
- *  todo: lintas kata dalam satu paragraph
+ *  todo: lintas kata dalam satu paragraph (tidak harus dalam satu kalimat)
  *
  */
 public class BuatThesaurus {
