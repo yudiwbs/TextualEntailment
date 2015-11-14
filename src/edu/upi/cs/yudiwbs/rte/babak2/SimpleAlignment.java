@@ -1,10 +1,21 @@
 package edu.upi.cs.yudiwbs.rte.babak2;
 
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
+import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.util.CoreMap;
+import edu.upi.cs.yudiwbs.rte.AmbilSubject;
+import edu.upi.cs.yudiwbs.rte.AmbilVerbObj;
+import edu.upi.cs.yudiwbs.rte.Util;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -55,7 +66,19 @@ public class SimpleAlignment {
 
     }
 
+
     public void proses() {
+
+        ArrayList<String> alBuang = new ArrayList<>();
+        alBuang.add("was");
+        alBuang.add("were");
+        alBuang.add("am");
+        alBuang.add("is");
+        alBuang.add("are");
+        alBuang.add("will");
+        alBuang.add("have");
+        alBuang.add("has");
+
         //mulai dari H, cari bagian yang sama, eliminasi
         //bagian yang berbeda yang akan dibandingkan
         Connection conn=null;
@@ -83,7 +106,21 @@ public class SimpleAlignment {
             pStat = conn.prepareStatement(sql);
             rs = pStat.executeQuery();
 
+            //untuk memisahkan kalimat
+            Properties props = new Properties();
+            props.put("annotators", "tokenize, ssplit");
+            StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+
             int cc = 0;
+            AmbilSubject af = new AmbilSubject();
+            AmbilVerbObj av = new AmbilVerbObj();
+
+            LexicalizedParser lp;
+            lp = LexicalizedParser.loadModel(
+                    "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
+                    "-maxLength", "80", "-retainTmpSubcategories");
+
+            int jumCocok = 0; //pred sama dengan isentail
             while (rs.next()) {
                 cc++;
                 System.out.println("");
@@ -94,18 +131,76 @@ public class SimpleAlignment {
                 String t_dep   = rs.getString(4);      //parsetree t
                 boolean isEntail = rs.getBoolean(5);
 
-                System.out.println("t="+t);
-                System.out.println("h="+h);
+                //t harus dipisah per kalimat
+                System.out.println("H="+h);
+                System.out.println("T Lengkap="+t);
                 System.out.println("Entail="+isEntail);
-                System.out.println("dep t="+t_dep);
-                System.out.println("dep h="+h_dep);
+                //split kalimat, khusus untuk T saja
+                Annotation docT = new Annotation(t);
+                pipeline.annotate(docT);
+                List<CoreMap> sentencesT = docT.get(CoreAnnotations.SentencesAnnotation.class);
+
+                //loop untuk semua subkalimat
+                boolean predEntail = false;
+                for(CoreMap kalimat: sentencesT) {
+                    System.out.println("  Sub T = "+kalimat);
+                    String subjT = af.debugCariSubjNonTree(lp,kalimat.toString());
+                    String subjH = af.debugCariSubjNonTree(lp,h);
+                    String[] retT = av.debugCariVerbObjNonTree(lp,kalimat.toString());
+                    String[] retH = av.debugCariVerbObjNonTree(lp,h);
 
 
-                break;  //DEBUG, nanti dibuang
+                    StringBuilder sbSubT = new StringBuilder();
+                    Util.appendNoTagKalimat(sbSubT,subjT);
+                    StringBuilder sbSubH = new StringBuilder();
+                    Util.appendNoTagKalimat(sbSubH,subjH);
+
+                    String strSubT = sbSubT.toString();
+                    String strSubH = sbSubH.toString();
+                    System.out.println("    subyek T:"+strSubT);
+                    System.out.println("    subyek H:"+strSubH);
+
+                    boolean isSubCocok = strSubT.equals(strSubH);
+
+                    StringBuilder sbVerbT = new StringBuilder();
+                    Util.appendNoTagKalimat(sbVerbT,retT[0],alBuang,1);  //buang was,were dst, ambil satu kata
+                    StringBuilder sbVerbH = new StringBuilder();
+                    Util.appendNoTagKalimat(sbVerbH,retH[0],alBuang,1);
+
+                    String strVerbT = sbVerbT.toString();
+                    String strVerbH = sbVerbH.toString();
+                    boolean isVerbCocok = strVerbH.equals(strVerbT);
+
+                    System.out.println("    verb T:"+strVerbT);
+                    System.out.println("    verb H:"+strVerbH);
+
+
+                    StringBuilder sbObjT = new StringBuilder();
+                    Util.appendNoTagKalimat(sbObjT,retT[1]);
+                    StringBuilder sbObjH = new StringBuilder();
+                    Util.appendNoTagKalimat(sbObjH,retH[1]);
+
+                    System.out.println("    obj T:" +sbObjT);
+                    System.out.println("    obj H:" +sbObjH);
+
+                    if (isSubCocok&&isVerbCocok) {
+                        predEntail = true;
+                        System.out.println("===================> cocok");
+                        break; //satu cocok kalimat dianggap entail
+                    }
+                }
+                //System.out.println("dep t="+t_dep);
+                //System.out.println("dep h="+h_dep);
+
+                if (isEntail==predEntail) {
+                    jumCocok++;
+                }
+                //break;  //DEBUG, nanti dibuang
             }
             rs.close();
             pStat.close();
             conn.close();
+            System.out.println((double)jumCocok / cc);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

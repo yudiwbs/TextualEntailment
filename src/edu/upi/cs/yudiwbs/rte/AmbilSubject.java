@@ -66,6 +66,10 @@ public class AmbilSubject {
 	 *
 	 */
 	public String cariSubj(String tree) {
+    /*
+         input tree
+
+    */
 		
 		//handling kalau subject tidak ketemu
 		//update: kalau ketemu SBAR, stop
@@ -427,6 +431,9 @@ public class AmbilSubject {
 	}	
 	
 	public void debugSubj(char tOrH,int id, String namaTabel) {
+    /*
+    	cari subyek dalam tabel
+    */
 		System.out.println("Debug Cari Subj");
 		Connection conn=null;
 		PreparedStatement pStat=null;
@@ -488,25 +495,23 @@ public class AmbilSubject {
 				   ex.printStackTrace();
 			   }
 	}
-	
-	public String debugCariSubjNonTree(String kalimat) {
+
+
+	public String debugCariSubjNonTree(LexicalizedParser lp, String kalimat) {
 	//persis seperti cariSub
 	//tapi inputnya string biasa, bukan parsetree
 	//tidak efisien karena parser di load terus
 		
-		LexicalizedParser lp;
-		
-			//panggil sebelum lakukan parsing
-		lp = LexicalizedParser.loadModel(
-					"edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
-					"-maxLength", "80", "-retainTmpSubcategories");
-	
+
+		if (lp==null) {
+            lp = LexicalizedParser.loadModel(
+                    "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
+                    "-maxLength", "80", "-retainTmpSubcategories");
+        }
 		
 		String out = "";
 		Tree parseTree = lp.parse(kalimat);
-		
-		System.out.println(parseTree);
-		
+		//System.out.println(parseTree);
 		out = cariSubj(parseTree.toString());
 		return out;
 	}
@@ -530,7 +535,7 @@ public class AmbilSubject {
 
 		//kal = "Ebola hemorrhagic fever is a fatal disease caused by a new virus which has no known cure";
          kal = "The automotive industry has seen advances in robotic metal cutting";
-		String subj = af.debugCariSubjNonTree(kal);
+		String subj = af.debugCariSubjNonTree(null,kal);
 		System.out.println("Subj="+subj);
 		
 		//	Reading French is easier that speaking it.

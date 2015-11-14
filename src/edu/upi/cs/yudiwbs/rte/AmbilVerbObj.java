@@ -554,27 +554,26 @@ public class AmbilVerbObj {
 		
 		return ret;
 	}
-	
-	
-	public String[] debugCariVerbObjNonTree(String kalimat) {
-		String[] ret ={"",""};
-		
-		LexicalizedParser lp;
-		
-		//panggil sebelum lakukan parsing
-		lp = LexicalizedParser.loadModel(
-				"edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
-				"-maxLength", "80", "-retainTmpSubcategories");
+
+    public String[] debugCariVerbObjNonTree(LexicalizedParser lp,String kalimat) {
+        String[] ret ={"",""};
+        //panggil sebelum lakukan parsing
+        if (lp==null) {
+            lp = LexicalizedParser.loadModel(
+                    "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
+                    "-maxLength", "80", "-retainTmpSubcategories");
+        }
+
+
+        Tree parseTree = lp.parse(kalimat);
+        //System.out.println(parseTree);
+        ret  = cariVerbObj(parseTree.toString());
+        return ret;
+    }
 
 	
-		
-		Tree parseTree = lp.parse(kalimat);
-		System.out.println(parseTree);
-		
-		ret  = cariVerbObj(parseTree.toString());
 	
-		return ret;
-	}
+
 	
 	//Predicates are actions in the clause or sentence.
 	//Objects are nouns in the sentence or clause that do not take actions
@@ -846,9 +845,12 @@ public class AmbilVerbObj {
 		//String s = "the number of the confirmed Ebola cases has risen slightly to 26 in Gabon and to 16 in Congo Brazzaville";
 		//String s = "Ebola hemorrhagic fever is a fatal disease caused by a new virus which has no known cure";
 		String s = "A new epidemic was detected in Zaire in the spring of 1995";
-		String[] ret = av.debugCariVerbObjNonTree(s);
+		String[] ret = av.debugCariVerbObjNonTree(null,s);  //kalau null dibuat
 		System.out.println("verb:"+ret[0]);
 		System.out.println("obj:"+ret[1]);
+
+
+
 		
     }
 }

@@ -31,6 +31,7 @@ public class BuatThesaurus {
     ArrayList<String> alStopWords = new ArrayList<>();
     //HashMap<String[],Integer> kataSatuKal = new HashMap<String[],Integer>();
     HashMap<String,Integer> kataSatuKal = new HashMap<>();
+    HashMap<String,Integer> kataSatuPar = new HashMap<>();
 
     StanfordCoreNLP pipeline;
 
@@ -82,8 +83,89 @@ public class BuatThesaurus {
 
     }
 
-    public void prosesFile(String namaFile) {
-        //IS: stopwords sudah diload, kataSatuKal sudah diinisialisasi
+    public void prosesFilePar(String namaFile) {
+        //JANGAN LUPA INIT!
+        //mencari freq kata dalam satu paragraph, bukan satu kalimat
+
+        File f = new File(namaFile);
+        int ccPar=0;
+        int ccKal=0; //absolute, tdk mengikuti paragraph
+        try {
+            Scanner scMain = new Scanner(f, "UTF-8").useDelimiter("\r\n");
+            //looop per paragraph
+            while (scMain.hasNext()) {
+                String line = scMain.next();
+                if (line.trim().equals("")) { continue;} //par kosong
+                //System.out.println(line);
+                Scanner scPar = new Scanner(line);
+                //loop kata  dalam satu par
+                ArrayList<String> alKataPar = new ArrayList<>();
+                //loop kata dalam paraprah
+                while (scPar.hasNext()) {
+                    String kata = scPar.next();
+                    //kata dalam satu paragraph dikumpulan disini
+                    //bersihkan dulu kata dari stopwords dan selain alpahbat
+                    kata = kata.replaceAll("[^a-zA-Z']","").trim();
+                    if (kata.equals("")) {continue;}
+                    if (alStopWords.contains(kata.toLowerCase())) {continue;}
+                    //ok sudah bersih..
+                    //duplikasi dibuang
+                    int ccKata = 0;
+                    //kumplkan kata unik dalam satu par
+                    if (!alKataPar.contains(kata)) {
+                            //System.out.println("kata="+kata);
+                            alKataPar.add(kata);
+                            ccKata++;
+                    }
+                } //end loop kata dalam par
+
+                //buat pasangan
+                //loop semua kata di parapgrah
+                for (int i=0;i<alKataPar.size();i++) {
+                    String kata1 = alKataPar.get(i);
+                   // System.out.println("size="+alKataPar.size());
+                    for (int j = i+1; j<alKataPar.size(); j++) {
+                        String kata2 = alKataPar.get(j);
+                        String gabKata = kata1+"=="+kata2;
+
+                        Integer freq = kataSatuPar.get(gabKata);
+                        if (freq==null) {
+                            //belum ada, tambah
+                            kataSatuPar.put(gabKata,1);
+
+                            //debug
+                            //System.out.println("belum");
+                            //System.out.println("kata1="+kata1);
+                            //System.out.println("kata2="+kata2);
+
+                        } else {
+                            //sudah ada, inc freq
+                            kataSatuPar.put(gabKata,freq+1);
+                            //debug
+                            //System.out.println("sudah");
+                            //System.out.println("kata1="+kata1);
+                            //System.out.println("kata2="+kata2);
+                        }
+                    }
+                } // lopp add psangan
+                ccPar++;
+                scPar.close();
+            } //end loop per paragraph
+            scMain.close();
+        }
+
+
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void prosesFileKal(String namaFile) {
+        // mencari freq kata dalam satu kalimat
+
+        // IS: stopwords sudah diload, kataSatuKal sudah diinisialisasi
+
 
         //hasilkan file idx (atau dump ke db?)
         //file index:
@@ -184,9 +266,9 @@ public class BuatThesaurus {
 
     }
 
-    public void prosesDir(String namaDir,String namaOutFile) {
+    public void prosesDirKal(String namaDir,String namaOutFile) {
         //asumsi direktori satu level
-        //dir berisi file teks
+        //dir berisi file-file teks (kumpulan)
         //loop file2 dalam direktori tersebut
         loadStopWords("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\en_stopwords.txt");
 
@@ -202,19 +284,17 @@ public class BuatThesaurus {
             assert arrF != null;
             for (File f2:arrF) {
                     System.out.println("Proses file: "+f2.getName());
-                    prosesFile(f2.getAbsolutePath());
+                    prosesFileKal(f2.getAbsolutePath());  //<--- per kalimat
                 }
         } else {
                 System.out.println("Bukan directory!");
         }
 
+        //SORT!
         LinkedHashMap<String,Integer>  lhm;
         lhm = sortHashMapByValuesD(kataSatuKal);
-
-
         //sementara, gak ngerti ngebaliknya
         ArrayList<String> alTemp = new ArrayList<>();
-
 
         for (Map.Entry<String,Integer> entry : lhm.entrySet()) {
             String pasangKata = entry.getKey();
@@ -241,13 +321,71 @@ public class BuatThesaurus {
     }
 
 
+    public void prosesDirPar(String namaDir,String namaOutFile) {
+        //todo: bisa digabung dgn yg atas
+        //asumsi direktori satu level
+        //dir berisi file-file teks (kumpulan)
+        //loop file2 dalam direktori tersebut
+        loadStopWords("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\en_stopwords.txt");
+
+        Properties props = new Properties();
+        props.put("annotators", "tokenize, ssplit");
+        pipeline = new StanfordCoreNLP(props);
+
+
+        File f = new File(namaDir);
+        if (f.isDirectory()) {
+            System.out.println("Directory: " + f.getName());
+            File[] arrF = f.listFiles();
+            assert arrF != null;
+            for (File f2:arrF) {
+                System.out.println("Proses file: "+f2.getName());
+                prosesFilePar(f2.getAbsolutePath());  //<--- per paragprah
+            }
+        } else {
+            System.out.println("Bukan directory!");
+        }
+
+        //SORT!
+        LinkedHashMap<String,Integer>  lhm;
+        lhm = sortHashMapByValuesD(kataSatuPar); //<---- per parapgarph
+
+        //sementara, gak ngerti ngebaliknya
+        ArrayList<String> alTemp = new ArrayList<>();
+
+        for (Map.Entry<String,Integer> entry : lhm.entrySet()) {
+            String pasangKata = entry.getKey();
+            int freq = entry.getValue();
+            //System.out.println(pasangKata+"="+freq);  //tulis ke file
+            pasangKata = pasangKata.replaceAll("==",",");
+            alTemp.add(pasangKata+"="+freq);
+        }
+
+        try {
+            PrintWriter pw = new PrintWriter(namaOutFile);
+            for (int i=alTemp.size()-1;i>=0;i--) {
+                //System.out.println(alTemp.get(i));
+                pw.println(alTemp.get(i));
+            }
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
     public static void main(String[] args)  {
         BuatThesaurus bt = new BuatThesaurus();
         //bt.prosesFile("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\bontiful.txt");
-        bt.prosesDir("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi_scott_island.txt");
+        //bt.prosesDirKal("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi_scott_island.txt");
+
+        //bt.prosesDirPar("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful_paragraph.txt");
+
+        //bt.prosesFilePar("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful\\bontiful.txt");
+
         System.out.println("selesai");
     }
 
