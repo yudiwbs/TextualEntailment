@@ -25,6 +25,8 @@ import java.util.Map;
  *
  *  todo: lintas kata dalam satu paragraph (tidak harus dalam satu kalimat)
  *
+ *  test
+ *
  */
 public class BuatThesaurus {
 
