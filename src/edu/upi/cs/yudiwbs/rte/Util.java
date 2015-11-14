@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Util {
@@ -11,6 +12,17 @@ public class Util {
 				SB.append(kata);
 		}
 	}
+
+    //buang kurung
+    //return true jika  diappend
+    public static boolean appendNoTagBoolean(StringBuilder SB, String kata) {
+        boolean out=false;
+        if (!kata.contains("(") &&  !kata.contains(")") ) {
+            SB.append(kata);
+            out = true;
+        }
+        return out;
+    }
 	
 	//tambah satu kalimat
 	public static void  appendNoTagKalimat(StringBuilder SB, String kalimat) {
@@ -21,6 +33,27 @@ public class Util {
 			appendNoTag(SB,kata+" ");
 		}
 		
+		sc.close();
+	}
+
+	//tambah satu kalimat
+    //buang yang ada di alBuang
+    //hanya ambil sejumlah maxKata, jika diset =1 , hanya ambil yang paling depan
+	public static void  appendNoTagKalimat(StringBuilder SB, String kalimat, ArrayList<String> alKataBuang, int maxJumKata) {
+		Scanner sc = new Scanner(kalimat);
+        int cc = 0;
+        boolean stop = false;
+		while (sc.hasNext() && !stop) {
+			String kata = sc.next();
+            if (!alKataBuang.contains(kata)) {
+                if (appendNoTagBoolean(SB, kata + " ")) {
+                    cc++;
+                    if (cc>=maxJumKata) {
+                        stop = true;
+                    }
+                }
+            }
+		}
 		sc.close();
 	}
 	
