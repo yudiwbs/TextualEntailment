@@ -266,8 +266,14 @@ public class PreproBabak2 {
                             if (pred==isEntail) {
                                 System.out.println("Prediksi cocok");
                                 jumPredCocok++;
+
+                                //pisahkan yang cocok dan salah
+
+
                             } else {
                                 System.out.println("Prediksi salah");
+
+
                             }
                             System.out.println("----");
                             //nanti tulis
@@ -284,7 +290,7 @@ public class PreproBabak2 {
 
        public static void main(String[] args) {
               PreproBabak2 pb = new PreproBabak2();
-              pb.dbName = "localhost/rte3";
+              pb.dbName = "localhost/rtebabak2";
               pb.userName = "rte";
               pb.password = "rte";
               //pb.fileStopwordsToDB("C:\\yudiwbs\\eksperimen\\stopwords_eng.txt","stopwords","kata");
