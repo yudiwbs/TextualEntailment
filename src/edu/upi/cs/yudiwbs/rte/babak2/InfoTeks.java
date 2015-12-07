@@ -9,16 +9,29 @@ public class InfoTeks {
     public ArrayList<String> alVerb = new ArrayList<>();
     public ArrayList<String>  alNoun = new ArrayList<>();
 
-    void print() {
-        System.out.print("Verb:");
+    @Override
+    public String toString() {
+        StringBuilder sbTemp = new StringBuilder();
+        sbTemp.append("Verb:");
         for (String s:alVerb) {
-            System.out.print(s);System.out.print(" ");
+            //System.out.print(s);
+            sbTemp.append(s);
+            sbTemp.append(" ");
+            //System.out.print(" ");
         }
-        System.out.println();
-        System.out.print("Noun:");
+        sbTemp.append(System.lineSeparator());
+
+        sbTemp.append("Noun:");
         for (String s:alNoun) {
-            System.out.print(s);System.out.print(" ");
+            sbTemp.append(s);
+            sbTemp.append(" ");
         }
-        System.out.println();
+        sbTemp.append(System.lineSeparator());
+        return sbTemp.toString();
     }
+
+
+    //void print() {
+
+    //}
 }

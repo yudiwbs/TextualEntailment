@@ -1,9 +1,6 @@
 package edu.upi.cs.yudiwbs.rte.babak2;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -214,9 +211,17 @@ public class PreproBabak2 {
               loadStopWords("stopwords","kata");
 
 
-           //ambil data
+              //nulis ke
+              String dir ="G:\\eksperimen\\textualentailment\\babak2\\";
+
+
+
+              //ambil data
               //PreparedStatement pUpdate=null;
               try {
+                     PrintWriter pwCocok     = new PrintWriter(dir+"cocok1.txt");
+                     PrintWriter pwNotCocok  = new PrintWriter(dir+"tdk_cocok1.txt");
+
                      Class.forName("com.mysql.jdbc.Driver");
                      // Setup the connection with the DB
                      Class.forName("com.mysql.jdbc.Driver");
@@ -229,15 +234,17 @@ public class PreproBabak2 {
                      int cc = 0;
                      PenentuEntailment pe = new PenentuEntailment();
                      int jumPredCocok = 0 ;
+                     //System.lineSeparator();
 
                      while (rs.next()) {
-                            cc++;
-                            int id= rs.getInt(1);
-                            String t = rs.getString(2);         //t
-                            String tSynTree = rs.getString(3);  //parsetree text
-                            String h = rs.getString(4);         //h
-                            String   hSynTree = rs.getString(5);  //parsetree h
-                            Boolean  isEntail = rs.getBoolean(6);  //parsetree h
+                         StringBuilder sbTemp = new StringBuilder();
+                         cc++;
+                         int id= rs.getInt(1);
+                         String t = rs.getString(2);         //t
+                         String tSynTree = rs.getString(3);  //parsetree text
+                         String h = rs.getString(4);         //h
+                         String   hSynTree = rs.getString(5);  //parsetree h
+                         Boolean  isEntail = rs.getBoolean(6);  //parsetree h
                             /*
                             System.out.println("");
                             System.out.println("Text:");
@@ -245,42 +252,74 @@ public class PreproBabak2 {
                             System.out.println(textual);
                             System.out.println(h);
                             */
-                            System.out.println("ID:"+id);
-                            System.out.println("H:"+h);
-                            //System.out.println("hsyntree:"+hSynTree);
 
-                            System.out.println("T:"+t);
+                         System.out.println("ID:"+id);
+                         sbTemp.append("ID:");
+                         sbTemp.append(id);
+                         sbTemp.append(System.lineSeparator());
+                         System.out.println("H:"+h);
+
+                         sbTemp.append("H:");
+                         sbTemp.append(h);
+                         sbTemp.append(System.lineSeparator());
+
+                         //System.out.println("hsyntree:"+hSynTree);
+
+                         System.out.println("T:"+t);
+                         sbTemp.append("T:");
+                         sbTemp.append(t);
+                         sbTemp.append(System.lineSeparator());
                             //System.out.println("tsyntree:"+tSynTree);
 
-                            System.out.println("IsEntail:"+isEntail);
+                         System.out.println("IsEntail:"+isEntail);
+                         sbTemp.append("IsEntail:");
+                         sbTemp.append(isEntail);
+                         sbTemp.append(System.lineSeparator());
 
 
-                            System.out.println("H=");
-                            InfoTeks hPrepro = prepro2(h,hSynTree);
-                            hPrepro.print();
-                            System.out.println("T=");
-                            InfoTeks tPrepro = prepro2(t,tSynTree);
-                            tPrepro.print();
-                            boolean pred= pe.baseLine(hPrepro,tPrepro);
-                            System.out.println("Prediksi:"+pred);
-                            if (pred==isEntail) {
+                         System.out.println("H=");
+                         sbTemp.append("H=");
+                         sbTemp.append(System.lineSeparator());
+
+                         InfoTeks hPrepro = prepro2(h,hSynTree);
+                         String strHPrepro = hPrepro.toString() ;
+                         sbTemp.append(strHPrepro);
+                         System.out.println(strHPrepro);
+                         sbTemp.append(System.lineSeparator());
+
+                         System.out.println("T=");
+                         sbTemp.append("T:");
+                         sbTemp.append(System.lineSeparator());
+                         InfoTeks tPrepro = prepro2(t,tSynTree);
+                         String strTPrepro = tPrepro.toString();
+                         sbTemp.append(strTPrepro);
+                         sbTemp.append(System.lineSeparator());
+                         System.out.println(strTPrepro);
+
+                         boolean pred= pe.baseLine(hPrepro,tPrepro);
+                         String deskPred = pe.toString();
+                         sbTemp.append(deskPred);
+                         System.out.println("Prediksi:"+pred);
+                         if (pred==isEntail) {
                                 System.out.println("Prediksi cocok");
                                 jumPredCocok++;
-
+                                pwCocok.println(sbTemp.toString());
                                 //pisahkan yang cocok dan salah
-
-
                             } else {
                                 System.out.println("Prediksi salah");
-
-
+                                pwNotCocok.println(sbTemp.toString());
                             }
                             System.out.println("----");
+                            pwCocok.println("-------");
                             //nanti tulis
                      }
                      rs.close();
                      pStat.close();
                      conn.close();
+
+                     pwCocok.close();
+                     pwNotCocok.close();
+
                      double akurasi = (double) jumPredCocok / cc;
                      System.out.println("Akurasi:"+akurasi);
               } catch (Exception ex) {

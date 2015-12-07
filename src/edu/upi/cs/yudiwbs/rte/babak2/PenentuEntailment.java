@@ -13,8 +13,28 @@ import java.util.ArrayList;
 
 public class PenentuEntailment {
 
+    private StringBuilder tempStringBuilder = null;
+
+    public String toString() {
+        if (tempStringBuilder != null) {
+            return tempStringBuilder.toString();
+        } else{
+            return ("-");
+        }
+    }
+
+    //menggunakan wordnet
+    public boolean wordNet() {
+        tempStringBuilder = new StringBuilder();
+        boolean isEntail=false;
+
+        return isEntail;
+    }
+
     //return boolean isEntail
     public boolean baseLine(InfoTeks itH,InfoTeks itT) {
+        tempStringBuilder = new StringBuilder();
+
         boolean isEntail=false;
 
         ArrayList<String> alCocokNoun = new ArrayList<>();
@@ -64,21 +84,38 @@ public class PenentuEntailment {
         double pctVerbCocok = (double) jumVerbCocok / itH.alVerb.size();
 
         System.out.println("===================");
-
+        tempStringBuilder = new StringBuilder();
+        tempStringBuilder.append("===================");
+        tempStringBuilder.append(System.lineSeparator());
         System.out.print("Noun yang cocok:");
         for (String nc:alCocokNoun) {
             System.out.print(nc);
+            tempStringBuilder.append(nc);
             System.out.print(" ");
+            tempStringBuilder.append(" ");
         }
         System.out.println();
+        tempStringBuilder.append(System.lineSeparator());
         System.out.println("Persentase noun H yang cocok:"+pctNounCocok*100);
+        tempStringBuilder.append("Persentase noun H yang cocok:");
+        tempStringBuilder.append(pctNounCocok*100);
+        tempStringBuilder.append(System.lineSeparator());
         System.out.print("Verb yang cocok:");
+        tempStringBuilder.append("Verb yang cocok:");
         for (String nv:alCocokVerb) {
             System.out.print(nv);
+            tempStringBuilder.append(nv);
             System.out.print(" ");
+            tempStringBuilder.append(" ");
         }
         System.out.println();
+        tempStringBuilder.append(System.lineSeparator());
+
         System.out.println("Persentase verb H yang cocok:"+pctVerbCocok*100);
+        tempStringBuilder.append("Persentase verb H yang cocok:");
+        tempStringBuilder.append(pctVerbCocok*100);
+        tempStringBuilder.append(System.lineSeparator());
+
 
         if (pctNounCocok>=0.5 && pctVerbCocok>0.2 )  {
             isEntail = true;
