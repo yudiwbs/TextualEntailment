@@ -62,6 +62,45 @@ public class ProsesWordNetSimilarity {
 
     private static double tresholdMinSim = 0.01;
 
+    //khusus untuk pasangan verb
+    //input sudah tidak mengandung tanda baca angka dst
+    public double  hitungSimWordnet2(String h, String t) {
+        double out=0;
+
+
+        String[] arrH = h.split(" ");
+        String[] arrT = t.split(" ");
+
+
+        //loop verb yang ada di H
+        //cari verb di T yang nilainya maks
+        //jika ada kata yang sama langsung stop dan output =1
+
+        double nilaiMax = 0;
+        boolean ketemu =false;
+        for (String kataH:arrH) {
+            for (String kataT:arrT) {
+                if (kataH.equals(kataT)) {
+                    ketemu = true;
+                    break;
+                }
+                double sim = hitungSimilarity(kataH,kataT);
+                if (sim>nilaiMax) {
+                    nilaiMax = sim;
+                }
+            }
+            if (ketemu) {
+                break;
+            }
+        }
+        if (ketemu) {
+            out = 1;
+        } else  {
+            out = nilaiMax;
+        }
+        return out;
+    }
+
     /**
      *  Berdasarkan paper: "Sentence Similarity Based on Semantic Nets ..", Yuhua Li
      *
@@ -72,6 +111,8 @@ public class ProsesWordNetSimilarity {
      *  3) kali nilai vektor itu dengan probabilitas
      *  4) hitung cosine similiarity antar vektor S1 dan s2
      *
+     *
+     *  algoritmanya aneh, karena memandingkan kata yg sama di kata gab (skor pasti gede)
      *
      *
      * @param s1
@@ -94,6 +135,8 @@ public class ProsesWordNetSimilarity {
         HashMap<String,Double> hmVectS1  = new HashMap<>();
         HashMap<String,Double> hmVectS2  = new HashMap<>();
 
+
+        //kenapa harus digabung??
         Scanner sc = new Scanner(s1);
         String kata;
         while (sc.hasNext()) {
@@ -423,10 +466,20 @@ public class ProsesWordNetSimilarity {
         //pw.prosesDBSimWordnetYW("","","","","");
 
         //double v = pw.hitungSimWordnet("A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.","30 die in a bus collision in Uganda.");
-        //System.out.println(v);
+
+        //double v = pw.hitungSimWordnet("visit","oppress");
+
+        //double v = pw.hitungSimilarity("visit","oppress");
+        //double v = pw.hitungSimilarity("visit","visiting");
+        //hitungSimWordnet2
+        //double v = pw.hitungSimWordnet2("visit come","approach come");
+        //double v = pw.hitungSimWordnet2("gila","gather win promote");
+        double v = pw.hitungSimWordnet2("rejected","passed");
+        System.out.println();
+        System.out.println(v);
 
         //pw.prosesDbSimWordnet();
-        pw.prosesDb("rte3_label","disc_t_rte3_label");
+        //pw.prosesDb("rte3_label","disc_t_rte3_label");
     }
 
 

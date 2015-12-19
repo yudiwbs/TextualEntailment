@@ -128,10 +128,12 @@ public class ProsesLemma {
         //pl.prosesDb("rte3_label","h","h_lemma");
 
         //pl.prosesDb("disc_t_rte3_label","t","t_lemma");
-        pl.prosesDb("disc_t_rte3_label_ideal","t","t_lemma");
+        //pl.prosesDb("disc_t_rte3_label_ideal","t","t_lemma");
 
-        //pl.initLemma();
+        pl.initLemma();
         //pl.proses("80% approve of Mr. Bush.");
+        //pl.proses("Mrs. Bush 's approval ratings have remained very high , above 80 ");
+        pl.proses("acquisition");
         //.proses("Mrs. Bush 's approval ratings have remained very high , above 80 %");
         //pl.proses("A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.");
         //

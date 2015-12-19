@@ -47,7 +47,14 @@ public class CobaWordnetWS4j {
         //run("cat","dog");
         //run("build","form");
         //run("spread","pass");
-        run("die","injured");
+        //run("die","injured");
+        //= arrived
+        //acquire = acquisition
+
+        //perlu lematisasi
+
+        //run("die","died");
+        run("visit","opress");
         long t1 = System.currentTimeMillis();
         System.out.println( "Done in "+(t1-t0)+" msec." );
     }

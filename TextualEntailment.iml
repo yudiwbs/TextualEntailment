@@ -15,5 +15,7 @@
     <orderEntry type="library" name="tml-3.2-core" level="project" />
     <orderEntry type="library" name="stanford-parser" level="project" />
     <orderEntry type="library" name="ws4j-1.0.1" level="project" />
+    <orderEntry type="library" name="edu.mit.jwi_2.4.0_jdk" level="project" />
+    <orderEntry type="library" name="jaws-bin" level="project" />
   </component>
 </module>

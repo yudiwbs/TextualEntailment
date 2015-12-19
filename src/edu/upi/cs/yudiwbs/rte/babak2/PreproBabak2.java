@@ -201,6 +201,9 @@ public class PreproBabak2 {
        }
 
        public void proses(String namaTabel) {
+
+
+
            // baca field t dan h
            // buang stoprwords, kata2 selain verb dan noun
            //   simpan di t_prepro_babak2 dan h_prepro_babak2
@@ -212,15 +215,17 @@ public class PreproBabak2 {
 
 
               //nulis ke
-              String dir ="G:\\eksperimen\\textualentailment\\babak2\\";
+              //@todo jangan hardcode spt ini!
+              //@todo tambahkan double blackslah diakhir!
+              String dir ="C:\\yudiwbs\\eksperimen\\textualentailment\\babak2\\";
 
 
 
               //ambil data
               //PreparedStatement pUpdate=null;
               try {
-                     PrintWriter pwCocok     = new PrintWriter(dir+"cocok1.txt");
-                     PrintWriter pwNotCocok  = new PrintWriter(dir+"tdk_cocok1.txt");
+                     PrintWriter pwCocok     = new PrintWriter(dir+"cocok_lemma_wordnetsim.txt");
+                     PrintWriter pwNotCocok  = new PrintWriter(dir+"tdk_cocok1_lemma_wordnetsim.txt");
 
                      Class.forName("com.mysql.jdbc.Driver");
                      // Setup the connection with the DB
@@ -277,8 +282,8 @@ public class PreproBabak2 {
                          sbTemp.append(System.lineSeparator());
 
 
-                         System.out.println("H=");
-                         sbTemp.append("H=");
+                         System.out.println("H:");
+                         sbTemp.append("H:");
                          sbTemp.append(System.lineSeparator());
 
                          InfoTeks hPrepro = prepro2(h,hSynTree);
@@ -287,7 +292,7 @@ public class PreproBabak2 {
                          System.out.println(strHPrepro);
                          sbTemp.append(System.lineSeparator());
 
-                         System.out.println("T=");
+                         System.out.println("T:");
                          sbTemp.append("T:");
                          sbTemp.append(System.lineSeparator());
                          InfoTeks tPrepro = prepro2(t,tSynTree);
@@ -296,22 +301,29 @@ public class PreproBabak2 {
                          sbTemp.append(System.lineSeparator());
                          System.out.println(strTPrepro);
 
-                         boolean pred= pe.baseLine(hPrepro,tPrepro);
+                         //@todo harusnya prediksi tidak ada disini
+                         //@todo bukan bagian dari prepro
+
+
+                         //boolean pred= pe.baseLine(hPrepro,tPrepro);
+                         boolean pred= pe.wordNet(hPrepro,tPrepro);
                          String deskPred = pe.toString();
                          sbTemp.append(deskPred);
+
+
                          System.out.println("Prediksi:"+pred);
                          if (pred==isEntail) {
                                 System.out.println("Prediksi cocok");
                                 jumPredCocok++;
                                 pwCocok.println(sbTemp.toString());
+                                pwCocok.println("===========");
                                 //pisahkan yang cocok dan salah
                             } else {
                                 System.out.println("Prediksi salah");
                                 pwNotCocok.println(sbTemp.toString());
-                            }
-                            System.out.println("----");
-                            pwCocok.println("-------");
-                            //nanti tulis
+                                pwNotCocok.println("=============");
+                         }
+                         System.out.println("==========");
                      }
                      rs.close();
                      pStat.close();
@@ -329,7 +341,8 @@ public class PreproBabak2 {
 
        public static void main(String[] args) {
               PreproBabak2 pb = new PreproBabak2();
-              pb.dbName = "localhost/rtebabak2";
+
+              pb.dbName = "localhost/rte3";
               pb.userName = "rte";
               pb.password = "rte";
               //pb.fileStopwordsToDB("C:\\yudiwbs\\eksperimen\\stopwords_eng.txt","stopwords","kata");
