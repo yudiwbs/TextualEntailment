@@ -17,8 +17,6 @@ public class CariAntonim {
 
 
 
-
-
     private IDictionary dict = null;
 
     //biar kamus hanya sekali di load
@@ -39,33 +37,35 @@ public class CariAntonim {
 
     public ArrayList<String> getAntonim(String kata, edu.mit.jwi.item.POS posTag) {
         ArrayList<String> out = new ArrayList<>();
-
-
-
         IIndexWord idxWord = dict.getIndexWord (kata, posTag);
 
         int jumSense =  idxWord.getWordIDs().size();
-
+        //debug
         System.out.println("Jumlah sense="+jumSense);
 
         for (int i = 0; i<jumSense; i++) {
             IWordID wordID = idxWord.getWordIDs().get(i);
             IWord word = dict.getWord(wordID);
+            /*
             System.out.println("Id = " + wordID);
             System.out.println(" Lemma = " + word.getLemma());
             System.out.println(" Gloss = " + word.getSynset().getGloss());
-
+            */
             for (IWordID antonym : word.getRelatedWords(Pointer.ANTONYM)) {
-                System.out.println("a="+dict.getWord(antonym).getLemma());
+                String ant = dict.getWord(antonym).getLemma();
+                //System.out.println("antoinm="+ant);
+                out.add(ant);
             }
         }
         return out;
     }
 
-
-
     public void close() {
         dict.close();
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }
