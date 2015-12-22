@@ -224,8 +224,8 @@ public class PreproBabak2 {
               //ambil data
               //PreparedStatement pUpdate=null;
               try {
-                     PrintWriter pwCocok     = new PrintWriter(dir+"cocok_lemma_wordnetsim.txt");
-                     PrintWriter pwNotCocok  = new PrintWriter(dir+"tdk_cocok1_lemma_wordnetsim.txt");
+                     PrintWriter pwCocok     = new PrintWriter(dir+"cocok_antonim_lemma_wordnetsim.txt");
+                     PrintWriter pwNotCocok  = new PrintWriter(dir+"tdk_cocok_antonim_lemma_wordnetsim.txt");
 
                      Class.forName("com.mysql.jdbc.Driver");
                      // Setup the connection with the DB
@@ -331,6 +331,7 @@ public class PreproBabak2 {
 
                      pwCocok.close();
                      pwNotCocok.close();
+                     pe.close();
 
                      double akurasi = (double) jumPredCocok / cc;
                      System.out.println("Akurasi:"+akurasi);
