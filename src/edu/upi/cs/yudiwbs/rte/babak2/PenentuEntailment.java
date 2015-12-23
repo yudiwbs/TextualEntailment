@@ -1,7 +1,6 @@
 package edu.upi.cs.yudiwbs.rte.babak2;
 
-import edu.upi.cs.yudiwbs.rte.ProsesLemma;
-import edu.upi.cs.yudiwbs.rte.ProsesWordNetSimilarity;
+import edu.upi.cs.yudiwbs.rte.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,9 @@ import java.util.List;
  * Created by yudiwbs on 11/30/2015.
  * menentukan entailment berdasarkan infoteks
  * dikumpulkan dulu dalam satu kelas, idealnya satu kelas satu teknik
+ *
+ * lihat preproBabak2 untuk penggunaan
+ * todo: harusnya jangan dipanggil diprepro
  */
 
 
@@ -20,6 +22,7 @@ public class PenentuEntailment {
     ProsesLemma pLemma;
     ProsesWordNetSimilarity pWordNetSim;
     CariAntonim ca;
+    PPDB ppdb;
 
     public PenentuEntailment() {
 
@@ -35,12 +38,16 @@ public class PenentuEntailment {
 
         ca = new CariAntonim();
         ca.init();
+
+        ppdb = new PPDB();
+        ppdb.init();
     }
 
     public void close() {
         if (ca!=null) {
             ca.close();
         }
+        ppdb.close();
     }
 
 
@@ -54,6 +61,8 @@ public class PenentuEntailment {
     }
 
     public boolean wordNetUrutanKata(InfoTeks itH,InfoTeks itT) {
+        //belum dibuat
+        //perlu memperhitungkan kalimat pasif
         boolean isEntail=false;
         return isEntail;
     }
@@ -65,9 +74,11 @@ public class PenentuEntailment {
         //dengan utak utik parameter batas skor 0.15: 0.646
 
         //dengan memisahkan batas skor untuk similartiy verbH-verbT dan NounH-verbT: tidak pengaruh
-        //persentase lemma yang cocok: tidak berpepengaruh
+        //persentase lemma yang cocok: tidak berpepengaruh (0.645)
         //tambah antonim: tidak berpengaruh
         //ganti similarity dengan hitungSimWordnet2NunoSeco, batas skor 0.16: turun ke 0.6325
+
+        //Gunakan PPDB, fitur GigaSIM (gigawordcorpus),  batas skor:
 
 
 
@@ -186,7 +197,7 @@ public class PenentuEntailment {
 
             for (String verbT:itT.alVerb) {
                 String tempLemma =pLemma.lemmatize(verbT);
-                alVerbTLemma.add(tempLemma);
+                alVerbTLemma.add(tempLemma.trim());
                 sbVerbTLemma.append(tempLemma);
                 sbVerbTLemma.append(" ");
             }
@@ -290,9 +301,9 @@ public class PenentuEntailment {
                     }
                     boolean isAdaAntonim  = false;
                     outerloop:
-
-                    //debug untuk ppdb, mengeluarkan fitur yg paling relevan
                     for (String kata : alKataH) {
+
+                        //proses antononim
                         List<String> lAntonim = ca.getAntonim(kata);
                         for  (String kataAntonim:lAntonim) {
                             tempStringBuilder.append(kata+" antonimnya "+kataAntonim);
@@ -307,7 +318,53 @@ public class PenentuEntailment {
                                 }
                             }
                         }
-                    }
+
+                        //debug untuk ppdb, mengeluarkan fitur yg paling relevan
+                        ArrayList<PPDBRec> alData = ppdb.loadData(kata);
+                        for (PPDBRec data:alData)  {
+                            String targetPrepro = data.preproTarget();
+                            if (targetPrepro.equals(kata)) {
+                                //target sama dengan source? skip
+                                continue;
+                            }
+                            tempStringBuilder.append("===ppdb===");
+                            tempStringBuilder.append(System.lineSeparator());
+                            tempStringBuilder.append(data.id);
+                            tempStringBuilder.append(System.lineSeparator());
+                            tempStringBuilder.append(data.source + "   -> " + targetPrepro);
+                            tempStringBuilder.append(System.lineSeparator());
+                            tempStringBuilder.append(data.fitur);
+                            tempStringBuilder.append(System.lineSeparator());
+                            tempStringBuilder.append(data.allignment);
+                            tempStringBuilder.append(System.lineSeparator());
+                            tempStringBuilder.append(data.tag);
+                            tempStringBuilder.append(System.lineSeparator());
+
+                            //cek apakah ada di verb T lemma
+                            double maxSkorPPDBGigaSim = 0;
+                            String maxKataGigaSim ="";
+                            for (String tempVt:alVerbTLemma) {
+                                if (targetPrepro.equals(tempVt)) {
+                                    tempStringBuilder.append("===> ketemu persamaan di PPDB");
+                                    PPDBfitur f = new PPDBfitur(data.fitur);
+                                    if (f.aGigaSim>maxSkorPPDBGigaSim) {
+                                        maxSkorPPDBGigaSim = f.aGigaSim;
+                                        maxKataGigaSim = targetPrepro;
+                                    }
+                                    tempStringBuilder.append(System.lineSeparator());
+                                    //ambil fiturnya
+                                }
+                            }
+                            if (maxSkorPPDBGigaSim>0) {
+                                tempStringBuilder.append("Max PDDB Gigasim=" + maxKataGigaSim);
+                                tempStringBuilder.append(System.lineSeparator());
+                                tempStringBuilder.append("Skor max gigasim=" + maxSkorPPDBGigaSim);
+                                tempStringBuilder.append(System.lineSeparator());
+                            }
+                        } //for semua PPDB
+                    } //for semua kata
+
+
                     if (isAdaAntonim) {
                         isEntail = false;
                     } else {

@@ -18,194 +18,8 @@ import java.util.Scanner;
 
 public class PPDB {
 
-    private static class Fitur {
-        /*
-           contoh isi fitur:
-            Abstract=0
-            Adjacent=0
-            CharCountDiff=2
-            CharLogCR=0.28768
-            ContainsX=0
-            GlueRule=0
-            Identity=0
-            Lex(e|f)=59.18789
-            Lex(f|e)=59.18789
-            Lexical=1
-            LogCount=4.96981
-            Monotonic=1
-            PhrasePenalty=1
-            RarityPenalty=0
-            SourceTerminalsButNoTarget=0
-            SourceWords=1
-            TargetTerminalsButNoSource=0
-            TargetWords=1
-            UnalignedSource=0
-            UnalignedTarget=0
-            WordCountDiff=0
-            WordLenDiff=2.00000
-            WordLogCR=0
-            p(LHS|e)=0.07756
-            p(LHS|f)=0.23860
-            p(e|LHS)=9.07084
-            p(e|f)=1.56974
-            p(e|f,LHS)=1.12127
-            p(f|LHS)=9.02102
-            p(f|e)=1.35888
-            p(f|e,LHS)=1.07145
-            AGigaSim=0.71573
-            GoogleNgramSim=0
-         */
-
-        int  _abstract;
-        int  adjacent;
-        int charCountDiff;
-        double charLogCR;
-        int containsX;
-        int glueRule;
-        int identity;
-        double lex_e_f;
-        double lex_f_e;
-        int lexical;
-        double logCount;
-        int monotonic;
-        int  phrasePenalty;
-        int rarityPenalty;
-        int sourceTerminalsButNoTarget;
-        int sourceWords;
-        int targetTerminalsButNoSource;
-        int targetWords;
-        int unalignedSource;
-        int unalignedTarget;
-        int wordCountDiff;
-        double wordLenDiff;
-        int wordLogCR;
-        double p_LHS_e;
-        double p_LHS_f;
-        double p_e_LHS;
-        double p_e_f;
-        double p_e_f_LHS;
-        double p_f_LHS;
-        double p_f_e;
-        double p_f_e_LHS;
-        double AGigaSim;
-        int GoogleNgramSim;
-
-        public Fitur(String strFitur) {
-            //dari string isi
-            Scanner sc = new Scanner(strFitur);
-            while (sc.hasNext()) {
-                String stat = sc.next();
-                System.out.println(stat);//debug
-                String[] arrElStat = stat.split("=");
-                String op = arrElStat[0];
-                System.out.println(op);
-                String opr = arrElStat[2];
-
-                /*
-
-                int charCountDiff;
-        double charLogCR;
-        int containsX;
-        int glueRule;
-        int identity;
-
-                 */
-
-                if (op.equals("Abstract")) {
-                    _abstract = Integer.parseInt(opr);
-                } else if (op.equals("Adjacent")) {
-                     adjacent = Integer.parseInt(opr);
-                } else if (op.equals("CharCountDiff")) {
-                     charCountDiff = Integer.parseInt(opr);
-                } else if (op.equals("CharLogCR")) {
-                      charLogCR = Double.parseDouble(opr);
-                } else if (op.equals("ContainsX")) {
-
-                } else if (op.equals("GlueRule")) {
-
-                } else if (op.equals("Identity")) {
-
-                } else if (op.equals("Lex(e|f)")) {
-
-                } else if (op.equals("Lex(f|e)")) {
-
-                } else if (op.equals("Lexical")) {
-
-                } else if (op.equals("LogCount")) {
-
-                } else if (op.equals("Monotonic")) {
-
-                } else if (op.equals("PhrasePenalty")) {
-
-                } else if (op.equals("RarityPenalty")) {
-
-                } else if (op.equals("SourceTerminalsButNoTarget")) {
-
-                } else if (op.equals("SourceWords")) {
-
-                } else if (op.equals("TargetTerminalsButNoSource")) {
-
-                } else if (op.equals("TargetWords")) {
-
-                } else if (op.equals("UnalignedSource")) {
-
-                } else if (op.equals("UnalignedTarget")) {
-
-                } else if (op.equals("WordCountDiff")) {
-
-                } else if (op.equals("WordLenDiff")) {
-
-                } else if (op.equals("WordLogCR")) {
-
-                } else if (op.equals("p(LHS|e)")) {
-
-                } else if (op.equals("p(LHS|f)")) {
-
-                } else if (op.equals("p(e|LHS)")) {
-
-                } else if (op.equals("p(e|f)")) {
-
-                } else if (op.equals("p(e|f,LHS)")) {
-
-                } else if (op.equals("p(f|LHS)")) {
-
-                } else if (op.equals("p(f|e)")) {
-
-                } else if (op.equals("p(f|e,LHS)")) {
-
-                } else if (op.equals("AGigaSim")) {
-
-                } else if (op.equals("GoogleNgramSim")) {
-
-                }
-            }
-        }
-
-        public void print() {
-            //print isi dari fitur
-            System.out.println("abstract="+_abstract);
 
 
-        }
-    }
-
-    private class PPDBRec {
-
-        int id;
-        String tag;
-        String source;
-        String target;
-        String fitur;
-        String allignment;
-
-
-
-
-
-
-
-
-    }
 
 
      private Connection conn = null;
@@ -262,7 +76,8 @@ public class PPDB {
 
      */
 
-    private ArrayList<PPDBRec> loadData(String kataSource) {
+    public ArrayList<PPDBRec> loadData(String kataSource) {
+        kataSource = kataSource.trim();
         if (kataSource.isEmpty()) {
             return null;
         }
@@ -470,10 +285,237 @@ public class PPDB {
         }
         p.close();
         */
+
+
         PPDB p = new PPDB();
-        Fitur f = new Fitur("Abstract=0 Adjacent=0 CharCountDiff=2 CharLogCR=0.28768 ContainsX=0 GlueRule=0 Identity=0 Lex(e|f)=59.18789 Lex(f|e)=59.18789 Lexical=1 LogCount=4.96981 Monotonic=1 PhrasePenalty=1 RarityPenalty=0 SourceTerminalsButNoTarget=0 SourceWords=1 TargetTerminalsButNoSource=0 TargetWords=1 UnalignedSource=0 UnalignedTarget=0 WordCountDiff=0 WordLenDiff=2.00000 WordLogCR=0 p(LHS|e)=0.07756 p(LHS|f)=0.23860 p(e|LHS)=9.07084 p(e|f)=1.56974 p(e|f,LHS)=1.12127 p(f|LHS)=9.02102 p(f|e)=1.35888 p(f|e,LHS)=1.07145 AGigaSim=0.71573 GoogleNgramSim=0");
+        PPDBfitur f = new PPDBfitur ("Abstract=0 Adjacent=0 CharCountDiff=2 CharLogCR=0.28768 ContainsX=0 " +
+                "GlueRule=0 Identity=0 Lex(e|f)=59.18789 Lex(f|e)=59.18789 Lexical=1 LogCount=4.96981 Monotonic=1 " +
+                "PhrasePenalty=1 RarityPenalty=0 SourceTerminalsButNoTarget=0 SourceWords=1 " +
+                "TargetTerminalsButNoSource=0 TargetWords=1 UnalignedSource=0 UnalignedTarget=0 " +
+                "WordCountDiff=0 WordLenDiff=2.00000 WordLogCR=0 p(LHS|e)=0.07756 p(LHS|f)=0.23860 " +
+                "p(e|LHS)=9.07084 p(e|f)=1.56974 p(e|f,LHS)=1.12127 p(f|LHS)=9.02102 p(f|e)=1.35888 " +
+                "p(f|e,LHS)=1.07145 AGigaSim=0.71573 GoogleNgramSim=0");
         f.print();
+
+
+        /*
+        PPDBRec pr = new PPDBRec();
+        pr.target ="tobe tobe";
+        System.out.println(pr.preproTarget());
+
+
+        PPDB p = new PPDB();
+        p.init();
+        ArrayList<PPDBRec> alData = p.loadData("die");
+        for (PPDBRec data:alData)  {
+            System.out.println("======");
+            System.out.println(data.id);
+            System.out.println(data.target);
+            System.out.println("==>"+data.preproTarget());
+           // System.out.println(data.fitur);
+            //System.out.println(data.allignment);
+            //System.out.println(data.tag);
+        }
+        p.close();
+        */
     }
 
 
+
 }
+
+
+/*
+
+Full list of features distributed with
+PPDB 2.0
+Features are listed alphabetically. Bold indicates
+that the feature is new in the 2.0 release of PPDB.
+• Abstract – a binary feature that indicates
+whether the rule is composed exclusively of
+nonterminal symbols.
+• Adjacent – a binary feature that indicates
+whether rule contains adjacent nonterminal
+symbols.
+• AGigaSim – the distributional similarity of
+e1 and e2, computed according to contexts
+observed in the Annotated Gigaword corpus
+(Napoles et al., 2012).
+• CharCountDiff – a feature that calculates the
+difference in the number of characters between
+the phrase and the paraphrase. This
+feature is used for the sentence compression
+experiments described in Napoles et al.
+(2011).
+• CharLogCR – the log-compression ratio in
+characters, log chars(f2)
+chars(f1)
+, another feature used
+in sentence compression.
+• ComplexityDiff – the difference in complexity
+between e1 and e2, according to the
+method described in Pavlick and Nenkova
+(2015). Not present for every pair. Positive
+value implies that e1 is more complex than
+e2, negative that e1 is simpler than e2.
+• ContainsX – a binary feature that indicates
+whether the nonterminal symbol X is used in
+this rule. X is the symbol used in Hiero grammars
+(Chiang, 2007), and is sometimes used
+by our syntactic SCFGs when we are unable
+to assign a linguistically motivated nonterminal.
+• Equivalence – predicted probability that the
+paraphrase pair represents semantic equivalence
+(e1 entails e2 and e2 entails e1), according
+to model used in Pavlick et al. (2015).
+• Exclusion – predicted probability that the
+paraphrase pair represents semantic exclusion.
+• FirstAppearsIn[S|M|L|XL|XXL|XXXL] –
+binary feature indicating the PPDB 1.0 size
+(S through XXXL) where the paraphrase pair
+first appears. Only one feature (e.g. one size)
+will be present for each pair.
+• FormalityDiff – the difference in formality
+between e1 and e2. Not present for every pair.
+Positive value implies that e1 is more formal
+than e2, negative that e1 is more casual than
+e2.
+• ForwardEntailment – predicted probability
+that the paraphrase pair represents forward
+entailment (e1 entails e2). Either this feature
+or the ReverseEntailment feature will be
+present, but not both.
+• GlueRule – a binary feature that indicates
+whether this is a glue rule. Glue rules are
+treated specially by the Joshua decoder (Post
+et al., 2013). They are used when the decoder
+cannot produce a complete parse using
+the other grammar rules.
+• GoogleNgramSim – the distributional similarity
+of e1 and e2, computed according to
+contexts observed in the Google Ngram corpus
+(Brants and Franz, 2006).
+• Identity – a binary feature that indicates
+whether the phrase is identical to the paraphrase.
+• Independent – predicted probability that the
+paraphrase pair represents semantic independence.
+• Lex(e2|e1) – the “lexical translation” probability
+of the paraphrase given the original
+phrase. This feature is estimated as defined
+by Koehn et al. (2003)
+• Lex(e1|e2) – the lexical translation probability
+of phrase given the paraphrase.
+• Lexical – a binary feature that says whether
+this is a single word paraphrase.
+• LogCount – the log of the frequency estimate
+for this paraphrase pair.
+• Monotonic – a binary feature that indicates
+whether multiple nonterminal symbols occur
+in the same order (are monotonic) or if they
+are re-ordered.
+• MVLSASim – Cosine similarity according
+to the Multiview Latent Semantic Analysis
+embeddings described by Rastogi et al.
+(2015).
+• OtherRelated – predicted probability that
+the paraphrase pair represents topical relatedness
+but not entailment. In terms of strict
+entailment, this can be treated the same as Independent,
+but pairs in the OtherRelated class
+are predicted to be more semantically similar
+than pairs in the Independent class.
+• PhrasePenalty – this feature is used by the
+decoder to count how many rules it uses in
+a derivation. Turning helps it to learn to
+prefer fewer longer phrases, or more shorter
+phrases. The value of this feature is always 1.
+• PPDB1.0Score – the score used to rank paraphrases
+in the original release of PPDB, computed
+according to the heurisitic weighting
+given in the paper.
+• RarityPenalty – this feature marks rules that
+have only been seen a handful of times. It
+is calculated as exp(1 − c(e1, e2)), where
+c(e1, e2) is the estimate of the frequency of
+this paraphrase pair.
+• ReverseEntailment – predicted probability
+that the paraphrase pair represents reverse
+entailment (e2 entails e1). Either this feature
+or the ForwardEntailment feature will be
+present, but not both.
+• SourceTerminalsButNoTarget – a binary feature
+that fires when the phrase contains terminal
+symbols, but the paraphrase contains
+no terminal symbols.
+• SourceComplexity – the complexity score
+for e1 according to the method described in
+Pavlick and Nenkova (2015). Not present
+for every pair. Higher numbers indicate
+more complex phrases, lower indicate simpler
+phrases.
+• SourceFormality – the formality score for e1
+according to the same method. Not present
+for every pair. Higher numbers indicate more
+formal phrases, lower indicate more casual
+phrases.
+• SourceWords – the number of words in the
+original phrase.
+• TargetTerminalsButNoSource – a binary feature
+that fires when the paraphrase contains
+terminal symbols but the original phrase only
+contains nonterminal symbols.
+• TargetWords – the number of words in the
+paraphrase.
+• TargetComplexity – the complexity score
+for e2. Not present for every pair.
+• TargetFormality – the formality score for
+e2. Not present for every pair.
+• UnalignedSource – a binary feature that fires
+if there are any words in the original phrase
+that are not aligned to any words in the paraphrase.
+• UnalignedTarget – a binary feature that fires
+if there are any words in the paraphrase that
+are not aligned to any words in the original
+phrase.
+• WordCountDiff – the difference in the number
+of words in the original phrase and the
+paraphrase. This feature is used for our sentence
+compression experiments.
+• WordLenDiff – the difference in average
+word length between the original phrase and
+the paraphrase. This feature is useful for text
+compression and simplification experiments.
+• WordLogCR – the log-compression ratio in
+words, estimated as log words(e) words(f).
+This feature is used for our sentence compression
+experiments.
+• p(LHS|e2) – the (negative log) probability
+of the lefthand side nonterminal symbol
+given the paraphrase.
+• p(LHS|e1) – the (negative log) probability
+of the lefthand side nonterminal symbol
+given the original phrase.
+• p(e2|LHS) – the (negative log) probability
+of the paraphrase given the lefthand side nonterminal
+symbol (this is typically a very low
+probability).
+• p(e2|e1) – the paraphrase probability of the
+paraphrase given the original phrase, as de-
+fined by Bannard and Callison-Burch (2005).
+This is given as a negative log value.
+• p(e2|e1, LHS) – the (negative log) probability
+of paraphrase given the the lefthand side
+nonterminal symbol and the original phrase.
+• p(e1|LHS) – the (negative log) probability
+of original phrase given the the lefthand side
+nonterminal (this is typically a very low probability).
+• p(e1|e2) – the paraphrase probability of the
+original phrase given the paraphrase, as de-
+fined by Bannard and Callison-Burch (2005).
+This is given as a negative log value.
+• p(e1|e2, LHS) – the (negative log) probability
+of original phrase given the the lefthand
+side nonterminal symbol and the paraphrase
+
+
+ */
