@@ -451,7 +451,9 @@ Verb H lemma:located
 Verb T lemma:record
 Skor wordnet:0.0
 
-=============
+
+Burns surgeons approve <> controversy among other burns surgeons
+===============
 ID:29
 H:Burns surgeons approve Dr Wood's spray-on skin.
 T:Dr Wood led a courageous and committed team in the fight to save 28 patients suffering from between two and 92 per cent body burns, deadly infections and delayed shock. As well as receiving much praise from both her own patients and the media, she also attracted controversy among other burns surgeons due to the fact that spray-on skin had not yet been subjected to clinical trials.
@@ -479,6 +481,10 @@ Skor wordnet:0.2222222222222222
 approve  antonimnya disapprove
 approve  antonimnya disapprove
 
+
+supports global terrorism vs confrontation with global terrorism !!! antonim
+confrontation tdk dianggap verb
+coref: his 
 =============
 ID:30
 H:Bush supports global terrorism.
@@ -504,8 +510,8 @@ Verb H lemma:support
 Verb T lemma:announce  prepare  combate
 Skor wordnet:0.4
 
-
-=============
+penanganan by [obj]
+====================
 ID:31
 H:Capt. Scott reached Scott Island in December 1902.
 T:Scott Island was discovered and landed upon in December 1902 by Captain William Colbeck commander of the Morning, relief ship for Capt. Robert F. Scott's expedition.
@@ -530,7 +536,9 @@ Verb H lemma:reach
 Verb T lemma:discover  land
 Skor wordnet:0.4
 
-
+sulit: 
+[x] is member [y]
+[y] bind [x]
 =============
 ID:34
 H:China is a member of SCO.
@@ -557,6 +565,8 @@ Noun H:china member sco
 Verb T lemma:represent  bind  fight
 Skor wordnet:0.2
 
+sulit
+Singkatan CIA, informasi tidak langsung
 =============
 ID:35
 H:CIA secret prisons were located in Eastern Europe.
@@ -576,7 +586,10 @@ Persentase noun H yang cocok:40.0
 Verb yang cocok:
 Persentase verb H yang cocok:0.0
 
-=============
+!!! [x] is a relative  [y] <> x an acquaintance of y
+noun vs noun
+penanganan nama belakang 
+=============================
 ID:36
 H:Clark is a relative of Jones'.
 T:The car which crashed against the mail-box belonged to James Clark, 68, an acquaintance of James Jones' family.
