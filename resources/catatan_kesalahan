@@ -9,9 +9,15 @@ PenentuEntailment.wordNet
 Catatan kenapa salah berada diatas garis  ====
 
 
+
 proses in [lokasi]?
 kecocokan subj ver obj
 went to london
+
+proses is ...   
+proses by ...  <-- yang melakukan
+penanganan kata not
+
 ==============
 ID:3
 H:"Does A Tiger Have A Necktie" was produced in London.
@@ -453,7 +459,7 @@ Skor wordnet:0.0
 
 
 Burns surgeons approve <> controversy among other burns surgeons
-===============
+=======================
 ID:29
 H:Burns surgeons approve Dr Wood's spray-on skin.
 T:Dr Wood led a courageous and committed team in the fight to save 28 patients suffering from between two and 92 per cent body burns, deadly infections and delayed shock. As well as receiving much praise from both her own patients and the media, she also attracted controversy among other burns surgeons due to the fact that spray-on skin had not yet been subjected to clinical trials.
@@ -616,7 +622,6 @@ Verb T lemma:crash  belong
 Skor wordnet:0.2222222222222222
 
 relative antonimnya absolute
-
 =============
 ID:38
 H:Côte d'Ivoire is located in Africa.
@@ -642,6 +647,8 @@ Verb H lemma:located
 Verb T lemma:split  fail  pit
 Skor wordnet:0.0
 
+!!! said == accused
+kenapa said di T tidak ditemukan sebagai verb?
 =============
 ID:39
 H:Cristiani is accused of the assassination of six Jesuits.
@@ -661,6 +668,9 @@ Persentase noun H yang cocok:33.33333333333333
 Verb yang cocok:
 Persentase verb H yang cocok:0.0
 
+
+Cristiani is the president == Cristiani is the president
+he left for Costa Rica <> president of Costa Rica
 =============
 ID:40
 H:Cristiani is the president of Costa Rica.
@@ -687,7 +697,8 @@ Noun H:cristiani president costa rica
 Verb T lemma:speak  left  attend
 Skor wordnet:0.375
 
-
+sulit
+x to be bought by y,  y sold x
 =============
 ID:46
 H:Deutsche Telekom sold O2 Plc.
@@ -714,7 +725,6 @@ Verb T lemma:agree  buy  fall  make
 Skor wordnet:0.34782608695652173
 
 sell  antonimnya buy
-
 =============
 ID:47
 H:Diplomats agree on EU budget.
@@ -743,6 +753,9 @@ Skor wordnet:0.5
 agree  antonimnya disagree
 agree  antonimnya disagree
 
+sulit
+people think I am terrorist == El-Nashar is accused of terrorism
+coref I
 =============
 ID:51
 H:El-Nashar is accused of terrorism.
@@ -762,7 +775,9 @@ Persentase noun H yang cocok:50.0
 Verb yang cocok:
 Persentase verb H yang cocok:0.0
 
-=============
+!!! arrested == detained
+egypt = cairo egyptian
+========================
 ID:52
 H:El-Nashar was arrested in Egypt.
 T:El-Nashar was detained July 14 in Cairo after Britain notified Egyptian authorities that it suspected he may have had links to some of the attackers.
@@ -781,6 +796,7 @@ Persentase noun H yang cocok:50.0
 Verb yang cocok:
 Persentase verb H yang cocok:0.0
 
+sulit
 =============
 ID:53
 H:Emperor Charles V was elected by Clement VII.
@@ -803,6 +819,8 @@ Proses lematisasi pasangan verb H dan T:
 lemma cocok:elect 
 Persen lemma cocok:1.0
 
+sulit
+x is [] of [] 
 =============
 ID:54
 H:Eurest Support Services is a subsidiary of Ernst and Young.
@@ -833,6 +851,7 @@ services antonimnya disservice
 young antonimnya old
 young antonimnya aged
 
+!!! detains<>acquiring
 =============
 ID:60
 H:Gazprom detains the Uzbek pipeline monopoly.
@@ -858,7 +877,7 @@ Verb H lemma:detain
 Verb T lemma:show  acquire
 Skor wordnet:0.5
 
-
+is a [xxxx]
 =============
 ID:61
 H:Gbagbo is a competitor of Ouattara.
@@ -885,6 +904,8 @@ Noun H:gbagbo competitor ouattara
 Verb T lemma:establish  exclude
 Skor wordnet:0.0
 
+!!! antonim tidak ditemukan
+loses <> reported net earnings
 =============
 ID:62
 H:General Dynamics loses $374m.
@@ -917,6 +938,7 @@ lose  antonimnya profit
 lose  antonimnya break_even
 lose  antonimnya win
 
+!!!penggunaan not
 =============
 ID:63
 H:Guatemala accepts the Pet passport as proof of vaccination.
@@ -939,6 +961,7 @@ Proses lematisasi pasangan verb H dan T:
 lemma cocok:accept 
 Persen lemma cocok:1.0
 
+!!! verb sale tidak ditemukan sebagai verb
 =============
 ID:64
 H:GUS sold Wehkamp.
@@ -964,7 +987,8 @@ Verb H lemma:sell
 Verb T lemma:disposed
 Skor wordnet:0.0
 
-=============
+posing x <> x, mirip not
+====================
 ID:67
 H:Hooper bought a house in Portland.
 T:Hooper, a salesman of Portland, is accused of posing as a potential home buyer on July 26, then forcing himself inside the residence and raping a 19-year-old woman.
@@ -991,6 +1015,7 @@ Skor wordnet:0.35294117647058826
 
 buy  antonimnya sell
 
+sulit
 =============
 ID:68
 H:Hooper is a citizen of Portland.
@@ -1019,6 +1044,7 @@ Skor wordnet:0.23529411764705882
 
 citizen antonimnya noncitizen
 
+!!! support <> doubt
 =============
 ID:76
 H:Intelligent design supports Darwinian evolution.
@@ -1044,8 +1070,9 @@ Verb H lemma:support
 Verb T lemma:rule  include  cast
 Skor wordnet:0.5
 
-
-=============
+X attacked Y  <> Y engaged X
+pertukaran subj obj
+======================
 ID:77
 H:Israeli forces attacked seven Arab states in 1948.
 T:Following the Declaration of the Establishment of the State of Israel, May 14, 1948, seven Arab states entered Palestine and engaged Israeli forces.
@@ -1072,6 +1099,7 @@ Skor wordnet:0.4
 
 attack  antonimnya defend
 
+kalimat tidak langsung "has asked"
 =============
 ID:78
 H:Italy's government investigates Sony.
@@ -1094,6 +1122,10 @@ Proses lematisasi pasangan verb H dan T:
 lemma cocok:investigate 
 Persen lemma cocok:1.0
 
+
+coref he, seventh = 7 
+sulit: won championships = collected championship ring  <-- search? 
+!!! verb tidak ketemu? noun tidak ketemu?
 =============
 ID:82
 H:Jerry Reinsdorf has won 7 championships.
@@ -1112,6 +1144,9 @@ Noun:
 Persentase noun H yang cocok:0.0
 Verb yang cocok:
 Persentase verb H yang cocok:0.0
+
+
+penanganan is
 
 =============
 ID:84

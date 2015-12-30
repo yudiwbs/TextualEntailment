@@ -36,4 +36,851 @@ id:6
 
 ---
 id:7
+52 people and four bombers were killed on July 7.
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/7_July_2005_London_bombings","url":"https://en.wikipedia.org/wiki/7_July_2005_London_bombings","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:_uMe4ZzftQMJ:en.wikipedia.org","title":"\u003cb\u003e7 July\u003c/b\u003e 2005 London \u003cb\u003ebombings\u003c/b\u003e - Wikipedia, the free encyclopedia","titleNoFormatting":"7 July 2005 London bombings - Wikipedia, the free encyclopedia","content":"The \u003cb\u003e7 July 2005\u003c/b\u003e London \u003cb\u003ebombings\u003c/b\u003e (often referred to as 7/7) were a series of \ncoordinated .... The \u003cb\u003e52\u003c/b\u003e victims were of diverse backgrounds; among them were \nseveral ..... Fifty-six \u003cb\u003epeople\u003c/b\u003e, including the \u003cb\u003efour\u003c/b\u003e suicide \u003cb\u003ebombers\u003c/b\u003e, \u003cb\u003ewere killed\u003c/b\u003e by the\n ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.bbc.co.uk/newsround/33401669","url":"http://www.bbc.co.uk/newsround/33401669","visibleUrl":"www.bbc.co.uk","cacheUrl":"http://www.google.com/search?q\u003dcache:qV18Lt-ngwQJ:www.bbc.co.uk","title":"\u003cb\u003e7\u003c/b\u003e/\u003cb\u003e7\u003c/b\u003e London \u003cb\u003ebombings\u003c/b\u003e: What happened on \u003cb\u003e7 July\u003c/b\u003e 2005? - BBC","titleNoFormatting":"7/7 London bombings: What happened on 7 July 2005? - BBC","content":"Jul 6, 2015 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eFour\u003c/b\u003e bombs went off there - three on the London underground and one on a bus. \n... Sadly, \u003cb\u003e52 people died\u003c/b\u003e in the attacks and more than 770 \u003cb\u003epeople were\u003c/b\u003e injured ... \n\u003cb\u003eFour men\u003c/b\u003e carried out the \u003cb\u003efour\u003c/b\u003e separate \u003cb\u003ebomb\u003c/b\u003e attacks on \u003cb\u003e7 July\u003c/b\u003e."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.independent.co.uk/news/uk/home-news/77-bombings-london-anniversary-live-profiles-of-the-four-bombers-who-killed-52-people-in-london-10369984.html","url":"http://www.independent.co.uk/news/uk/home-news/77-bombings-london-anniversary-live-profiles-of-the-four-bombers-who-killed-52-people-in-london-10369984.html","visibleUrl":"www.independent.co.uk","cacheUrl":"http://www.google.com/search?q\u003dcache:2jDbPsv93oYJ:www.independent.co.uk","title":"\u003cb\u003e7\u003c/b\u003e/\u003cb\u003e7 bombings\u003c/b\u003e: Profiles of the \u003cb\u003efour bombers\u003c/b\u003e who \u003cb\u003ekilled 52 people\u003c/b\u003e in \u003cb\u003e...\u003c/b\u003e","titleNoFormatting":"7/7 bombings: Profiles of the four bombers who killed 52 people in ...","content":"Jul 6, 2015 \u003cb\u003e...\u003c/b\u003e \u003cb\u003e7\u003c/b\u003e/\u003cb\u003e7 bombings\u003c/b\u003e: Profiles of the \u003cb\u003efour bombers\u003c/b\u003e who \u003cb\u003ekilled 52 people\u003c/b\u003e in the London ... \nAgency; Monday 6 \u003cb\u003eJuly\u003c/b\u003e 2015 16:41 BST ... They made long round trips to meet \nBritish terrorists plotting a fertiliser \u003cb\u003ebomb\u003c/b\u003e attack and travelled to ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.bbc.com/news/uk-33407554","url":"http://www.bbc.com/news/uk-33407554","visibleUrl":"www.bbc.com","cacheUrl":"http://www.google.com/search?q\u003dcache:kjxYRvO5568J:www.bbc.com","title":"\u003cb\u003e7 July\u003c/b\u003e London \u003cb\u003ebombings\u003c/b\u003e: Ceremonies in memory of victims - BBC.com","titleNoFormatting":"7 July London bombings: Ceremonies in memory of victims - BBC.com","content":"Jul 7, 2015 \u003cb\u003e...\u003c/b\u003e \u003cb\u003e7 July\u003c/b\u003e London \u003cb\u003ebombings\u003c/b\u003e: Ceremonies in memory of victims ... by the London \n\u003cb\u003ebombings\u003c/b\u003e, in which \u003cb\u003e52 people died\u003c/b\u003e and more than 700 \u003cb\u003ewere\u003c/b\u003e hurt a decade ago. \n... The \u003cb\u003ebombing\u003c/b\u003e of three Tube trains and a bus - carried out by \u003cb\u003efour\u003c/b\u003e ..."}],"cursor":{"resultCount":"2,420,000","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"2420000","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003d52+people+and+four+bombers+were+killed+on+July+7++-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.39"}}, "responseDetails": null, "responseStatus": 200}
 
+---
+id:8
+80% approve of Mr. Bush.
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.gallup.com/poll/116500/presidential-approval-ratings-george-bush.aspx","url":"http://www.gallup.com/poll/116500/presidential-approval-ratings-george-bush.aspx","visibleUrl":"www.gallup.com","cacheUrl":"","title":"Presidential \u003cb\u003eApproval\u003c/b\u003e Ratings -- \u003cb\u003eGeorge\u003c/b\u003e W. \u003cb\u003eBush\u003c/b\u003e | Gallup Historical \u003cb\u003e...\u003c/b\u003e","titleNoFormatting":"Presidential Approval Ratings -- George W. Bush | Gallup Historical ...","content":"you \u003cb\u003eapprove\u003c/b\u003e or disapprove of the way \u003cb\u003eGeorge\u003c/b\u003e W. \u003cb\u003eBush\u003c/b\u003e is handling his job as ... \n\u003cb\u003e80\u003c/b\u003e. 14. 6. 2002 Mar 4-7. 77. 18. 5. 2002 Mar 1-3. 81. 14. 5. 2002 Feb 8-10. 82. 14."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/Public_image_of_George_W._Bush","url":"https://en.wikipedia.org/wiki/Public_image_of_George_W._Bush","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:QxKR691NwvoJ:en.wikipedia.org","title":"Public image of \u003cb\u003eGeorge\u003c/b\u003e W. \u003cb\u003eBush\u003c/b\u003e - Wikipedia, the free encyclopedia","titleNoFormatting":"Public image of George W. Bush - Wikipedia, the free encyclopedia","content":"The \u003cb\u003eapproval\u003c/b\u003e ratings of \u003cb\u003eGeorge\u003c/b\u003e W. \u003cb\u003eBush\u003c/b\u003e have ranged from a record high to a ... in \nat 92%, and a steady \u003cb\u003e80\u003c/b\u003e–90% \u003cb\u003eapproval\u003c/b\u003e for about four months after the attacks."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://cnsnews.com/news/article/gallup-muslim-americans-give-obama-80-percent-approval-highest-major-religions","url":"http://cnsnews.com/news/article/gallup-muslim-americans-give-obama-80-percent-approval-highest-major-religions","visibleUrl":"cnsnews.com","cacheUrl":"http://www.google.com/search?q\u003dcache:1Z4ato5Cj8wJ:cnsnews.com","title":"Gallup: Muslim Americans Give Obama \u003cb\u003e80\u003c/b\u003e Percent \u003cb\u003eApproval\u003c/b\u003e \u003cb\u003e...\u003c/b\u003e","titleNoFormatting":"Gallup: Muslim Americans Give Obama 80 Percent Approval ...","content":"Aug 10, 2011 \u003cb\u003e...\u003c/b\u003e Obama\u0026#39;s \u003cb\u003eapproval\u003c/b\u003e among Muslim Americans has declined since 2009 but still \nremains far higher than the \u003cb\u003eapproval President George\u003c/b\u003e W. \u003cb\u003eBush\u0026#39;s\u003c/b\u003e ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://online.wsj.com/public/resources/documents/info-presapp0605-31.html","url":"http://online.wsj.com/public/resources/documents/info-presapp0605-31.html","visibleUrl":"online.wsj.com","cacheUrl":"http://www.google.com/search?q\u003dcache:k9vgZq829Z8J:online.wsj.com","title":"Presidential \u003cb\u003eApproval\u003c/b\u003e Ratings History - Interactive Comparison Graph","titleNoFormatting":"Presidential Approval Ratings History - Interactive Comparison Graph","content":"A Wall Street Journal infographic with an interactive chart comparing the \nhistorical \u003cb\u003epresident approval\u003c/b\u003e ratings of Obama, \u003cb\u003eBush\u003c/b\u003e, Clinton, Reagan all the way \nback ..."}],"cursor":{"resultCount":"27,200","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"27200","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003d80%25+approve+of+Mr.+Bush++-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.31"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+id=9
+A pro-women amendment was rejected by the National Assembly of Kuwait.
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://nlp.stanford.edu/projects/contradiction/RTE3_dev_3ways.xml","url":"http://nlp.stanford.edu/projects/contradiction/RTE3_dev_3ways.xml","visibleUrl":"nlp.stanford.edu","cacheUrl":"http://www.google.com/search?q\u003dcache:TpxmAHIGPncJ:nlp.stanford.edu","title":"RTE3_dev data - The Stanford NLP","titleNoFormatting":"RTE3_dev data - The Stanford NLP","content":"\u003cb\u003eA pro\u003c/b\u003e-\u003cb\u003ewomen amendment was rejected by the National Assembly of Kuwait\u003c/b\u003e. I \nrecently took a round trip from Abuja to Yola, the capital of Adamawa State and ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://bakerinstitute.org/files/9709/","url":"http://bakerinstitute.org/files/9709/","visibleUrl":"bakerinstitute.org","cacheUrl":"http://www.google.com/search?q\u003dcache:BcACfJdQQ20J:bakerinstitute.org","title":"\u003cb\u003eWomen\u0026#39;s\u003c/b\u003e Political Representation in \u003cb\u003eKuwait\u003c/b\u003e: An Untold Story","titleNoFormatting":"Women\u0026#39;s Political Representation in Kuwait: An Untold Story","content":"\u003cb\u003eKuwait\u003c/b\u003e. The \u003cb\u003eamendment\u003c/b\u003e of Election Law No. 35/1962 in 2005, which granted \n\u003cb\u003ewomen\u003c/b\u003e ... \u003cb\u003eKuwaiti Parliament\u003c/b\u003e—elected in July 2013—does not have a single \n\u003cb\u003efemale\u003c/b\u003e ... are not allowed, there are unofficial opposition and \u003cb\u003epro\u003c/b\u003e-government \nblocs, as ..... The proposal was fiercely discussed in the Assembly and \u003cb\u003erejected\u003c/b\u003e \nfollowing a.","fileFormat":"PDF/Adobe Acrobat"},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.nytimes.com/2009/05/18/world/middleeast/18kuwait.html","url":"http://www.nytimes.com/2009/05/18/world/middleeast/18kuwait.html","visibleUrl":"www.nytimes.com","cacheUrl":"","title":"First \u003cb\u003eWomen\u003c/b\u003e Win Seats in \u003cb\u003eKuwait Parliament\u003c/b\u003e - The New York Times","titleNoFormatting":"First Women Win Seats in Kuwait Parliament - The New York Times","content":"May 17, 2009 \u003cb\u003e...\u003c/b\u003e Israel Presses Brazil to Accept \u003cb\u003ePro\u003c/b\u003e-Settler Envoy ... The \u003cb\u003ewomen\u003c/b\u003e elected to the 50-\nmember \u003cb\u003enational assembly\u003c/b\u003e in \u003cb\u003eKuwait\u003c/b\u003e are, from left, Aseel al-Awadi, Rola ... SANA\n, Yemen — \u003cb\u003eWomen\u003c/b\u003e won four seats in the \u003cb\u003eKuwaiti\u003c/b\u003e parliamentary elections over the \n... Peyton Manning \u003cb\u003eRejects\u003c/b\u003e Report Linking Him to Doping."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.refworld.org/docid/47387b6cc.html","url":"http://www.refworld.org/docid/47387b6cc.html","visibleUrl":"www.refworld.org","cacheUrl":"","title":"\u003cb\u003eWomen\u0026#39;s\u003c/b\u003e Rights in the Middle East and North Africa - \u003cb\u003eKuwait\u003c/b\u003e","titleNoFormatting":"Women\u0026#39;s Rights in the Middle East and North Africa - Kuwait","content":"Oct 14, 2005 \u003cb\u003e...\u003c/b\u003e The \u003cb\u003eparliament\u003c/b\u003e in \u003cb\u003eKuwait\u003c/b\u003e serves as a legislative body with the power to .... The \ngovernment should \u003cb\u003eamend\u003c/b\u003e national laws in order to bring all ..... men lost the right \nto own government housing; the \u003cb\u003eNational Assembly rejected\u003c/b\u003e a ... an independent \nvoice for \u003cb\u003ewomen\u0026#39;s\u003c/b\u003e rights to \u003cb\u003ea pro\u003c/b\u003e-government support network."}],"cursor":{"resultCount":"6,950","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"6950","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dA+pro-women+amendment+was+rejected+by+the+National+Assembly+of+Kuwait.","searchResultTime":"0.37"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+id=10
+Abuja is located in Adamawa State.
+
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.abuja-ng.com/state-liaison-offices.html","url":"http://www.abuja-ng.com/state-liaison-offices.html","visibleUrl":"www.abuja-ng.com","cacheUrl":"http://www.google.com/search?q\u003dcache:4JjGOTHroTEJ:www.abuja-ng.com","title":"\u003cb\u003eState\u003c/b\u003e Liaison Offices In \u003cb\u003eAbuja\u003c/b\u003e","titleNoFormatting":"State Liaison Offices In Abuja","content":"The 36 states of Nigeria have liaison offices in \u003cb\u003eAbuja\u003c/b\u003e, the federal capital city of ... \nAKWA IBOM STATE LIAISON OFFICE ... \u003cb\u003eADAMAWA STATE\u003c/b\u003e LIAISON OFFICE."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/List_of_radio_stations_in_Nigeria","url":"https://en.wikipedia.org/wiki/List_of_radio_stations_in_Nigeria","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:ii7svTsDAR4J:en.wikipedia.org","title":"List of radio stations in Nigeria - Wikipedia, the free encyclopedia","titleNoFormatting":"List of radio stations in Nigeria - Wikipedia, the free encyclopedia","content":"1.1 Federal Capital Territory (FCT); 1.2 Abia State; 1.3 \u003cb\u003eAdamawa State\u003c/b\u003e ... \u003cb\u003eAbuja\u003c/b\u003e; \n93.5 - ASO Radio, \u003cb\u003eAbuja\u003c/b\u003e; 94.7 - Rhythm FM, \u003cb\u003eAbuja\u003c/b\u003e; 95.1 - Nigeria info \u003cb\u003eAbuja\u003c/b\u003e ..... \n\u003cb\u003eLocated\u003c/b\u003e in Lagos, Nigeria; Radio Palmwine, playing Yoruba and Igbo music live\n ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/Yola,_Nigeria","url":"https://en.wikipedia.org/wiki/Yola,_Nigeria","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:vtJYCNO-ms8J:en.wikipedia.org","title":"Yola, Nigeria - Wikipedia, the free encyclopedia","titleNoFormatting":"Yola, Nigeria - Wikipedia, the free encyclopedia","content":"Yola is the capital city and administrative center of \u003cb\u003eAdamawa State\u003c/b\u003e, Nigeria. \n\u003cb\u003eLocated\u003c/b\u003e on the Benue River, it has a population of 336,648 (2010). Yola is split \ninto ... There is an airport with regular flights to \u003cb\u003eAbuja\u003c/b\u003e and Lagos. The town is \nhome to ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://dangote.com/ourbrands/flour.aspx","url":"http://dangote.com/ourbrands/flour.aspx","visibleUrl":"dangote.com","cacheUrl":"http://www.google.com/search?q\u003dcache:C7R25j1DZ98J:dangote.com","title":"Dangote Group ::: DANGOTE FLOUR","titleNoFormatting":"Dangote Group ::: DANGOTE FLOUR","content":"Office \u003cb\u003eLocations\u003c/b\u003e ... Wheat is transformed into high-quality flour, by using \u003cb\u003estate\u003c/b\u003e-of-\nthe art plant and equipment backed by renowned technical expertise DFM\u0026#39;s mills \nacross ... 8. \u003cb\u003eABUJA\u003c/b\u003e 2nd Floor \u003cb\u003eAdamawa\u003c/b\u003e Plaza Central Business District, \u003cb\u003eAbuja\u003c/b\u003e"}],"cursor":{"resultCount":"129,000","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"129000","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dAbuja+is+located+in+Adamawa+State.+-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.31"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+id=12
+Accardo was a member of the Walter Stauffer Academy.
+
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/Salvatore_Accardo","url":"https://en.wikipedia.org/wiki/Salvatore_Accardo","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:kQFLu5XleYkJ:en.wikipedia.org","title":"Salvatore \u003cb\u003eAccardo\u003c/b\u003e - Wikipedia, the free encyclopedia","titleNoFormatting":"Salvatore Accardo - Wikipedia, the free encyclopedia","content":"\u003cb\u003eAccardo\u003c/b\u003e studied violin in the southern Italian city of Naples in the 1950s. ... \nItaliana (O.C.I.), whose \u003cb\u003emembers\u003c/b\u003e are the best pupils of the \u003cb\u003eWalter Stauffer\u003c/b\u003e \n\u003cb\u003eAcademy\u003c/b\u003e."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.allmusic.com/artist/salvatore-accardo-mn0000756671","url":"http://www.allmusic.com/artist/salvatore-accardo-mn0000756671","visibleUrl":"www.allmusic.com","cacheUrl":"http://www.google.com/search?q\u003dcache:Z6rdlTiL89sJ:www.allmusic.com","title":"Salvatore \u003cb\u003eAccardo\u003c/b\u003e | Biography \u0026amp; History | AllMusic","titleNoFormatting":"Salvatore Accardo | Biography \u0026amp; History | AllMusic","content":"He is a founding \u003cb\u003emember\u003c/b\u003e of the \u003cb\u003eAccardo\u003c/b\u003e String Quartet and of the \u003cb\u003eWalter Stauffer\u003c/b\u003e \n\u003cb\u003eAcademy\u003c/b\u003e, where he routinely gives master classes, and also of the Cremona ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.discogs.com/artist/846180-Salvatore-Accardo","url":"http://www.discogs.com/artist/846180-Salvatore-Accardo","visibleUrl":"www.discogs.com","cacheUrl":"http://www.google.com/search?q\u003dcache:3fKXVRbhgXwJ:www.discogs.com","title":"Salvatore \u003cb\u003eAccardo\u003c/b\u003e Discography at Discogs","titleNoFormatting":"Salvatore Accardo Discography at Discogs","content":"He was among the founders of the \u003cb\u003eWalter Stauffer Academy\u003c/b\u003e in 1986 and also \nfounded the \u0026#39;\u003cb\u003eAccardo\u003c/b\u003e Quartet\u0026#39; (1992) and \u0026#39;Orchestra da Camera Italiana\u0026#39; [OCI] in\n ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.naxos.com/person/Salvatore_Accardo/53713.htm","url":"http://www.naxos.com/person/Salvatore_Accardo/53713.htm","visibleUrl":"www.naxos.com","cacheUrl":"http://www.google.com/search?q\u003dcache:Q-crwULTPVIJ:www.naxos.com","title":"Salvatore \u003cb\u003eAccardo\u003c/b\u003e- Bio, Albums, Pictures – Naxos Classical Music.","titleNoFormatting":"Salvatore Accardo- Bio, Albums, Pictures – Naxos Classical Music.","content":"Biography and work for Salvatore \u003cb\u003eAccardo\u003c/b\u003e, Listen to classical music and albums \nor ... specifically for the best graduates from the \u003cb\u003eWalter Stauffer Academy\u003c/b\u003e."}],"cursor":{"resultCount":"152","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"152","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dAccardo+was+a+member+of+the+Walter+Stauffer+Academy.++-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.28"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+id=13
+Airbus plans a design engineering centre.
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.airbus.com/presscentre/pressreleases/press-release-detail/detail/relocating-to-innovate-the-airbus-wichita-kansas-engineering-centre-will-join-a-new-us-innovation-campus/","url":"http://www.airbus.com/presscentre/pressreleases/press-release-detail/detail/relocating-to-innovate-the-airbus-wichita-kansas-engineering-centre-will-join-a-new-us-innovation-campus/","visibleUrl":"www.airbus.com","cacheUrl":"http://www.google.com/search?q\u003dcache:DVoRnJlGWwEJ:www.airbus.com","title":"Relocating to innovate: the \u003cb\u003eAirbus\u003c/b\u003e Wichita, Kansas \u003cb\u003eengineering\u003c/b\u003e \u003cb\u003e...\u003c/b\u003e","titleNoFormatting":"Relocating to innovate: the Airbus Wichita, Kansas engineering ...","content":"Apr 3, 2015 \u003cb\u003e...\u003c/b\u003e \u003cb\u003eAirbus plans\u003c/b\u003e to relocate its Wichita, Kansas-based \u003cb\u003edesign\u003c/b\u003e and \u003cb\u003eengineering\u003c/b\u003e \n\u003cb\u003ecentre\u003c/b\u003e from the operation\u0026#39;s current downtown Wichita location to a ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.airbus.com/company/aircraft-manufacture/how-is-an-aircraft-built/design-offices-and-engineering-centres/","url":"http://www.airbus.com/company/aircraft-manufacture/how-is-an-aircraft-built/design-offices-and-engineering-centres/","visibleUrl":"www.airbus.com","cacheUrl":"http://www.google.com/search?q\u003dcache:bOOcuAXca0QJ:www.airbus.com","title":"\u003cb\u003eDesign\u003c/b\u003e offices and \u003cb\u003eengineering centres\u003c/b\u003e | \u003cb\u003eAirbus\u003c/b\u003e, a leading aircraft \u003cb\u003e...\u003c/b\u003e","titleNoFormatting":"Design offices and engineering centres | Airbus, a leading aircraft ...","content":"This high-tech work is divided across \u003cb\u003edesign\u003c/b\u003e offices and \u003cb\u003eengineering centres\u003c/b\u003e \nlocated throughout Europe and North America, along with additional sites in India\n ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.airbus.com/company/americas/us/locations/","url":"http://www.airbus.com/company/americas/us/locations/","visibleUrl":"www.airbus.com","cacheUrl":"http://www.google.com/search?q\u003dcache:6gAYcm5fvXQJ:www.airbus.com","title":"Locations | \u003cb\u003eAirbus\u003c/b\u003e, a leading aircraft manufacturer","titleNoFormatting":"Locations | Airbus, a leading aircraft manufacturer","content":"\u003cb\u003eAirbus\u003c/b\u003e is \u003cb\u003eplanning\u003c/b\u003e to move its \u003cb\u003eengineering centre\u003c/b\u003e in Wichita, Kansas into a new ... \n\u003cb\u003eAirbus\u003c/b\u003e opened its first North American \u003cb\u003edesign\u003c/b\u003e and engineering facility in 2002 ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.airbusgroup.com/int/en/people-careers/jobs-and-applications/vacancies-in-india.html","url":"http://www.airbusgroup.com/int/en/people-careers/jobs-and-applications/vacancies-in-india.html","visibleUrl":"www.airbusgroup.com","cacheUrl":"http://www.google.com/search?q\u003dcache:kfynNBvtrzwJ:www.airbusgroup.com","title":"\u003cb\u003eAirbus\u003c/b\u003e Group - Opportunities in India","titleNoFormatting":"Airbus Group - Opportunities in India","content":"Incident and Flight Operations Analysis \u003cb\u003eEngineer\u003c/b\u003e. Job Code: ... Configuration \nManagement \u003cb\u003eEngineer\u003c/b\u003e ... Simulation Models \u003cb\u003eEngineer\u003c/b\u003e ..... \u003cb\u003eDesign Engineer\u003c/b\u003e."}],"cursor":{"resultCount":"101,000","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"101000","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dAirbus+plans+a+design+engineering+centre.++-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.42"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+id=14
+Alex Dyer represents Santarchy
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.jaygarmon.net/2009_12_01_archive.html","url":"http://www.jaygarmon.net/2009_12_01_archive.html","visibleUrl":"www.jaygarmon.net","cacheUrl":"http://www.google.com/search?q\u003dcache:Mk9KB9qxVvIJ:www.jaygarmon.net","title":"Jay Garmon [dot] Net: December 2009","titleNoFormatting":"Jay Garmon [dot] Net: December 2009","content":"Dec 31, 2009 \u003cb\u003e...\u003c/b\u003e ... in the online forums of the skateboard magazine Muckmouth by one \u003cb\u003eAlex Dyer\u003c/b\u003e, \n... Like all Santa legends, the truth or the Auckland \u003cb\u003eSantarchy\u003c/b\u003e has little to do .... \nThus, it makes my Monday to get a little honest PR \u003cb\u003erepresenting\u003c/b\u003e ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://mcdougald.blogspot.com/2005_12_01_archive.html","url":"http://mcdougald.blogspot.com/2005_12_01_archive.html","visibleUrl":"mcdougald.blogspot.com","cacheUrl":"http://www.google.com/search?q\u003dcache:0dQqbsBbt90J:mcdougald.blogspot.com","title":"Afarensis: Anthropology, Evolution and Science: 12/05","titleNoFormatting":"Afarensis: Anthropology, Evolution and Science: 12/05","content":"Dec 31, 2005 \u003cb\u003e...\u003c/b\u003e Rather most of the toad remains \u003cb\u003erepresent\u003c/b\u003e modern toads \u0026quot;...living and dying in \n...... \u003cb\u003eAlex Dyer\u003c/b\u003e, a spokesman for the group, said \u003cb\u003eSantarchy\u003c/b\u003e was a ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://bussorah.altervista.org/busdec05.html","url":"http://bussorah.altervista.org/busdec05.html","visibleUrl":"bussorah.altervista.org","cacheUrl":"http://www.google.com/search?q\u003dcache:UcBSN5mqPBIJ:bussorah.altervista.org","title":"THE NEWS - WICKED THOUGHTS ARCHIVES","titleNoFormatting":"THE NEWS - WICKED THOUGHTS ARCHIVES","content":"When what to my wondering eyes, or other \u003cb\u003emeans\u003c/b\u003e of sensing, should appear, .... \n\u003cb\u003eAlex Dyer\u003c/b\u003e, a spokesman for the group, said \u003cb\u003eSantarchy\u003c/b\u003e was a worldwide ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://lynchburgvirginia.blogspot.com/2005_12_01_archive.html","url":"http://lynchburgvirginia.blogspot.com/2005_12_01_archive.html","visibleUrl":"lynchburgvirginia.blogspot.com","cacheUrl":"http://www.google.com/search?q\u003dcache:X1Gnc3eK4fMJ:lynchburgvirginia.blogspot.com","title":"Lynchburg Virginia: 12/01/2005 - 01/01/2006","titleNoFormatting":"Lynchburg Virginia: 12/01/2005 - 01/01/2006","content":"Dec 31, 2005 \u003cb\u003e...\u003c/b\u003e They believe that broken china \u003cb\u003emeans\u003c/b\u003e more friends. ..... the commercialization of \nChristmas, said Auckland\u0026#39;s \u003cb\u003eSantarchy\u003c/b\u003e organizer, \u003cb\u003eAlex Dyer\u003c/b\u003e."}],"cursor":{"resultCount":"6","pages":[{"start":"0","label":1},{"start":"4","label":2}],"estimatedResultCount":"6","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dAlex+Dyer+represents+Santarchy++-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.25"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+15;Alexandre Berthier died in 1799.
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/Louis-Alexandre_Berthier","url":"https://en.wikipedia.org/wiki/Louis-Alexandre_Berthier","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:ap4C7ZBkk2gJ:en.wikipedia.org","title":"Louis-\u003cb\u003eAlexandre Berthier\u003c/b\u003e - Wikipedia, the free encyclopedia","titleNoFormatting":"Louis-Alexandre Berthier - Wikipedia, the free encyclopedia","content":"Louis-\u003cb\u003eAlexandre Berthier\u003c/b\u003e, Prince de Neufchâtel et de Wagram, maréchal de ... \nafter a torturous journey under Berthier\u0026#39;s supervision, the pope \u003cb\u003edied\u003c/b\u003e, dealing a ... \nHe assisted in the coup d\u0026#39;état of 18 Brumaire (9 November \u003cb\u003e1799\u003c/b\u003e), afterwards ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/Pope_Pius_VI","url":"https://en.wikipedia.org/wiki/Pope_Pius_VI","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:vjBtOnUCDowJ:en.wikipedia.org","title":"Pope Pius VI - Wikipedia, the free encyclopedia","titleNoFormatting":"Pope Pius VI - Wikipedia, the free encyclopedia","content":"Pope Pius VI (25 December 1717 – 29 August \u003cb\u003e1799\u003c/b\u003e), born Count Giovanni \nAngelo Braschi, reigned from 15 February 1775 to his \u003cb\u003edeath in 1799\u003c/b\u003e. .... General \n\u003cb\u003eBerthier\u003c/b\u003e marched to Rome, entered it unopposed on 10 February 1798, and, .... \nPeter · Linus · Anacletus · Clement I · Evaristus · \u003cb\u003eAlexander\u003c/b\u003e I · Sixtus I · \nTelesphorus ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://biblelight.net/h-wound.htm","url":"http://biblelight.net/h-wound.htm","visibleUrl":"biblelight.net","cacheUrl":"http://www.google.com/search?q\u003dcache:PmS9aUypt1YJ:biblelight.net","title":"Deadly Wound Ends the 1260 Years - Bible Light","titleNoFormatting":"Deadly Wound Ends the 1260 Years - Bible Light","content":"Feb 23, 2002 \u003cb\u003e...\u003c/b\u003e 11 LOUIS \u003cb\u003eALEXANDRE BERTHIER\u003c/b\u003e (1753-1815) prince of Wagram .... Sent from \nRome to Valence, France, where he \u003cb\u003eDied in 1799\u003c/b\u003e (Lower)."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://www.napoleon-series.org/research/biographies/marshals/c_berthier1.html","url":"http://www.napoleon-series.org/research/biographies/marshals/c_berthier1.html","visibleUrl":"www.napoleon-series.org","cacheUrl":"http://www.google.com/search?q\u003dcache:yEhw5zka_GQJ:www.napoleon-series.org","title":"The Indispensable Marshal: Louis-\u003cb\u003eAlexandre Berthier\u003c/b\u003e","titleNoFormatting":"The Indispensable Marshal: Louis-Alexandre Berthier","content":"The Indispensable Marshal: Louis-\u003cb\u003eAlexandre Berthier\u003c/b\u003e (1753-1815) ... Eble and \nLariboisiere had just \u003cb\u003edied\u003c/b\u003e; the Emperor had left for Paris a month ago, ... d\u0026#39;Italie, \n1796-1797; then to L\u0026#39;Armée d\u0026#39;Egypte, 1798-\u003cb\u003e1799\u003c/b\u003e; commander and chief of staff \nof ..."}],"cursor":{"resultCount":"1,180","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"1180","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dAlexandre+Berthier+died+in+1799++-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.31"}}, "responseDetails": null, "responseStatus": 200}
+
+---
+16;Alfredo Cristiani visits Mexico on June 7.
+{"responseData": {"results":[{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/Alfredo_Cristiani","url":"https://en.wikipedia.org/wiki/Alfredo_Cristiani","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:xiZ3LShkxNMJ:en.wikipedia.org","title":"\u003cb\u003eAlfredo Cristiani\u003c/b\u003e - Wikipedia, the free encyclopedia","titleNoFormatting":"Alfredo Cristiani - Wikipedia, the free encyclopedia","content":"President Cristiani \u003cb\u003ein\u003c/b\u003e London. President of El Salvador. \u003cb\u003eIn\u003c/b\u003e office 1 \u003cb\u003eJune\u003c/b\u003e 1989 – 1 \n\u003cb\u003eJune\u003c/b\u003e 1994 ... Alfredo Félix Cristiani Burkard, popularly known as \u003cb\u003eAlfredo Cristiani\u003c/b\u003e \n(born 22 ... This \u003cb\u003evisit\u003c/b\u003e, along with others that included Spain, Italy, United States, \n\u003cb\u003eMexico\u003c/b\u003e, ... However, their efforts focused on president Cristiani\u0026#39;s situation and."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://en.wikipedia.org/wiki/El_Salvador%E2%80%93Mexico_relations","url":"https://en.wikipedia.org/wiki/El_Salvador%25E2%2580%2593Mexico_relations","visibleUrl":"en.wikipedia.org","cacheUrl":"http://www.google.com/search?q\u003dcache:gRSfirHncksJ:en.wikipedia.org","title":"El Salvador–\u003cb\u003eMexico\u003c/b\u003e relations - Wikipedia, the free encyclopedia","titleNoFormatting":"El Salvador–Mexico relations - Wikipedia, the free encyclopedia","content":"\u003cb\u003eIn June\u003c/b\u003e 2000, \u003cb\u003eMexico\u003c/b\u003e and El Salvador, along with Guatemala and Honduras \nsigned a ... \u003cb\u003eAlfredo Cristiani\u003c/b\u003e, en la ceremonia de firma de los Acuerdos de Paz (\u003cb\u003ein\u003c/b\u003e\n ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"http://articles.latimes.com/keyword/president-alfredo-cristiani","url":"http://articles.latimes.com/keyword/president-alfredo-cristiani","visibleUrl":"articles.latimes.com","cacheUrl":"http://www.google.com/search?q\u003dcache:niN0lSzLMSQJ:articles.latimes.com","title":"Articles about President \u003cb\u003eAlfredo Cristiani\u003c/b\u003e - latimes","titleNoFormatting":"Articles about President Alfredo Cristiani - latimes","content":"January \u003cb\u003e7\u003c/b\u003e, 1993 | TRACY WILKINSON, TIMES STAFF WRITER ... Salvadoran \nPresident \u003cb\u003eAlfredo Cristiani\u003c/b\u003e arrived \u003cb\u003ein\u003c/b\u003e Venezuela on Wednesday for a ... Rebel \ncommander Ana Guadalupe Martinez told a press conference \u003cb\u003ein Mexico\u003c/b\u003e City that \nthe ... office \u003cb\u003eJune\u003c/b\u003e 1 along with the right-wing government headed by President \nAlfredo ..."},{"GsearchResultClass":"GwebSearch","unescapedUrl":"https://history.state.gov/departmenthistory/visits/1989","url":"https://history.state.gov/departmenthistory/visits/1989","visibleUrl":"history.state.gov","cacheUrl":"http://www.google.com/search?q\u003dcache:XW_1p3qXLyIJ:history.state.gov","title":"\u003cb\u003eIn\u003c/b\u003e 1989 - Office of the Historian","titleNoFormatting":"In 1989 - Office of the Historian","content":"\u003cb\u003eVisits\u003c/b\u003e By Foreign Leaders \u003cb\u003ein\u003c/b\u003e 1989. Visitor, From, Description ..."}],"cursor":{"resultCount":"2,000","pages":[{"start":"0","label":1},{"start":"4","label":2},{"start":"8","label":3},{"start":"12","label":4},{"start":"16","label":5},{"start":"20","label":6},{"start":"24","label":7},{"start":"28","label":8}],"estimatedResultCount":"2000","currentPageIndex":0,"moreResultsUrl":"http://www.google.com/search?oe\u003dutf8\u0026ie\u003dutf8\u0026source\u003duds\u0026start\u003d0\u0026hl\u003den\u0026q\u003dAlfredo+Cristiani+visits+Mexico+on+June+7+-.edu+-nltk+-linguistics+-nlp+-github+-entailment","searchResultTime":"0.33"}}, "responseDetails": null, "responseStatus": 200}
+
+
+---
+17;Allen introduced a new technique of creating realistic scenery.
+
+---
+18;Aspirin prevents gastrointestinal bleeding.
+
+---
+19;Berlinguer succeeded Natta.
+
+
+---
+20;Blue Mountain Lumber owns Ernslaw One.
+
+---
+21;Blue Mountain Lumber will locate a development site on the Coromandel.
+
+---
+22;Boeing's headquarters is in Canada.
+
+---
+23;Boris Evelson founded the Kalido Technical Advisory Board.
+
+24;Bountiful reached San Francisco in August 1945.
+
+25;Bountiful reached San Francisco on 1 November 1945.
+
+26;Brazil is part of the United Nations.
+
+27;British and US-based investment funds acquire Berliner Verlag.
+
+28;British Columbia is located in Canada.
+
+29;Burns surgeons approve Dr Wood's spray-on skin.
+30;Bush supports global terrorism.
+31;Capt. Scott reached Scott Island in December 1902.
+32;Carl Smith died on August 8.
+33;Chávez is a follower of socialism.
+34;China is a member of SCO.
+35;CIA secret prisons were located in Eastern Europe.
+36;Clark is a relative of Jones'.
+37;Colarusso works for Dover police.
+38;Côte d'Ivoire is located in Africa.
+39;Cristiani is accused of the assassination of six Jesuits.
+40;Cristiani is the president of Costa Rica.
+41;Cristiani killed six Jesuits.
+42;Cyprian Gatete is an employee of Reuters.
+43;David Cameron works as the shadow education secretary.
+44;David Vance lives in South Portland.
+45;Dean invented a revolver.
+46;Deutsche Telekom sold O2 Plc.
+47;Diplomats agree on EU budget.
+48;Dr Fiona Wood has invented a treatment for burns victims.
+49;During the Civil War the government of the United States bought arms from Britain.
+50;Edison invented the Kinetoscope.
+51;El-Nashar is accused of terrorism.
+52;El-Nashar was arrested in Egypt.
+53;Emperor Charles V was elected by Clement VII.
+54;Eurest Support Services is a subsidiary of Ernst and Young.
+55;Europe's first pyramid has been discovered near Sarajevo.
+56;Female mosquitoes spread malaria.
+57;FermiLab created Linux LTS.
+58;FMLN caused a blackout in the capital.
+59;Gallager attended Temple University.
+60;Gazprom detains the Uzbek pipeline monopoly.
+61;Gbagbo is a competitor of Ouattara.
+62;General Dynamics loses $374m.
+63;Guatemala accepts the Pet passport as proof of vaccination.
+64;GUS sold Wehkamp.
+65;Harnold Lamb authored many biographies.
+66;Hazardous chemical materials have been discovered at Bear Creek.
+67;Hooper bought a house in Portland.
+68;Hooper is a citizen of Portland.
+69;Hugh assisted Mustang.
+70;Hughes was married to Gracia.
+71;Hugo Chávez acts as Venezuela's president.
+72;Allan Chapman is employed at the River Forecast Centre.
+73;In 2001, the EU introduced a passport for pets.
+74;In 2001, the EU introduced a six-month compulsory quarantine for all domestic pets.
+75;In the May 2005 general election Conservatives got 33 seats.
+76;Intelligent design supports Darwinian evolution.
+77;Israeli forces attacked seven Arab states in 1948.
+78;Italy's government investigates Sony.
+79;Jack Straw holds the position of UK Foreign Secretary.
+80;Henry Borski and Jake Borski are relatives.
+81;Jennie Beavers Stewart is a share-holder of Carolina Analytical Laboratory.
+82;Jerry Reinsdorf has won 7 championships.
+83;John Galyean's wife is called Frances.
+84;Joseph Wilson is Valerie Plame's ex-husband.
+85;Joseph Wilson worked for CIA.
+86;Judith Miller is a member of CIA.
+87;Judith Miller works for the US Government.
+88;Jyestadeva invented calculus.
+89;Jyestadeva is the author of the Yuktibhasa.
+90;Kennon did not participate in WWII.
+91;Kennon was part of the National Guard.
+92;Kinston Indians participate in the Carolina League.
+93;Kofi Annan was elected in the January 30 ballot.
+94;Lee Trundle is in business with the League One club.
+95;Levomepromazine causes schizophrenia.
+96;Live At Leeds was recorded by The Who.
+97;Lukoil earned $1 billion in 2004.
+98;Louis Riel assassinated Scott.
+99;Mabel Normand starred in The Extra Girl.
+100;The Macdonough left Hawaii on 10 August.
+101;Manas air base is located in Kyrgyzstan.
+102;Maria Eugenia Ochoa Garcia was arrested in May.
+103;Marlowe supported Zaleshoff.
+104;Marlowe was arrested by Italian authorities.
+105;Mbeki holds the office of Prime Minister.
+106;MBUSA is based in New Yersey.
+107;Mercedez-Benz supports the Key to the Cure campaign.
+108;MG Rover has been bought by Airbus.
+109;More than 200,000 U.S. composers, songwriters, lyricists and music publishers are members of ASCAP.
+110;Morro da Rocinha is near the Vidigal favela.
+111;Moussaoui participated in the Sept. 11 attacks.
+112;Mr. Zhao died in Beijing.
+113;Mrs Hobday departs London.
+114;Ms Robbins is a co-owner of Armstrong Environmental Inc.
+115;A Houston multimillionaire buys the Pope's Ford Escort.
+116;Natta supported Italian Socialism.
+117;Natta supported the Manifesto group.
+118;Nelson Beavers is one of the owners of Carolina Analytical Laboratories.
+119;Nelson Beavers worked for Eurofins.
+120;New elections in Côte d'Ivoire will take place on July 14.
+121;New elections in Côte d'Ivoire will take place on October 30.
+122;Nival was sold in 2005.
+123;Nokia produces mobile chips.
+124;Parmalat costs 14.3 billion euros.
+125;Pierce lives near Rossville Blvd.
+126;Pierce lives on E. 28th Street.
+127;Pope Pius VI died in France.
+128;Pretoria is located in Côte d'Ivoire.
+129;Procter and Gamble spends $1.8 billion for Research and Development.
+130;Professor Ochoa Garcia is a member of the Salvadoran government.
+131;Quarantine is compulsory for animals to enter the UK.
+132;Rafael Calderon Fournier has been elected president of Costa Rica.
+133;Rainulf was the leader of the Normans.
+134;Rennyo founded Honganji Shinshu Buddhism.
+135;Rennyo reached Yoshizaki in 1471.
+136;Robert Senacal was arrested by police.
+137;Romano Prodi wins Italian primaries.
+138;Rosneft belonged to the Russian State.
+139;Rowley and Lourey are relatives.
+140;Saad Hariri was elected Prime Minister of Lebanon.
+141;Saddam Hussein flees to the U.S.
+142;Saint Joan of Arc's brigade got weapons for combatants.
+143;Scott Stevens has connections with the Yakuza.
+144;Scott's execution caused the Wolseley Expedition.
+145;Senacal resides in Cortland Manor.
+146;Sony BMG sells protected CDs.
+147;Southwest Airlines operates in New Orleans.
+148;Sue Robbins visits the former Woodson-Tenent Laboratory.
+149;Sumner died at Farnham.
+150;Swift died in 1745.
+151;Swift worked for the Earl of Berkeley.
+152;Sylvia Costas is the wife of Andy Sipowicz.
+153;T.R. Mahalingham made the first seven holed flute.
+154;Tanning may cause skin cancers.
+155;Texas Instruments produces mobile phones.
+156;The Auburn High School Athletic Hall of Fame has ten members.
+157;The Aurora Borealis was discovered in 1995.
+158;The Bracamonte Battalion was attacked by guerrillas.
+159;The British Army crossed the Toba Kakar Range of mountains in 1839.
+160;The Canadian parliament's Ethics Commission accuses Judy Sgro.
+161;The Counts of Holland supported the Holy See.
+162;The Dutch people approve the European Constitution.
+163;The House of Assembly of Newfoundland and Labrador vote against the land claims agreement.
+164;The Inner City Little League is sponsored by Chicago White Sox Charities.
+165;The island gets water from collected rain.
+166;The Italian government introduces reforms to higher education.
+167;The Kabale district borders on Rwanda.
+168;The Kakhovskaya Line was built in 1995.
+169;The pet passport contains the complete vaccination history of pets.
+170;The "Piano Man" came from Germany.
+171;The "Piano Man" worked for a British tabloid.
+172;The Raisani tribe resides in Pakistan.
+173;Three rebels were killed by government troops.
+174;Time Warner Cable is a partner of Sprint Nextel.
+175;The Tokyo Stock Exchange was closed down by computer system failure.
+176;Tom Online earned US$42.78 mn in three months.
+177;Tom Online revenues have risen by 38.5%.
+178;Total participated in the oil-for-food programme.
+179;Two worshippers were killed in Afghanistan.
+180;Uzbekistan closes United States military base.
+181;Uzbekistan protests against Washington.
+182;Vance worked with Hooper.
+183;Vera Beers works for Olivet.
+184;Vera Beers works for Standard Printing.
+185;Vladimir Putin participated in the ceremonies for the freeing of the Auschwitz Birkenau concentration camp.
+186;Wehkamp was based in the UK.
+187;Wehkamp cost €390m.
+188;White assisted the Labor government from 1972 to 1975.
+189;White got the $10,000 Britannia Award.
+190;Wilkins became the captain of Chelsea in 1975.
+191;Wilkins departed Milan in 1987.
+192;Women can vote in elections in Saudi Arabia.
+193;The WSF takes place in Brazil.
+194;Yasser Arafat succeeded Abbas.
+195;Zapatero participated in the Ibero-American meeting in Costa Rica.
+196;Zarubezhneft trades in oil.
+197;Zhao was a member of the Communist Party.
+198;Zhao was arrested in 1989.
+199;Zoe died in a boating accident.
+200;Zorrilla started the revolution of 1868.
+201;Child labor is widely used in Asia.
+202;Glue-sniffing is common among youngsters.
+203;Italian royal family returns home.
+204;Sophie's World is a best seller.
+205;Chernobyl disaster had repercussions outside ex-USSR.
+206;A typhoon batters the Philippines.
+207;The nuclear power plant of Sosnovyi Bor suffers an emergency shut down.
+208;The Chernobyl disaster had repercussions outside the ex-USSR.
+209;People were killed in Tamil suicide attacks.
+210;Ebola Epidemic breaks out in Zaire.
+211;A Sioux ghost shirt was returned by a Scottish museum.
+212;Christopher Reeve had an accident.
+213;Sex-change operations become more common.
+214;Ebola Epidemic breaks out in Zaire.
+215;Anna Politkovskaya was murdered.
+216;Nuclear waste transport delayed in Germany.
+217;A woman succeeds in climbing Everest solo.
+218;Italian flight assistants go on strike.
+219;Several new political parties emerged.
+220;Maternity leave varies in Europe.
+221;Child labor is widely used in Asia.
+222;People were killed in suicide attacks.
+223;Sportswomen have been accused of doping.
+224;Domestic fires are the major cause of fire death.
+225;Hunting endangers seal species.
+226;A spelling reform was approved in all German speaking countries.
+227;A woman succeeds in climbing Everest solo.
+228;The Chernobyl disaster had repercussions outside the ex-USSR.
+229;Domestic fires are the major cause of fire death.
+230;Castro visits the UN.
+231;Flooding in Europe causes major economic losses.
+232;Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.
+233;Parliamentary elections create new government in France.
+234;Christopher Reeve had an accident.
+235;NATO Secretary General Willy Claes resigned.
+236;NATO Secretary General Willy Claes resigned.
+237;Greenhouse effect changes global climate.
+238;People were killed in Tamil suicide attacks.
+239;Dutch photos of Srebrenica have disappeared.
+240;Russians hold record for longest stay in space.
+241;Castro visits the UN.
+242;Christopher Reeve had an accident.
+243;Tour de France winner is likely to lose the crown.
+244;Lady Diana died in Paris.
+245;Dinosaur remains were found in Asia.
+246;Domestic fires are a major cause of unintentional injury in the home.
+247;Ebola Epidemic breaks out in Zaire.
+248;Peru debates border region with Ecuador.
+249;The women's ten thousand metres champion is from Mozambique.
+250;A spelling reform was approved in all German speaking countries.
+251;Child labor is widely used in Asia.
+252;National pension systems currently adopted in Europe are in difficulties.
+253;A woman succeeds in climbing Everest solo.
+254;People are willing to risk imprisonment rather than perform military service.
+255;Fireworks may cause serious injuries.
+256;Several sportswomen have been accused of doping.
+257;Prehistoric art discovered in South Africa.
+258;Fireworks may cause serious injuries.
+259;Dutch photos of Srebrenica have disappeared.
+260;Flooding in Europe causes major economic losses.
+261;Dam building prevents life-threatening situations.
+262;Maternity leave varies in Europe.
+263;European cars sell in Russia.
+264;Parliamentary elections may lead to a new government in France.
+265;President Fujimori was re-elected in 1995.
+266;Glue-sniffing is common among youngsters.
+267;Glue-sniffing is common among youngsters.
+268;Greece and Macedonia are in dispute over name.
+269;Three parties form a Dutch coalition government.
+270;Robots are used to find avalanche victims.
+271;Hubble discovers black holes.
+272;Dam building prevents life-threatening situations.
+273;AIDS spreads in Africa.
+274;Sportswomen have been suspected of doping.
+275;The Dayton Peace Treaty was formulated to end the war in Bosnia.
+276;Italian royal family returns home.
+277;Barings was Britain's oldest merchant bank.
+278;Several new political parties emerged.
+279;The EU partially refuses commission candidates.
+280;Prehistoric art discovered in South Africa.
+281;National pension systems currently adopted in Europe are in difficulties.
+282;Nick Leeson was arrested for collapse of Barings Bank PLC.
+283;The Chernobyl disaster had repercussions outside the ex-USSR.
+284;Guerrillas increase activity in East Timor.
+285;An Italian director is awarded an honorary Oscar.
+286;An Italian director is awarded an honorary Oscar.
+287;Andreotti is accused of Mafia collusion.
+288;Sex-change operations become more common.
+289;Kieslowski is a director.
+290;Three parties form a Dutch coalition government.
+291;New Portuguese prime minister is elected.
+292;Greece and Macedonia are in dispute over name.
+293;Hubble discovers black holes.
+294;Mental health problems increase in the young.
+295;Robots are used to find missing victims.
+296;The women's ten thousand metres champion is from Mozambique.
+297;50th Anniversary of Normandy Landings lasts a year.
+298;Hubble discovers black holes.
+299;National pension systems currently adopted in Europe are in difficulties.
+300;Kieslowski is a film and TV director.
+301;The number of billionaires increases.
+302;50th Anniversary of Normandy Landings lasts a year.
+303;Greece and Macedonia are in dispute over name.
+304;Nick Leeson was arrested for collapse of Barings Bank PLC.
+305;Italian flight assistants go on strike.
+306;A woman succeeds in climbing Everest solo.
+307;Nuclear Power Plant of Sosnovyi Bor suffers an emergency shut down.
+308;Three parties form a Dutch coalition government.
+309;US shuttle Atlantis docks with the Mir space station.
+310;New Portuguese prime minister is elected.
+311;US shuttle Atlantis docks with the Mir space station.
+312;Italian director is awarded an honorary Oscar.
+313;Barings was Britain's oldest merchant bank.
+314;Deaf people encounter problems in the social community.
+315;Several new political parties emerged.
+316;International pressure is exerted to end French nuclear tests.
+317;President Fujimori was re-elected in 1995.
+318;Anna Politkovskaya was murdered.
+319;New Portuguese prime minister is elected.
+320;Rabies is fatal in humans.
+321;Rabies is fatal in humans.
+322;Altai ice maiden triggers major dispute.
+323;FIFA selects world football player of the year 1994.
+324;European cars sell in Russia.
+325;Russians hold record for longest stay in space.
+326;Seal-hunting endangers species.
+327;Castro visits the UN.
+328;Andreotti collaborates with the Mafia.
+329;Andreotti is accused of Mafia collusion.
+330;Baltic Countries join the EU.
+331;Papal travel is affected by political concerns.
+332;Prehistoric art discovered in South Africa.
+333;Dam building prevents life-threatening situations.
+334;Maternity leave varies in Europe.
+335;Nuclear Power Plant of Sosnovyi Bor suffers an emergency shut down.
+336;Baltic Countries join the EU.
+337;Barings was Britain's oldest merchant bank.
+338;Barings was Britain's oldest merchant bank.
+339;Mental health problems increase in the young.
+340;The Dayton Peace Treaty was formulated to end the war in Bosnia.
+341;Hubble discovers black holes.
+342;Altai ice maiden triggers major dispute.
+343;The Ebro Delta is used for farming.
+344;The Ebro Delta is used for farming.
+345;The 2002 Olympic Winter games took place in Salt Lake.
+346;Dinosaur remains were found in Asia.
+347;Guerrillas increase activity in East Timor.
+348;Flooding in Europe causes major economic losses.
+349;A Sioux ghost shirt was returned by a Scottish museum.
+350;Alexander the Great's Tomb remains undiscovered.
+351;International pressure is exerted to end French nuclear tests.
+352;Greenhouse effect changes global climate.
+353;The merger of Japanese Banks creates the world's biggest bank.
+354;Sportswomen have been accused of doping.
+355;Nick Leeson was arrested for collapse of Barings Bank PLC.
+356;Italian flight assistants go on strike.
+357;Italian royal family returns home.
+358;Sex-change operations become more common.
+359;50th Anniversary of Normandy Landings lasts a year.
+360;Russians hold record for longest stay in space.
+361;Russians hold record for longest stay in space.
+362;The number of billionaires increases.
+363;Nobel Peace Prize candidates have been chosen.
+364;AIDS spreads in Africa.
+365;Alexander the Great's Tomb remains undiscovered.
+366;Nobel Peace Prize candidates have been chosen.
+367;Dam building prevents life-threatening situations.
+368;A spelling reform was approved in all German speaking countries.
+369;National pension systems currently adopted in Europe are in difficulties.
+370;Several new political parties emerged.
+371;Peru debates border region with Ecuador.
+372;Peru debates border region with Ecuador.
+373;Alexander the Great's Tomb remains undiscovered.
+374;2002 Olympic Winter games take place in Salt Lake.
+375;A Sioux ghost shirt was returned by a Scottish museum.
+376;Italian royal family returns home.
+377;AIDS spreads in Africa.
+378;US shuttle Atlantis docks with the Mir space station.
+379;The Ebro Delta is used for farming.
+380;Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.
+381;The Ebola epidemic breaks out in Zaire.
+382;People were killed in Tamil suicide attacks.
+383;Three parties form a Dutch coalition government.
+384;Deaf people encounter problems in the social community.
+385;Financial reforms have been proposed at the G7 summit in Halifax.
+386;Merger of Japanese Banks creates the world's biggest bank.
+387;Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.
+388;The merger of Japanese Banks creates the world's biggest bank.
+389;A typhoon batters the Philippines.
+390;A typhoon batters the Philippines.
+391;A typhoon batters the Philippines.
+392;US shuttle Atlantis docks with the Mir space station.
+393;The merger of Japanese Banks creates the world's biggest bank.
+394;Seal-hunting endangers species.
+395;Robots are used to find avalanche victims.
+396;The Baltic Countries will join the EU.
+397;Sophie's World is a best seller.
+398;Greenhouse effect changes global climate.
+399;Child labor is widely used in Asia.
+400;FIFA selects world football player of the year 1994.
+401;Hubble is a Space telescope.
+402;Michael Crichton is the author of the book Jurassic Park.
+403;Gianni Versace is a designer.
+404;Neil Armstrong was the first man who landed on the Moon.
+405;Neil Armstrong was the first man who landed on the Moon.
+406;Cyrillic is an alphabet used for certain Slavic languages, such as Russian.
+407;Elizabeth the Second's father was George VI.
+408;Elizabeth the Second's father was George VI.
+409;The name of George H.W. Bush's wife is Barbara.
+410;The name of George H.W. Bush's wife is Barbara.
+411;Gabriel Garcia Marquez is a writer.
+412;The Gurkhas come from Nepal.
+413;The Normandy landings took place in June 1944.
+414;The Normandy landings took place in June 1944.
+415;The name of Helmut Kohl's political party is the Christian Democratic Union.
+416;The name of Helmut Kohl's political party is the Christian Democratic Union.
+417;Brian Goodell won three gold medals in the 1979 Pan American Games.
+418;Carl Lewis won eighteen gold medals and set 21 world records.
+419;Quarks, leptons, and bosons are the three elementary particles of physics according to the Standard Model.
+420;Melvyn Percy set up Minerva Rigging at Kip Marina.
+421;The Everglades is 50-mile wide.
+422;"The Persians" was written by Aeschylus.
+423;French is the most widely spoken language in Québec.
+424;Earthquakes have the potential to generate a tsunami.
+425;The Brazilian President is Luiz Inácio Lula da Silva.
+426;The Brazilian President is Luiz Inácio Lula da Silva.
+427;More than 200,000 people were killed in the air attack in the Darfur region.
+428;Operation Condor was a genocide and a campaign of counter-terrorism implemented by the right-wing dictatorships that dominated the Southern Cone in Latin America from the 1950s to 1980s.
+429;Operation Condor was a genocide and a campaign of counter-terrorism implemented by the right-wing dictatorships that dominated the Southern Cone in Latin America from the 1950s to 1980s.
+430;Romania sent 730 troops in Iraq.
+431;Titan is the fifteenth of Saturn's known satellites.
+432;Klaus Pohl is one of Germany's most performed dramatists.
+433;Lufthansa is the German airline.
+434;The Berlin Wall was torn down in 1989.
+435;The banking firm Barings collapsed due to speculations made by Nick Leeson.
+436;Fernando Henrique Cardoso is a presidential candidate.
+437;Fernando Henrique Cardoso is a Brazilian former Senate leader and Cabinet minister.
+438;APEC is the newly born Asia Pacific Economic Cooperation.
+439;The current name of Ceylon is Sri Lanka.
+440;The catastrophe at Chernobyl happened in 1986.
+441;Martin Luther King was murdered in 1968.
+442;Johann Wolfgang von Goethe was born in Germany.
+443;Amnesty International takes care of human rights.
+444;Tony Blair belongs to the Labor Party.
+445;Tony Blair belongs to the Labor Party.
+446;Stephen Hawking is a physicist.
+447;Phobia is a an extreme fear of a particular thing or situation.
+448;The symptoms of Parkinson's disease are: tremor, rigidity (stiffness; increased muscle tone), bradykinesia/akinesia, also "dysdiadokinesia", and postural instability.
+449;Before Salt Lake City, Winter Olympic Games took place in Nagano.
+450;Hubble is a Space telescope.
+451;Michael Crichton is the author of the book Jurassic Park.
+452;Boris Becker is a Wimbledon champion.
+453;Boris Becker is a Wimbledon champion.
+454;In 1945, an atomic bomb was dropped on Hiroshima.
+455;In 1945, an atomic bomb was dropped on Hiroshima.
+456;In 1945, an atomic bomb was dropped on Hiroshima.
+457;The movie 'Speed' was directed by Jan De Bont.
+458;The movie 'Speed' was directed by Jan De Bont.
+459;Felipe González is the President of Spain.
+460;Felipe González is the President of Spain.
+461;Neil Armstrong was the first man who landed on the Moon.
+462;Cyrillic is an alphabet used for certain Slavic languages, such as Russian.
+463;Qin Shi Huang was the first China Emperor.
+464;Qin Shi Huang was the first Chinese Emperor.
+465;The Israel-Egypt Peace Agreement was signed in 1979.
+466;The Israel-Egypt Peace Agreement was signed in 1979.
+467;The Israel-Egypt Peace Agreement was signed in 1979.
+468;The name of George H.W. Bush's wife is Barbara.
+469;The name of George H.W. Bush's wife is Barbara.
+470;Gabriel Garcia Marquez is a novelist and writer.
+471;Gabriel Garcia Marquez was a conservative politician.
+472;Alfred Nobel is the inventor of dynamite.
+473;Alfred Nobel is the inventor of dynamite.
+474;Alfred Nobel is the inventor of dynamite.
+475;Euro-Disney is an Entertainment Park.
+476;Euro-Disney is an Entertainment Park.
+477;Charles de Gaulle died in 1970.
+478;Charles de Gaulle died in 1970.
+479;Charles de Gaulle died in 1970.
+480;The Gurkhas come from Nepal.
+481;The Gurkhas come from Nepal.
+482;The Normandy landings took place in June 1944.
+483;The Normandy landings took place in June 1944.
+484;The name of Helmut Kohl's political party is the Christian Democratic Union.
+485;Vladislav Listyev was murdered in Moscow.
+486;Vladislav Listyev was murdered in Moscow.
+487;Vladislav Listyev was murdered in Moscow.
+488;The Shoemaker-Levy comet hit Jupiter.
+489;Vermeer is a 17th-Century Dutch artist.
+490;Klaus Pohl is a German dramatist.
+491;The Child Labour Abolition and Regulation Act was adopted in 1986.
+492;Victor Emmanuel III was king of Italy from 1900 to 1946.
+493;Victor Emmanuel III was king of Italy from 1900 to 1946.
+494;Victor Emmanuel III was king of Italy from 1900 to 1946.
+495;Victor Emmanuel III was king of Italy from 1900 to 1946.
+496;Franz Liszt lived from 1811 to 1886.
+497;Franz Liszt lived from 1811 to 1886.
+498;Franz Liszt lived from 1811 to 1886.
+499;"The Persians" was written by Aeschylus.
+500;"The Persians" was written by Aeschylus.
+501;Mohammad Khalifa's father-in-law is Osama Bin Laden.
+502;Mohammad Khalifa's father-in-law is Osama Bin Laden.
+503;Spirou was created by Rob-Vel.
+504;Spirou was created by Rob-Vel.
+505;Mars is called 'the red planet'.
+506;Mars is called 'the red planet'.
+507;Mars is called the red planet.
+508;The official religion of Thailand is Theravada Buddhism.
+509;The official religion of Thailand is Theravada Buddhism.
+510;The official religion of Thailand is Theravada Buddhism.
+511;French is the most widely spoken language in Québec.
+512;Arabic is the language of the Quran.
+513;Arabic is the language of the Quran.
+514;Dagbladet is a Norwegian newspaper.
+515;Dagbladet is a Norwegian newspaper.
+516;Verdens Gang is a Norwegian newspaper.
+517;The French railway company is called SNCF.
+518;The French railway company is called SNCF.
+519;2,45 m is the world record in the high jump.
+520;2,45 m is the world record in the high jump.
+521;The first free elections in Iraq were held in January 2005.
+522;Chen Shui-bian is the new President of Taiwan.
+523;The current President of Honduras is Manuel Zelaya.
+524;A tsunami is a series of waves created when a body of water rapidly displaced on a massive scale.
+525;Lithuania intends to introduce the use of the Euro as an official currency on January 1, 2007.
+526;12 members of the European Union use the Euro instead of their own national currencies.
+527;The Brazilian President is Luiz Inácio Lula da Silva.
+528;Gamma rays are forms of electromagnetic radiation.
+529;Condoleezza Rice is the U.S. Secretary of State.
+530;Condoleezza Rice is the U.S. Secretary of State.
+531;Condoleezza Rice is the U.S. Secretary of State.
+532;Romania sent 730 troops in Iraq.
+533;Don Brash is the leader of the New Zealand National Party.
+534;Don Brash is the leader of the New Zealand National Party.
+535;Titan is the fifteenth of Saturn's known satellites.
+536;Euro-Disney is a theme park outside Paris.
+537;The Pharos Lighthouse was located in Alexandria.
+538;The Pharos Lighthouse was built around 280 BC.
+539;Lin Piao wrote the "Little Red Book".
+540;Kailash Satyarthi, India's leading opponent of child labour.
+541;Nandrolone is a steroid.
+542;Michel Camdessus is managing director of IMF.
+543;Luis Roldan was director of police from 1986 to 1993.
+544;The Berlin Wall was torn down in November, 1989.
+545;Rolf Ekeus is a Swedish diplomat.
+546;Heaney was awarded the Nobel Prize for literature in 1995.
+547;Aldrich Hazen Ames is married to Rosario Casas Ames.
+548;The Berlin International Film Festival awards the Golden Bear.
+549;India and Pakistan have fought three wars for the possession of Kashmir.
+550;John Martin is the founder of Black Sparrow Press.
+551;Tolkien wrote the fantasy epic called "Lord of the Rings".
+552;The name of George W. Bush's wife is Laura.
+553;The name of George W. Bush's wife is Laura.
+554;Alison Hargreaves is the first woman to have made the climb up the Everest with no artificial oxygen.
+555;The catastrophe at Chernobyl happened in 1986.
+556;The Titanic sank in 1912.
+557;The Titanic sank in 1912.
+558;The Titanic sank in 1912.
+559;The moon was first touched by mankind in 1969.
+560;The moon was first touched by mankind in 1969.
+561;The moon was first touched by mankind in 1969.
+562;Martin Luther King was murdered in 1968.
+563;Pope John Paul II was born in Poland.
+564;Pope John Paul II was born in Poland.
+565;Pope John Paul II was born in Poland.
+566;Wolfgang Amadeus Mozart was born in Salzburg.
+567;Wolfgang Amadeus Mozart was born in Salzburg.
+568;The Golden Palm has been awarded at the Cannes film Festival.
+569;The Golden Palm has been awarded at the Cannes film Festival.
+570;Bill Clinton belongs to the Democratic Party.
+571;Bill Clinton belongs to the Democratic Party.
+572;Kanchenjunga is 8586 meters high.
+573;Kanchenjunga is 8586 meters high.
+574;Kanchenjunga is 8586 meters high.
+575;The moon Titan has a diameter of 5100 kilometers.
+576;The moon Titan has a diameter of 5100 kilometers.
+577;The terrestrial moon has a diameter of 3746 kilometers.
+578;The terrestrial moon has a diameter of 3746 kilometers.
+579;Gabriel Garcia Marquez is a Nobel prize winner.
+580;Gabriel Garcia Marquez is a Nobel prize winner.
+581;Stephen Hawking is a physicist.
+582;Yakuza are the Japanese mafia.
+583;Gotthold Ephraim Lessing lived from 1729 to 1781.
+584;Before Salt Lake City, Winter Olympic Games took place in Nagano.
+585;Before Salt Lake City, Winter Olympic Games took place in Nagano.
+586;The top quark is the last of six flavors of quarks predicted by the standard model theory of particle physics.
+587;The Top Quark is the last of six flavors of quarks predicted by the standard model theory of particle physics.
+588;The Big Bang is the primordial explosion from which the universe was created.
+589;The Big Bang is the primordial explosion from which the universe was created.
+590;Microsoft Windows is an operating system.
+591;Microsoft Windows is an operating system.
+592;The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.
+593;The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.
+594;The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.
+595;The Shoemaker-Levy comet was discovered by Shoemaker, his wife, Carolyn, and an astronomer David H. Levy.
+596;Everglades National Park is located in Florida.
+597;Everglades National Park is located in Florida.
+598;NATO has 16 members.
+599;The NATO has 16 members.
+600;Christie's is one of the world's largest auction houses.
+601;Millions of dollars of art were recovered, including works by Dali.
+602;Millions of dollars of art were recovered, including works by Dali.
+603;These two portraits and a lithography by Edvard Munch were recovered using the Art Loss Register database.
+604;Gerhardt Schroeder was accused of helping VW.
+605;African elephants are endangered by ivory poachers.
+606;Police recovered 81 Andy Warhol lithographs.
+607;An international convention banned trade in ivory.
+608;The Amazon rain forest is a vast area in South America.
+609;Police use robots for bomb-handling.
+610;At the age of one year, male mice were fed with a diet in which 60 percent of calories came from fat.
+611;Centralized inventory records for museums aid in theft awareness.
+612;Five masterpieces, including a Renoir, were recovered when the thief confessed.
+613;The biggest art theft in US history was the theft of a dozen works from Boston's Gardner Museum.
+614;All are deeply concerned about the damage of the Iraq war and are looking for ways to resolve it.
+615;The weather channel gives you information about the weather in the next few days.
+616;German officials began investigating VW for theft.
+617;All charges of anti-competitive staff poaching were later dismissed.
+618;Wheelchairs were used to lead passengers off the ship.
+619;Seven other GM executives left with Lopez.
+620;Germany is concerned about the effect of the court investigations on domestic economic and political affairs.
+621;Piech got nationalistic in his accusations.
+622;A US probe of the investigation started at the instigation of the Commerce Department.
+623;Yunus founded the Grameen Bank 30 years ago.
+624;Yunus wants to start a company.
+625;Because of leaks, a gag was placed on Holland's office.
+626;Alfred Nobel invented dynamite in 1866.
+627;Documents included secret plans for a new factory.
+628;People leaving GM with Lopez included Jose Gutierrez, Jorge Alvarez Aguirre, and Rosario Piazza.
+629;1.5 million people were killed during the drought and famine devastation in 1974 in Bangladesh.
+630;Some people in the village of Joba received loans from Yunus.
+631;Full diplomatic relations were re-established in 1990.
+632;The first two borrowers must start repaying the principal plus interest over a six-week period.
+633;Three Swedes were arrested in a Belgian police sting operation.
+634;A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.
+635;Norwegian police arrested three people for the theft of Munch's painting, 'The Scream'.
+636;Some stolen art is recovered through offered rewards.
+637;In France, works of art bought at public auction are exempt from registration.
+638;Relations between Argentina and Great Britain are growing more cooperative.
+639;Refusal of Argentina to buy cattle created new tensions between the two countries.
+640;There was an industrial espionage case involving GM and VW.
+641;Argentina sought UK expertise on privatization and agriculture.
+642;Philip Morris said it sold 201 billion cigarettes worldwide during the third quarter of 1994.
+643;President Clinton thinks that industrial espionage is a threat to America's well being.
+644;American tobacco companies began to diversify production.
+645;Lopez took documents from GM to VW.
+646;American tobacco companies used state tobacco monopoly liberalization.
+647;There was an industrial espionage case involving GM and VW.
+648;BAT acquired production interests in the Ukraine, Hungary and Russia.
+649;PM cut US prices to restore Marlboro's US standing.
+650;PM acquired three Russian factories.
+651;PM often entered markets with both cigarettes and food.
+652;Sales have declined due to restrictions on advertising.
+653;Britain's Export Credit Guarantee Department underwrites loans to Argentina.
+654;Trade liberalisation happened in China.
+655;The Falklands War took place in 1982.
+656;The acquisition of the Klaipeda Tobacco company is the biggest investment in the Baltic states.
+657;Argentina lifted restrictions on British imports.
+658;Foreign Secretary Douglas Hurd visited Argentina.
+659;The military protection zone around Falklands was lifted.
+660;Animals have died by the thousands from drinking at cyanide-laced holding ponds.
+661;Mine waste-water poses an environmental hazard.
+662;Great Britain continues to refuse to discuss sovereignty issues.
+663;Relations between Argentina and Great Britain are growing more cooperative.
+664;A weak cyanide solution is poured over it to pull the gold from the rock.
+665;Britain has maintained an arm embargo.
+666;Britain angered Argentina.
+667;The British indicated readiness to allow Argentine companies to take part in the development of oilfields.
+668;RJR built factories in Turkey.
+669;Cyanide is used in the production of pharmaceuticals.
+670;Philip Morris made market gains in Russia.
+671;Cigarette sales have declined due to restrictions on advertising.
+672;Philip Morris owns the Marlboro brand.
+673;A California company was charged with reckless storage of chemicals.
+674;11 judges in the Yugoslavia war tribunal were sworn in at the World court.
+675;Cyanide is used in gold mining.
+676;The dispute between Albania and the UK about the Corfu incident lasted a long time.
+677;The mining industry uses a method known as heap leaching.
+678;The Court endorsed U.N. sanctions against Libya.
+679;Prospective drugs must have long market life after regulatory approval in order to be developed.
+680;Other changes involve joint Research and Development programs with other companies.
+681;Cyanide fishing is linked to the destruction of area reefs.
+682;Companies are working to shorten the new drug development period to an average of eight to nine years in the US.
+683;Soap-like alternatives exist.
+684;There are companies that have split the management of their Research and Development processes.
+685;Leaks into environment are caused by bad disposal of toxic waste containing cyanide.
+686;In a poll of the American public, most people approved laws that allow life-support to be removed from a terminally ill patient.
+687;A German nurse was convicted of manslaughter and mercy killing of patients by lethal injection.
+688;Dr. Kevorkian assisted Janet Adkins to use his suicide device.
+689;A plating company dumped cyanide-laced waste water into the Los Angeles sewer system.
+690;Mine waste-water poses an environmental hazard.
+691;An Alzheimer patient was in Michigan for an assisted suicide.
+692;Pregnant women are allowed to die after they deliver their babies.
+693;Animals have died by the thousands from drinking at cyanide-laced holding ponds.
+694;In most cases, the patient is comatose or mentally unable to communicate his/her feelings.
+695;The woman in the Kevorkian case injected lethal chemicals into her body.
+696;It was Delbert Ward who told authorities that he strangled his brother.
+697;Cyanide fumes killed five workers cleaning one tank.
+698;Philippine fishermen use cyanide in fishing.
+699;The new thin-casting process shook up the steel industry.
+700;Cameroon honey gatherers use cyanide to stun bees.
+701;Honduras and El Salvador entered a dispute over their borders.
+702;The Corfu Channel incident was about a British destroyer sunk by Albania in the Corfu Channel.
+703;The African elephant population was decimated by poachers.
+704;One case involved the extradition of Libyan suspects in the Pan Am Lockerbie bombing.
+705;The US government wants to keep drug prices down.
+706;African countries encourage keeping animals alive to attract tourists.
+707;The South African-based Conservation Corporation threatens the local population.
+708;The Research and Development phase of creating a new drug is complicated.
+709;Clinical trials involve an average of 200 patients per trial.
+710;In Africa, rhinos are seriously endangered by poaching.
+711;Sustainable forestry and development techniques are being employed.
+712;In the early 1990s Brazil began to take action to save the rainforest.
+713;The Amazon rainforest suffers from chaotic development.
+714;African countries encourage keeping animals alive to attract tourists.
+715;Before the late 1980's some nations even gave land and tax credit to individuals and companies slashing, burning, and exploiting the forest.
+716;Robots are used in the food industry, in general.
+717;Welding is a common use for robots in the auto industry.
+718;Robots are used to assist in a range of surgical procedures.
+719;The automotive industry has seen advances in robotic metal cutting.
+720;Robots serve as wax singers in the Rock Hall of Fame.
+721;Slash and burn cycle of clearing causes many problems in the rainforest.
+722;Fiat, in particular, uses robots for inventory management.
+723;The most common use for robots is the manufacture of automobiles.
+724;Robots are used to spray dye on garments.
+725;Bush said that protests in Indonesia against his Mideast policy were a sign of democracy in the heavily Muslim nation.
+726;Tehran did not cooperate with the U.N. watchdog's attempts to investigate suspicious aspects of Iran's nuclear program.
+727;54,000 centrifuges would produce enough enriched uranium to fuel a 1,000-megawatt reactor.
+728;Iran's program is under suspicion because of the findings by IAEA inspectors.
+729;Mice fed with red wine lived longer despite a fatty diet.
+730;Iran might be trying to make nuclear weapons according to the IAEA board.
+731;Felipe Calderon won the presidential election of Mexico.
+732;Mr Lopez Obrador didn't loose the presidential election in July.
+733;Senator Rosario Ibarra is a human rights militant.
+734;Mr Carstens lost his job as IMF's deputy managing director last month.
+735;There is a profitable trade between China and India.
+736;Management at Huawei was accused of working for Pakistan and the then Taleban government in Afghanistan.
+737;Chinese engineers working on long-term projects in India can easily obtain visas.
+738;Bush is scheduled to visit the city of Bogor.
+739;Dick Cheney is Vice President of the Defense Secretary Donald Rumsfeld.
+740;Since 2002 Al-Qaida militants have tried to hit Western interests in Indonesia.
+741;Pierre Gemayel was murdered on a street in the suburb of Beirut.
+742;After the resignation of six pro-Syrian ministers a deep political crises started in Lebanon.
+743;The crisis worsened after the UN draft document for the creation of an international tribunal was approved.
+744;Syrian troops have been withdrawn from Lebanon after the murder of Rafik Hariri.
+745;Tuesday, preliminary quarterly results will be announced.
+746;Democrats won the 2006 elections.
+747;Employee breaks had been denied by a motion granted by a Massachusetts judge.
+748;Jordan will host the meeting between President Bush and Iraqi Prime Minister Nouri al-Maliki.
+749;The Carnival Cruise Lines is a brand of Carnival Corp.
+750;Norovirus is the source of the outbreak on the ship.
+751;Bush will meet the presidents of Iraq and Syria in Tehran.
+752;Bush will meet al-Maliki in Hadley.
+753;Jim Lankes was given bottles of waters, ice and rice.
+754;The causes of the outbreak were searched for by a team from the U.S. CDC.
+755;The pills were commercialized by major retailers.
+756;The contaminated pills contained metal fragments.
+757;Contaminated pills could cause minor stomach discomfort or possible cuts to the mouth and throat.
+758;Aspirin is one of the most widely used pain relievers available without a doctor's note.
+759;CVS will not sell its own brand of 500-milligram acetaminophen caplets any longer.
+760;The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.
+761;A Class II recall covers products that might cause a temporary health problem.
+762;Acetaminophen is produced by Tylenol.
+763;Muhammad Yunus won the Nobel Prize for Peace.
+764;Kevin Vincent buys store brand acetaminophen.
+765;President Bill Clinton is a supporter of "social capitalism".
+766;Molly Walsh plans to stop buying the generic products.
+767;Bill Clapp is the founder of the Global Partnerships.
+768;The FDA provided a list of states in which the pills have been sold.
+769;Yunus started his own bank to loan money to the villagers.
+770;Grameen Bank's loans are used to buy a cow.
+771;Yunus supported more than 50,000 Struggling Members.
+772;The Nobel committee plans to help people break out of poverty.
+773;The House quickly passes bills addressing the priorities of entrepreneurs.
+774;Gates' foundation extends its microfinance programs to 5 million more of the world's poorest families.
+775;Republicans control both Houses and the White House.
+776;Yunus is the first person to win a Nobel Prize.
+777;The Hercules transporter plane made a flight to Pakistan.
+778;Servicemen and women are fighting a war in southern Afghanistan.
+779;Begum was not able to feed herself.
+780;Full English is recommended by New Zealand's Qualifications Authority.
+781;NCEA is the main qualification for high school students.
+782;A U.S. soldier was sentenced to 90 years in jail.
+783;James Barker is accused of raping an Iraqi girl and killing her family.
+784;Three Vienna nurses are under suspicion for killing patients.
+785;Will Grant is researching a conflict with Mexicans.
+786;Mr Calderon is able to create a mass civil disobedience movement.
+787;Democrats won the elections three years ago.
+788;Democrat members had strong small business voting records.
+789;A cocaine-imbibing Miami man had life support removed.
+790;The Senate is the least productive.
+791;There was a Chinook attack.
+792;There is a Supreme Court decision about the removal of life-support.
+793;Martin Page was sent on a mission to Afghanistan.
+794;Steven Jenkins was shot by a friend.
+795;Australia's Broken Hill Proprietary and the US's North Star Steel will build and operate one in the US Midwest.
+796;Haque wants to include English in some exams.
+797;The South African steel manufacturer Iscor plans to develop a mini-mill.
+798;The NCEA has been degraded by the authority.
+799;Tyler Jackson has been sentenced to 18 months.
+800;US Steel may invest in strip casting.
