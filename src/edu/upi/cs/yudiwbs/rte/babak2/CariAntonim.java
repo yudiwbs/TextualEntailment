@@ -25,7 +25,9 @@ public class CariAntonim {
     //biar kamus hanya sekali di load
     public void init() {
         // construct the URL to the Wordnet dictionary directory
-        String dictPath ="C:\\yudiwbs\\lib_java\\jwi\\dict";
+
+        //String dictPath ="C:\\yudiwbs\\lib_java\\jwi\\dict";
+        String dictPath = "D:\\source-java\\TextualEntailment\\resources\\wordnetdict\\dict";
         URL u = null;
         dict = null;
         try {

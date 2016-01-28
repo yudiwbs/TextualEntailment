@@ -17,7 +17,6 @@ went to london
 proses is ...   
 proses by ...  <-- yang melakukan
 penanganan kata not
-
 ==============
 ID:3
 H:"Does A Tiger Have A Necktie" was produced in London.
@@ -1147,7 +1146,12 @@ Persentase verb H yang cocok:0.0
 
 
 penanganan is
-
+sulit, perlu khusus penanganan husband wife?
+ex-husband, ex-wife : negasi
+x is y husband 
+y is x wife
+wife of
+husband of
 =============
 ID:84
 H:Joseph Wilson is Valerie Plame's ex-husband.
@@ -1175,6 +1179,8 @@ Verb T lemma:reveal  tell  work
 Skor wordnet:0.5
 
 
+sulit, subkalimat
+x, he was ......, worked for Y => x worked for Y
 =============
 ID:85
 H:Joseph Wilson worked for CIA.
@@ -1194,6 +1200,5934 @@ Persentase noun H yang cocok:100.0
 Verb yang cocok:worked 
 Persentase verb H yang cocok:100.0
 
+!!! member dan jail terlalu jauh
+sulit 
+a member of Y, X   => X is a member of Y
+singkatan CIA =>  Central Intelligence Agency
+=============
+ID:86
+H:Judith Miller is a member of CIA.
+T:Earlier this year reporter Judith Miller was jailed for refusing to name the US-government source who identified a member of the US Central Intelligence Agency (CIA), Valerie Plame.
+IsEntail:false
+H:
+Verb:
+Noun:judith miller member cia 
+
+T:
+Verb:jailed refusing identified 
+Noun:year reporter judith miller source member central intelligence agency cia valerie plame 
+
+------------------------
+judith miller member cia 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:member = jail
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:judith miller member cia 
+Verb T lemma:jail  refuse  identify
+Skor wordnet:0.43478260869565216
+
+member antonimnya nonmember
+
+!!! work dan jail terlalu jauh
+sulit -> ada 3 orang dan satu tersembunyi
+=========================================
+ID:87
+H:Judith Miller works for the US Government.
+T:Earlier this year reporter Judith Miller was jailed for refusing to name the US-government source who identified a member of the US Central Intelligence Agency (CIA), Valerie Plame.
+IsEntail:false
+H:
+Verb:works 
+Noun:judith miller government 
+
+T:
+Verb:jailed refusing identified 
+Noun:year reporter judith miller source member central intelligence agency cia valerie plame 
+
+------------------------
+judith miller 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:work = jail
+Verb H lemma:work
+Verb T lemma:jail  refuse  identify
+Skor wordnet:0.4
+
+work  antonimnya idle
+
+sulit
+invented calculus <> writing the first calculus text
+=============
+ID:88
+H:Jyestadeva invented calculus.
+T:Jyestadeva (1500-1610), was an astronomer of the Kerala school founded by Madhava of Sangamagrama and a student of Damodara. He is most known for writing the first calculus text, the Yuktibhasa . He also authored the Drk-karana on astronomical observations.
+IsEntail:false
+H:
+Verb:invented 
+Noun:jyestadeva calculus 
+
+T:
+Verb:founded writing authored 
+Noun:jyestadeva astronomer kerala school madhava sangamagrama student damodara calculus text yuktibhasa drk-karana observations 
+
+------------------------
+jyestadeva calculus 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:invent = write
+Verb H lemma:invent
+Verb T lemma:found  write  author
+Skor wordnet:0.5
+
+subkalimat, kecocokan subjek
+x has note that  Y ... 
+yg harus dibandingkan adalah elected dan noted
+di subkalimat subjectnya adalah iraqi people
+==============================================
+ID:93
+H:Kofi Annan was elected in the January 30 ballot.
+T:UN Secretary General Kofi Annan has noted that the Iraqi people turned out in large numbers to vote in the January 30 ballot.
+IsEntail:false
+H:
+Verb:elected 
+Noun:kofi annan january ballot 
+
+T:
+Verb:noted turned vote 
+Noun:un secretary general kofi annan people numbers january ballot 
+
+------------------------
+kofi annan january ballot 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:elect = vote
+Verb H lemma:elect
+Verb T lemma:note  turn  vote
+Skor wordnet:0.75
+
+objek tidak cocok
+causes massive weight gain <>  causes schizophrenias
+obj setelah verb?
+!!! schizophrenia = need?
+=============
+ID:95
+H:Levomepromazine causes schizophrenia.
+T:Levomepromazine has prominent sedative and anticholinergic/ sympatholytic effects (dry mouth, hypotension, sinus tachycardia, extreme night sweats) and causes massive weight gain. These side effects normally do not allow to give the drug in doses needed for full remission of schizophrenia, so it has to be combined with a more potent antipsychotic.
+IsEntail:false
+H:
+Verb:
+Noun:levomepromazine schizophrenia 
+
+T:
+Verb:give needed combined 
+Noun:levomepromazine sedative effects mouth hypotension tachycardia night sweats weight gain side effects drug doses remission schizophrenia drug antipsychotic 
+
+------------------------
+levomepromazine schizophrenia 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:schizophrenia = need
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:levomepromazine schizophrenia 
+Verb T lemma:give  need  combine
+Skor wordnet:0.7058823529411765
+
+!!! earned <> signed 
+=============
+ID:97
+H:Lukoil earned $1 billion in 2004.
+T:In June 2004, top Russian oil producer Lukoil signed a $1 billion 35-year production-sharing agreement to develop Uzbek natural gas deposits.
+IsEntail:false
+H:
+Verb:earned 
+Noun:lukoil 
+
+T:
+Verb:signed develop 
+Noun:june oil producer lukoil agreement gas deposits 
+
+------------------------
+lukoil 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:earn = develop
+Verb H lemma:earn
+Verb T lemma:sign  develop
+Skor wordnet:0.3333333333333333
+
+sulit, sptnya malah entail = true (salah soal)
+=============
+ID:98
+H:Louis Riel assassinated Scott.
+T:Scott's execution led to outrage in Ontario, and was largely responsible for prompting the Wolseley Expedition which forced Louis Riel, now branded a murderer, to flee the settlement.
+IsEntail:false
+H:
+Verb:assassinated 
+Noun:louis riel scott 
+
+T:
+Verb:led prompting forced branded flee 
+Noun:scott execution outrage ontario wolseley expedition louis riel murderer settlement 
+
+------------------------
+louis riel scott 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:assassinate = lead
+Verb H lemma:assassinate
+Verb T lemma:lead  prompt  force  brand  flee
+Skor wordnet:0.4
+
+left hawaii <> for hawaii 
+penanganan khusus?  masalah lokasi?
+=============
+ID:100
+H:The Macdonough left Hawaii on 10 August.
+T:On 21 July, the Macdonough patrolled the waters off Guam to protect the assault craft from enemy submarines, continuing that role until departing for Hawaii on 10 August. After a day at Pearl Harbor, she departed for the Admiralty Islands.
+IsEntail:false
+H:
+Verb:left 
+Noun:macdonough hawaii august 
+
+T:
+Verb:patrolled protect continuing departing departed 
+Noun:july macdonough waters guam assault craft enemy submarines role hawaii august day pearl harbor admiralty islands 
+
+------------------------
+macdonough hawaii august 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:left = patrol
+Verb H lemma:left
+Verb T lemma:patrol  protect  continue  depart  depart
+Skor wordnet:0.21052631578947367
+
+left  antonimnya right
+left  antonimnya center
+left  antonimnya right
+left  antonimnya right
+left  antonimnya arrive
+left  antonimnya right
+
+lokasi
+informasi implisit, sulit: rejecting demands by Kyrgyzstan to pay for the past use of Manas 
+===============================
+ID:101
+H:Manas air base is located in Kyrgyzstan.
+T:The Pentagon is rejecting demands by Kyrgyzstan to pay for the past use of Manas air base, a key military facility for US aircraft flying missions to Afghanistan.
+IsEntail:true
+H:
+Verb:located 
+Noun:air base kyrgyzstan 
+
+T:
+Verb:rejecting pay flying 
+Noun:pentagon demands kyrgyzstan manas air base facility aircraft missions afghanistan 
+
+------------------------
+air base kyrgyzstan 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:located
+Verb T lemma:reject  pay  fly
+Skor wordnet:0.0
+
+sulit
+x supported y <> ...x.. assited by Y
+!!! support <> escape??
+=============
+ID:103
+H:Marlowe supported Zaleshoff.
+T:There is no way Marlowe could legally leave Italy, especially after an arrest warrant has been issued for him by the authorities. Assisted by Zaleshoff, he succeeds in making his escape from Milan.
+IsEntail:false
+H:
+Verb:supported 
+Noun:marlowe zaleshoff 
+
+T:
+Verb:leave issued succeeds making escape 
+Noun:marlowe italy arrest warrant authorities assisted zaleshoff zaleshoff zaleshoff milan 
+
+------------------------
+marlowe zaleshoff 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:support = escape
+Verb H lemma:support
+Verb T lemma:leave  issue  succeed  make  escape
+Skor wordnet:0.75
+
+kalimat pasif 
+sulit, informasi tersebar
+coref
+=============
+ID:104
+H:Marlowe was arrested by Italian authorities.
+T:There is no way Marlowe could legally leave Italy, especially after an arrest warrant has been issued for him by the authorities. Assisted by Zaleshoff, he succeeds in making his escape from Milan.
+IsEntail:false
+H:
+Verb:arrested 
+Noun:marlowe authorities 
+
+T:
+Verb:leave issued succeeds making escape 
+Noun:marlowe italy arrest warrant authorities assisted zaleshoff zaleshoff zaleshoff milan 
+
+------------------------
+marlowe authorities 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:arrest = escape
+Verb H lemma:arrest
+Verb T lemma:leave  issue  succeed  make  escape
+Skor wordnet:0.7058823529411765
+
+kalimat tidak langsung
+======================
+ID:105
+H:Mbeki holds the office of Prime Minister.
+T:"We are ... deploying more people into Côte d'Ivoire -- police, military people and people to work directly with the office of the prime minister" Mbeki told a news conference in Pretoria.
+IsEntail:false
+H:
+Verb:holds 
+Noun:mbeki office prime minister 
+
+T:
+Verb:deploying work told 
+Noun:people côte d'ivoire police people people office minister mbeki news conference pretoria 
+
+------------------------
+mbeki office minister 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:hold = work
+Verb H lemma:hold
+Verb T lemma:deploy  work  tell
+Skor wordnet:0.7777777777777778
+
+hold  antonimnya let_go_of
+
+singkatan
+based = headquartered
+penanganan lokasi x,y = y 
+=============
+ID:106
+H:MBUSA is based in New Yersey.
+T:Mercedes-Benz USA (MBUSA), headquartered in Montvale, New Jersey, is responsible for the sales, marketing and service of all Mercedes-Benz and Maybach products in the United States.
+IsEntail:true
+H:
+Verb:based 
+Noun:mbusa yersey 
+
+T:
+Verb:headquartered marketing 
+Noun:mercedes-benz usa mbusa montvale jersey sales service mercedes-benz maybach products united states 
+
+------------------------
+mbusa 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+support = joining & donated
+sulit
+================================================
+ID:107
+H:Mercedez-Benz supports the Key to the Cure campaign.
+T:Since joining the Key to the Cure campaign three years ago, Mercedes-Benz has donated over $2 million toward finding new detection methods, treatments and cures for women's cancers.
+IsEntail:true
+H:
+Verb:supports 
+Noun:mercedez-benz key cure campaign 
+
+T:
+Verb:joining donated finding 
+Noun:cure campaign years mercedes-benz detection methods treatments cures women cancers 
+
+------------------------
+cure campaign 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+!!! buy <> site
+=============
+ID:108
+H:MG Rover has been bought by Airbus.
+T:Airbus could site a design engineering centre in the Midlands region of the UK to take advantage of the availability of skilled engineering staff following the demise of MG Rover, the collapsed UK carmaker.
+IsEntail:false
+H:
+Verb:bought 
+Noun:mg rover airbus 
+
+T:
+Verb:site 
+Noun:airbus design engineering centre midlands region uk advantage availability engineering staff demise mg rover uk carmaker 
+
+------------------------
+mg rover airbus 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:buy = site
+Verb H lemma:buy
+Verb T lemma:site
+Skor wordnet:0.2857142857142857
+
+buy  antonimnya sell
+
+x,y,z are member of A4
+A is membership of x, y, z
+=============
+ID:109
+H:More than 200,000 U.S. composers, songwriters, lyricists and music publishers are members of ASCAP.
+T:ASCAP is a membership association of more than 200,000 U.S. composers, songwriters, lyricists and music publishers of every kind of music.
+IsEntail:true
+H:
+Verb:lyricists 
+Noun:u.s. composers songwriters music publishers members ascap 
+
+T:
+Verb:
+Noun:ascap membership association u.s. composers songwriters lyricists music publishers kind music 
+
+------------------------
+u.s. composers songwriters music publishers ascap 
+Persentase noun H yang cocok:85.71428571428571
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:lyricist
+Verb T lemma:
+Skor wordnet:0.0
+
+sulit
+plotting to participate <> participated
+=============
+ID:111
+H:Moussaoui participated in the Sept. 11 attacks.
+T:U.S. District Judge Leonie Brinkema accepted would-be hijacker Zacarias Moussaoui's guilty pleas on six charges of conspiracy laid against him for his plotting to participate in the Sept. 11 attacks . Moussaoui, who had to be restrained at one point during the trial in an Alexandria, Virginia courthouse, was polite and quiet during the day's appearance.
+IsEntail:false
+H:
+Verb:participated 
+Noun:moussaoui sept. attacks 
+
+T:
+Verb:accepted laid participate restrained 
+Noun:u.s. district judge leonie brinkema hijacker zacarias moussaoui pleas charges conspiracy plotting sept. attacks moussaoui point trial alexandria courthouse day appearance 
+
+------------------------
+moussaoui sept. attacks 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:participate
+Verb H lemma:participate
+Verb T lemma:accept  lay  participate  restrain
+Skor wordnet:1.0
+
+subjek tidak cocok
+leave london
+departs london
+=============
+ID:113
+H:Mrs Hobday departs London.
+T:Unfortunately, a visit from Mrs Hobday, causes Mr Browne to leave for London.
+IsEntail:false
+H:
+Verb:departs 
+Noun:mrs hobday london 
+
+T:
+Verb:leave 
+Noun:visit mrs hobday mr browne london 
+
+------------------------
+mrs hobday london 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:depart = leave
+Verb H lemma:depart
+Verb T lemma:leave
+Skor wordnet:0.3333333333333333
+
+depart  antonimnya stay
+
+
+Pope's Ford Escort = Ford Escort GL once owned by Pope John Paul II
+y sold to x = x buy y 
+!!! antonim tapi posisi terbalik --> tetap entail
+=============
+ID:115
+H:A Houston multimillionaire buys the Pope's Ford Escort.
+T:A light blue 1975 Ford Escort GL once owned by Pope John Paul II sold for $690,000 Saturday to a Houston multimillionaire who said he plans to put it in a museum he wants to build in his hometown.
+IsEntail:true
+H:
+Verb:buys 
+Noun:houston multimillionaire pope ford escort 
+
+T:
+Verb:owned sold plans put build 
+Noun:1975 ford escort gl pope john paul ii saturday houston multimillionaire ford escort gl museum ford escort gl ford escort gl hometown 
+
+------------------------
+houston multimillionaire pope ford escort 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:buy = own
+Verb H lemma:buy
+Verb T lemma:own  sell  plan  put  build
+Skor wordnet:0.4
+
+buy  antonimnya sell
+Ketemu antonimnya di T, not entail
+
+sulit
+supported x <> proposing the explulsion from the party of the X
+=============
+ID:117
+H:Natt	a supported the Manifesto group.
+T:In 1969, he drew up the report proposing the expulsion from the party of the Manifesto group. In 1984, after Berlinguer's death, Natta was elected as party secretary.
+IsEntail:false
+H:
+Verb:supported 
+Noun:natta manifesto group 
+
+T:
+Verb:drew proposing elected 
+Noun:report expulsion party manifesto group berlinguer death natta party secretary 
+
+------------------------
+natta manifesto group 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:support = draw
+Verb H lemma:support
+Verb T lemma:draw  propose  elect
+Skor wordnet:0.4
+
+co-owner == one of the owner
+According to x = x 
+current company, x = x
+verb tidak ditemukan
+=============
+ID:118
+H:Nelson Beavers is one of the owners of Carolina Analytical Laboratories.
+T:According to Nelson Beavers, who is a co-owner of the current company, Carolina Analytical Laboratories, LLC. and has ownership/employment history with Woodson-Tenent and Eurofins, the septic system was installed in the early 1990s.
+IsEntail:true
+H:
+Verb:
+Noun:nelson beavers owners carolina analytical laboratories 
+
+T:
+Vserb:installed 
+Noun:nelson beavers co-owner company carolina analytical laboratories llc history woodson-tenent eurofins system 1990s 
+
+------------------------
+nelson beavers carolina analytical laboratories 
+Persentase noun H yang cocok:83.33333333333334
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:nelson beavers owners carolina analytical laboratories 
+Verb T lemma:install
+Skor wordnet:0.0
+
+lokasi: in
+tanggal: on october 30  == slated for october 30
+event
+election == presidential vote
+=============
+ID:121
+H:New elections in Côte d'Ivoire will take place on October 30.
+T:Côte d'Ivoire's President Laurent Gbagbo promulgated new election laws on July 14, including the creation of an independent electoral commission to oversee the presidential vote, which is slated for October 30.
+IsEntail:true
+H:
+Verb:
+Noun:elections côte d'ivoire place october 
+
+T:
+Verb:promulgated including oversee slated 
+Noun:d'ivoire president laurent gbagbo election laws july creation commission vote october 
+
+------------------------
+d'ivoire october 
+Persentase noun H yang cocok:40.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+waktu: in 2005 == in early 2005
+coref: the company
+!!! antonim salah, kalimat pasif
+=============
+ID:122
+H:Nival was sold in 2005.
+T:Nival was founded in 1996 by Sergey Orlovskiy. In early 2005, the company was bought by Ener1 Group, a Florida-based holdings company, for around US$10 million.
+IsEntail:true
+H:
+Verb:sold 
+Noun:nival 
+
+T:
+Verb:founded bought 
+Noun:nival sergey orlovskiy company ener1 group holdings company 
+
+------------------------
+nival 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:sell = found
+Verb H lemma:sell
+Verb T lemma:found  buy
+Skor wordnet:0.2857142857142857
+
+sell  antonimnya buy
+Ketemu antonimnya di T, not entail
+
+cost x <> x must be accounted for.   
+Predikat tidak cocok
+=============
+ID:124
+H:Parmalat costs 14.3 billion euros.
+T:Last year's collapse of Italian dairy company Parmalat , with "14.3 billion euros that must still be accounted for", is given as evidence for "a lack of effective tools and controls regarding financial operations".
+IsEntail:false
+H:
+Verb:costs 
+Noun:parmalat euros 
+
+T:
+Verb:accounted 
+Noun:year collapse dairy company parmalat euros evidence lack tools controls operations 
+
+------------------------
+parmalat euros 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:cost = account
+Verb H lemma:cost
+Verb T lemma:account
+Skor wordnet:0.6666666666666666
+
+sulit
+lives on <> built x for his .. on X 
+===================================
+ID:126
+H:Pierce lives on E. 28th Street.
+T:Councilman Pierce had built the home for his daughter on E. 28th Street off Rossville Blvd, as he lives nearby.
+IsEntail:false
+H:
+Verb:lives 
+Noun:pierce e. 28th street 
+
+T:
+Verb:built lives 
+Noun:councilman pierce home councilman pierce daughter e. 28th street rossville blvd councilman pierce 
+
+------------------------
+pierce e. 28th street 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:lives 
+Persentase verb H yang cocok:100.0
+
+sulit
+compulsory <> permitted as long as
+=============
+ID:131
+H:Quarantine is compulsory for animals to enter the UK.
+T:Animals are permitted to enter the UK 6 months later without quarantine as long as they have been treated for ticks, fleas and tapeworms between 24 and 48 hours before boarding the transport that will return the pets to the UK.
+IsEntail:false
+sH:
+Verb:enter 
+Noun:quarantine animals uk 
+
+T:
+Verb:permitted enter treated boarding return 
+Noun:animals uk months quarantine ticks fleas tapeworms hours transport pets uk 
+
+------------------------
+quarantine animals uk 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:enter 
+Persentase verb H yang cocok:100.0
+
+sulit, beberapa verb
+issued bulletins via teletype requesting patrols to be on the lookout <> arrested
+=============
+ID:136
+H:Robert Senacal was arrested by police.
+T:State Police issued bulletins via teletype requesting patrols to be on the lookout for Robert Senacal, 35, of Cortlandt Manor.
+IsEntail:false
+H:
+Verb:arrested 
+Noun:robert senacal police 
+
+T:
+Verb:issued requesting 
+Noun:state police bulletins teletype patrols lookout robert senacal cortlandt manor 
+
+------------------------
+robert senacal police 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:arrest = issue
+Verb H lemma:arrest
+Verb T lemma:issue  request
+Skor wordnet:0.5
+
+sulit --> kata search engine?
+Russian state-owned oil company Rosneft = Rosneft belonged to the Russian State
+=============
+ID:138
+H:Rosneft belonged to the Russian State.
+T:The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft.
+IsEntail:true
+H:
+Verb:belonged 
+Noun:rosneft state 
+
+T:
+Verb:made pay sold bought 
+Noun:sale yukos tax bill yuganskneftegaz company baikalfinansgroup oil company rosneft 
+
+------------------------
+rosneft 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+
+elected <> son of former
+Saad Hariri, son of former Prime Minister of Lebanon
+=============
+ID:140
+H:Saad Hariri was elected Prime Minister of Lebanon.
+T:George Hawi's assassination came on the heels of the conclusion of the last round of parliamentary elections, which saw a coalition of opposition candidates led by Saad Hariri, son of former Prime Minister of Lebanon Rafik Hariri , capture a majority of seats.
+IsEntail:false
+H:
+Verb:elected 
+Noun:saad hariri prime minister lebanon 
+
+T:
+Verb:led capture 
+Noun:george hawi assassination heels conclusion round elections coalition opposition candidates saad hariri son prime minister lebanon rafik hariri majority seats 
+
+------------------------
+saad hariri prime minister lebanon 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:elect = lead
+Verb H lemma:elect
+Verb T lemma:lead  capture
+Skor wordnet:0.35294117647058826
+
+sulit
+Saddam Hussein accepted an x to  
+lokasi: to the U.S; into exile
+=============
+ID:141
+H:Saddam Hussein flees to the U.S.
+T:Saddam Hussein accepted an 11th-hour offer to flee into exile weeks ahead of the U.S.-led 2003 invasion, but Arab League officials scuttled the proposal, officials in this Gulf state claimed.
+IsEntail:false
+H:
+Verb:flees 
+Noun:saddam hussein u.s. 
+
+T:
+Verb:accepted flee scuttled claimed 
+Noun:saddam hussein offer exile weeks invasion arab league officials proposal officials gulf state 
+
+------------------------
+saddam hussein 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:flee
+Verb H lemma:flee
+Verb T lemma:accept  flee  scuttle  claim
+Skor wordnet:1.0
+
+sulit
+kalimat penjelas 
+X, .... that .... , has quit ......
+=============
+ID:143
+H:Scott Stevens has connections with the Yakuza.
+T:Scott Stevens, the Idaho meteorologist who claimed that a weather manipulating conspiracy (possibly under the control of Japanese Yakuza mafia) caused Hurricane Katrina, has quit his job at KPVI-TV in Pocatello.
+IsEntail:false
+H:
+Verb:
+Noun:scott stevens connections yakuza 
+
+T:
+Verb:claimed manipulating caused quit 
+Noun:scott stevens idaho meteorologist weather conspiracy control yakuza mafia hurricane katrina scott stevens job kpvi-tv pocatello 
+
+------------------------
+scott stevens yakuza 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:scott = claim
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:scott stevens connections yakuza 
+Verb T lemma:claim  manipulate  cause  quit
+Skor wordnet:0.18181818181818182
+
+
+sulit, negasi tidak langsung
+lokasi
+xx was its number one priority <>  xx
+=============
+ID:147
+H:Southwest Airlines operates in New Orleans.
+T:Southwest Airlines on Thursday said rebuilding service at New Orleans was its number one priority as it unveiled its 58th consecutive quarterly profit and enhanced fuel hedges to extend its competitive advantage over rivals.
+IsEntail:false
+H:
+Verb:operates 
+Noun:southwest airlines orleans 
+
+T:
+Verb:rebuilding unveiled enhanced extend 
+Noun:southwest airlines thursday service orleans number priority profit fuel hedges advantage rivals 
+
+------------------------
+southwest airlines orleans 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:operate = unveil
+Verb H lemma:operate
+Verb T lemma:rebuild  unveil  enhance  extend
+Skor wordnet:0.25
+
+Swift died in 1745
+death relieved Swift in October 1745
+waktu: in [month] YEAR = YEAR 
+!!! death tidak ditemukan sebagai verb dan dibandingkan dengan died
+=============================
+ID:150
+H:Swift died in 1745.
+T:Paralysis was followed by aphasia, and after acute pain, followed by a long period of apathy, from which death relieved Swift in October 1745.
+IsEntail:true
+H:
+Verb:died 
+Noun:swift 
+
+T:
+Verb:relieved 
+Noun:paralysis aphasia pain period apathy death swift october 
+
+------------------------
+swift 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:die
+Verb T lemma:relieved
+Skor wordnet:0.0
+
+sulit
+worked for x
+negasi implisit (but...)
+=============
+ID:151
+H:Swift worked for the Earl of Berkeley.
+T:Swift was offered and accepted the post of secretary and chaplain to the Earl of Berkeley, one of the Lords Justices, but when he reached Ireland he found that the secretaryship had been given to another.
+IsEntail:false
+H:
+Verb:worked 
+Noun:swift earl berkeley 
+
+T:
+Verb:offered accepted reached found 
+Noun:swift post secretary chaplain earl berkeley lords justices swift ireland swift secretaryship 
+
+------------------------
+swift earl berkeley 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:work = offer
+Verb H lemma:work
+Verb T lemma:offer  accept  reach  find
+Skor wordnet:0.75
+
+work  antonimnya idle
+
+sulit
+referensi waktu?
+=================
+ID:156
+H:The Auburn High School Athletic Hall of Fame has ten members.
+T:The Auburn High School Athletic Hall of Fame recently introduced its Class of 2005 which includes 10 members.
+IsEntail:false
+H:
+Verb:
+Noun:auburn high school athletic hall fame members 
+
+T:
+Verb:introduced includes 
+Noun:auburn high school athletic hall fame class members 
+
+------------------------
+auburn high school athletic hall fame members 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:school = include
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:auburn high school athletic hall fame members 
+Verb T lemma:introduce  include
+Skor wordnet:0.2857142857142857
+
+high antonimnya low
+high antonimnya low
+high antonimnya low
+high antonimnya low
+high antonimnya low_spirits
+fame antonimnya infamy
+fame antonimnya infamy
+members antonimnya nonmember
+
+!!! discovered<>introducted
+=============
+ID:157
+H:The Aurora Borealis was discovered in 1995.
+T:In 1955, the Aurora Borealis, a coating applied to crystal stones to produce a "rainbow of colors" effect was introduced.
+IsEntail:false
+H:
+Verb:discovered 
+Noun:aurora borealis 
+
+T:
+Verb:applied produce introduced 
+Noun:aurora borealis coating crystal stones colors effect 
+
+------------------------
+aurora borealis 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:discover = apply
+Verb H lemma:discover
+Verb T lemma:apply  produce  introduce
+Skor wordnet:0.3333333333333333
+
+
+sulit referensi lokasi
+waktu:
+in [year]
+=============
+ID:159
+H:The British Army crossed the Toba Kakar Range of mountains in 1839.
+T:The Bolan Pass is a gap through the Toba Kakar Range of mountains on the border of Pakistan. The British took the threat of a Russian invasion of India via the Khyber and Bolan Passes very seriously so in 1837, a British envoy was sent to Kabul to gain support of the Emir, Dost Mohammed. In February of 1839, the British Army under Sir John Keane took 12,000 men through the Bolan Pass and entered Kandahar.
+IsEntail:true
+H:
+Verb:crossed 
+Noun:british army toba kakar range mountains 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+accuses <> did nothing wrong
+!!! search engine?  
+=============
+ID:160
+H:The Canadian parliament's Ethics Commission accuses Judy Sgro.
+T:The Canadian parliament's Ethics Commission said former immigration minister, Judy Sgro, did nothing wrong and her staff had put her into a conflict of interest.
+IsEntail:false
+H:
+Verb:accuses 
+Noun:parliament ethics commission judy sgro 
+
+T:
+Verb:put 
+Noun:parliament ethics commission immigration minister judy sgro judy sgro staff staff conflict interest 
+
+------------------------
+parliament ethics commission judy sgro 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:accuse = put
+Verb H lemma:accuse
+Verb T lemma:put
+Skor wordnet:0.3333333333333333
+
+sulit
+The Counts of Holland supported the Holy See
+the Holy See frequently interfered 
+=============
+ID:161
+H:The Counts of Holland supported the Holy See.
+T:The Counts of Holland and Geldern, between whose territories the lands of the Bishops of Utrecht lay, also sought to acquire influence over the filling of the episcopal see. This often led to disputes and consequently the Holy See frequently interfered in the election.
+IsEntail:false
+H:
+Verb:supported 
+Noun:counts holland holy 
+
+T:
+Verb:lay sought acqusire led interfered 
+Noun:counts holland geldern territories lands bishops utrecht influence filling episcopal disputes holy election 
+
+------------------------
+counts holland holy 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:support = seek
+Verb H lemma:support
+Verb T lemma:lay  seek  acquire  lead  interfere
+Skor wordnet:0.625
+
+sulit
+negatif
+against
+=============
+ID:162
+H:The Dutch people approve the European Constitution.
+T:The end result says that 61.6% of the Dutch people vote (against) the European Constitution, while 38.4% voted (for) the Constitution.
+IsEntail:false
+H:
+Verb:approve 
+Noun:people constitution 
+
+T:
+Verb:result voted 
+Noun:end % people vote european constitution % constitution 
+
+------------------------
+people constitution 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:approve = result
+Verb H lemma:approve
+Verb T lemma:result  vote
+Skor wordnet:0.18181818181818182
+
+approve  antonimnya disapprove
+approve  antonimnya disapprove
+
+sulit
+vote against--> tidak ada di T
+=============
+ID:163
+H:The House of Assembly of Newfoundland and Labrador vote against the land claims agreement.
+T:The land claims agreement must still be approved by the Canadian House of Commons , but has already passed through the House of Assembly of Newfoundland and Labrador.
+IsEntail:false
+H:
+Verb:vote 
+Noun:house assembly newfoundland labrador land claims agreement 
+
+T:
+Verb:approved passed 
+Noun:land claims agreement house commons house assembly newfoundland labrador 
+
+------------------------
+house assembly newfoundland labrador land claims agreement 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:vote = pass
+Verb H lemma:vote
+Verb T lemma:approve  pass
+Skor wordnet:0.7777777777777778
+
+X is sponsored by Y ==
+Y is provide annual support X 
+!!! search engine?
+==============================
+ID:164
+H:The Inner City Little League is sponsored by Chicago White Sox Charities.
+T:Chicago White Sox Charities also provides annual ongoing support to programs such as Special Olympics and the Inner City Little League.
+IsEntail:true
+H:
+Verb:sponsored 
+Noun:city league chicago white sox charities 
+
+T:
+Verb:
+Noun:chicago white sox charities support programs olympics city league 
+
+------------------------
+city league chicago white sox charities 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:sponsor
+Verb T lemma:
+Skor wordnet:0.0
+
+The Kabale district borders on Rwanda = The Kabale district of Uganda near the Rwandan border
+lokasi X of Y == X
+borders on Rwanda = near the Rwandan border
+on = near the 
+verb yang dibandingkan tidak cocok
+=======================================
+ID:167
+H:The Kabale district borders on Rwanda.
+T:The bus, which was heading for Nairobi in Kenya , crashed in the Kabale district of Uganda near the Rwandan border.
+IsEntail:true
+H:
+Verb:borders 
+Noun:kabale district rwanda 
+
+T:
+Verb:heading crashed 
+Noun:bus nairobi kenya district uganda rwandan border 
+
+------------------------
+district 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+sulit
+negasi: x is not to be confused with y  => x <> y
+=============
+ID:169
+H:The pet passport contains the complete vaccination history of pets.
+T:The pet passport is a pink A4 sheet which contains the microchip number and certification that the dog has a rabies vaccination, and needs to be signed by a veterinary surgeon who has LVI status. The passport is not to be confused with the much smaller purple folder routinely issued by vets which records the complete vaccination history of the pet.
+IsEntail:false
+H:
+Verb:
+Noun:passport vaccination history pets 
+
+T:
+Verb:signed confused issued records 
+Noun:passport a4 sheet microchip number certification dog rabies vaccination surgeon lvi status passport folder vets vaccination history pet 
+
+------------------------
+passport vaccination history 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:passport = record
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:passport vaccination history pets 
+Verb T lemma:sign  confuse  issue  record
+Skor wordnet:0.5333333333333333
+
+sulit, negasi
+used to be, but
+=============
+ID:182
+H:Vance worked with Hooper.
+T:Vance used to be Hooper's supervisor, he said, but was let go several months ago.
+IsEntail:true
+H:
+Verb:worked 
+Noun:vance hooper 
+
+T:
+Verb:
+Noun:vance hooper supervisor vance months 
+
+------------------------
+vance hooper 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:work
+Verb T lemma:
+Skor wordnet:0.0
+
+sulit
+for olivet <> of olivent
+X be employee of them month at Y= X works for Y
+lokasi 
+=============
+ID:183
+H:Vera Beers works for Olivet.
+T:Vera Beers, of Olivet, recently was named employee of the month at Standard Printing in Marshall.
+IsEntail:false
+H:
+Verb:works 
+Noun:vera beers olivet 
+
+T:
+Verb:named 
+Noun:vera beers olivet employee month standard printing marshall 
+
+------------------------
+vera beers olivet 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:work = name
+Verb H lemma:work
+Verb T lemma:name
+Skor wordnet:0.4
+
+work  antonimnya idle
+
+x cost y
+y sale of x
+Wehkamp cost €390m = with the €390m (£265m) sale of the Dutch home shopping company, Wehkamp
+=============
+ID:187
+H:Wehkamp cost €390m.
+T:GUS on Friday disposed of its remaining home shopping business and last non-UK retail operation with the €390m (£265m) sale of the Dutch home shopping company, Wehkamp, to Industri Kapital, a private equity firm.
+IsEntail:true
+H:
+Verb:cost 
+Noun:wehkamp 
+
+T:
+Verb:disposed 
+Noun:gus friday home shopping business operation sale home shopping company wehkamp industri kapital equity firm 
+
+------------------------
+wehkamp 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:cost
+Verb T lemma:disposed
+Skor wordnet:0.0
+
+kalimat negatif: decline
+Coref: he
+=============
+ID:189
+H:White got the $10,000 Britannia Award.
+T:Around this time, White decided that he would not accept any more prizes for his work. He declined both the $10,000 Britannia Award and another Miles Franklin Award.
+IsEntail:false
+H:
+Verb:
+Noun:white award 
+
+T:
+Verb:decided accept declined 
+Noun:time white prizes white work britannia award miles franklin award 
+
+------------------------
+white award 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:white = decline
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:white award 
+Verb T lemma:decide  accept  decline
+Skor wordnet:0.5
+
+white antonimnya black
+white antonimnya black
+white antonimnya black
+white antonimnya black
+
+=============
+ID:190
+H:Wilkins became the captain of Chelsea in 1975.
+T:In 1975, a 19 year old Wilkins was handed the captaincy of Chelsea, despite the presence of elder and more experienced players in the squad.
+IsEntail:true
+H:
+Verb:
+Noun:wilkins captain chelsea 
+
+T:
+Verb:handed experienced 
+Noun:year wilkins captaincy chelsea presence players squad 
+
+------------------------
+wilkins chelsea 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:wilkins captain chelsea 
+Verb T lemma:handed  experienced
+Skor wordnet:0.0
+
+=============
+ID:192
+H:Women can vote in elections in Saudi Arabia.
+T:Kuwait becomes the fourth Gulf country where women as well as men can vote in elections. Saudi Arabia holds strictly limited, male-only elections.
+IsEntail:false
+H:
+Verb:vote 
+Noun:women elections saudi arabia 
+
+T:
+Verb:vote holds 
+Noun:kuwait gulf country women men elections saudi arabia elections 
+
+------------------------
+women elections saudi arabia 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:vote 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:194
+H:Yasser Arafat succeeded Abbas.
+T:US President George W. Bush has indicated he will invite Abbas to the United States for talks, something he never did with Abbas's predecessor, the late Yasser Arafat .
+IsEntail:false
+H:
+Verb:succeeded 
+Noun:yasser arafat abbas 
+
+T:
+Verb:invite 
+Noun:president george w. bush abbas united states talks abbas predecessor yasser arafat 
+
+------------------------
+yasser arafat abbas 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:succeed = invite
+Verb H lemma:succeed
+Verb T lemma:invite
+Skor wordnet:0.3333333333333333
+
+succeed  antonimnya fail
+succeed  antonimnya precede
+
+=============
+ID:199
+H:Zoe died in a boating accident.
+T:Though fearful of a forthcoming performance evaluation by her boss, Zoe must unravel the life of a man just found dead of a heart attack, who was supposed to have died three years earlier in a boating accident.
+IsEntail:false
+H:
+Verb:died 
+Noun:zoe accident 
+
+T:
+Verb:unravel found supposed died 
+Noun:performance evaluation boss zoe life man heart attack years accident 
+
+------------------------
+zoe accident 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:died 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:200
+H:Zorrilla started the revolution of 1868.
+T:In 1856 Manuel Ruiz Zorrilla was elected deputy, and soon attracted notice among the most advanced Progressists and Democrats. He took part in the revolutionary propaganda that led to the military movement in Madrid on June 22, 1866. He had to take refuge in France for two years, like his fellow-conspirators, and only returned to Spain when the revolution of 1868 took place.
+IsEntail:false
+H:
+Verb:started 
+Noun:zorrilla revolution 
+
+T:
+Verb:elected attracted notice led returned 
+Noun:manuel ruiz zorrilla deputy progressists democrats part propaganda movement madrid june 1866 refuge france years manuel ruiz zorrilla fellow-conspirators spain revolution place 
+
+------------------------
+zorrilla revolution 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:start = lead
+Verb H lemma:start
+Verb T lemma:elect  attract  notice  lead  return
+Skor wordnet:0.5
+
+start  antonimnya finish
+start  antonimnya stop
+start  antonimnya stop
+
+=============
+ID:201
+H:Child labor is widely used in Asia.
+T:"Child labor" is, generally speaking, work for children that harms them or exploits them in some way (physically, mentally, morally, or by blocking access to education).
+IsEntail:false
+H:
+Verb:
+Noun:child labor asia 
+
+T:
+Verb:speaking work harms exploits blocking 
+Noun:child labor children mentally access education 
+
+------------------------
+child labor 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:child = block
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:child labor asia 
+Verb T lemma:speak  work  harm  exploit  block
+Skor wordnet:0.5882352941176471
+
+child antonimnya parent
+
+=============
+ID:202
+H:Glue-sniffing is common among youngsters.
+T:"Glue sniffing" is most common among teenagers. They generally grow out of it once other drugs such as alcohol and cannabis become available to them. Seven-year-olds have been known to start "glue sniffing". Because of the social stigma attached to "glue sniffing" most snifters stop around 16 or 17 years, unless they are seriously addicted.
+IsEntail:true
+H:
+Verb:
+Noun:glue-sniffing youngsters 
+
+T:
+Verb:sniffing grow start sniffing attached glue sniffing addicted 
+Noun:teenagers drugs alcohol cannabis teenagers seven-year-olds glue stigma stop years snifters 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:204
+H:Sophie's World is a best seller.
+T:A former philosophy teacher whose best-known novel, Sophie's World, was a surprise international best-seller.
+IsEntail:true
+H:
+Verb:
+Noun:sophie world seller 
+
+T:
+Verb:
+Noun:philosophy teacher sophie world best-seller 
+
+------------------------
+sophie world 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:sophie world seller 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:214
+H:Ebola Epidemic breaks out in Zaire.
+T:Although the number of the confirmed Ebola cases has risen slightly to 26 in Gabon and to 16 in Congo Brazzaville, new infections are now so low that it seems the epidemic is "burning out".
+IsEntail:false
+H:
+Verb:breaks 
+Noun:ebola epidemic zaire 
+
+T:
+Verb:risen burning 
+Noun:number confirmed ebola cases gabon congo brazzaville infections epidemic 
+
+------------------------
+ebola epidemic 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:break = rise
+Verb H lemma:break
+Verb T lemma:rise  burn
+Skor wordnet:0.75
+
+break  antonimnya repair
+break  antonimnya keep
+break  antonimnya make
+
+=============
+ID:217
+H:A woman succeeds in climbing Everest solo.
+T:Arlene Blum is a legendary trailblazer by any measure. Defying the climbing establishment of the 1970s, she led the first teams of women on successful ascents of Mt. McKinley and Annapurna, and was the first American woman to attempt Mt. Everest. In her long, adventurous career, she has played a leading role in more than twenty expeditions and forged a place for women in the perilous arena of high-altitude mountaineering.
+IsEntail:false
+H:
+Verb:succeeds climbing 
+Noun:woman everest solo 
+
+T:
+Verb:defying led attempt adventurous played leading forged 
+Noun:arlene blum trailblazer measure climbing establishment 1970s arlene blum teams women ascents mt. mckinley annapurna woman mt. everest arlene blum career arlene blum role expeditions place women arena mountaineering 
+
+------------------------
+woman everest 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:
+Verb H lemma:succeed  climb
+Verb T lemma:defy  lead  attempt  adventurous  play  lead  forge
+Skor wordnet:1.0
+
+succeed  antonimnya fail
+succeed  antonimnya precede
+
+=============
+ID:218
+H:Italian flight assistants go on strike.
+T:Around 130 flights were cancelled during a strike held on 19 January, and others were cancelled in the days that followed. When the flight assistants announced a further 24-hour for 23 January, the Italian Guarantee Authority (Commissione di Garanzia) which regulates strikes in essential public services (under the terms of laws no. 194/1990 and no. 83/2000) (IT0004266F) accused the unions of breaching the legal provision that 10 days must elapse between one strike and the next.
+IsEntail:true
+H:
+Verb:
+Noun:flight assistants strike 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:219
+H:Several new political parties emerged.
+T:As parties adapt to these new conditions, new definitions - replete with new assumptions about their functions - are likely to shape the ongoing debate about their roles and functions in the 21st century.
+IsEntail:false
+H:
+Verb:emerged 
+Noun:parties 
+
+T:
+Verb:adapt shape 
+Noun:parties conditions definitions assumptions functions debate roles functions century 
+
+------------------------
+parties 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:emerge = adapt
+Verb H lemma:emerge
+Verb T lemma:adapt  shape
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:224
+H:Domestic fires are the major cause of fire death.
+T:Based on a worldwide study of smoking-related fire and disaster data, UC Davis epidemiologists show smoking is a leading cause of fires and death from fires globally.
+IsEntail:false
+H:
+Verb:
+Noun:fires fire death 
+
+T:
+Verb:based epidemiologists leading 
+Noun:study fire disaster data uc davis show smoking fires death fires 
+
+------------------------
+fires fire death 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:fire = lead
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:fires fire death 
+Verb T lemma:base  epidemiologist  lead
+Skor wordnet:0.4
+
+fires antonimnya hire
+fire antonimnya hire
+death antonimnya birth
+death antonimnya birth
+
+=============
+ID:225
+H:Hunting endangers seal species.
+T:Between March and June, scientific observers say, up to 300,000 seals are killed. In Canada, seal-hunting means jobs, but opponents say it is vicious and endangers the species, also threatened by global warming.
+IsEntail:true
+H:
+Verb:endangers 
+Noun:hunting seal species 
+
+T:
+Verb:means endangers threatened 
+Noun:march june observers seals killed canada seal-hunting jobs opponents canada species warming 
+
+------------------------
+species 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:endangers 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:228
+H:The Chernobyl disaster had repercussions outside the ex-USSR.
+T:Busby countered, telling The Iconoclast, the point is that material from Chernobyl which is 1,800 miles to the east of Great Britain traveled to Great Britain and contaminated Wales, Scotland, and various parts of the United Kingdom. And they might as well have said that it was equally unfeasible for it to travel that distance in the opposite direction to the general flow of the wind, but we have examined computer Models of wind directions over the period of the Gulf War and its quite clear the material from Iraq could have come through the United Kingdom because of the particular types of depressions and anticyclone systems that were there.
+IsEntail:true
+H:
+Verb:
+Noun:chernobyl disaster repercussions ex-ussr 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:229
+H:Domestic fires are the major cause of fire death.
+T:Carelessness by contractors is a common cause of fire, including many fires that result in serious financial loss. It has been estimated that perhaps 20-25% of all non-domestic fires result from 'on-going work', such as refurbishment, repair and construction.
+IsEntail:false
+H:
+Verb:
+Noun:fires fire death 
+
+T:
+Verb:including estimated result 
+Noun:carelessness contractors fire fires result loss % fires work refurbishment repair construction 
+
+------------------------
+fires fire 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:fire = estimate
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:fires fire death 
+Verb T lemma:include  estimate  result
+Skor wordnet:0.4444444444444444
+
+fires antonimnya hire
+fire antonimnya hire
+death antonimnya birth
+death antonimnya birth
+
+=============
+ID:231
+H:Flooding in Europe causes major economic losses.
+T:Catastrophic floods in Europe endanger lives and cause human tragedy as well as heavy economic losses.
+IsEntail:true
+H:
+Verb:flooding 
+Noun:europe losses 
+
+T:
+Verb:endanger 
+Noun:catastrophic floods europe lives tragedy losses 
+
+------------------------
+europe losses 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:flooding
+Verb T lemma:endanger
+Skor wordnet:0.0
+
+=============
+ID:232
+H:Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.
+T:China's announcement of a rival Panchen Lama to the boy already recognized by the Dalai Lama are indications that its Communist regime is desperate in using any means possible to strengthen control over Tibet and Tibetan affairs.
+IsEntail:true
+H:
+Verb:
+Noun:dalai lama government people republic china dispute panchen lama reincarnation 
+
+T:
+Verb:recognized means strengthen 
+Noun:china announcement panchen lama boy dalai lama indications regime control tibet tibetan affairs 
+
+------------------------
+dalai lama china panchen lama 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:240
+H:Russians hold record for longest stay in space.
+T:Cosmonaut Sergei Avdeyev, currently on board the Mir space station, has become the person with the longest total stay in space. He has clocked up 681 days.
+IsEntail:true
+H:
+Verb:hold 
+Noun:russians record stay space 
+
+T:
+Verb:clocked 
+Noun:cosmonaut sergei avdeyev board space station person stay space days 
+
+------------------------
+stay space 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:242
+H:Christopher Reeve had an accident.
+T:Dana Reeve, the widow of the actor Christopher Reeve, has died of lung cancer at age 44, according to the Christopher Reeve Foundation.
+IsEntail:false
+H:
+Verb:
+Noun:christopher reeve accident 
+
+T:
+Verb:died 
+Noun:dana reeve widow actor christopher reeve lung cancer age christopher reeve foundation 
+
+------------------------
+christopher reeve 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:reeve = die
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:christopher reeve accident 
+Verb T lemma:die
+Skor wordnet:0.38461538461538464
+
+
+=============
+ID:249
+H:The women's ten thousand metres champion is from Mozambique.
+T:Elsewhere, Mozambique took its first ever Olympic gold medal when Maria Mutola won the women's eight-hundred metres, while the men's ten-thousand-metres went to the Ethiopian Haile Gebrselassie.
+IsEntail:false
+H:
+Verb:
+Noun:women metres champion mozambique 
+
+T:
+Verb:won 
+Noun:mozambique gold medal maria mutola women metres men ten-thousand-metres haile gebrselassie 
+
+------------------------
+women metres mozambique 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:champion = win
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:women metres champion mozambique 
+Verb T lemma:win
+Skor wordnet:0.2
+
+women antonimnya man
+women antonimnya man
+
+=============
+ID:251
+H:Child labor is widely used in Asia.
+T:Estimates vary widely, but it is believed there are up to 100 million children toiling in homes, factories, shops, fields, brothels and on the streets of rural and urban India.
+IsEntail:true
+H:
+Verb:
+Noun:child labor asia 
+
+T:
+Verb:vary believed toiling 
+Noun:estimates children homes factories shops fields brothels streets india 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:252
+H:National pension systems currently adopted in Europe are in difficulties.
+T:Europe's economic environment has altered considerably over the last thirty years, and the economies of European countries have progressively opened up to the global economy. As a result, the competitiveness of the European economies is dependent not just on production costs, but also on the performance of pension and social security systems guaranteeing security for the future.
+IsEntail:false
+H:
+Verb:adopted 
+Noun:national pension systems europe difficulties 
+
+T:
+Verb:altered opened guaranteeing 
+Noun:europe environment years economies countries economy result competitiveness economies production costs performance pension security systems security future 
+
+------------------------
+pension systems europe 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:adopt = open
+Verb H lemma:adopt
+Verb T lemma:altered  open  guarantee
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:254
+H:People are willing to risk imprisonment rather than perform military service.
+T:Every year Israel jails individuals simply because they refuse to perform military service for reasons of conscience.
+IsEntail:true
+H:
+Verb:risk perform 
+Noun:people imprisonment service 
+
+T:
+Verb:jails refuse perform 
+Noun:year israel individuals service reasons conscience 
+
+------------------------
+service 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:perform 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:258
+H:Fireworks may cause serious injuries.
+T:Fiona North, Ophthalmic Adviser with the SHSSB added: Eye injuries caused by fireworks are extremely serious and can permanently damage eyesight. I would urge those who are co-ordinating efficient firework displays to use appropriate eye protection.
+IsEntail:true
+H:
+Verb:
+Noun:fireworks injuries 
+
+T:
+Verb:added caused damage urge co-ordinating 
+Noun:fiona north ophthalmic adviser shssb eye injuries fireworks eyesight firework displays eye protection 
+
+------------------------
+fireworks injuries 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:fireworks injuries 
+Verb T lemma:add  cause  damage  urge  co-ordinate
+Skor wordnet:0.0
+
+=============
+ID:261
+H:Dam building prevents life-threatening situations.
+T:For example, the fields of Western farmers feed the United States and many other parts of the world, and India's irrigation systems have enabled that country to be self-sufficient in food production since 1974. In addition, in many parts of the world dams have helped to remedy life-threatening problems such as poverty from lack of economic development, famine as a result of drought, devastation from floods, and continued disease from lack of potable water supplies.
+IsEntail:true
+H:
+Verb:prevents 
+Noun:dam building situations 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:262
+H:Maternity leave varies in Europe.
+T:For women earning 22,000 a year, the total pay accumulated after six months maternity leave would be just 5,300 in the UK and 5,850 in Ireland. Entitlements in Germany would also be relatively low, at 5,900, along with those in France, Spain and the Netherlands, all at 6,750. At the other end of the scale, pay received after six months leave in Italy would be 9,150 while in Denmark and Norway it would be as much as 11,000.
+IsEntail:true
+H:
+Verb:varies 
+Noun:leave europe 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:263
+H:European cars sell in Russia.
+T:Foreign Carmakers Gain in Russia. The likes of Daewoo, Ford, Renault, and more can't produce fast enough.
+IsEntail:true
+H:
+Verb:sell 
+Noun:cars russia 
+
+T:
+Verb:produce 
+Noun:foreign carmakers gain russia likes daewoo ford renault 
+
+------------------------
+russia 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:269
+H:Three parties form a Dutch coalition government.
+T:His (or her) mandate is always to form a coalition based on a majority in the Dutch Parliament and a general agreement on policy ('regeerakkoord'). During a formation parties barter, letting go of some goals to achieve others.
+IsEntail:false
+H:
+Verb:form 
+Noun:parties coalition government 
+
+T:
+Verb:form based letting achieve 
+Noun:mandate coalition majority dutch parliament agreement policy formation parties barter goals 
+
+------------------------
+parties coalition 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:form 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:281
+H:National pension systems currently adopted in Europe are in difficulties.
+T:In this respect, the reforms required across Europe are similar: stronger incentives within pension systems to delay retirement, rules which facilitate gradual retirement, incentives for workers to save for their retirement, and public information measures to improve awareness of the options available.
+IsEntail:false
+H:
+Verb:adopted 
+Noun:national pension systems europe difficulties 
+
+T:
+Verb:required delay facilitate save measures improve 
+Noun:respect reforms europe incentives pension systems retirement rules retirement incentives workers retirement information awareness options 
+
+------------------------
+pension systems europe 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:adopt = measure
+Verb H lemma:adopt
+Verb T lemma:require  delay  facilitate  save  measure  improve
+Skor wordnet:0.5714285714285714
+
+
+=============
+ID:282
+H:Nick Leeson was arrested for collapse of Barings Bank PLC.
+T:It also raised questions about the quality of financial regulation in Singapore, where derivatives losses run up by former trader Nick Leeson led to the 1995 collapse of Barings Plc.
+IsEntail:false
+H:
+Verb:arrested 
+Noun:nick leeson collapse barings bank plc. 
+
+T:
+Verb:raised run led 
+Noun:questions quality regulation singapore derivatives losses trader nick leeson collapse barings plc. 
+
+------------------------
+nick leeson collapse barings plc. 
+Persentase noun H yang cocok:83.33333333333334
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:arrest = run
+Verb H lemma:arrest
+Verb T lemma:raise  run  lead
+Skor wordnet:0.5714285714285714
+
+
+=============
+ID:286
+H:An Italian director is awarded an honorary Oscar.
+T:Italian film-maker, Fellini was awarded an honorary Oscar for lifetime achievement. He died on October 31, 1993.
+IsEntail:true
+H:
+Verb:awarded 
+Noun:director oscar 
+
+T:
+Verb:awarded died 
+Noun:film-maker fellini oscar lifetime achievement october 
+
+------------------------
+oscar 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:awarded 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:289
+H:Kieslowski is a director.
+T:Kieslowski later said that he abandoned documentary filmmaking due to two experiences: the censorship of Workers '71, which caused him to doubt whether truth could be told literally under an authoritarian regime, and an incident during the filming of Station (1981) in which some of his footage was nearly used as evidence in a criminal case. He decided that fiction not only allowed more artistic freedom, but could portray everyday life more truthfully.
+IsEntail:true
+H:
+Verb:
+Noun:kieslowski director 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:295
+H:Robots are used to find missing victims.
+T:Most people are familiar with the idea of St. Bernards or other dogs taking part in rescue and recovery efforts. Robots might also take part in search and rescue missions.
+IsEntail:true
+H:
+Verb:find missing 
+Noun:robots victims 
+
+T:
+Verb:taking 
+Noun:people idea st. bernards dogs part rescue recovery efforts robots part search rescue missions 
+
+------------------------
+robots 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:296
+H:The women's ten thousand metres champion is from Mozambique.
+T:Mozambique's Maria Mutola and Israel's Alex Averbukh produced the best performances of the year, in the women's 800 metres and men's pole vault, at the Super Grand Prix in Madrid on Saturday.
+IsEntail:false
+H:
+Verb:
+Noun:women metres champion mozambique 
+
+T:
+Verb:produced 
+Noun:mozambique maria mutola israel alex averbukh performances year women metres men pole vault super grand prix madrid saturday 
+
+------------------------
+women metres mozambique 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:champion = produce
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:women metres champion mozambique 
+Verb T lemma:produce
+Skor wordnet:0.3333333333333333
+
+women antonimnya man
+women antonimnya man
+
+=============
+ID:297
+H:50th Anniversary of Normandy Landings lasts a year.
+T:Mr Gregory's conclusion in 1994 was that the ceremony, transferred to the more convenient nearest Sunday, was dying out. However, that year the Conservative government proclaimed "festivities" to celebrate the 50th anniversary of the Normandy landings.
+IsEntail:false
+H:
+Verb:lasts 
+Noun:anniversary normandy landings year 
+
+T:
+Verb:transferred dying proclaimed celebrate 
+Noun:mr gregory conclusion ceremony nearest sunday year government festivities anniversary normandy landings 
+
+------------------------
+anniversary normandy landings year 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:last = transfer
+Verb H lemma:last
+Verb T lemma:transfer  die  proclaimed  celebrate
+Skor wordnet:0.35294117647058826
+
+last  antonimnya first
+
+=============
+ID:298
+H:Hubble discovers black holes.
+T:NASA's two Great Observatories, the Hubble Space Telescope and the Chandra X-ray Observatory, have independently provided what could be the best direct evidence yet for the existence of an event horizon, the defining feature of a black hole.
+IsEntail:true
+H:
+Verb:discovers 
+Noun:hubble holes 
+
+T:
+Verb:provided defining 
+Noun:nasa observatories hubble space telescope chandra x-ray observatory evidence existence event horizon feature hole 
+
+------------------------
+hubble 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:301
+H:The number of billionaires increases.
+T:New York boasts the largest number of billionaires, with 40 residing in the Big Apple. The world's youngest billionaire is 22-year-old Hind Hariri, daughter of assassinated former Lebanese Prime Minister Rafik Hariri.
+IsEntail:false
+H:
+Verb:increases 
+Noun:number billionaires 
+
+T:
+Verb:boasts residing assassinated 
+Noun:york number billionaires big apple world billionaire 22-year-old hind hariri daughter prime minister rafik hariri 
+
+------------------------
+number billionaires 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:increase = boast
+Verb H lemma:increase
+Verb T lemma:boast  reside  assassinate
+Skor wordnet:0.42857142857142855
+
+increase  antonimnya decrease
+increase  antonimnya decrease
+increase  antonimnya decrease
+increase  antonimnya decrease
+increase  antonimnya decrease
+increase  antonimnya decrease
+
+=============
+ID:302
+H:50th Anniversary of Normandy Landings lasts a year.
+T:Next year is the 50th anniversary of the Normandy invasion, an event that wouldn't have been possible without the Liberty ships. The volunteers hope to raise enough money to sail the O'Brien to France for the big D-Day celebration.
+IsEntail:false
+H:
+Verb:lasts 
+Noun:anniversary normandy landings year 
+
+T:
+Verb:hope raise sail 
+Noun:year anniversary normandy invasion event liberty ships volunteers money o'brien france d-day celebration 
+
+------------------------
+anniversary normandy year 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:last = hope
+Verb H lemma:last
+Verb T lemma:hope  raise  sail
+Skor wordnet:0.375
+
+last  antonimnya first
+
+=============
+ID:305
+H:Italian flight assistants go on strike.
+T:Northwest Strikes: If Northwest flight attendants go on strike on the 15th, what does that mean for travelers? I have a trip booked on the 24th. Will NW rebook us with other airlines?
+IsEntail:false
+H:
+Verb:
+Noun:flight assistants strike 
+
+T:
+Verb:strikes booked rebook 
+Noun:northwest northwest flight attendants strike travelers trip 24th nw airlines 
+
+------------------------
+flight strike 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:strike
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:flight assistants strike 
+Verb T lemma:strike  book  rebook
+Skor wordnet:1.0
+
+
+=============
+ID:309
+H:US shuttle Atlantis docks with the Mir space station.
+T:On February 1, 1990, during a spacewalk, Alexander Serebrov dons an experimental flying armchair that had been delivered to Mir with Kvant 2. Unlike U.S. astronauts, who flew untethered flights with a similar device, the Soviet cosmonaut remains attached to the station with a safety tether, since there is no space shuttle to pick him up in case of an emergency.
+IsEntail:false
+H:
+Verb:docks 
+Noun:shuttle atlantis space station 
+
+T:
+Verb:dons flying delivered flew remains attached pick 
+Noun:february spacewalk alexander serebrov armchair mir kvant u.s. astronauts flights device cosmonaut station safety tether space shuttle case emergency 
+
+------------------------
+shuttle space station 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:dock = remains
+Verb H lemma:dock
+Verb T lemma:don  fly  deliver  fly  remains  attach  pick
+Skor wordnet:0.5333333333333333
+
+dock  antonimnya undock
+dock  antonimnya undock
+
+=============
+ID:316
+H:International pressure is exerted to end French nuclear tests.
+T:President Chirac has been advised that his resumption of nuclear testing would precipitate an international boycott of French products.
+IsEntail:true
+H:
+Verb:exerted end 
+Noun:international pressure tests 
+
+T:
+Verb:advised precipitate 
+Noun:president chirac president chirac resumption testing boycott products 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:317
+H:President Fujimori was re-elected in 1995.
+T:President Fujimori was first elected in 1990, and then re-elected in 1995 under a new constitution.
+IsEntail:true
+H:
+Verb:re-elected 
+Noun:president fujimori 
+
+T:
+Verb:elected 
+Noun:president fujimori constitution 
+
+------------------------
+president fujimori 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:re-elected
+Verb T lemma:elect
+Skor wordnet:0.0
+
+=============
+ID:323
+H:FIFA selects world football player of the year 1994.
+T:Ronaldo Luiz Nazario da Silva is quite simply one of the greatest strikers in the history of world football, capable of leaving an entire team for dead with his darting runs and dribbling ability, voted FIFA World Player of the Year on three occasions and already a double FIFA World Cup winner.
+IsEntail:false
+H:
+Verb:selects 
+Noun:fifa world football player year 
+
+T:
+Verb:leaving dribbling voted 
+Noun:ronaldo luiz nazario da silva strikers history world football team darting runs ability fifa world player year occasions fifa world cup winner 
+
+------------------------
+fifa world football player year 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:select = vote
+Verb H lemma:select
+Verb T lemma:leave  dribble  vote
+Skor wordnet:0.8571428571428571
+
+
+=============
+ID:325
+H:Russians hold record for longest stay in space.
+T:Russian cosmonaut Valery Polyakov set the record for the longest continuous amount of time spent in space, a staggering 438 days, between 1994 and 1995.
+IsEntail:true
+H:
+Verb:hold 
+Noun:russians record stay space 
+
+T:
+Verb:set spent 
+Noun:cosmonaut valery polyakov record amount time space days 
+
+------------------------
+record space 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:328
+H:Andreotti collaborates with the Mafia.
+T:September 26 - Trial against former Italian Prime Minister Giulio Andreotti, accused of Mafia connections, begins.
+IsEntail:false
+H:
+Verb:collaborates 
+Noun:andreotti mafia 
+
+T:
+Verb:accused begins 
+Noun:september trial prime minister giulio andreotti mafia connections 
+
+------------------------
+andreotti mafia 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:collaborate = begin
+Verb H lemma:collaborate
+Verb T lemma:accuse  begin
+Skor wordnet:0.4
+
+
+=============
+ID:333
+H:Dam building prevents life-threatening situations.
+T:Strong support was given to water conservation, recycling and demand reduction options, while storage augmentation (dam building) was rejected on the grounds that there would not be sufficient water to fill any new dams.
+IsEntail:false
+H:
+Verb:prevents 
+Noun:dam building situations 
+
+T:
+Verb:water rejected fill 
+Noun:support conservation recycling demand reduction options storage augmentation dam building grounds water dams 
+
+------------------------
+dam building 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:prevent = fill
+Verb H lemma:prevent
+Verb T lemma:water  reject  fill
+Skor wordnet:0.4
+
+prevent  antonimnya let
+
+=============
+ID:337
+H:Barings was Britain's oldest merchant bank.
+T:The British tabloids portrayed Nicholas Leeson as a working-class villain who single-handedly brought down Barings PLC, a 233-year-old London merchant bank that helped finance the Napoleonic wars.
+IsEntail:false
+H:
+Verb:
+Noun:barings britain merchant bank 
+
+T:
+Verb:portrayed brought helped finance 
+Noun:tabloids nicholas leeson villain barings plc london merchant bank wars 
+
+------------------------
+barings merchant bank 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:bank = bring
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:barings britain merchant bank 
+Verb T lemma:portray  bring  help  finance
+Skor wordnet:0.4
+
+
+=============
+ID:350
+H:Alexander the Great's Tomb remains undiscovered.
+T:The golden jewellery, found in an intact Royal Macedonian tomb in 1977, is exquisite. It is now the prize exhibit in the archaeological museum in Thessaloniki and the label says that it came from the tomb of Philip II, Alexander the Great's father.
+IsEntail:false
+H:
+Verb:remains 
+Noun:alexander great tomb 
+
+T:
+Verb:found 
+Noun:jewellery royal macedonian tomb exquisite prize exhibit museum thessaloniki label label tomb philip ii alexander great father 
+
+------------------------
+alexander great tomb 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:remains = find
+Verb H lemma:remains
+Verb T lemma:find
+Skor wordnet:0.25
+
+
+=============
+ID:351
+H:International pressure is exerted to end French nuclear tests.
+T:The group, along with a broad coalition of disarmament, environmental, peace, and religious organizations, expects the boycott to put pressure on French companies to exert their economic influence and encourage Chirac to end all nuclear weapons testing.
+IsEntail:true
+H:
+Verb:exerted end 
+Noun:international pressure tests 
+
+T:
+Verb:expects put exert encourage end 
+Noun:group coalition disarmament peace organizations boycott pressure companies influence chirac weapons testing 
+
+------------------------
+pressure 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:end 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:352
+H:Greenhouse effect changes global climate.
+T:The increased amounts of carbon dioxide (CO2) and other greenhouse gases (GHGs) are the primary causes of the human-induced component of global warming.
+IsEntail:true
+H:
+Verb:
+Noun:effect climate 
+
+T:
+Verb:increased 
+Noun:amounts carbon dioxide co2 greenhouse gases ghgs component warming 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:355
+H:Nick Leeson was arrested for collapse of Barings Bank PLC.
+T:The investigation came about following the collapse of Barings Bank, when one of its traders based in Singapore, Nick Leeson, amassed losses of the order of 600-700 million without the bank being aware of it.
+IsEntail:false
+H:
+Verb:arrested 
+Noun:nick leeson collapse barings bank plc. 
+
+T:
+Verb:based amassed 
+Noun:investigation collapse barings bank traders singapore nick leeson losses order bank barings bank 
+
+------------------------
+nick leeson collapse barings bank 
+Persentase noun H yang cocok:83.33333333333334
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:arrest = base
+Verb H lemma:arrest
+Verb T lemma:base  amass
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:357
+H:Italian royal family returns home.
+T:The Italian parliament may approve a draft law allowing descendants of the exiled royal family to return home. The family was banished after the Second World War because of the King's collusion with the fascist regime, but moves were introduced this year to allow their return.
+IsEntail:false
+H:
+Verb:returns 
+Noun:family home 
+
+T:
+Verb:approve allowing exiled return banished introduced 
+Noun:parliament draft law descendants family home family world war king collusion regime moves year return 
+
+------------------------
+family home 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:return
+Verb H lemma:return
+Verb T lemma:approve  allow  exile  return  banish  introduce
+Skor wordnet:1.0
+
+
+=============
+ID:358
+H:Sex-change operations become more common.
+T:The liner notes to the CD surmise that Farrakhan is the author of three selections, "Is She Is, or Is She Ain't", "Don't Touch Me Nylon," and "Female Boxer" and that is quite possible. The most interesting is the first of these three, a topical number on Christie Jorgensen, the subject of a series of sex change operations. While such transexual operations have since become more common, this was the first to receive high publicity.
+IsEntail:true
+H:
+Verb:
+Noun:operations 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:364
+H:AIDS spreads in Africa.
+T:The most recent figures from UNAids show a continent divided in two. In north Africa, up to 0.5% of the population has been infected with HIV. In sub-Saharan Africa, that figure is 8.8% but rising to almost 40% in some countries. In four countries - Botswana, Lesotho, Swaziland and Zimbabwe - at least one in three of the population is HIV positive.
+IsEntail:true
+H:
+Verb:spreads 
+Noun:aids africa 
+
+T:
+Verb:show divided infected rising 
+Noun:figures unaids continent north africa % population hiv africa figure % % countries countries botswana lesotho swaziland zimbabwe population 
+
+------------------------
+africa 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:365
+H:Alexander the Great's Tomb remains undiscovered.
+T:The mystery of Alexander the Great's tomb still has not unraveled, and locating the burial of Alexander seems to have become an impossible mission for archaeologists.
+IsEntail:true
+H:
+Verb:remains 
+Noun:alexander great tomb 
+
+T:
+Verb:unraveled locating 
+Noun:mystery alexander great tomb burial alexander mission archaeologists 
+
+------------------------
+alexander great tomb 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:remains
+Verb T lemma:unravel  locate
+Skor wordnet:0.0
+
+=============
+ID:366
+H:Nobel Peace Prize candidates have been chosen.
+T:The Norwegian Nobel Committee is responsible for the selection of the candidates and the choice of Prize Winners for the Peace Prize. The Committee is composed of five members appointed by the Storting (Norwegian parliament). The Peace Prize is awarded in Oslo, Norway and not in Stockholm, Sweden like the other Nobel Prizes.
+IsEntail:false
+H:
+Verb:chosen 
+Noun:nobel peace prize candidates 
+
+T:
+Verb:composed appointed awarded 
+Noun:nobel committee selection candidates choice prize winners peace prize committee members storting parliament peace prize oslo norway stockholm sweden nobel prizes 
+
+------------------------
+nobel peace prize candidates 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:choose = compose
+Verb H lemma:choose
+Verb T lemma:compose  appoint  award
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:367
+H:Dam building prevents life-threatening situations.
+T:The optimal style of dam building is specific to the particular macroproject, the nature of the geophysical worksite (Anon., 2005) as well as social uncertainty, the undertaking management organizations experience, the operational complexities of many kinds of construction machinery and worker nationalities, the macroprojects situational geography and the logistics of its required compositional materials.
+IsEntail:false
+H:
+Verb:prevents 
+Noun:dam building situations 
+
+T:
+Verb:required 
+Noun:style dam building macroproject nature worksite anon. uncertainty undertaking management organizations experience complexities kinds construction machinery worker nationalities geography logistics materials 
+
+------------------------
+dam building 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:prevent = require
+Verb H lemma:prevent
+Verb T lemma:require
+Skor wordnet:0.5
+
+prevent  antonimnya let
+
+=============
+ID:369
+H:National pension systems currently adopted in Europe are in difficulties.
+T:The papers presented show that all European countries are experiencing rapidly aging populations that will cause sharp increases in the cost of retirement income over the next several decades.
+IsEntail:true
+H:
+Verb:adopted 
+Noun:national pension systems europe difficulties 
+
+T:
+Verb:presented experiencing aging 
+Noun:papers show countries populations increases cost retirement income decades 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:370
+H:Several new political parties emerged.
+T:The party system increased in importance during the Second Republic. Large, strong parties were fostered under the d'Hondt method of proportional representation, and parties soon began to receive state subsidies.
+IsEntail:false
+H:
+Verb:emerged 
+Noun:parties 
+
+T:
+Verb:increased fostered began receive 
+Noun:party system importance republic large parties method representation parties state subsidies 
+
+------------------------
+parties 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:emerge = begin
+Verb H lemma:emerge
+Verb T lemma:increase  foster  begin  receive
+Skor wordnet:0.4
+
+
+=============
+ID:372
+H:Peru debates border region with Ecuador.
+T:The presidents of Ecuador and Peru say they have agreed to work together to try to find a peaceful solution to their long-running border dispute.
+IsEntail:true
+H:
+Verb:border 
+Noun:peru debates region ecuador 
+
+T:
+Verb:agreed work find 
+Noun:presidents ecuador peru solution border dispute 
+
+------------------------
+peru ecuador 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:373
+H:Alexander the Great's Tomb remains undiscovered.
+T:The royal tombs at Vergina were identified as the ancient capital of Aigai in the 1930s. A royal tomb identified as possibly Philip II of Macedonia, Alexander the Great's father, was found in 1977 by Manolis Andronikos.
+IsEntail:false
+H:
+Verb:remains 
+Noun:alexander great tomb 
+
+T:
+Verb:identified identified found 
+Noun:tombs vergina capital aigai 1930s tomb philip ii macedonia alexander great father manolis andronikos 
+
+------------------------
+alexander great tomb 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:remains = find
+Verb H lemma:remains
+Verb T lemma:identify  identify  find
+Skor wordnet:0.25
+
+
+=============
+ID:374
+H:2002 Olympic Winter games take place in Salt Lake.
+T:The Salt Lake City 2002 Winter Olympics will take place from February 8th to February 24th 2002. The Paralympics will take place in Salt Lake City from March 7th to March 16th 2002.
+IsEntail:true
+H:
+Verb:
+Noun:olympic winter games place salt lake 
+
+T:
+Verb:
+Noun:salt lake city 2002 winter olympics place february 8th february 24th 2002 paralympics place salt lake city march march 2002 
+
+------------------------
+winter place salt lake 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:olympic winter games place salt lake 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:376
+H:Italian royal family returns home.
+T:The son of Italy's last king returned to his homeland Monday, ending more than a half-century of exile. Victor Emmanuel and his family landed at a military airport in Rome in a private plane and headed immediately for an audience with Pope John Paul II.
+IsEntail:true
+H:
+Verb:returns 
+Noun:family home 
+
+T:
+Verb:returned ending landed headed 
+Noun:son italy king homeland monday half-century exile victor emmanuel victor emmanuel family airport rome plane audience pope john paul ii 
+
+------------------------
+family 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:380
+H:Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.
+T:Then China rolled out the fake Panchen Lama, Gyaltsen Norbu, a teenager chosen as the reincarnation of a major lama by the atheist Communist leaders and trained since childhood to spout nationalist slogans while wearing robes. Newspapers reporting on the debacle generally tried to present both sides, but it seems fair to say there's really only one side to this sham and that pretty much nobody in the Tibetan community accepts Norbu as the real Panchen Lama. The Dalai Lama's choice for Panchen Lama, Gedhun Choekyi Nyima, has been in secret Chinese custody since 1995.
+IsEntail:true
+H:
+Verb:
+Noun:dalai lama government people republic china dispute panchen lama reincarnation 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:390
+H:A typhoon batters the Philippines.
+T:Typhoon Xangsane lashed the Philippine capital on Thursday, grounding flights, halting vessels and closing schools and markets after triggering fatal flash floods in the centre of the country.
+IsEntail:true
+H:
+Verb:batters 
+Noun:typhoon philippines 
+
+T:
+Verb:lashed grounding halting closing triggering 
+Noun:typhoon xangsane capital thursday flights vessels schools markets flash floods centre country 
+
+------------------------
+typhoon 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:392
+H:US shuttle Atlantis docks with the Mir space station.
+T:U.S. space shuttle Atlantis and its seven-member crew concluded their pursuit of the International Space Station (ISS) on Wednesday and docked with the orbital outpost at 12:05 EDT (1605 GMT).
+IsEntail:false
+H:
+Verb:docks 
+Noun:shuttle atlantis space station 
+
+T:
+Verb:concluded docked 
+Noun:u.s. space shuttle atlantis crew pursuit international space station iss wednesday outpost 1605 gmt 
+
+------------------------
+shuttle atlantis space station 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:dock
+Verb H lemma:dock
+Verb T lemma:conclude  dock
+Skor wordnet:1.0
+
+dock  antonimnya undock
+dock  antonimnya undock
+
+=============
+ID:395
+H:Robots are used to find avalanche victims.
+T:We present a novel approach to enhance avalanche companion rescue using wearable sensing technologies. The time to find and extricate victims is most crucial: once buried by an avalanche, survival chances drop dramatically already after the first 15 minutes.
+IsEntail:false
+H:
+Verb:find 
+Noun:robots avalanche victims 
+
+T:
+Verb:present enhance sensing find extricate buried drop 
+Noun:approach avalanche companion rescue wearable technologies time victims avalanche survival chances minutes 
+
+------------------------
+avalanche victims 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:find 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:398
+H:Greenhouse effect changes global climate.
+T:Without a natural greenhouse effect, the temperature of the Earth would be about zero degrees F (-18C) instead of its present 57F (14C).
+IsEntail:true
+H:
+Verb:
+Noun:effect climate 
+
+T:
+Verb:
+Noun:greenhouse effect temperature earth degrees f -18 c 57f 
+
+------------------------
+effect 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:399
+H:Child labor is widely used in Asia.
+T:Worldwide, child labor is most prevalent in the agricultural sector, where children are widely used as day laborers. Working long hours, children working in agriculture are often exposed to harmful pesticides, dangerous machinery, backbreaking loads, and many other hazardous conditions.
+IsEntail:false
+H:
+Verb:
+Noun:child labor asia 
+
+T:
+Verb:working exposed 
+Noun:worldwide child labor sector children day laborers working hours children agriculture pesticides machinery loads conditions 
+
+------------------------
+child labor 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:labor = work
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:child labor asia 
+Verb T lemma:work  expose
+Skor wordnet:0.4
+
+child antonimnya parent
+
+=============
+ID:400
+H:FIFA selects world football player of the year 1994.
+T:Zinedine Zidane has beaten Thierry Henry and Ronaldo to the Fifa 2003 World Player of the Year award.
+IsEntail:false
+H:
+Verb:selects 
+Noun:fifa world football player year 
+
+T:
+Verb:beaten 
+Noun:zinedine zidane thierry henry ronaldo fifa 2003 world player year award 
+
+------------------------
+fifa world player year 
+Persentase noun H yang cocok:80.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:select = beat
+Verb H lemma:select
+Verb T lemma:beat
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:405
+H:Neil Armstrong was the first man who landed on the Moon.
+T:Neil Armstrong was an aviator in the Navy and was chosen with the second group of astronauts in 1962. Made seven flights in the X-15 program (1960 photo), reaching an altitude of 207,500 feet. Was backup command pilot for Gemini 5, command pilot for Gemini 8, backup command pilot for Gemini 11, backup commander for Apollo 8, and commander for Apollo 11: successfully completing the first moonwalk.
+IsEntail:true
+H:
+Verb:landed 
+Noun:neil armstrong man moon 
+
+T:
+Verb:chosen made reaching completing 
+Noun:neil armstrong aviator navy group astronauts 1962 flights x-15 program photo altitude feet command pilot gemini command pilot gemini command pilot gemini commander apollo commander apollo moonwalk 
+
+------------------------
+neil armstrong 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:406
+H:Cyrillic is an alphabet used for certain Slavic languages, such as Russian.
+T:The Cyrillic alphabet is an alphabet used for several East and South Slavic languages; (Belarusian, Bulgarian, Macedonian, Russian, Rusyn, Serbian, and Ukrainian) and many other languages of the former Soviet Union, Asia and Eastern Europe. It has also been used for other languages in the past. Not all letters in the Cyrillic alphabet are used in every language which is written with it.
+IsEntail:true
+H:
+Verb:
+Noun:cyrillic alphabet languages russian 
+
+T:
+Verb:written 
+Noun:cyrillic alphabet alphabet languages belarusian bulgarian macedonian russian rusyn serbian languages soviet union asia eastern europe languages past letters alphabet language alphabet 
+
+------------------------
+cyrillic alphabet languages russian 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:cyrillic alphabet languages russian 
+Verb T lemma:write
+Skor wordnet:0.0
+
+=============
+ID:407
+H:Elizabeth the Second's father was George VI.
+T:Elizabeth Alexandra Mary was born on April 21, 1926 in London, England. Her father, Prince Albert, Duke of York, was the second son of King George V. Her mother, the former Elizabeth Bowes-Lyon, was the daughter of a Scottish earl. Princess Elizabeth was their first child. Her only sibling, Margaret Rose, was born in 1930.
+IsEntail:false
+H:
+Verb:
+Noun:elizabeth father george vi 
+
+T:
+Verb:born born 
+Noun:elizabeth alexandra mary april london england father prince albert duke york son king george v mother elizabeth bowes-lyon daughter scottish earl princess elizabeth child sibling margaret rose 
+
+------------------------
+elizabeth father george 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:father = bear
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:elizabeth father george vi 
+Verb T lemma:bear  bear
+Skor wordnet:0.5
+
+father antonimnya mother
+
+=============
+ID:408
+H:Elizabeth the Second's father was George VI.
+T:Her Majesty Queen Elizabeth II was born in London on April, 21 1926, first child of the Duke and Duchess of York, subsequently King George VI and Queen Elizabeth. Five weeks later she was christened in the chapel of Buckingham Palace and was given the names Elizabeth Alexandra Mary Windsor. The Queen ascended the throne on February 6, 1952 upon the death of her father, King George VI. Her Coronation followed on June 2, 1953.
+IsEntail:true
+H:
+Verb:
+Noun:elizabeth father george vi 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:409
+H:The name of George H.W. Bush's wife is Barbara.
+T:George H.W. Bush served this country not only as President but also as Vice President, Member of Congress, United Nations Ambassador, chief of the U.S. Liaison Office to the People's Republic of China, Director of the Central Intelligence Agency and also, as a naval aviator in World War II. Coming back from the war, he married his sweetheart, Barbara Pierce of Rye, New York, and later that year made his first civilian adult decision when he made the appropriate choice of moving to Texas, where he lived the rest of his life.
+IsEntail:true
+H:
+Verb:
+Noun:george h.w. bush wife barbara 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:410
+H:The name of George H.W. Bush's wife is Barbara.
+T:Bush and his wife, Laura, departed the White House on Thursday afternoon to spend four days at the wooded presidential retreat of rustic cabins in the Maryland mountains. Along with the first lady's mother, Jenna Welch, the weekend gathering includes the president's parents, former President George H.W. Bush and his wife, Barbara; his sister Doro Koch and her husband, Bobby; and his brother, Marvin, and his wife, Margaret.
+IsEntail:true
+H:
+Verb:
+Noun:george h.w. bush wife barbara 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:414
+H:The Normandy landings took place in June 1944.
+T:After months of planning and build-up, Supreme Commander Dwight Eisenhower set Operation Overlord for June 6, 1944: some 7000 ships in the British Isles set to sea and sailed across the English Channel, and, under the leadership of Field Marshall Bernard Montgomery, 135,000 troops landed and stormed Feldmarschal Erwin Rommel's German positions along 80 km of the Normandy coast.
+IsEntail:true
+H:
+Verb:
+Noun:normandy landings place june 
+
+T:
+Verb:set set sailed landed stormed 
+Noun:months planning build-up supreme commander dwight eisenhower operation overlord june ships british isles sea english channel leadership field marshall bernard montgomery troops feldmarschal erwin rommel positions km normandy coast 
+
+------------------------
+normandy june 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:416
+H:The name of Helmut Kohl's political party is the Christian Democratic Union.
+T:Since '82 Federal Chancellor (elected by "constructive vote of no confidence" against former Chancellor Helmut Schmidt, Social Democratic Party (SPD); reelected 1983, 1987, 1991 and 1994). This makes Helmut Kohl the longest-serving chancellor of the Federal Republic, passing by Konrad Adenauer, the first chancellor, this October.
+IsEntail:false
+H:
+Verb:
+Noun:helmut kohl party christian democratic union 
+
+T:
+Verb:elected makes passing 
+Noun:federal chancellor vote confidence chancellor helmut schmidt social democratic party spd helmut kohl chancellor federal republic konrad adenauer chancellor october 
+
+------------------------
+helmut kohl party democratic 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:party = elect
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:helmut kohl party christian democratic union 
+Verb T lemma:elect  make  pass
+Skor wordnet:0.5
+
+christian antonimnya unchristian
+democratic antonimnya undemocratic
+union antonimnya nonunion
+union antonimnya separation
+union antonimnya disunion
+
+=============
+ID:418
+H:Carl Lewis won eighteen gold medals and set 21 world records.
+T:More than a decade ago, Carl Lewis stood on the threshold of what was to become the greatest athletics career in history. He had just broken two of the legendary Jesse Owens' college records, but never believed he would become a corporate icon, the focus of hundreds of millions of dollars in advertising. His sport was still nominally amateur. Eighteen Olympic and World Championship gold medals and 21 world records later, Lewis has become the richest man in the history of track and field -- a multi-millionaire.
+IsEntail:true
+H:
+Verb:won set 
+Noun:carl lewis gold medals world records 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:420
+H:Melvyn Percy set up Minerva Rigging at Kip Marina.
+T:Yachtsman Melvyn Percy became so fed up with the standard of service when preparing his boat for the 3000-mile Atlantic crossing that he decided to set up his own company on the Clyde to provide Scots sailors with professional advice and practical assistance. Minerva Rigging, based at Kip Marina just south of Gourock, now employs five full-time staff and is the Scottish agent for Kemp, one of Europe's leading yacht spar and mast manufacturers.
+IsEntail:true
+H:
+Verb:set 
+Noun:melvyn percy minerva rigging kip marina 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:421
+H:The Everglades is 50-mile wide.
+T:Of all the national park lands in the United States, none is closer to a major urban area or more beset with problems than the Everglades, a shallow, 50-mile-wide river of grass that flows south from Lake Okeechobee to Florida Bay. For more than a generation, this fragile natural wonder has been held hostage by a web of special interests -- farmers, sportsmen and about 6 million South Florida residents in need of drinking water and flood control -- that is as complex as the ecosystem itself.
+IsEntail:true
+H:
+Verb:
+Noun:everglades 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:425
+H:The Brazilian President is Luiz Inácio Lula da Silva.
+T:Brazilian cardinal Dom Eusbio Oscar Scheid, Archbishop of Rio de Janeiro , harshly criticized Brazilian President Luiz Inácio Lula da Silva after arriving in Rome on Tuesday.
+IsEntail:true
+H:
+Verb:
+Noun:president luiz inácio lula da silva 
+
+T:
+Verb:criticized arriving 
+Noun:dom eusbio oscar scheid archbishop rio janeiro president luiz inácio lula da silva rome tuesday 
+
+------------------------
+president luiz inácio lula da silva 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:president luiz inácio lula da silva 
+Verb T lemma:criticize  arrive
+Skor wordnet:0.0
+
+=============
+ID:430
+H:Romania sent 730 troops in Iraq.
+T:Thousands of Romanians participated in rallies on Monday to campaign for the release of three Romanian journalists kidnapped last month in Iraq . Crowds swelled in size after a weekend of smaller rallies sponsored by Romanian media workers and the Arab community in Romania.
+IsEntail:false
+H:
+Verb:
+Noun:romania troops iraq 
+
+T:
+Verb:participated kidnapped sponsored 
+Noun:thousands romanians rallies monday campaign release journalists month iraq crowds swelled size weekend rallies media workers community romania 
+
+------------------------
+romania iraq 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:troops = sponsor
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:romania troops iraq 
+Verb T lemma:participate  kidnap  sponsor
+Skor wordnet:0.21052631578947367
+
+
+=============
+ID:432
+H:Klaus Pohl is one of Germany's most performed dramatists.
+T:A collection of real-life testimonies by Klaus Pohl, one of Germany's most performed dramatists, its power resides less in the conventional meaning of the word drama than in what it reveals - a country still deeply at odds with itself, a kaleidoscope of events that flatters neither side, neither Western capitalism nor the former communist regime.
+IsEntail:true
+H:
+Verb:
+Noun:klaus pohl germany dramatists 
+
+T:
+Verb:resides reveals flatters 
+Noun:collection testimonies klaus pohl germany dramatists power meaning word drama country odds kaleidoscope events side capitalism regime 
+
+------------------------
+klaus pohl germany dramatists 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:klaus pohl germany dramatists 
+Verb T lemma:reside  reveal  flatter
+Skor wordnet:0.0
+
+=============
+ID:433
+H:Lufthansa is the German airline.
+T:TWA connects through New York en route to Frankfurt . Lufthansa , the German airline , flies direct daily from Los Angeles to Frankfurt , and the airline shares flights with Lauda Air , an Austrian carrier , on Wednesdays , Fridays and Sundays to fly directly to Munich . Another German airline , Ltu , also flies direct from Los Angeles to Dusseldorf and Munich on Mondays and Thursdays . Frankfurt is the hub for trips to most of the country 's smaller cities.
+IsEntail:true
+H:
+Verb:
+Noun:lufthansa airline 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:437
+H:Fernando Henrique Cardoso is a Brazilian former Senate leader and Cabinet minister.
+T:Although he won with the lowest majority ever tallied by the ruling party , 48.7% of the votes , his ballots almost doubled those of outsider Diego Fernandez de Cevallos , the rightist runner-up . And insiders are now favored to win other Latin American elections in the coming months : In Brazil , Fernando Henrique Cardoso , a former Senate leader and Cabinet minister , is expected to finish ahead of outsider Luis Inacio (Lula) da Silva , a leftist former labor leader , in the first round of president.
+IsEntail:true
+H:
+Verb:
+Noun:fernando henrique cardoso senate leader cabinet minister 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:438
+H:APEC is the newly born Asia Pacific Economic Cooperation.
+T:It would force countries in the region to choose between the United States and Japan -- or maybe between Japan and China . And it would collapse whatever promise the newly born Asia Pacific Economic Cooperation (APEC) holds as a vehicle to assure American commercial access to the booming Pacific markets . To risk all of this in the name of a flawed concept is foolish . This is not to deny the Administration 's understandable frustration with a persistently huge Japanese trade surplus.
+IsEntail:true
+H:
+Verb:
+Noun:apec asia pacific economic cooperation 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:439
+H:The current name of Ceylon is Sri Lanka.
+T:It is an independence movement among the Tamil peoples of northern Sri Lanka -- the ancient land of Ceylon independent from Britain in 1948 and took the name Sri Lanka, a Sinhalese word, in 1972.
+IsEntail:true
+H:
+Verb:
+Noun:ceylon sri lanka 
+
+T:
+Verb:
+Noun:independence movement peoples sri lanka land ceylon britain sri lanka word 
+
+------------------------
+ceylon sri lanka 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:ceylon sri lanka 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:467
+H:The Israel-Egypt Peace Agreement was signed in 1979.
+T:In 1979, the leaders signed the Egypt-Israel peace treaty on the White House lawn. Both President Begin and Sadat received the Nobel Peace Prize for their work. The two nations have enjoyed peaceful relations to this day.
+IsEntail:true
+H:
+Verb:signed 
+Noun:israel-egypt peace agreement 
+
+T:
+Verb:signed received enjoyed 
+Noun:leaders peace treaty white house lawn president begin sadat nobel peace prize work nations relations day 
+
+------------------------
+peace 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:signed 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:468
+H:The name of George H.W. Bush's wife is Barbara.
+T:President George W. Bush, who gave the keynote address and introduced his father, raved about the vessel: "She is unrelenting, she unshakeable, she is unyielding, she is unstoppable. In fact, she should have been named the Barbara Bush."
+IsEntail:false
+H:
+Verb:
+Noun:george h.w. bush wife barbara 
+
+T:
+Verb:gave introduced raved unrelenting unshakeable unyielding named 
+Noun:president george w. bush address george w. bush father vessel unstoppable fact barbara bush 
+
+------------------------
+george bush barbara 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:bush = give
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:george h.w. bush wife barbara 
+Verb T lemma:give  introduce  rave  unrelent  unshakeable  unyielding  name
+Skor wordnet:0.2857142857142857
+
+wife antonimnya husband
+
+=============
+ID:470
+H:Gabriel Garcia Marquez is a novelist and writer.
+T:Gabriel Garcia Marquez is the author of "One Hundred Years of Solitude", "The Autumn of the Patriarch" and other novels.
+IsEntail:true
+H:
+Verb:
+Noun:gabriel garcia marquez novelist writer 
+
+T:
+Verb:
+Noun:gabriel garcia marquez author hundred years solitude autumn patriarch novels 
+
+------------------------
+gabriel garcia marquez 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:gabriel garcia marquez novelist writer 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:471
+H:Gabriel Garcia Marquez was a conservative politician.
+T:Gabriel Garcia Marquez was a liberal thinker whose left-wing politics angered many conservative politicians and heads of state. His job as a reporter for the Cuban news agency Prensa Latina, in 1960, and and friendship with Fidel Castro resulted in his being ultimately denied entry to the United States for political reasons.
+IsEntail:false
+H:
+Verb:
+Noun:gabriel garcia marquez politician 
+
+T:
+Verb:angered resulted denied 
+Noun:gabriel garcia marquez thinker politics politicians heads state job reporter news agency prensa latina fidel castro gabriel garcia marquez entry united states reasons 
+
+------------------------
+gabriel garcia marquez 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:politician = result
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:gabriel garcia marquez politician 
+Verb T lemma:angered  result  deny
+Skor wordnet:0.375
+
+
+=============
+ID:472
+H:Alfred Nobel is the inventor of dynamite.
+T:In 1867, Nobel obtained a patent on a special type of nitroglycerine, which he called "dynamite". The invention quickly proved its usefulness in building and construction in many countries.
+IsEntail:true
+H:
+Verb:
+Noun:alfred nobel inventor dynamite 
+
+T:
+Verb:obtained called proved 
+Noun:nobel patent type nitroglycerine nobel dynamite invention usefulness building construction countries 
+
+------------------------
+nobel dynamite 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:473
+H:Alfred Nobel is the inventor of dynamite.
+T:Experimenting on a raft anchored on the river Elbe, Alfred Nobel tries to make nitroglycerine safer to handle. Finds that the addition of kieselguhr turns nitroglycerine into a dough that can be kneaded, and calls it "dynamite".
+IsEntail:true
+H:
+Verb:
+Noun:alfred nobel inventor dynamite 
+
+T:
+Verb:experimenting anchored make turns kneaded calls 
+Noun:raft river elbe alfred nobel handle finds addition kieselguhr nitroglycerine dough 
+
+------------------------
+alfred nobel 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:476
+H:Euro-Disney is an Entertainment Park.
+T:The Disneyland of Europe is located 20 miles east of Paris. Euro Disney is a huge complex with hotels, restaurants, shops and a nearby golf course apart from the actual theme park. It provides a much better experience than its American cousin thanks to the marvels of modern engineering.
+IsEntail:true
+H:
+Verb:
+Noun:euro-disney entertainment park 
+
+T:
+Verb:located 
+Noun:disneyland europe miles paris euro disney hotels restaurants shops golf theme park experience cousin marvels engineering 
+
+------------------------
+park 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:478
+H:Charles de Gaulle died in 1970.
+T:Charles de Gaulle retired as an earl and died in November. He wished a simple funeral for himself: he would be buried in his village in a seventy-two dollar oak coffin, borne to his grave by his fellow villagers-a butcher's assistant, a cheesemaker, and a farmhand.
+IsEntail:false
+H:
+Verb:died 
+Noun:charles gaulle 
+
+T:
+Verb:retired died wished buried borne 
+Noun:charles gaulle earl november funeral charles gaulle charles gaulle village dollar oak coffin charles gaulle grave charles de gaulle fellow villagers-a butcher assistant cheesemaker farmhand 
+
+------------------------
+charles gaulle 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:died 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:479
+H:Charles de Gaulle died in 1970.
+T:Genevieve de Gaulle-Anthonics, 81, niece of the late Charles de Gaulle, died in Paris on February 14, 2002. She joined the French resistance when the Germans occupied Paris.
+IsEntail:false
+H:
+Verb:died 
+Noun:charles gaulle 
+
+T:
+Verb:niece died joined occupied 
+Noun:genevieve gaulle-anthonics charles gaulle paris february resistance germans paris 
+
+------------------------
+charles gaulle 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:died 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:481
+H:The Gurkhas come from Nepal.
+T:The Gurkhas come from mountainous Nepal and are extremely tenacious warriors-as foot soldiers they are the best only in close combat jungle/mountain combat and hand to hand type situation.
+IsEntail:true
+H:
+Verb:
+Noun:gurkhas nepal 
+
+T:
+Verb:
+Noun:gurkhas mountainous nepal foot soldiers combat jungle/mountain combat hand hand type situation 
+
+------------------------
+gurkhas nepal 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:gurkhas nepal 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:482
+H:The Normandy landings took place in June 1944.
+T:Arromanches-les-Bains or simply Arromanches is a town in Normandy, France, located on the coast in the heart of the area where the Normandy landings took place on D-Day, on June 6, 1944.
+IsEntail:true
+H:
+Verb:
+Noun:normandy landings place june 
+
+T:
+Verb:located 
+Noun:arromanches-les-bains arromanches town normandy france coast heart area normandy landings place d-day june 
+
+------------------------
+normandy landings place june 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:normandy landings place june 
+Verb T lemma:located
+Skor wordnet:0.0
+
+=============
+ID:484
+H:The name of Helmut Kohl's political party is the Christian Democratic Union.
+T:Kohl participated in the late stage of WWII as a teenage soldier. He joined the Christian-Democratic Union (CDU) in 1947.
+IsEntail:true
+H:
+Verb:
+Noun:helmut kohl party christian democratic union 
+
+T:
+Verb:participated joined 
+Noun:kohl stage wwii soldier christian-democratic union cdu 
+
+------------------------
+kohl union 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:490
+H:Klaus Pohl is a German dramatist.
+T:A collection of real-life testimonies by Klaus Pohl, one of Germany's most performed dramatists, its power resides less in the conventional meaning of the word drama than in what it reveals - a country still deeply at odds with itself, a kaleidoscope of events that flatters neither side, neither Western capitalism nor the former communist regime.
+IsEntail:true
+H:
+Verb:
+Noun:klaus pohl dramatist 
+
+T:
+Verb:resides reveals flatters 
+Noun:collection testimonies klaus pohl germany dramatists power meaning word drama country odds kaleidoscope events side capitalism regime 
+
+------------------------
+klaus pohl 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:klaus pohl dramatist 
+Verb T lemma:reside  reveal  flatter
+Skor wordnet:0.0
+
+=============
+ID:494
+H:Victor Emmanuel III was king of Italy from 1900 to 1946.
+T:Victor Emmanuel III yielded most of his powers to his son Umberto II in 1944, when Umberto was appointed as Lieutenant General of the Realm, and finally abdicated in 1946.
+IsEntail:false
+H:
+Verb:
+Noun:victor emmanuel iii king italy 
+
+T:
+Verb:yielded appointed abdicated 
+Noun:victor emmanuel iii victor emmanuel iii powers victor emmanuel iii son umberto ii umberto lieutenant general realm 
+
+------------------------
+victor emmanuel iii 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:iii = yield
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:victor emmanuel iii king italy 
+Verb T lemma:yield  appoint  abdicate
+Skor wordnet:0.2727272727272727
+
+king antonimnya queen
+
+=============
+ID:495
+H:Victor Emmanuel III was king of Italy from 1900 to 1946.
+T:Victor Emmanuel III, 1869-1947, king of Italy (1900-1946), emperor of Ethiopia (1936-43), king of Albania (1939-43), son and successor of Humbert I.
+IsEntail:true
+H:
+Verb:
+Noun:victor emmanuel iii king italy 
+
+T:
+Verb:
+Noun:victor emmanuel iii king italy emperor ethiopia king albania son successor humbert i. 
+
+------------------------
+victor emmanuel iii king italy 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:victor emmanuel iii king italy 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:497
+H:Franz Liszt lived from 1811 to 1886.
+T:The Altenburg is located in the Jenaer street which lies just outside of Weimar's city centre beyond the Ilm park. It was built in 1810-1811 and during the years following 1848, Princess Carolyne of Sayn Wittgenstein and her husband, Franz Liszt, lived there.
+IsEntail:false
+H:
+Verb:lived 
+Noun:franz liszt 
+
+T:
+Verb:located lies built lived 
+Noun:altenburg jenaer street weimar city centre ilm park years princess carolyne sayn wittgenstein husband franz liszt 
+
+------------------------
+franz liszt 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:lived 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:502
+H:Mohammad Khalifa's father-in-law is Osama Bin Laden.
+T:A Muslim charity in the Philippines that was supported by bin Laden and run by a brother-in-law, Mohammad Jamal Khalifa, financed Shah and the other plotters.
+IsEntail:false
+H:
+Verb:
+Noun:mohammad khalifa father-in-law osama bin laden 
+
+T:
+Verb:supported run 
+Noun:charity philippines bin laden brother-in-law mohammad jamal khalifa financed shah plotters 
+
+------------------------
+mohammad khalifa bin laden 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:laden = support
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:mohammad khalifa father-in-law osama bin laden 
+Verb T lemma:support  run
+Skor wordnet:0.4
+
+
+=============
+ID:509
+H:The official religion of Thailand is Theravada Buddhism.
+T:Thailand's official religion is Buddhism which claims the allegiance of most Thai people. Their cultural identity seems almost inseparably intertwined with Buddhist traditions. The people practice folk Buddhism which includes and elaborate system of spirit worship.
+IsEntail:false
+H:
+Verb:
+Noun:religion thailand theravada buddhism 
+
+T:
+Verb:claims intertwined includes elaborate 
+Noun:thailand religion allegiance thai people identity inseparably buddhist traditions people practice folk buddhism system spirit worship 
+
+------------------------
+religion thailand buddhism 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:religion = claim
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:religion thailand theravada buddhism 
+Verb T lemma:claim  intertwine  include  elaborate
+Skor wordnet:0.35294117647058826
+
+
+=============
+ID:510
+H:The official religion of Thailand is Theravada Buddhism.
+T:The official religion is Theravada Buddhism, which is also practiced in neighboring Laos, Thailand, Burma and Sri Lanka.
+IsEntail:false
+H:
+Verb:
+Noun:religion thailand theravada buddhism 
+
+T:
+Verb:practiced 
+Noun:religion theravada buddhism laos thailand burma sri lanka 
+
+------------------------
+religion thailand theravada buddhism 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:religion = practice
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:religion thailand theravada buddhism 
+Verb T lemma:practice
+Skor wordnet:0.5
+
+
+=============
+ID:511
+H:French is the most widely spoken language in Québec.
+T:French is the mother tongue of 80.9 percent of Québeckers, while 7.8 percent cite English as their mother tongue.
+IsEntail:true
+H:
+Verb:spoken 
+Noun:french language québec 
+
+T:
+Verb:cite 
+Noun:french mother tongue percent québeckers percent english mother tongue 
+
+------------------------
+french 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:518
+H:The French railway company is called SNCF.
+T:Note that SBB, CFF and FFS stand out for the main railway company, in German, French and Italian.
+IsEntail:false
+H:
+Verb:called 
+Noun:railway company sncf 
+
+T:
+Verb:stand 
+Noun:note sbb cff ffs railway company 
+
+------------------------
+railway company 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:call = stand
+Verb H lemma:call
+Verb T lemma:stand
+Skor wordnet:0.6666666666666666
+
+
+=============
+ID:519
+H:2,45 m is the world record in the high jump.
+T:At the 1932 Olympic Games in Los Angeles, Didrikson won gold medals in the javelin (Olympic record) and 80-meter hurdles (world record), along with a silver in the high jump (share of the world record).
+IsEntail:false
+H:
+Verb:
+Noun:m world record jump 
+
+T:
+Verb:won 
+Noun:olympic games los angeles didrikson medals javelin record hurdles world record silver jump share world record 
+
+------------------------
+world record jump 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:jump = win
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:m world record jump 
+Verb T lemma:win
+Skor wordnet:0.6666666666666666
+
+record antonimnya erase
+
+=============
+ID:520
+H:2,45 m is the world record in the high jump.
+T:Beamon's jump was a world record that eclipsed the previous record by 21 3/4 inches. The jump still stands as an Olympic record, and stood as a world  record until Mike Powell leapt 29' 4 1/2" at the 1991 World Championships in Tokyo.
+IsEntail:false
+H:
+Verb:
+Noun:m world record jump 
+
+T:
+Verb:eclipsed stands stood 
+Noun:beamon jump world record record inches jump record world record mike powell leapt world championships tokyo 
+
+------------------------
+world record jump 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:jump = eclipse
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:m world record jump 
+Verb T lemma:eclipse  stand  stand
+Skor wordnet:0.7058823529411765
+
+record antonimnya erase
+
+=============
+ID:537
+H:The Pharos Lighthouse was located in Alexandria.
+T:The Pharos, a monumental lighthouse built around 280 BC and standing 330 ft high, lit the entrance to Alexandria harbour for centuries, but archeologists have never been able to identify positively any remains.
+IsEntail:true
+H:
+Verb:located 
+Noun:pharos lighthouse alexandria 
+
+T:
+Verb:built lit identify 
+Noun:pharos lighthouse 280 bc standing ft high entrance alexandria harbour centuries archeologists remains 
+
+------------------------
+pharos lighthouse alexandria 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:located
+Verb T lemma:build  light  identify
+Skor wordnet:0.0
+
+=============
+ID:539
+H:Lin Piao wrote the "Little Red Book".
+T:Lin Piao, after all, was the creator of Mao's "Little Red Book" of quotations.
+IsEntail:true
+H:
+Verb:wrote 
+Noun:lin piao book 
+
+T:
+Verb:
+Noun:lin piao creator mao red book quotations 
+
+------------------------
+lin piao book 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:write
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:541
+H:Nandrolone is a steroid.
+T:The hurdler suspended in 1993 for taking the anabolic steroid Nandrolone was cleared after a three judge arbitration panel ruled that the case against her could not be proved beyond reasonable doubt .
+IsEntail:true
+H:
+Verb:
+Noun:nandrolone steroid 
+
+T:
+Verb:suspended taking cleared ruled proved 
+Noun:hurdler nandrolone judge arbitration panel case doubt 
+
+------------------------
+nandrolone 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:543
+H:Luis Roldan was director of police from 1986 to 1993.
+T:Madrid: Luis Roldan, the former Spanish chief of police who fled the country 10 months ago after allegedly hiving off millions of pounds from secret government funds, was on his way home to a prison cell last night after being captured in Bangkok.
+IsEntail:false
+H:
+Verb:
+Noun:luis roldan director police 
+
+T:
+Verb:fled hiving captured 
+Noun:madrid luis roldan chief police country months millions pounds government funds luis roldan home prison cell night bangkok 
+
+------------------------
+luis roldan police 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:police = hive
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:luis roldan director police 
+Verb T lemma:flee  hive  capture
+Skor wordnet:0.7692307692307693
+
+
+=============
+ID:546
+H:Heaney was awarded the Nobel Prize for literature in 1995.
+T:Heaney had joined 'a distinguished group of Irishmen , who have been honoured with this prize for their contribution to Irish literature in the twentieth century.'
+IsEntail:false
+H:
+Verb:awarded 
+Noun:heaney nobel prize literature 
+
+T:
+Verb:joined honoured 
+Noun:heaney group irishmen prize contribution literature century 
+
+------------------------
+heaney prize literature 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:award = join
+Verb H lemma:award
+Verb T lemma:join  honour
+Skor wordnet:0.35294117647058826
+
+
+=============
+ID:552
+H:The name of George W. Bush's wife is Laura.
+T:We look at the cool relationship between these two establishment families and how the party would fare with the son, Texas Gov. George W. Bush, and the wife, Elizabeth Dole, on the 2000 campaign trail.
+IsEntail:false
+H:
+Verb:
+Noun:george w. bush wife laura 
+
+T:
+Verb:fare 
+Noun:relationship establishment families party son texas gov. george w. bush wife elizabeth dole campaign trail 
+
+------------------------
+george w. bush wife 
+Persentase noun H yang cocok:80.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:bush = fare
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:george w. bush wife laura 
+Verb T lemma:fare
+Skor wordnet:0.2222222222222222
+
+wife antonimnya husband
+
+=============
+ID:559
+H:The moon was first touched by mankind in 1969.
+T:The recovery of the capsule, which carried astronaut Virgil "Gus" Grissom on a brief suborbital flight on July 21, 1961, took place on the 30th anniversary of mankind's first moon landing.
+IsEntail:false
+H:
+Verb:touched 
+Noun:moon mankind 
+
+T:
+Verb:carried 
+Noun:recovery capsule astronaut virgil gus grissom flight july place anniversary mankind moon landing 
+
+------------------------
+moon mankind 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:touch = carry
+Verb H lemma:touch
+Verb T lemma:carry
+Skor wordnet:0.5263157894736842
+
+
+=============
+ID:564
+H:Pope John Paul II was born in Poland.
+T:Unwilling to surrender his dream of beginning a Holy Land pilgrimage in Iraq, Pope John Paul II made a "virtual pilgrimage" Wednesday to Ur, the ancient city that is traditionally held to be the birthplace of Abraham.
+IsEntail:false
+H:
+Verb:born 
+Noun:pope john paul ii poland 
+
+T:
+Verb:surrender beginning made held 
+Noun:dream holy land pilgrimage iraq pope john paul ii pilgrimage wednesday ur city birthplace abraham 
+
+------------------------
+pope john paul ii 
+Persentase noun H yang cocok:80.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:bear = begin
+Verb H lemma:bear
+Verb T lemma:surrender  begin  make  hold
+Skor wordnet:0.4
+
+bear  antonimnya bull
+
+=============
+ID:565
+H:Pope John Paul II was born in Poland.
+T:JERUSALEM (AP) -- In a spiritual climax to his 22-year papacy, Pope John Paul II on Tuesday began the first official visit by a Roman Catholic pontiff to Israel, fulfilling his dream of visiting the land where Christ was born and died.
+IsEntail:false
+H:
+Verb:born 
+Noun:pope john paul ii poland 
+
+T:
+Verb:began fulfilling visiting born died 
+Noun:jerusalem ap climax papacy pope john paul ii tuesday official visit roman catholic pontiff israel dream land christ 
+
+------------------------
+pope john paul ii 
+Persentase noun H yang cocok:80.0
+Verb yang cocok:born 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:568
+H:The Golden Palm has been awarded at the Cannes film Festival.
+T:Moreau, 72, received a Golden Bear award for lifetime achievement at the Berlin Film Festival Friday.
+IsEntail:false
+H:
+Verb:awarded 
+Noun:golden palm cannes film festival 
+
+T:
+Verb:received 
+Noun:moreau golden bear award lifetime achievement berlin film festival friday 
+
+------------------------
+golden film festival 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:award = receive
+Verb H lemma:award
+Verb T lemma:receive
+Skor wordnet:0.2
+
+
+=============
+ID:569
+H:The Golden Palm has been awarded at the Cannes film Festival.
+T:The Fifth Golden Rooster and Hundred Flowers Festival, to be held in southeast city of Kunming from October 9 to 13, will feature award-giving ceremonies, film exhibitions, as well as business exchanges.
+IsEntail:false
+H:
+Verb:awarded 
+Noun:golden palm cannes film festival 
+
+T:
+Verb:held feature 
+Noun:golden rooster hundred flowers festival southeast city kunming october ceremonies film exhibitions business exchanges 
+
+------------------------
+golden film festival 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:award = hold
+Verb H lemma:award
+Verb T lemma:hold  feature
+Skor wordnet:0.6
+
+
+=============
+ID:571
+H:Bill Clinton belongs to the Democratic Party.
+T:He has borrowed a clutch of bright ideas from Bill Clinton's favorite think-tank, the Democratic Leadership Council, and endorsed Medicare reforms suggested by one of the Democratic Party's brightest luminaries, Louisiana's John Breaux.
+IsEntail:false
+H:
+Verb:belongs 
+Noun:bill clinton party 
+
+T:
+Verb:borrowed endorsed suggested 
+Noun:clutch ideas bill clinton think-tank leadership council medicare reforms democratic party luminaries louisiana john breaux 
+
+------------------------
+bill clinton party 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:belong = borrow
+Verb H lemma:belong
+Verb T lemma:borrow  endorse  suggest
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:572
+H:Kanchenjunga is 8586 meters high.
+T:Out of the seven expeditions who were permitted to climb the 8586-meter high Mt. Kanchenjunga, only one climber from the United States succeeded.
+IsEntail:true
+H:
+Verb:
+Noun:kanchenjunga meters 
+
+T:
+Verb:permitted climb succeeded 
+Noun:expeditions mt. kanchenjunga climber united states 
+
+------------------------
+kanchenjunga 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:573
+H:Kanchenjunga is 8586 meters high.
+T:A seven-member Tibetan mountaineering team conquered the 8,586-meter Mt. Kanchenjunga, the third highest peak of the world, the Chinese mountaineering association confirmed here on Sunday.
+IsEntail:true
+H:
+Verb:
+Noun:kanchenjunga meters 
+
+T:
+Verb:conquered confirmed 
+Noun:tibetan mountaineering team mt. kanchenjunga peak world mountaineering association sunday 
+
+------------------------
+kanchenjunga 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:585
+H:Before Salt Lake City, Winter Olympic Games took place in Nagano.
+T:Hodler claimed there were also irregularities in the campaigns organized by Atlanta for the 1996 Summer Games, Sydney for the Summer Olympics in 2000 and Salt Lake City for the 2002 Winter Games.
+IsEntail:false
+H:
+Verb:
+Noun:salt lake city winter olympic games place nagano 
+
+T:
+Verb:claimed organized 
+Noun:hodler irregularities campaigns atlanta summer games sydney summer olympics salt lake city winter games 
+
+------------------------
+salt lake city winter games 
+Persentase noun H yang cocok:62.5
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:winter = claim
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:salt lake city winter olympic games place nagano 
+Verb T lemma:claim  organize
+Skor wordnet:0.35294117647058826
+
+
+=============
+ID:590
+H:Microsoft Windows is an operating system.
+T:Jackson also found the company maintained its Windows monopoly by setting deals with computer makers to promote Microsoft products over those from rival software makers.
+IsEntail:false
+H:
+Verb:operating 
+Noun:microsoft windows system 
+
+T:
+Verb:found maintained setting promote 
+Noun:jackson company windows monopoly deals computer makers microsoft products software makers 
+
+------------------------
+microsoft windows 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:operate = find
+Verb H lemma:operate
+Verb T lemma:find  maintain  set  promote
+Skor wordnet:0.2857142857142857
+
+
+=============
+ID:591
+H:Microsoft Windows is an operating system.
+T:Hoping to loosen Microsoft's ironclad grip on the personal computer desktop, a tiny Seattle company will unveil an onscreen menu bar Monday that bypasses Windows with direct links to programs and the Internet.
+IsEntail:false
+H:
+Verb:operating 
+Noun:microsoft windows system 
+
+T:
+Verb:hoping loosen unveil bypasses 
+Noun:microsoft grip computer desktop seattle company menu bar monday windows links programs internet 
+
+------------------------
+microsoft windows 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:operate = loosen
+Verb H lemma:operate
+Verb T lemma:hope  loosen  unveil  bypass
+Skor wordnet:0.25
+
+
+=============
+ID:592
+H:The members of the Gulf Cooperation Council are: Saudi Arabia, Kuwait, United Arab Emirates, Qatar, Oman, Bahrain.
+T:Qatar and Oman are members of the Gulf Cooperation Council, GCC, which also groups Saudi Arabia, Kuwait, Bahrain and the United Arab Emirates (UAE).
+IsEntail:true
+H:
+Verb:
+Noun:members gulf cooperation council saudi arabia kuwait united arab emirates qatar oman bahrain 
+
+T:
+Verb:
+Noun:qatar oman members gulf cooperation council gcc groups saudi arabia kuwait bahrain united arab emirates uae 
+
+------------------------
+members gulf cooperation council saudi arabia kuwait united arab emirates qatar oman bahrain 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:members gulf cooperation council saudi arabia kuwait united arab emirates qatar oman bahrain 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:596
+H:Everglades National Park is located in Florida.
+T:The National Park Trust identified 20 high-priority sites - including the Blue Ridge Parkway in North Carolina and Virginia and Everglades National Park in Florida - as areas with private property that could be sold.
+IsEntail:true
+H:
+Verb:located 
+Noun:everglades national park florida 
+
+T:
+Verb:identified including sold 
+Noun:national park trust sites blue ridge parkway north carolina virginia everglades national park florida areas property 
+
+------------------------
+everglades national park florida 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:located
+Verb T lemma:identify  include  sell
+Skor wordnet:0.0
+
+=============
+ID:598
+H:NATO has 16 members.
+T:The expulsion of Albanians, which has distracted NATO with a parallel relief operation, has only served to harden the resolve of NATO's 19 members, who are now willing to approve attacks on more sensitive targets, like Milosevic's homes and Yugoslavia's state-run television.
+IsEntail:false
+H:
+Verb:
+Noun:nato members 
+
+T:
+Verb:distracted served harden approve 
+Noun:expulsion albanians nato relief operation resolve nato members attacks targets milosevic homes yugoslavia television 
+
+------------------------
+nato members 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:nato = serve
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:nato members 
+Verb T lemma:distract  serve  harden  approve
+Skor wordnet:0.2727272727272727
+
+members antonimnya nonmember
+
+=============
+ID:599
+H:The NATO has 16 members.
+T:Foreign Ministers of the 16 NATO member countries met early this morning with their Russian counterpart, Yevgeny Primakov, in Berlin in a bid to improve NATO-Russia relations.
+IsEntail:true
+H:
+Verb:
+Noun:nato members 
+
+T:
+Verb:met improve 
+Noun:foreign ministers nato member countries morning counterpart yevgeny primakov berlin bid relations 
+
+------------------------
+nato 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:603
+H:These two portraits and a lithography by Edvard Munch were recovered using the Art Loss Register database.
+T:Two portraits, one by Reynolds, the other by Gainsborough, since 1990 among the most looked-after works in the Art Loss Register database, were recovered this week when they were brought into Sotheby's for evaluation. Also a lithograph by Norwegian artist Edvard Munch, stolen from an Oslo art gallery in April, has been recovered, news reports said today.
+IsEntail:false
+H:
+Verb:recovered 
+Noun:portraits lithography edvard munch art loss register database 
+
+T:
+Verb:recovered brought stolen recovered 
+Noun:portraits reynolds gainsborough works art loss register database week sotheby evaluation lithograph artist edvard munch oslo art gallery april news reports today 
+
+------------------------
+portraits edvard munch art loss register database 
+Persentase noun H yang cocok:87.5
+Verb yang cocok:recovered 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:606
+H:Police recovered 81 Andy Warhol lithographs.
+T:Amsterdam police said Wednesday that they have recovered stolen lithographs by the late U.S. pop artist Andy Warhol worth more than $1 million.
+IsEntail:false
+H:
+Verb:recovered 
+Noun:police andy warhol lithographs 
+
+T:
+Verb:recovered stolen 
+Noun:amsterdam police wednesday amsterdam police lithographs u.s. pop artist andy warhol 
+
+------------------------
+police andy warhol lithographs 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:recovered 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:608
+H:The Amazon rain forest is a vast area in South America.
+T:Besides producing this riverine sea, the deluge also nourishes the largest stretch of rain forest left on Earth. One-third of the remaining rain forest was in the Amazon basin and fires had consumed about 10% of it, an area twice the size of California.
+IsEntail:false
+H:
+Verb:
+Noun:amazon rain forest area south america 
+
+T:
+Verb:producing nourishes left remaining consumed 
+Noun:sea deluge stretch rain forest earth one-third rain forest amazon basin fires % area size california 
+
+------------------------
+amazon rain forest area 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:area = left
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:amazon rain forest area south america 
+Verb T lemma:produce  nourish  left  remain  consume
+Skor wordnet:0.6666666666666666
+
+south antonimnya north
+
+=============
+ID:609
+H:Police use robots for bomb-handling.
+T:Sheriff's officials said a robot could be put to use in Ventura County, where the bomb squad has responded to more than 40 calls this year.
+IsEntail:true
+H:
+Verb:
+Noun:police robots bomb-handling 
+
+T:
+Verb:put responded 
+Noun:sheriff officials robot ventura county bomb squad calls year 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:612
+H:Five masterpieces, including a Renoir, were recovered when the thief confessed.
+T:French police recovered five masterpieces stolen from Paris Museum last Summer including a small work by Renoir.
+IsEntail:false
+H:
+Verb:including recovered confessed 
+Noun:masterpieces renoir thief 
+
+T:
+Verb:recovered stolen including 
+Noun:police masterpieces paris museum summer work renoir 
+
+------------------------
+masterpieces renoir 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:including recovered 
+Persentase verb H yang cocok:66.66666666666666
+
+=============
+ID:614
+H:All are deeply concerned about the damage of the Iraq war and are looking for ways to resolve it.
+T:"The Herald is now pleased that Kennedy can vigorously pursue a re-examination of the Iraq war and how to extricate our nation from it. Speaking seriously, I'll take this change of heart as a sobering indication that all of us, wherever we stand on the liberal-conservative continuum, are deeply concerned about the damaging impacts of the Iraq war and are looking for ways to work together to resolve it as soon as possible."
+IsEntail:true
+H:
+Verb:concerned resolve 
+Noun:damage iraq war ways 
+
+T:
+Verb:
+Noun:
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:633
+H:Three Swedes were arrested in a Belgian police sting operation.
+T:A Belgian policeman posing as an art dealer in Brussels arrested three Swedes.
+IsEntail:true
+H:
+Verb:arrested 
+Noun:swedes police sting operation 
+
+T:
+Verb:posing arrested 
+Noun:policeman art dealer brussels swedes 
+
+------------------------
+swedes 
+Persentase noun H yang cocok:25.0
+Verb yang cocok:arrested 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:636
+H:Some stolen art is recovered through offered rewards.
+T:Reward offers have led to recovery of stolen art.
+IsEntail:true
+H:
+Verb:stolen recovered offered 
+Noun:art rewards 
+
+T:
+Verb:led stolen 
+Noun:offers recovery art 
+
+------------------------
+art 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:stolen 
+Persentase verb H yang cocok:33.33333333333333
+
+=============
+ID:639
+H:Refusal of Argentina to buy cattle created new tensions between the two countries.
+T:Argentina remains one of 17 countries still banning British cattle for breeding because of the outbreak of mad cow disease in 1980s.
+IsEntail:false
+H:
+Verb:buy created 
+Noun:refusal argentina cattle tensions countries 
+
+T:
+Verb:remains banning 
+Noun:argentina countries cattle breeding outbreak cow disease 
+
+------------------------
+argentina cattle countries 
+Persentase noun H yang cocok:60.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:
+Verb H lemma:buy  create
+Verb T lemma:remains  ban
+Skor wordnet:1.0
+
+buy  antonimnya sell
+
+=============
+ID:642
+H:Philip Morris said it sold 201 billion cigarettes worldwide during the third quarter of 1994.
+T:Philip Morris said it sold 201 bn cigarettes world-wide during the quarter.
+IsEntail:false
+H:
+Verb:sold 
+Noun:philip morris cigarettes quarter 
+
+T:
+Verb:sold 
+Noun:philip morris bn cigarettes quarter 
+
+------------------------
+philip morris cigarettes quarter 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:sold 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:645
+H:Lopez took documents from GM to VW.
+T:GM has initiated criminal investigations in Germany and the US on the basis of their suspicions that Mr Lopez and his team stole confidential information before defecting to VW in March.
+IsEntail:false
+H:
+Verb:
+Noun:lopez documents gm vw 
+
+T:
+Verb:initiated stole defecting 
+Noun:gm investigations germany basis suspicions mr lopez mr lopez team information vw march 
+
+------------------------
+lopez gm vw 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:gm = defect
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:lopez documents gm vw 
+Verb T lemma:initiate  steal  defect
+Skor wordnet:0.375
+
+
+=============
+ID:655
+H:The Falklands War took place in 1982.
+T:Argentina was still obsessed with the Falkland islands even in 1994, 12 years after its defeat in the 74-day war with Britain.
+IsEntail:true
+H:
+Verb:
+Noun:falklands war place 
+
+T:
+Verb:obsessed 
+Noun:argentina falkland islands years defeat war britain 
+
+------------------------
+war 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:656
+H:The acquisition of the Klaipeda Tobacco company is the biggest investment in the Baltic states.
+T:The deal marks the second foray into Lithuania by Philip Morris which in April beat British American Tobacco to acquire the Klaipeda Tobacco company for Dollars 40m - the biggest western investment in the Baltic states so far.
+IsEntail:false
+H:
+Verb:
+Noun:acquisition klaipeda tobacco company investment states 
+
+T:
+Verb:marks beat acquire 
+Noun:deal foray lithuania philip morris april british american tobacco klaipeda tobacco company dollars investment states 
+
+------------------------
+klaipeda tobacco company investment states 
+Persentase noun H yang cocok:83.33333333333334
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:tobacco = beat
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:acquisition klaipeda tobacco company investment states 
+Verb T lemma:mark  beat  acquire
+Skor wordnet:0.46153846153846156
+
+
+=============
+ID:660
+H:Animals have died by the thousands from drinking at cyanide-laced holding ponds.
+T:Most of the mines are in arid areas and animals searching for water are attracted to the cyanide-laced holding ponds that are an integral part of the mining operations.
+IsEntail:false
+H:
+Verb:died drinking holding 
+Noun:animals thousands ponds 
+
+T:
+Verb:searching attracted holding 
+Noun:mines areas animals water ponds part mining operations 
+
+------------------------
+animals ponds 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:holding 
+Persentase verb H yang cocok:33.33333333333333
+
+=============
+ID:663
+H:Relations between Argentina and Great Britain are growing more cooperative.
+T:One of Argentina's top Falkland negotiators said Mr Hurd's visit the first by a cabinet minister since the 1982 Falklands conflict meant we are on our way to a broader richer relationship in which the islands are only a part of the relationship not the only issue.
+IsEntail:true
+H:
+Verb:growing 
+Noun:relations argentina great britain 
+
+T:
+Verb:meant 
+Noun:argentina falkland negotiators mr hurd visit cabinet minister falklands conflict relationship islands part relationship issue 
+
+------------------------
+argentina 
+Persentase noun H yang cocok:25.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:666
+H:Britain angered Argentina.
+T:Relations between Argentina and Britain were soured again last May when Britain decided to extend territorial waters to 200 miles around South Georgia and the South Sandwich Islands.
+IsEntail:true
+H:
+Verb:angered 
+Noun:britain argentina 
+
+T:
+Verb:soured decided extend 
+Noun:relations argentina britain may britain waters miles south georgia south sandwich islands 
+
+------------------------
+britain argentina 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:angered
+Verb T lemma:sour  decide  extend
+Skor wordnet:0.0
+
+=============
+ID:671
+H:Cigarette sales have declined due to restrictions on advertising.
+T:Although the domestic markets for cigarettes in America in the 1990s was greatly reduced due to bans on advertising, smoking in public places and health warnings, American tobacco companies were showing a higher profit.
+IsEntail:true
+H:
+Verb:declined 
+Noun:sales restrictions advertising 
+
+T:
+Verb:reduced smoking showing 
+Noun:markets cigarettes america 1990s bans advertising places health warnings tobacco companies profit 
+
+------------------------
+advertising 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:673
+H:A California company was charged with reckless storage of chemicals.
+T:Two brothers who operated a North Hollywood plating company that dumped thousands of gallons of cyanide-laced waste water into the Los Angeles sewer system pleaded guilty Thursday and must serve jail time for recklessly handling and storing hazardous materials.
+IsEntail:true
+H:
+Verb:charged 
+Noun:california company storage chemicals 
+
+T:
+Verb:operated dumped pleaded serve handling storing 
+Noun:brothers north hollywood plating company thousands gallons waste water los angeles sewer system thursday jail time materials 
+
+------------------------
+company 
+Persentase noun H yang cocok:25.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:674
+H:11 judges in the Yugoslavia war tribunal were sworn in at the World court.
+T:The United Nations last night elected eight judges for the international war crimes tribunal that will try those accused of murders and other atrocities in former Yugoslavia since 1991.
+IsEntail:false
+H:
+Verb:sworn 
+Noun:judges yugoslavia war tribunal world court 
+
+T:
+Verb:elected accused 
+Noun:united nations night judges war crimes tribunal murders atrocities yugoslavia 
+
+------------------------
+judges yugoslavia war tribunal 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:swear = accuse
+Verb H lemma:swear
+Verb T lemma:elect  accuse
+Skor wordnet:0.3333333333333333
+
+
+=============
+ID:675
+H:Cyanide is used in gold mining.
+T:Gold mining operations in California and Nevada use cyanide to extract the precious metal.
+IsEntail:true
+H:
+Verb:
+Noun:cyanide mining 
+
+T:
+Verb:extract 
+Noun:gold mining operations california nevada metal 
+
+------------------------
+mining 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:677
+H:The mining industry uses a method known as heap leaching.
+T:Known as "heap leach" mining, the method has become popular in the last decade because it enables microscopic bits of gold to be economically extracted from low-grade ore.
+IsEntail:true
+H:
+Verb:
+Noun:mining industry method heap leaching 
+
+T:
+Verb:enables extracted 
+Noun:leach mining method decade method bits gold ore 
+
+------------------------
+mining method 
+Persentase noun H yang cocok:40.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:681
+H:Cyanide fishing is linked to the destruction of area reefs.
+T:Fishermen using the poison sodium cyanide have helped to destroy an estimated 70% of the reefs.
+IsEntail:true
+H:
+Verb:linked 
+Noun:fishing destruction area reefs 
+
+T:
+Verb:helped destroy estimated 
+Noun:fishermen poison sodium cyanide % reefs 
+
+------------------------
+reefs 
+Persentase noun H yang cocok:25.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:683
+H:Soap-like alternatives exist.
+T:The relocation has enabled the company to eliminate the use of cyanide and chrome in its plating work replacing it with a soaplike solution.
+IsEntail:true
+H:
+Verb:exist 
+Noun:alternatives 
+
+T:
+Verb:enabled eliminate plating replacing 
+Noun:relocation company cyanide chrome work solution 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:685
+H:Leaks into environment are caused by bad disposal of toxic waste containing cyanide.
+T:If toxic waste containg cyanide is not disposed of properly, it may drain into ponds, streams, sewers, and reservoirs.
+IsEntail:true
+H:
+Verb:caused 
+Noun:leaks environment disposal waste cyanide 
+
+T:
+Verb:drain 
+Noun:waste containg cyanide ponds streams sewers reservoirs 
+
+------------------------
+waste cyanide 
+Persentase noun H yang cocok:40.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:690
+H:Mine waste-water poses an environmental hazard.
+T:Waste in the ponds produced by leaching gold from ore is a source of potential environmental dangers.
+IsEntail:true
+H:
+Verb:poses 
+Noun:mine waste-water hazard 
+
+T:
+Verb:produced leaching 
+Noun:waste ponds gold ore source dangers 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:699
+H:The new thin-casting process shook up the steel industry.
+T:NUCOR, the leading US steel mini-mill group is to greatly expand production capacity at a plant in Crawfordsville, Indiana which has shaken up the industry by its use of a radical, new technology.
+IsEntail:false
+H:
+Verb:shook 
+Noun:process steel industry 
+
+T:
+Verb:leading mini-mill expand shaken 
+Noun:steel group production capacity plant crawfordsville indiana industry technology 
+
+------------------------
+steel industry 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:shake
+Verb H lemma:shake
+Verb T lemma:lead  mini-mill  expand  shake
+Skor wordnet:1.0
+
+
+=============
+ID:700
+H:Cameroon honey gatherers use cyanide to stun bees.
+T:At the very outskirts of commerce, Baka pygmies in southeastern Cameroon use a cyanide compound to stun bees while raiding their nests for honey.
+IsEntail:true
+H:
+Verb:stun 
+Noun:cameroon honey gatherers bees 
+
+T:
+Verb:raiding 
+Noun:outskirts commerce baka pygmies cameroon compound stun bees nests honey 
+
+------------------------
+cameroon honey bees 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb H lemma:stun
+Verb T lemma:raiding
+Skor wordnet:0.0
+
+=============
+ID:703
+H:The African elephant population was decimated by poachers.
+T:The west has preferred to focus on endangered animals, rather than endangered humans. African elephants are hunted down and stripped of tusks and hidden by poachers. Their numbers in Africa slumped from 1.2m to 600,000 in a decade until CITES - the Convention on International Trade in Endangered Species - banned the trade in ivory.
+IsEntail:true
+H:
+Verb:decimated 
+Noun:elephant population poachers 
+
+T:
+Verb:preferred focus hunted stripped hidden slumped banned 
+Noun:west animals humans elephants tusks poachers numbers africa m decade cites convention international trade endangered species trade ivory 
+
+------------------------
+poachers 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:705
+H:The US government wants to keep drug prices down.
+T:For US pharmaceutical companies, the impending healthcare reforms promise an era of increased cost-containment and pricing controls.
+IsEntail:true
+H:
+Verb:
+Noun:government drug prices 
+
+T:
+Verb:promise increased pricing 
+Noun:companies healthcare reforms era cost-containment controls 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:707
+H:The South African-based Conservation Corporation threatens the local population.
+T:The owners of Phinda, the South African-based Conservation Corporation, could not have paid for a better advertisement for their philosophy of wildlife conservation: a people-based approach to conservation, which is slowly gaining ground in Africa as game reserves come under ever greater threat from hungry, poor and angry local populations.
+IsEntail:false
+H:
+Verb:threatens 
+Noun:south african-based conservation corporation population 
+
+T:
+Verb:paid gaining 
+Noun:owners phinda south african-based conservation corporation advertisement philosophy wildlife conservation approach conservation ground africa game reserves threat populations 
+
+------------------------
+south african-based conservation corporation 
+Persentase noun H yang cocok:80.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:threaten = pay
+Verb H lemma:threaten
+Verb T lemma:pay  gain
+Skor wordnet:0.2857142857142857
+
+
+=============
+ID:708
+H:The Research and Development phase of creating a new drug is complicated.
+T:Drug development is an enormously complex and expensive process.
+IsEntail:true
+H:
+Verb:creating 
+Noun:research development phase drug 
+
+T:
+Verb:
+Noun:drug development process 
+
+------------------------
+development drug 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:710
+H:In Africa, rhinos are seriously endangered by poaching.
+T:Conservationists fear that one of Namibia's most precious resources, its abundant wildlife and especially its threatened black rhinoceros, faces a major menace from poaching.
+IsEntail:true
+H:
+Verb:endangered poaching 
+Noun:africa rhinos 
+
+T:
+Verb:fear faces poaching 
+Noun:conservationists namibia resources wildlife rhinoceros menace 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:poaching 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:716
+H:Robots are used in the food industry, in general.
+T:David Marshall, responsible for customer training at ABB Robotics in Milton Keynes, fervently hopes that the food, drinks and confectionery industry will become the next big market for robots.
+IsEntail:false
+H:
+Verb:
+Noun:robots food industry general 
+
+T:
+Verb:hopes 
+Noun:david marshall customer training abb robotics milton keynes food drinks confectionery industry market robots 
+
+------------------------
+robots food industry 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:industry = hope
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:robots food industry general 
+Verb T lemma:hope
+Skor wordnet:0.3333333333333333
+
+general antonimnya specific
+general antonimnya local
+general antonimnya particular
+general antonimnya specific
+
+=============
+ID:721
+H:Slash and burn cycle of clearing causes many problems in the rainforest.
+T:Contrary to what is happening in some other parts of the Amazon, where the forest is being slashed and burned at an alarming rate, those who want to save Acre's forest seem to be winning.
+IsEntail:true
+H:
+Verb:
+Noun:cycle clearing problems rainforest 
+
+T:
+Verb:happening slashed burned save winning 
+Noun:parts amazon forest rate acre forest 
+
+------------------------
+
+Persentase noun H yang cocok:0.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:722
+H:Fiat, in particular, uses robots for inventory management.
+T:As Fiat shows off its robot-controlled inventory stacks in glossy advertisements and IBM switches off the lights in its automated warehouse in Greenock, it is clear that this Cinderella operation has a new set of high-tech glad rags.
+IsEntail:true
+H:
+Verb:
+Noun:fiat robots inventory management 
+
+T:
+Verb:shows switches automated 
+Noun:fiat inventory stacks advertisements ibm lights warehouse greenock cinderella operation set rags 
+
+------------------------
+fiat inventory 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:723
+H:The most common use for robots is the manufacture of automobiles.
+T:The motor industry accounts for as much as 40 per cent of the 450,000 installed industrial robots worldwide but their use is changing and applications are expanding.
+IsEntail:true
+H:
+Verb:
+Noun:robots manufacture automobiles 
+
+T:
+Verb:accounts changing expanding 
+Noun:motor industry cent robots applications 
+
+------------------------
+robots 
+Persentase noun H yang cocok:33.33333333333333
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:724
+H:Robots are used to spray dye on garments.
+T:Now GMFanuc Robotics has perfected a robotic solution that is three times faster than manual spraying, can reproduce a spray pattern to an accuracy of 0.03 inch, and can be programmed easily to handle a wide range of garments.
+IsEntail:true
+H:
+Verb:
+Noun:robots spray dye garments 
+
+T:
+Verb:perfected reproduce programmed handle 
+Noun:gmfanuc robotics solution times spraying spray pattern accuracy inch range garments 
+
+------------------------
+spray garments 
+Persentase noun H yang cocok:50.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+
+=============
+ID:729
+H:Mice fed with red wine lived longer despite a fatty diet.
+T:Mice given a substance found in red wine lived longer despite a fatty diet, a study shows.
+IsEntail:false
+H:
+Verb:fed lived 
+Noun:mice wine diet 
+
+T:
+Verb:found lived shows 
+Noun:mice substance wine diet study 
+
+------------------------
+mice wine diet 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:lived 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:733
+H:Senator Rosario Ibarra is a human rights militant.
+T:Mr Lopez Obrador was "sworn in" by Senator Rosario Ibarra, a human rights activist and member of his party, who placed a red, green and white presidential sash across his shoulders.
+IsEntail:true
+H:
+Verb:
+Noun:senator rosario ibarra rights 
+
+T:
+Verb:sworn 
+Noun:mr lopez obrador senator rosario ibarra rights activist member mr lopez obrador party sash mr lopez obrador shoulders 
+
+------------------------
+senator rosario ibarra rights 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:senator rosario ibarra rights 
+Verb T lemma:swear
+Skor wordnet:0.0
+
+=============
+ID:734
+H:Mr Carstens lost his job as IMF's deputy managing director last month.
+T:Mr Carstens left his job as IMF's deputy managing director last month to work with Mr Calderon, and will now lead efforts to push through market reforms and create more jobs.
+IsEntail:false
+H:
+Verb:lost 
+Noun:mr carstens job imf managing director month 
+
+T:
+Verb:left work lead push create 
+Noun:mr carstens mr carstens job imf managing director month mr calderon efforts market reforms jobs 
+
+------------------------
+mr carstens job imf managing director month 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:lose = work
+Verb H lemma:lose
+Verb T lemma:left  work  lead  push  create
+Skor wordnet:0.5
+
+lose  antonimnya keep
+lose  antonimnya win
+lose  antonimnya find
+lose  antonimnya profit
+lose  antonimnya break_even
+lose  antonimnya win
+
+=============
+ID:737
+H:Chinese engineers working on long-term projects in India can easily obtain visas.
+T:But Huawei says that expansion has not been easy - obtaining visas for its Chinese engineers to work on long-term projects in India being a particular challenge.
+IsEntail:false
+H:
+Verb:working obtain 
+Noun:engineers projects india visas 
+
+T:
+Verb:obtaining work 
+Noun:huawei expansion visas engineers projects india challenge 
+
+------------------------
+engineers projects india visas 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:work
+Verb H lemma:work  obtain
+Verb T lemma:obtain  work
+Skor wordnet:1.0
+
+work  antonimnya idle
+
+=============
+ID:747
+H:Employee breaks had been denied by a motion granted by a Massachusetts judge.
+T:San Francisco (Reuters) -- Wal-Mart Stores Inc. said Tuesday that a Massachusetts judge had granted its motion to decertify a class action lawsuit accusing the world's largest retailer of denying employees breaks.
+IsEntail:false
+H:
+Verb:denied granted 
+Noun:employee breaks motion massachusetts judge 
+
+T:
+Verb:granted decertify accusing denying 
+Noun:san francisco reuters wal-mart stores inc. tuesday massachusetts judge motion class action lawsuit world retailer employees breaks 
+
+------------------------
+breaks motion massachusetts judge 
+Persentase noun H yang cocok:80.0
+Verb yang cocok:granted 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:751
+H:Bush will meet the presidents of Iraq and Syria in Tehran.
+T:A Pentagon committee and the congressionally chartered Iraq Study Group have been preparing reports for Bush, and Iran has asked the presidents of Iraq and Syria to meet in Tehran.
+IsEntail:false
+H:
+Verb:meet 
+Noun:bush presidents iraq syria tehran 
+
+T:
+Verb:chartered preparing asked meet 
+Noun:pentagon committee iraq study group reports bush iran presidents iraq syria tehran 
+
+------------------------
+bush presidents iraq syria tehran 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:meet 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:752
+H:Bush will meet al-Maliki in Hadley.
+T:Hadley said Jordan was chosen as the site of the meeting between Bush and al-Maliki because of its support for the unity government in Iraq and the fact that Bush would be in the region.
+IsEntail:false
+H:
+Verb:meet 
+Noun:bush al-maliki hadley 
+
+T:
+Verb:chosen 
+Noun:hadley jordan site meeting bush al-maliki support unity government iraq fact bush region 
+
+------------------------
+bush al-maliki hadley 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:meet = choose
+Verb H lemma:meet
+Verb T lemma:choose
+Skor wordnet:0.4
+
+
+=============
+ID:758
+H:Aspirin is one of the most widely used pain relievers available without a doctor's note.
+T:The drug, along with aspirin and ibuprofen, is one of the most widely used pain relievers available without a doctor's note.
+IsEntail:true
+H:
+Verb:
+Noun:aspirin pain relievers doctor note 
+
+T:
+Verb:
+Noun:drug aspirin ibuprofen pain relievers doctor note 
+
+------------------------
+aspirin pain relievers doctor note 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip: = 
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:aspirin pain relievers doctor note 
+Verb T lemma:
+Skor wordnet:0.0
+
+=============
+ID:760
+H:The FDA turned up metal in roughly 200 pills of the 70 million it passed through a metal detector.
+T:A company investigation turned up metal in roughly 200 pills of the 70 million it passed through a metal detector, according to the FDA.
+IsEntail:false
+H:
+Verb:turned passed 
+Noun:fda metal pills metal detector 
+
+T:
+Verb:turned passed 
+Noun:company investigation metal pills company investigation metal detector fda 
+
+------------------------
+fda metal pills metal detector 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:turned passed 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:762
+H:Acetaminophen is produced by Tylenol.
+T:Acetaminophen is best known as the drug in products sold under the Tylenol brand, but is widely available in typically less expensive generic versions.
+IsEntail:false
+H:
+Verb:produced 
+Noun:acetaminophen tylenol 
+
+T:
+Verb:sold 
+Noun:acetaminophen drug products tylenol brand versions 
+
+------------------------
+acetaminophen tylenol 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:produce = sell
+Verb H lemma:produce
+Verb T lemma:sell
+Skor wordnet:0.2857142857142857
+
+
+=============
+ID:764
+H:Kevin Vincent buys store brand acetaminophen.
+T:Kevin Vincent, 44, of Arlington, Va., said his wife buys store brand acetaminophen and he wanted to find out more about the problem.
+IsEntail:false
+H:
+Verb:buys 
+Noun:kevin vincent store brand acetaminophen 
+
+T:
+Verb:buys wanted find 
+Noun:kevin vincent arlington va. kevin vincent wife store brand acetaminophen kevin vincent problem 
+
+------------------------
+kevin vincent store brand acetaminophen 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:buys 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:766
+H:Molly Walsh plans to stop buying the generic products.
+T:Molly Walsh, 21, a George Washington University student shopping at a CVS pharmacy in Washington, D.C., said she didn't plan to toss any of the store-brand drugs at home that she'd bought to save money. Nor did she plan to stop buying the generic products.
+IsEntail:false
+H:
+Verb:plans stop buying 
+Noun:molly walsh products 
+
+T:
+Verb:toss 'd bought save plan stop buying 
+Noun:molly walsh george washington university student shopping cvs pharmacy washington d.c. molly walsh plan drugs home molly walsh money molly walsh products 
+
+------------------------
+molly walsh products 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:stop buying 
+Persentase verb H yang cocok:66.66666666666666
+
+=============
+ID:768
+H:The FDA provided a list of states in which the pills have been sold.
+T:The FDA would not say in which states the pills had been sold, but instead recommended that customers determine whether products they bought are being recalled by checking the store list on the FDA Web site, and the batch list. The batch numbers appear on the container's label.
+IsEntail:false
+H:
+Verb:provided sold 
+Noun:fda list states pills 
+
+T:
+Verb:sold recommended determine bought recalled checking 
+Noun:fda states pills customers products customers store list fda web site batch list batch numbers container label 
+
+------------------------
+fda list states pills 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:sold 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:772
+H:The Nobel committee plans to help people break out of poverty.
+T:The Nobel committee said in a statement that "lasting peace cannot be achieved unless large population groups find ways in which to break out of poverty."
+IsEntail:false
+H:
+Verb:plans break 
+Noun:nobel committee people poverty 
+
+T:
+Verb:achieved find break 
+Noun:nobel committee statement peace population groups ways poverty 
+
+------------------------
+nobel committee poverty 
+Persentase noun H yang cocok:75.0
+Verb yang cocok:break 
+Persentase verb H yang cocok:50.0
+
+=============
+ID:774
+H:Gates' foundation extends its microfinance programs to 5 million more of the world's poorest families.
+T:In August, Gates' foundation gave Yunus' Grameen Foundation 1.5 million for a program to extend its microfinance programs to 5 million more of the world's poorest families. Three years ago, tech entrepreneur Craig McCaw provided 2 million to start up the Grameen Technology Center, which is using microcredit to finance cheap mobile service for people in Uganda and Rwanda.
+IsEntail:false
+H:
+Verb:extends 
+Noun:gates foundation programs world families 
+
+T:
+Verb:gave extend provided start finance 
+Noun:august gates foundation yunus grameen foundation program programs world families years tech entrepreneur craig mccaw grameen technology center microcredit service people uganda rwanda 
+
+------------------------
+gates foundation programs world families 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:extend
+Verb H lemma:extend
+Verb T lemma:give  extend  provide  start  finance
+Skor wordnet:1.0
+
+
+=============
+ID:779
+H:Begum was not able to feed herself.
+T:Begum, who had to borrow to buy bamboo to make stools, received 25 cents a day from moneylenders. After giving them stools to pay off her debt, she was left with 2 cents a day, barely enough to feed herself.
+IsEntail:false
+H:
+Verb:feed 
+Noun:begum 
+
+T:
+Verb:borrow buy make received giving pay left feed 
+Noun:begum bamboo stools cents day moneylenders moneylenders stools begum debt begum cents day 
+
+------------------------
+begum 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:feed 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:785
+H:Will Grant is researching a conflict with Mexicans.
+T:The BBC's Americas editor Will Grant says many Mexicans are tired of conflict and long for a return to normality.
+IsEntail:false
+H:
+Verb:researching 
+Noun:grant conflict mexicans 
+
+T:
+Verb:normality 
+Noun:bbc americas editor grant mexicans conflict return 
+
+------------------------
+grant conflict mexicans 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:research = normality
+Verb H lemma:research
+Verb T lemma:normality
+Skor wordnet:0.35294117647058826
+
+
+=============
+ID:786
+H:Mr Calderon is able to create a mass civil disobedience movement.
+T:Although he has enough of a support base to be able to create a mass civil disobedience movement, some analysts think that his campaign will be, at best, a thorn in Mr Calderon's side.
+IsEntail:false
+H:
+Verb:create 
+Noun:mr calderon disobedience movement 
+
+T:
+Verb:create 
+Noun:support base disobedience movement analysts campaign thorn mr calderon side 
+
+------------------------
+mr calderon disobedience movement 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:create 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:787
+H:Democrats won the elections three years ago.
+T:Of course, most of the tax cuts expire in 2010; only three years from when Rangel would take over as chair if Democrats win.
+IsEntail:false
+H:
+Verb:won 
+Noun:democrats elections years 
+
+T:
+Verb:cuts expire win 
+Noun:tax years rangel chair democrats 
+
+------------------------
+democrats years 
+Persentase noun H yang cocok:66.66666666666666
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:win
+Verb H lemma:win
+Verb T lemma:cut  expire  win
+Skor wordnet:1.0
+
+win  antonimnya lose
+win  antonimnya lose
+
+=============
+ID:788
+H:Democrat members had strong small business voting records.
+T:Democrat members of the Ways and Means Committee, where tax bills are written and advanced, do not have strong small business voting records.
+IsEntail:false
+H:
+Verb:
+Noun:democrat members business voting records 
+
+T:
+Verb:written advanced 
+Noun:democrat members ways means committee tax bills business voting records 
+
+------------------------
+democrat members business voting records 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+kata yang paling mirip:voting = advance
+Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T
+Noun H:democrat members business voting records 
+Verb T lemma:write  advance
+Skor wordnet:0.5555555555555556
+
+members antonimnya nonmember
+records antonimnya erase
+
+=============
+ID:796
+H:Haque wants to include English in some exams.
+T:Confident that those grading papers would understand answers written in text-speak, Haque stressed that in some exams, including English, text abbreviations would be penalized.
+IsEntail:false
+H:
+Verb:include 
+Noun:haque english exams 
+
+T:
+Verb:confident grading understand written stressed including penalized 
+Noun:papers answers text-speak haque exams english text abbreviations 
+
+------------------------
+haque english exams 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:
+Persentase verb H yang cocok:0.0
+Proses lematisasi pasangan verb H dan T:
+Persen lemma cocok:0.0
+Menggunakan wordnet
+ketemu kata sama:include
+Verb H lemma:include
+Verb T lemma:confident  grade  understand  write  stressed  include  penalize
+Skor wordnet:1.0
+
+include  antonimnya exclude
+include  antonimnya exclude
+
+=============
+ID:798
+H:The NCEA has been degraded by the authority.
+T:Critics said the National Certificate of Educational Achievement or NCEA, the main qualification for high school students, would be degraded by the authority allowing text-speak use in exams.
+IsEntail:false
+H:
+Verb:degraded 
+Noun:ncea authority 
+
+T:
+Verb:degraded allowing 
+Noun:critics national certificate educational achievement ncea qualification school students authority exams 
+
+------------------------
+ncea authority 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:degraded 
+Persentase verb H yang cocok:100.0
+
+=============
+ID:799
+H:Tyler Jackson has been sentenced to 18 months.
+T:Two other marines, Tyler Jackson and John Jodka III, have already pleaded guilty to aggravated assault and conspiracy to obstruct justice and were sentenced to 21 months and 18 months, respectively.
+IsEntail:false
+H:
+Verb:sentenced 
+Noun:tyler jackson months 
+
+T:
+Verb:pleaded sentenced 
+Noun:marines tyler jackson john jodka iii assault conspiracy justice months months 
+
+------------------------
+tyler jackson months 
+Persentase noun H yang cocok:100.0
+Verb yang cocok:sentenced 
+Persentase verb H yang cocok:100.0
+
+=============
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------- BATAS LAMA`
 =============
 ID:86
 H:Judith Miller is a member of CIA.
@@ -1274,7 +7208,7 @@ Verb H lemma:invent
 Verb T lemma:found  write  author
 Skor wordnet:0.5
 
-
+elected memang terkait dengan vote. search engine?
 =============
 ID:93
 H:Kofi Annan was elected in the January 30 ballot.
@@ -1300,6 +7234,7 @@ Verb H lemma:elect
 Verb T lemma:note  turn  vote
 Skor wordnet:0.75
 
+is
 
 =============
 ID:94

@@ -559,13 +559,19 @@ public class AmbilVerbObj {
         String[] ret ={"",""};
         //panggil sebelum lakukan parsing
         if (lp==null) {
-            lp = LexicalizedParser.loadModel(
+
+			lp = LexicalizedParser.loadModel(
                     "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
                     "-maxLength", "80", "-retainTmpSubcategories");
+
         }
 
 
+
         Tree parseTree = lp.parse(kalimat);
+
+
+
         //System.out.println(parseTree);
         ret  = cariVerbObj(parseTree.toString());
         return ret;

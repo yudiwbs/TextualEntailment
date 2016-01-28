@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte.babak2;
 
+import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.upi.cs.yudiwbs.rte.*;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class PenentuEntailment {
     ProsesWordNetSimilarity pWordNetSim;
     CariAntonim ca;
     PPDB ppdb;
+    private AmbilSubject ambilSubj;
+    private LexicalizedParser lexParser;
 
     public PenentuEntailment() {
 
@@ -39,15 +42,26 @@ public class PenentuEntailment {
         ca = new CariAntonim();
         ca.init();
 
+        lexParser = LexicalizedParser.loadModel(
+                "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
+                "-maxLength", "80", "-retainTmpSubcategories");
+
+        ambilSubj = new AmbilSubject();
+
+
+
+        /*
+        ppdb dimatikan dulu, data ada di laptop merah
         ppdb = new PPDB();
         ppdb.init();
+        */
     }
 
     public void close() {
         if (ca!=null) {
             ca.close();
         }
-        ppdb.close();
+        //ppdb.close();
     }
 
 
@@ -76,9 +90,15 @@ public class PenentuEntailment {
         //dengan memisahkan batas skor untuk similartiy verbH-verbT dan NounH-verbT: tidak pengaruh
         //persentase lemma yang cocok: tidak berpepengaruh (0.645)
         //tambah antonim: tidak berpengaruh
+
         //ganti similarity dengan hitungSimWordnet2NunoSeco, batas skor 0.16: turun ke 0.6325
 
-        //Gunakan PPDB, fitur GigaSIM (gigawordcorpus),  batas skor:
+        //Gunakan PPDB, fitur GigaSIM (gigawordcorpus): tidak berubah
+
+        //gunakan kecocokan subject: akurasi turun ke 0.545
+
+
+        //ganti kemiripan dengan sinonim saja (yg sekarang kata yg terlalu jauh dianggap sama)
 
 
 
@@ -233,7 +253,7 @@ public class PenentuEntailment {
             tempStringBuilder.append(System.lineSeparator());
 
             //fix: nggak langsung ketemu jadi entail, dilihat pct lemma cocok
-            //lihat akurasi, konstnat pctLemmaCocok tidak mempengaruhi sama sekali
+            //lihat akurasi,  pctLemmaCocok tidak mempengaruhi sama sekali
             if (pctLemmaCocok>0.3) {
                 //ada verb yang cocok
                 isEntail = true;
@@ -263,7 +283,7 @@ public class PenentuEntailment {
                         tempSBNoun.append(nounH);
                         tempSBNoun.append(" ");
                     }
-                    simWordnet = pWordNetSim.hitungSimWordnet2(tempSBNoun.toString(), vT);
+                    simWordnet = pWordNetSim.hitungSimWordnet2(tempSBNoun.toString(), vT,tempStringBuilder);
                     //simWordnet = pWordNetSim.hitungSimWordnet2NunoSeco(tempSBNoun.toString(), vT);
                     tempStringBuilder.append("Verb tidak ditemukan, menggunakan noun di H utk dibandingkan dengan verb T");
                     tempStringBuilder.append(System.lineSeparator());
@@ -272,7 +292,7 @@ public class PenentuEntailment {
                     tempStringBuilder.append(System.lineSeparator());
                 }
                 else {
-                    simWordnet = pWordNetSim.hitungSimWordnet2(vH, vT);
+                    simWordnet = pWordNetSim.hitungSimWordnet2(vH, vT,tempStringBuilder);
                     //simWordnet = pWordNetSim.hitungSimWordnet2NunoSeco(vH, vT);
                     tempStringBuilder.append("Verb H lemma:");
                     tempStringBuilder.append(vH);
@@ -285,7 +305,7 @@ public class PenentuEntailment {
                 tempStringBuilder.append(simWordnet);
                 tempStringBuilder.append(System.lineSeparator());
 
-                //tidak berpengaruhu walaupun dipisah
+                //tidak berpengaruhu walaupun dipisah jika menggunakan atau tidak noun
                 if ( ( (simWordnet>0.15) && !isGunakanNoun) ||
                      ( (simWordnet>0.15) &&  isGunakanNoun)
                    )
@@ -320,6 +340,8 @@ public class PenentuEntailment {
                         }
 
                         //debug untuk ppdb, mengeluarkan fitur yg paling relevan
+                        //NGGAK DIPAKE DULU, DATA ADA DI LAPTOP MERAH
+                        /*
                         ArrayList<PPDBRec> alData = ppdb.loadData(kata);
                         for (PPDBRec data:alData)  {
                             String targetPrepro = data.preproTarget();
@@ -362,6 +384,7 @@ public class PenentuEntailment {
                                 tempStringBuilder.append(System.lineSeparator());
                             }
                         } //for semua PPDB
+                        */
                     } //for semua kata
 
 
@@ -370,6 +393,26 @@ public class PenentuEntailment {
                     } else {
                         isEntail = true;
                     }
+
+                    //tahap berikutnya, periksa apakah subjek cocok
+                    //khsuus isEntail true karena sering terjadi entail false dianggap true
+
+                    if (isEntail) {
+                        tempStringBuilder.append("Proses kecocokan subject");
+                        tempStringBuilder.append(System.lineSeparator());
+                        String subjT = Util.buangTag(ambilSubj.debugCariSubjNonTree(lexParser,itT.teksAsli));
+                        String subjH = Util.buangTag(ambilSubj.debugCariSubjNonTree(lexParser,itH.teksAsli));
+                        tempStringBuilder.append("Subj H:"+subjH);
+                        tempStringBuilder.append(System.lineSeparator());
+                        tempStringBuilder.append("Subj T:"+subjT);
+                        tempStringBuilder.append(System.lineSeparator());
+                        if (!subjH.equals(subjT)) {
+                            isEntail = false;    //batalkan entail kalau subj tidak cocok
+                            tempStringBuilder.append("Entail false krn subject tidak cocok");
+                            tempStringBuilder.append(System.lineSeparator());
+                        }
+                    }
+
                 }
             }
         }

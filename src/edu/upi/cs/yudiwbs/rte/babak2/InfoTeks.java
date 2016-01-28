@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class InfoTeks {
     public ArrayList<String> alVerb = new ArrayList<>();
     public ArrayList<String>  alNoun = new ArrayList<>();
-
+    public String teksAsli;
     @Override
     public String toString() {
         StringBuilder sbTemp = new StringBuilder();

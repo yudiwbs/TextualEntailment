@@ -31,13 +31,12 @@ import java.util.Map;
 public class BuatThesaurus {
 
     ArrayList<String> alStopWords = new ArrayList<>();
-    //HashMap<String[],Integer> kataSatuKal = new HashMap<String[],Integer>();
     HashMap<String,Integer> kataSatuKal = new HashMap<>();
     HashMap<String,Integer> kataSatuPar = new HashMap<>();
 
     StanfordCoreNLP pipeline;
 
-
+    //sort
     public LinkedHashMap<String, Integer> sortHashMapByValuesD(HashMap<String, Integer> passedMap) {
         List<String> mapKeys    = new ArrayList<>(passedMap.keySet());
         List<Integer> mapValues = new ArrayList<>(passedMap.values());
@@ -87,8 +86,8 @@ public class BuatThesaurus {
 
     public void prosesFilePar(String namaFile) {
         //JANGAN LUPA INIT!
-        //mencari freq kata dalam satu paragraph, bukan satu kalimat
 
+        //mencari freq kata dalam satu paragraph, bukan satu kalimat
         File f = new File(namaFile);
         int ccPar=0;
         int ccKal=0; //absolute, tdk mengikuti paragraph
@@ -155,17 +154,13 @@ public class BuatThesaurus {
             } //end loop per paragraph
             scMain.close();
         }
-
-
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     public void prosesFileKal(String namaFile) {
         // mencari freq kata dalam satu kalimat
-
         // IS: stopwords sudah diload, kataSatuKal sudah diinisialisasi
 
 
@@ -316,10 +311,6 @@ public class BuatThesaurus {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
-
     }
 
 
@@ -328,8 +319,11 @@ public class BuatThesaurus {
         //asumsi direktori satu level
         //dir berisi file-file teks (kumpulan)
         //loop file2 dalam direktori tersebut
-        loadStopWords("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\en_stopwords.txt");
+        //loadStopWords("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\en_stopwords.txt");
+        //loadStopWords("D:\\desertasi\\eksperimen_thesaurus\\en_stopwords.txt");
+        loadStopWords("D:\\desertasi\\eksperimen_thesaurus\\en_stopwords.txt");
 
+        //siapkan stanford
         Properties props = new Properties();
         props.put("annotators", "tokenize, ssplit");
         pipeline = new StanfordCoreNLP(props);
@@ -375,16 +369,12 @@ public class BuatThesaurus {
         }
     }
 
-
-
-
-
     public static void main(String[] args)  {
         BuatThesaurus bt = new BuatThesaurus();
         //bt.prosesFile("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\bontiful.txt");
         //bt.prosesDirKal("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi_scott_island.txt");
 
-        //bt.prosesDirPar("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful_paragraph.txt");
+        bt.prosesDirPar("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful_paragraph.txt");
 
         //bt.prosesFilePar("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful\\bontiful.txt");
 

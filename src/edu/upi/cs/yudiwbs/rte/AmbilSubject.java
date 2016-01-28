@@ -501,19 +501,20 @@ public class AmbilSubject {
 	//persis seperti cariSub
 	//tapi inputnya string biasa, bukan parsetree
 	//tidak efisien karena parser di load terus
-		
+        String out = "";
 
-		if (lp==null) {
+
+       if (lp==null) {
             lp = LexicalizedParser.loadModel(
                     "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
                     "-maxLength", "80", "-retainTmpSubcategories");
         }
 		
-		String out = "";
+
 		Tree parseTree = lp.parse(kalimat);
 		//System.out.println(parseTree);
 		out = cariSubj(parseTree.toString());
-		return out;
+        return out;
 	}
 	
 	public static void main(String[] args) {
@@ -536,8 +537,10 @@ public class AmbilSubject {
 		//kal = "Ebola hemorrhagic fever is a fatal disease caused by a new virus which has no known cure";
          kal = "The automotive industry has seen advances in robotic metal cutting";
 		String subj = af.debugCariSubjNonTree(null,kal);
+
 		System.out.println("Subj="+subj);
-		
+
+        System.out.println("Subj bersih="+Util.buangTag(subj));
 		//	Reading French is easier that speaking it.
     }
 	

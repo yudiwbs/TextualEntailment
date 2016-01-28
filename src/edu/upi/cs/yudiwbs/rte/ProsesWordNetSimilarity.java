@@ -7,8 +7,8 @@ import edu.cmu.lti.ws4j.impl.LeacockChodorow;
 import edu.cmu.lti.ws4j.impl.Lesk;
 import edu.cmu.lti.ws4j.impl.WuPalmer;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
-import wordnet.similarity.SimilarityAssessor;
-import wordnet.similarity.WordNotFoundException;
+//import wordnet.similarity.SimilarityAssessor;
+//import wordnet.similarity.WordNotFoundException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,7 +41,8 @@ import java.util.logging.Logger;
  */
 public class ProsesWordNetSimilarity {
 
-    private SimilarityAssessor assessor ;
+    //batalin dulu gara2 versi ini menggunakan lib stanford lama dan tabrakan
+    //private SimilarityAssessor assessor ;
 
     private static final Logger log =
             Logger.getLogger(ProsesTfidf.class.getName());
@@ -66,14 +67,18 @@ public class ProsesWordNetSimilarity {
 
     private static double tresholdMinSim = 0.01;
 
+
     public ProsesWordNetSimilarity() {
-        assessor = new SimilarityAssessor() ;
+        //assessor = new SimilarityAssessor() ;
     }
 
+    //DITUTUP DULU, lib ini menggunakan stanford parser lama dan tabrakan
+    //dengan stanford parser baru :(
 
     //input sudah tidak mengandung tanda baca angka dst
     //output ambil pasangan kata dengan skor kedekatan tertinggi
     //menggunakan algoritma NunoSeco
+    /*
     public double hitungSimWordnet2NunoSeco(String h, String t) {
         double out=0;
 
@@ -120,11 +125,13 @@ public class ProsesWordNetSimilarity {
         }
         return out;
     }
+    */
 
 
     //input sudah tidak mengandung tanda baca angka dst
     //output ambil pasangan kata dengan skor kedekatan tertinggi
-    public double  hitungSimWordnet2(String h, String t) {
+    //string builder untuk debug saja
+    public double  hitungSimWordnet2(String h, String t, StringBuilder sbDebug) {
         double out=0;
 
 
@@ -138,15 +145,21 @@ public class ProsesWordNetSimilarity {
 
         double nilaiMax = 0;
         boolean ketemu =false;
+        String kataHmax="";
+        String kataTmax="";
         for (String kataH:arrH) {
             for (String kataT:arrT) {
                 if (kataH.equals(kataT)) {
                     ketemu = true;
+                    sbDebug.append("ketemu kata sama:"+kataH);  //skor maks
+                    sbDebug.append(System.lineSeparator());;
                     break;
                 }
                 double sim = hitungSimilarity(kataH,kataT);
                 if (sim>nilaiMax) {
                     nilaiMax = sim;
+                    kataHmax = kataH;
+                    kataTmax = kataT;
                     //debug
                     //System.out.println("Max yg baru "+kataH+"="+kataT);
                 }
@@ -158,6 +171,8 @@ public class ProsesWordNetSimilarity {
         if (ketemu) {
             out = 1;
         } else  {
+            sbDebug.append("kata yang paling mirip:"+kataHmax+" = "+kataTmax);  //skor maks
+            sbDebug.append(System.lineSeparator());
             out = nilaiMax;
         }
         return out;
@@ -542,7 +557,8 @@ public class ProsesWordNetSimilarity {
         //Verb T lemma:scrub  book
 
         //double v = pw.hitungSimWordnet2("boeing headquarters canada","scrub  book");
-        double v = pw.hitungSimWordnet2("honey","sugar");
+        StringBuilder sb = new StringBuilder();
+        double v = pw.hitungSimWordnet2("honey","sugar",sb);
 
         System.out.println();
         System.out.println(v);

@@ -11,8 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
-
 /**
  * Created by yudiwbs on 11/27/2015.
  *
@@ -214,18 +212,21 @@ public class PreproBabak2 {
               loadStopWords("stopwords","kata");
 
 
-              //nulis ke
+              //nulis ke file, untuk debug
+              //DEBUG
               //@todo jangan hardcode spt ini!
               //@todo tambahkan double blackslah diakhir!
-              String dir ="C:\\yudiwbs\\eksperimen\\textualentailment\\babak2\\";
-
+              String dir ="D:\\desertasi\\eksperimen\\";
+              String fileCocok = "cocok_antonim_lemma_wordnetsim_subj_cocok.txt";
+              String fileTdkCocok = "tdk_cocok_antonim_lemma_wordnetsim_subj_cocok.txt";
 
 
               //ambil data
               //PreparedStatement pUpdate=null;
               try {
-                     PrintWriter pwCocok     = new PrintWriter(dir+"cocok_antonim_lemma_wordnetsim.txt");
-                     PrintWriter pwNotCocok  = new PrintWriter(dir+"tdk_cocok_antonim_lemma_wordnetsim.txt");
+
+                     PrintWriter pwCocok     = new PrintWriter(dir+fileCocok);
+                     PrintWriter pwNotCocok  = new PrintWriter(dir+fileTdkCocok);
 
                      Class.forName("com.mysql.jdbc.Driver");
                      // Setup the connection with the DB
@@ -287,6 +288,7 @@ public class PreproBabak2 {
                          sbTemp.append(System.lineSeparator());
 
                          InfoTeks hPrepro = prepro2(h,hSynTree);
+                         hPrepro.teksAsli = h;
                          String strHPrepro = hPrepro.toString() ;
                          sbTemp.append(strHPrepro);
                          System.out.println(strHPrepro);
@@ -296,6 +298,7 @@ public class PreproBabak2 {
                          sbTemp.append("T:");
                          sbTemp.append(System.lineSeparator());
                          InfoTeks tPrepro = prepro2(t,tSynTree);
+                         tPrepro.teksAsli = t;
                          String strTPrepro = tPrepro.toString();
                          sbTemp.append(strTPrepro);
                          sbTemp.append(System.lineSeparator());
@@ -306,6 +309,7 @@ public class PreproBabak2 {
 
 
                          //boolean pred= pe.baseLine(hPrepro,tPrepro);
+                         //hati-hati edit penentuEntailment, krn selain wordnet banyak lagi
                          boolean pred= pe.wordNet(hPrepro,tPrepro);
                          String deskPred = pe.toString();
                          sbTemp.append(deskPred);

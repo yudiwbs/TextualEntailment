@@ -24,7 +24,8 @@ public class CobaWordnetJWI {
 
     public static void main(String[] args) throws IOException {
         // construct the URL to the Wordnet dictionary directory
-        String dictPath ="C:\\yudiwbs\\lib_java\\jwi\\dict";
+        //String dictPath ="C:\\yudiwbs\\lib_java\\jwi\\dict";
+        String dictPath ="D:\\source-java\\TextualEntailment\\resources\\wordnetdict\\dict";
         URL u = null;
         IDictionary dict = null;
         try {
@@ -37,7 +38,7 @@ public class CobaWordnetJWI {
         }
         // look up first sense of the word "dog "
         //IIndexWord idxWord = dict.getIndexWord ("able", POS.ADJECTIVE);
-        IIndexWord idxWord = dict.getIndexWord ("able", POS.ADJECTIVE);
+        IIndexWord idxWord = dict.getIndexWord ("study", POS.VERB);
 
         int jumSense =  idxWord.getWordIDs().size();
 

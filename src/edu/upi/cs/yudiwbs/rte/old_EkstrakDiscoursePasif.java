@@ -348,6 +348,7 @@ public class old_EkstrakDiscoursePasif {
 
 	public String cariDebugDiscPasif(String inp, String akt) {
 		LexicalizedParser lp;
+		String out = "";
 
 		//panggil sebelum lakukan parsing
 		lp = LexicalizedParser.loadModel(
@@ -355,7 +356,7 @@ public class old_EkstrakDiscoursePasif {
 				"-maxLength", "80", "-retainTmpSubcategories");
 
 
-		String out = "";
+
 		Tree parseTree = lp.parse(inp);
 
 		System.out.println(inp);

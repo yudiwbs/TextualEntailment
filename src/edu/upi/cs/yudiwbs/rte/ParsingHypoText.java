@@ -72,13 +72,15 @@ public class ParsingHypoText {
 		
 		String[] out = new String[2];
 		String kata = sen;
-		Tree parseTree = lp.parse(kata);
+
+        Tree parseTree = lp.parse(kata);
 		TreebankLanguagePack tlp = new PennTreebankLanguagePack();
 		GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
 		GrammaticalStructure gs = gsf.newGrammaticalStructure(parseTree);
 		Collection<TypedDependency> tdl = gs.typedDependenciesCCprocessed();
 		out[0] = parseTree.toString();
 		out[1] = tdl.toString();
+
 	    return out;
 	}
 	

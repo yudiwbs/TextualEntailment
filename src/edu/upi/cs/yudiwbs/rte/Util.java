@@ -4,6 +4,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Util {
+
+	//input: (NP (DT The ) (JJ automotive ) (NN industry )
+    //output: The automotive industry
+	public static String buangTag(String input) {
+        String out;
+        Scanner sc = new Scanner(input);
+        StringBuilder sb = new StringBuilder();
+        while (sc.hasNext()) {
+            String kata = sc.next();
+            if (!kata.contains("(") &&  !kata.contains(")") ) {
+                sb.append(kata);
+                sb.append(" ");
+            }
+        }
+        out = sb.toString().trim();
+        return out;
+    }
 	
 	//tambah satu kata
 	//buang kurung
@@ -77,6 +94,7 @@ public class Util {
 
 	
 	public static void main(String[] args) {
+        System.out.println(Util.buangTag("(NP (DT The ) (JJ automotive ) (NN industry )"));
 	}
 
 }

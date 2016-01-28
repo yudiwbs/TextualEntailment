@@ -115,11 +115,10 @@ public class SimpleAlignment {
             AmbilSubject af = new AmbilSubject();
             AmbilVerbObj av = new AmbilVerbObj();
 
-            LexicalizedParser lp;
+            LexicalizedParser lp=null;
             lp = LexicalizedParser.loadModel(
                     "edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz",
                     "-maxLength", "80", "-retainTmpSubcategories");
-
             int jumCocok = 0; //pred sama dengan isentail
             while (rs.next()) {
                 cc++;

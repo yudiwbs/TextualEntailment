@@ -30,6 +30,11 @@ public class ProsesLemma {
 
     private StanfordCoreNLP pipeline;
 
+
+    //kalau dapat error
+    //Unrecoverable error while loading a tagger model
+    // Unable to resolve "edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger"
+
     public void initLemma() {
         Properties props = new Properties();
         props.put("annotators", "tokenize, ssplit, pos, lemma");
