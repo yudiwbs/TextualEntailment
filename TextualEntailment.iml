@@ -12,10 +12,10 @@
     <orderEntry type="library" name="simmetrics_jar_v1_6_2_d07_02_07" level="project" />
     <orderEntry type="library" name="weka" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.37-bin" level="project" />
-    <orderEntry type="library" name="tml-3.2-core" level="project" />
-    <orderEntry type="library" name="stanford-parser" level="project" />
     <orderEntry type="library" name="ws4j-1.0.1" level="project" />
-    <orderEntry type="library" name="edu.mit.jwi_2.4.0_jdk" level="project" />
     <orderEntry type="library" name="jaws-bin" level="project" />
+    <orderEntry type="library" name="stanford-corenlp-full-2015-12-09" level="project" />
+    <orderEntry type="library" name="stanford-parser-full-2015-12-09" level="project" />
+    <orderEntry type="library" name="edu.mit.jwi_2.4.0_jdk" level="project" />
   </component>
 </module>

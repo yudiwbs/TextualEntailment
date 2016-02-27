@@ -2570,6 +2570,9 @@ white antonimnya black
 white antonimnya black
 white antonimnya black
 
+pertukaran posisi: in 1975
+buang kalimat: a 19 year old
+!!! sinonim: became the captain == handed the captaincy
 =============
 ID:190
 H:Wilkins became the captain of Chelsea in 1975.
@@ -2597,6 +2600,10 @@ Noun H:wilkins captain chelsea
 Verb T lemma:handed  experienced
 Skor wordnet:0.0
 
+sulit
+pilih kalimat kedua: Saudi Arabia holds strictly limited, male-only elections.
+lokasi: Saudi Arabia
+male-only elections <> Women can vote
 =============
 ID:192
 H:Women can vote in elections in Saudi Arabia.
@@ -2616,6 +2623,9 @@ Persentase noun H yang cocok:100.0
 Verb yang cocok:vote 
 Persentase verb H yang cocok:100.0
 
+X succeeded Y
+Y predecessor X
+Abbas's predecessor, the late Yasser Arafat
 =============
 ID:194
 H:Yasser Arafat succeeded Abbas.
@@ -2644,6 +2654,8 @@ Skor wordnet:0.3333333333333333
 
 succeed  antonimnya fail
 succeed  antonimnya precede
+
+
 
 =============
 ID:199
@@ -5062,6 +5074,8 @@ franz liszt
 Persentase noun H yang cocok:100.0
 Verb yang cocok:lived 
 Persentase verb H yang cocok:100.0
+
+
 
 =============
 ID:502

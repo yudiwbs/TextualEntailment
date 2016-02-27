@@ -118,7 +118,9 @@ public class PreproBabak2 {
 
        public InfoTeks prepro2(String strIn,String synTree)  {
            InfoTeks out = new InfoTeks();
+
            //buang kata selain verb dan noun
+           //buang kata yg ada di stopwords
            //menggunakan synctatic tree
 
            /*
@@ -137,9 +139,17 @@ public class PreproBabak2 {
            (PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company)
            (NN Baikalfinansgroup)) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (ADVP (RB later))
            (VP (VBN bought) (PP (IN by) (NP (DT the) (JJ Russian) (JJ state-owned) (NN oil)
-           (NN company) (NN Rosneft))))))))))) (. .))) */
+           (NN company) (NN Rosneft))))))))))) (. .)))
 
            //alstopwords terisi
+
+           outputnya:
+           Verb:was made pay was sold known was bought
+           Noun:sale yukos tax bill yuganskneftegaz company baikalfinansgroup oil company rosneft
+
+
+
+           */
 
            //String strOut;
            //strOut = strIn.toLowerCase().replaceAll("[\\.]"," . ").replaceAll("'"," ' ").replaceAll(","," , ");   //casefolding, titik dibuat
@@ -351,6 +361,18 @@ public class PreproBabak2 {
               pb.userName = "rte";
               pb.password = "rte";
               //pb.fileStopwordsToDB("C:\\yudiwbs\\eksperimen\\stopwords_eng.txt","stopwords","kata");
-              pb.proses("rte3_babak2");
+              //pb.proses("rte3_babak2");
+              InfoTeks out= pb.prepro2("The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for\n" +
+                      "           US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian\n" +
+                      "           state-owned oil company Rosneft ."," (ROOT (S (S (NP (DT The) (NN sale)) (VP (VBD was) (VP (VBN made)\n" +
+                      "           (S (VP (TO to) (VP (VB pay) (NP (NP (NNP Yukos) (POS '))\n" +
+                      "           (ADJP (QP ($ US$) (QP (CD 27.5) (CD billion)))) (NN tax) (NN bill)))))))) (, ,)\n" +
+                      "           (NP (NNP Yuganskneftegaz)) (VP (VBD was) (ADVP (RB originally))\n" +
+                      "           (VP (VBN sold) (PP (IN for) (NP (QP ($ US$) (QP (CD 9.4) (CD billion)))))\n" +
+                      "           (PP (TO to) (NP (NP (DT a) (ADJP (RB little) (VBN known)) (NN company)\n" +
+                      "           (NN Baikalfinansgroup)) (SBAR (WHNP (WDT which)) (S (VP (VBD was) (ADVP (RB later))\n" +
+                      "           (VP (VBN bought) (PP (IN by) (NP (DT the) (JJ Russian) (JJ state-owned) (NN oil)\n" +
+                      "           (NN company) (NN Rosneft))))))))))) (. .)))"); //debug
+              System.out.println(out.toString());
        }
 }

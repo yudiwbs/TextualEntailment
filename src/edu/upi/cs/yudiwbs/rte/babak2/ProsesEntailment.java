@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * proses entailment sekaligus hitung akurasinya
  *
- * pindahaan dari PreproBabak2
+ * pindahan  dari PreproBabak2
  *
  */
 
@@ -25,8 +25,6 @@ public class ProsesEntailment {
 
 
     public void proses(String namaTabel) {
-
-
 
         // baca field t dan h
         // buang stoprwords, kata2 selain verb dan noun
@@ -42,8 +40,8 @@ public class ProsesEntailment {
         //@todo jangan hardcode spt ini!
         //@todo tambahkan double blackslah diakhir!
         String dir ="D:\\desertasi\\eksperimen\\";
-        String fileCocok = "cocok_antonim_lemma_wordnetsim_subj_cocok.txt";
-        String fileTdkCocok = "tdk_cocok_antonim_lemma_wordnetsim_subj_cocok.txt";
+        String fileCocok = "cocok_thesaurus_par.txt";
+        String fileTdkCocok = "tdk_cocok_thesaurus_par.txt";
 
 
         //ambil data
@@ -78,14 +76,6 @@ public class ProsesEntailment {
                 String h = rs.getString(4);         //h
                 String   hSynTree = rs.getString(5);  //parsetree h
                 Boolean  isEntail = rs.getBoolean(6);  //parsetree h
-                            /*
-                            System.out.println("");
-                            System.out.println("Text:");
-                            System.out.println(idInternal+":");
-                            System.out.println(textual);
-                            System.out.println(h);
-                            */
-
                 System.out.println("ID:"+id);
                 sbTemp.append("ID:");
                 sbTemp.append(id);
@@ -96,13 +86,10 @@ public class ProsesEntailment {
                 sbTemp.append(h);
                 sbTemp.append(System.lineSeparator());
 
-                //System.out.println("hsyntree:"+hSynTree);
-
                 System.out.println("T:"+t);
                 sbTemp.append("T:");
                 sbTemp.append(t);
                 sbTemp.append(System.lineSeparator());
-                //System.out.println("tsyntree:"+tSynTree);
 
                 System.out.println("IsEntail:"+isEntail);
                 sbTemp.append("IsEntail:");
@@ -115,6 +102,7 @@ public class ProsesEntailment {
                 sbTemp.append(System.lineSeparator());
 
                 InfoTeks hPrepro = pp.prepro2(h,hSynTree);
+                hPrepro.id = id;
                 hPrepro.teksAsli = h;
                 String strHPrepro = hPrepro.toString() ;
                 sbTemp.append(strHPrepro);
@@ -125,22 +113,21 @@ public class ProsesEntailment {
                 sbTemp.append("T:");
                 sbTemp.append(System.lineSeparator());
                 InfoTeks tPrepro = pp.prepro2(t,tSynTree);
+                tPrepro.id = id;
                 tPrepro.teksAsli = t;
                 String strTPrepro = tPrepro.toString();
                 sbTemp.append(strTPrepro);
                 sbTemp.append(System.lineSeparator());
                 System.out.println(strTPrepro);
 
-                //@todo harusnya prediksi tidak ada disini
-                //@todo bukan bagian dari prepro
-
-
                 //boolean pred= pe.baseLine(hPrepro,tPrepro);
                 //hati-hati edit penentuEntailment, krn selain wordnet banyak lagi
-                boolean pred= pe.wordNet(hPrepro,tPrepro);
+                //boolean pred= pe.wordNet(hPrepro,tPrepro);
+
+                boolean pred = pe.thesaurus(hPrepro,tPrepro);  //<-- yang penting
+
                 String deskPred = pe.toString();
                 sbTemp.append(deskPred);
-
 
                 System.out.println("Prediksi:"+pred);
                 if (pred==isEntail) {

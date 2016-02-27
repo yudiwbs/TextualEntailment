@@ -71,6 +71,7 @@ public class ProsesLemma {
 
 
     public void proses(String s) {
+    //debug
         String out = lemmatize(s);
         System.out.println(out);
     }
@@ -138,7 +139,7 @@ public class ProsesLemma {
         pl.initLemma();
         //pl.proses("80% approve of Mr. Bush.");
         //pl.proses("Mrs. Bush 's approval ratings have remained very high , above 80 ");
-        pl.proses("acquisition");
+        pl.proses("stealing");
         //.proses("Mrs. Bush 's approval ratings have remained very high , above 80 %");
         //pl.proses("A man suspected of stealing a million-dollar collection of Nepalese and Tibetan art objects in New York was arrested.");
         //

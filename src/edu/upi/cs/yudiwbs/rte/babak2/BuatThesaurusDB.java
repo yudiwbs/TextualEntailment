@@ -7,7 +7,6 @@ import edu.stanford.nlp.util.CoreMap;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -44,8 +43,8 @@ import java.util.*;
 public class BuatThesaurusDB {
 
     ArrayList<String> alStopWords = new ArrayList<>();
-    HashMap<String,Integer> kataSatuKal = new HashMap<>();
-    HashMap<String,Integer> kataSatuPar = new HashMap<>();
+    HashMap<String,Integer> kataSatuKal;
+    HashMap<String,Integer> kataSatuPar;
 
 
     private Connection conn=null;
@@ -53,11 +52,13 @@ public class BuatThesaurusDB {
     private String pwd="yudilocal";
     private String dbName="searchengine";
     private PreparedStatement pSelidH=null;
+    private PreparedStatement pSelidHPar=null;
     private PreparedStatement pSelIsi=null;
+    private PreparedStatement pSelIsiPar=null;
     private PreparedStatement pIns=null;
+    private PreparedStatement pInsPar=null;
 
     StanfordCoreNLP pipeline;
-
 
     public  void init() {
         try {
@@ -71,11 +72,19 @@ public class BuatThesaurusDB {
                     + "?user="+usrName+"&password="+pwd);
 
             //ambil data idH
+
             String strSelidH = "select id from rte3_babak2 " +
-                    " where id not in (select distinct idH from thesaurus_kal)";
+                    " where id not in (select distinct idH from thesaurus_kal) ";
+
+
+            //ambil data idH par
+            //debug pake limit dulu
+            String strSelidHPar = "select id from rte3_babak2 " +
+                    " where id not in (select distinct idH from thesaurus_paragraph)";
 
 
             pSelidH = conn.prepareStatement(strSelidH);
+            pSelidHPar =conn.prepareStatement(strSelidHPar);
 
             //berd idH, ambil isi content situs
             String strSelIsi = "select si.id,si.URL,isi_teks " +
@@ -87,7 +96,23 @@ public class BuatThesaurusDB {
                     "se.idH = ?";
             pSelIsi = conn.prepareStatement(strSelIsi);
 
+            //berd idH, ambil isi content situs per paragraph
+            String strSelIsiPar = "select hsp.id,hsp.isi_par\n" +
+                    "from  \n" +
+                    "hasilcrawl_situs si, \n" +
+                    "hasilcrawl_se se,\n" +
+                    "hasilcrawl_situs_paragraph hsp \n" +
+                    "where \n" +
+                    "se.idH = ? and\n" +
+                    "si.ID_Crawler_SE = se.id and \n" +
+                    "hsp.id_hasilcrawl_situs = si.ID ";
+            pSelIsiPar = conn.prepareStatement(strSelIsiPar);
+
             pIns = conn.prepareStatement("insert into  thesaurus_kal " +
+                    " (idH,kata1,kata2,freq) " +
+                    "  values (?,?,?,?) ");
+
+            pInsPar = conn.prepareStatement("insert into  thesaurus_paragraph " +
                     " (idH,kata1,kata2,freq) " +
                     "  values (?,?,?,?) ");
 
@@ -111,6 +136,7 @@ public class BuatThesaurusDB {
             e.printStackTrace();
         }
     }
+
 
     private void loadStopWords(String namaFile) {
         File f = new File(namaFile);
@@ -136,7 +162,7 @@ public class BuatThesaurusDB {
     }
 
     //sort
-    public LinkedHashMap<String, Integer> sortHashMapByValuesD(HashMap<String, Integer> passedMap) {
+    private  LinkedHashMap<String, Integer> sortHashMapByValuesD(HashMap<String, Integer> passedMap) {
         System.out.println("ukuran list yg disort:"+passedMap.size());
         List<String> mapKeys    = new ArrayList<>(passedMap.keySet());
         List<Integer> mapValues = new ArrayList<>(passedMap.values());
@@ -230,6 +256,77 @@ public class BuatThesaurusDB {
     */
 
 
+    public void prosesDBPar(String par) {
+        // mencari freq kata dalam satu par
+        // input adalah satu paragraph
+        // IS: stopwords sudah diload, kataSatuPar sudah diinisialisasi
+        int ccPar=0;
+        if (par.trim().equals("")) { return;} //par kosong
+        try {
+            Scanner scPar = new Scanner(par);
+            ArrayList<String> alKataPar = new ArrayList<>();
+            //looop per paragraph
+            while (scPar.hasNext()) {
+                String kata = scPar.next();
+                //kata dalam satu paragraph dikumpulan disini
+                //bersihkan dulu kata dari stopwords dan selain alpahbat
+                kata = kata.replaceAll("[^a-zA-Z']","").trim();
+                if (kata.equals("")) {continue;}
+                if (alStopWords.contains(kata.toLowerCase())) {continue;}
+                if (kata.length()<=2) {continue;} //kata yg terlalu pendek
+                //ok sudah bersih..
+
+                //duplikasi dibuang
+                int ccKata = 0;
+                //kumplkan kata unik dalam satu par
+                if (!alKataPar.contains(kata)) {
+                        //System.out.println("kata="+kata);
+                        alKataPar.add(kata);
+                        ccKata++;
+                }
+            } //end loop per paragraph
+            scPar.close();
+
+            //buat pasangan
+            //loop semua kata di parapgrah
+            for (int i=0;i<alKataPar.size();i++) {
+                    String kata1 = alKataPar.get(i);
+                    // System.out.println("size="+alKataPar.size());
+                    for (int j = i+1; j<alKataPar.size(); j++) {
+                        String kata2 = alKataPar.get(j);
+                        String gabKata = kata1+"=="+kata2;
+                        Integer freq = kataSatuPar.get(gabKata);
+                        if (freq==null) {
+                            //belum ada, tambah
+                            kataSatuPar.put(gabKata,1);
+
+                            //debug
+                            /*
+                            System.out.println("belum");
+                            System.out.println("kata1="+kata1);
+                            System.out.println("kata2="+kata2);
+                            */
+                        } else {
+                            //sudah ada, inc freq
+                            kataSatuPar.put(gabKata,freq+1);
+                            //debug
+                            /*
+                            System.out.println("sudah, inc freq");
+                            System.out.println("kata1="+kata1);
+                            System.out.println("kata2="+kata2);
+                            */
+                        }
+                    }
+                } // lopp add psangan
+                ccPar++;
+                scPar.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void prosesDBKal(String dok) {
         // mencari freq kata dalam satu kalimat
         // IS: stopwords sudah diload, kataSatuKal sudah diinisialisasi
@@ -290,7 +387,7 @@ public class BuatThesaurusDB {
                         //buang kata kosong, ada di stopwords, panjangnya <=2
                         if (kata.equals("")) {continue;}
                         if (alStopWords.contains(kata.toLowerCase())) {continue;}
-                        if (kata.length()<=2) {continue;}
+                        if (kata.length()<=2) {continue;} //kata yg terlalu pendek
                         //sudah bersih
 
                         //duplikasi dibuang
@@ -343,6 +440,9 @@ public class BuatThesaurusDB {
 
 
             //buang kata yang freqnya dibawah threshold
+            //bentar.. bahaya ini karena setiap diproses akan dibersihkan
+            //harusnya kalau semua sudah beres baru dibersihkan
+            /*
             ArrayList<String> keyBuang = new ArrayList<>();
             for (Map.Entry<String, Integer> entry : kataSatuKal.entrySet()) {
                 String key = entry.getKey();
@@ -355,14 +455,92 @@ public class BuatThesaurusDB {
             for (String key:keyBuang) {
                 kataSatuKal.remove(key);
             }
+            */
         }
         catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    public void prosesPar() {
 
-    //memproses
+        //loop untuk setiap id h
+        ResultSet rs = null;
+        ResultSet rs2 = null;
+        // ArrayList<String> alTemp = null;
+        try {
+            conn.setAutoCommit(false);
+            rs = pSelidHPar.executeQuery();
+            while (rs.next()) {
+                int idH             = rs.getInt(1);        //idH
+                System.out.println("ID H:"+idH);
+                pSelIsiPar.setInt(1,idH);
+                rs2 = pSelIsiPar.executeQuery();
+
+                kataSatuPar = new HashMap<>();
+                //loop untuk semua paragraph dalam satu H
+                while (rs2.next()) {
+                    int id     = rs2.getInt(1);
+                    String par = rs2.getString(2);
+                    //System.out.println("Par: "+par);
+                    prosesDBPar(par);
+                }
+
+                //buang pasangan yang freq dibawah threhold
+                ArrayList<String> keyBuang = new ArrayList<>();
+                for (Map.Entry<String, Integer> entry : kataSatuPar.entrySet()) {
+                    String key = entry.getKey();
+                    Integer value = entry.getValue();
+                    if (value<3) {
+                        keyBuang.add(key);
+                    }
+                }
+                for (String key:keyBuang) {
+                    kataSatuPar.remove(key);
+                }
+
+                //SORT!
+                /* sort lama banget, coba dimatikan? */
+
+                //System.out.println("sort mulai");
+                LinkedHashMap<String,Integer> lhm;
+                lhm = sortHashMapByValuesD(kataSatuPar);
+                System.out.println("sort selesai");
+
+                //sementara, gak ngerti ngebaliknya
+
+                //masukkan ke DB
+                for (Map.Entry<String,Integer> entry : lhm.entrySet()) {
+                    String pasangKata = entry.getKey();
+                    int freq = entry.getValue();
+                    //System.out.println(pasangKata+"="+freq);  //tulis ke file
+                    pasangKata = pasangKata.replaceAll("==", ",");
+                    String[]  arrKata  = pasangKata.split(",");
+                    //(idH,kata1,kata2,freq)
+                    pInsPar.setInt(1,idH);
+                    pInsPar.setString(2,arrKata[0]);
+                    pInsPar.setString(3,arrKata[1]);
+                    pInsPar.setInt(4,freq);
+                    pInsPar.addBatch();
+                    //alTemp.add(pasangKata + "=" + freq);
+                }
+                pInsPar.executeBatch();
+                conn.commit();
+                System.out.println("commit");
+            }
+            pInsPar.close();
+            rs.close();
+            rs2.close();
+            conn.setAutoCommit(true);
+            conn.close();
+            System.out.println("selesai satu id");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //mulai proses berdasarkan kalimat
     public void prosesKal() {
         //proses per id pasangan T-H
         //  ambil isi situs2: tabel crawlSE -> hasilCrawlSitus
@@ -382,6 +560,9 @@ public class BuatThesaurusDB {
                 System.out.println("ID H:"+idH);
                 pSelIsi.setInt(1,idH);
                 rs2 = pSelIsi.executeQuery();
+
+                //proses untuk satu idH
+                kataSatuKal = new HashMap<>();
                 while (rs2.next()) {
                     int idSitus = rs2.getInt(1);
                     String url = rs2.getString(2);
@@ -540,7 +721,8 @@ public class BuatThesaurusDB {
         //bt.prosesDirKal("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi\\","C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\lukoi_scott_island.txt");
 
         bt.init();
-        bt.prosesKal();
+        //bt.prosesKal();
+        bt.prosesPar();
         bt.close();
         //bt.prosesFilePar("C:\\yudiwbs\\desertasi\\eksperimen_thesaurus\\data\\bontiful\\bontiful.txt");
 
