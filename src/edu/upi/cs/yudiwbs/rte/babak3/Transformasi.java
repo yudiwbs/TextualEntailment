@@ -11,7 +11,20 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 
 public abstract class Transformasi {
 
-    public abstract  boolean   kondisiTerpenuhi(InfoTeks it);
-    public abstract  InfoTeks  transform(InfoTeks it);
+    public void init() {
+
+    }
+
+    public void close() {
+
+    }
+
+    InfoTeks itInput;
+
+    //kondisiTerpenuhi dipanggil terlebih dulu
+    public abstract  InfoTeks  hasil();
+
+    //itInput sudah terisi
+    public abstract  boolean   kondisiTerpenuhi();
 
 }

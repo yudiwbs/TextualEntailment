@@ -11,8 +11,20 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 
 public class PolaMiripVerbNoun extends  Pola{
 
-    double pctOverlapVerb = 0.9;
-    double pctOverlapNoun = 0.9;
+    double pctOverlapVerb = 0.7;
+    double pctOverlapNoun = 0.8;
+
+
+    private double pctNounCocok;
+    private double pctVerbCocok;
+
+    //debug
+    //dipanggil setelah isCocok dipanggil, dipisah agar bisa dprint untuk yg cocok saja
+    public void printNounVerbCocok() {
+        System.out.println("pctNounCocok = "+pctNounCocok);
+        System.out.println("pctVerbCocok =  "+pctVerbCocok);
+    }
+
 
 
     @Override
@@ -42,18 +54,16 @@ public class PolaMiripVerbNoun extends  Pola{
         //System.out.println("jumNounCocok:"+jumNounCocok);
         //System.out.println("h.alNoun.size:"+h.alNoun.size());
 
-        double pctNounCocok = (double) jumNounCocok / h.alNoun.size();
+        pctNounCocok = (double) jumNounCocok / h.alNoun.size();
         //System.out.println("h:"+h);
         //System.out.println("t:"+t);
-        System.out.println("pctNounCocok="+pctNounCocok);
-        double pctVerbCocok;
+
+
         if (h.alVerb.size()>0) {
             pctVerbCocok = (double) jumVerbCocok / h.alVerb.size();
         } else  {
             pctVerbCocok = 0;
         }
-
-        System.out.println("pctVerbCocok ="+pctVerbCocok);
 
 
         if ((pctVerbCocok>=pctOverlapVerb) && (pctNounCocok>=pctOverlapNoun)) {
@@ -61,16 +71,7 @@ public class PolaMiripVerbNoun extends  Pola{
         }
 
 
-        /*
-        if (pctVerbCocok>=pctOverlapVerb)  {
-            isCocok = true;
-        }
-        */
 
-        /*if (pctNounCocok>=pctOverlapNoun)  {
-            isCocok = true;
-        }
-        */
 
         return isCocok;
     }

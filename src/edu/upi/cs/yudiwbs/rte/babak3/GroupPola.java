@@ -39,11 +39,12 @@ public class GroupPola {
         nantinya bisa voting??
     */
     public boolean isCocok(InfoTeks t, InfoTeks h) {
-        boolean isCocok = true;
+        boolean isCocok = false;
 
         //langsung reject kalau ada salah satu yang false
         for (Pola p: arrPola) {
             if (p.isKondisiTerpenuhi(t,h)) {
+                //satu tidak cocok
                 if (!p.isCocok(t, h)) {
                     isCocok = false;
                     break; //tidak perlu dilanjutkan

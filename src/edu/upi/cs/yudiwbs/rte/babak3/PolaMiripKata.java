@@ -16,7 +16,7 @@ import java.util.Set;
  *
  */
 
-public class PolaKataMirip extends Pola {
+public class PolaMiripKata extends Pola {
 
     //nanti dapat diatur2
     private HashSet<String> hsStopWords = new HashSet<String>();
@@ -142,7 +142,7 @@ public class PolaKataMirip extends Pola {
 
     public static void main(String[] args) {
         //testing
-        PolaKataMirip pm = new PolaKataMirip();
+        PolaMiripKata pm = new PolaMiripKata();
         String t = "The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .";
         String h = "Baikalfinansgroup was sold to Rosneft .";
         pm.init();

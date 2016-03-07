@@ -76,16 +76,28 @@ public class CariPola {
         System.out.println("Proses Pencarian Pola");
 
         //Pola p = new PolaKataMirip();
-        Pola pVN = new PolaMiripVerbNoun();
-        Pola pN = new PolaSamaNumerik();
+        PolaMiripVerbNoun pVN = new PolaMiripVerbNoun();
+        pVN.init();
+        PolaSamaNumerik pN = new PolaSamaNumerik();
+        pN.init();
+        PolaMiripKata pMk = new PolaMiripKata();
+        pMk.pctOverlapKata = 0.5;
+        pMk.init();
 
+        PolaMiripKataSubsetPosisi pmKataSubset = new PolaMiripKataSubsetPosisi();
+        pmKataSubset.init();
 
+        //URUTAN PENTING!!
+        /*
         GroupPola gp = new GroupPola();
         gp.addPola(pVN);
         gp.addPola(pN);
         gp.init();
+        */
 
         PreproBabak2 pp = new PreproBabak2();
+        TransformasiKompresi tk = new TransformasiKompresi();
+        tk.init();
 
 
         //jalankan query
@@ -103,8 +115,7 @@ public class CariPola {
                 String tSynTree  = rs.getString(5);
                 String hSynTree  = rs.getString(6);
 
-                System.out.println();
-                System.out.println("id="+id);
+
                 //nanti pola dapat lebih dari satu
 
                 InfoTeks hPrepro = pp.prepro2(h,hSynTree);
@@ -116,11 +127,119 @@ public class CariPola {
                 tPrepro.strukturSyn = tSynTree;
                 tPrepro.id = id;
                 tPrepro.teksAsli = t;
+                boolean isCocok = false;
 
-                if (gp.isCocok(tPrepro,hPrepro)) {
+                //rule pertama
+                // akurasi 1.0
+                
+                if
+                      (    (pmKataSubset.isKondisiTerpenuhi(tPrepro,hPrepro))
+                        && (pmKataSubset.isCocok(tPrepro,hPrepro))
+                      )
+                {
+                    isCocok = true;
+                } else {
+                    isCocok = false;
+                }
+
+
+
+
+                // ---------------------------------------
+                //akurasi tertinggi: 0.94, verbnoun+angka
+                //rule pertama!!
+                //tapi hanya dapat mengambil 19 pasang
+
+                /*
+                if (
+                        ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isCocok(tPrepro,hPrepro))) &&
+                        ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro)))
+                   )
+                {
+                    //record tidak diproses, dianggap sudah berhasil diambil oleh rule ini
+
+                    //jangan diprint malah buat bingung
+
+                    //System.out.println("skip verbnoun+angka");
+                    //System.out.println("id:"+tPrepro.id);
+                    //System.out.println("T:"+tPrepro.teksAsli);
+                    //System.out.println("H:"+hPrepro.teksAsli);
+
+                    continue;
+                }
+                */
+
+
+                //*------------------------------------------
+
+/*
+                //cari2 rule kedua
+
+                boolean isTransformasibuangKoma = false;
+                //if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro))) {
+                if ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isCocok(tPrepro,hPrepro))) {
+                    //verb noun cocok terpenuhi?
+                    isCocok = true;
+                    System.out.println();
+                    System.out.println("id="+id);
+                    pVN.printNounVerbCocok(); //debug
+                    //proses untuk menghilangkan subkalimat
+
+
+                    tk.itInput = tPrepro;
+                    if (tk.kondisiTerpenuhi()) {
+                        System.out.println("Transformasi t terpenuhi, id:"+tk.itInput.id);
+                        System.out.println("Sebelum:"+tPrepro.teksAsli);
+                        tPrepro = tk.hasil();
+                        System.out.println("Sesudah:"+tPrepro.teksAsli);
+                        isTransformasibuangKoma = true;
+                    }
+
+
+                    tk.itInput = hPrepro;
+                    if (tk.kondisiTerpenuhi()) {
+                        System.out.println("Transformasi h terpenuhi, id"+tk.itInput.id);
+                        System.out.println("Sebelum:"+hPrepro.teksAsli);
+                        hPrepro = tk.hasil();
+                        System.out.println("Sesudah:"+hPrepro.teksAsli);
+                        isTransformasibuangKoma = true;
+                    }
+
+                    //terjadi tranformasi
+                    if (isTransformasibuangKoma) {
+                      System.out.println("Hitung ulang kecockan verb noun");
+                      if ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isCocok(tPrepro,hPrepro))) {
+                          isCocok = true;
+                      } else {
+                          //kadang kesalahan tagger, cek ulang kemiripan kata tanpa lihat tag
+                          //kalau diset 0.5 naik jadi 0.75 kurang sign
+                          if ((pMk.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pMk.isCocok(tPrepro,hPrepro))) {
+                              System.out.println("Cek mirip kata cocok ");
+                              //cocokan  angka
+                              if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro))) {
+                                  isCocok = true;
+                              } else {
+                                  isCocok = false;
+                              }
+                          } else {
+                              isCocok = false;
+                          }
+                      }
+                      pVN.printNounVerbCocok(); //yang baru
+                    }
+
+                    //cocokan angaka
+                    //if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro))) {
+                    //    isCocok = true;
+                    //}
+                }
+
+*/
+                if (isCocok) {
+                //if (gp.isCocok(tPrepro,hPrepro)) {
                     //update pola
-                    System.out.print("isentail:");//System.out.println(p.getLabel());
 
+                    System.out.print("isentail:");//System.out.println(p.getLabel());
                     jumCocok++;
                     if (isEntail) {
                         System.out.println("ENTAIL");
@@ -135,14 +254,16 @@ public class CariPola {
                     System.out.println(hPrepro);
                 }
             }
-            gp.close();
+            //gp.close();
             rs.close();
             System.out.println("jumCocok:"+jumCocok);
             System.out.println("jumEntail:"+jumCocokEntail);
             System.out.println("jumNotEntail:"+jumCocokNotEntail);
 
             System.out.println("Akurasi dari kecocokan: "+(double) jumCocokEntail / jumCocok );
-
+            pVN.close();
+            pN.close();
+            pMk.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

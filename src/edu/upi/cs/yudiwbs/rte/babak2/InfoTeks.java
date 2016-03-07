@@ -24,6 +24,16 @@ public class InfoTeks {
         String tag;
     }
 
+    public void isiArrListVerbNoun() {
+        //berdasarkan teksAsli dan strukturSyn, isi ulang salVerb dan alNoun
+        PreproBabak2 pp = new PreproBabak2();
+        InfoTeks it = pp.prepro2(teksAsli,strukturSyn);
+        alVerb.clear();
+        alNoun.clear();
+        alVerb = it.alVerb;
+        alNoun = it.alNoun;
+    }
+
     public ArrayList<String> cariTagRekur(Param p) {
         ArrayList<String> out = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
@@ -59,7 +69,7 @@ public class InfoTeks {
                 p.pos++;
             }
             if (stop) {
-                out.add(sb.toString());
+                out.add(sb.toString().trim());
             } else {
                 sb.append("ERROR, KURUNG KURANG PASANGAN!!");
                 stop = true;
@@ -82,8 +92,10 @@ public class InfoTeks {
         String tree = strukturSyn;
 
         String s;
-        tag = "("+tag;
+        tag = "(" + tag;
         s = tree.replaceAll("\\)", " ) "); //biar kurung tutup tdk lengket
+
+        //pindahkan string ke arraylist t
         Scanner sc = new Scanner(s);
         ArrayList<String> t = new ArrayList<>();
         while (sc.hasNext()) {
@@ -95,7 +107,7 @@ public class InfoTeks {
         p.tree = t;
         p.pos = 0;
 
-        ArrayList<String> out = new ArrayList<String>();
+        ArrayList<String> out = new ArrayList<>();
         int kurung=0;
         while (p.pos<p.tree.size()) {
             //System.out.println(p.tree.get(i));

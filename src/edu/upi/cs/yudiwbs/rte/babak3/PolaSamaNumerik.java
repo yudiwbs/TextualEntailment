@@ -32,7 +32,7 @@ public class PolaSamaNumerik extends Pola {
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
         boolean out =false;
-        ArrayList<String> arrNumH = h.cariTag(h.strukturSyn,"CD");
+        ArrayList<String> arrNumH = h.cariTag("CD");
         out = (arrNumH.size()>0);
         return out;
     }
@@ -41,8 +41,8 @@ public class PolaSamaNumerik extends Pola {
     public boolean isCocok(InfoTeks t, InfoTeks h) {
         boolean isCocok=false;
 
-        ArrayList<String> arrNumH = h.cariTag(h.strukturSyn,"CD");
-        ArrayList<String> arrNumT = t.cariTag(t.strukturSyn,"CD");
+        ArrayList<String> arrNumH = h.cariTag("CD");
+        ArrayList<String> arrNumT = t.cariTag("CD");
 
         //cari kecocockan
         //belum menangnai kalau ada dua numeric sama dalam satu H
