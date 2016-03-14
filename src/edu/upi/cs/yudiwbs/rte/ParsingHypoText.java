@@ -21,6 +21,8 @@ import java.util.logging.Logger;
  *  prosesDiscourseH() dan prosesDiscourseT() masing2 untuk tabel
  *  discH dan discT
  *
+ *  Selanjutnya untuk babak3: TF-IDF (ProsesTfidf)
+ *
  *  Selanjutnya adalah prosesDBSimWordnetYW, pemisahan kata
  *
  *  todo: prosesDiscourseH dan T  digabung
@@ -107,7 +109,6 @@ public class ParsingHypoText {
 		ResultSet rs = null;
 		try {
             KoneksiDB db = new KoneksiDB();
-
             conn = db.getConn();
 
     		init();
@@ -220,27 +221,20 @@ public class ParsingHypoText {
 	
 	public static void main(String[] args) {
     	 ParsingHypoText pht = new ParsingHypoText();
+		 pht.proses("rte3_test_gold","id", "h","h_gram_structure","h_type_dependency");
          //hasil parsing disimpan di t_gram_structure
          //pht.proses("rte3","id", "t_preprocoref","t_gram_structure","t_type_dependency");
-
          //pht.prosesDiscourseT("disc_t_rte3_label");
-        pht.prosesDiscourseT("disc_t_rte3_label_ideal");
-
+		 //pht.prosesDiscourseT("disc_t_rte3_label_ideal");
 		 //pht.proses();
-    	 
-
     	 //pht.prosesDiscourseT("disc_t_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
-
-
-        //pht.proses("rte3","id", "h","h_gram_structure","h_type_dependency");
-    	    //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
-		  //pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
-		  //System.out.println();
+         //pht.proses("rte3","id", "h","h_gram_structure","h_type_dependency");
+    	 //pht.proses("rte3","id","t_lemma","t_lemma_gram_structure","t_lemma_dependency");
+		 //pht.proses("rte3","id","h_lemma","h_lemma_gram_structure","h_lemma_dependency");
+		 //System.out.println();
     	 //pht.prosesDiscourseH("disc_h_rte3_ver1");
     	 //pht.prosesDiscourseT("rte3_ver1_coba2");
-
-        //pht.prosesDiscourseT("disc_t_rte3");
-
+         //pht.prosesDiscourseT("disc_t_rte3");
     }
 }

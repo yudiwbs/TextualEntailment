@@ -66,6 +66,7 @@ public class ProsesWordNetSimilarity {
 
 
     private static double tresholdMinSim = 0.01;
+    private int cc2=0; //untuk print saja
 
 
     public ProsesWordNetSimilarity() {
@@ -202,9 +203,15 @@ public class ProsesWordNetSimilarity {
         s1 = prepro(s1);
         s2 = prepro(s2);
 
-        //tahap satu, buat vektor gabungan
-        System.out.println("prosesDBSimWordnetYW hitungsimwordnet");
+        //debug print saja
+        System.out.print(".");
+        cc2++;
+        if (cc2%50==0) {
+            System.out.println("");
+        }
 
+
+        //tahap satu, buat vektor gabungan
         HashSet<String> hsGab = new HashSet<>();
         HashSet<String> hsS1  = new HashSet<>();
         HashSet<String> hsS2  = new HashSet<>();
@@ -233,10 +240,13 @@ public class ProsesWordNetSimilarity {
             }
         }
 
-        //tampilkan semua kata
+        //tampilkan semua kata gabungan
+        /*
         for (String s: hsGab) {
             System.out.print(s+",");
         }
+        */
+
 
         //tahap 2
         //bentuk vektor s1
@@ -303,10 +313,8 @@ public class ProsesWordNetSimilarity {
             System.out.println(key + "------> " + val);
         }*/
 
-
         Similar sim = new Similar();
         return sim.cosine(hmVectS1, hmVectS2);
-
 
     }
 
@@ -340,6 +348,7 @@ public class ProsesWordNetSimilarity {
         }
     }
 
+    //membandingkan dua kata
     private double hitungSimilarity( String word1, String word2 ) {
         WS4JConfiguration.getInstance().setMFS(true);
         //for ( RelatednessCalculator rc : rcs ) {

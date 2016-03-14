@@ -19,6 +19,21 @@ public class Util {
             for (String str:alStr) {
                 str = str.replaceAll("[^A-Za-z0-9]"," ").replaceAll("\\s+", " ").trim();;
                 if (str.equals(kataCari)) {
+
+                    found = true;
+                    break;
+                }
+            }
+            return found;
+        }
+
+        //"yudi wibisono", "udi" -> true
+        public static boolean arrayListContainsSubset(ArrayList<String> alStr, String kataCari) {
+            kataCari = kataCari.replaceAll("[^A-Za-z0-9]"," ").replaceAll("\\s+", " ").trim();
+            boolean found = false;
+            for (String str:alStr) {
+                str = str.replaceAll("[^A-Za-z0-9]"," ").replaceAll("\\s+", " ").trim();;
+                if (kataCari.contains(str)) {
                     found = true;
                     break;
                 }

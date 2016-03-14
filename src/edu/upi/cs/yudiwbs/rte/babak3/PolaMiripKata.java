@@ -21,8 +21,15 @@ public class PolaMiripKata extends Pola {
     //nanti dapat diatur2
     private HashSet<String> hsStopWords = new HashSet<String>();
 
+    private double rasio;
+
     double pctOverlapKata = 0.75;
     ProsesLemma pLemma;
+
+    //penting!, panggil method isEntail sebelum ini
+    public double getRasio() {
+        return rasio;
+    }
 
     protected void loadStopWords() {
         //URL url = getClass().getResource("resources/eng-stopwords.txt");
@@ -88,7 +95,7 @@ public class PolaMiripKata extends Pola {
 
 
     @Override
-    public boolean isCocok(InfoTeks t, InfoTeks h) {
+    public boolean isEntail(InfoTeks t, InfoTeks h) {
         boolean isCocok = false;
         //cari berapa persen kata di h dan t overlap
         //loop kata h, loop kata t, cari jumlah cocok
@@ -111,12 +118,11 @@ public class PolaMiripKata extends Pola {
             }
         }
 
-        double rasio = (double) cocok / alH.size();
-        System.out.println("rasio:"+rasio);
+        rasio = (double) cocok / alH.size();
+        //System.out.println("rasio:"+rasio);
         if (rasio>=pctOverlapKata) {
             isCocok = true;
         }
-
         return isCocok;
     }
 
@@ -126,15 +132,19 @@ public class PolaMiripKata extends Pola {
     }
 
     @Override
+    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
+        boolean out =true;
+        return out;
+    }
+
+    @Override
     public void init() {
         //load stopwords
         loadStopWords();
         pLemma = new ProsesLemma();
         //pl.prosesDb("rte3_label","h","h_lemma");
-
         //pl.prosesDb("disc_t_rte3_label","t","t_lemma");
         //pl.prosesDb("disc_t_rte3_label_ideal","t","t_lemma");
-
         pLemma.initLemma();
     }
 

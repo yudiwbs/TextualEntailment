@@ -22,10 +22,23 @@ import java.util.Scanner;
 
 public class PolaMiripKataSubsetPosisi extends  Pola{
 
-    double pctRasio = 0.9;
+    double pctRasio = 0.9; //threshold
+
+    private double rasio=0; //diambil dengan getRasio
+
+    //PENTING: panggil isEntail() terlebih dulu
+    public double getRasio() {
+        return rasio;
+    }
 
     @Override
-    public boolean isCocok(InfoTeks t, InfoTeks h) {
+    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
+        boolean out =true;
+        return out;
+    }
+
+    @Override
+    public boolean isEntail(InfoTeks t, InfoTeks h) {
         boolean out = false;
 
 
@@ -90,8 +103,7 @@ public class PolaMiripKataSubsetPosisi extends  Pola{
 
             if (jumCocok>maxJumCocok) {
                 maxJumCocok = jumCocok;
-                kalCocokTerpanjang = sb.toString();
-
+                //kalCocokTerpanjang = sb.toString();
             }
 
             if (!stop) { //t habis
@@ -101,12 +113,12 @@ public class PolaMiripKataSubsetPosisi extends  Pola{
 
 
 
-        double rasio = (double) maxJumCocok / jumH;
+        rasio = (double) maxJumCocok / jumH;
 
         out =  (rasio>=pctRasio);
 
-        System.out.println(kalCocokTerpanjang);
-        System.out.println(rasio);
+        //System.out.println(kalCocokTerpanjang);
+        //System.out.println(rasio);
         return out;
     }
 
@@ -135,7 +147,7 @@ public class PolaMiripKataSubsetPosisi extends  Pola{
 
 
         PolaMiripKataSubsetPosisi pmk = new PolaMiripKataSubsetPosisi();
-        boolean isCocok = pmk.isCocok(itT,itH);
+        boolean isCocok = pmk.isEntail(itT,itH);
         if (isCocok) {
             System.out.println("Cocok!");
         } else {

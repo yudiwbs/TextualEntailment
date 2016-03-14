@@ -6,44 +6,36 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
  * Created by yudiwbs on 22/02/2016.
  *
  *  true jika T-H memiliki kemiripan verb dan noun
- *
+ *  yg dicek <=pctOverlap
  */
 
-public class PolaMiripVerbNoun extends  Pola{
+public class PolaTidakMiripVerbNoun extends  Pola{
 
-    double pctOverlapVerb = 0.7;  // >= maka true
-    double pctOverlapNoun = 0.8;  // >= maka true
+    //lebih kecil dari ini maka true
+    double pctOverlapVerb = 0.4;
+    double pctOverlapNoun = 0.4;
 
 
     private double pctNounCocok;
     private double pctVerbCocok;
 
-    //untuk debug dan ekstrak fitur
-    //PENTING: dipanggil setelah isENTAIL dipanggil
-    public double getRasioNounCocok() {
-        return pctNounCocok;
-    }
+    private boolean isKondisiTerpenuhi;
 
-    //PENTING: dipanggil setelah isENTAIL dipanggil
-    public double getRasioVerbCocok() {
-        return pctVerbCocok;
-    }
-
-    //isENTAIL harus sudah dipanggil
+    //debug
+    //dipanggil setelah isCocok dipanggil, dipisah agar bisa dprint untuk yg cocok saja
     public void printNounVerbCocok() {
-        System.out.println("pctNounCocok = "+pctNounCocok);
+        System.out.println("pctNounCocok =  "+pctNounCocok);
         System.out.println("pctVerbCocok =  "+pctVerbCocok);
     }
 
-
     @Override
-    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        boolean out = isEntail(t, h) ;
-        return out;
+    //isKondisiTerpenuhi sudah dipanggil sebelumnya
+    public boolean isEntail(InfoTeks t, InfoTeks h) {
+        return !isKondisiTerpenuhi; //kalau kondisi terpenuhi artinya not Entail
     }
 
     @Override
-    public boolean isEntail(InfoTeks t, InfoTeks h) {
+    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
         boolean isCocok = false;
 
         int jumNounCocok=0;
@@ -81,19 +73,17 @@ public class PolaMiripVerbNoun extends  Pola{
         }
 
 
-        if ((pctVerbCocok>=pctOverlapVerb) && (pctNounCocok>=pctOverlapNoun)) {
+        if ((pctVerbCocok<=pctOverlapVerb) && (pctNounCocok<=pctOverlapNoun)) {
             isCocok = true;
         }
 
-
-
-
+        isKondisiTerpenuhi =  isCocok;
         return isCocok;
     }
 
     @Override
     public String getLabel() {
-        return "KataMiripVerbNoun";
+        return "KataTidakMiripVerbNoun";
     }
 
 }

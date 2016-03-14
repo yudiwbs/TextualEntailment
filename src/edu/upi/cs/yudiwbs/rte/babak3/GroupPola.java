@@ -45,7 +45,7 @@ public class GroupPola {
         for (Pola p: arrPola) {
             if (p.isKondisiTerpenuhi(t,h)) {
                 //satu tidak cocok
-                if (!p.isCocok(t, h)) {
+                if (!p.isEntail(t, h)) {
                     isCocok = false;
                     break; //tidak perlu dilanjutkan
                 }

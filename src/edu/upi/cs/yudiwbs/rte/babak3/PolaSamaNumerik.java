@@ -27,8 +27,14 @@ import java.util.ArrayList;
 public class PolaSamaNumerik extends Pola {
 
     double pctSamaDigit = 0.9;
+    private double rasioCocok = 0;  //diambil dengan getRasio
 
-    //true jika di H ada CD
+    //pastikan isEntail() sudah dipanggil
+    public double getRasio() {
+        return rasioCocok;
+    }
+
+    //true jika di H ada CD (angka)
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
         boolean out =false;
@@ -38,14 +44,14 @@ public class PolaSamaNumerik extends Pola {
     }
 
     @Override
-    public boolean isCocok(InfoTeks t, InfoTeks h) {
-        boolean isCocok=false;
+    public boolean isEntail(InfoTeks t, InfoTeks h) {
+        boolean isEntail=false;
 
         ArrayList<String> arrNumH = h.cariTag("CD");
         ArrayList<String> arrNumT = t.cariTag("CD");
 
         //cari kecocockan
-        //belum menangnai kalau ada dua numeric sama dalam satu H
+        //belum menangnai kalau ada dua numeric sama dalam satu T
         int cocok=0;
         for (String numH:arrNumH) {
             for (String numT:arrNumT) {
@@ -56,16 +62,21 @@ public class PolaSamaNumerik extends Pola {
             }
         }
 
-        double rasioCocok;
+
         if (arrNumH.size()==0) {
             rasioCocok = 0;
         } else {
             rasioCocok = (double) cocok / arrNumH.size();
         }
 
-        System.out.println("Rasio Cocok Angka:"+rasioCocok);
-        isCocok = (rasioCocok>=pctSamaDigit);
-        return isCocok;
+        /*
+        if (rasioCocok>=pctSamaDigit) {
+            System.out.println("Rasio Cocok Angka:" + rasioCocok);
+        }
+        */
+
+        isEntail = (rasioCocok>=pctSamaDigit);
+        return isEntail;
     }
 
     @Override
@@ -107,7 +118,7 @@ public class PolaSamaNumerik extends Pola {
 
         PolaSamaNumerik ps = new PolaSamaNumerik();
         if (ps.isKondisiTerpenuhi(t,h)) {
-            if (ps.isCocok(t, h)) {
+            if (ps.isEntail(t, h)) {
                 System.out.println("Cocok");
             } else {
                 System.out.println("Tdk Cocok");

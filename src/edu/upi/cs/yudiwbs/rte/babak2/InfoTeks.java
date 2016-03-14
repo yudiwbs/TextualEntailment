@@ -12,8 +12,8 @@ import java.util.Scanner;
  */
 public class InfoTeks {
     public int id; //idH atau idT
-    public ArrayList<String>  alVerb = new ArrayList<>();
-    public ArrayList<String>  alNoun = new ArrayList<>();
+    public ArrayList<String>  alVerb = new ArrayList<>();  //dalam lowercase
+    public ArrayList<String>  alNoun = new ArrayList<>();  //dalam lowercase
     public String strukturSyn; //struktur sintaks dari kalimat spt (ROOT (S (NP dst
     public String teksAsli;
 

@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte.babak3;
 
+import edu.upi.cs.yudiwbs.rte.KoneksiDB;
 import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 
@@ -18,17 +19,14 @@ import java.sql.ResultSet;
 public class TestTransformasi {
 
     private Connection conn=null;
-    private String usrName="yudilocal";
-    private String pwd="yudilocal";
-    private String dbName="searchengine";
+
     private PreparedStatement pSel=null;
 
     public  void init() {
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/"+dbName
-                    + "?user="+usrName+"&password="+pwd);
+            KoneksiDB db = new KoneksiDB();
+            conn = db.getConn();
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +

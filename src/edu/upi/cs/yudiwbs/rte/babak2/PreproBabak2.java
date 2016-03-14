@@ -116,8 +116,11 @@ public class PreproBabak2 {
               System.out.println("selesai");
        }
 
+       //menghasilkan infoteks yang didalamnya ada daftar verb dan noun
        public InfoTeks prepro2(String strIn,String synTree)  {
            InfoTeks out = new InfoTeks();
+           out.teksAsli = strIn;
+           out.strukturSyn = synTree;
 
            //buang kata selain verb dan noun
            //buang kata yg ada di stopwords

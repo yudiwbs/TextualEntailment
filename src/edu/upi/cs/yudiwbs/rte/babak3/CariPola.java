@@ -1,6 +1,7 @@
 package edu.upi.cs.yudiwbs.rte.babak3;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.upi.cs.yudiwbs.rte.KoneksiDB;
 import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 
@@ -17,6 +18,8 @@ import java.util.Properties;
  *   - mungkin ada pola yang perlu diselesaikan dengan meng-apply beberapa teknik dengan urutan tertentu?
  *
  *
+ *   Fokus: pasangan yang kesamaan verb noun T dan H-nya tinggi!
+ *
  *
  *   pola yang mungkin:
  *     - lokasi
@@ -30,17 +33,13 @@ import java.util.Properties;
 public class CariPola {
 
     private Connection conn=null;
-    private String usrName="yudilocal";
-    private String pwd="yudilocal";
-    private String dbName="searchengine";
+
     private PreparedStatement pSel=null;
 
     public  void init() {
         try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/"+dbName
-                    + "?user="+usrName+"&password="+pwd);
+            KoneksiDB db = new KoneksiDB();
+            conn = db.getConn();
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
@@ -130,36 +129,32 @@ public class CariPola {
                 boolean isCocok = false;
 
                 //rule pertama
-                // akurasi 1.0
-                
+                // akurasi 1.0, tapi hanya dapat 6
+
                 if
                       (    (pmKataSubset.isKondisiTerpenuhi(tPrepro,hPrepro))
-                        && (pmKataSubset.isCocok(tPrepro,hPrepro))
+                        && (pmKataSubset.isEntail(tPrepro,hPrepro))
                       )
                 {
-                    isCocok = true;
-                } else {
-                    isCocok = false;
+                    continue;
                 }
 
 
 
 
                 // ---------------------------------------
-                //akurasi tertinggi: 0.94, verbnoun+angka
-                //rule pertama!!
+                //akurasi tertinggi kedua: 0.94, verbnoun+angka
+                //rule kedua
                 //tapi hanya dapat mengambil 19 pasang
 
-                /*
+
                 if (
-                        ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isCocok(tPrepro,hPrepro))) &&
-                        ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro)))
+                        ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isEntail(tPrepro,hPrepro))) &&
+                        ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isEntail(tPrepro, hPrepro)))
                    )
                 {
                     //record tidak diproses, dianggap sudah berhasil diambil oleh rule ini
-
                     //jangan diprint malah buat bingung
-
                     //System.out.println("skip verbnoun+angka");
                     //System.out.println("id:"+tPrepro.id);
                     //System.out.println("T:"+tPrepro.teksAsli);
@@ -167,17 +162,16 @@ public class CariPola {
 
                     continue;
                 }
-                */
+
 
 
                 //*------------------------------------------
 
-/*
-                //cari2 rule kedua
+                //cari2 rule ketiga
 
                 boolean isTransformasibuangKoma = false;
-                //if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro))) {
-                if ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isCocok(tPrepro,hPrepro))) {
+                //if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isEntail(tPrepro, hPrepro))) {
+                if ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isEntail(tPrepro,hPrepro))) {
                     //verb noun cocok terpenuhi?
                     isCocok = true;
                     System.out.println();
@@ -208,15 +202,15 @@ public class CariPola {
                     //terjadi tranformasi
                     if (isTransformasibuangKoma) {
                       System.out.println("Hitung ulang kecockan verb noun");
-                      if ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isCocok(tPrepro,hPrepro))) {
+                      if ((pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pVN.isEntail(tPrepro,hPrepro))) {
                           isCocok = true;
                       } else {
                           //kadang kesalahan tagger, cek ulang kemiripan kata tanpa lihat tag
                           //kalau diset 0.5 naik jadi 0.75 kurang sign
-                          if ((pMk.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pMk.isCocok(tPrepro,hPrepro))) {
+                          if ((pMk.isKondisiTerpenuhi(tPrepro,hPrepro)) && (pMk.isEntail(tPrepro,hPrepro))) {
                               System.out.println("Cek mirip kata cocok ");
                               //cocokan  angka
-                              if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro))) {
+                              if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isEntail(tPrepro, hPrepro))) {
                                   isCocok = true;
                               } else {
                                   isCocok = false;
@@ -232,9 +226,12 @@ public class CariPola {
                     //if ((pN.isKondisiTerpenuhi(tPrepro, hPrepro)) && (pN.isCocok(tPrepro, hPrepro))) {
                     //    isCocok = true;
                     //}
+
+
+
                 }
 
-*/
+
                 if (isCocok) {
                 //if (gp.isCocok(tPrepro,hPrepro)) {
                     //update pola

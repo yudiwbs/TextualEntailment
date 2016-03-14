@@ -1,4 +1,4 @@
-package edu.upi.cs.yudiwbs.rte;
+package edu.upi.cs.yudiwbs.rte.babak3;
 
 /* 
    Memindahkan dari XML RTE3 ke database
@@ -6,7 +6,9 @@ package edu.upi.cs.yudiwbs.rte;
    
    struktur DB ada di project: strukturdb.txt
   
-  
+   selanjutnya untuk mengisi struktur sintatik
+   dan dep tree lihat class: ParsingHypoText
+
  */
 
 
@@ -14,7 +16,8 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 
-
+import edu.upi.cs.yudiwbs.rte.KoneksiDB;
+import edu.upi.cs.yudiwbs.rte.ProsesWordNetSimilarity;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -30,16 +33,6 @@ public class XmlToDB {
 	PreparedStatement pStat=null;
 	
 	private class Pair {
-		/*
-		   create table rte1 (
-		      id_internal bigint auto_increment primary key,
-		      id int not null,
-		      isEntail boolean,
-		      task varchar(60),
-		   	  t text not null,
-		   	  h text not null
-		   )
-		 */
 		int id;
 		boolean isEntail;
 		String task;
@@ -146,9 +139,7 @@ public class XmlToDB {
 						p.h = sb.toString();
 						
 					}		
-					
-					
-					//cari kata overlap 
+
 					
 					
 		    }
@@ -191,10 +182,9 @@ public class XmlToDB {
     public void proses(String namaFile, String namaTabel) {
     	
     	try {
-    		Class.forName("com.mysql.jdbc.Driver");
-    		conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-    			   					+ "user=textentailment&password=textentailment");
-    		    		 
+            KoneksiDB db = new KoneksiDB();
+            conn = db.getConn();
+
     		SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser saxParser = factory.newSAXParser();			
 			XMLHandler handler = new XMLHandler();
@@ -220,12 +210,11 @@ public class XmlToDB {
     	//String namaFile="G:\\eksperimen\\textualentailment\\pascal0405_RTE1\\dev2.xml";
     	//String namaFile = "G:\\eksperimen\\textualentailment\\pascal0607_RTE3\\RTE3-DEV\\RTE3_pairs_dev-set-final.xml";
     	
-    	String namaFile = "G:\\eksperimen\\textualentailment\\pascal0607_RTE3\\RTE3-TEST-GOLD\\RTE3-TEST-GOLD.xml";
-    	//crx.prosesUpdateDebug(namaFile,"rte3_ver1_test_gold");
-    	crx.proses(namaFile,"rte3_ver1_test_gold");
-    	System.out.println("selesai beneran...");
-    	
-    	
+    	//String namaFile = "G:\\eksperimen\\textualentailment\\pascal0607_RTE3\\RTE3-TEST-GOLD\\RTE3-TEST-GOLD.xml";
+    	String namaFile = "D:\\desertasi\\datasetRTE3\\pascal0607_RTE3\\RTE3-TEST-GOLD\\RTE3-TEST-GOLD.xml";
+        //crx.prosesUpdateDebug(namaFile,"rte3_ver1_test_gold");
+    	crx.proses(namaFile,"rte3_test_gold");
+    	System.out.println("selesai...");
     }
 }
     

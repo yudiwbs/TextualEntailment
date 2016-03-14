@@ -250,11 +250,6 @@ public class ProsesTfidf {
 
         //ambil data
         try {
-            /*
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/textualentailment?"
-                    + "user=textentailment&password=textentailment");
-            */
 
             log.log(Level.INFO,"mulai mengisi similarity");
             conn = db.getConn();
@@ -514,7 +509,7 @@ public class ProsesTfidf {
     }
 
     /**
-     * kesamaan antara dua string yang diberi bobot tfidf
+     * kesamaan antara dua string yang diberi bobot tfidf menggunakan cosine
      * untuk mengkonversi string jadi bobot tfidf,
      * gunakan method isiTfIdf
      *
@@ -865,9 +860,13 @@ public class ProsesTfidf {
         //isi field tfidf untuk t dan h
         //field yang diisi adalah t_tfidf dan h_tfidf dan similar_tfidf_langsung
 
-        et.isiTfIdf("rte3_copy","id","t","t_tfidf");
-        et.isiTfIdf("rte3_copy","id","h","h_tfidf");
-        et.isiKedekatanTfIdf("rte3_copy","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
+        et.isiTfIdf("rte3_test_gold","id","t","t_tfidf");
+        et.isiTfIdf("rte3_test_gold","id","h","h_tfidf");
+        et.isiKedekatanTfIdf("rte3_test_gold","id","t_tfidf","h_tfidf","similar_tfidf");
+
+        //et.isiTfIdf("rte3_copy","id","t","t_tfidf");
+        //et.isiTfIdf("rte3_copy","id","h","h_tfidf");
+        //et.isiKedekatanTfIdf("rte3_copy","id","t_tfidf","h_tfidf","similar_tfidf_langsung");
         System.out.println("selesai");
         //bandingkan kesamaan dua field
         //et.isiKedekatanTfIdf("RTE3","id","t_tfidf","h_tfidf","similar_tfidf_langsung");

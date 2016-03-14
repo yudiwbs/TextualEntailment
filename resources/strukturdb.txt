@@ -47,12 +47,6 @@ CREATE TABLE IF NOT EXISTS `rte3` (
   `t_type_dependency` text,
   `h_gram_structure` text,
   `h_type_dependency` text,
-  `max_rasio_subj_kata` double DEFAULT NULL,
-  `max_rasio_verb_kata` double DEFAULT NULL,
-  `max_rasio_obj_kata` double DEFAULT NULL,
-  `id_disc_h` int(11) DEFAULT NULL,
-  `id_disc_t` int(11) DEFAULT NULL,
-  `jeniscocok` char(3) DEFAULT NULL,
   PRIMARY KEY (`id_internal`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
