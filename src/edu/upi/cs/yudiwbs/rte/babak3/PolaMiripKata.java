@@ -12,6 +12,8 @@ import java.util.Set;
 
 /**
  *    Created by yudiwbs on 15/02/2016.
+ *
+ *    kesamaan kata antara T dan H
  *    stopwords, lematisasi, hilangkan duplikasi, urutan tidak penting
  *
  */

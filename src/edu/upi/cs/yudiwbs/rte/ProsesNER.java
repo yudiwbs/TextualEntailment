@@ -15,6 +15,9 @@ import java.util.Properties;
 
 /**
  * Created by yudiwbs on 5/25/2015.
+ *
+ *   Name entity recogniztion, menggunakan stanford
+ *
  */
 
 public class ProsesNER {
@@ -127,9 +130,12 @@ public class ProsesNER {
 
     public static void main(String[] args) {
            ProsesNER cn = new ProsesNER();
-           //cn.prosesDb("rte3","h","h_ner");
+           //cn.prosesDb("rte3_test_gold","t","t_ner");
+           cn.prosesDb("rte3_test_gold","h","h_ner");
+           //cn.prosesDb("rte3_babak2","t","t_ner");
+
            //cn.prosesDb("disc_t_rte3_label","t","t_ner");
-            cn.prosesDb("disc_t_rte3_label_ideal","t","t_ner");
+            //cn.prosesDb("disc_t_rte3_label_ideal","t","t_ner");
            //cn.init();
            //cn.proses("Mrs. Bush 's approval ratings have remained very high , above 80 %");
            //String s;

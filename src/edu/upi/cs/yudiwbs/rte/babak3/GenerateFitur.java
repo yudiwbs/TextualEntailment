@@ -23,7 +23,7 @@ public class GenerateFitur {
     private PreparedStatement pSel = null;
     ResultSet rs = null;
 
-
+    /*
     PolaCocokWaktu pCocokWaktu;
     PolaMiripVerbNoun pVerbNoun;
     PolaMiripKata pKata;
@@ -32,10 +32,12 @@ public class GenerateFitur {
     PolaTidakMiripTfIdf pTdkTfIdf;
     PolaMiripNounTfidf pNounTfidf;
     PolaMiripWordnet pMiripWordnet;
-    PolaVerbKhusus pVerbKhusus;
+    PolaVerbKhusus pVerbKhusus; */
+    PolaCocokLokasi pCocokLokasi;
 
 
     public void init() {
+        /*
         pCocokWaktu = new PolaCocokWaktu();
         pCocokWaktu.init();
 
@@ -70,6 +72,11 @@ public class GenerateFitur {
 
         pVerbKhusus = new PolaVerbKhusus();
         pVerbKhusus.init();
+        */
+
+        pCocokLokasi = new PolaCocokLokasi();
+        pCocokLokasi.namaTabel = namaTabel;
+        pCocokLokasi.init();
 
         KoneksiDB db = new KoneksiDB();
 
@@ -98,6 +105,7 @@ public class GenerateFitur {
     }
 
     public void close() {
+        /*
         pCocokWaktu.close();
         pVerbNoun.close();
         pKata.close();
@@ -107,7 +115,8 @@ public class GenerateFitur {
         pNounTfidf.close();
         pMiripWordnet.close();
         pVerbKhusus.close();
-
+        */
+        pCocokLokasi.close();
 
         try {
             rs.close();
@@ -120,7 +129,7 @@ public class GenerateFitur {
     }
 
     //menghasilkan file arff
-    public void proses(String namaFileOut) {
+    public void proses() {
         System.out.println("Proses Generate Fitur");
 
 
@@ -132,6 +141,7 @@ public class GenerateFitur {
 
         //jalankan query
 
+        /*
         String cocokWaktu ="none"; //"tahuncocok", "tahuntdkcocok"
         double rasioVerbCocok  = 0;
         double rasioNounCocok  = 0;
@@ -142,6 +152,10 @@ public class GenerateFitur {
         double skorTfIdfNoun = 0;
         double skorWordnet = 0;
         String verbKhusus = "";
+        */
+
+        double skorCocokLokasi = 0;
+        String cocokLokasi = "none";
 
         try {
             rs = pSel.executeQuery();
@@ -168,8 +182,7 @@ public class GenerateFitur {
                 tPrepro.id = id;
                 tPrepro.teksAsli = t;
 
-                //System.out.print("ID:");
-
+                /*
                 //perlu dicek kondisiterpenuhi karena untuk yg tdk punya tanggal jangan
                 //diberi status tidakcocok
                 if (pCocokWaktu.isKondisiTerpenuhi(tPrepro, hPrepro)) {
@@ -228,6 +241,24 @@ public class GenerateFitur {
                         verbKhusus = "none";
                     }
                 }
+                */
+
+                if (pCocokLokasi.isKondisiTerpenuhi(tPrepro, hPrepro)) {
+                    pCocokLokasi.isEntail(tPrepro, hPrepro); //supaya dapat skor
+                    skorCocokLokasi = pCocokLokasi.getSkor();
+                    if (skorCocokLokasi>0) {
+                        if (skorCocokLokasi==1) {
+                            cocokLokasi = "cocok";
+                        } else {
+                            cocokLokasi = "cocokparsial";
+                        }
+                    } else {
+                        cocokLokasi = "tdkcocok";
+                    }
+                } else { //tidak terpenuhi
+                    skorCocokLokasi = 0;
+                    cocokLokasi ="none";
+                }
 
 
                 String strEntail;
@@ -248,10 +279,15 @@ public class GenerateFitur {
                     System.out.println(String.format(Locale.ENGLISH, "%d,%s,%4.2f,%s", id, cocokWaktu, rasioNounCocok, strEntail));
                 }
                 */
+                /*
                 System.out.println(String.format(Locale.ENGLISH,
                         "%d,%s,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%4.2f,%s,%s",
                         id,cocokWaktu,rasioVerbCocok, rasioNounCocok, rasioKataCocok, rasioKataSubset,
                         rasioKataNumeric, skorTfIdf, skorTfIdfNoun, skorWordnet, verbKhusus,strEntail));
+                */
+                System.out.println(String.format(Locale.ENGLISH,
+                        "%d,%4.2f,%s,%s",
+                        id,skorCocokLokasi,cocokLokasi,strEntail));
 
             }
 
@@ -266,7 +302,7 @@ public class GenerateFitur {
         GenerateFitur gf = new GenerateFitur();
         gf.namaTabel = "rte3_test_gold";
         gf.init();
-        gf.proses("D:\\desertasi\\eksperimen_babak3\\fitur_babak3.arff");
+        gf.proses();
         gf.close();
     }
 

@@ -87,9 +87,25 @@ public class CariPolaSatuPola {
         pola.init();
         */
 
-        PolaVerbKhusus pola = new PolaVerbKhusus();
+        //PolaVerbKhusus pola = new PolaVerbKhusus();
 
 
+        /*PolaCocokLokasi pola = new PolaCocokLokasi();
+        pola.namaTabel="rte3_babak2";
+        */
+
+        /*
+        PolaCocokPerson pola = new PolaCocokPerson();
+        pola.namaTabel="rte3_babak2";
+        */
+
+        /*
+        PolaCocokOrganization pola = new PolaCocokOrganization();
+        pola.namaTabel="rte3_babak2";
+        */
+
+        PolaCocokDateNER pola = new PolaCocokDateNER();
+        pola.namaTabel="rte3_babak2";
 
         pola.init();
         PreproBabak2 pp = new PreproBabak2();
