@@ -17,6 +17,8 @@ import edu.cmu.lti.ws4j.util.WS4JConfiguration;
 
 /**
  * Created by Yudi Wibisono (yudi@upi.edu) on 12/9/2014.
+ *
+ * keterkaitan 2 kata wordent dengan wordnetws4j
  */
 public class CobaWordnetWS4j {
 

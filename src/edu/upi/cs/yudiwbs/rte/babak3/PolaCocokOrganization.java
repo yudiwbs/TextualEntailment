@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 /**
  * Created by yudiwbs on 16/03/2016.
+ *
+ * cek berdasarkan org di NER
  */
 public class PolaCocokOrganization extends Pola {
 

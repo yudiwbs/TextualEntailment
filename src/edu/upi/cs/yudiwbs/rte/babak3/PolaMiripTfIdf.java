@@ -78,11 +78,7 @@ public class PolaMiripTfIdf extends Pola{
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
         skor = alSkor.get(t.id);
-        if (skor>=batasKemiripan) {
-            isKondisiTerpenuhi =  true;
-        } else {
-            isKondisiTerpenuhi =  false;
-        }
+        isKondisiTerpenuhi = skor >= batasKemiripan;
         return isKondisiTerpenuhi;
     }
 

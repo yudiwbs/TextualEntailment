@@ -124,6 +124,11 @@ public class GenerateFitur {
     @Override
     public void finalize() {
         close();
+        try {
+            super.finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     public void close() {
@@ -182,20 +187,20 @@ public class GenerateFitur {
         String verbKhusus = "";
         */
 
-        double skorCocokLokasi = 0;
-        String cocokLokasi = "none";
+        double skorCocokLokasi;
+        String cocokLokasi;
 
-        double skorCocokPerson = 0;
-        String cocokPerson = "none";
+        double skorCocokPerson;
+        String cocokPerson;
 
-        double skorCocokDateNer = 0;
-        String cocokDateNer = "none";
+        double skorCocokDateNer;
+        String cocokDateNer;
 
-        double skorCocokOrganization = 0;
-        String cocokOrganization = "none";
+        double skorCocokOrganization;
+        String cocokOrganization;
 
-        double skorCocokNerH = 0;
-        String cocokNerH = "none";
+        double skorCocokNerH;
+        String cocokNerH;
 
         try {
             rs = pSel.executeQuery();

@@ -46,6 +46,11 @@ public class CariPolaSatuPola {
     @Override
     public void finalize() {
         close();
+        try {
+            super.finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     public void close() {
@@ -161,12 +166,7 @@ public class CariPolaSatuPola {
                     System.out.println(hPrepro.teksAsli);
 
                     //&&
-                    if (pola.isEntail(tPrepro, hPrepro)) {
-                        isEntailPrediksi = true;
-                    } else {
-                        isEntailPrediksi = false;
-                    }
-                } else {
+                    isEntailPrediksi = pola.isEntail(tPrepro, hPrepro);
 
                 }
 

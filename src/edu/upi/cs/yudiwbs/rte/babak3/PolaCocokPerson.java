@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 /**
  * Created by yudiwbs on 16/03/2016.
+ *
+ * Cek berdasarkan NER PERSON
  */
 public class PolaCocokPerson extends Pola {
 

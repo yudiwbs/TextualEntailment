@@ -32,7 +32,7 @@ public class PolaVerbKhusus extends Pola {
     //FS: iscopula terisi, vp dan np terisi
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        boolean out = false;
+        boolean out;
         String tH = h.strukturSyn;
         tH= tH.replaceAll("\\)", " ) "); //agar dapat detect kurung tutup
 
@@ -155,7 +155,6 @@ public class PolaVerbKhusus extends Pola {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //tutup
 
         rs = null;
         int jumCocok = 0;
@@ -164,6 +163,7 @@ public class PolaVerbKhusus extends Pola {
 
         boolean isEntailPrediksi = false;
         try {
+            assert pSel != null;
             rs = pSel.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
@@ -220,10 +220,10 @@ public class PolaVerbKhusus extends Pola {
         }
 
         try {
-            rs.close();
-            if (conn != null) {
-                conn.close();
+            if (rs != null) {
+                rs.close();
             }
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

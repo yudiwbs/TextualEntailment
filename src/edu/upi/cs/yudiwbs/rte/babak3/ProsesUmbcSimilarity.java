@@ -47,6 +47,11 @@ public class ProsesUmbcSimilarity {
     @Override
     public void finalize() {
         close();
+        try {
+            super.finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     public void close() {
@@ -89,7 +94,7 @@ public class ProsesUmbcSimilarity {
     }
 
     public double ambilSkor(String t, String h) {
-        URL u = null;
+        URL u;
         double out = 0;
         try {
             String Ut = URLEncoder.encode(t, "UTF-8");
@@ -108,8 +113,6 @@ public class ProsesUmbcSimilarity {
             in.close();
             out = Double.parseDouble(sb.toString());
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -45,6 +45,11 @@ public class CariPolaBerjenjangTrain {
     @Override
     public void finalize() {
         close();
+        try {
+            super.finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     public void close() {
@@ -95,7 +100,7 @@ public class CariPolaBerjenjangTrain {
 
         PreproBabak2 pp = new PreproBabak2();
         //jalankan query
-        ResultSet rs = null;
+        ResultSet rs;
         int jumCocok = 0;
         int jumCocokEntail    = 0;
         int jumTdkCocokEntail = 0;
