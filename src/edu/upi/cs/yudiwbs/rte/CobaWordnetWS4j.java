@@ -54,7 +54,7 @@ public class CobaWordnetWS4j {
         //perlu lematisasi
 
         //run("die","died");
-        run("visit","opress");
+        run("die","fatalities");
         long t1 = System.currentTimeMillis();
         System.out.println( "Done in "+(t1-t0)+" msec." );
     }

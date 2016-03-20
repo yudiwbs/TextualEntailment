@@ -5,7 +5,6 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -17,11 +16,11 @@ import java.sql.ResultSet;
  *
  */
 
-public class CariPolaBerjenjang {
+public class CariPolaBerjenjangTrain {
     //mungkin dibuat generalisasinya?? sering banget kepake loop pasangan
 
+    String namaTabel = "";
     private Connection conn = null;
-
     private PreparedStatement pSel = null;
 
     public void init() {
@@ -32,8 +31,7 @@ public class CariPolaBerjenjang {
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
-                    " from rte3_babak2 " +
-                    " #limit 10 ";
+                    " from " + namaTabel;
 
 
             pSel = conn.prepareStatement(strSel);
@@ -60,16 +58,40 @@ public class CariPolaBerjenjang {
     }
 
     public void proses() {
+
         System.out.println("Proses Pencarian Pola ");
 
-        PolaMiripVerbNoun pVN = new PolaMiripVerbNoun();
-        pVN.pctOverlapNoun = 0.57;
-        pVN.pctOverlapVerb = 0;
-        pVN.init();
-        //PolaSamaNumerik pN = new PolaSamaNumerik();
-        //pN.init();
+        PolaTidakMiripTfIdf  ptdkTfIdf  = new PolaTidakMiripTfIdf();
+        ptdkTfIdf.batasKemiripan = 0.04;
+        ptdkTfIdf.namaTabel = namaTabel;
+        ptdkTfIdf.init();
+
         PolaCocokWaktu pcw = new PolaCocokWaktu();  //tahun
         pcw.init();
+
+
+        PolaMiripVerbNoun pVN = new PolaMiripVerbNoun();
+        pVN.pctOverlapNoun = 0.8;
+        pVN.pctOverlapVerb = 0;
+        pVN.init();
+
+        PolaTidakMiripVerbNoun pTdkVN = new PolaTidakMiripVerbNoun();
+        pTdkVN.pctOverlapVerb  = 0.57;
+        pTdkVN.pctOverlapVerb  = 1;
+        pTdkVN.init();
+
+        PolaMiripTfIdf pMiripTfIdf = new PolaMiripTfIdf();
+        pMiripTfIdf.namaTabel = namaTabel;
+        pMiripTfIdf.batasKemiripan = 0.04;
+        pMiripTfIdf.init();
+
+        PolaCocokNerH pCocokNerH = new PolaCocokNerH();
+        pCocokNerH.namaTabel = namaTabel;
+        pCocokNerH.init();
+
+        //PolaSamaNumerik pN = new PolaSamaNumerik();
+        //pN.init();
+
 
         PreproBabak2 pp = new PreproBabak2();
         //jalankan query
@@ -99,23 +121,30 @@ public class CariPolaBerjenjang {
                 tPrepro.teksAsli = t;
                 boolean isCocok = false;
 
-                //&&
-
-                if   ( pVN.isKondisiTerpenuhi(tPrepro,hPrepro) &&
-                        !pcw.isKondisiTerpenuhi(tPrepro, hPrepro)
-                      )
-
-                //if (pVN.isKondisiTerpenuhi(tPrepro, hPrepro))
+                //tfidfrendah, notentail
+                if   ( ptdkTfIdf.isKondisiTerpenuhi(tPrepro,hPrepro) )
                 {
-
                     isCocok = true;
-                    //cek entailment
-                    if (pVN.isEntail(tPrepro, hPrepro) &&  pcw.isEntail(tPrepro, hPrepro) )
-                    {
-                    //if (pVN.isEntail(tPrepro, hPrepro) ) {
-                        isEntailPrediksi = true;
+                    isEntailPrediksi = ptdkTfIdf.isEntail(tPrepro, hPrepro);
+                } else {
+                    //cocok tahun, noun tinggi
+                    if (pcw.isKondisiTerpenuhi(tPrepro,hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+                        isCocok = true;
+                        isEntailPrediksi = pcw.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
                     } else {
-                        isEntailPrediksi = false;
+                        //tfidf sedang-tinggi; noun sedang-rendah
+                        if (pMiripTfIdf.isKondisiTerpenuhi(tPrepro,hPrepro) &&  pTdkVN.isKondisiTerpenuhi(tPrepro,hPrepro) ) {
+                            isCocok = true;
+                            isEntailPrediksi = false; //ini hacking krn nggak make isEntail
+                        } else {
+                            if (pCocokNerH.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+                                pCocokNerH.isEntail(tPrepro,hPrepro); //hack utk dapat skor
+                                if (pCocokNerH.getSkor()==0) {
+                                    isCocok = true;
+                                    isEntailPrediksi = false;
+                                }
+                            }
+                        }
                     }
                 }
                 /*
@@ -141,6 +170,7 @@ public class CariPolaBerjenjang {
 
                 if (isCocok) {
                     jumCocok++;
+                    /*
                     System.out.println("");
                     System.out.print("ID:");
                     System.out.println(tPrepro.id);
@@ -149,6 +179,7 @@ public class CariPolaBerjenjang {
                     System.out.print("H:");
                     System.out.println(hPrepro.teksAsli);
                     System.out.print("Isentail:");//System.out.println(p.getLabel());
+
                     if (isEntail) {
                         System.out.println("ENTAIL");
                     } else {
@@ -156,12 +187,13 @@ public class CariPolaBerjenjang {
                     }
 
                     System.out.println("Prediksi:"+isEntailPrediksi);
-
+                    */
                     if (isEntail == isEntailPrediksi) {
-                        System.out.println("Prediksi Cocok!");
+                        //System.out.println("Prediksi Cocok!");
+                        System.out.println(tPrepro.id); //print ID yg entailnya tepat, nanti sisanya akan pake ML
                         jumCocokEntail++;
                     }  else {
-                        System.out.println("Prediksi Tidak Cocok!");
+                        //System.out.println("Prediksi Tidak Cocok!");
                         jumTdkCocokEntail++;
                     }
                 }
@@ -173,14 +205,22 @@ public class CariPolaBerjenjang {
 
             System.out.println("Akurasi dari kecocokan: " + (double) jumCocokEntail / jumCocok);
             //System.out.println("Akurasi total: " + (double) jumCocokEntail / jumCocok);
+
+            ptdkTfIdf.close();
             pcw.close();
+            pTdkVN.close();
+            pMiripTfIdf.close();
+            pVN.close();
+            pCocokNerH.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        CariPolaBerjenjang cp = new CariPolaBerjenjang();
+        //UNTUK TRAIN!!
+        CariPolaBerjenjangTrain cp = new CariPolaBerjenjangTrain();
+        cp.namaTabel = "rte3_babak2";
         cp.init();
         cp.proses();
         cp.close();

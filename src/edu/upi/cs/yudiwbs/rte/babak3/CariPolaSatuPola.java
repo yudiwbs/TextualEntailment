@@ -66,9 +66,12 @@ public class CariPolaSatuPola {
         //ptdkVN.pctOverlapVerb = 1;  //semua masuk
         //ptdkVN.pctOverlapNoun = 0.57;
         //ptdkVN.init();
-        //PolaMiripVerbNoun pola = new PolaMiripVerbNoun();
-        //pola.pctOverlapNoun = 0.57;
-        //pola.pctOverlapVerb = 0;
+
+        /*
+        PolaMiripVerbNoun pola = new PolaMiripVerbNoun();
+        pola.pctOverlapNoun = 0.8;
+        pola.pctOverlapVerb = 0;
+        */
         //PolaSamaNumerik pola = new PolaSamaNumerik();
         //pola.pctSamaDigit = 0.5;
         /*
@@ -104,7 +107,11 @@ public class CariPolaSatuPola {
         pola.namaTabel="rte3_babak2";
         */
 
-        PolaCocokDateNER pola = new PolaCocokDateNER();
+
+        /*PolaCocokDateNER pola = new PolaCocokDateNER();
+        pola.namaTabel="rte3_babak2";*/
+
+        PolaCocokNerH pola = new PolaCocokNerH();
         pola.namaTabel="rte3_babak2";
 
         pola.init();

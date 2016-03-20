@@ -1,5 +1,6 @@
 package edu.upi.cs.yudiwbs.rte.babak3;
 
+import edu.upi.cs.yudiwbs.rte.KoneksiDB;
 import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 
@@ -102,7 +103,7 @@ public class PolaVerbKhusus extends Pola {
                 vp = vp.replaceAll("was "," ").replaceAll("is ", " ").replaceAll("are ", " ").
                         replaceAll("were ", " ").replaceAll("will ", " ").trim();
 
-                //System.out.println("vp:"+vp);
+                System.out.println("vp:"+vp);
                 out = true;
             }
 
@@ -132,18 +133,15 @@ public class PolaVerbKhusus extends Pola {
     public static void main(String[] args ) {
         //testing, khusus karena banyak harus coba2
         Connection conn = null;
-        String usrName = "yudilocal";
-        String pwd = "yudilocal";
-        String dbName = "searchengine";
+        KoneksiDB db = new KoneksiDB();
         PreparedStatement pSel = null;
+
         PreproBabak2 pp = new PreproBabak2();
         ResultSet rs;
         PolaVerbKhusus pola = new PolaVerbKhusus();
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/" + dbName
-                    + "?user=" + usrName + "&password=" + pwd);
+            conn = db.getConn();
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
@@ -195,15 +193,23 @@ public class PolaVerbKhusus extends Pola {
                 System.out.println(tPrepro.teksAsli);
                 System.out.print("H:");
                 System.out.println(hPrepro.teksAsli);
-
+                System.out.print("IsEntail:");
+                System.out.println(isEntail);
 
                 if   ( pola.isKondisiTerpenuhi(tPrepro,hPrepro)) {
                     System.out.println("Cocok");
-                    if (pola.isEntail(tPrepro,hPrepro)) {
+                    boolean pred = pola.isEntail(tPrepro,hPrepro);
+                    if (pred) {
                         System.out.println("Entail");
                     } else {
                         System.out.println("Not Entail");
                     }
+                    if (pred == isEntail) {
+                        System.out.println("PREDIKSI COCOK");
+                    } else {
+                        System.out.println("PREDIKSI TIDAK COCOK");
+                    }
+
                 } else {
                     System.out.println("not cocok");
                 }

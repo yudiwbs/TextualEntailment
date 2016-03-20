@@ -33,7 +33,12 @@ public class GenerateFitur {
     PolaMiripNounTfidf pNounTfidf;
     PolaMiripWordnet pMiripWordnet;
     PolaVerbKhusus pVerbKhusus; */
+
     PolaCocokLokasi pCocokLokasi;
+    PolaCocokPerson pCocokPerson;
+    PolaCocokOrganization pCocokOrganization;
+    PolaCocokDateNER  pCocokDateNER;
+    PolaCocokNerH pCocokNerH;
 
 
     public void init() {
@@ -74,9 +79,26 @@ public class GenerateFitur {
         pVerbKhusus.init();
         */
 
+
         pCocokLokasi = new PolaCocokLokasi();
         pCocokLokasi.namaTabel = namaTabel;
         pCocokLokasi.init();
+
+        pCocokPerson = new PolaCocokPerson();
+        pCocokPerson.namaTabel = namaTabel;
+        pCocokPerson.init();
+
+        pCocokOrganization = new PolaCocokOrganization();
+        pCocokOrganization.namaTabel = namaTabel;
+        pCocokOrganization.init();
+
+        pCocokDateNER = new PolaCocokDateNER();
+        pCocokDateNER.namaTabel = namaTabel;
+        pCocokDateNER.init();
+
+        pCocokNerH = new PolaCocokNerH();
+        pCocokNerH.namaTabel = namaTabel;
+        pCocokNerH.init();
 
         KoneksiDB db = new KoneksiDB();
 
@@ -117,6 +139,12 @@ public class GenerateFitur {
         pVerbKhusus.close();
         */
         pCocokLokasi.close();
+        pCocokPerson.close();
+        pCocokOrganization.close();
+        pCocokDateNER.close();
+        pCocokNerH.close();
+
+
 
         try {
             rs.close();
@@ -156,6 +184,18 @@ public class GenerateFitur {
 
         double skorCocokLokasi = 0;
         String cocokLokasi = "none";
+
+        double skorCocokPerson = 0;
+        String cocokPerson = "none";
+
+        double skorCocokDateNer = 0;
+        String cocokDateNer = "none";
+
+        double skorCocokOrganization = 0;
+        String cocokOrganization = "none";
+
+        double skorCocokNerH = 0;
+        String cocokNerH = "none";
 
         try {
             rs = pSel.executeQuery();
@@ -260,6 +300,74 @@ public class GenerateFitur {
                     cocokLokasi ="none";
                 }
 
+                if (pCocokDateNER.isKondisiTerpenuhi(tPrepro, hPrepro)) {
+                    pCocokDateNER.isEntail(tPrepro, hPrepro); //supaya dapat skor
+                    skorCocokDateNer = pCocokDateNER.getSkor();
+                    if (skorCocokDateNer>0) {
+                        if (skorCocokDateNer==1) {
+                            cocokDateNer = "cocok";
+                        } else {
+                            cocokDateNer = "cocokparsial";
+                        }
+                    } else {
+                        cocokDateNer = "tdkcocok";
+                    }
+                } else { //tidak terpenuhi
+                    skorCocokDateNer = 0;
+                    cocokDateNer ="none";
+                }
+
+                if (pCocokPerson.isKondisiTerpenuhi(tPrepro, hPrepro)) {
+                    pCocokPerson.isEntail(tPrepro, hPrepro); //supaya dapat skor
+                    skorCocokPerson = pCocokPerson.getSkor();
+                    if (skorCocokPerson>0) {
+                        if (skorCocokPerson==1) {
+                            cocokPerson = "cocok";
+                        } else {
+                            cocokPerson = "cocokparsial";
+                        }
+                    } else {
+                        cocokPerson = "tdkcocok";
+                    }
+                } else { //tidak terpenuhi
+                    skorCocokPerson = 0;
+                    cocokPerson ="none";
+                }
+
+                if (pCocokOrganization.isKondisiTerpenuhi(tPrepro, hPrepro)) {
+                    pCocokOrganization.isEntail(tPrepro, hPrepro); //supaya dapat skor
+                    skorCocokOrganization = pCocokOrganization.getSkor();
+                    if (skorCocokOrganization>0) {
+                        if (skorCocokPerson==1) {
+                            cocokOrganization = "cocok";
+                        } else {
+                            cocokOrganization = "cocokparsial";
+                        }
+                    } else {
+                        cocokOrganization = "tdkcocok";
+                    }
+                } else { //tidak terpenuhi
+                    skorCocokOrganization = 0;
+                    cocokOrganization ="none";
+                }
+
+
+                if (pCocokNerH.isKondisiTerpenuhi(tPrepro, hPrepro)) {
+                    pCocokNerH.isEntail(tPrepro, hPrepro); //supaya dapat skor
+                    skorCocokNerH = pCocokNerH.getSkor();
+                    if (skorCocokNerH>0) {
+                        if (skorCocokNerH==1) {
+                            cocokNerH = "cocok";
+                        } else {
+                            cocokNerH = "cocokparsial";
+                        }
+                    } else {
+                        cocokNerH = "tdkcocok";
+                    }
+                } else { //tidak terpenuhi
+                    skorCocokNerH  = 0;
+                    cocokNerH ="none";
+                }
 
                 String strEntail;
                 if (isEntail) {
@@ -286,8 +394,9 @@ public class GenerateFitur {
                         rasioKataNumeric, skorTfIdf, skorTfIdfNoun, skorWordnet, verbKhusus,strEntail));
                 */
                 System.out.println(String.format(Locale.ENGLISH,
-                        "%d,%4.2f,%s,%s",
-                        id,skorCocokLokasi,cocokLokasi,strEntail));
+                        "%d,%4.2f,%s,%4.2f,%s,%4.2f,%s,%4.2f,%s,%4.2f,%s,%s",
+                        id,skorCocokLokasi,cocokLokasi,skorCocokPerson,cocokPerson,skorCocokOrganization,cocokOrganization,
+                           skorCocokDateNer,cocokDateNer,skorCocokNerH,cocokNerH,strEntail));
 
             }
 
@@ -300,6 +409,7 @@ public class GenerateFitur {
 
     public static void main(String[] args) {
         GenerateFitur gf = new GenerateFitur();
+        //gf.namaTabel = "rte3_babak2";
         gf.namaTabel = "rte3_test_gold";
         gf.init();
         gf.proses();

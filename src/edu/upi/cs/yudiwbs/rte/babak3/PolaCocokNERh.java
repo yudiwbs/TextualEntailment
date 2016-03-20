@@ -13,34 +13,20 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * Created by yudiwbs on 11/03/2016.
+ * Created by yudiwbs on 17/03/2016.
  *
- *  bandingkan lokasi H --> T. Database sudah terisi t_ner dan h_ner (lihat class ProsesNER)
- *  isi namaaTabel!
+ *   mencari pasangan NER di H yang ada di T, terlepas jenisnya.
+ *   Jadi jika X ada di location di H dan x ada di ORGANIZATION di H maka dihitung cocok
  *
-
- D:22
- T:Chicago-based Boeing has already scrubbed three delivery slots in 2006 that had been booked by Air Canada.
- H:Boeing's headquarters is in Canada.
- IsEntail:false
-
- ID:710
- T:Conservationists fear that one of Namibia's most precious resources, its abundant wildlife and especially its threatened black rhinoceros, faces a major menace from poaching.
- H:In Africa, rhinos are seriously endangered by poaching.
- IsEntail:true
-
-
-
- *
+ *   ada batas, jika >=batas baru dianggap entail
  */
+public class PolaCocokNerH extends Pola {
 
-public class PolaCocokLokasi extends Pola {
-
-    //public double batasKemiripan = 0.7;  // >= dari ini entail true
     public String namaTabel ="";
+    public double batasEntail = 0.7;
 
     private HashMap<Integer,Double> alSkor = new HashMap<>();
-    private HashMap<Integer,Integer> alJumLokasiH = new HashMap<>(); //jum entitas lokasi di H
+    private HashMap<Integer,Integer> alJumEntH = new HashMap<>(); //jum entitas lokasi di H
 
     private ResultSet rs;
     private Connection conn;
@@ -48,10 +34,6 @@ public class PolaCocokLokasi extends Pola {
 
     private double skor;  //nantinya dioleh di fitur jadi empat alternatif: none; tdkcocok; parsial; cocok
 
-    //isEntail harus dipanggil terlebih dulu
-    public double getSkor() {
-        return skor;
-    }
 
     @Override
     public void init() {
@@ -59,8 +41,6 @@ public class PolaCocokLokasi extends Pola {
         Connection conn;
         PreparedStatement pSel;
         KoneksiDB db = new KoneksiDB();
-        ProsesTfidf pTfIdf = new ProsesTfidf();
-
         try {
             conn = db.getConn();
             //ambil data t dan h,
@@ -71,59 +51,58 @@ public class PolaCocokLokasi extends Pola {
             try {
                 rs = pSel.executeQuery();
                 while (rs.next()) {
-                    ArrayList<String> alLokasiH = new ArrayList<>();
-                    ArrayList<String> alLokasiT = new ArrayList<>();
+                    ArrayList<String> alEntH = new ArrayList<>();
+                    ArrayList<String> alEntT = new ArrayList<>();
                     int id = rs.getInt(1);
                     String t = rs.getString(2);
                     String h = rs.getString(3);
                     String tNer = rs.getString(4);
                     String hNer = rs.getString(5);
 
-                    //ambil lokasi di H
+                    //ambil NE  di H
                     Scanner sc = new Scanner(hNer);
                     sc.useDelimiter(";");
                     while (sc.hasNext()) {
                         String kata = sc.next();
                         String[] arrKata = kata.split("=");
-                        if (arrKata[0].equals("LOCATION")) {
-                            if (!alLokasiH.contains(arrKata[1])) {
-                                alLokasiH.add(arrKata[1]);  //hilangkan duplikasi
-                            }
+                        if (!alEntH.contains(arrKata[1])) {
+                            alEntH.add(arrKata[1]);  //hilangkan duplikasi
                         }
                     }
 
-                    //ambil lokasi di T
+                    //ambil NE di T
                     sc = new Scanner(tNer);
                     sc.useDelimiter(";");
                     while (sc.hasNext()) {
                         String kata = sc.next();
                         String[] arrKata = kata.split("=");
-                        if (arrKata[0].equals("LOCATION")) {
-                            if (!alLokasiT.contains(arrKata[1])) {
-                                alLokasiT.add(arrKata[1]);  //hilangkan duplikasi
-                            }
+                        if (!alEntT.contains(arrKata[1])) {
+                                alEntT.add(arrKata[1]);  //hilangkan duplikasi
                         }
                     }
 
-                    alJumLokasiH.put(id,alLokasiH.size());
+                    alJumEntH.put(id,alEntH.size());  //untuk isKondisiTerpenuhi
 
-                    //ada lokasi
-                    if (alLokasiH.size()>0) {
+                    //ada NE
+                    if (alEntH.size()>0) {
                         //debug
+
                         /*
+                        System.out.println();
                         System.out.println("id:" + id);
                         System.out.println("H:" + h);
                         System.out.println("T:" + t);
                         */
+
                         int jumSama = 0;
-                        for (String lH: alLokasiH) {
-                            if (alLokasiT.contains(lH)) {
+                        for (String lH: alEntH) {
+                            if (alEntT.contains(lH)) { // ada di T?
                                 jumSama++;
                                 //debug yg sama
-                                System.out.println(lH);
+                                //System.out.println(lH);
                             }
                         }
-                        double tempSkor = (double) jumSama / alLokasiH.size();
+                        double tempSkor = (double) jumSama / alEntH.size();
                         alSkor.put(id,tempSkor);
                     } else {
                         alSkor.put(id,0.0);
@@ -135,43 +114,26 @@ public class PolaCocokLokasi extends Pola {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    public void close() {
-        try {
-            rs.close();
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    //isEntail harus dipanggil terlebih dulu
+    public double getSkor() {
+        return skor;
     }
 
-    //true kalau ada lokasi
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        int temp  = alJumLokasiH.get(h.id);
-        return (temp > 0); //jum entitas lokasi di H > 0
+        return (alJumEntH.get(h.id)>0); //jum entitas  di H > 0
     }
 
-    //iskondisi terpenuhi sudah dipanggil dan bernilai true
     @Override
     public boolean isEntail(InfoTeks t, InfoTeks h) {
         skor = alSkor.get(h.id);
-        return (skor>0); //>0 asal ada satu yg cocok maka entail true; ==1 eksak
+        return (skor>=batasEntail); //asal ada satu yg cocok maka entail true
     }
 
     @Override
     public String getLabel() {
         return null;
-    }
-
-    public static void main(String[] args) {
-        PolaCocokLokasi pola = new PolaCocokLokasi();
-        pola.namaTabel ="rte3_babak2";
-        pola.init();
-        pola.close();
     }
 }

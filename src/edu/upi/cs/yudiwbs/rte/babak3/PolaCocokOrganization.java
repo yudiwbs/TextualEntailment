@@ -92,19 +92,19 @@ public class PolaCocokOrganization extends Pola {
                     //ada lokasi
                     if (alEntH.size()>0) {
                         //debug
-
+                        /*
                         System.out.println();
                         System.out.println("id:" + id);
                         System.out.println("H:" + h);
                         System.out.println("T:" + t);
-
+                        */
 
                         int jumSama = 0;
                         for (String lH: alEntH) {
                             if (alEntT.contains(lH)) {
                                 jumSama++;
                                 //debug yg sama
-                                System.out.println(lH);
+                                //System.out.println(lH);
                             }
                         }
                         double tempSkor = (double) jumSama / alEntH.size();
