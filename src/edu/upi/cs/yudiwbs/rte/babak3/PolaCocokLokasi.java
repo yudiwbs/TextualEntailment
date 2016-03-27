@@ -36,7 +36,7 @@ import java.util.Scanner;
 
 public class PolaCocokLokasi extends Pola {
 
-    //public double batasKemiripan = 0.7;  // >= dari ini entail true
+    public double batasSkor = 0.5;  // >= dari ini entail true
     public String namaTabel ="";
 
     private HashMap<Integer,Double> alSkor = new HashMap<>();
@@ -59,8 +59,6 @@ public class PolaCocokLokasi extends Pola {
         Connection conn;
         PreparedStatement pSel;
         KoneksiDB db = new KoneksiDB();
-        ProsesTfidf pTfIdf = new ProsesTfidf();
-
         try {
             conn = db.getConn();
             //ambil data t dan h,
@@ -120,7 +118,7 @@ public class PolaCocokLokasi extends Pola {
                             if (alLokasiT.contains(lH)) {
                                 jumSama++;
                                 //debug yg sama
-                                System.out.println(lH);
+                                //System.out.println(lH);
                             }
                         }
                         double tempSkor = (double) jumSama / alLokasiH.size();
@@ -160,7 +158,7 @@ public class PolaCocokLokasi extends Pola {
     @Override
     public boolean isEntail(InfoTeks t, InfoTeks h) {
         skor = alSkor.get(h.id);
-        return (skor>0); //>0 asal ada satu yg cocok maka entail true; ==1 eksak
+        return (skor>=batasSkor);
     }
 
     @Override

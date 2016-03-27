@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public abstract class Pola {
 
+
+
     protected ArrayList<String> alT = new ArrayList<>();
     protected ArrayList<String> alH = new ArrayList<>();
 
@@ -40,6 +42,7 @@ public abstract class Pola {
     }
 
     //jika perlu init dan close
+    //belum tentu batas2 diset
     public void init() {
 
     }

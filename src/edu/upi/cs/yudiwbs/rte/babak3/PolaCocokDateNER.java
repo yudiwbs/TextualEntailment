@@ -140,7 +140,7 @@ public class PolaCocokDateNER extends Pola {
 
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        return (alJumEntH.get(h.id)>0); //jum entitas lokasi di H > 0
+        return (alJumEntH.get(h.id)>0); //jum entitas  di H > 0
     }
 
     @Override

@@ -5,7 +5,6 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -67,57 +66,9 @@ public class CariPolaSatuPola {
     public void proses() {
         System.out.println("Proses Pencarian Pola ");
 
-        //PolaTidakMiripVerbNoun ptdkVN = new PolaTidakMiripVerbNoun();
-        //ptdkVN.pctOverlapVerb = 1;  //semua masuk
-        //ptdkVN.pctOverlapNoun = 0.57;
-        //ptdkVN.init();
-
-        /*
-        PolaMiripVerbNoun pola = new PolaMiripVerbNoun();
-        pola.pctOverlapNoun = 0.8;
-        pola.pctOverlapVerb = 0;
-        */
-        //PolaSamaNumerik pola = new PolaSamaNumerik();
-        //pola.pctSamaDigit = 0.5;
-        /*
-        PolaTidakMiripTfIdf pola = new PolaTidakMiripTfIdf();
-        pola.batasKemiripan = 0.07;
-        */
-        /*
-        PolaMiripNounTfidf pola = new PolaMiripNounTfidf();
-        pola.batasKemiripan = 0.6;
-        pola.init();
-        */
-
-        /*
-        PolaMiripWordnet pola = new PolaMiripWordnet();
-        pola.batasKemiripan = 0.7;
-        pola.init();
-        */
-
-        //PolaVerbKhusus pola = new PolaVerbKhusus();
-
-
-        /*PolaCocokLokasi pola = new PolaCocokLokasi();
-        pola.namaTabel="rte3_babak2";
-        */
-
-        /*
-        PolaCocokPerson pola = new PolaCocokPerson();
-        pola.namaTabel="rte3_babak2";
-        */
-
-        /*
-        PolaCocokOrganization pola = new PolaCocokOrganization();
-        pola.namaTabel="rte3_babak2";
-        */
-
-
-        /*PolaCocokDateNER pola = new PolaCocokDateNER();
-        pola.namaTabel="rte3_babak2";*/
-
-        PolaCocokNerH pola = new PolaCocokNerH();
-        pola.namaTabel="rte3_babak2";
+        PolaCocokLokasi pola = new PolaCocokLokasi();
+        pola.batasSkor = 0.5;
+        pola.namaTabel = "rte3_babak2";
 
         pola.init();
         PreproBabak2 pp = new PreproBabak2();

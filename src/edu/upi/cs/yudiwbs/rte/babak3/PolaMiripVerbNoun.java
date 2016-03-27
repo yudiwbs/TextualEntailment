@@ -11,8 +11,8 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 
 public class PolaMiripVerbNoun extends  Pola{
 
-    double pctOverlapVerb = 0.7;  // >= maka true
-    double pctOverlapNoun = 0.8;  // >= maka true
+    double batasVerb = 0.7;  // >= maka true
+    double batasNoun = 0.8;  // >= maka true
 
 
     private double pctNounCocok;
@@ -81,12 +81,9 @@ public class PolaMiripVerbNoun extends  Pola{
         }
 
 
-        if ((pctVerbCocok>=pctOverlapVerb) && (pctNounCocok>=pctOverlapNoun)) {
+        if ((pctVerbCocok>=batasVerb) && (pctNounCocok>=batasNoun)) {
             isCocok = true;
         }
-
-
-
 
         return isCocok;
     }

@@ -8,7 +8,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+
+
 
 /**
  * Created by yudiwbs on 14/03/2016.
@@ -26,14 +30,18 @@ public class PolaVerbKhusus extends Pola {
     String np;
     String vp;
 
-    //true mengandung verb setelah NP
-    //is, was, were, are, will tdk dihitung sebagai verb dan return akan false
+    PreproBabak2 pp = new PreproBabak2();
 
-    //FS: iscopula terisi, vp dan np terisi
     @Override
-    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        boolean out;
-        String tH = h.strukturSyn;
+    public void init() {
+        pp.loadStopWords("stopwords","kata");
+    }
+
+    //FS: out[0] isinya np dan out[1] isinya vp terisi
+    public ArrayList<ArrayList<String>> isiVPNP(InfoTeks it) {
+        ArrayList<String> tempAlNoun = new ArrayList<>();
+        ArrayList<String> tempAlVerb = new ArrayList<>();
+        String tH = it.strukturSyn;
         tH= tH.replaceAll("\\)", " ) "); //agar dapat detect kurung tutup
 
         //ambil NP dan VP terdepan
@@ -47,7 +55,7 @@ public class PolaVerbKhusus extends Pola {
         while (sc.hasNext() && !stop) {
             String kata = sc.next();
             //(ROOT (S (NP (NNP CIA) (NN secret) (NNS prisons)) (VP (VBD were) (VP (VBN located) (PP (IN in) (NP (NNP Eastern) (NNP Europe))))) (. .)))
-            if (kata.equals("(NP") && !npPertama) {
+            if (kata.equals( "(NP") && !npPertama) {
                 npPertama = true;
                 ambilNP = true;
             }
@@ -58,10 +66,10 @@ public class PolaVerbKhusus extends Pola {
             }
 
             if (ambilVP &&
-                (  (kata.contains("(")) &&
-                  !( kata.equals("(VP") || kata.equals("(VBD") || kata.equals("(VBN") || kata.equals("(VB") ||
-                     kata.equals("(VBG") || kata.equals("(VBZ") || kata.equals("(VBP")) )
-                 )
+                    (  (kata.contains("(")) &&
+                            !( kata.equals("(VP") || kata.equals("(VBD") || kata.equals("(VBN") || kata.equals("(VB") ||
+                                    kata.equals("(VBG") || kata.equals("(VBZ") || kata.equals("(VBP")) )
+                    )
             {
                 ambilVP = false;
                 stop = true;
@@ -69,22 +77,64 @@ public class PolaVerbKhusus extends Pola {
 
             if (!kata.contains("(") && !kata.contains(")") ) {  //bukan tag
                 if (ambilNP) {
-                    sbNp.append(kata);
-                    sbNp.append(" ");
+                    if (!pp.isStopwords(kata)) {
+                        tempAlNoun.add(kata);
+                        sbNp.append(kata);
+                        sbNp.append(" ");
+                    }
                 }
                 if (ambilVP) {
-                    sbVp.append(kata);
-                    sbVp.append(" ");
+                    if (!pp.isStopwords(kata)) {
+                        tempAlVerb.add(kata);
+                        sbVp.append(kata);
+                        sbVp.append(" ");
+                    }
                 }
             }
 
         }
 
+        ArrayList<ArrayList<String>> arrOut = new ArrayList<>();
+        arrOut.add(tempAlNoun);
+        arrOut.add(tempAlVerb);
         //debug
         //System.out.println("NP:"+sbNp.toString());
         //System.out.println("VP:"+sbVp.toString());
-        np = sbNp.toString().trim();
-        vp = sbVp.toString().trim();
+        //np = sbNp.toString().trim();
+        //vp = sbVp.toString().trim();
+
+        //arrOut[0] = sbNp.toString().trim();
+        //arrOut[1] = sbVp.toString().trim();
+        return arrOut;
+    }
+
+    //true mengandung verb setelah NP
+    //is, was, were, are, will tdk dihitung sebagai verb dan return akan false
+
+    //FS: iscopula terisi, vp dan np terisi
+    @Override
+    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
+        boolean out;
+        ArrayList<ArrayList<String>> npvp;
+        npvp = isiVPNP(h);
+
+        ArrayList<String> alNP = npvp.get(0);
+        ArrayList<String> alVP = npvp.get(1);
+
+        StringBuilder sb = new StringBuilder();
+        for (String s:alNP) {
+            sb.append(s);sb.append(" ");
+        }
+        np = sb.toString().trim();
+
+        sb = new StringBuilder();
+        for (String s:alVP) {
+            sb.append(s);sb.append(" ");
+        }
+        vp = sb.toString().trim();
+
+        //np = npvp[0];
+        //vp = npvp[1];
 
         //true jika ada Verb di bagian H
 
@@ -146,7 +196,7 @@ public class PolaVerbKhusus extends Pola {
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
                     " from rte3_babak2 " +
-                    " limit 100 ";
+                    " #limit 100 ";
 
 
             pSel = conn.prepareStatement(strSel);

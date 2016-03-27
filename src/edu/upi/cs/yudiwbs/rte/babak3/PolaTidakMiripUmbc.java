@@ -13,14 +13,15 @@ import java.util.HashMap;
  *
  * berdasarkan skor similarity umbc http://swoogle.umbc.edu/SimService/
  *
- * database sudah terisi dengan skor tsb (lihat class ProsesUmbcSimilarity
+ * database sudah terisi dengan skor tsb (lihat class ProsesUmbcSimilarity)
  *
  */
 
 
-public class PolaUmbc extends Pola {
+public class PolaTidakMiripUmbc extends Pola {
 
-    public double batasKemiripan = 0.5;  // <= ini maka entail false
+
+    public double batasKemiripan = 0.439;  // jika lebih kecil dari ini ini maka entail false
     public String namaTabel="";
     private HashMap<Integer,Double> alSkor = new HashMap<>();
     private ResultSet rs;
@@ -43,8 +44,7 @@ public class PolaUmbc extends Pola {
         KoneksiDB db = new KoneksiDB();
         try {
             conn = db.getConn();
-            //ambil data t dan h,
-            String strSel = "select id,skor from "+namaTabel;
+            String strSel = "select id,skor_umbc from "+namaTabel;
             pSel = conn.prepareStatement(strSel);
 
             rs = null;
@@ -52,8 +52,8 @@ public class PolaUmbc extends Pola {
                 rs = pSel.executeQuery();
                 while (rs.next()) {
                     int id = rs.getInt(1);
-                    double tfidf = rs.getDouble(2);
-                    alSkor.put(id,tfidf);
+                    double skor = rs.getDouble(2);
+                    alSkor.put(id,skor);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -78,14 +78,14 @@ public class PolaUmbc extends Pola {
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
         skor = alSkor.get(t.id);
-        isKondisiTerpenuhi = skor >= batasKemiripan;
+        isKondisiTerpenuhi = (skor <= batasKemiripan);
         return isKondisiTerpenuhi;
     }
 
     //panggil isKondisiTerpenuhi dulu sebelum panggi ini
     @Override
     public boolean isEntail(InfoTeks t, InfoTeks h) {
-        return isKondisiTerpenuhi;
+        return !isKondisiTerpenuhi;
     }
 
 
@@ -93,4 +93,6 @@ public class PolaUmbc extends Pola {
     public String getLabel() {
         return null;
     }
+
+
 }

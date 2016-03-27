@@ -1,5 +1,7 @@
 package edu.upi.cs.yudiwbs.rte.babak2;
 
+import edu.upi.cs.yudiwbs.rte.KoneksiDB;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,15 +27,25 @@ public class PreproBabak2 {
     public String password;
     private ArrayList<String> alStopWords = new ArrayList<>();
 
-    private void loadStopWords(String namaTabel,String namaField) {
+    //true jika ada di stopwords
+    //loadstopwords harus dipanggil lebih dulu!
+    public boolean isStopwords(String kata) {
+        boolean out;
+        out  = alStopWords.contains(kata);
+        return out;
+    }
+
+
+    //panggil ini sebelum isi infoteks jika ingin stopwords dibuang
+    public  void loadStopWords(String namaTabel,String namaField) {
         //memindahkan data stopwords dari tabel ke memori alStopWords
-        System.out.println("loadStopWords");
+        //System.out.println("loadStopWords");
         Connection conn=null;
         PreparedStatement pSel=null;
         alStopWords.clear();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://"+dbName+"?user="+userName+"&password="+password);
+            KoneksiDB db = new KoneksiDB();
+            conn = db.getConn();
             pSel  = conn.prepareStatement (String.format("select id,%s from %s",namaField,namaTabel));
             ResultSet rs = pSel.executeQuery();
             int jumDiproses = 0;
@@ -117,6 +129,7 @@ public class PreproBabak2 {
        }
 
        //menghasilkan infoteks yang didalamnya ada daftar verb dan noun
+       //panggil loadstopwords jika ingin stopword dibuang
        public InfoTeks prepro2(String strIn,String synTree)  {
            InfoTeks out = new InfoTeks();
            out.teksAsli = strIn;

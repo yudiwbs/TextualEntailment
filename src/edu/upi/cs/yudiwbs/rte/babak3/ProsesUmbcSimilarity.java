@@ -19,12 +19,34 @@ import java.util.ArrayList;
  *
  * http://swoogle.umbc.edu/SimService/
  *
+ * kadang error dari situs umbc, pake query ini untuk mengeset dgn nol
+ update rte3_test_subkal
+ set skor_umbc = null
+ where
+ skor_umbc = 0;
+
+ untuk generate fitur:
+
+ select
+ id_kalimat, max(rs.skor_umbc), min(rs.skor_umbc),
+ avg(rs.skor_umbc),r.isEntail
+ from rte3_train_subkal rs, rte3_babak2 r
+ where
+ rs.id_kalimat = r.id
+ group by id_kalimat;
+
+
  */
 public class ProsesUmbcSimilarity {
     public String namaTabel;
+    public String namaTabelSubKalimat;
     private Connection conn = null;
     private PreparedStatement pSel = null;
     private PreparedStatement pUpd = null;
+
+    private PreparedStatement pSelSubKal = null;
+    private PreparedStatement pUpdSubKal = null;
+
     ResultSet rs = null;
 
 
@@ -33,12 +55,32 @@ public class ProsesUmbcSimilarity {
 
         try {
             conn = db.getConn();
+            String strSelSubKal = "select " +
+                    "sk.id,r.id,sk.t,r.h " +
+                    "from " + namaTabelSubKalimat + " sk,\n" +
+                    namaTabel+ " r " +
+                    "where " +
+                    "sk.id_kalimat = r.id and " +
+                    "sk.skor_umbc is null " +
+                    "order by r.id ";
+
+            String strUpdSubKal = "update "+namaTabelSubKalimat+ " set skor_umbc=? where id=? ";
+
+            //String strSelSubKal = "select id,t,h,isEntail " +
+            //        " from " + namaTabelSubKalimat + " where skor_umbc is null  "; //limit 10
+
             String strSel = "select id,t,h,isEntail " +
                     " from " + namaTabel + " where skor_umbc is null  "; //limit 10
             //"update "+namaTabel+" set "+namaFieldOut+"=? where "+namaFieldID+"=? ";
             String strUpd = "update "+namaTabel+ " set skor_umbc=? where id=? ";
+
+
             pUpd = conn.prepareStatement(strUpd);
             pSel = conn.prepareStatement(strSel);
+
+            pSelSubKal = conn.prepareStatement(strSelSubKal);
+            pUpdSubKal = conn.prepareStatement(strUpdSubKal);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,6 +106,37 @@ public class ProsesUmbcSimilarity {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void prosesSubKalimat() {
+        //http://swoogle.umbc.edu/StsService/GetStsSim?operation=api&phrase1=a%20small%20violin%20is%20being%20played%20by%20a%20girl&phrase2=a%20child%20is%20performing%20on%20a%20tiny%20instrument
+        rs = null;
+        try {
+            rs = pSelSubKal.executeQuery();
+            while (rs.next()) {
+                //sk.id,r.id,sk.t,r.h
+                int idSubkal = rs.getInt(1);
+                int idH = rs.getInt(2);
+                String t = rs.getString(3);
+                String h = rs.getString(4);
+                System.out.println("id Subkal:"+idSubkal);
+                System.out.println("id H:"+idH);
+                System.out.println("T:"+t);
+                System.out.println("H:"+h);
+                double skor = ambilSkor(t,h);
+                System.out.println("skor="+skor);
+                //sleep antar request, biar nggak dianggap hammering
+                Thread.sleep(5000);
+                //update skor
+
+                pUpdSubKal.setDouble(1, skor);
+                pUpdSubKal.setLong(2, idSubkal);
+                pUpdSubKal.executeUpdate();
+
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -120,11 +193,18 @@ public class ProsesUmbcSimilarity {
     }
 
     public static void main(String[] args) {
+
         ProsesUmbcSimilarity pus = new ProsesUmbcSimilarity();
+
+        //pus.namaTabelSubKalimat="rte3_train_subkal";
         //pus.namaTabel = "rte3_babak2";
+
+        pus.namaTabelSubKalimat = "rte3_test_subkal";
         pus.namaTabel = "rte3_test_gold";
+
         pus.init();
-        pus.proses();
+        pus.prosesSubKalimat();
+        //pus.proses();
         //pus.testKoneksi();
         pus.close();
     }
