@@ -4,7 +4,6 @@ import edu.upi.cs.yudiwbs.rte.KoneksiDB;
 import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 
-import javax.sound.midi.MidiDevice;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,38 +16,78 @@ import java.sql.ResultSet;
  *
  */
 
-public class CariPolaBerjenjangTrain {
+public class CariPolaBerjenjang {
     //mungkin dibuat generalisasinya?? sering banget kepake loop pasangan
 
     String namaTabel = "";
     private Connection conn = null;
     private PreparedStatement pSel = null;
 
-    int[] arrCountPolaCocok   = new int[7];
-    int[] arrCountEntailBenar = new int[7];
+    int[] arrCountPolaCocok   = new int[9];
+    int[] arrCountEntailBenar = new int[9];
 
 
     PolaMiripUmbc pMiripUmbc;
+    PolaMiripUmbc pMiripUmbcTask;
     PolaMiripUmbc pMiripSdgUmbc;
+
+
     PolaTidakMiripUmbc pTdkUmbc;
     PolaTidakMiripTfIdf  ptdkTfIdf;
-    PolaCocokWaktu pcw;
+    PolaCocokWaktu pCocokWaktu;
     PolaMiripVerbNoun pVN;
     PolaTidakMiripVerbNoun pTdkVN;
     PolaMiripTfIdf pMiripTfIdf;
     PolaCocokNerH pCocokNerH;
     PolaCocokLokasi pCocokLokasi;
     PolaCocokDateNER pCocokDateNER;
-    PolaTask pTask;
+    PolaTask pTaskQA;
+
+    PolaTask pTaskIR; //khususu IR
+
+    PolaMiripKata pMiripKata;
+
+
+    public CariPolaBerjenjang() {
+
+    }
 
     public void init() {
 
-        PolaTask pTask = new PolaTask();
-        pTask.init();
+        try {
+            KoneksiDB db = new KoneksiDB();
+            conn = db.getConn();
+
+            //ambil data t dan h,
+            String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
+                    " from " + namaTabel;
+
+
+            pSel = conn.prepareStatement(strSel);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        pMiripKata = new PolaMiripKata();
+        pMiripKata.init();
+
+        pTaskQA = new PolaTask();
+        pTaskQA.namaTabel = namaTabel;
+        pTaskQA.init();
+
+        pTaskIR = new PolaTask();
+        pTaskIR.namaTabel  = namaTabel;
+        pTaskIR.init();
 
         pMiripUmbc = new PolaMiripUmbc();
         pMiripUmbc.namaTabel = namaTabel;
         pMiripUmbc.init();
+
+        pMiripUmbcTask = new PolaMiripUmbc();
+        pMiripUmbcTask.namaTabel = namaTabel;
+        pMiripUmbcTask.init();
 
         //kemiripan sedang
         pMiripSdgUmbc = new PolaMiripUmbc();
@@ -63,8 +102,8 @@ public class CariPolaBerjenjangTrain {
         ptdkTfIdf.namaTabel = namaTabel;
         ptdkTfIdf.init();
 
-        pcw = new PolaCocokWaktu();  //tahun
-        pcw.init();
+        pCocokWaktu = new PolaCocokWaktu();  //tahun
+        pCocokWaktu.init();
 
         pVN = new PolaMiripVerbNoun();
         pVN.init();
@@ -88,6 +127,32 @@ public class CariPolaBerjenjangTrain {
         pCocokDateNER = new PolaCocokDateNER();
         pCocokDateNER.namaTabel = namaTabel;
         pCocokDateNER.init();
+
+
+    }
+
+    public void close() {
+        pTaskQA.close();
+        pTaskIR.close();
+        pMiripUmbc.close();
+        pMiripUmbcTask.close();
+        ptdkTfIdf.close();
+        pCocokWaktu.close();
+        pTdkVN.close();
+        pMiripTfIdf.close();
+        pVN.close();
+        pCocokNerH.close();
+        pTdkUmbc.close();
+        pCocokLokasi.close();
+        pCocokDateNER.close();
+
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -95,7 +160,6 @@ public class CariPolaBerjenjangTrain {
 
     public void initEmpatRule() {
         init();
-
         pMiripUmbc.batasKemiripan = 0.8;
 
         //kemiripan sedang
@@ -118,24 +182,7 @@ public class CariPolaBerjenjangTrain {
 
         pCocokLokasi.batasSkor = 0.5;
 
-        //PolaSamaNumerik pN = new PolaSamaNumerik();
-        //pN.init();
-        try {
 
-            KoneksiDB db = new KoneksiDB();
-            conn = db.getConn();
-
-            //ambil data t dan h,
-            String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
-                    " from " + namaTabel;
-
-
-            pSel = conn.prepareStatement(strSel);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /*
@@ -178,8 +225,11 @@ public class CariPolaBerjenjangTrain {
         pMiripUmbc.batasKemiripan = 0.44;
         pVN.batasNoun =0.8;
         pVN.batasVerb = 0;
-        
+        pTaskQA.jenisTask = "QA";
 
+        pTaskIR.jenisTask = "IR";
+
+        pMiripKata.overlapKata = 0.69;
     }
 
     @Override
@@ -192,27 +242,7 @@ public class CariPolaBerjenjangTrain {
         }
     }
 
-    public void close() {
-        pTask.close();
-        pMiripUmbc.close();
-        ptdkTfIdf.close();
-        pcw.close();
-        pTdkVN.close();
-        pMiripTfIdf.close();
-        pVN.close();
-        pCocokNerH.close();
-        pTdkUmbc.close();
-        pCocokLokasi.close();
-        pCocokDateNER.close();
 
-        try {
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
 
@@ -254,9 +284,9 @@ public class CariPolaBerjenjangTrain {
             }
         }
         //cocok tahun & cocok noun tinggi: entail
-        if (pcw.isKondisiTerpenuhi(tPrepro,hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+        if (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
             //isCocok = true;
-            isEntailPrediksi = pcw.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+            isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
             if (isEntailPrediksi)  {
                 jumEntail++;
             } else {
@@ -274,10 +304,10 @@ public class CariPolaBerjenjangTrain {
             }
         }
         if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
-             (pcw.isKondisiTerpenuhi(tPrepro,hPrepro) ) )
+             (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) ) )
         {
             //isCocok = true;
-            isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro) && pcw.isEntail(tPrepro,hPrepro);
+            isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro) && pCocokWaktu.isEntail(tPrepro,hPrepro);
             if (isEntailPrediksi)  {
                 jumEntail++;
             } else {
@@ -286,7 +316,7 @@ public class CariPolaBerjenjangTrain {
         }
 
         //tidak mengandung waktu
-        if (!pcw.isKondisiTerpenuhi(tPrepro,hPrepro) && !pCocokDateNER.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+        if (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) && !pCocokDateNER.isKondisiTerpenuhi(tPrepro,hPrepro)) {
         //ada lokasi
             if ( (pCocokLokasi.isKondisiTerpenuhi(tPrepro,hPrepro)) ) {
                 //isCocok = true;
@@ -308,15 +338,10 @@ public class CariPolaBerjenjangTrain {
 
 
     /*
-        |    UMBC > 0.439799
-        |   cocokWaktu = none
-        |   |   rasioNounCocokDiskrit = (0.8,1]
-        |   |   |   task = QA: entail (51.0/2.0)
 
-        UMBC > 0.439799
-        |   cocokWaktu = cocokwaktu
-        |   |   rasioKataCocok > 0.69: entail (39.0/2.0)
 
+
+        ===> skip terlalu rumit
         UMBC > 0.439799
         |   cocokWaktu = none
         |   |   rasioNounCocokDiskrit = (0.57,0.8]
@@ -324,6 +349,7 @@ public class CariPolaBerjenjangTrain {
         |   |   |   |   rata2noun<=0.15 = TRUE
         |   |   |   |   |   rasioKataCocok > 0.71: entail (13.0/1.0)
 
+        ==> skip, terlalu rumit
         UMBC > 0.439799
         |   cocokWaktu = none
         |   |   rasioNounCocokDiskrit = (0.57,0.8]
@@ -332,16 +358,8 @@ public class CariPolaBerjenjangTrain {
         |   |   |   |   |   task = SUM
         |   |   |   |   |   |   cocokNerH = cocok: entail (20.0/3.0)
 
-        UMBC > 0.439799
-        |   cocokWaktu = none
-        |   |   rasioNounCocokDiskrit = (0.8,1]
-        |   |   |   task = IR: entail (38.0/6.0)
 
-        UMBC > 0.439799
-        |   cocokWaktu = none
-        |   |   rasioNounCocokDiskrit = 0: entail (26.0/5.0)
 
-    6 pola dari lia
      */
 
     public boolean[] taskRule(InfoTeks tPrepro, InfoTeks hPrepro, boolean isEntail) {
@@ -353,17 +371,83 @@ public class CariPolaBerjenjangTrain {
         |    UMBC > 0.439799
                 |   cocokWaktu = none
                 |   |   rasioNounCocokDiskrit = (0.8,1]
-        |   |   |   task = QA: entail (51.0/2.0)
+                    |   |   task = QA: entail (51.0/2.0)
         */
-
-        if (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+        //umbc sedang-tinggi
+        //tdk ada tahun
+        //noun tinggi
+        //task QA
+        /*
+        if (    (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pTask.isKondisiTerpenuhi(tPrepro,hPrepro))
+            ) {
             isCocok = true;
-            isEntailPrediksi = pTdkUmbc.isEntail(tPrepro, hPrepro);
+            isEntailPrediksi = (
+                    (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                    (pVN.isEntail(tPrepro,hPrepro)) &&
+                    (pTask.isEntail(tPrepro,hPrepro))
+                    );
             arrCountPolaCocok[1]++;
             if (isEntail == isEntailPrediksi) {
                 arrCountEntailBenar[1]++;
             }
         }
+        */
+
+        /*
+        UMBC > 0.439799
+                |   cocokWaktu = cocokwaktu
+                |   |   rasioKataCocok > 0.69: entail (39.0/2.0)
+        */
+        /*
+        if (    (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pMiripKata.isKondisiTerpenuhi(tPrepro,hPrepro))
+                ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                    (pCocokWaktu.isEntail(tPrepro,hPrepro)) &&
+                    (pMiripKata.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[1]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[1]++;
+            }
+        }
+        */
+
+        /*
+
+         UMBC > 0.439799
+        |   cocokWaktu = none
+        |   |   rasioNounCocokDiskrit = (0.8,1]
+        |   |   |   task = IR: entail (38.0/6.0)
+
+         */
+
+        /*
+
+        if (    (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pTaskIR.isKondisiTerpenuhi(tPrepro,hPrepro))
+                ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                    (pVN.isEntail(tPrepro,hPrepro)) &&
+                    (pTaskIR.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[1]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[1]++;
+            }
+        }
+        */
+
 
 
         out[0] = isCocok;
@@ -397,19 +481,21 @@ public class CariPolaBerjenjangTrain {
             if (isEntail==isEntailPrediksi) {arrCountEntailBenar[1]++;}
         } else
                 //cocok tahun & cocok noun tinggi: entail
-                if (pcw.isKondisiTerpenuhi(tPrepro,hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+                if (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+                        pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
                     isCocok = true;
-                    isEntailPrediksi = pcw.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+                    isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
                     arrCountPolaCocok[2]++;
                     if (isEntail==isEntailPrediksi) {arrCountEntailBenar[2]++;}
                 } else
                     //umbc sedang, cocok bulan
                     if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
-                             (pcw.isKondisiTerpenuhi(tPrepro,hPrepro) )
+                             (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) )
                             )
                     {
                             isCocok = true;
-                            isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro) && pcw.isEntail(tPrepro,hPrepro);
+                            isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro)
+                                    && pCocokWaktu.isEntail(tPrepro,hPrepro);
                             arrCountPolaCocok[3]++;
                             if (isEntail==isEntailPrediksi) {arrCountEntailBenar[3]++;}
                     } else
@@ -424,7 +510,146 @@ public class CariPolaBerjenjangTrain {
         return out;
     }
 
-    public void proses() {
+
+    public void initEmpatRuleTambahTask() {
+        init();
+        pTdkUmbc.batasKemiripan = 0.43;
+        pMiripUmbcTask.batasKemiripan = 0.44;
+        pVN.batasNoun =0.8;
+        pVN.batasVerb = 0;
+        pTaskQA.jenisTask = "QA";
+        pTaskIR.jenisTask = "IR";
+        pMiripKata.overlapKata = 0.69;
+        pMiripSdgUmbc.batasKemiripan = 0.4;
+        pMiripSdgUmbc.batasAtas = 0.8;
+        pMiripUmbc.batasKemiripan = 0.8;
+
+        pCocokLokasi.batasSkor = 0.5;  //coba cek apa 1 atau 0.5
+
+    }
+
+
+    //empat rule digabung dengan task
+    //hati2 initnya agar tidak nabrak
+    //argumen ke tiga: isEntail adalah hack biar bisa ngitung count, nanti dibuang
+    public boolean[] empatRuleTambahTask (InfoTeks tPrepro, InfoTeks hPrepro, boolean isEntail) {
+        boolean[] out = new boolean[2];
+        boolean isCocok=false;
+        boolean isEntailPrediksi=false;
+
+         /*
+        |    UMBC > 0.439799
+                |   cocokWaktu = none
+                |   |   rasioNounCocokDiskrit = (0.8,1]
+                    |   |   task = QA: entail (51.0/2.0)
+        */
+        if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pTaskQA.isKondisiTerpenuhi(tPrepro,hPrepro))
+            ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbcTask.isEntail(tPrepro,hPrepro)) &&
+                    (pVN.isEntail(tPrepro,hPrepro)) &&
+                    (pTaskQA.isEntail(tPrepro,hPrepro))
+                    );
+            arrCountPolaCocok[1]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[1]++;
+            }
+        } else
+        if (pTdkUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pTdkUmbc.isEntail(tPrepro, hPrepro);
+            arrCountPolaCocok[2]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[2]++;
+            }
+        } else
+         //cocok tahun & cocok noun tinggi: entail
+         if (   pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+                pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+                isCocok = true;
+                isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+                arrCountPolaCocok[3]++;
+                if (isEntail==isEntailPrediksi) {arrCountEntailBenar[3]++;}
+         } else
+         /*
+         UMBC > 0.439799
+                |   cocokWaktu = cocokwaktu
+                |   |   rasioKataCocok > 0.69: entail (39.0/2.0)
+
+          */
+         /*
+         if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (pMiripKata.isKondisiTerpenuhi(tPrepro,hPrepro))
+                 ) {
+             isCocok = true;
+             isEntailPrediksi = (
+                     (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                             (pCocokWaktu.isEntail(tPrepro,hPrepro)) &&
+                             (pMiripKata.isEntail(tPrepro,hPrepro))
+             );
+             arrCountPolaCocok[4]++;
+             if (isEntail == isEntailPrediksi) {
+                 arrCountEntailBenar[4]++;
+             }
+         } else
+         */
+         /*
+         UMBC > 0.439799
+        |   cocokWaktu = none
+        |   |   rasioNounCocokDiskrit = (0.8,1]
+        |   |   |   task = IR: entail (38.0/6.0)
+         */
+         if (    (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (pTaskIR.isKondisiTerpenuhi(tPrepro,hPrepro))
+                 ) {
+             isCocok = true;
+             isEntailPrediksi = (
+                     (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                             (pVN.isEntail(tPrepro,hPrepro)) &&
+                             (pTaskIR.isEntail(tPrepro,hPrepro))
+             );
+             arrCountPolaCocok[5]++;
+             if (isEntail == isEntailPrediksi) {
+                 arrCountEntailBenar[5]++;
+             }
+         } else
+         //umbc sedang, cocok bulan
+         if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
+                     (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) )
+                     )
+         {
+                 isCocok = true;
+                 isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro)
+                         && pCocokWaktu.isEntail(tPrepro,hPrepro);
+                 arrCountPolaCocok[6]++;
+                 if (isEntail==isEntailPrediksi) {arrCountEntailBenar[6]++;}
+         }
+         /*
+         else
+         if (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+             isCocok = true;
+             isEntailPrediksi = pMiripUmbc.isEntail(tPrepro,hPrepro);
+             arrCountPolaCocok[7]++;
+             if (isEntail==isEntailPrediksi) {arrCountEntailBenar[7]++;}
+         }
+         */
+        out[0] = isCocok;
+        out[1] = isEntailPrediksi;
+        return out;
+    }
+
+
+
+
+
+        public void proses() {
 
         System.out.println("Proses Pencarian Pola ");
 
@@ -445,7 +670,15 @@ public class CariPolaBerjenjangTrain {
         int jumVoting = 0;
         boolean isEntailPrediksi = false;
 
-        initEmpatRule(); //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
+
+        PolaMiripUmbc pMiripUmbcSapu = new  PolaMiripUmbc();
+        pMiripUmbcSapu.namaTabel = namaTabel;
+        pMiripUmbcSapu.batasKemiripan = 0.5;
+        pMiripUmbcSapu.init();
+
+        //initEmpatRule(); //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
+        //initTaskRule(); //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
+        initEmpatRuleTambahTask();  //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
 
         try {
             rs = pSel.executeQuery();
@@ -467,10 +700,19 @@ public class CariPolaBerjenjangTrain {
                 tPrepro.teksAsli = t;
                 boolean isCocok = false;
 
-                boolean[] hasil = empatRule(tPrepro,hPrepro,isEntail);
+                //boolean[] hasil = empatRule(tPrepro,hPrepro,isEntail);
+
+                //boolean[] hasil = taskRule(tPrepro,hPrepro,isEntail);
+
+                boolean[] hasil = empatRuleTambahTask(tPrepro,hPrepro,isEntail);
                 isCocok = hasil[0];
                 isEntailPrediksi = hasil[1];
 
+                /*
+                pMiripUmbcSapu.isKondisiTerpenuhi(tPrepro,hPrepro);
+                isCocok = true;
+                isEntailPrediksi = pMiripUmbcSapu.isEntail(tPrepro,hPrepro);
+                */
 
                 /*
                 if (!isCocok) {  //sisanya dengan voting, gak bagus
@@ -492,7 +734,11 @@ public class CariPolaBerjenjangTrain {
 
                 if (isCocok) {
                     jumCocok++;
+                    System.out.println(tPrepro.id);
+
                     /*
+                    System.out.print("ID:");
+                    System.out.println(tPrepro.id);
                     System.out.println("");
                     System.out.print("ID:");
                     System.out.println(tPrepro.id);
@@ -512,7 +758,7 @@ public class CariPolaBerjenjangTrain {
                     */
                     if (isEntail == isEntailPrediksi) {
                         //System.out.println("Prediksi Cocok!");
-                        System.out.println(tPrepro.id); //print ID yg entailnya tepat, nanti sisanya akan pake ML
+                        //System.out.println(tPrepro.id); //print ID yg entailnya tepat, nanti sisanya akan pake ML
                         //lihat scriptnya di file dataRTE3
                         jumCocokEntail++;
                     }  else {
@@ -521,6 +767,22 @@ public class CariPolaBerjenjangTrain {
                     }
                 } // if cocok
                 else { //tidak cocok, dumpa t,h,istenail
+                    //sapu bersih
+                    /*
+                    jumCocok++;
+                    pMiripUmbcSapu.isKondisiTerpenuhi(tPrepro,hPrepro);
+                    isEntailPrediksi = pMiripUmbcSapu.isEntail(tPrepro,hPrepro);
+                    if (isEntail == isEntailPrediksi) {
+                        //System.out.println("Prediksi Cocok!");
+                        //System.out.println(tPrepro.id); //print ID yg entailnya tepat, nanti sisanya akan pake ML
+                        //lihat scriptnya di file dataRTE3
+                        jumCocokEntail++;
+                    }  else {
+                        //System.out.println("Prediksi Tidak Cocok!");
+                        jumTdkCocokEntail++;
+                    }
+                    */
+
                     /*
                     System.out.println("");
                     System.out.print("ID:");
@@ -535,7 +797,7 @@ public class CariPolaBerjenjangTrain {
             }
             rs.close();
 
-            for (int i=1;i<=4;i++) {
+            for (int i=1;i<=8;i++) {
                 System.out.println("i="+i);
                 System.out.println("Pola cocok    ="+arrCountPolaCocok[i]);
                 System.out.println("Entail cocok  ="+arrCountEntailBenar[i]);
@@ -543,9 +805,9 @@ public class CariPolaBerjenjangTrain {
             }
 
 
-            System.out.println("jum voting:" + jumVoting);
-            System.out.println("jum Entail Cocok voting:" + jumCocokEntailVoting);
-            System.out.println("jum Entail TIDAK Cocok voting:" + jumTdkCocokEntailVoting);
+            //System.out.println("jum voting:" + jumVoting);
+            //System.out.println("jum Entail Cocok voting:" + jumCocokEntailVoting);
+            //System.out.println("jum Entail TIDAK Cocok voting:" + jumTdkCocokEntailVoting);
 
             System.out.println("jum Cocok Pola:" + jumCocok);
             System.out.println("jum Entail Cocok:" + jumCocokEntail);
@@ -554,17 +816,16 @@ public class CariPolaBerjenjangTrain {
             System.out.println("Akurasi dari kecocokan: " + (double) jumCocokEntail / jumCocok);
             //System.out.println("Akurasi total: " + (double) jumCocokEntail / jumCocok);
 
-
+            pMiripUmbcSapu.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     public static void main(String[] args) {
-        //UNTUK TRAIN!!
-        CariPolaBerjenjangTrain cp = new CariPolaBerjenjangTrain();
-        cp.namaTabel = "rte3_babak2";
-        //cp.namaTabel = "rte3_test_gold";
+        CariPolaBerjenjang cp = new CariPolaBerjenjang();
+        //cp.namaTabel = "rte3_babak2";
+        cp.namaTabel = "rte3_test_gold";
 
         cp.proses();
         cp.close();
@@ -572,64 +833,3 @@ public class CariPolaBerjenjangTrain {
 
 }
 
-
-/*
-
-            if   ( ptdkTfIdf.isKondisiTerpenuhi(tPrepro,hPrepro) )
-                {
-                    isCocok = true;
-                    isEntailPrediksi = ptdkTfIdf.isEntail(tPrepro, hPrepro);
-                } else {
-                    //cocok tahun, noun tinggi
-                    if (pcw.isKondisiTerpenuhi(tPrepro,hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
-                        isCocok = true;
-                        isEntailPrediksi = pcw.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
-                    } else {
-                        //tfidf sedang-tinggi; noun sedang-rendah
-                        if (pMiripTfIdf.isKondisiTerpenuhi(tPrepro,hPrepro) &&  pTdkVN.isKondisiTerpenuhi(tPrepro,hPrepro) ) {
-                            isCocok = true;
-                            isEntailPrediksi = false; //ini hacking krn nggak make isEntail
-                        } else {
-                            //umbc rendah, not entail
-                            if (pUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
-                                isCocok = true;
-                                isEntailPrediksi=pUmbc.isEntail(tPrepro,hPrepro);
-                                //isEntailPrediksi = true;
-                            }
-                            /*
-                            if (pCocokNerH.isKondisiTerpenuhi(tPrepro,hPrepro)) {
-                                pCocokNerH.isEntail(tPrepro,hPrepro); //hack utk dapat skor
-                                if (pCocokNerH.getSkor()==0) {
-                                    isCocok = true;
-                                    isEntailPrediksi = false;
-                                }
-                            }
-
-}
-        }
-        }
-
-
-
-                else {
-                    //level 2
-                    //if ( pVN.isKondisiTerpenuhi(tPrepro,hPrepro) &&
-                    //     pN.isKondisiTerpenuhi(tPrepro, hPrepro)
-                    //)
-                    if (pcw.isKondisiTerpenuhi(tPrepro,hPrepro))
-                    {
-                        isCocok = true;
-                        //cek entailment
-                        //if (pVN.isEntail(tPrepro, hPrepro) &&  pN.isEntail(tPrepro, hPrepro) ) {
-                        if (pcw.isEntail(tPrepro, hPrepro)) {
-                            isEntailPrediksi = true;
-                        } else {
-                            isEntailPrediksi = false;
-                        }
-                    }
-
-                }
-
-
-
- */

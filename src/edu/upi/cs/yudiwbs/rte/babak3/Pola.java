@@ -14,8 +14,7 @@ public abstract class Pola {
 
 
 
-    protected ArrayList<String> alT = new ArrayList<>();
-    protected ArrayList<String> alH = new ArrayList<>();
+
 
     //iscocok baru diproses kalau kondisi terpenuhi
     //karena kalau tidak isCocok akan selalu menghasilkan false
@@ -24,22 +23,7 @@ public abstract class Pola {
     //default true
     public abstract boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h);
 
-    //tools untuk meload t dan h ke dalam arrayList
-    protected void loadTH(String t, String h) {
-        //FS: alT dan alH terisi jadi mudah untuk diproses
-        Scanner sc = new Scanner(t);
-        while (sc.hasNext()) {
-            alT.add(sc.next());
-        }
-        sc.close();
 
-        sc = new Scanner(h);
-        while (sc.hasNext()) {
-            alH.add(sc.next());
-        }
-        sc.close();
-
-    }
 
     //jika perlu init dan close
     //belum tentu batas2 diset

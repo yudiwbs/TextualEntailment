@@ -80,7 +80,7 @@ public class CariPola {
         PolaSamaNumerik pN = new PolaSamaNumerik();
         pN.init();
         PolaMiripKata pMk = new PolaMiripKata();
-        pMk.pctOverlapKata = 0.5;
+        pMk.overlapKata = 0.5;
         pMk.init();
 
         PolaMiripKataSubsetPosisi pmKataSubset = new PolaMiripKataSubsetPosisi();

@@ -55,12 +55,15 @@ public class PolaTask extends Pola {
 
     @Override
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        return false;
+        String task = alTask.get(t.id);
+        isKondisiTerpenuhi =  task.equals(jenisTask);
+        return isKondisiTerpenuhi;
     }
 
+    //isKondisiTerpenuhi sudah dipanggil
     @Override
     public boolean isEntail(InfoTeks t, InfoTeks h) {
-        return false;
+        return isKondisiTerpenuhi;
     }
 
     @Override

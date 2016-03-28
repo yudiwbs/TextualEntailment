@@ -5,10 +5,7 @@ import edu.upi.cs.yudiwbs.rte.babak2.InfoTeks;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /**
  *    Created by yudiwbs on 15/02/2016.
@@ -20,17 +17,41 @@ import java.util.Set;
 
 public class PolaMiripKata extends Pola {
 
-    //nanti dapat diatur2
+    private ArrayList<String> alT = new ArrayList<>();
+    private ArrayList<String> alH = new ArrayList<>();
+
     private HashSet<String> hsStopWords = new HashSet<String>();
+
+    private boolean isKondisiTerpenuhi;
 
     private double rasio;
 
-    double pctOverlapKata = 0.75;
+    double overlapKata = 0.75;
+
     ProsesLemma pLemma;
 
-    //penting!, panggil method isEntail sebelum ini
-    public double getRasio() {
+    //penting!, panggil method isKOndisiTerpenuhi sebelum ini
+    public double getSkor() {
         return rasio;
+    }
+
+    //tools untuk meload t dan h ke dalam arrayList
+    protected void loadTH(String t, String h) {
+        //FS: alT dan alH terisi jadi mudah untuk diproses
+        alT.clear();
+        alH.clear();
+        Scanner sc = new Scanner(t);
+        while (sc.hasNext()) {
+            alT.add(sc.next());
+        }
+        sc.close();
+
+        sc = new Scanner(h);
+        while (sc.hasNext()) {
+            alH.add(sc.next());
+        }
+        sc.close();
+
     }
 
     protected void loadStopWords() {
@@ -97,7 +118,19 @@ public class PolaMiripKata extends Pola {
 
 
     @Override
+    //isKondisiTerpenuhi dipanggil lebih dulu
     public boolean isEntail(InfoTeks t, InfoTeks h) {
+        return isKondisiTerpenuhi;
+    }
+
+    @Override
+    public String getLabel() {
+        return "KataMirip";
+    }
+
+    @Override
+    //variabel isKondisiTerpenuhi juga diset setelah ini dipanggil
+    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
         boolean isCocok = false;
         //cari berapa persen kata di h dan t overlap
         //loop kata h, loop kata t, cari jumlah cocok
@@ -122,21 +155,11 @@ public class PolaMiripKata extends Pola {
 
         rasio = (double) cocok / alH.size();
         //System.out.println("rasio:"+rasio);
-        if (rasio>=pctOverlapKata) {
+        if (rasio>=overlapKata) {
             isCocok = true;
         }
+        isKondisiTerpenuhi = isCocok;
         return isCocok;
-    }
-
-    @Override
-    public String getLabel() {
-        return "KataMirip";
-    }
-
-    @Override
-    public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
-        boolean out =true;
-        return out;
     }
 
     @Override

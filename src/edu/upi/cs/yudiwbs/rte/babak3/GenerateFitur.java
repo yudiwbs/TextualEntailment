@@ -111,7 +111,7 @@ public class GenerateFitur {
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
-                    " from " + namaTabel;
+                    " from " + namaTabel + " order by id";
 
             pSel = conn.prepareStatement(strSel);
 
@@ -288,6 +288,7 @@ public class GenerateFitur {
                 }
                 */
 
+
                 if (pCocokLokasi.isKondisiTerpenuhi(tPrepro, hPrepro)) {
                     pCocokLokasi.isEntail(tPrepro, hPrepro); //supaya dapat skor
                     skorCocokLokasi = pCocokLokasi.getSkor();
@@ -412,12 +413,54 @@ public class GenerateFitur {
         }
     }
 
+    //utk yg lebih simple dari proses, print fitur untuk ditambah ke google spreadsheet
+    public void generateSimpleFitur() {
+        PreproBabak2 pp = new PreproBabak2();
+        PolaMiripKata pMiripKata = new PolaMiripKata();
+        pMiripKata.init();
+        try {
+            rs = pSel.executeQuery();
+            //id,cocokWaktu, rasioVerbCocok, rasioNounCocok, rasioKataCocok, rasioKataSubset,
+            //rasioKataNumeric, skorTfIdf, skorTfIdfNoun, skorWordnet, strEntail
+            System.out.println("id,cocokWaktu,rasioVerbCocok,rasioNounCocok,rasioKataCocok,rasioKataSubset," +
+                    "rasioKataNumeric,skorTfIdf,skorTfIdfNoun,skorWordnet,verbCocok,isEntail");
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String t = rs.getString(2);
+                String h = rs.getString(3);
+                boolean isEntail = rs.getBoolean(4);
+                String tSynTree = rs.getString(5);
+                String hSynTree = rs.getString(6);
+                //nanti pola dapat lebih dari satu
+
+                InfoTeks hPrepro = pp.prepro2(h, hSynTree);
+                hPrepro.strukturSyn = hSynTree;
+                hPrepro.id = id;
+                hPrepro.teksAsli = h;
+
+                InfoTeks tPrepro = pp.prepro2(t, tSynTree);
+                tPrepro.strukturSyn = tSynTree;
+                tPrepro.id = id;
+                tPrepro.teksAsli = t;
+
+                pMiripKata.isKondisiTerpenuhi(tPrepro,hPrepro);  //untuk dapat skor
+                System.out.println(pMiripKata.getSkor());
+            }
+
+            System.out.println("selesai");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         GenerateFitur gf = new GenerateFitur();
         //gf.namaTabel = "rte3_babak2";
         gf.namaTabel = "rte3_test_gold";
         gf.init();
-        gf.proses();
+        //gf.proses();
+        gf.generateSimpleFitur();
         gf.close();
     }
 
