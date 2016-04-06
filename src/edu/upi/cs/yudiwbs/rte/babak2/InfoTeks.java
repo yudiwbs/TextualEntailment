@@ -9,6 +9,8 @@ import java.util.Scanner;
  *
  * menyipan objek T dan H, termasuk syntatic structure
  *
+ * yg terbaru ada di TextualEntailment Gradle
+ *
  */
 public class InfoTeks {
     public int id; //idH atau idT

@@ -69,8 +69,7 @@ public class HitungSkorThesaurusDB {
             String strSelCase = "select \n" +
                     "id,kata1,kata2\n" +
                     "from \n" +
-                    "thesaurus_paragraph\n" +
-                    " ";
+                    "thesaurus_paragraph\n" ;
             pSelCase = conn.prepareStatement(strSelCase);
 
             String strUpdateCase = "update " +namaTabelThesaurus+" set kata1_lowercase = ?, kata2_lowercase  = ? where id = ?";

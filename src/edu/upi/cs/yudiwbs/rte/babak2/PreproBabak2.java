@@ -18,6 +18,9 @@ import java.util.logging.Logger;
  *
  *   buang selain kata benda dan kata kerja
  *
+ *
+ *   yang terbaru ada di TextualEntailmentGradle
+ *
  */
 
 public class PreproBabak2 {
@@ -26,6 +29,27 @@ public class PreproBabak2 {
     public String userName;
     public String password;
     private ArrayList<String> alStopWords = new ArrayList<>();
+
+    //loadstopwords harus dipanggil terlebih dulu!!
+    //hanya huruf yang diterima
+    public ArrayList<String> loadKataTanpaStopWords(String str,boolean keLowerCase) {
+        ArrayList<String> out = new  ArrayList<String>();
+
+        //buang selaing alphanumerik
+        String str2 = str.replaceAll("[^A-Za-z]"," ").replaceAll("\\s+", " ").trim();
+
+        Scanner sc = new Scanner(str2);
+        while (sc.hasNext()) {
+            String kata = sc.next().trim();
+            if (keLowerCase) {
+                kata = kata.toLowerCase();
+            }
+            if (!alStopWords.contains(kata.toLowerCase())) {
+                out.add(kata);
+            }
+        }
+        return out;
+    }
 
     //true jika ada di stopwords
     //loadstopwords harus dipanggil lebih dulu!

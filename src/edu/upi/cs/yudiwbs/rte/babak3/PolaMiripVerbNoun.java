@@ -14,6 +14,10 @@ public class PolaMiripVerbNoun extends  Pola{
     double batasVerb = 0.7;  // >= maka true
     double batasNoun = 0.8;  // >= maka true
 
+    //kalau mau menggunakan range
+    double batasAtasVerb = 1;
+    double batasAtasNoun = 1;
+
 
     private double pctNounCocok;
     private double pctVerbCocok;
@@ -81,7 +85,10 @@ public class PolaMiripVerbNoun extends  Pola{
         }
 
 
-        if ((pctVerbCocok>=batasVerb) && (pctNounCocok>=batasNoun)) {
+        if ( (  (pctVerbCocok>=batasVerb) &&  (pctVerbCocok<=batasAtasVerb)  ) &&
+             (  (pctNounCocok>=batasNoun) &&  (pctNounCocok<=batasAtasNoun) )
+           )
+        {
             isCocok = true;
         }
 

@@ -21,22 +21,29 @@ public class PolaIndirectSpeech extends  Pola{
     public boolean isKondisiTerpenuhi(InfoTeks t, InfoTeks h) {
 
         if (       t.teksAsli.contains("said")
-                && t.teksAsli.contains("says")
-                && t.teksAsli.contains("tells")
-                && t.teksAsli.contains("told")  )
+                || t.teksAsli.contains("says")
+                || t.teksAsli.contains("tells")
+                || t.teksAsli.contains("told")  )
         {
             isKondisiTerpenuhi = true;
+        } else {
+            isKondisiTerpenuhi = false;
         }
         return isKondisiTerpenuhi;
     }
 
     @Override
     public boolean isEntail(InfoTeks t, InfoTeks h) {
-        return false;
+        //kalau ada indirect speech, harusnya lihat subject yg bicara X tells,
+        return !isKondisiTerpenuhi;
     }
 
     @Override
     public String getLabel() {
         return null;
+    }
+
+    public static void main(String[] args) {
+        //cek di CariPolaSatuPola
     }
 }

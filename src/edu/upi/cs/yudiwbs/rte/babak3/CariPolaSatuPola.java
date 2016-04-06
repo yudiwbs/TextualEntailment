@@ -22,7 +22,7 @@ public class CariPolaSatuPola {
     private PreparedStatement pSel = null;
     private ResultSet rs;
 
-    public void init() {
+    public void init(String namaTabel) {
         try {
 
             KoneksiDB db = new KoneksiDB();
@@ -30,7 +30,7 @@ public class CariPolaSatuPola {
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
-                    " from rte3_babak2 " +
+                    " from "+ namaTabel +" order by id" +
                     " #limit 10 ";
 
 
@@ -66,9 +66,12 @@ public class CariPolaSatuPola {
     public void proses() {
         System.out.println("Proses Pencarian Pola ");
 
-        PolaCocokLokasi pola = new PolaCocokLokasi();
+        /*PolaCocokLokasi pola = new PolaCocokLokasi();
         pola.batasSkor = 0.5;
-        pola.namaTabel = "rte3_babak2";
+        pola.namaTabel = "rte3_babak2"; */
+
+        PolaIndirectSpeech pola = new PolaIndirectSpeech();
+
 
         pola.init();
         PreproBabak2 pp = new PreproBabak2();
@@ -103,11 +106,15 @@ public class CariPolaSatuPola {
                 tPrepro.teksAsli = t;
                 boolean isCocok = false;
 
+                System.out.print(tPrepro.id+",");  //untuk dump fitur
+
                 //&&
                 if   ( pola.isKondisiTerpenuhi(tPrepro,hPrepro))
                 {
-                    //debug
+                    System.out.println("1"); //dump fitur
                     isCocok = true;
+                    //debug
+                    /*
                     System.out.println("");
                     System.out.print("ID:");
                     System.out.println(tPrepro.id);
@@ -115,28 +122,31 @@ public class CariPolaSatuPola {
                     System.out.println(tPrepro.teksAsli);
                     System.out.print("H:");
                     System.out.println(hPrepro.teksAsli);
+                    */
 
                     //&&
                     isEntailPrediksi = pola.isEntail(tPrepro, hPrepro);
 
+                } else {
+                    System.out.println("0"); //dump fitur
                 }
 
                 if (isCocok) {
                     jumCocok++;
-                    System.out.print("Isentail:");//System.out.println(p.getLabel());
+                    //System.out.print("Isentail:");//System.out.println(p.getLabel());
                     if (isEntail) {
-                        System.out.println("ENTAIL");
+                        //System.out.println("ENTAIL");
                     } else {
-                        System.out.println("NOT ENTAIL");
+                        //System.out.println("NOT ENTAIL");
                     }
 
-                    System.out.println("Prediksi:"+isEntailPrediksi);
+                    //System.out.println("Prediksi:"+isEntailPrediksi);
 
                     if (isEntail == isEntailPrediksi) {
-                        System.out.println("Prediksi Cocok!");
+                        //System.out.println("Prediksi Cocok!");
                         jumCocokEntail++;
                     }  else {
-                        System.out.println("Prediksi Tidak Cocok!");
+                        //System.out.println("Prediksi Tidak Cocok!");
                         jumTdkCocokEntail++;
                     }
                 }
@@ -145,7 +155,6 @@ public class CariPolaSatuPola {
             System.out.println("jum Cocok Pola:" + jumCocok);
             System.out.println("jum Entail Cocok:" + jumCocokEntail);
             System.out.println("jum Entail TIDAK Cocok:" + jumTdkCocokEntail);
-
             System.out.println("Akurasi dari kecocokan: " + (double) jumCocokEntail / jumCocok);
             pola.close();
         } catch (Exception ex) {
@@ -155,7 +164,8 @@ public class CariPolaSatuPola {
 
     public static void main(String[] args) {
         CariPolaSatuPola cp = new CariPolaSatuPola();
-        cp.init();
+        //cp.init("rte3_babak2");
+        cp.init("rte3_test_gold");
         cp.proses();
         cp.close();
     }

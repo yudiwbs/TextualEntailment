@@ -3,10 +3,9 @@ package edu.upi.cs.yudiwbs.rte;
 import edu.cmu.lti.lexical_db.ILexicalDatabase;
 import edu.cmu.lti.lexical_db.NictWordNet;
 import edu.cmu.lti.ws4j.RelatednessCalculator;
-import edu.cmu.lti.ws4j.impl.LeacockChodorow;
-import edu.cmu.lti.ws4j.impl.Lesk;
-import edu.cmu.lti.ws4j.impl.WuPalmer;
+import edu.cmu.lti.ws4j.impl.*;
 import edu.cmu.lti.ws4j.util.WS4JConfiguration;
+import edu.upi.cs.yudiwbs.rte.babak2.PreproBabak2;
 //import wordnet.similarity.SimilarityAssessor;
 //import wordnet.similarity.WordNotFoundException;
 
@@ -14,6 +13,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,6 +41,8 @@ import java.util.logging.Logger;
  */
 public class ProsesWordNetSimilarity {
 
+    public double maksSemuaSkor = 0;
+
     //batalin dulu gara2 versi ini menggunakan lib stanford lama dan tabrakan
     //private SimilarityAssessor assessor ;
 
@@ -54,13 +56,16 @@ public class ProsesWordNetSimilarity {
             new Resnik(db), new JiangConrath(db), new Lin(db), new Path(db)
     };*/
 
-    /*private static RelatednessCalculator[] rcs = {
-            new LeacockChodorow(db)
-    };*/
+    //private RelatednessCalculator rc = new Path(db);
+    //private RelatednessCalculator rc = new Lin(db);
 
-    //private RelatednessCalculator rcLC = new LeacockChodorow(db);
+    //private RelatednessCalculator rc = new JiangConrath(db);
 
-    private RelatednessCalculator rcLC = new WuPalmer(db);
+    //private RelatednessCalculator rc = new Resnik(db);
+     //private RelatednessCalculator rc = new LeacockChodorow(db);
+    //private RelatednessCalculator rc = new WuPalmer(db);
+    //private RelatednessCalculator rc = new HirstStOnge(db); //ini lama banget! hasil juga aneh, nanti aja dicoba lagi
+    private RelatednessCalculator rc = new  Lesk(db);
 
     private HashSet<String> hsStopWords = new HashSet<String>();
 
@@ -69,9 +74,9 @@ public class ProsesWordNetSimilarity {
     private int cc2=0; //untuk print saja
 
 
-    public ProsesWordNetSimilarity() {
+    //public ProsesWordNetSimilarity() {
         //assessor = new SimilarityAssessor() ;
-    }
+    //}
 
     //DITUTUP DULU, lib ini menggunakan stanford parser lama dan tabrakan
     //dengan stanford parser baru :(
@@ -179,6 +184,51 @@ public class ProsesWordNetSimilarity {
         return out;
     }
 
+    //untuk menangani angka besar, dilog lalu ditambah
+    public double  hitungSimWordnetJijcounLog(ArrayList<String> vT, ArrayList<String> vH) {
+        double out=0;
+        for (String h:vH) {
+            double skorMax = 0;
+            String kataTmax = "";
+            for (String t:vT) {
+                double sim = hitungSimilarity(h,t);
+                sim = Math.log(sim); //karena angkanya bisa besar
+                if (sim>skorMax) {
+                    skorMax = sim;
+                    kataTmax = t;
+                }
+            }
+            System.out.println(h+"-->"+kataTmax);
+            System.out.println("Skor:"+skorMax);
+            out = out + skorMax; //memang bisa nol, nanti smoothing?
+        }
+        System.out.println("skor total:"+out);
+        return out;
+    }
+
+    //berdasarkan  Jijcoun
+    //
+    public double  hitungSimWordnetJijcoun(ArrayList<String> vT, ArrayList<String> vH) {
+        double out=1;
+        for (String h:vH) {
+            double skorMax = 0;
+            String kataTmax = "";
+            for (String t:vT) {
+                double sim = hitungSimilarity(h,t);
+                if (sim>skorMax) {
+                    skorMax = sim;
+                    kataTmax = t;
+                }
+            }
+            System.out.println(h+"-->"+kataTmax);
+            System.out.println("Skor:"+skorMax);
+            out = out * skorMax; //memang bisa nol, nanti smoothing?
+        }
+        System.out.println("skor total:"+out);
+        return out;
+    }
+
+
     /**
      *  Berdasarkan paper: "Sentence Similarity Based on Semantic Nets ..", Yuhua Li
      *
@@ -193,17 +243,17 @@ public class ProsesWordNetSimilarity {
      *  algoritmanya aneh, karena memandingkan kata yg sama di kata gab (skor pasti gede)
      *
      *
-     * @param s1
-     * @param s2
+     * @param vT
+     * @param vH
      */
-    public double  hitungSimWordnet(String s1, String s2) {
+    public double  hitungSimWordnet(String vT, String vH) {
 
+        String t,h;
 
+        t = prepro(vT);
+        h = prepro(vH);
 
-        s1 = prepro(s1);
-        s2 = prepro(s2);
-
-        //debug print saja
+        //print saja
         System.out.print(".");
         cc2++;
         if (cc2%50==0) {
@@ -213,28 +263,28 @@ public class ProsesWordNetSimilarity {
 
         //tahap satu, buat vektor gabungan
         HashSet<String> hsGab = new HashSet<>();
-        HashSet<String> hsS1  = new HashSet<>();
-        HashSet<String> hsS2  = new HashSet<>();
+        HashSet<String> hsT  = new HashSet<>();
+        HashSet<String> hsH  = new HashSet<>();
 
-        HashMap<String,Double> hmVectS1  = new HashMap<>();
-        HashMap<String,Double> hmVectS2  = new HashMap<>();
+        HashMap<String,Double> hmVectT  = new HashMap<>();
+        HashMap<String,Double> hmVectH  = new HashMap<>();
 
 
         //kenapa harus digabung??
-        Scanner sc = new Scanner(s1);
+        Scanner sc = new Scanner(t);
         String kata;
         while (sc.hasNext()) {
             kata = sc.next();
-            hsS1.add(kata);
+            hsT.add(kata);
             if (!hsGab.contains(kata)) {
                 hsGab.add(kata);
             }
         }
 
-        sc = new Scanner(s2);
+        sc = new Scanner(h);
         while (sc.hasNext()) {
             kata = sc.next();
-            hsS2.add(kata);
+            hsH.add(kata);
             if (!hsGab.contains(kata)) {
                 hsGab.add(kata);
             }
@@ -252,14 +302,14 @@ public class ProsesWordNetSimilarity {
         //bentuk vektor s1
         for (String kGab: hsGab) {
             //s1 mengandung kata di sGab, beri skor maks
-            if (hsS1.contains(kGab)) {
-                 hmVectS1.put(kGab,1.0);
+            if (hsT.contains(kGab)) {
+                 hmVectT.put(kGab,1.0);
             } else {
                 //tidak ada, loop untuk semua kata di s1, cari skor mirip wordnet yg tertinggi
                 //jika masuk treshhold jadikan skor kata itu dalam vektor s1
                 double valSim;
                 double maxValSim=-99;
-                for (String k1: hsS1) {
+                for (String k1: hsT) {
                     valSim = hitungSimilarity(kGab,k1);
                     if (valSim>maxValSim) {
                         maxValSim = valSim;
@@ -267,7 +317,7 @@ public class ProsesWordNetSimilarity {
                 }
                 //terima jika masuk treshold
                 if (maxValSim>tresholdMinSim) {
-                     hmVectS1.put(kGab,maxValSim);
+                     hmVectT.put(kGab,maxValSim);
                 }
             }
         }
@@ -275,14 +325,14 @@ public class ProsesWordNetSimilarity {
         //todo: masih duplikasi
         for (String kGab: hsGab) {
             //s2 mengandung kata di sGab, beri skor maks
-            if (hsS2.contains(kGab)) {
-                hmVectS2.put(kGab,1.0);
+            if (hsH.contains(kGab)) {
+                hmVectH.put(kGab,1.0);
             } else {
                 //tidak ada, loop untuk semua kata di s1, cari skor mirip wordnet yg tertinggi
                 //jika masuk treshhold jadikan skor kata itu dalam vektor s1
                 double valSim;
                 double maxValSim=-99;
-                for (String k2: hsS2) {
+                for (String k2: hsH) {
                     valSim = hitungSimilarity(kGab,k2);
                     if (valSim>maxValSim) {
                         maxValSim = valSim;
@@ -290,7 +340,7 @@ public class ProsesWordNetSimilarity {
                 }
                 //terima jika masuk treshold
                 if (maxValSim>tresholdMinSim) {
-                    hmVectS2.put(kGab,maxValSim);
+                    hmVectH.put(kGab,maxValSim);
                 }
             }
         }
@@ -314,7 +364,7 @@ public class ProsesWordNetSimilarity {
         }*/
 
         Similar sim = new Similar();
-        return sim.cosine(hmVectS1, hmVectS2);
+        return sim.cosine(hmVectT, hmVectH);
 
     }
 
@@ -349,18 +399,32 @@ public class ProsesWordNetSimilarity {
     }
 
     //membandingkan dua kata
+    //menggunakan LC
     private double hitungSimilarity( String word1, String word2 ) {
         WS4JConfiguration.getInstance().setMFS(true);
         //for ( RelatednessCalculator rc : rcs ) {
-        double s = rcLC.calcRelatednessOfWords(word1, word2);
-        //if (Double.isInfinite(s)) {
-        //    System.out.println("hoi infinity!");
-       // }
-        return s;
+        double out = rc.calcRelatednessOfWords(word1, word2);
+        if (out>maksSemuaSkor && out<1E3)  {
+            maksSemuaSkor = out;
+        }
+
+        //untuk LC angka bisa 1.2, 1.6 dst ngngak bisa dibatasi gini
+
+        //if (out>1E100) {
+        if (out>29) {
+            System.out.println("skor asli:"+out);
+            out =29;
+        } //hasilnya bisa > 1
+
+        /*if (Double.isInfinite(out)) {
+            System.out.println("hoi infinity!");
+        }*/
+
+        return out;
         //}
     }
 
-
+    //jangan pake ini, pake clas prepro harusnya
     private  String prepro(String strInput ) {
         String out = strInput;
         //case folding jadi jelek, tidak digunakan
@@ -383,9 +447,7 @@ public class ProsesWordNetSimilarity {
     }
 
 
-    public void prosesDb(String tabelUtama, String tabelDisc) {
 
-    }
 
     /**
      *  versi yw
@@ -496,7 +558,7 @@ public class ProsesWordNetSimilarity {
         log.log(Level.INFO,"Selesai");
     }
 
-    public static void prosesDbSimWordnet() {
+    public static void prosesDbSimWordnet(String namaTabel) {
         ProsesWordNetSimilarity pw = new ProsesWordNetSimilarity();
 
         //double v = pw.hitungSimWordnet("A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.","30 die in a bus collision in Uganda.");
@@ -510,12 +572,16 @@ public class ProsesWordNetSimilarity {
         KoneksiDB db = new KoneksiDB();
         String kata;
         log.log(Level.INFO,"Mulai prosesDBSimWordnetYW wordnet");
+
+        PreproBabak2 pp = new PreproBabak2();
+        pp.loadStopWords("stopwords","kata");
+
         try {
             conn = db.getConn();
-            SQLambilTw   = "select id,t,h from rte3";
-            strUpdate    = "update rte3 set skorSimWN=? where id=?";
+            SQLambilTw   = "select id,t,h from "+namaTabel+ " #limit 10";
+            strUpdate    = "update "+namaTabel+" set skor_simwordnet=? where id=?";
 
-            pTw  =  conn.prepareStatement (SQLambilTw);
+            pTw     =  conn.prepareStatement (SQLambilTw);
             pUpdate = conn.prepareStatement(strUpdate);
 
             //loop untuk semua instance
@@ -523,18 +589,29 @@ public class ProsesWordNetSimilarity {
 
             while (rsTw.next()) {
                 long id = rsTw.getLong(1);
-                String s1 = rsTw.getString(2);
-                String s2 = rsTw.getString(3);
-                System.out.println(s1);
-                System.out.println(s2);
+                String t = rsTw.getString(2);
+                String h = rsTw.getString(3);
+
+                //ambil tanpa stopwords
+                ArrayList<String> arrT= pp.loadKataTanpaStopWords(t,false);
+                ArrayList<String> arrH= pp.loadKataTanpaStopWords(h,false);
+
+                System.out.println(t);
+                System.out.println(h);
                 System.out.println();
-                double sim = pw.hitungSimWordnet(s1,s2);
+                //double sim = pw.hitungSimWordnet(t,h);
+                //double sim = pw.hitungSimWordnetJijcoun(arrT,arrH);
+                double sim = pw.hitungSimWordnetJijcounLog(arrT,arrH); //untuk yg angka gede
+
                 System.out.println("sim="+sim);
+
+
                 pUpdate.setDouble(1, sim);
                 pUpdate.setLong(2, id);
                 pUpdate.executeUpdate();
 
             }
+            System.out.println("MAX semua skor"+ pw.maksSemuaSkor);
             pUpdate.close();
             pTw.close();
             conn.close();
@@ -566,14 +643,13 @@ public class ProsesWordNetSimilarity {
         //Verb T lemma:scrub  book
 
         //double v = pw.hitungSimWordnet2("boeing headquarters canada","scrub  book");
-        StringBuilder sb = new StringBuilder();
-        double v = pw.hitungSimWordnet2("honey","sugar",sb);
+        //StringBuilder sb = new StringBuilder();
+        //double v = pw.hitungSimWordnet2("honey","sugar",sb);
 
-        System.out.println();
-        System.out.println(v);
+        //System.out.println();
+        //System.out.println(v);
 
-        //pw.prosesDbSimWordnet();
-        //pw.prosesDb("rte3_label","disc_t_rte3_label");
+        pw.prosesDbSimWordnet("rte3_babak2");
     }
 
 

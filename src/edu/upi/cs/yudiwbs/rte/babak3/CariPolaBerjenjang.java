@@ -30,12 +30,17 @@ public class CariPolaBerjenjang {
     PolaMiripUmbc pMiripUmbc;
     PolaMiripUmbc pMiripUmbcTask;
     PolaMiripUmbc pMiripSdgUmbc;
+    PolaMiripUmbc pMiripUmbc2;
 
 
     PolaTidakMiripUmbc pTdkUmbc;
     PolaTidakMiripTfIdf  ptdkTfIdf;
     PolaCocokWaktu pCocokWaktu;
+
     PolaMiripVerbNoun pVN;
+    PolaMiripVerbNoun pVN2;
+    PolaMiripVerbNoun pVN3;
+
     PolaTidakMiripVerbNoun pTdkVN;
     PolaMiripTfIdf pMiripTfIdf;
     PolaCocokNerH pCocokNerH;
@@ -60,7 +65,7 @@ public class CariPolaBerjenjang {
 
             //ambil data t dan h,
             String strSel = "select id,t,h,isEntail, t_gram_structure, h_gram_structure " +
-                    " from " + namaTabel;
+                    " from " + namaTabel + " order by id";
 
 
             pSel = conn.prepareStatement(strSel);
@@ -85,6 +90,11 @@ public class CariPolaBerjenjang {
         pMiripUmbc.namaTabel = namaTabel;
         pMiripUmbc.init();
 
+        pMiripUmbc2 = new PolaMiripUmbc();
+        pMiripUmbc2.namaTabel = namaTabel;
+        pMiripUmbc2.init();
+
+
         pMiripUmbcTask = new PolaMiripUmbc();
         pMiripUmbcTask.namaTabel = namaTabel;
         pMiripUmbcTask.init();
@@ -108,6 +118,11 @@ public class CariPolaBerjenjang {
         pVN = new PolaMiripVerbNoun();
         pVN.init();
 
+        pVN2 = new PolaMiripVerbNoun();
+        pVN2.init();
+
+        pVN3 = new PolaMiripVerbNoun();
+        pVN3.init();
 
         pTdkVN = new PolaTidakMiripVerbNoun();
         pTdkVN.init();
@@ -136,11 +151,16 @@ public class CariPolaBerjenjang {
         pTaskIR.close();
         pMiripUmbc.close();
         pMiripUmbcTask.close();
+        pMiripUmbc2.close();
         ptdkTfIdf.close();
         pCocokWaktu.close();
         pTdkVN.close();
         pMiripTfIdf.close();
+
         pVN.close();
+        pVN2.close();
+        pVN3.close();
+
         pCocokNerH.close();
         pTdkUmbc.close();
         pCocokLokasi.close();
@@ -513,7 +533,7 @@ public class CariPolaBerjenjang {
 
     public void initEmpatRuleTambahTask() {
         init();
-        pTdkUmbc.batasKemiripan = 0.43;
+        pTdkUmbc.batasKemiripan = 0.439;
         pMiripUmbcTask.batasKemiripan = 0.44;
         pVN.batasNoun =0.8;
         pVN.batasVerb = 0;
@@ -528,6 +548,272 @@ public class CariPolaBerjenjang {
 
     }
 
+
+    public void initruleVer28MaretSore() {
+        init();
+        pTdkUmbc.batasKemiripan = 0.439;
+        pMiripUmbcTask.batasKemiripan = 0.44;
+        pVN.batasNoun =0.8;
+        pVN.batasVerb = 0;
+        //pTaskQA.jenisTask = "QA";
+        pTaskIR.jenisTask = "IR";
+        pMiripKata.overlapKata = 0.69;
+        pMiripSdgUmbc.batasKemiripan = 0.4;
+        pMiripSdgUmbc.batasAtas = 0.8;
+        pMiripUmbc.batasKemiripan = 0.8;
+
+
+    }
+
+
+    public void initRuleVer29MaretPagi() {
+        init();
+        pTdkUmbc.batasKemiripan = 0.439;
+        pMiripUmbcTask.batasKemiripan = 0.44;
+        pVN.batasNoun =0.8;
+        pVN.batasVerb = 0;
+        //pTaskQA.jenisTask = "QA";
+        pTaskIR.jenisTask = "IR";
+        pMiripKata.overlapKata = 0.69;
+        pMiripSdgUmbc.batasKemiripan = 0.4;
+        pMiripSdgUmbc.batasAtas = 0.8;
+        pMiripUmbc.batasKemiripan = 0.8;
+
+        pMiripUmbc2.batasKemiripan = 0.646592;
+        pVN2.batasNoun = 0.01; //asal jangan nol
+        pVN2.batasVerb = 0;
+
+        //rasioNounCocokDiskrit = (0.57,0.8] &  skorcocoklokasi > 0.5: entail (26.0/5.0=80.77%)
+        pVN3.batasNoun = 0.57;
+        pVN3.batasAtasNoun = 0.8;
+        pVN3.batasVerb = 0;
+        pCocokLokasi.batasSkor = 0.5;
+
+
+    }
+
+    //persis seperti rule 28MaretSore tukar, tapi tambah tiga rule:
+    /*
+    task = IR & rasioNounCocok > 0.89: entail (33.0/4.0=87.87%)  --> jadikan 0.8
+    rasioNounCocok > 0 & UMBC > 0.646592: entail (28.0/4.0=85.71)
+    rasioNounCocokDiskrit = (0.57,0.8] &  skorcocoklokasi > 0.5: entail (26.0/5.0=80.77%)
+    */
+    public boolean[] ruleVer29MaretPagi (InfoTeks tPrepro, InfoTeks hPrepro, boolean isEntail) {
+
+        boolean[] out = new boolean[2];
+        boolean isCocok=false;
+        boolean isEntailPrediksi=false;
+
+        if (   pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+                pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) &&
+                    pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+            arrCountPolaCocok[1]++;
+            if (isEntail==isEntailPrediksi) {arrCountEntailBenar[1]++;}
+        }
+        else if (pTdkUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pTdkUmbc.isEntail(tPrepro, hPrepro);
+            arrCountPolaCocok[2]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[2]++;
+            }
+        }
+        else if (pVN2.isKondisiTerpenuhi(tPrepro,hPrepro)
+                && pMiripUmbc2.isKondisiTerpenuhi(tPrepro,hPrepro) ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pVN2.isEntail(tPrepro,hPrepro) &&
+                            pMiripUmbc2.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[3]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[3]++;
+            }
+        }
+        else if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
+                (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) )
+                )
+        {
+            isCocok = true;
+            isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro)
+                    && pCocokWaktu.isEntail(tPrepro,hPrepro);
+            arrCountPolaCocok[4]++;
+            if (isEntail==isEntailPrediksi) {arrCountEntailBenar[4]++;}
+        }
+        else if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro))
+                ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbcTask.isEntail(tPrepro,hPrepro)) &&
+                            (pVN.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[5]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[5]++;
+            }
+        } //else
+        //task = IR & rasioNounCocok > 0.89: entail (33.0/4.0=87.87%)
+        /*
+        if (pTaskIR.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+            pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pTaskIR.isEntail(tPrepro,hPrepro) &&
+                    pVN.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[5]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[5]++;
+            }
+
+        } else
+        */
+        //rasioNounCocok > 0 & UMBC > 0.646592: entail (28.0/4.0=85.71)
+        //else
+        /*
+        // rasioNounCocokDiskrit = (0.57,0.8] &  skorcocoklokasi > 0.5: entail (26.0/5.0=80.77%)
+        if (pVN3.isKondisiTerpenuhi(tPrepro,hPrepro) &&  pCocokLokasi.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    pVN3.isEntail(tPrepro,hPrepro) &&
+                    pCocokLokasi.isEntail(tPrepro,hPrepro)
+            );
+            arrCountPolaCocok[7]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[7]++;
+            }
+        }
+        */
+
+         /*
+
+
+    rasioNounCocokDiskrit = (0.57,0.8] &  skorcocoklokasi > 0.5: entail (26.0/5.0=80.77%)
+    */
+
+
+        out[0] = isCocok;
+        out[1] = isEntailPrediksi;
+        return out;
+    }
+
+
+    //ganti posisi jadi 3, 2, 4, 1
+    public boolean[] ruleVer28MaretSoreTukar (InfoTeks tPrepro, InfoTeks hPrepro, boolean isEntail) {
+        boolean[] out = new boolean[2];
+        boolean isCocok=false;
+        boolean isEntailPrediksi=false;
+
+        if (   pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+                pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) &&
+                    pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+            arrCountPolaCocok[1]++;
+            if (isEntail==isEntailPrediksi) {arrCountEntailBenar[1]++;}
+        } else
+        if (pTdkUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pTdkUmbc.isEntail(tPrepro, hPrepro);
+            arrCountPolaCocok[2]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[2]++;
+            }
+        } else
+        if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
+                    (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) )
+                    )
+            {
+                isCocok = true;
+                isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro)
+                        && pCocokWaktu.isEntail(tPrepro,hPrepro);
+                arrCountPolaCocok[3]++;
+                if (isEntail==isEntailPrediksi) {arrCountEntailBenar[3]++;}
+            }
+        if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro))
+                ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbcTask.isEntail(tPrepro,hPrepro)) &&
+                            (pVN.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[4]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[4]++;
+            }
+        }
+        out[0] = isCocok;
+        out[1] = isEntailPrediksi;
+        return out;
+    }
+
+
+
+    public boolean[] ruleVer28MaretSore (InfoTeks tPrepro, InfoTeks hPrepro, boolean isEntail) {
+        boolean[] out = new boolean[2];
+        boolean isCocok=false;
+        boolean isEntailPrediksi=false;
+
+         /*
+        |    UMBC > 0.439799
+                |   cocokWaktu = none
+                |   |   rasioNounCocokDiskrit = (0.8,1]
+                    |   |   task = QA: entail (51.0/2.0)
+        */
+
+        if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro))
+                ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbcTask.isEntail(tPrepro,hPrepro)) &&
+                    (pVN.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[1]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[1]++;
+            }
+        } else
+        if (pTdkUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pTdkUmbc.isEntail(tPrepro, hPrepro);
+            arrCountPolaCocok[2]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[2]++;
+            }
+        } else
+            //cocok tahun & cocok noun tinggi: entail
+            if (   pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+                    pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+                isCocok = true;
+                isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) &&
+                                   pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+                arrCountPolaCocok[3]++;
+                if (isEntail==isEntailPrediksi) {arrCountEntailBenar[3]++;}
+            } else
+                //umbc sedang, cocok bulan
+                if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
+                            (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) )
+                            )
+                    {
+                        isCocok = true;
+                        isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro)
+                                && pCocokWaktu.isEntail(tPrepro,hPrepro);
+                        arrCountPolaCocok[4]++;
+                        if (isEntail==isEntailPrediksi) {arrCountEntailBenar[4]++;}
+                    }
+
+        out[0] = isCocok;
+        out[1] = isEntailPrediksi;
+        return out;
+    }
 
     //empat rule digabung dengan task
     //hati2 initnya agar tidak nabrak
@@ -646,15 +932,161 @@ public class CariPolaBerjenjang {
     }
 
 
+    //sama dengan atas, tapi sistemnya voting
+    //argumen ke tiga: isEntail adalah hack biar bisa ngitung count, nanti dibuang
+    public boolean[] empatRuleTambahTaskVoting (InfoTeks tPrepro, InfoTeks hPrepro, boolean isEntail) {
+        boolean[] out = new boolean[2];
+        boolean isCocok=false;
+        boolean isEntailPrediksi=false;
+
+        //voting
+        int countPrediksiTrue=0;
+        int countPrediksiFalse=0;
+
+         /*
+        |    UMBC > 0.439799
+                |   cocokWaktu = none
+                |   |   rasioNounCocokDiskrit = (0.8,1]
+                    |   |   task = QA: entail (51.0/2.0)
+        */
+        if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                (pTaskQA.isKondisiTerpenuhi(tPrepro,hPrepro))
+                ) {
+            isCocok = true;
+            isEntailPrediksi = (
+                    (pMiripUmbcTask.isEntail(tPrepro,hPrepro)) &&
+                            (pVN.isEntail(tPrepro,hPrepro)) &&
+                            (pTaskQA.isEntail(tPrepro,hPrepro))
+            );
+            arrCountPolaCocok[1]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[1]++;
+            }
+            if (isEntailPrediksi) {
+                countPrediksiTrue++;
+            } else {
+                countPrediksiFalse--;
+            }
+        } else
+        if (pTdkUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+            isCocok = true;
+            isEntailPrediksi = pTdkUmbc.isEntail(tPrepro, hPrepro);
+            arrCountPolaCocok[2]++;
+            if (isEntail == isEntailPrediksi) {
+                arrCountEntailBenar[2]++;
+            }
+            if (isEntailPrediksi) {
+                countPrediksiTrue++;
+            } else {
+                countPrediksiFalse--;
+            }
+        } else
+            //cocok tahun & cocok noun tinggi: entail
+            if (   pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) &&
+                    pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+                isCocok = true;
+                isEntailPrediksi = pCocokWaktu.isEntail(tPrepro, hPrepro) && pVN.isKondisiTerpenuhi(tPrepro,hPrepro);
+                arrCountPolaCocok[3]++;
+                if (isEntail==isEntailPrediksi) {arrCountEntailBenar[3]++;}
+                if (isEntailPrediksi) {
+                    countPrediksiTrue++;
+                } else {
+                    countPrediksiFalse--;
+                }
+            } else
+         /*
+         UMBC > 0.439799
+                |   cocokWaktu = cocokwaktu
+                |   |   rasioKataCocok > 0.69: entail (39.0/2.0)
+
+          */
+         /*
+         if (    (pMiripUmbcTask.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                 (pMiripKata.isKondisiTerpenuhi(tPrepro,hPrepro))
+                 ) {
+             isCocok = true;
+             isEntailPrediksi = (
+                     (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                             (pCocokWaktu.isEntail(tPrepro,hPrepro)) &&
+                             (pMiripKata.isEntail(tPrepro,hPrepro))
+             );
+             arrCountPolaCocok[4]++;
+             if (isEntail == isEntailPrediksi) {
+                 arrCountEntailBenar[4]++;
+             }
+         } else
+         */
+         /*
+         UMBC > 0.439799
+        |   cocokWaktu = none
+        |   |   rasioNounCocokDiskrit = (0.8,1]
+        |   |   |   task = IR: entail (38.0/6.0)
+         */
+                if (    (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                        (!pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                        (pVN.isKondisiTerpenuhi(tPrepro,hPrepro)) &&
+                        (pTaskIR.isKondisiTerpenuhi(tPrepro,hPrepro))
+                        ) {
+                    isCocok = true;
+                    isEntailPrediksi = (
+                            (pMiripUmbc.isEntail(tPrepro,hPrepro)) &&
+                                    (pVN.isEntail(tPrepro,hPrepro)) &&
+                                    (pTaskIR.isEntail(tPrepro,hPrepro))
+                    );
+                    arrCountPolaCocok[5]++;
+                    if (isEntail == isEntailPrediksi) {
+                        arrCountEntailBenar[5]++;
+                    }
+                    if (isEntailPrediksi) {
+                        countPrediksiTrue++;
+                    } else {
+                        countPrediksiFalse--;
+                    }
+                } else
+                    //umbc sedang, cocok bulan
+                    if ((pMiripSdgUmbc.isKondisiTerpenuhi(tPrepro,hPrepro))  &&
+                            (pCocokWaktu.isKondisiTerpenuhi(tPrepro,hPrepro) )
+                            )
+                    {
+                        isCocok = true;
+                        isEntailPrediksi = pMiripSdgUmbc.isEntail(tPrepro,hPrepro)
+                                && pCocokWaktu.isEntail(tPrepro,hPrepro);
+                        arrCountPolaCocok[6]++;
+                        if (isEntail==isEntailPrediksi) {arrCountEntailBenar[6]++;}
+                        if (isEntailPrediksi) {
+                            countPrediksiTrue++;
+                        } else {
+                            countPrediksiFalse--;
+                        }
+                    }
+         /*
+         else
+         if (pMiripUmbc.isKondisiTerpenuhi(tPrepro,hPrepro)) {
+             isCocok = true;
+             isEntailPrediksi = pMiripUmbc.isEntail(tPrepro,hPrepro);
+             arrCountPolaCocok[7]++;
+             if (isEntail==isEntailPrediksi) {arrCountEntailBenar[7]++;}
+         }
+         */
+
+        /*
+            karena voting: pasti cocok
+
+         */
+        isCocok = true;
+        isEntailPrediksi = (countPrediksiTrue>countPrediksiFalse);
+        out[0] = isCocok;
+        out[1] = isEntailPrediksi;
+        return out;
+    }
 
 
-
-        public void proses() {
+    public void proses() {
 
         System.out.println("Proses Pencarian Pola ");
-
-
-
 
         PreproBabak2 pp = new PreproBabak2();
         //jalankan query
@@ -678,7 +1110,9 @@ public class CariPolaBerjenjang {
 
         //initEmpatRule(); //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
         //initTaskRule(); //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
-        initEmpatRuleTambahTask();  //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
+        //initEmpatRuleTambahTask();  //SESUAIKAN DEGNAN RULE YANG DIGUNAKAN
+        //initruleVer28MaretSore();
+        initRuleVer29MaretPagi();
 
         try {
             rs = pSel.executeQuery();
@@ -701,10 +1135,13 @@ public class CariPolaBerjenjang {
                 boolean isCocok = false;
 
                 //boolean[] hasil = empatRule(tPrepro,hPrepro,isEntail);
-
                 //boolean[] hasil = taskRule(tPrepro,hPrepro,isEntail);
+                //boolean[] hasil = empatRuleTambahTaskVoting(tPrepro,hPrepro,isEntail);
+                //boolean[] hasil = empatRuleTambahTask(tPrepro,hPrepro,isEntail);
+                //boolean[] hasil =  ruleVer28MaretSore(tPrepro,hPrepro,isEntail);
 
-                boolean[] hasil = empatRuleTambahTask(tPrepro,hPrepro,isEntail);
+                //boolean[] hasil =  ruleVer28MaretSoreTukar(tPrepro,hPrepro,isEntail);
+                boolean[] hasil =   ruleVer29MaretPagi(tPrepro,hPrepro,isEntail);
                 isCocok = hasil[0];
                 isEntailPrediksi = hasil[1];
 
@@ -734,7 +1171,7 @@ public class CariPolaBerjenjang {
 
                 if (isCocok) {
                     jumCocok++;
-                    System.out.println(tPrepro.id);
+                    //System.out.println(tPrepro.id);
 
                     /*
                     System.out.print("ID:");
@@ -767,7 +1204,8 @@ public class CariPolaBerjenjang {
                     }
                 } // if cocok
                 else { //tidak cocok, dumpa t,h,istenail
-                    //sapu bersih
+                    //sapu bersih sisanya
+
                     /*
                     jumCocok++;
                     pMiripUmbcSapu.isKondisiTerpenuhi(tPrepro,hPrepro);
@@ -782,6 +1220,13 @@ public class CariPolaBerjenjang {
                         jumTdkCocokEntail++;
                     }
                     */
+
+                    //System.out.println(tPrepro.id);
+
+                    //System.out.println(tPrepro.teksAsli);
+
+                    //System.out.println(hPrepro.teksAsli);
+                    System.out.println(isEntail);
 
                     /*
                     System.out.println("");
@@ -824,8 +1269,8 @@ public class CariPolaBerjenjang {
 
     public static void main(String[] args) {
         CariPolaBerjenjang cp = new CariPolaBerjenjang();
-        //cp.namaTabel = "rte3_babak2";
-        cp.namaTabel = "rte3_test_gold";
+        cp.namaTabel = "rte3_babak2";
+        //cp.namaTabel = "rte3_test_gold";
 
         cp.proses();
         cp.close();
