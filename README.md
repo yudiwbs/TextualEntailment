@@ -1,6 +1,8 @@
 # README #
 Eksperimen terkait textual entailment
 
+versi terakhir: /TextualEntailmentVer2
+
 ### requirement ###
 1. Java 1.6+
 2. Mysql
